@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<Quicksim xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Quicksim.xsd">    
+  <virtualdut name="vdut1" type="flow" >	
+    <response testInstance="Func::PrimeFuncNoCapture_P1" plist="HPCC_MTD_InstraSlice_1DOM_Plist">
+      <plistResult>
+        <occurrence default="true" status="Fail">
+          <patternData  pattern="g3213851V0511530B_G2_IB024T_Cinm4z3y00ab_a080800iabx44xdxx1x_ID0PTdTC0003I71o_L9Ix0A042xn0nxx00_llc_dat_autoclklya_mux0_so_x_1yt0xxx" >
+            <domainData name="LEG">
+              <cycleData address="6" cycle="6" >
+                <pinData pin="HDDPS_0_HC_nogang_0p15ohm1"  value="0"/>
+              </cycleData>
+            </domainData>
+          </patternData>
+        </occurrence>
+      </plistResult>
+    </response>
+    <response testInstance="Func::PrimeFuncDcTest_P1" plist="HPCC_MTD_InstraSlice_1DOM_Plist">
+      <plistResult>
+        <occurrence default="true" status="Pass"/>
+      </plistResult>
+      <dcResult>
+        <occurrence default="true">
+          <pinData  pin="HDDPS_0_VLC_16ohm1" value="0.001A" />
+          <pinData  pin="HDDPS_0_VLC_16ohm2" value="0.002A" />
+          <pinData  pin="HDDPS_0_VLC_16ohm3" value="0.003A" />
+        </occurrence>
+      </dcResult>
+    </response> 
+	<response testInstance="Func::PrimeFuncDcCtv_P1" plist="HPCC_MTD_InstraSlice_1DOM_Plist">
+      <plistResult>
+        <occurrence default="true">
+          <ctvData pin="HPCC_DPIN_Dig_slcA_All" value="LLHHLHLHLLHLHLHLHLHLHLLL"/>
+          <ctvData pin="HPCC_DPIN_Dig_slcB_All" value="HHHHHHLLHLLLHHHHLHLHLLLL"/>
+          <ctvData pin="HPCC_DPIN_Dig_slcC_All" value="LLLLLLLLLLLLLLLLLLLHLHLL"/>
+		</occurrence>
+      </plistResult>
+	  <dcResult>
+        <occurrence default="true">
+          <pinData  pin="HDDPS_0_VLC_16ohm1" value="0.001A" />
+          </occurrence>
+      </dcResult>
+    </response>
+    <response testInstance="Func::PrimeFuncCaptureFailures" plist="HPCC_MTD_InstraSlice_1DOM_Plist">
+      <plistResult>
+        <occurrence default="true" status="Fail">
+          <patternData pattern="g3213851V0511530B_G2_IB024T_Cinm4z3y00ab_a080800iabx44xdxx1x_ID0PTdTC0003I71o_L9Ix0A042xn0nxx00_llc_dat_autoclklya_mux0_so_x_1yt0xxx">
+            <domainData name="LEG" >
+              <cycleData address="10" cycle="1">
+                <pinData pin="HPCC_DPIN_Dig_slcA_All" value="0"/>
+                <pinData pin="HPCC_DPIN_Dig_slcB_All" value="0"/>
+                <pinData pin="HPCC_DPIN_Dig_slcC_All" value="0"/>
+              </cycleData>
+              <cycleData address="11" cycle="2">
+                <pinData pin="HPCC_DPIN_Dig_slcA_All" value="0"/>
+              </cycleData>
+              <cycleData address="12" cycle="3">
+                <pinData pin="HPCC_DPIN_Dig_slcB_All" value="0"/>
+              </cycleData>
+              <cycleData address="13" cycle="4">
+                <pinData pin="HPCC_DPIN_Dig_slcC_All" value="0"/>
+              </cycleData>
+            </domainData>
+          </patternData>
+        </occurrence>   
+      </plistResult>
+    </response>
+    <response testInstance="Func::PrimeFuncCaptureScoreboard" plist="HPCC_MTD_InstraSlice_1DOM_Plist">
+      <plistResult>
+        <occurrence default="true" status="Fail">
+          <patternData pattern="g3213851V0511530B_G2_IB024T_Cinm4z3y00ab_a080800iabx44xdxx1x_ID0PTdTC0003I71o_L9Ix0A042xn0nxx00_llc_dat_autoclklya_mux0_so_x_1yt0xxx">
+            <domainData name="LEG" >
+              <cycleData address="10" cycle="1">
+                <pinData pin="HPCC_DPIN_Dig_slcA_All" value="0"/>
+                <pinData pin="HPCC_DPIN_Dig_slcB_All" value="0"/>
+                <pinData pin="HPCC_DPIN_Dig_slcC_All" value="0"/>
+              </cycleData>
+              <cycleData address="11" cycle="2">
+                <pinData pin="HPCC_DPIN_Dig_slcA_All" value="0"/>
+              </cycleData>
+              <cycleData address="12" cycle="3">
+                <pinData pin="HPCC_DPIN_Dig_slcB_All" value="0"/>
+              </cycleData>
+              <cycleData address="13" cycle="4">
+                <pinData pin="HPCC_DPIN_Dig_slcC_All" value="0"/>
+              </cycleData>
+            </domainData>
+          </patternData>
+        </occurrence>   
+      </plistResult>
+    </response>
+    <response testInstance="Func::PrimeFuncCaptureCtv" plist="HPCC_MTD_InstraSlice_1DOM_Plist">
+      <plistResult>
+        <occurrence default="true">
+          <ctvData pin="HPCC_DPIN_Dig_slcA_All" value="LLHHLHLHLLHLHLHLHLHLHLLL"/>
+          <ctvData pin="HPCC_DPIN_Dig_slcB_All" value="LLLLLHHHHHLLLLHHHLLLLLLL"/>
+          <ctvData pin="HPCC_DPIN_Dig_slcC_All" value="HHHHHHLLHLLLHHHHLHLHLLLL"/>
+        </occurrence>
+      </plistResult>
+    </response>
+  </virtualdut>
+</Quicksim>

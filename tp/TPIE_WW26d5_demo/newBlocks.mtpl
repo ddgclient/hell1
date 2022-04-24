@@ -1,0 +1,282 @@
+
+#Last Modified Time: 28-Jul-2021 07:34:44; Modified from line: 1029 in File: C:\Users\caiofern\Desktop\TPIE_WW26d5_demo\Modules\ARR_ATOM\ARR_ATOM.mtpl
+DUTFlow PRIMEVAL_SubFlow
+{
+    DUTFlowItem LSARasterTCValidation
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            IncrementCounters n20020001_fail_LSA_ATOM_HRY_E_BEGIN_TITO_VATOM_VNOM_0800_L2LRU_M0R_0;
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            Return 1;
+        }
+        Result 2
+        {
+            Property PassFail = "Fail";
+            IncrementCounters n20030002_fail_LSA_ATOM_HRY_E_BEGIN_TITO_VATOM_VNOM_0800_L2LRU_M0R_2;
+            Return 2;
+        }
+        Result 3
+        {
+            Property PassFail = "Pass";
+            Return 3;
+        }
+    }
+}
+
+#Last Modified Time: 28-Jul-2021 07:32:53; Modified from line: 980 in File: C:\Users\caiofern\Desktop\TPIE_WW26d5_demo\ProgramFlowsTestPlan\ProgramFlows.mtpl
+DUTFlow MAIN
+{
+    DUTFlowItem TPI_BASE_MAIN TPI_BASE::TPI_BASE_MAIN
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            GoTo ALARM_SubFlow;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            GoTo ALARM_SubFlow;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo ALARM_SubFlow;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo START_SubFlow;
+        }
+    }
+    DUTFlowItem START_SubFlow START_SubFlow
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            GoTo ALARM_SubFlow;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            GoTo ALARM_SubFlow;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo BEGIN_SubFlow;
+        }
+    }
+    DUTFlowItem BEGIN_SubFlow BEGIN_SubFlow
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            GoTo ALARM_SubFlow;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            GoTo ALARM_SubFlow;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo FINAL_SubFlow;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo PREHVQK_SubFlow;
+        }
+    }
+    DUTFlowItem PREHVQK_SubFlow PREHVQK_SubFlow
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            GoTo ALARM_SubFlow;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            GoTo ALARM_SubFlow;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo FINAL_SubFlow;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo STRESS_SubFlow;
+        }
+    }
+    DUTFlowItem STRESS_SubFlow STRESS_SubFlow
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            GoTo ALARM_SubFlow;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            GoTo ALARM_SubFlow;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo END_SubFlow;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo POSTHVQK_SubFlow;
+        }
+        Result 2
+        {
+            Property PassFail = "Fail";
+            GoTo FINAL_SubFlow;
+        }
+    }
+    DUTFlowItem POSTHVQK_SubFlow POSTHVQK_SubFlow
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            GoTo ALARM_SubFlow;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            GoTo ALARM_SubFlow;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo FINAL_SubFlow;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo END_SubFlow;
+        }
+    }
+    DUTFlowItem END_SubFlow END_SubFlow
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            GoTo ALARM_SubFlow;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            GoTo ALARM_SubFlow;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo FINAL_SubFlow;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo FINAL_SubFlow;
+        }
+    }
+    DUTFlowItem FINAL_SubFlow FINAL_SubFlow
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            GoTo ALARM_SubFlow;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            GoTo ALARM_SubFlow;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo TPI_BASE_MAIN;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            Return 1;
+        }
+    }
+    DUTFlowItem ALARM_SubFlow ALARM_SubFlow
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            Return -1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            Return 1;
+        }
+    }
+    DUTFlowItem PRIMEVAL_SubFlow ARR_ATOM::ARR_COREL2LRU_HRY_RASTER #Dynamcially Created
+    {
+        Result -2 #Dynamcially Created
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1 #Dynamcially Created
+        {
+            PassFail Fail;
+            Return -1;
+        }
+        Result 0 #Dynamcially Created
+        {
+            PassFail Fail;
+            Return 0;
+        }
+        Result 1 #Dynamcially Created
+        {
+            PassFail Pass;
+            Return 1;
+        }
+        Result 96 #Dynamcially Created
+        {
+            PassFail Bypass;
+            Return 96;
+        }
+    }
+} # End of DUTFlow MAIN

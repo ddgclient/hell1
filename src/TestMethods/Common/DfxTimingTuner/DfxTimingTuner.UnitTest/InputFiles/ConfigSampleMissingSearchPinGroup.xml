@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DfxTimingTuner xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <pingroup name="MCI_Pins">
+    <pin>DPIN_9_003</pin>
+    <pin>DPIN_9_005</pin>
+    <pin>DPIN_9_007</pin>
+  </pingroup>
+  <pingroup name="TDO">
+    <pin>DPIN_9_000</pin>
+  </pingroup>
+  <set name="SampleDriveMode">
+    <search_mode>Drive</search_mode>
+    <search_pins>InvalidSearchPinGroup</search_pins> <!-- PinGroup not defined -->
+    <capture_pins>TDO</capture_pins>
+    <capture_ctvorder>MCI_Pins</capture_ctvorder>
+    <uservar>TimingCollection1.%PIN%_drv_offset</uservar>
+	<loop_size config="DfxTuneLooopSize">MOV %SIZE%, R1</loop_size>
+  </set>
+  <set name="SampleCompareMode">
+    <search_mode>Compare</search_mode>
+    <search_pins>InvalidSearchPinGroup</search_pins> <!-- PinGroup not defined -->
+    <capture_pins>MCI_Pins</capture_pins>
+    <uservar>TimingCollection1.%PIN%_stb_offset</uservar>
+	<loop_size config="DfxTuneLooopSize">MOV %SIZE%, R1</loop_size>
+  </set>
+</DfxTimingTuner>

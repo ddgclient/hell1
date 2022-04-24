@@ -1,0 +1,18 @@
+{
+  "Trackers": [
+    { "Name": "SliceTracking",	"Size": 8,	"InitialValue": "00000000" },
+    { "Name": "CORE0",			"Size": 1,	"InitialValue": "0"    },
+    { "Name": "CORE1",			"Size": 1,	"InitialValue": "0"    },
+    { "Name": "CORE2",			"Size": 1,	"InitialValue": "0"    },
+    { "Name": "CORE3",			"Size": 1,	"InitialValue": "0"    },
+    { "Name": "CORE4",			"Size": 1,	"InitialValue": "1"    },
+    { "Name": "CORE5",			"Size": 1,	"InitialValue": "1"    },
+    { "Name": "CORE6",			"Size": 1,	"InitialValue": "1"    },
+    { "Name": "CORE7",			"Size": 1,	"InitialValue": "1"    },
+    { "Name": "CCF",			"Size": 1},
+    { "Name": "GT",				"Size": 1},
+    { "Name": "MainTracker",	"Size": 1,	"InitialValue": "0", "LinkDisable": ["SubTracker1", "SubTracker2" ] },
+    { "Name": "SubTracker1",	"Size": 1,	"InitialValue": "0" },
+    { "Name": "SubTracker2",	"Size": 1,	"InitialValue": "0" },
+  ]
+}

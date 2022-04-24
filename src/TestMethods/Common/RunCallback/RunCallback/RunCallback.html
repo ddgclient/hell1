@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>RunCallback Template</title>
+</head>
+<body>
+
+    <h1 id="runcallback-template">RunCallback Template</h1>
+<h3 id="rev-0">Rev 0</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1. <a href="#introduction">Introduction</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">2. <a href="#test-instance-parameters">Test Instance Parameters</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">3. <a href="#tpl-samples">TPL Samples</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">4. <a href="#exit-ports">Exit Ports</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="section"></h3>
+<hr />
+<h2 id="introduction">1. Introduction</h2>
+<p>This template can be used to execute any Prime Callback function.
+It works the same as an iCUserFuncTest instance, but the callback will print debug messages correctly based on the LogLevel parameter.
+However, this function cannot call evergreen UF code.</p>
+<hr />
+<h2 id="test-instance-parameters">2. Test Instance Parameters</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Parameter Name</th>
+<th style="text-align: left;">Required?</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Values</th>
+<th style="text-align: left;">Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Callback</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Name of the callback to execute.</td>
+</tr>
+<tr>
+<td style="text-align: left;">Parameters</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Parameters to send to the callback.</td>
+</tr>
+<tr>
+<td style="text-align: left;">ResultToken</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">GSDS (of the form G.[ULI].S.TokenName) to hold the return value from the callback.</td>
+</tr>
+<tr>
+<td style="text-align: left;">ResultPort</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Expression to determine exit port. Expected to be solved as int. Uses [R] as the return value from the callback. See AuxiliaryTC for expression examples.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="tpl-samples">3. TPL Samples</h2>
+<h3 id="section-1"></h3>
+<pre><code class="language-perl">Test RunCallback BASEPRIM_X_FUNC_K_BEGIN_X_X_X_X_CORETOTRACKER_ATOM  
+{
+    Callback = &quot;WriteTracker&quot;;  
+    Parameters = &quot;--tracker ATOM_M0,ATOM_M1 --value 00000000&quot;;  
+}  
+
+Test RunCallback SOMETESTNAME  
+{  
+    Callback = &quot;ExecuteInstance&quot;;  
+    Parameters = &quot;--test SOMEOTHERTESTINSTANCE --save_exit_port G.U.S.ExitPort&quot;;  
+    ResultPort = &quot;ToInt32([G.U.S.ExitPort])==1?1:0&quot;    
+}  
+
+</code></pre>
+<hr />
+<h2 id="exit-ports">4. Exit Ports</h2>
+<table>
+<thead>
+<tr>
+<th>Exit Port</th>
+<th>Condition</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-2</td>
+<td>Alarm</td>
+<td>Any HW alarm condition</td>
+</tr>
+<tr>
+<td>-1</td>
+<td>Error</td>
+<td>Any software error</td>
+</tr>
+<tr>
+<td>0</td>
+<td>Fail</td>
+<td>nothing causes this today.</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Pass</td>
+<td>If the callback was successfully executed.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="section-2"></h3>
+<hr />
+
+
+</body>
+</html>

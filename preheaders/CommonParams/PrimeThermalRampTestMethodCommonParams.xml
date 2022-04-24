@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TestLibraryInterfaces xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://vtsm.intel.com/2009/TestLibraryInterfaces file:///C:/Intel/hdmt/hdmtOS_3.9.0.1_Release/TOSRelease/bin/release/TestLibraryInterfaces.xsd" xmlns="http://vtsm.intel.com/2009/TestLibraryInterfaces">
+  <TestLibrary name="PrimeTestInstance">
+    <TestClass name="PrimeThermalRampTestMethodCommonParams" />
+    <Imports>
+      <FileName>PreInstanceCommonParam.xml</FileName>
+      <FileName>PostInstanceCommonParam.xml</FileName>
+      <FileName>FivrConditionCommonParam.xml</FileName>
+      <FileName>PatConfigSetPointsCommonParam.xml</FileName>
+      <FileName>RelayTestConditionCommonParam.xml</FileName>
+      <FileName>SoftwareTriggerCommonParam.xml</FileName>
+    </Imports>
+    <PublicBases />
+    <Parameters />
+    <ExitPorts />
+  </TestLibrary>
+</TestLibraryInterfaces>

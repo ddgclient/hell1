@@ -1,0 +1,121 @@
+{
+  "Setup": {
+    "PatModConfigSets": {
+      "LSA_RASTER_PAT_MODIFY_SET_ATOM": [
+        "Multiport",
+        "MaxDefectsCount",
+        "Bank",
+        "Dword",
+        "IOMask"
+      ]
+    },
+    "CaptureConfigSets": {
+      "LSA_RASTER_CAPTURE_DECODING_SET_ATOM": {
+        "Length": 281,
+        "DecodingElements": {
+          "FailAddress": {
+            "Start": 4,
+            "End": 15
+          },
+          "Dword": {
+            "Start": 16,
+            "End": 19
+          },
+          "Bank": {
+            "Start": 20,
+            "End": 24
+          },
+          "FailIO_0": {
+            "Start": 25,
+            "End": 88
+          },
+          "FailIO_1": {
+            "Start": 89,
+            "End": 152
+          },
+          "FailIO_2": {
+            "Start": 153,
+            "End": 216
+          },
+          "FailIO_3": {
+            "Start": 217,
+            "End": 280
+          }	
+        }
+      }
+    },
+    "SlicePinMapping": {
+      "ATOM_ALL": { 
+        "MulticorePatternEnabled": false,
+        "Configurations": {
+          "ArrayNameRegex": "[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_([a-zA-Z0-9]+_[a-zA-Z0-9]+)_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+",
+          "IsRasterModeSupported": true,
+          "IsGetDwordFromFailIoIndex": false,
+          "PreScreenLabelRegex": "CORE([0-9]+).*_MBD_([0-9]+)_([0-9]+)_([0-9]+)",
+          "LabelRegExTokens": [
+			"SLICE",
+            "MULTIPORT",
+            "BANK",
+            "DWORD"
+          ]
+        },
+        "PinMappings": [ 
+          {
+            "Module": "0",
+            "PinName": "YY_TEST_PORT_OUT_C2S_10",
+            "HryName": "M0"
+          },
+          {
+            "Module": "1",
+            "PinName": "YY_TEST_PORT_OUT_C2S_11",
+            "HryName": "M1"
+          }
+        ]
+      },	  
+      "ATOM_MOD0": { 
+        "MulticorePatternEnabled": false,
+        "Configurations": {
+          "ArrayNameRegex": "[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_([a-zA-Z0-9]+_[a-zA-Z0-9]+)_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+",
+          "IsRasterModeSupported": true,
+          "IsGetDwordFromFailIoIndex": false,
+          "PreScreenLabelRegex": "CORE([0-9]+).*FAIL_MBD_([0-9]+)_([0-9]+)_([0-9]+)",
+          "LabelRegExTokens": [
+			"SLICE",
+            "MULTIPORT",
+            "BANK",
+            "DWORD"
+          ]
+        },
+        "PinMappings": [ 
+          {
+            "Module": "0",
+            "PinName": "YY_TAP_TDO_C2S",
+            "HryName": "M0"
+          }
+        ]
+      },
+      "ATOM_MOD1": { 
+        "MulticorePatternEnabled": false,
+        "Configurations": {
+          "ArrayNameRegex": "[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_([a-zA-Z0-9]+_[a-zA-Z0-9]+)_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+",
+          "IsRasterModeSupported": true,
+          "IsGetDwordFromFailIoIndex": false,
+          "PreScreenLabelRegex": "CORE([0-9]+).*FAIL_MBD_([0-9]+)_([0-9]+)_([0-9]+)",
+          "LabelRegExTokens": [
+			"SLICE",
+            "MULTIPORT",
+            "BANK",
+            "DWORD"
+          ]
+        },
+        "PinMappings": [ 
+          {
+            "Module": "1",
+            "PinName": "YY_TAP_TDO_C2S",
+            "HryName": "M1"
+          }
+        ]
+      }
+    }
+  }
+}

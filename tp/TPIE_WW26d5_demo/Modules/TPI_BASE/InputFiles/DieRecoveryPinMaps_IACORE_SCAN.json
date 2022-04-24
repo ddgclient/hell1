@@ -1,0 +1,44 @@
+[
+	{
+		"Name":"CORE0_SCAN", "PatternModify":"CORE_DISABLE0", "Size":1
+	},
+	{
+		"Name":"CORE1_SCAN", "PatternModify":"CORE_DISABLE1", "Size":1
+	},
+	{
+		"Name":"CORE2_SCAN", "PatternModify":"CORE_DISABLE2", "Size":1
+	},
+	{
+		"Name":"CORE3_SCAN", "PatternModify":"CORE_DISABLE3", "Size":1
+	},
+	{
+		"Name":"CORE4_SCAN", "PatternModify":"CORE_DISABLE4", "Size":1
+	},
+	{
+		"Name":"CORE5_SCAN", "PatternModify":"CORE_DISABLE5", "Size":1
+	},
+	{
+		"Name":"SLICE0_SCAN", "PatternModify":"SLICE_DISABLE0", "Size":1
+	},
+	{
+		"Name":"SLICE1_SCAN", "PatternModify":"SLICE_DISABLE1", "Size":1
+	},
+	{
+		"Name":"SLICE2_SCAN", "PatternModify":"SLICE_DISABLE2", "Size":1
+	},
+	{
+		"Name":"SLICE3_SCAN", "PatternModify":"SLICE_DISABLE3", "Size":1
+	},
+	{
+		"Name":"SLICE4_SCAN", "PatternModify":"SLICE_DISABLE4", "Size":1
+	},
+	{
+		"Name":"SLICE5_SCAN", "PatternModify":"SLICE_DISABLE5", "Size":1
+	},
+	{
+		"Name":"SLICEM0_SCAN", "PatternModify":"SLICE_DISABLE6", "Size":1
+	},
+	{
+		"Name":"SLICEM1_SCAN", "PatternModify":"SLICE_DISABLE7", "Size":1
+	}
+]

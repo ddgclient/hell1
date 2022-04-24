@@ -1,0 +1,61 @@
+{
+  "Configurations": [
+    {
+      "Name": "ImpactStudiesOptimumWaits",
+      "ConfigurationElement": [
+        {
+          "Type": "INSTRUCTION",
+          "Domain": "CPU_TAP_ALL",
+          "StartAddress": "ph0__HVMExecWait1",
+          "StartAddressOffset": 84,
+          "EndAddress": "ph0__HVMExecWait1",
+          "EndAddressOffset": 84,
+          "PatternsRegEx": [
+            "^g0179772W5014240A_L8_VC28xCA08a_Fm020v18xxx0q_dxxx0808081bxxxxxxxxx_sC28A6PxxATC029J052_x00_il_LengthChangePrefixes_Random_16bit_26530$"
+          ],
+          "ValidationMode": "ALLOW_LABEL_NO_MATCHING",
+          "Data": "MOV 105, R7"
+        },
+        {
+          "Type": "INSTRUCTION",
+          "Domain": "CPU_FAB_ALL",
+          "StartAddress": "HVMExecWait",
+          "StartAddressOffset": 84,
+          "EndAddress": "HVMExecWait",
+          "EndAddressOffset": 84,
+          "PatternsRegEx": [
+            "^g0179772W5014240A_L8_VC28xCA08a_Fm020v18xxx0q_dxxx0808081bxxxxxxxxx_sC28A6PxxATC029J052_x00_il_LengthChangePrefixes_Random_16bit_26530$"
+          ],
+          "ValidationMode": "ALLOW_LABEL_NO_MATCHING",
+          "Data": "MOV 105, R7"
+        },
+        {
+          "Type": "INSTRUCTION",
+          "Domain": "CPU_TAP_ALL",
+          "StartAddress": "ph0__HVMExecWait1",
+          "StartAddressOffset": 84,
+          "EndAddress": "ph0__HVMExecWait1",
+          "EndAddressOffset": 84,
+          "PatternsRegEx": [
+            "^g0179785W5014598A_KX_VC28xCA08a_Fm020v18xxx0q_dxxx0808081bxxxxxxxxx_sC28A6PxxATC029J052_x00_gather_scatter_address_ver2_3091756$"
+          ],
+          "ValidationMode": "ALLOW_LABEL_NO_MATCHING",
+          "Data": "MOV 160, R7"
+        },
+        {
+          "Type": "INSTRUCTION",
+          "Domain": "CPU_FAB_ALL",
+          "StartAddress": "HVMExecWait",
+          "StartAddressOffset": 84,
+          "EndAddress": "HVMExecWait",
+          "EndAddressOffset": 84,
+          "PatternsRegEx": [
+            "^g0179785W5014598A_KX_VC28xCA08a_Fm020v18xxx0q_dxxx0808081bxxxxxxxxx_sC28A6PxxATC029J052_x00_gather_scatter_address_ver2_3091756$"
+          ],
+          "ValidationMode": "ALLOW_LABEL_NO_MATCHING",
+          "Data": "MOV 160, R7"
+        }
+      ]
+    }
+  ]
+}

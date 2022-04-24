@@ -1,0 +1,76 @@
+Version 5.0;
+# Plist ID : ead37169f14fb80a9611929a941ead3359207b33
+# pcar_file: /p/pde/tvpv/mtl/run_logs/vcf/vrevC28A6P/skorlam/Rundir_vcf_023711A_mtlJF_cencen_rel_hdmt2_vrevC28A6P_sort_hvm_None/pcar3/fun_core_C28_sort_pcar3.pcar3
+
+##GlobalPList resetplb_xxx0808081bx_phase2_Mfun_C28A6P_sort_hvm_0244372_list_bb0fa4_PRECAT [Flatten] {
+##   PList resetplb_xxx0808081bx_phase2_Mfun_C28A6P_sort_hvm_list; #KEEP#
+##   Pat g0244372W4058675A_Fz_VC28xCA08c_Fa020v00xxxAA_dxxx0808081bxxxxxxxxx_sC28A6PxxATC029J052_x00_Sbft_Stage2_Flows; #KEEP#
+##}
+##
+##GlobalPList resetplb_xxx0808081bx_phase2_Mfun_C28A6P_sort_hvm_0246818_list_bb0fa4_PRECAT [Flatten] {
+##   PList resetplb_xxx0808081bx_phase2_Mfun_C28A6P_sort_hvm_list; #KEEP#
+##   Pat g0246818W4058675A_GC_VC28xCA08c_Fa021200xxxAA_dxxx0808081bxxxxxxxxx_sC28A6PxxATC029J052_x00_Sbft_Stage2_Flows; #KEEP#
+##}
+### plist naming convention found here - https://wiki.ith.intel.com/display/ITSpdxtp/MTL+Patlist+Naming+Convention
+
+
+
+# ==========================
+# Precat plists
+# ==========================
+##GlobalPList fun_core_cdie_sbft_mlc_precat_stf200 [Flatten] {
+##   # mlc precat plist for stf200
+##   Pat g0154049W4058675A_Fw_VC28xCA066_Fa021y00xxxAA_dxxx0808082bxxxxxxxxx_sC28A6PxxATC029J052_x00_Sbft_Stage2_Flows;
+##}  # End of fun_core_cdie_sbft_mlc_precat_stf200
+##
+##GlobalPList fun_core_cdie_sbft_slc_precat_stf200 [Flatten] {
+##   # slc precat plist for stf200
+##   Pat g0154091W4058675A_G9_VC28xCA066_Fa022u00xxxAA_dxxx0808082bxxxxxxxxx_sC28A6PxxATC029J052_x00_Sbft_Stage2_Flows;
+##}  # End of fun_core_cdie_sbft_slc_precat_stf200
+
+
+
+# ==========================
+# Midcat plists
+# ==========================
+
+##GlobalPList fun_core_cdie_sbft_mlc_midcat_stf100 [Flatten] {
+##   # MLC midcat plist for stf100
+##   Pat g0179705W4106290A_Ju_VC28xCA08a_Fs020v18xxxMM_dxxx0808081bxxxxxxxxx_sC28A6PxxATC029J052_x00_dummy_cleanx [Mask YY_TAP_TDO_C2S,YY_TEST_PORT_OUT_C2S_00,YY_TEST_PORT_OUT_C2S_01];
+##}  # End of fun_core_cdie_sbft_mlc_midcat_stf100
+##
+##GlobalPList fun_core_cdie_sbft_slc_midcat_stf100 [Flatten] {
+##   # slc midcat plist for stf100
+##   Pat g0218563W4106290A_KJ_VC28xCA08b_Fs02121dxxxMM_dxxx0808081bxxxxxxxxx_sC28A6PxxATC029J052_x00_dummy_cleanx [Mask YY_TAP_TDO_C2S,YY_TEST_PORT_OUT_C2S_00,YY_TEST_PORT_OUT_C2S_01];
+##}  # End of fun_core_cdie_sbft_slc_midcat_stf100
+##
+##GlobalPList fun_core_cdie_sbft_mlc_midcat_stf200 [Flatten] {
+##   # mlc midcat plist for stf200
+##   Pat g0154057W4106290A_Jt_VC28xCA066_Fs021y24xxxMM_dxxx0808082bxxxxxxxxx_sC28A6PxxATC029J052_x00_dummy_cleanx [Mask YY_TAP_TDO_C2S,YY_TEST_PORT_OUT_C2S_00,YY_TEST_PORT_OUT_C2S_01];
+##}  # End of fun_core_cdie_sbft_mlc_midcat_stf200
+##
+##GlobalPList fun_core_cdie_sbft_slc_midcat_stf200 [Flatten] {
+##   # slc midcat plist for stf200
+##   Pat g0154094W4106290A_K7_VC28xCA066_Fs022u2vxxxMM_dxxx0808082bxxxxxxxxx_sC28A6PxxATC029J052_x00_dummy_cleanx [Mask YY_TAP_TDO_C2S,YY_TEST_PORT_OUT_C2S_00,YY_TEST_PORT_OUT_C2S_01];
+##}  # End of fun_core_cdie_sbft_slc_midcat_stf200
+##
+
+# ==========================
+# STF100_loadmode_plists
+# ==========================
+
+
+
+# ==========================
+#  PrePostHVQK subflow MLC Integer and FP Tests with STF100 as load mode
+# ==========================
+
+
+#   GlobalPList fun_core_cdie_preposthvqk_sbft_lfm_vadtl_stf100_mlc_AVX_sublist [PreBurstPList resetplb_xxx0808081bx_phase2_Mfun_C28A6P_sort_hvm_0244372_list_bb0fa4_PRECAT] [PrePList fun_core_cdie_sbft_mlc_midcat_stf100] [Flatten] {
+GlobalPList fun_core_cdie_preposthvqk_sbft_lfm_vadtl_stf100_mlc_AVX_sublist [Flatten] {
+   # MLC End LFM 1st Si AVX passing tests
+   Pat g0179772W5014240A_L8_VC28xCA08a_Fm020v18xxx0q_dxxx0808081bxxxxxxxxx_sC28A6PxxATC029J052_x00_il_LengthChangePrefixes_Random_16bit_26530;
+   Pat g0179780W5014242A_LY_VC28xCA08a_Fm020v18xxx0q_dxxx0808081bxxxxxxxxx_sC28A6PxxATC029J052_x00_il_LengthChangePrefixes_Random_16bit_26698;
+   Pat g0179785W5014598A_KX_VC28xCA08a_Fm020v18xxx0q_dxxx0808081bxxxxxxxxx_sC28A6PxxATC029J052_x00_gather_scatter_address_ver2_3091756;
+}  # End of fun_core_cdie_preposthvqk_sbft_lfm_vadtl_stf100_mlc_AVX_sublist
+

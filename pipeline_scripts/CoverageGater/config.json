@@ -1,0 +1,6 @@
+{
+  "CoverageReport": "./logs/dotCover/coverLogComplete.json",
+  "CoverageTarget": 85,
+  "PassOverride": [ "CtvDecoder", "DynamicFuncRestoreTC", "DynamicFuncTC" ],
+  "FailOverride": []
+}

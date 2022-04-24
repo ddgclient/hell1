@@ -1,0 +1,24 @@
+Version 5.0;
+# Plist ID : 787ac626eaf8ea518f12f6662b6aeb5c825a73af
+# pcar_file: /p/pde/tvpv/mtl/run_logs/vcf/vrevC28A4P/acadena1/Rundir_vcf_006064A_mtlJF_cencen_rel_hdmt2_vrevC28A4P_sort_hvm_vcf_HVM.list/pcar3/fuse.pcar3
+
+GlobalPList cpu_fuse_write_hvm_x [Flatten] {
+   Pat d0012844W4957063A_hR_VC28xCA055_Um0g0000xxx0b_axxx080808xxxxxxxxxxx_sC28A4PxxATC003J03x_x00_Fuse_HvmData_Prog;
+}  # End of cpu_fuse_write_hvm_x
+
+GlobalPList cpu_fuse_write_special_x [Flatten] {
+   Pat d0012845W4957065A_fF_VC28xCA055_Um0g0000xxx0b_axxx080808xxxxxxxxxxx_sC28A4PxxATC003J03x_x00_Fuse_SpecialRow_Prog;
+}  # End of cpu_fuse_write_special_x
+
+GlobalPList cpu_fuse_read_hvm_x [Flatten] {
+   Pat d0012851W4957067A_O7_VC28xCA055_Um0g0000xxx0b_axxx080808xxxxxxxxxxx_sC28A4PxxATC003J03x_x00_Fuse_HvmData_Read_nom;
+   Pat d0012846W4957068A_O7_VC28xCA055_Um0g0000xxx0b_axxx080808xxxxxxxxxxx_sC28A4PxxATC003J03x_x00_Fuse_HvmData_Read_m0;
+   Pat d0012848W4957069A_O7_VC28xCA055_Um0g0000xxx0b_axxx080808xxxxxxxxxxx_sC28A4PxxATC003J03x_x00_Fuse_HvmData_Read_m1;
+}  # End of cpu_fuse_read_hvm_x
+
+GlobalPList cpu_fuse_read_special_x [Flatten] {
+   Pat d0012842W4957070A_Nm_VC28xCA055_Um0g0000xxx0b_axxx080808xxxxxxxxxxx_sC28A4PxxATC003J03x_x00_Fuse_SpecialRow_Read_nom;
+   Pat d0012843W4957071A_Nm_VC28xCA055_Um0g0000xxx0b_axxx080808xxxxxxxxxxx_sC28A4PxxATC003J03x_x00_Fuse_SpecialRow_Read_m0;
+   Pat d0012850W4957072A_Nm_VC28xCA055_Um0g0000xxx0b_axxx080808xxxxxxxxxxx_sC28A4PxxATC003J03x_x00_Fuse_SpecialRow_Read_m1;
+}  # End of cpu_fuse_read_special_x
+

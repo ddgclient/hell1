@@ -1,0 +1,9 @@
+{
+  "Registers": [
+    {
+      "RegisterName": [ "PVAL_SHMOO_VDAC" ],
+      "LabelName": "CPU_TAP_ALL_phnone__StartofResetDelay",
+      "LabelOffset": 0
+    }
+  ]
+}

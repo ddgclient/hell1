@@ -1,0 +1,18 @@
+################################################################################
+#   Filename: custom_fuse_read.txt
+#-------------------------------------------------------------------------------
+#    Purpose: Fuse Read custom file
+#-------------------------------------------------------------------------------
+# Created by: Eric Scharpf
+#       Date: 5-Jan-2017 Rev0
+###############################################################################
+
+#############################################################################
+#DEFINE:	SETPOINT:         DATA_TYPE:      VARIABLE:              VARIABLE_TYPE:     VALUE:			CONDITION
+#############################################################################
+define:			IR :  		STRING:         intro_method_glb:     	GLOBAL:		SCVars.SC_INTRO_METHOD      	: *
+define:        	IR :     	STRING:         intro_method_val_prod:  LITERAL:	"PROD"                          	: *
+define:        	IR :     	STRING:         intro_method_val_eng:   LITERAL:	"ENG"                          	: *
+define: 		IR :     	STRING:         intro_method_val_sd:   	LITERAL:	"SD"                          	: *
+define:        	IR :     	STRING:         operation_glb:     	     GLOBAL:	SCVars.SC_LOCN	        		: *
+define:        	IR :     	STRING:         operation_val_prod:	    LITERAL:	"132110"                        : *

@@ -1,0 +1,41 @@
+{
+    "Module": "PVAL_BASE",
+    "Groups": [
+        {
+            "Default": "PM_DEFAULT", 
+            "Name": "pwrmux_sel_atom0", 
+            "SetPoints": [
+                {
+                    "Name": "PM_DEFAULT",
+                    "Configurations": [ { "Data": "1", "Name": "PWR_MUX_SEL0" } ] 
+                },
+                {
+                    "Name": "vcclogic",
+                    "Configurations": [ { "Data": "1", "Name": "PWR_MUX_SEL0" } ] 
+                },
+                {
+                    "Name": "vnnaon",
+                    "Configurations": [ { "Data": "0", "Name": "PWR_MUX_SEL0" } ] 
+                }
+            ]
+        },
+        {
+            "Default": "PM_DEFAULT", 
+            "Name": "pwrmux_sel_atom1", 
+            "SetPoints": [
+                {
+                    "Name": "PM_DEFAULT",
+                    "Configurations": [ { "Data": "1", "Name": "PWR_MUX_SEL1" } ] 
+                },
+                {
+                    "Name": "vcclogic",
+                    "Configurations": [ { "Data": "1", "Name": "PWR_MUX_SEL1" } ] 
+                },
+                {
+                    "Name": "vnnaon",
+                    "Configurations": [ { "Data": "0", "Name": "PWR_MUX_SEL1" } ] 
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,624 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>DFX Timing Tuner</title>
+</head>
+<body>
+
+    <h1 id="dfx-timing-tuner">DFX Timing Tuner</h1>
+<h3 id="rev-0">Rev 0</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1. <a href="#introduction">Introduction</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">2. <a href="#external-dependencies">External Dependencies</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">3. <a href="#test-instance-parameters">Test Instance Parameters</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">4. <a href="#search-range-and-adaptive-mode">Search Range and Adaptive Mode</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">5. <a href="#config-file">Configuration File Format</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">6. <a href="#datalog-output">Datalog output</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">7. <a href="#tpl-samples">TPL Samples</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">8. <a href="#exit-ports">Exit Ports</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="section"></h3>
+<hr />
+<h2 id="introduction">1. Introduction</h2>
+<p>This test method performs per-pin timing searches on Drive or Compare edges in order to calculate the optimal settings and then saves the results to Hdmt UserVariables.</p>
+<h3 id="methodology">1.1. Methodology</h3>
+<ol>
+<li>First test instance to set the Input (Drive) edge placement.
+<ol>
+<li>Pattern is a Parallel-In/Serial-Out loopback.</li>
+<li>Perform a search on the Data pins Drive Edge.</li>
+<li>Read serial output data (with CTV) to determine per-pin/per-searchpoint pass/fail results and calculate the optimal settings for each pin.</li>
+<li>Update timings with the optimal Drive Edge values.</li>
+</ol>
+</li>
+<li>Second test instance to set the Output (Compare) edge placement.
+<ol>
+<li>Pattern is a Parallel-In/Parallel-Out loopback.</li>
+<li>Performa a search on the Data pins Compare Edge.</li>
+<li>Read parallel output data (with CTV) to determine per-pin/per-searchpoint pass/fail results and calculate the optimal settings for each pin.</li>
+<li>Update timings with the optimal Compare Edge values.</li>
+</ol>
+</li>
+</ol>
+<hr />
+<h2 id="external-dependencies">2. External Dependencies</h2>
+<ul>
+<li>Requires Per-Pin Timing support using Hdmt UserVariables for the Per-Pin Timing equations.
+<ul>
+<li>UserVars should be defined as type &quot;Time&quot;.</li>
+</ul>
+</li>
+<li>Requires patterns using TosTrigger inside loops to perform the search.</li>
+<li>For IntraDut testprograms TOS requires the Pattern scope (IP or Package) to be the same as the Test Instance scope for TosTrigger to function correctly.</li>
+<li>Requires a single instance of &quot;CallbacksManager&quot; to be in the testprogram.  It doesn't need to be in the flow but it needs to exist to register the TOSTrigger callbacks.</li>
+<li>See the section <a href="#tpl-samples">TPL Samples</a> for examples.</li>
+</ul>
+<hr />
+<h2 id="test-instance-parameters">3. Test Instance Parameters</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Parameter Name</th>
+<th style="text-align: left;">Required?</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Values</th>
+<th style="text-align: left;">Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Patlist</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">Plist</td>
+<td style="text-align: left;">Plist name to be executed</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">TimingsTc</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">TimingCondition</td>
+<td style="text-align: left;">Timing test condition required for plist execution</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">LevelsTc</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">LevelsCondition</td>
+<td style="text-align: left;">Levels test condition required for plist execution</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">MaskPins</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">CommaSeparatedString</td>
+<td style="text-align: left;">Comma separated list of pins to mask before executing Plist</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">ConfigFile</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">File</td>
+<td style="text-align: left;">Configuration File</td>
+<td style="text-align: left;">see <a href="#config-file">Configuration File Format</a> for details</td>
+</tr>
+<tr>
+<td style="text-align: left;">ConfigSet</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">string</td>
+<td style="text-align: left;">Configuration Set</td>
+<td style="text-align: left;">see <a href="#config-file">Configuration File Format</a> for details</td>
+</tr>
+<tr>
+<td style="text-align: left;">SearchStart</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">string</td>
+<td style="text-align: left;">Time Value</td>
+<td style="text-align: left;">See <a href="#search-range-and-adaptive-mode">Search Range And Adaptive Mode</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">SearchResolution</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">string</td>
+<td style="text-align: left;">Time Value</td>
+<td style="text-align: left;">See <a href="#search-range-and-adaptive-mode">Search Range And Adaptive Mode</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">SearchEnd</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">string</td>
+<td style="text-align: left;">Time Value</td>
+<td style="text-align: left;">See <a href="#search-range-and-adaptive-mode">Search Range And Adaptive Mode</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">AdaptiveStart</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">string</td>
+<td style="text-align: left;">Time Value</td>
+<td style="text-align: left;">See <a href="#search-range-and-adaptive-mode">Search Range And Adaptive Mode</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">AdaptiveResolution</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">string</td>
+<td style="text-align: left;">Time Value</td>
+<td style="text-align: left;">See <a href="#search-range-and-adaptive-mode">Search Range And Adaptive Mode</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">AdaptiveEnd</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">string</td>
+<td style="text-align: left;">Time Value</td>
+<td style="text-align: left;">See <a href="#search-range-and-adaptive-mode">Search Range And Adaptive Mode</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">UpdateTC</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">string</td>
+<td style="text-align: left;">None, Current, All</td>
+<td style="text-align: left;">On a successfull search, this controls which Timing TestConditions are updated with the new values.</td>
+</tr>
+<tr>
+<td style="text-align: left;">Datalog</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">boolean</td>
+<td style="text-align: left;">True/False</td>
+<td style="text-align: left;">If True, results are datalogged whether the instance passes or fails, if false results are only datalogged when the instance fails</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="search-range-and-adaptive-mode">4. Search Range and Adaptive Mode</h2>
+<p>There are two different sets of search ranges.
+The first specified as Search* is the initial search run after Verify.
+In normal use this is only the first die or if Adaptive mode fails.
+The second is specified as Adaptive*. These are used after the first die passes.
+The AdaptiveStart and AdaptiveEnd values are used as offsets from the current value.</p>
+<p>The search range is specified with 3 parameters - *Start, *End and *Resolution.
+All can be Engineering format with units (ie -2ns, 2ns, 100ps, etc ...).
+*End must be greater than *Start.
+*Resolution must be positive and less than 2ns.</p>
+<p>Standard example:  All die search from 0nS to 10nS.</p>
+<pre><code class="language-perl">	SearchStart = &quot;0ns&quot;;
+	SearchResolution = &quot;100ps&quot;;
+	SearchEnd = &quot;10ns&quot;;
+</code></pre>
+<p>Standard + Adaptive mode:<br />
+1st die searches from -4nS to 6nS.<br />
+2nd+ die searches from &lt;current_value&gt;-2nS to &lt;current_value&gt;+2nS</p>
+<pre><code class="language-perl">	SearchStart = &quot;-4ns&quot;;        
+	SearchResolution = &quot;25ps&quot;;   
+	SearchEnd = &quot;6ns&quot;;            
+	AdaptiveStart = &quot;-2ns&quot;;        
+	AdaptiveResolution = &quot;50ps&quot;;   
+	AdaptiveEnd = &quot;2ns&quot;;            
+</code></pre>
+<p><strong>Important Note</strong> The HDMT is limited to a 4ns search range per pattern burst. The software will automatically run multiple bursts if the total search range exceeds 4ns, but the user should be aware that test time for search range of 4.1ns will be significantly higher than if the range was 4ns, even if the number of steps was the same.</p>
+<h3 id="section-1"></h3>
+<hr />
+<h2 id="config-file">5. Config File</h2>
+<p>Config File Format:</p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;!-- TopLevel Element, standard, don not change --&gt; 
+&lt;DfxTimingTuner&gt;
+
+    &lt;!-- &quot;pingroup&quot; element used to define a group of pins. --&gt;
+    &lt;!-- Occurrence: 1 or more --&gt;
+    &lt;!-- Attribute: &quot;name&quot; defines the name of this pingroup. Must be unique in this file. --&gt;
+    &lt;pingroup name=&quot;PinGroupName&quot;&gt;
+
+        &lt;!-- &quot;pin&quot; element used to specify each pin in a group. --&gt;
+        &lt;!-- Occurrence: 1 or more --&gt;
+        &lt;!-- Attribute: &quot;alias&quot; (optional) Defines an alias (Alternative pin name) which --&gt;
+        &lt;!--                    can be used to generate the UserVar name associated with --&gt;
+        &lt;!--                    the pin.                                                 --&gt;
+        &lt;!-- TextValue: Name of the pin --&gt;
+        &lt;pin alias=&quot;alias1&quot;&gt;pin1name&lt;/pin&gt;
+        &lt;pin alias=&quot;alias2&quot;&gt;pin2name&lt;/pin&gt;
+    &lt;/pingroup&gt;
+
+    &lt;!-- &quot;set&quot; element used to define a set of configuration parameters. This will be referenced from the --&gt;
+    &lt;!--       test instance in the ConfigSet parameter.                                                  --&gt;
+    &lt;!-- Occurrence: 1 or more --&gt;
+    &lt;!-- Attribute: &quot;name&quot; defines the name of this set. Must be unique in this file. --&gt;
+    &lt;set name=&quot;SetName&quot;&gt;
+
+        &lt;!-- &quot;search_mode&quot; defines whether this test is for &quot;Drive&quot; (input) mode or &quot;Compare&quot; (output) mode. --&gt;
+        &lt;!-- Occurrence: 1 --&gt;
+        &lt;!-- TextValue: &quot;Drive&quot; or &quot;Compare&quot; to define which edge to search. --&gt;
+        &lt;search_mode&gt;Drive|Compare&lt;/search_mode&gt;  
+
+        &lt;!-- &quot;search_pins&quot; is the list of pins that will be searched. (ie these pins drive/compare edges   --&gt;
+        &lt;!--               will be changed)                                                                --&gt;
+        &lt;!-- Occurrence: 1 --&gt;
+        &lt;!-- TextValue: Must reference the name of a &quot;pingroup&quot; element defined in this file. --&gt;
+        &lt;search_pins&gt;pingroup name&lt;/search_pins&gt;
+
+        &lt;!-- &quot;capture_pins&quot; is the list of pins which will be captured as CTV data. --&gt;
+        &lt;!-- Occurrence: 1 --&gt;
+        &lt;!-- TextValue: Must reference the name of a &quot;pingroup&quot; element defined in this file. --&gt;
+        &lt;capture_pins&gt;pingroup name&lt;/capture_pins&gt;
+
+        &lt;!-- &quot;capture_ctvorder&quot; is for &quot;Drive&quot; mode where all the data is on a single pin. The order of    --&gt;
+        &lt;!--                    this group defines how to assign the capture data to pins (ie the first    --&gt;
+        &lt;!--                    ctv bit is assigned to the first pin in the group, the 2nd ctv data to the --&gt;
+        &lt;!--                    2nd pin in the group, etc ...)                                             --&gt;
+        &lt;!--                    It will &quot;wrap&quot; if there are 20 CTVs but only 10 pins, the 11th CTV will be --&gt;
+        &lt;!--                    assigned as the 2nd bit to the 1st pin.                                    --&gt;
+        &lt;!-- Occurrence: 0 if search_mode==Compare, 1 if search_mode==Drive --&gt;
+        &lt;!-- TextValue: Must reference the name of a &quot;pingroup&quot; element defined in this file. --&gt;
+        &lt;capture_ctvorder&gt;pingroup name&lt;/capture_ctvorder&gt;
+
+        &lt;!-- &quot;uservar&quot; contains the expression used to generate name of the UserVar to store the per-pin   --&gt; 
+        &lt;!--           results. It uses the pingroup defined by &quot;ctv_order&quot; (for drive mode) or            --&gt;
+        &lt;!--           &quot;capture_pins&quot; (for compare mode). The variables %ALIAS% and %PIN% can be used to   --&gt;
+        &lt;!--           refer to the pins alias or name.                                                    --&gt;
+        &lt;!-- Occurrence: 1 --&gt;
+        &lt;uservar&gt;Collection.UserVarRegEx&lt;/uservar&gt;
+
+        &lt;!-- &quot;loop_size&quot; contains the information to modify the number of TOSTrigger loops in the pattern. --&gt;
+        &lt;!-- Occurrence: 1 --&gt;
+        &lt;!-- Attribute: &quot;config&quot; (required) The Prime PatConfig Name used to update the pattern. Must be   --&gt;
+        &lt;!--            loaded in the tester using a Prime PatConfig ALEPH file.                           --&gt;
+        &lt;!-- TextValue: The Data to write using PatConfig. Use %SIZE% to refer to the loop counter         --&gt;
+        &lt;!--            (auto-generated by the template based on the search range). The data must contain  --&gt;
+        &lt;!--            the pattern Instruction Opcode and all Operands (ie &quot;MOV %SIZE%, R1&quot;)              --&gt;
+        &lt;loop_size config=&quot;PatConfig&quot;&gt;LoopControlRegEx&lt;/loop_size&gt;
+
+        &lt;!-- &quot;pingroup_for_adjust&quot; Optional for test time reduction                                           --&gt;
+        &lt;!--                       This is the Hdmt Pingroup that holds all the pins in the search_pins list  --&gt;
+        &lt;!-- Occurrence: 0-1 --&gt;
+        &lt;!-- TextValue: Must reference the name of a Hdmt PinGroup which contains all the pins in the search_pins list --&gt;
+        &lt;pingroup_for_adjust&gt;HdmtPinGroup&lt;/pingroup_for_adjust&gt;
+
+    &lt;/set&gt;
+&lt;/DfxTimingTuner&gt;
+</code></pre>
+<hr />
+<h3 id="example-config-file">Example Config File</h3>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;  
+&lt;DfxTimingTuner&gt;  
+  &lt;pingroup name=&quot;MCI_Pins&quot;&gt;  
+	&lt;pin alias=&quot;MCI003&quot;&gt;IP_CPU::DDRDQ_IL05_NIL11_LP41_3&lt;/pin&gt;
+	&lt;pin alias=&quot;MCI002&quot;&gt;IP_CPU::DDRDQ_IL05_NIL11_LP41_2&lt;/pin&gt;
+	&lt;pin alias=&quot;MCI001&quot;&gt;IP_CPU::DDRDQ_IL05_NIL11_LP41_1&lt;/pin&gt;
+	&lt;pin alias=&quot;MCI000&quot;&gt;IP_CPU::DDRDQ_IL05_NIL11_LP41_0&lt;/pin&gt;
+  &lt;/pingroup&gt;  
+  &lt;pingroup name=&quot;TDO&quot;&gt;  
+    &lt;pin&gt;DPIN_9_000&lt;/pin&gt;  
+  &lt;/pingroup&gt;  
+  &lt;set name=&quot;SampleDriveMode&quot;&gt;  
+    &lt;search_mode&gt;Drive&lt;/search_mode&gt;  
+    &lt;search_pins&gt;MCI_Pins&lt;/search_pins&gt;  
+    &lt;capture_pins&gt;TDO&lt;/capture_pins&gt;  
+    &lt;capture_ctvorder&gt;MCI_Pins&lt;/capture_ctvorder&gt;  
+    &lt;uservar&gt;TimingCollection1.%ALIAS%_drv_offset&lt;/uservar&gt;  
+    &lt;loop_size config=&quot;DfxTuneLoopSize&quot;&gt;MOV %SIZE%, R1&lt;/loop_size&gt;  
+    &lt;pingroup_for_adjust&gt;mci_in&lt;/pingroup_for_adjust&gt;
+  &lt;/set&gt;  
+  &lt;set name=&quot;SampleCompareMode&quot;&gt;  
+    &lt;search_mode&gt;Compare&lt;/search_mode&gt;  
+    &lt;search_pins&gt;MCI_Pins&lt;/search_pins&gt;  
+    &lt;capture_pins&gt;MCI_Pins&lt;/capture_pins&gt;  
+    &lt;uservar&gt;TimingCollection1.%ALIAS%_stb_offset&lt;/uservar&gt;  
+    &lt;loop_size config=&quot;DfxTuneLoopSize&quot;&gt;MOV %SIZE%, R1&lt;/loop_size&gt;  
+    &lt;pingroup_for_adjust&gt;mci_out&lt;/pingroup_for_adjust&gt;
+  &lt;/set&gt;  
+&lt;/DfxTimingTuner&gt;  
+</code></pre>
+<hr />
+<h2 id="prime-patconfig-details">5.1. Prime PatConfig Details</h2>
+<p>The config file requires setting up a Prime PatternConfig through ALEPH files. Details about that can be found on the Prime Wiki at <a href="https://dev.azure.com/mit-us/PRIME/_wiki/wikis/PRIME.wiki/4650/PatConfig-Service(PatModify-FuseConfig)">PatConfig Service</a></p>
+<p>Example ALEPH file for the required patmod:</p>
+<pre><code class="language-json">{
+	&quot;Configurations&quot;: [
+		{
+			&quot;Name&quot;: &quot;DfxTuneLooopSize&quot;,
+			&quot;ConfigurationElement&quot;: [
+				{
+					&quot;Type&quot;: &quot;INSTRUCTION&quot;,
+					&quot;Domain&quot;: [&quot;IP_CPU::LEG&quot;,&quot;IP_CPU::DDR&quot;],
+					&quot;StartAddress&quot;: &quot;LOOP_INIT_LABEL&quot;,
+					&quot;StartAddressOffset&quot;: 0,
+					&quot;EndAddress&quot;: &quot;LOOP_INIT_LABEL&quot;,
+					&quot;EndAddressOffset&quot;: 0,
+					&quot;PatternsRegEx&quot;: [&quot;.*_MCI_BABYSTEP_trgsrch_.*&quot;]
+				}
+			]
+		}
+	]
+}
+</code></pre>
+<hr />
+<h2 id="datalog-output">6. Datalog output</h2>
+<p>Datalogging is done per-pin. There will be one tname/strgval per pin. The tname will be the &quot;testname::UserVarCategory.UserVar&quot;</p>
+<p>If the Datalog parameter is false, results will only be logged if the test fails (but all pins will be logged not just the ones that failed). Failing pins will have a value of -9999 (no units).</p>
+<p>If there is some hardware or software error that prevents the search from completing, the error will be logged under &quot;tname::ERROR&quot;</p>
+<p>Example Ituff logging (failure on DPIN_9_007 pin):</p>
+<pre><code class="language-perl">2_tname_TGLPRIME::DfxTimingTuner_Test1::PPTimingOffsets_MCI100.DPIN_9_003_stb_offset  
+2_strgval_4.200ns  
+2_tname_TGLPRIME::DfxTimingTuner_Test1::PPTimingOffsets_MCI100.DPIN_9_005_stb_offset  
+2_strgval_7.800ns  
+2_tname_TGLPRIME::DfxTimingTuner_Test1::PPTimingOffsets_MCI100.DPIN_9_007_stb_offset  
+2_strgval_-9999  
+2_tname_TGLPRIME::DfxTimingTuner_Test1::PPTimingOffsets_MCI100.DPIN_9_011_stb_offset  
+2_strgval_7.000ns  
+2_tname_TGLPRIME::DfxTimingTuner_Test1::PPTimingOffsets_MCI100.DPIN_9_013_stb_offset  
+2_strgval_5.800n  
+</code></pre>
+<p>Example Ituff logging (error while executing):</p>
+<pre><code class="language-perl">2_tname_TGLPRIME::DfxTimingTuner_Test1::ERROR  
+2_strgval_this_will_be_the_error_message_here  
+</code></pre>
+<h3 id="section-2"></h3>
+<hr />
+<h2 id="tpl-samples">7. TPL Samples</h2>
+<h3 id="example-flowinstances">7.1. Example Flow/Instances</h3>
+<p><strong>Example Flow:</strong><br />
+<img src="images/dfxtuner_tpflow2.png" alt="SimpleFlow" /></p>
+<p><strong>Example Instances</strong>:</p>
+<pre><code class="language-perl">Test DfxTimingTuner TuneSTF100_Drive
+{
+    Patlist = &quot;STF100_DriveTrain_Plist&quot;;
+    LevelsTc = &quot;__main__::basic_func_lvl_mid&quot;;
+    TimingsTc = &quot;__main__::stf100_timing_100MHz&quot;;
+    
+    ConfigFile = &quot;./Modules/TGLPRIME/InputFiles/DfxTunerConfigSTF.xml&quot;;
+    ConfigSet = &quot;STF100DriveSet&quot;;
+    
+    SearchStart = &quot;-4&quot;;
+    SearchResolution = &quot;100ps&quot;;
+    SearchEnd = &quot;4ns&quot;;
+
+    Datalog = &quot;False&quot;;
+    UpdateTC = &quot;Current&quot;;
+}
+
+Test DfxTimingTuner TuneSTF100_Compare
+{
+    Patlist = &quot;STF100_CompareTrain_Plist&quot;;
+    LevelsTc = &quot;__main__::basic_func_lvl_mid&quot;;
+    TimingsTc = &quot;__main__::stf100_timing_100MHz&quot;;
+    
+    ConfigFile = &quot;./Modules/TGLPRIME/InputFiles/DfxTunerConfigSTF.xml&quot;;
+    ConfigSet = &quot;STF100CompareSet&quot;;
+    
+    SearchStart = &quot;-4&quot;;
+    SearchResolution = &quot;100ps&quot;;
+    SearchEnd = &quot;4ns&quot;;
+
+    Datalog = &quot;False&quot;;
+    UpdateTC = &quot;Current&quot;;
+}
+
+Test DfxTimingTuner TuneSTF400_Drive
+{
+    Patlist = &quot;STF400_DriveTrain_Plist&quot;;
+    LevelsTc = &quot;__main__::basic_func_lvl_mid&quot;;
+    TimingsTc = &quot;__main__::stf400_timing_100MHz&quot;;
+    
+    ConfigFile = &quot;./Modules/TGLPRIME/InputFiles/DfxTunerConfigSTF.xml&quot;;
+    ConfigSet = &quot;STF400DriveSet&quot;;
+    
+    SearchStart = &quot;-2&quot;;
+    SearchResolution = &quot;20ps&quot;;
+    SearchEnd = &quot;2ns&quot;;
+
+    Datalog = &quot;True&quot;;
+    UpdateTC = &quot;Current&quot;;
+}
+
+Test DfxTimingTuner TuneSTF400_Compare
+{
+    Patlist = &quot;STF400_CompareTrain_Plist&quot;;
+    LevelsTc = &quot;__main__::basic_func_lvl_mid&quot;;
+    TimingsTc = &quot;__main__::stf400_timing_100MHz&quot;;
+    
+    ConfigFile = &quot;./Modules/TGLPRIME/InputFiles/DfxTunerConfigSTF.xml&quot;;
+    ConfigSet = &quot;STF400CompareSet&quot;;
+    
+    SearchStart = &quot;-2&quot;;
+    SearchResolution = &quot;20ps&quot;;
+    SearchEnd = &quot;2ns&quot;;
+
+    Datalog = &quot;True&quot;;
+    UpdateTC = &quot;All&quot;; # final test should upate apply all changes to all testconditions.
+}
+
+# the picture is old, there should be an instance of CallbacksManager in the 
+# TPI_BASE_PRIME flow, so this isn't needed anymore.
+Test DfxTimingTunerCallbacks SetupDfxTimingTuningCallbacks
+{
+    LogLevel = &quot;PRIME_DEBUG&quot;;
+}
+
+</code></pre>
+<hr />
+<h3 id="example-pattern">7.2. Example Pattern</h3>
+<p>Below shows an example pattern structure. The important parts are:</p>
+<ul>
+<li>Label where the loop is initialized (LOOP_INIT_LABEL) so it can be changed by code.</li>
+<li>The Register used to control the loop doesn't matter, but must match the one used in the configuration file.</li>
+<li>TOSTrigger at the END of the loop.</li>
+<li>See HDMT UserGuide for details on how to use ClearSoftwareTrigger/TOSTrigger/JNSTR with multi-domains.</li>
+</ul>
+<p><strong>Example Pattern Structure:</strong></p>
+<pre><code class="language-perl"># setup/configuration/reset vectors
+    { V { all_leg=EE0X0111... } }
+    ...
+# Initialize the search loop counter
+LOOP_INIT_LABEL:
+MOV 50, R9
+
+# Label for start of the search loop
+LOOP_START_LABEL:
+
+# Training vectors, with CTV to capture data.
+    { V { all_leg=EE0X0111... } }
+    ...
+CTV { V { all_leg=EE0X0111... } }
+    ...
+    { V { all_leg=EE0X0111... } }
+    ...
+
+# TOSTrigger to update the timings for the next search point
+# The ClearSoftwareTrigger/TOSTrigger should only be in one
+# domain. The JNSTR loop needs to be in all domains.
+ClearSoftwareTrigger
+TOSTrigger 1
+SWTrigger_LoopStart:
+
+# dummy vectors/loop to wait until TOSTrigger is done
+    { V { all_leg=EE0X0111... } }
+    ...
+JNSTR SWTrigger_LoopStart
+
+# End of search loop
+DEC R9
+JNZ LOOP_START_LABEL
+
+# final cleanup/shutdown vectors.
+    { V { all_leg=EE0X0111... } }
+    ...
+RET
+</code></pre>
+<hr />
+<h3 id="example-timings.tim.tcg.usrv">7.3. Example Timings (.tim, .tcg, .usrv)</h3>
+<p>TODO: get some MTL examples for timing.</p>
+<p><strong>Example UserVars for per-pin offset:</strong></p>
+<pre><code class="language-perl">UserVars TimingOffsets_MCI100
+{
+    Time mci0_drv_offset = 4ns;
+    Time mci1_drv_offset = 4ns;
+    Time mci2_drv_offset = 4ns;
+    
+    Time mci0_stb_offset = 10ns;
+    Time mci1_stb_offset = 10ns;
+    Time mci2_stb_offset = 10ns;
+}
+
+</code></pre>
+<p><strong>Example TestCondition using per-pin offsets:</strong></p>
+<pre><code class="language-perl">SpecificationSet sampleSpecset (cat1)
+{
+   ...
+    # base edge placements with group offsets
+    Time p_mci_drv_offset = 0nS;
+    Time p_mci_strb_offset = 2nS;
+    Time c_mci_drv = c_bclk_drv_e1+(p_mci_drv_mul*c_bclk_per)+p_mci_drv_offset;
+    Time c_mci_strb = c_bclk_drv_e1+(p_mci_strb_mul*c_bclk_per)+p_mci_strb_offset;
+    
+    # final drive/strobe locations with per-pin offsets
+    Time c_mci0_drv = c_mci_drv + mci0_drv_offset;
+    Time c_mci0_strb = c_mci_strb + mci0_stb_offset;
+    Time c_mci1_drv = c_mci_drv + mci1_drv_offset;
+    Time c_mci1_strb = c_mci_strb + mci1_stb_offset;
+    Time c_mci2_drv = c_mci_drv + mci2_drv_offset;
+    Time c_mci2_strb = c_mci_strb + mci2_stb_offset;
+   ...
+}
+TestConditionGroup sample_TCG
+{
+    SpecificationSet = sampleSpecset;
+    Timing = __main__::sampleTimingSequence;
+}
+TestCondition sample_perpin_testcondition
+{
+    TestConditionGroup  = sample_TCG;
+    Selector = cat1;
+}
+</code></pre>
+<p><strong>Example Timings using per-pin offsets:</strong></p>
+<pre><code class="language-perl">Timing sampleTimingSequence
+{
+    Domain Default
+    {
+        PeriodTable
+        {
+            Period  = tper;
+        }
+		
+        MCI0_FULLPINNAME
+        {
+            drive = c_mci0_drv;
+            compare =  c_mci0_strb;
+        }
+        MCI1_FULLPINNAME
+        {
+            drive = c_mci1_drv;
+            compare =  c_mci1_strb;
+        }
+        MCI2_FULLPINNAME
+        {
+            drive = c_mci2_drv;
+            compare =  c_mci2_strb;
+        }
+
+        ...
+				
+    }  # end of Domain
+    
+} # end-of timing type
+</code></pre>
+<h3 id="section-3"></h3>
+<hr />
+<h2 id="exit-ports">8. Exit Ports</h2>
+<table>
+<thead>
+<tr>
+<th>Exit Port</th>
+<th>Condition</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-2</td>
+<td>Alarm</td>
+<td>Any HW alarm condition</td>
+</tr>
+<tr>
+<td>-1</td>
+<td>Error</td>
+<td>Any software error</td>
+</tr>
+<tr>
+<td>0</td>
+<td>Fail</td>
+<td>Failing condition.</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Pass</td>
+<td>Passing condition.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="section-4"></h3>
+<hr />
+
+
+</body>
+</html>

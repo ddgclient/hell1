@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:simpleType name="passFail">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="pass"/>
+      <xs:enumeration value="fail"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="YesNo">
+    <xs:restriction base="xs:token">
+      <xs:pattern value="[YN]"/>
+      <xs:minLength value="1"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="zeroOrOneExactly">
+    <xs:restriction base="xs:token">
+      <xs:pattern value="[01]"/>
+      <xs:minLength value="1"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="alphaNumUpperCaseCharNot9">
+    <xs:restriction base="xs:token">
+      <xs:pattern value="[A-Z0-8]"/>           <!-- User should not specify 9 as it is reserved (hardcoded in HSR template) for HRY fixed length feature -->
+      <xs:minLength value="1"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="alphaNumUnderscoreString">
+    <xs:restriction base="xs:token">
+      <xs:pattern value="[a-zA-Z0-9_]+"/>
+      <xs:minLength value="1"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="alphaNumUpperCaseUnderscoreString">
+    <xs:restriction base="xs:token">
+      <xs:pattern value="[A-Z0-9_:]+"/>
+      <xs:minLength value="1"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="rangeTypeOrNone">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="([0-9]+[\-]?[0-9]*)|none|NONE"/>
+      <xs:minLength value="1"/>
+      <xs:whiteSpace value="collapse"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="conditionType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="(([A-Za-z0-9_:]+[,][0-9]+[\-]?[0-9]*[,][01]+([,][A-Za-z0-9_]+)?)+[|]?)+"/> <!-- pin,bit_range,passing_binary_value[,failkey] -->
+      <xs:minLength value="1"/>
+      <xs:whiteSpace value="collapse"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+	<xs:simpleType name="perPinSizeType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="(\d+)|([A-Za-z0-9_:,]+[,][0-9]+([|][A-Za-z0-9_:]+,[0-9]+)*)"/> <!-- can be a number or pin1,size1|pin2,size2|... format-->
+			<xs:minLength value="1"/>
+			<xs:whiteSpace value="collapse"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="partialGlobalName">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-zA-Z0-9_.:]*"/>
+      <xs:minLength value="0"/>
+      <xs:whiteSpace value="collapse"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+    <xs:simpleType name="partialGlobalNameWithComma">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-zA-Z0-9_.:,]*"/>
+      <xs:minLength value="0"/>
+      <xs:whiteSpace value="collapse"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="binaryDataType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[01]+"/>
+      <xs:minLength value="1"/>
+      <xs:whiteSpace value="collapse"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:element name="HSR_HRY_config">
+    <xs:complexType>
+      <xs:sequence>
+
+        <xs:element name="ReverseCtvCaptureData" minOccurs="1" maxOccurs="1" type="YesNo">
+        </xs:element>
+
+        <xs:element name="CtvToHryMapping" minOccurs="1" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Map" minOccurs="2" maxOccurs="2">
+                <xs:complexType>
+                  <xs:attribute name="ctv_data" type="zeroOrOneExactly"          use="required"/>
+                  <xs:attribute name="hry_data" type="alphaNumUpperCaseCharNot9" use="required"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+          <xs:unique name="MapCtvDataUnique">
+            <xs:selector xpath="Map"/>
+            <xs:field xpath="@ctv_data"/>
+          </xs:unique>
+        </xs:element>
+
+        <xs:element name="HryPrePostMapping" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Map" minOccurs="2" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="hry_data" type="alphaNumUpperCaseCharNot9" use="required"/>
+                  <xs:attribute name="status" type="passFail" use="required"/>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="PostRepairSymbol" minOccurs="1" maxOccurs="1">
+                <xs:complexType>
+                  <xs:attribute name="symbol" type="alphaNumUpperCaseCharNot9" use="required"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+          <xs:unique name="MapHryDataUnique">
+            <xs:selector xpath="Map"/>
+            <xs:field xpath="@hry_data"/>
+          </xs:unique>
+        </xs:element>
+
+        <xs:element name="ConditionFailKeys" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ConditionFailKey" minOccurs="1" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Map" minOccurs="1" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:attribute name="expected_data" type="binaryDataType"            use="required"/>
+                        <xs:attribute name="hry_output"    type="alphaNumUpperCaseCharNot9" use="required"/>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="name" type="alphaNumUnderscoreString" use="required"/>
+                </xs:complexType>
+                <xs:unique name="MapExpectedDataUnique">
+                  <xs:selector xpath="Map"/>
+                  <xs:field xpath="@expected_data"/>
+                </xs:unique>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+          <xs:unique name="ConditionFailKeyUnique">
+            <xs:selector xpath="ConditionFailKey"/>
+            <xs:field xpath="@name"/>
+          </xs:unique>
+        </xs:element>
+
+        <xs:element name="BypassGlobalPrefix" minOccurs="0" maxOccurs="1" type="partialGlobalName">
+        </xs:element>
+
+        <xs:element name="Criterias" minOccurs="1" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Criteria" minOccurs="1" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="hry_index"                      type="xs:nonNegativeInteger"              use="required"/>
+                  <xs:attribute name="pin"                            type="alphaNumUpperCaseUnderscoreString"  use="required"/>
+                  <xs:attribute name="ctv_index_range"                type="rangeTypeOrNone"                    use="required"/>
+                  <xs:attribute name="condition"                      type="conditionType"                      use="required"/>
+                  <xs:attribute name="hry_output_on_condition_fail"   type="alphaNumUpperCaseCharNot9"          use="required"/>
+                  <xs:attribute name="bypass_global"                  type="partialGlobalNameWithComma"         use="optional"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+          <xs:unique name="CriteriaUnique">
+            <xs:selector xpath="Criteria"/>
+            <xs:field xpath="@hry_index"/>
+          </xs:unique>
+        </xs:element>
+
+        <xs:element name="Algorithms" minOccurs="1" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Algorithm" minOccurs="1" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="index"            type="xs:nonNegativeInteger" use="required"/>
+                  <xs:attribute name="name"             type="xs:normalizedString"   use="required"/>
+                  <xs:attribute name="pat_modify_label" type="xs:normalizedString"   use="optional"/>
+                  <xs:attribute name="ctv_size"         type="perPinSizeType"        use="required"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+          <xs:unique name="AlgorithmUniqueIndex">
+            <xs:selector xpath="Algorithm"/>
+            <xs:field xpath="@index"/>
+          </xs:unique>
+          <xs:unique name="AlgorithmUniqueName">
+            <xs:selector xpath="Algorithm"/>
+            <xs:field xpath="@name"/>
+          </xs:unique>
+		</xs:element>
+
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>

@@ -1,0 +1,252 @@
+#################################################################################################
+# TGL CALCODE READS 
+# DIVYA SANKA
+#################################################################################################
+
+#=================================== CSI 1P5 CalCode PHY1 All Corners =========================================
+# Not specifying the test name will result in logging the test instance name :) #
+
+CSI_LPBK_1P5_PHY1					SEQ_FILE					Modules\SIO_CSI_LPBK1\InputFiles\csi_sequencefile_1P5G_PHY1.csv
+CSI_LPBK_1P5_PHY1					FORMAT_FILE					Modules\SIO_CSI_LPBK1\InputFiles\csi_formatfile_1P5G_PHY1.csv
+CSI_LPBK_1P5_PHY1					SEQ_ID						class_edc_g3
+CSI_LPBK_1P5_PHY1					TESTTYPE					CAPTURE
+CSI_LPBK_1P5_PHY1					REGDEF						CLIENT
+
+#=================================== CSI 1P5 CalCode PHY2 All Corners =========================================
+# Not specifying the test name will result in logging the test instance name :) #
+
+CSI_LPBK_1P5_PHY2					SEQ_FILE					Modules\SIO_CSI_LPBK1\InputFiles\csi_sequencefile_1P5G_PHY2.csv
+CSI_LPBK_1P5_PHY2					FORMAT_FILE					Modules\SIO_CSI_LPBK1\InputFiles\csi_formatfile_1P5G_PHY2.csv
+CSI_LPBK_1P5_PHY2					SEQ_ID						class_edc_g3
+CSI_LPBK_1P5_PHY2					TESTTYPE					CAPTURE
+CSI_LPBK_1P5_PHY2					REGDEF						CLIENT
+
+#=================================== CSI 2P5 CalCode PHY1 All Corners =========================================
+# Not specifying the test name will result in logging the test instance name :) #
+
+CSI_LPBK_2P5_PHY1					SEQ_FILE					Modules\SIO_CSI_LPBK1\InputFiles\csi_sequencefile_2P5G_PHY1.csv
+CSI_LPBK_2P5_PHY1					FORMAT_FILE					Modules\SIO_CSI_LPBK1\InputFiles\csi_formatfile_2P5G_PHY1.csv
+CSI_LPBK_2P5_PHY1					SEQ_ID						class_edc_g3
+CSI_LPBK_2P5_PHY1					TESTTYPE					CAPTURE
+CSI_LPBK_2P5_PHY1					REGDEF						CLIENT
+
+#=================================== CSI 2P5 CalCode PHY2 All Corners =========================================
+# Not specifying the test name will result in logging the test instance name :) #
+
+CSI_LPBK_2P5_PHY2					SEQ_FILE					Modules\SIO_CSI_LPBK1\InputFiles\csi_sequencefile_2P5G_PHY2.csv
+CSI_LPBK_2P5_PHY2					FORMAT_FILE					Modules\SIO_CSI_LPBK1\InputFiles\csi_formatfile_2P5G_PHY2.csv
+CSI_LPBK_2P5_PHY2					SEQ_ID						class_edc_g3
+CSI_LPBK_2P5_PHY2					TESTTYPE					CAPTURE
+CSI_LPBK_2P5_PHY2					REGDEF						CLIENT
+
+#=================================== CSI 2P5 CalCode PHY2 All Corners =========================================
+# Not specifying the test name will result in logging the test instance name :) #
+
+CSI_LPBK_C1_D1_1P5_PHY1					SEQ_FILE					Modules\SIO_CSI_LPBK1\InputFiles\csi_sequencefile_c1d1_1p5g_phy1.csv
+CSI_LPBK_C1_D1_1P5_PHY1					FORMAT_FILE					Modules\SIO_CSI_LPBK1\InputFiles\csi_formatfile_c1d1_1p5g_phy1.csv
+CSI_LPBK_C1_D1_1P5_PHY1					SEQ_ID						class_edc_g3
+CSI_LPBK_C1_D1_1P5_PHY1					TESTTYPE					CAPTURE
+CSI_LPBK_C1_D1_1P5_PHY1					REGDEF						CLIENT
+
+#=================================== CSI 2P5 CalCode PHY2 All Corners =========================================
+# Not specifying the test name will result in logging the test instance name :) #
+
+CSI_LPBK_C1_D1_1P5_PHY2					SEQ_FILE					Modules\SIO_CSI_LPBK1\InputFiles\csi_sequencefile_c1d1_1p5g_phy2.csv
+CSI_LPBK_C1_D1_1P5_PHY2					FORMAT_FILE					Modules\SIO_CSI_LPBK1\InputFiles\csi_formatfile_c1d1_1p5g_phy2.csv
+CSI_LPBK_C1_D1_1P5_PHY2					SEQ_ID						class_edc_g3
+CSI_LPBK_C1_D1_1P5_PHY2					TESTTYPE					CAPTURE
+CSI_LPBK_C1_D1_1P5_PHY2					REGDEF						CLIENT
+
+#=================================== CSI 2P5 CalCode PHY2 All Corners =========================================
+# Not specifying the test name will result in logging the test instance name :) #
+
+CSI_LPBK_C2_D2_1P5_PHY1					SEQ_FILE					Modules\SIO_CSI_LPBK1\InputFiles\csi_sequencefile_c2d2_1p5g_phy1.csv
+CSI_LPBK_C2_D2_1P5_PHY1					FORMAT_FILE					Modules\SIO_CSI_LPBK1\InputFiles\csi_formatfile_c2d2_1p5g_phy1.csv
+CSI_LPBK_C2_D2_1P5_PHY1					SEQ_ID						class_edc_g3
+CSI_LPBK_C2_D2_1P5_PHY1					TESTTYPE					CAPTURE
+CSI_LPBK_C2_D2_1P5_PHY1					REGDEF						CLIENT
+
+#=================================== CSI 2P5 CalCode PHY2 All Corners =========================================
+# Not specifying the test name will result in logging the test instance name :) #
+
+CSI_LPBK_C2_D2_1P5_PHY2					SEQ_FILE					Modules\SIO_CSI_LPBK1\InputFiles\csi_sequencefile_c2d2_1p5g_phy2.csv
+CSI_LPBK_C2_D2_1P5_PHY2					FORMAT_FILE					Modules\SIO_CSI_LPBK1\InputFiles\csi_formatfile_c2d2_1p5g_phy2.csv
+CSI_LPBK_C2_D2_1P5_PHY2					SEQ_ID						class_edc_g3
+CSI_LPBK_C2_D2_1P5_PHY2					TESTTYPE					CAPTURE
+CSI_LPBK_C2_D2_1P5_PHY2					REGDEF						CLIENT
+
+#=================================== CSI 2P5 CalCode PHY2 All Corners =========================================
+# Not specifying the test name will result in logging the test instance name :) #
+
+CSI_LPBK_C2_D2_2P5_PHY1					SEQ_FILE					Modules\SIO_CSI_LPBK1\InputFiles\csi_sequencefile_c2d2_2p5g_phy1.csv
+CSI_LPBK_C2_D2_2P5_PHY1					FORMAT_FILE					Modules\SIO_CSI_LPBK1\InputFiles\csi_formatfile_c2d2_2p5g_phy1.csv
+CSI_LPBK_C2_D2_2P5_PHY1					SEQ_ID						class_edc_g3
+CSI_LPBK_C2_D2_2P5_PHY1					TESTTYPE					CAPTURE
+CSI_LPBK_C2_D2_2P5_PHY1					REGDEF						CLIENT
+
+#=================================== CSI 2P5 CalCode PHY2 All Corners =========================================
+# Not specifying the test name will result in logging the test instance name :) #
+
+CSI_LPBK_C2_D2_2P5_PHY2					SEQ_FILE					Modules\SIO_CSI_LPBK1\InputFiles\csi_sequencefile_c2d2_2p5g_phy2.csv
+CSI_LPBK_C2_D2_2P5_PHY2					FORMAT_FILE					Modules\SIO_CSI_LPBK1\InputFiles\csi_formatfile_c2d2_2p5g_phy2.csv
+CSI_LPBK_C2_D2_2P5_PHY2					SEQ_ID						class_edc_g3
+CSI_LPBK_C2_D2_2P5_PHY2					TESTTYPE					CAPTURE
+CSI_LPBK_C2_D2_2P5_PHY2					REGDEF						CLIENT
+
+#=================================== CSI 2P5 CalCode PHY2 All Corners =========================================
+# Not specifying the test name will result in logging the test instance name :) #
+
+CSI_LPBK_C1_D2_2P5_PHY1					SEQ_FILE					Modules\SIO_CSI_LPBK1\InputFiles\csi_sequencefile_c1d2_2p5g_phy1.csv
+CSI_LPBK_C1_D2_2P5_PHY1					FORMAT_FILE					Modules\SIO_CSI_LPBK1\InputFiles\csi_formatfile_c1d2_2p5g_phy1.csv
+CSI_LPBK_C1_D2_2P5_PHY1					SEQ_ID						class_edc_g3
+CSI_LPBK_C1_D2_2P5_PHY1					TESTTYPE					CAPTURE
+CSI_LPBK_C1_D2_2P5_PHY1					REGDEF						CLIENT
+
+#=================================== CSI 2P5 CalCode PHY2 All Corners =========================================
+# Not specifying the test name will result in logging the test instance name :) #
+
+CSI_LPBK_C1_D2_2P5_PHY2					SEQ_FILE					Modules\SIO_CSI_LPBK1\InputFiles\csi_sequencefile_c1d2_2p5g_phy2.csv
+CSI_LPBK_C1_D2_2P5_PHY2					FORMAT_FILE					Modules\SIO_CSI_LPBK1\InputFiles\csi_formatfile_c1d2_2p5g_phy2.csv
+CSI_LPBK_C1_D2_2P5_PHY2					SEQ_ID						class_edc_g3
+CSI_LPBK_C1_D2_2P5_PHY2					TESTTYPE					CAPTURE
+CSI_LPBK_C1_D2_2P5_PHY2					REGDEF						CLIENT
+
+#====================================================================================================
+#GLOBAL_SETUP      PATMODIFY_TEST  SIO_CSI_LPBK1::CSI_RX_PMOD_E_END_X_X_X_X_GLOBAL
+#====================================================================================================
+
+##====================================================================================================
+#RESET_CRC			    MODIFY_TOKEN	    SET_CRC_CODE
+#RESET_CRC			    MODIFY_VALUE		8
+##====================================================================================================
+#RESET_DRC			    MODIFY_TOKEN	    SET_DRC_CODE
+#RESET_DRC			    MODIFY_VALUE		34
+##====================================================================================================
+#RESET_CTLE			    MODIFY_TOKEN	    SET_ALL_COEFF
+#RESET_CTLE			    MODIFY_VALUE		0
+##====================================================================================================
+#DIS_VMRGN_MODE			MODIFY_TOKEN	    DIS_VMRGN
+#DIS_VMRGN_MODE		    MODIFY_VALUE		0
+##====================================================================================================
+#EN_VMRGN_UP			    MODIFY_TOKEN	    EN_VMRGN
+#EN_VMRGN_UP			    MODIFY_VALUE		0
+##====================================================================================================
+#EN_VMRGN_DWN		    MODIFY_TOKEN	    EN_VMRGN
+#EN_VMRGN_DWN    	    MODIFY_VALUE		1
+##====================================================================================================
+
+##====================================================================================================
+#################################### 1500 CRC FUNC REPORT ####################################
+##====================================================================================================
+#CSI_LPBK_1500_CRC_SWEEP					EXECUTE_TEST		SIO_CSI_LPBK1::CSIANELB_RX_FUNC_K_END_X_X_X_1500_X
+#CSI_LPBK_1500_CRC_SWEEP					DLOG_NAME   		SIO_CSI_LPBK1::CSI_SWEEP::UTILANELB_X_UF_E_END_X_X_VNOM_1500_CRCFUNC
+#CSI_LPBK_1500_CRC_SWEEP					XKEY				SET_CRC_CODE
+#CSI_LPBK_1500_CRC_SWEEP					XVALUE				0!1!2!3!4!5!6!7!8!9!10!11!12!13!14!15!16!17!18!19!20!21!22!23!24!25!26!27!28!29!30!31!32!33!34!35!36!37!38!39!40!41!42!43!44!45!46!47!48!49!50!51!52!53!54!55!56!57!58!59!60!61!62!63
+#CSI_LPBK_1500_CRC_SWEEP					NUMOFTESTRUN		1
+#CSI_LPBK_1500_CRC_SWEEP					TESTTYPE			GONOGO
+#
+##====================================================================================================
+#################################### 2500 CRC FUNC REPORT ####################################
+##====================================================================================================
+#CSI_LPBK_2500_CRC_SWEEP					EXECUTE_TEST		SIO_CSI_LPBK1::CSIANELB_RX_FUNC_K_END_X_X_X_2500_X
+#CSI_LPBK_2500_CRC_SWEEP					DLOG_NAME   		SIO_CSI_LPBK1::CSI_SWEEP::UTILANELB_X_UF_E_END_X_X_VNOM_2500_CRCFUNC
+#CSI_LPBK_2500_CRC_SWEEP					XKEY				SET_CRC_CODE
+#CSI_LPBK_2500_CRC_SWEEP					XVALUE				0!1!2!3!4!5!6!7!8!9!10!11!12!13!14!15!16!17!18!19!20!21!22!23!24!25!26!27!28!29!30!31!32!33!34!35!36!37!38!39!40!41!42!43!44!45!46!47!48!49!50!51!52!53!54!55!56!57!58!59!60!61!62!63
+#CSI_LPBK_2500_CRC_SWEEP					NUMOFTESTRUN		1
+#CSI_LPBK_2500_CRC_SWEEP					TESTTYPE			GONOGO
+#
+##====================================================================================================
+#################################### 2500 DRC FUNC REPORT ####################################
+##====================================================================================================
+#CSI_LPBK_2500_DRC_SWEEP					EXECUTE_TEST		SIO_CSI_LPBK1::CSIANELB_RX_FUNC_K_END_X_X_X_2500_DRC
+#CSI_LPBK_2500_DRC_SWEEP					DLOG_NAME   		SIO_CSI_LPBK1::CSI_SWEEP::UTILANELB_X_UF_E_END_X_X_VNOM_2500_DRCFUNC
+#CSI_LPBK_2500_DRC_SWEEP					XKEY				SET_DRC_CODE
+#CSI_LPBK_2500_DRC_SWEEP					XVALUE				0!1!2!3!4!5!6!7!8!9!10!11!12!13!14!15!16!17!18!19!20!21!22!23!24!25!26!27!28!29!30!31!32!33!34!35!36!37!38!39!40!41!42!43!44!45!46!47!48!49!50!51!52!53!54!55!56!57!58!59!60!61!62!63
+#CSI_LPBK_2500_DRC_SWEEP					NUMOFTESTRUN		1
+#CSI_LPBK_2500_DRC_SWEEP					TESTTYPE			GONOGO
+#
+#
+##====================================================================================================
+#################################### 2500 CTLE Coef FUNC REPORT ####################################
+##====================================================================================================
+#CSI_LPBK_2500_CTLE_SWEEP					EXECUTE_TEST		SIO_CSI_LPBK1::CSIANELB_RX_FUNC_K_END_X_X_X_2500_DRC
+#CSI_LPBK_2500_CTLE_SWEEP					DLOG_NAME   		SIO_CSI_LPBK1::CSI_SWEEP::UTILANELB_X_UF_E_END_X_X_VNOM_2500_CTLEFUNC
+#CSI_LPBK_2500_CTLE_SWEEP					XKEY				SET_ALL_COEFF
+#CSI_LPBK_2500_CTLE_SWEEP					XVALUE				0!1!2!3
+#CSI_LPBK_2500_CTLE_SWEEP					NUMOFTESTRUN		1
+#CSI_LPBK_2500_CTLE_SWEEP					TESTTYPE			GONOGO
+#
+#
+##====================================================================================================
+#################################### 2500 Voltage Swing FUNC REPORT ####################################
+##====================================================================================================
+#CSI_LPBK_2500_SWINGUP_SWEEP					EXECUTE_TEST		SIO_CSI_LPBK1::CSIANELB_RX_FUNC_K_END_X_X_X_2500_DRC
+#CSI_LPBK_2500_SWINGUP_SWEEP					DLOG_NAME   		SIO_CSI_LPBK1::CSI_SWEEP::UTILANELB_X_UF_E_END_X_X_VNOM_2500_SWINGUP
+#CSI_LPBK_2500_SWINGUP_SWEEP					XKEY				SET_SWING
+#CSI_LPBK_2500_SWINGUP_SWEEP					XVALUE				0!1!2!3
+#CSI_LPBK_2500_SWINGUP_SWEEP					NUMOFTESTRUN		1
+#CSI_LPBK_2500_SWINGUP_SWEEP					TESTTYPE			GONOGO
+#
+#CSI_LPBK_2500_SWINGDWN_SWEEP				EXECUTE_TEST		SIO_CSI_LPBK1::CSIANELB_RX_FUNC_K_END_X_X_X_2500_DRC
+#CSI_LPBK_2500_SWINGDWN_SWEEP				DLOG_NAME   		SIO_CSI_LPBK1::CSI_SWEEP::UTILANELB_X_UF_E_END_X_X_VNOM_2500_SWINGDWN
+#CSI_LPBK_2500_SWINGDWN_SWEEP				XKEY				SET_SWING
+#CSI_LPBK_2500_SWINGDWN_SWEEP				XVALUE				0!1!2!3
+#CSI_LPBK_2500_SWINGDWN_SWEEP				NUMOFTESTRUN		1
+#CSI_LPBK_2500_SWINGDWN_SWEEP				TESTTYPE			GONOGO
+#
+##====================================================================================================
+#################################### 2500 Voltage Swing VS DRC code FUNC REPORT #######################
+##====================================================================================================
+#
+#CSI_LPBK_2500_SWING_DRC					EXECUTE_TEST		SIO_CSI_LPBK1::CSIANELB_RX_FUNC_K_END_X_X_X_2500_DRC
+#CSI_LPBK_2500_SWING_DRC					DLOG_NAME   		SIO_CSI_LPBK1::CSI_SWEEP::UTILANELB_X_UF_E_END_X_X_VNOM_2500_DRC_SWINGDWN
+#CSI_LPBK_2500_SWING_DRC                 XKEY				SET_DRC_CODE
+#CSI_LPBK_2500_SWING_DRC                 XVALUE				25!26!27!28!29!30!31!32!33!34!35!36!37!38!39!40!41!42!43!44!45!46!47!48!49!50!51!52!53!54!55!56!57!58!59!60!61!62!63
+#CSI_LPBK_2500_SWING_DRC					YKEY				SET_SWING
+#CSI_LPBK_2500_SWING_DRC					YVALUE				1!2!3
+#CSI_LPBK_2500_SWING_DRC					NUMOFTESTRUN		1
+#CSI_LPBK_2500_SWING_DRC					TESTTYPE			GONOGO
+#
+######################################################################################################
+#################################### Register Sweep including V/T Shmoo ##############################
+######################################################################################################
+#
+##====================================================================================================
+#################################### 1500 CRC SHMOO REPORT ####################################
+##====================================================================================================
+#CSI_LPBK_1500_CRC_SWEEP_VT					EXECUTE_TEST		SIO_CSI_LPBK1::CSIANELB_RX_SHM_E_END_X_X_X_1500_X
+#CSI_LPBK_1500_CRC_SWEEP_VT					DLOG_NAME   		SIO_CSI_LPBK1::CSIANELB_RX_SHM_E_END_X_X_X_1500_X
+#CSI_LPBK_1500_CRC_SWEEP_VT					XKEY				SET_CRC_CODE
+#CSI_LPBK_1500_CRC_SWEEP_VT					XVALUE				0!1!2!3!4!5!6!7!8!9!10!11!12!13!14!15!16!17!18!19!20!21!22!23!24!25!26!27!28!29!30!31!32!33!34!35!36!37!38!39!40!41!42!43!44!45!46!47!48!49!50!51!52!53!54!55!56!57!58!59!60!61!62!63
+#CSI_LPBK_1500_CRC_SWEEP_VT					NUMOFTESTRUN		1
+#CSI_LPBK_1500_CRC_SWEEP_VT					TESTTYPE			GONOGO
+#
+##====================================================================================================
+#################################### 1500 DRC SHMOO REPORT ####################################
+##====================================================================================================
+#CSI_LPBK_1500_DRC_SWEEP_VT					EXECUTE_TEST		SIO_CSI_LPBK1::CSIANELB_RX_SHM_E_END_X_X_X_1500_X
+#CSI_LPBK_1500_DRC_SWEEP_VT					DLOG_NAME   		SIO_CSI_LPBK1::CSIANELB_RX_SHM_E_END_X_X_X_1500_X
+#CSI_LPBK_1500_DRC_SWEEP_VT					XKEY				SET_DRC_CODE
+#CSI_LPBK_1500_DRC_SWEEP_VT					XVALUE				0!1!2!3!4!5!6!7!8!9!10!11!12!13!14!15!16!17!18!19!20!21!22!23!24!25!26!27!28!29!30!31!32!33!34!35!36!37!38!39!40!41!42!43!44!45!46!47!48!49!50!51!52!53!54!55!56!57!58!59!60!61!62!63
+#CSI_LPBK_1500_DRC_SWEEP_VT					NUMOFTESTRUN		1
+#CSI_LPBK_1500_DRC_SWEEP_VT					TESTTYPE			GONOGO
+#
+##====================================================================================================
+#################################### 2500 CRC SHMOO REPORT ####################################
+##====================================================================================================
+#CSI_LPBK_2500_CRC_SWEEP_VT					EXECUTE_TEST		SIO_CSI_LPBK1::CSIANELB_RX_SHM_E_END_X_X_X_2500_X
+#CSI_LPBK_2500_CRC_SWEEP_VT					DLOG_NAME   		SIO_CSI_LPBK1::CSIANELB_RX_SHM_E_END_X_X_X_2500_X
+#CSI_LPBK_2500_CRC_SWEEP_VT					XKEY				SET_CRC_CODE
+#CSI_LPBK_2500_CRC_SWEEP_VT					XVALUE				0!1!2!3!4!5!6!7!8!9!10!11!12!13!14!15!16!17!18!19!20!21!22!23!24!25!26!27!28!29!30!31!32!33!34!35!36!37!38!39!40!41!42!43!44!45!46!47!48!49!50!51!52!53!54!55!56!57!58!59!60!61!62!63
+#CSI_LPBK_2500_CRC_SWEEP_VT					NUMOFTESTRUN		1
+#CSI_LPBK_2500_CRC_SWEEP_VT					TESTTYPE			GONOGO
+#
+##====================================================================================================
+#################################### 2500 DRC SHMOO REPORT ####################################
+##====================================================================================================
+#CSI_LPBK_2500_DRC_SWEEP_VT					EXECUTE_TEST		SIO_CSI_LPBK1::CSIANELB_RX_SHM_E_END_X_X_X_2500_X
+#CSI_LPBK_2500_DRC_SWEEP_VT					DLOG_NAME   		SIO_CSI_LPBK1::CSIANELB_RX_SHM_E_END_X_X_X_2500_X
+#CSI_LPBK_2500_DRC_SWEEP_VT					XKEY				SET_DRC_CODE
+#CSI_LPBK_2500_DRC_SWEEP_VT					XVALUE				0!1!2!3!4!5!6!7!8!9!10!11!12!13!14!15!16!17!18!19!20!21!22!23!24!25!26!27!28!29!30!31!32!33!34!35!36!37!38!39!40!41!42!43!44!45!46!47!48!49!50!51!52!53!54!55!56!57!58!59!60!61!62!63
+#CSI_LPBK_2500_DRC_SWEEP_VT					NUMOFTESTRUN		1
+#CSI_LPBK_2500_DRC_SWEEP_VT					TESTTYPE			GONOGO

@@ -1,0 +1,29 @@
+Version 1.0;
+
+SubTestPlans
+{
+	.\Modules\PTH_DIODE_XXX\PTH_DIODE_XXX_MTL_CPU28_SDS.mtpl;
+	.\Modules\TPI_BASE\TPI_BASE_MTL_CPU28_SDS.mtpl;
+	.\Modules\TPI_BIN\TPI_BIN.mtpl;
+	.\Modules\TPI_DFF\TPI_DFF.mtpl;
+	.\Modules\TPI_FUSE\TPI_FUSE.mtpl;
+	.\Modules\TPI_FUSE_CONFIG\TPI_FUSE_CONFIG.mtpl;
+	.\Modules\TPI_HVQK\TPI_HVQK.mtpl;
+	.\Modules\TPI_POWER_SEQ\TPI_POWER_SEQ.mtpl;
+	.\Modules\TPI_RECOVERY_C28\TPI_RECOVERY_C28.mtpl;
+
+	.\Modules\PRIME_VAL\PRIME_VAL.mtpl;
+	.\Modules\PVAL_VMIN\PVAL_VMIN.mtpl;
+	.\Modules\PVAL_FUNC\PVAL_FUNC.mtpl;
+	.\Modules\PVAL_SHMOO\PVAL_SHMOO.mtpl;
+	.\Modules\PVAL_DFXTUNER\PVAL_DFXTUNER.mtpl;
+	.\Modules\PVAL_CALLBACKS\PVAL_CALLBACKS.mtpl;
+	.\Modules\PVAL_DEBUGDV\PVAL_DEBUGDV.mtpl;
+	.\Modules\PVAL_COMMON\PVAL_COMMON.mtpl;
+	.\Modules\PVAL_ANALOG\PVAL_ANALOG.mtpl;
+	.\Modules\PVAL_DIGITAL\PVAL_DIGITAL.mtpl;
+	.\Modules\PVAL_THREADING\PVAL_THREADING.mtpl;
+	.\Modules\PVAL_VMINAGG\PVAL_VMINAGG.mtpl;
+
+	Final .\ProgramFlowsTestPlan\ProgramFlows.mtpl;
+}

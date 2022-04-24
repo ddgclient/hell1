@@ -1,0 +1,56 @@
+{
+  "VERSION": "1.0",
+  "MULTIDIE": {
+    "YY_TAP_TDO_C2S": {
+      "VOLTAGE": { "VCCSA":  "VCCSA" },
+      "SHORTNAME": ""
+    }
+  },
+  "MULTICORE": { "PINNAME": "C10" }, // Inside single HRY MULTIPIN output
+  "HRY": {
+    "HRY": {
+      "SHAREDSTORAGE": "HRY_RAWSTR_MBIST",
+      "ITUFF": "HRY_RAWSTR_MBIST",
+      "DFF": ""
+    },
+    "KS": {
+      "SHAREDSTORAGE": "",
+      "DFF": "",
+      "ITUFF": ""
+    }
+  },
+  "BISR_CHAINS": {
+    "BISR_LEG_BISR1": {
+      "SHAREDSTORAGE": "BISR_LEG_BISR1",
+      "DFF": "BISR_LEG_BISR1",
+      "ITUFF": "ITUFF1"
+    },
+    "BISR_LEG_BISR3": {
+      "SHAREDSTORAGE": "BISR_LEG_BISR3",
+      "DFF": "BISR_LEG_BISR3",
+      "ITUFF": "ITUFF3"
+    },
+    "BISR_LEG_BISR2": {
+      "SHAREDSTORAGE": "BISR_LEG_BISR2",
+      "DFF": "BISR_LEG_BISR2",
+      "ITUFF": "ITUFF2"
+    },
+    "BISR_BP0": {
+      "SHAREDSTORAGE": "BISR_BP0",
+      "DFF": "BISR_BP0",
+      "ITUFF": "BISR_BP0"
+    }
+  },
+  "RECOVERY": {
+    "SHAREDSTORAGE": "SOCRecovery",
+    "DFF": "SOCREC"
+  },
+  "VMIN": {
+    "SHAREDSTORAGE": "MbistVminPerMem",
+    "ITUFF": "VMIN" 
+
+  }
+}
+
+
+

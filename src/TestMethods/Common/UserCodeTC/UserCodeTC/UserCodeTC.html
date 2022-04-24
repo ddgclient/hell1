@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>DDG Prime UserCodeTC Specification REP</title>
+</head>
+<body>
+
+    <h1 id="ddg-prime-usercodetc-specification-rep">DDG Prime UserCodeTC Specification REP</h1>
+<h2 id="methodology">Methodology</h2>
+<p>This test method is intended for rapid script-like capabiliy where user can load and run a .cs or .py file without the need to compiling a dll.
+Verify will automatically compile the object and store a reference so it can be invoked during Execute.</p>
+<h2 id="test-instance-parameters">Test Instance Parameters</h2>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter Name</strong></th>
+<th><strong>Required?</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Values</strong></th>
+<th><strong>Comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NamespaceClass</td>
+<td>Yes</td>
+<td>String</td>
+<td></td>
+<td>Target Class. Example: SomeNamesapace.SomeClass</td>
+</tr>
+<tr>
+<td>Method</td>
+<td>Yes</td>
+<td>String</td>
+<td></td>
+<td>Target method. Example: PrintHello</td>
+</tr>
+<tr>
+<td>InputFile</td>
+<td>Yes</td>
+<td>String</td>
+<td></td>
+<td>.cs or .py Input File.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="coding">Coding</h2>
+<p>C# code has access to all Prime Services and MUST return port number as string value.<br>
+There is no support for input parameters so values should be passed thru SharedStorage.<br>
+Python requires to set scope ExitPort variable before returning.<br></p>
+<p><strong>Limited Support of Prime Services and/or types. Submit issue in case of new requirement.</strong></p>
+<h3 id="c-example">C# Example:</h3>
+<pre><code class="language-C#">namespace SomeNamespace
+{
+    using Prime.ConsoleService;
+    public class SomeClass
+    {
+        public string HelloWorld()
+        {
+            Prime.Services.ConsoleService.PrintDebug(&quot;Hello world!&quot;);
+            return &quot;1&quot;;    
+        }
+    }
+}
+</code></pre>
+<h3 id="python-example">Python Example:</h3>
+<pre><code class="language-Python">SharedStorageService.InsertRowAtTable('Key', -7, Context.DUT)
+value = SharedStorageService.GetIntegerRowFromTable('Key', Context.DUT)
+ConsoleService.PrintDebug('value=' + str(value))
+ExitPort = 1
+</code></pre>
+<h2 id="otpl-sample1">OTPL Sample1:</h2>
+<pre><code class="language-Perl">Test UserCodeTC UserCode_P1
+{
+	InputFile = &quot;SomeFile&quot;;	
+	NamespaceClass = &quot;SomeNamespace.SomeClass&quot;;
+	Method = &quot;PrintHello&quot;;
+}
+</code></pre>
+<h2 id="exit-ports">Exit Ports</h2>
+<p>The CallbacksRegistrar test method supports the following exit ports:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Exit Port</strong></th>
+<th><strong>Condition</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>-2</strong></td>
+<td><em><strong>Alarm</strong></em></td>
+<td>Any alarm condition</td>
+</tr>
+<tr>
+<td><strong>-1</strong></td>
+<td><em><strong>Error</strong></em></td>
+<td>Any software condition error</td>
+</tr>
+<tr>
+<td><strong>0</strong></td>
+<td><em><strong>Fail</strong></em></td>
+<td>Failing condition</td>
+</tr>
+<tr>
+<td><strong>&gt;=1</strong></td>
+<td><em><strong>Pass</strong></em></td>
+<td>User to return port</td>
+</tr>
+</tbody>
+</table>
+<h2 id="additional-dependencies">Additional Dependencies</h2>
+<p>Only Prime services and loaded DLLs are available for Referenced dependencies.</p>
+<h3 id="related-test-methods">Related Test Methods</h3>
+<h4 id="callbacks">Callbacks</h4>
+<p>UserCode execution is also supported as callback. <br>
+User can compile and run code using registered callback in CallbacksManager. <br>
+Argument uses CommandLine parser to get required parameters.<br>
+Compiled objects are stored in a ConcurrentDictionary to avoid test time impact from compilation.<br></p>
+<h3 id="syntax">Syntax</h3>
+<p><strong>CompileUserCode(--file SomeFileName --namespace.class SomeNameSpace.SomeClass --method SomeMethod)</strong><br>
+Returns &quot;fail&quot; or &quot;pass&quot; after compilation.<br>
+<strong>RunUserCode(--file SomeFileName --namespace.class SomeNameSpace.SomeClass --method SomeMethod)</strong><br>
+Returns expected string value from invoked method.</p>
+<h3 id="related-services">Related Services</h3>
+<h2 id="version-tracking">Version tracking</h2>
+<table>
+<thead>
+<tr>
+<th><strong>Date</strong></th>
+<th><strong>Version</strong></th>
+<th><strong>Author</strong></th>
+<th><strong>Comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>May 17, 2021</td>
+<td>1.0.0</td>
+<td>fmurillo</td>
+<td>Initial doc</td>
+</tr>
+<tr>
+<td>Apr 20, 2022</td>
+<td>2.0.0</td>
+<td>fmurillo</td>
+<td>Adding IronPython 2.7 support</td>
+</tr>
+</tbody>
+</table>
+
+
+</body>
+</html>

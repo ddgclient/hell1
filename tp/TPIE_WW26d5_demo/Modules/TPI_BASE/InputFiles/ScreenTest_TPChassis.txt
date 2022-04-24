@@ -1,0 +1,18 @@
+START_SCREEN:CheckSignalFileOnUnit
+#RunOn: TestName  : DataType  : ParamType   : Param1                                          : Operation : ParamType : Param2                                      : TmpStore : OnTrue      : OnFalse
+EXEC  : Test1     : INTEGER   : GLOBAL      : SignalFileOnWafer                               : ==        : LITERAL   : 3                                           : -        : 1           : Test2
+EXEC  : Test2     : INTEGER   : GLOBAL      : SignalFileOnWafer                               : ==        : LITERAL   : 1                                           : -        : 2           : 3
+END_SCREEN
+
+START_SCREEN:Force_D1C_D1D_Sampling
+#RunOn: TestName  		: DataType  	: ParamType   	: Param1                 	: Operation 	: ParamType : Param2  w   : TmpStore : OnTrue      	: OnFalse
+EXEC  : CheckLot  		: STRING    	: GSDS	  	: U.S.FabFromLot		: ==        	: LITERAL   : "D"        : -        : SetRASTER_EDCVars : 1
+EXEC  : SetRASTER_EDCVars     	: STRING	: GLOBAL     	: EDCVars.RASTER_Force_Enable   : SET		: LITERAL   : "1"        : -        : SetSPOFI_EDCVars	: 2
+EXEC  : SetSPOFI_EDCVars      	: STRING   	: GLOBAL      	: EDCVars.SPOFI_Force_Enable    : SET        	: LITERAL   : "1"        : -        : 1           	: 2
+END_SCREEN
+
+START_SCREEN:CheckTOS
+EXEC  : Test1 	  : STRING   : GSDS        : U.S.RESULT                                       : SET       : EXPRESSION : GetDelimitedData(E.HDMTTOS,'\\',3)      : -        : Test2       : 2
+EXEC  : Test2     : STRING   : EXPRESSION  : GetDelimitedIndex(E.HDMT_PROFILE,'\\',G.U.S.RESULT)    : !=        : LITERAL    : "-1"                                    : -        : 1           : Test3
+EXEC  : Test3     : STRING   : CONSOLE     : "ERROR: WRONG TOS VERSION LOADED"                : SET       : LITERAL    : " TOS rev loaded doesn't match .env"    : -        : 2           : 2
+END_SCREEN

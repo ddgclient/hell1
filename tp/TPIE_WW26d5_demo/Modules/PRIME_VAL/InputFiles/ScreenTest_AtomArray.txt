@@ -1,0 +1,9 @@
+
+START_SCREEN:LLCSLICECHECK
+#RunOn : TestName : DataType : ParamType : Param1              : Operation : ParamType : Param2     		: TmpStore : OnTrue : OnFalse
+EXEC   : TEST01   : STRING   : GSDS      : U.S.LLCSLICE   : ==       : GSDS      : U.S.SLICE_PRE 	: -       : TEST02 : 2
+EXEC   : TEST02   : STRING   : GSDS      : U.S.CORE_POST  : ==       : GSDS      : U.S.CORE_PRE 	: -       : 1	   : 2
+                                                                                                                                                                                        
+                                                                                                                                                                                          
+END_SCREEN                                                                                                                                                                                
+                                                                                                                                                                                          

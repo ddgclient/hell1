@@ -1,0 +1,28 @@
+{
+	"VminParameters": {
+		"TimingsTc": "cpu_stf_timing_tclk100_sclk100_cclk100",
+		"LevelsTc": "bf_lvl_nom_lvl",
+		"PinMap": "CORE0,CORE1,CORE2,CORE3",
+		"StartVoltages": "0.4,0.4,0.4,0.4",
+		"EndVoltageLimits": "1.2,1.2,1.2,1.2",
+		"StepSize": "0.01",
+		"VoltageTargets": "HC1_VCCCORE0,HC2_VCCCORE1,HC3_VCCATOM0,HC4_VCCATOM1",
+		"TestMode": "MultiVmin",
+        "PatternNameMap": "1,2,3,4,5,6,7",
+        "ScoreboardBaseNumber": "0000",
+        "ScoreboardEdgeTicks": 2,
+		"FeatureSwitchSettings": "fivr_mode_off"
+	},
+	"Tests": [
+		{ 
+			"Name": "baseline",
+			"Patlist": "drv_cdie_maintap_bbs_list",
+			"Overrides": { "ScoreboardBaseNumber": "0000" }
+		},
+		{ 
+			"Name": "search1",
+			"Patlist": "fun_core_cdie_preposthvqk_sbft_lfm_vadtl_stf100_mlc_AVX_sublist",
+			"Overrides": { "ScoreboardBaseNumber": "0001" }
+		}
+	]
+}

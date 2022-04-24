@@ -1,0 +1,40 @@
+#-------------------------------------------------------------------------------
+#Disclaimer:     This file format is subject to change and enhancements.  Do not 
+#                create Production automation based on the syntax of this file.
+#-------------------------------------------------------------------------------
+
+
+#-------------------------------------------------------------------------------
+[Program Identification]
+#-------------------------------------------------------------------------------
+<Program Type>    Module Validation
+<Program Family>  Meteorlake
+<Subfamily>       MTL CPU28 SDx
+<Base TP Name>    Integ1
+<TP Revision>     jestevez 06/17/21_02:30:17_PM
+<Train Name>      No Train
+<Release Date>    06/17/21
+<Alt TP Name 1>   MTCSDSCZ0HX0H002125
+
+
+#-------------------------------------------------------------------------------
+[Environment settings]
+#-------------------------------------------------------------------------------
+<Runtime Code>    prime_v5.01.00-evg5040303-tos3900
+<Fuse File Rev>   cdie28_mtlc_a0_21ww22b_DRV
+<User Code Path>  \\amr.corp.intel.com\ec\proj\mdl\jf\intel\tpapps\userlibs\mtl\prime_v5.01.00-evg5040303-tos3900-ddg212400
+
+<Pattern Revs>    | Pattern Module | Revision       | Dependent modules      
+                   #------------------------------------------------------------
+                    carratom         RevTSC28A0.0p0   ARR_ATOM                
+                    cfus             RevTSC28A0.0p0   TPI_FUSE,TPI_FUSE_BIN26 
+                  #[* indicates modules which specify older/different pattern revs that 
+                  #   are eclipsed by the pattern rev in the Revision column above]
+
+
+#-------------------------------------------------------------------------------
+[Build Errors]
+#-------------------------------------------------------------------------------
+<Errors>          | Details
+                   #------------------------------------------------------------
+                    -       

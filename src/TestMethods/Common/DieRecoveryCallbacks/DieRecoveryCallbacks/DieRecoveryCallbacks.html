@@ -1,0 +1,201 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>DDG Prime Die Recovery Callbacks</title>
+</head>
+<body>
+
+    <h1 id="ddg-prime-die-recovery-callbacks">DDG Prime Die Recovery Callbacks</h1>
+<h3 id="section">3/2/2022</h3>
+<p><a href="#configureipforrecovery">ConfigureIpForRecovery</a></p>
+<p><a href="#maskip">MaskIP</a></p>
+<p><a href="#disableip">DisableIP</a></p>
+<p><a href="#writetracker">WriteTracker</a></p>
+<p><a href="#copytracker">CopyTracker</a></p>
+<p><a href="#clonetracker">CloneTracker</a></p>
+<p><a href="#loadpinmapfile">LoadPinMapFile</a></p>
+<p><a href="#runrule">RunRule</a></p>
+<h2 id="section-1"></h2>
+<h2 id="enabling-the-callbacks">Enabling the Callbacks</h2>
+<p>Add an instance of CallbacksManager in your INIT flow. No parameters are necessary.</p>
+<h2 id="using-callbacks">Using callbacks</h2>
+<p>Callbacks can be executed from CommonParameters in Prime test instances and from anywhere an Evergreen UserFunction
+can be executed. See the prime wiki for more details.</p>
+<p><a href="https://dev.azure.com/mit-us/PRIME/_wiki/wikis/PRIME.wiki/3019/Calling-Prime-C-Sharp-Code-from-EVG-UF">Prime WIKI - Calling Cs from Evg</a></p>
+<p><a href="https://dev.azure.com/mit-us/PRIME/_wiki/wikis/PRIME.wiki/3020/Common-Parameters">Prime WIKI - Common Parameters</a></p>
+<h4 id="simple-example-from-icuserfunctest">Simple Example from ICUserFuncTest</h4>
+<span style="font-family:monospace; font-size:8; color:blue">
+Test iCUserFuncTest LoadIaCoreNoaDieRecoveryPinMaps<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;function_name = "CPD_DEBUG!ExecPrimeCsCallback";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;function_parameter = "CallbackName(--arg1 val1 --arg2 val2)";<br>
+}<br>
+</span>
+<p>If the function_paramter contains an equals sign, then you must assign the result to a GSDS variable.
+Unless specified this GSDS value will be empty, its a Prime/Evergreen handshaking thing.
+The &quot;--arg1=val1&quot; syntax is functionally equivalent to &quot;--arg1 val1&quot;.</p>
+<span style="font-family:monospace; font-size:8; color:blue">
+Test iCUserFuncTest LoadIaCoreNoaDieRecoveryPinMaps<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;function_name = "CPD_DEBUG!ExecPrimeCsCallback";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;function_parameter = "G.U.S.DummyValue=CallbackName(--arg1=val1 --arg2=val2)";<br>
+}<br>
+</span>
+<h2 id="available-functions">Available Functions</h2>
+<hr />
+<h3 id="configureipforrecovery">ConfigureIpForRecovery</h3>
+<p>This function applies the PatModify associated with the given pinmap to the patterns on the tester.
+Data is supplied by a DieRecovery Tracker name or a binary string.</p>
+<h4 id="usages">Usages</h4>
+<p>ConfigureIpForRecovery(--pinmap <em>DieRecoveryPinMapName</em> --tracker <em>DieRecoveryTrackerName</em> --patlist <em>PatListName</em>)<br />
+ConfigureIpForRecovery(--pinmap <em>DieRecoveryPinMapName</em> --value <em>BinaryValue</em> --patlist <em>PatListName</em>)</p>
+<h4 id="arguments">Arguments</h4>
+<p>--pinmap:     [required] The DieRecovery PinMap name to use.</p>
+<p>--tracker:    The DieRecovery Tracker holding the data to use.</p>
+<p>--value:      The binary data to use instead os in additional to the tracker data.
+If both tracker and value are used the function will run a OR bitwise operation.</p>
+<p>--patlist:    [optional] The PatternList to modify (default will modify only plists used in the current test instance). Use &quot;--patlist global&quot; to modify all plists.</p>
+<hr />
+<h3 id="maskip">MaskIP</h3>
+<p>This function runs the IPinMap.GetMaskPins() function for the given tracker and returns the list of pins to mask.
+Return value is a comma-separate list of pins, suitable to be passed to an EVG template as a mask_pins parameter.
+It might result in PatConfig depending on which PinMapDecoder is used.</p>
+<h4 id="usages-1">Usages</h4>
+<p>MaskIP(--tracker CORE0,CORE1,CORE2,CORE3 --pinmap CORE0_NOA,CORE1_NOA,CORE2_NOA,CORE3_NOA --gsds G.U.S.PinsToMask)<br />
+G.U.S.PinsToMask = MaskIP(--tracker=TRACKER --pinmap=PINMAP)<br />
+MaskIP(--value 00000 --pinmap MyPinMap)</p>
+<h4 id="arguments-1">Arguments</h4>
+<p>--pinmap:     [required] The DieRecovery PinMap name to use.</p>
+<p>--tracker:    The DieRecovery Tracker holding the data to use.</p>
+<p>--value:      The binary data to use instead os in additional to the tracker data.
+If both tracker and value are used the function will run a OR bitwise operation.</p>
+<p>--gsds:       The name of the GSDS token to write the results into. (of the form
+G.U.S.TokenName).</p>
+<p>--maskpins:  Additional mask pins to include to the overall mask.</p>
+<h4 id="examples">Examples</h4>
+<pre><code class="language-perl">Test SomeEvgTemplate SomeIAInstance
+{
+    preinstance = &quot;CPD_DEBUG!ExecPrimeCsCallback MaskIP(--tracker CORE0,CORE1,CORE2,CORE3 --pinmap CORE0_NOA,CORE1_NOA,CORE2_NOA,CORE3_NOA --gsds G.U.S.PinsToMask)&quot;;
+    mask_pins = &quot;G.U.S.PinsToMask&quot;;
+    ...
+}
+
+Test SomeEvgTemplate SomeIAInstanceAlternateFormat
+{
+    preinstance = &quot;CPD_DEBUG!ExecPrimeCsCallback G.U.S.PinsToMask=MaskIP(--tracker CORE0,CORE1,CORE2,CORE3 --pinmap CORE0_NOA,CORE1_NOA,CORE2_NOA,CORE3_NOA)&quot;;
+    mask_pins = &quot;G.U.S.PinsToMask&quot;;
+    ...
+}
+
+Test SomeEvgTemplate SomeIAInstanceAlternateFormat
+{
+    preinstance = &quot;CPD_DEBUG!ExecPrimeCsCallback G.U.S.PinsToMask=MaskIP(--value 0011 --maskpins TDO --tracker CORE0,CORE1,CORE2,CORE3 --pinmap CORE0_NOA,CORE1_NOA,CORE2_NOA,CORE3_NOA)&quot;;
+    mask_pins = &quot;G.U.S.PinsToMask&quot;;
+    ...
+}
+
+</code></pre>
+<hr />
+<h3 id="disableip">DisableIP</h3>
+<p>Same as ConfigureIpForRecovery, just aliased to match the new naming conventions.</p>
+<hr />
+<h3 id="writetracker">WriteTracker</h3>
+<p>This function writes a value to a DieRecovery tracker. The data can be specified with a binary string, or
+from a GSDS token, DFF Token, Hdmt UserVariable or a different DieRecovery tracker.</p>
+<p>The default will overwrite the tracker, use --merge to do a bitwise-or between the source and destination.</p>
+<h4 id="usages-2">Usages</h4>
+<p>WriteTracker(--tracker <em>DieRecoveryTrackerName</em> --value <em>literalvalue</em>)<br />
+WriteTracker(--tracker <em>DieRecoveryTrackerName</em> --gsds <em>gsdstoken</em>)<br />
+WriteTracker(--tracker <em>DieRecoveryTrackerName</em> --dff <em>dfftoken</em>)<br />
+WriteTracker(--tracker <em>DieRecoveryTrackerName</em> --uservar <em>uservar</em>)<br />
+WriteTracker(--tracker <em>DieRecoveryTrackerName</em> --src_tracker <em>DieRecoveryTrackerName</em>)<br />
+WriteTracker(--tracker <em>DieRecoveryTrackerName</em> --reset)</p>
+<h4 id="arguments-2">Arguments</h4>
+<p>--tracker:    [Required] The DieRecovery Tracker to write data to.</p>
+<p>--merge:      [Optional] Merge the source into the destination (bitwise-or) instead of overwriting it.</p>
+<p>--noprint:    [Optional] Nothing will be printed to ituff if this option is supplied.</p>
+<p>One of these sources is required:<br />
+--gsds:       The GSDS token to get the write data from (of the form
+G.U.S.TokenName).</p>
+<p>--dff:        The DFF token to get the write data from (of the form
+OpType:DffTokenName or DieID:OpType:DffTokenName).</p>
+<p>--uservar:    The Hdmt UserVariable to get the write data from (of the form
+Collection.UserVar).</p>
+<p>--value:      The raw binary data to write. (ie. 1001100)</p>
+<p>--src_tracker : A DieRecovery tracker name to get the source data from</p>
+<p>--reset:      Get the value from the InitialValue setting in the DieRecovery Tracker input file.</p>
+<h4 id="ituff-printing">Ituff Printing</h4>
+<p>Ituff printing for Writetracker matches the normal ituff printing for DieRecovery Token updates, unless the --noprint option is supplied.</p>
+<pre><code>Example Test:  
+Test RunCallback Test1_P1
+{
+    Callback = &quot;WriteTracker&quot;;
+    Parameters = &quot;--tracker T0,T1 --value 10&quot;;
+}
+
+Example Ituff:  
+2_tname_PVAL_CALLBACKS::Test1_P1::T0|T1
+2_strgval_TestResult:b10|Incoming:b00|Outgoing:b10
+</code></pre>
+<p>Explanation:<br />
+Incoming = The current value of the --tracker argument.<br />
+TestResult = The value to be written to the tracker, from the --value/--gsds/--dff/--uservar/--src_tracker argument.<br />
+Outgoing = The final updated value of the --tracker argument.</p>
+<h2 id="section-2">_</h2>
+<h3 id="copytracker">CopyTracker</h3>
+<p>This function copies the value of a tracker to a GSDS token, DFF token or an Hdmt UserVariable.</p>
+<h4 id="usages-3">Usages</h4>
+<p>CopyTracker(--tracker <em>DieRecoveryTrackerName</em> --gsds <em>gsdstoken</em>)<br />
+CopyTracker(--tracker <em>DieRecoveryTrackerName</em> --dff <em>dfftoken</em>)<br />
+CopyTracker(--tracker <em>DieRecoveryTrackerName</em> --uservar <em>uservar</em>)</p>
+<h4 id="arguments-3">Arguments</h4>
+<p>--tracker:    [Required] The DieRecovery Tracker to get the data from.</p>
+<p>--gsds:       The GSDS token to write data to (of the form G.U.S.TokenName).</p>
+<p>--dff:        The DFF token to write data (of the form DffTokenName or
+DieID:DffTokenName).</p>
+<p>--uservar:    The Hdmt UserVariable to write data to (of the form
+Collection.UserVar).</p>
+<hr />
+<h3 id="clonetracker">CloneTracker</h3>
+<p>This function clones an existing traker definition and data into a new tracker.</p>
+<h4 id="usages-4">Usages</h4>
+<p>CloneTracker(--existing_tracker trackerA --new_tracker trackerB)</p>
+<h4 id="arguments-4">Arguments</h4>
+<p>--existing__tracker:    [Required] Existing tracker name to be cloned.
+--new__tracker:         [Required] New tracker name.</p>
+<hr />
+<h3 id="loadpinmapfile">LoadPinMapFile</h3>
+<p>Loads PinMapDecoder file. See the DDG_Prime_Die_Recovery documentation for details on what types are available.</p>
+<h4 id="usages-5">Usages</h4>
+<p>LoadPinMapFile(--decoder <em>pinmapdecoder</em> --file <em>file.json</em>)</p>
+<h4 id="arguments-5">Arguments</h4>
+<p>--decoder:    [Required] The PinMapDecoder type to load.</p>
+<p>--file:       [Required] The JSON file to load. This file should contain the json representation of a list of <em>pinmapdecoder</em> objects.</p>
+<hr />
+<h3 id="runrule">RunRule</h3>
+<p>This function runs the given die recovery rule using the named tracker and returns either the first passing NAME, SIZE or BITVECTOR in the given GSDS token.</p>
+<h4 id="usages-6">Usages</h4>
+<p>RunRule(--tracker <em>DieRecoveryTrackerName</em> --rule <em>rulename</em> --gsds <em>gsdstoken</em>)<br />
+RunRule(--tracker <em>DieRecoveryTrackerName</em> --rule <em>rulename</em> --gsds <em>gsdstoken</em> --store_value NAME)<br />
+RunRule(--tracker <em>DieRecoveryTrackerName</em> --rule <em>rulename</em> --gsds <em>gsdstoken</em> --store_value SIZE)<br />
+RunRule(--tracker <em>DieRecoveryTrackerName</em> --rule <em>rulename</em> --gsds <em>gsdstoken</em> --store_value BITVECTOR)</p>
+<h4 id="arguments-6">Arguments</h4>
+<p>--tracker:    [Required] The DieRecovery Tracker to use.</p>
+<p>--rule:       [Required] The DieRecovery Rule to execute.</p>
+<p>--gsds  [Required] The GSDS Token to store the result in. Of the form G.[UL].[SI].TokenName.</p>
+<p>--store_value [Optional, Default=NAME] The value to store. Either NAME (stores the name of the first passing rule), SIZE (stores the size of the first passing rule), or BITVECTOR (stores the full bitvector of the first passing rule).</p>
+<h4 id="example-exit-port-1-if-4c-port-2-if-2c-port-0-otherwise">Example (exit port 1 if 4C, port 2 if 2C, port 0 otherwise)</h4>
+<span style="font-family:monospace; font-size:8; color:blue">
+Test iCAuxiliaryTest ValidateIaCoreRecovery  <br>
+{  <br>
+&nbsp;&nbsp;&nbsp;&nbsp;preinstance = "CPD_DEBUG!ExecPrimeCsCallback RunRule(--tracker CORE0,CORE1,CORE2,CORE3,CORE4,CORE5,CORE6,CORE7 --rule CoreDefeaturingVector --gsds G.U.S.PassingRuleName)";  <br>
+&nbsp;&nbsp;&nbsp;&nbsp;data_type = "STRING";  <br>
+&nbsp;&nbsp;&nbsp;&nbsp;expression = "G.U.S.PassingRuleName";  <br>
+&nbsp;&nbsp;&nbsp;&nbsp;result_port = "[R]=='4C'|1^[R]=='2C'|2^0";  <br>
+}  <br>
+</span>
+<p><br><br><br></p>
+
+
+</body>
+</html>

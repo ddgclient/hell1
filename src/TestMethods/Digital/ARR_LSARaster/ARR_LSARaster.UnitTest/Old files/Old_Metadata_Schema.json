@@ -1,0 +1,364 @@
+{
+  "description": "The root schema comprises the entire JSON document.",
+  "required": [
+    "Setup"
+  ],
+  "title": "The root schema",
+  "properties": {
+    "Setup": {
+      "description": "Root that holds three main configurations for LSARaster modes.",
+      "required": [
+        "PatModConfigSets",
+        "CaptureConfigSets",
+        "SlicePinMapping"
+      ],
+      "title": "The Setup schema",
+      "properties": {
+        "PatModConfigSets": {
+          "description": "Class that holds a list of PatModConfigSets",
+          "required": [
+            "PatModConfigSet"
+          ],
+          "title": "The PatModConfigSets schema",
+          "properties": {
+            "PatModConfigSet": {
+              "description": "Hold configuration for pattern modify.",
+              "title": "The PatModConfigSet schema",
+              "additionalItems": true,
+              "items": {
+                "anyOf": [
+                  {
+                    "description": "An explanation about the purpose of this instance.",
+                    "required": [
+                      "Name",
+                      "PatternModifiers"
+                    ],
+                    "title": "The first anyOf schema",
+                    "properties": {
+                      "Name": {
+                        "description": "An explanation about the purpose of this instance.",
+                        "title": "The Name schema"
+                      },
+                      "PatternModifiers": {
+                        "description": "An explanation about the purpose of this instance.",
+                        "required": [
+                          "PatternModify"
+                        ],
+                        "title": "The PatternModifiers schema",
+                        "properties": {
+                          "PatternModify": {
+                            "default": [],
+                            "description": "An explanation about the purpose of this instance.",
+                            "title": "The PatternModify schema",
+                            "additionalItems": true,
+                            "items": {
+                              "anyOf": [
+                                {
+                                  "description": "An explanation about the purpose of this instance.",
+                                  "required": [
+                                    "PatTarget",
+                                    "Pin",
+                                    "Label",
+                                    "Domain",
+                                    "Offset",
+                                    "Length"
+                                  ],
+                                  "title": "The first anyOf schema",
+                                  "properties": {
+                                    "PatTarget": {
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "title": "The PatTarget schema"
+                                    },
+                                    "Pin": {
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "title": "The Pin schema"
+                                    },
+                                    "Label": {
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "title": "The Label schema"
+                                    },
+                                    "Domain": {
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "title": "The Domain schema"
+                                    },
+                                    "Offset": {
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "title": "The Offset schema"
+                                    },
+                                    "Length": {
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "title": "The Length schema"
+                                    }
+                                  },
+                                  "additionalProperties": true
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        "additionalProperties": true
+                      }
+                    },
+                    "additionalProperties": true
+                  }
+                ]
+              }
+            }
+          },
+          "additionalProperties": true
+        },
+        "CaptureConfigSets": {
+          "description": "An explanation about the purpose of this instance.",
+          "required": [
+            "CaptureSet"
+          ],
+          "title": "The CaptureConfigSets schema",
+          "properties": {
+            "CaptureSet": {
+              "default": [],
+              "description": "An explanation about the purpose of this instance.",
+              "title": "The CaptureSet schema",
+              "additionalItems": true,
+              "items": {
+                "anyOf": [
+                  {
+                    "description": "An explanation about the purpose of this instance.",
+                    "required": [
+                      "Name",
+                      "Length",
+                      "DecodingElements"
+                    ],
+                    "title": "The first anyOf schema",
+                    "properties": {
+                      "Name": {
+                        "description": "An explanation about the purpose of this instance.",
+                        "title": "The Name schema",
+                        "required": []
+                      },
+                      "Length": {
+                        "description": "An explanation about the purpose of this instance.",
+                        "title": "The Length schema"
+                      },
+                      "DecodingElements": {
+                        "description": "An explanation about the purpose of this instance.",
+                        "required": [
+                          "DecodingElement"
+                        ],
+                        "title": "The DecodingElements schema",
+                        "properties": {
+                          "DecodingElement": {
+                            "description": "An explanation about the purpose of this instance.",
+                            "title": "The DecodingElement schema",
+                            "additionalItems": true,
+                            "items": {
+                              "anyOf": [
+                                {
+                                  "description": "An explanation about the purpose of this instance.",
+                                  "required": [
+                                    "Name",
+                                    "Start",
+                                    "End"
+                                  ],
+                                  "title": "The first anyOf schema",
+                                  "properties": {
+                                    "Name": {
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "title": "The Name schema"
+                                    },
+                                    "Start": {
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "title": "The Start schema"
+                                    },
+                                    "End": {
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "title": "The End schema"
+                                    }
+                                  },
+                                  "additionalProperties": true
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        "additionalProperties": true
+                      }
+                    },
+                    "additionalProperties": true
+                  }
+                ]
+              }
+            }
+          },
+          "additionalProperties": true
+        },
+        "SlicePinMapping": {
+          "description": "An explanation about the purpose of this instance.",
+          "required": [
+            "PinMappingsSet"
+          ],
+          "title": "The SlicePinMapping schema",
+          "properties": {
+            "PinMappingsSet": {
+              "description": "An explanation about the purpose of this instance.",
+              "title": "The PinMappingsSet schema",
+              "additionalItems": true,
+              "items": {
+                "anyOf": [
+                  {
+                    "default": {},
+                    "required": [
+                      "Name",
+                      "Configurations",
+                      "PinMappings"
+                    ],
+                    "title": "The first anyOf schema",
+                    "description": "",
+                    "properties": {
+                      "Name": {
+                        "default": "",
+                        "description": "An explanation about the purpose of this instance.",
+                        "title": "The Name schema"
+                      },
+                      "Configurations": {
+                        "description": "An explanation about the purpose of this instance.",
+                        "required": [
+                          "ArrayNameRegex",
+                          "IsRasterModeSupported",
+                          "IsGetDwordFromFailIoIndex",
+                          "PreScreenLabelRegex",
+                          "LabelRegExTokens"
+                        ],
+                        "title": "The Configurations schema",
+                        "properties": {
+                          "ArrayNameRegex": {
+                            "description": "An explanation about the purpose of this instance.",
+                            "title": "The ArrayNameRegex schema"
+                          },
+                          "IsRasterModeSupported": {
+                            "description": "An explanation about the purpose of this instance.",
+                            "title": "The IsRasterModeSupported schema"
+                          },
+                          "IsGetDwordFromFailIoIndex": {
+                            "description": "An explanation about the purpose of this instance.",
+                            "title": "The IsGetDwordFromFailIoIndex schema"
+                          },
+                          "PreScreenLabelRegex": {
+                            "description": "An explanation about the purpose of this instance.",
+                            "title": "The PreScreenLabelRegex schema"
+                          },
+                          "LabelRegExTokens": {
+                            "default": {},
+                            "description": "An explanation about the purpose of this instance.",
+                            "required": [
+                              "RegExToken"
+                            ],
+                            "title": "The LabelRegExTokens schema",
+                            "properties": {
+                              "RegExToken": {
+                                "default": [],
+                                "description": "An explanation about the purpose of this instance.",
+                                "title": "The RegExToken schema",
+                                "additionalItems": true,
+                                "items": {
+                                  "$id": "#/properties/Setup/properties/SlicePinMapping/properties/PinMappingsSet/items/anyOf/0/properties/Configurations/properties/LabelRegExTokens/properties/RegExToken/items",
+                                  "anyOf": [
+                                    {
+                                      "$id": "#/properties/Setup/properties/SlicePinMapping/properties/PinMappingsSet/items/anyOf/0/properties/Configurations/properties/LabelRegExTokens/properties/RegExToken/items/anyOf/0",
+                                      "type": "object",
+                                      "title": "The first anyOf schema",
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "default": {},
+                                      "required": [
+                                        "_id",
+                                        "__text"
+                                      ],
+                                      "properties": {
+                                        "_id": {
+                                          "default": "",
+                                          "description": "An explanation about the purpose of this instance.",
+                                          "title": "The _id schema"
+                                        },
+                                        "__text": {
+                                          "default": "",
+                                          "description": "An explanation about the purpose of this instance.",
+                                          "title": "The __text schema"
+                                        }
+                                      },
+                                      "additionalProperties": true
+                                    }
+                                  ]
+                                }
+                              }
+                            },
+                            "additionalProperties": true
+                          }
+                        },
+                        "additionalProperties": true
+                      },
+                      "PinMappings": {
+                        "default": {},
+                        "description": "An explanation about the purpose of this instance.",
+                        "required": [
+                          "PinMapping"
+                        ],
+                        "title": "The PinMappings schema",
+                        "properties": {
+                          "PinMapping": {
+                            "default": [],
+                            "description": "An explanation about the purpose of this instance.",
+                            "title": "The PinMapping schema",
+                            "additionalItems": true,
+                            "items": {
+                              "$id": "#/properties/Setup/properties/SlicePinMapping/properties/PinMappingsSet/items/anyOf/0/properties/PinMappings/properties/PinMapping/items",
+                              "anyOf": [
+                                {
+                                  "$id": "#/properties/Setup/properties/SlicePinMapping/properties/PinMappingsSet/items/anyOf/0/properties/PinMappings/properties/PinMapping/items/anyOf/0",
+                                  "type": "object",
+                                  "title": "The first anyOf schema",
+                                  "description": "An explanation about the purpose of this instance.",
+                                  "default": {},
+                                  "required": [
+                                    "SliceId",
+                                    "PinName",
+                                    "HryName"
+                                  ],
+                                  "properties": {
+                                    "SliceId": {
+                                      "default": "",
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "title": "The SliceId schema"
+                                    },
+                                    "PinName": {
+                                      "default": "",
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "title": "The PinName schema"
+                                    },
+                                    "HryName": {
+                                      "default": "",
+                                      "description": "An explanation about the purpose of this instance.",
+                                      "title": "The HryName schema"
+                                    }
+                                  },
+                                  "additionalProperties": true
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        "additionalProperties": true
+                      }
+                    },
+                    "additionalProperties": true
+                  }
+                ]
+              }
+            }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

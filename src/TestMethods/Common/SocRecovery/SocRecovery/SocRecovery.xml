@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TestLibraryInterfaces xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:schemaLocation="http://vtsm.intel.com/2009/TestLibraryInterfaces file:///C:/Intel/hdmt/hdmtOS_3.4.4.5_Release/TOSRelease/bin/release/TestLibraryInterfaces.xsd" xmlns="http://vtsm.intel.com/2009/TestLibraryInterfaces">
+  <TestLibrary name="PrimeTestInstance">
+    <TestClass name="SocRecovery" MetaData="dll=SocRecovery"  />
+    <Imports>
+      <FileName>TestMethodBase.xml</FileName>
+      <FileName>SocRecoveryCommonParams.xml</FileName>
+    </Imports>
+    <PublicBases>
+      <BaseName>TestMethodBase</BaseName>
+    </PublicBases>
+    <Parameters>
+      <Parameter name="RecoveryMode" descriptions="Gets or sets recovery tracking name.">
+        <Type>
+          <Tester>String</Tester>
+          <TestProgram>String</TestProgram>
+        </Type>
+        <Choices>
+          <Choice>SerialMode_Init</Choice>
+          <Choice>SerialMode_SetToken</Choice>
+          <Choice>SerialMode_SetToken_ErrorCheck</Choice>
+          <Choice>SerialMode_FlowControl</Choice>
+          <Choice>BinaryConversion</Choice>
+          <Choice>Token_Print</Choice>
+        </Choices>
+        <Default>SerialMode_Init</Default>
+        <Optional />
+      </Parameter>
+      <Parameter name="TokenNames" descriptions="Gets or sets list of recovery tokens delimited with | or spaces.">
+        <Type>
+          <Tester>String</Tester>
+          <TestProgram>String</TestProgram>
+        </Type>
+        <Default />
+        <Optional />
+      </Parameter>
+      <Parameter name="ValueList" descriptions="Gets or sets list of recovery values to set tokens with, number of values must match number of tokens.">
+        <Type>
+          <Tester>String</Tester>
+          <TestProgram>String</TestProgram>
+        </Type>
+        <Default />
+        <Optional />
+      </Parameter>
+    <Parameter name="SerialModeLength" descriptions="Number of characters required for Serial mode recovery string">
+        <Type>
+          <Tester>Integer</Tester>
+          <TestProgram>Integer</TestProgram>
+        </Type>
+        <Default />
+        <Optional />
+      </Parameter>
+    </Parameters>
+    <ExitPorts>
+      <ExitPort>
+        <PortNumber>9</PortNumber>
+        <PortType>Fail</PortType>
+        <PortDescriptions>Fail PORT. Flow Routing for recovery.</PortDescriptions>
+      </ExitPort>
+      <ExitPort>
+        <PortNumber>8</PortNumber>
+        <PortType>Pass</PortType>
+        <PortDescriptions>PASS PORT. Flow Routing for recovery.</PortDescriptions>
+      </ExitPort>
+      <ExitPort>
+        <PortNumber>7</PortNumber>
+        <PortType>Pass</PortType>
+        <PortDescriptions>PASS PORT. Flow Routing for recovery.</PortDescriptions>
+      </ExitPort>
+      <ExitPort>
+        <PortNumber>6</PortNumber>
+        <PortType>Pass</PortType>
+        <PortDescriptions>PASS PORT. Flow Routing for recovery.</PortDescriptions>
+      </ExitPort>
+      <ExitPort>
+        <PortNumber>5</PortNumber>
+        <PortType>Pass</PortType>
+        <PortDescriptions>PASS PORT. Flow Routing for recovery.</PortDescriptions>
+      </ExitPort>
+      <ExitPort>
+        <PortNumber>4</PortNumber>
+        <PortType>Pass</PortType>
+        <PortDescriptions>PASS PORT. Flow Routing for recovery.</PortDescriptions>
+      </ExitPort>
+      <ExitPort>
+        <PortNumber>3</PortNumber>
+        <PortType>Pass</PortType>
+        <PortDescriptions>PASS PORT. Flow Routing for recovery.</PortDescriptions>
+      </ExitPort>
+      <ExitPort>
+        <PortNumber>2</PortNumber>
+        <PortType>Pass</PortType>
+        <PortDescriptions>PASS PORT. Flow Routing for recovery.</PortDescriptions>
+      </ExitPort>
+      <ExitPort>
+        <PortNumber>1</PortNumber>
+        <PortType>Pass</PortType>
+        <PortDescriptions>PASS PORT</PortDescriptions>
+      </ExitPort>
+      <ExitPort>
+        <PortNumber>0</PortNumber>
+        <PortType>Fail</PortType>
+        <PortDescriptions>FAIL PORT. Fail pattern.</PortDescriptions>
+      </ExitPort>
+      <ExitPort>
+        <PortNumber>-1</PortNumber>
+        <PortType>Error</PortType>
+        <PortDescriptions>PORT FAIL FOR SW ERROR CONDITION</PortDescriptions>
+      </ExitPort>
+      <ExitPort>
+        <PortNumber>-2</PortNumber>
+        <PortType>Fail</PortType>
+        <PortDescriptions>PORT FAIL FOR HW ALARM CONDITION</PortDescriptions>
+      </ExitPort>
+    </ExitPorts>
+  </TestLibrary>
+</TestLibraryInterfaces>

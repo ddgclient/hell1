@@ -1,0 +1,4 @@
+Pin,IP,Sequence,Subsequence,Field,Size,LowLimit,HighLimit,Equation,ItuffToken
+DDR1_DQ50,V0,training,subseq1,val1,6,-,-,-,<TssidRename>_Token1
+DDR1_DQ50,V0,training,subseq2,val2,3,-,-,-,<TssidRename>_Token1
+DDR1_DQ50,V0,training,subseq2,result,0,106,108,val2*subseq1.val1,<TssidRename>_Token1

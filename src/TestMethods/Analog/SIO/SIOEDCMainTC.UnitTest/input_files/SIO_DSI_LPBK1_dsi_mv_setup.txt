@@ -1,0 +1,70 @@
+#====================================================================================================
+GLOBAL_SETUP      PATMODIFY_TEST  SIO_DSI_LPBK1::DSI_X_PATMOD_E_END_X_X_X_GLOBAL
+#====================================================================================================
+
+DSI_DNELB_CALCODE           SEQ_FILE	      	    Modules\SIO_DSI_LPBK1\InputFiles\sequence_decoded_CMEM_DSI_DNELB_FullSpf.csv   
+DSI_DNELB_CALCODE           FORMAT_FILE	      	    Modules\SIO_DSI_LPBK1\InputFiles\format_decoded_CMEM_DSI_DNELB_FullSpf.csv
+DSI_DNELB_CALCODE           SEQ_ID		      	    class_edc_g3
+DSI_DNELB_CALCODE           TESTTYPE			    CAPTURE
+DSI_DNELB_CALCODE           REGDEF 			        CLIENT
+
+
+DSI_ANELB_CALCODE           SEQ_FILE	      	    Modules\SIO_DSI_LPBK1\InputFiles\sequence_decoded_CMEM_DSI_ANELB_FullSpf.csv   
+DSI_ANELB_CALCODE           FORMAT_FILE	      	    Modules\SIO_DSI_LPBK1\InputFiles\format_decoded_CMEM_DSI_ANELB_FullSpf.csv
+DSI_ANELB_CALCODE           SEQ_ID		      	    class_edc_g3
+DSI_ANELB_CALCODE           TESTTYPE			    CAPTURE
+DSI_ANELB_CALCODE           REGDEF 			        CLIENT  
+
+
+##====================================================================================================
+#################################### 1620 SHMOO REPORT ####################################
+##====================================================================================================
+#DP_LPBK_1620_SHMOO					EXECUTE_TEST		SIO_DP_LPBK1::DP_X_ANELB_K_END_X_X_X_X_SHMOO
+#DP_LPBK_1620_SHMOO					DLOG_NAME   		SIO_DP_LPBK1::DP_X_ANELB_K_END_1620_SHMOO_svtt
+#DP_LPBK_1620_SHMOO					XKEY				SET_RXODELAYSEL
+#DP_LPBK_1620_SHMOO					XVALUE				0!1!2!3!7!11!15
+#DP_LPBK_1620_SHMOO					YKEY				SET_SWING
+#DP_LPBK_1620_SHMOO					YVALUE				1!2!3!8!11
+#DP_LPBK_1620_SHMOO					NUMOFTESTRUN		1
+#DP_LPBK_1620_SHMOO					TESTTYPE			GONOGO
+#
+#
+
+##====================================================================================================
+#################################### 2700 SHMOO REPORT ####################################
+##====================================================================================================
+#DP_LPBK_2700_SHMOO					EXECUTE_TEST		SIO_DP_LPBK1::DP_X_ANELB_K_END_X_X_X_X_SHMOO
+#DP_LPBK_2700_SHMOO					DLOG_NAME   		SIO_DP_LPBK1::DP_X_ANELB_K_END_2700_SHMOO_svtt
+#DP_LPBK_2700_SHMOO					XKEY				SET_RXODELAYSEL
+#DP_LPBK_2700_SHMOO					XVALUE				0!1!2!3!7!11!15
+#DP_LPBK_2700_SHMOO					YKEY				SET_SWING
+#DP_LPBK_2700_SHMOO					YVALUE				1!2!3!8!11
+#DP_LPBK_2700_SHMOO					NUMOFTESTRUN		1
+#DP_LPBK_2700_SHMOO					TESTTYPE			GONOGO
+#
+
+##====================================================================================================
+#################################### 5400 SHMOO REPORT ####################################
+##====================================================================================================
+#DP_LPBK_5400_SHMOO					EXECUTE_TEST		SIO_DP_LPBK1::DP_X_ANELB_K_END_X_X_X_X_SHMOO
+#DP_LPBK_5400_SHMOO					DLOG_NAME   		SIO_DP_LPBK1::DP_X_ANELB_K_END_5400_SHMOO_svtt
+#DP_LPBK_5400_SHMOO					XKEY				SET_RXODELAYSEL
+#DP_LPBK_5400_SHMOO					XVALUE				0!1!2!3!7!11!15
+#DP_LPBK_5400_SHMOO					YKEY				SET_SWING
+#DP_LPBK_5400_SHMOO					YVALUE				1!2!3!8!11
+#DP_LPBK_5400_SHMOO					NUMOFTESTRUN		1
+#DP_LPBK_5400_SHMOO					TESTTYPE			GONOGO
+#
+
+##====================================================================================================
+#################################### 8100 SHMOO REPORT ####################################
+##====================================================================================================
+#DP_LPBK_8100_SHMOO					EXECUTE_TEST		SIO_DP_LPBK1::DP_X_ANELB_K_END_X_X_X_X_SHMOO
+#DP_LPBK_8100_SHMOO					DLOG_NAME   		SIO_DP_LPBK1::DP_X_ANELB_K_END_8100_SHMOO_svtt
+#DP_LPBK_8100_SHMOO					XKEY				SET_RXODELAYSEL
+#DP_LPBK_8100_SHMOO					XVALUE				0!1!2!3!7!11!15
+#DP_LPBK_8100_SHMOO					YKEY				SET_SWING
+#DP_LPBK_8100_SHMOO					YVALUE				1!2!3!8!11
+#DP_LPBK_8100_SHMOO					NUMOFTESTRUN		1
+#DP_LPBK_8100_SHMOO					TESTTYPE			GONOGO
+

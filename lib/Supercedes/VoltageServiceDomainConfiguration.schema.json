@@ -1,0 +1,292 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "Domains": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/definitions/Domain"
+      }
+    },
+    "DomainGroups": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/definitions/DomainGroup"
+      }
+    },
+    "DlvrPins": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/definitions/DlvrPin"
+      }
+    },
+    "TimingAttributes": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/definitions/TimingAttribute"
+      }
+    },
+    "PatternModify": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/definitions/RailPatternModify"
+      }
+    },
+    "DisabledDomains": {
+      "type": "object",
+      "required" : ["type", "value"],
+      "properties" : {
+        "type" : {
+          "type": "string",
+          "enum": ["Literal", "UserVar"]
+        },
+        "value" : {
+          "$ref": "#/definitions/NonEmptyString"
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Domain": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/NonEmptyString"
+        },
+        "pattern_modify": {
+          "$ref": "#/definitions/PatternModify"
+        },
+        "dac_calibration": {
+          "$ref": "#/definitions/DacCalibration"
+        },
+        "default_value": {
+          "type": "number",
+          "minimum": 0,
+          "exclusiveMinimum": true
+        },
+        "dps_pin": {
+          "$ref": "#/definitions/NonEmptyString"
+        }
+      },
+      "dependencies": {
+        "pattern_modify": ["default_value"]
+      },
+      "additionalProperties": false,
+      "oneOf": [
+        {
+          "description": "If pattern_modify is present, dps_pin field cant be present.",
+          "required": ["pattern_modify","default_value"],
+          "not": {
+            "required": ["dps_pin"]
+          }
+        },
+        {
+          "description": "If dps_pin is present, neither pattern_modify or default_value fields can be present.",
+          "required": ["dps_pin"],
+          "not": {
+            "required": ["pattern_modify", "default_value"]
+          }
+        }
+      ]
+    },
+    "DomainGroup": {
+      "type": "object",
+      "required": ["name", "domains"],
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/NonEmptyString"
+        },
+        "domains": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/NonEmptyString"
+          }
+        }
+      }
+    },
+    "DlvrPin": {
+      "type": "object",
+      "required": ["pin_name", "voltage_expression", "min", "max", "step_size"],
+      "properties": {
+        "pin_name": {
+          "$ref": "#/definitions/NonEmptyString"
+        },
+        "voltage_expression": {
+		  "type": "array",
+		  "minItems": 1,
+		  "uniqueItems": true,
+		  "items": {
+			"type" : "object",
+			"required": ["expression_name", "expression_value"],
+			"properties": {
+				 "expression_name": {
+         		 "$ref": "#/definitions/NonEmptyString"
+				},
+				"expression_value": {
+          		"$ref": "#/definitions/NonEmptyString"
+       			}
+          	}
+		 }
+        },
+        "min": {
+          "$ref": "#/definitions/PositiveNumber"
+        },
+        "max": {
+          "$ref": "#/definitions/PositiveNumber"
+        },
+        "step_size": {
+          "$ref": "#/definitions/PositiveNumber"
+        }
+      }
+    },
+    "RailPatternModify": {
+      "type": "object",
+      "required": [
+        "pattern_modify_name",
+        "module",
+        "group",
+        "selector",
+        "set_point_for_true",
+        "set_point_for_false"
+      ],
+      "properties": {
+        "pattern_modify_name": {
+          "$ref": "#/definitions/NonEmptyString"
+        },
+        "module": {
+          "$ref": "#/definitions/NonEmptyString"
+        },
+        "group": {
+          "$ref": "#/definitions/NonEmptyString"
+        },
+        "selector": {
+          "$ref": "#/definitions/NonEmptyString"
+        },
+        "set_point_for_true": {
+          "$ref": "#/definitions/NonEmptyString"
+        },
+        "set_point_for_false": {
+          "$ref": "#/definitions/NonEmptyString"
+        }
+      }
+    },
+    "TimingAttribute": {
+      "type": "object",
+      "required": ["pin_name", "domain", "attributes"],
+      "properties": {
+        "pin_name": {
+          "$ref": "#/definitions/NonEmptyString"
+        },
+        "domain": {
+          "$ref": "#/definitions/NonEmptyString"
+        },
+        "attributes": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/Attribute"
+          }
+        }
+      }
+    },
+    "Attribute": {
+      "type": "object",
+      "required": ["name", "expression", "step_size"],
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/NonEmptyString"
+        },
+        "expression": {
+          "$ref": "#/definitions/NonEmptyString"
+        },
+        "step_size": {
+          "$ref": "#/definitions/PositiveNumber"
+        }
+      }
+    },
+    "PositiveNumber": {
+      "type": "number",
+      "minimum": 0
+    },
+    "NonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "PatternModify": {
+      "type": "object",
+      "required": ["initial_voltage"],
+      "properties": {
+        "initial_voltage": {
+          "$ref": "#/definitions/InitialVoltage"
+        },
+        "offset": {
+          "$ref": "#/definitions/Offset"
+        }
+      },
+      "additionalProperties": false
+    },
+    "InitialVoltage": {
+      "type": "object",
+      "required": ["multiplier", "configuration", "number_of_targets"],
+      "properties": {
+        "multiplier": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "configuration": {
+          "$ref": "#/definitions/NonEmptyString"
+        },
+        "number_of_targets": {
+            "type": "number",
+            "minimum": 0,
+            "exclusiveMinimum": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "Offset": {
+      "type": "object",
+      "required": ["type", "magnitude_configuration", "sign_configuration"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["vid", "calibration"]
+        },
+        "magnitude_configuration": {
+          "$ref": "#/definitions/NonEmptyString"
+        },
+        "sign_configuration": {
+          "$ref": "#/definitions/NonEmptyString"
+        }
+      },
+      "additionalProperties": false
+    },
+    "DacCalibration": {
+      "type": "object",
+      "required": ["slope", "offset"],
+      "properties": {
+        "slope": {
+          "$ref": "#/definitions/NonEmptyString"
+        },
+        "offset": {
+          "$ref": "#/definitions/NonEmptyString"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

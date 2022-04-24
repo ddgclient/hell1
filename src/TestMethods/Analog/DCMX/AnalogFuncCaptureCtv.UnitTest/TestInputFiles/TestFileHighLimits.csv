@@ -1,0 +1,4 @@
+Pin,IP,Sequence,Subsequence,Field,Size,ExpectedData,LowLimit,HighLimit,ItuffToken
+DDR1_DQ50,V0,training,subseq1,val1,5,-,-,25,Token1
+DDR1_DQ50,V0,training,subseq2,val2,4,-,-,25,Token1
+DDR1_DQ50,V0,training,subseq3,val3,4,-,-,25,Token1

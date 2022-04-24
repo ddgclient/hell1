@@ -1,0 +1,419 @@
+Version 1.0;
+
+UserVars DffCheckVars
+{
+	String DFF_FLOW_ORDER = "SORT,PBIC_S1,BI";
+	String MTL_FILE_PATH = "~OASIS_TPL_DIR/Modules/TPI_DFF/InputFiles/MTL_MLC28.xml";
+	String PATH_TO_MTL = "~OASIS_TPL_DIR/Modules/TPI_DFF/InputFiles/MTL_MLC28.xml";
+}
+
+UserVars DFFVars
+{
+	String MTL_FILE_PATH = "~OASIS_TPL_DIR/Modules/TPI_DFF/InputFiles/MTL_MLC28.xml";
+	String READ_OPTYPE = "SORT";
+	Boolean SKIP_UBE_FILE = TRUE;
+	String TP_TYPE = "SORT";
+	String WRITE_MODE = "WRITE";
+	String WRITE_OPTYPE = "SORT";
+}
+
+UserVars EDCVars
+{
+	Integer DRT_RESET_SHMOOS = 0;
+	Integer DRT_RESET_VMIN_SEARCH = 0;
+	Integer DRT_STF_SHMOOS = 0;
+	Integer DRT_STF_VMIN_SEARCH = 0;
+	Integer DRT_TAP_SHMOOS = 0;
+	Integer DRT_TAP_VMIN_SEARCH = 0;
+	Integer GOODCELL_WAFER_SAMPLELOWEST = 25;
+	String HVQK_Force_Stress = "0";
+	Integer idv_sample_rate = 2;
+	String RASTER_Force_Enable = "0";
+	String SPOFI_Force_Enable = "0";
+}
+
+UserVars EverythingReadyByA0
+{
+	String iCGL_EnablePatternModifyLog = "FALSE";
+}
+
+UserVars FUSEUFGL
+{
+	String UFGL_BurnNow = "";
+	String UFGL_Database_Lot = "";
+	String UFGL_Database_ULT = "";
+	String UFGL_Database_Wafer = "";
+	String UFGL_Database_X = "";
+	String UFGL_Database_Y = "";
+	String UFGL_Fuse_Burn_String = "";
+	String UFGL_Fuse_RAP_String = "";
+	String UFGL_Fuse_RAPIB26_String = "";
+	String UFGL_Fuse_RAPVADTL_String = "";
+	String UFGL_Fuse_Read_String = "";
+	String UFGL_Fuse_ULT_Encode_String = "";
+	String UFGL_Fuse_Write_IB26_String = "";
+	String UFGL_Fuse_Write_String = "";
+	String UFGL_Fuse_Write_VADTL_String = "";
+	String UFGL_MISMATCH_BITS = "";
+	String UFGL_ReadAfterBurnPassed = "0";
+	String UFGL_Resort = "";
+	String UFGL_StandingDieDebug = "0";
+	Integer UFGL_X_Offset = 0;
+	Integer UFGL_Y_Offset = 0;
+}
+
+UserVars FUSEVars
+{
+	String UFG_FREV_SPEC = "MTLxx";
+}
+
+UserVars HVQKVars
+{
+	String CORE_STRESS_HIGHV = "1.6";
+	String CORE_STRESS_LOWV = "1.0";
+	String DROP_VOLTAGE_ON_STRESS_FAIL = "YES";
+	Double MAX_VADTL_SHIFT = 0.05;
+	String SEGMENTED_STRESS_ENABLED = "FALSE";
+	Integer STRESS_STARTING_INDICATOR_LEVEL = 5;
+}
+
+UserVars RecoveryVars
+{
+	String IsDefeatured = "FALSE";
+	String IsDownBin = "FALSE";
+}
+
+UserVars RRL
+{
+	String iCGL_LYA_H = "";
+	String iCGL_LYA_V = "";
+}
+
+UserVars RunTimeLibraryVars
+{
+	String AUTODETECT_LATEST_PATH_ENABLE = "FALSE";
+	String AUTODETECT_LATEST_PATHS_ON_ENV_VARS = "FALSE";
+	Integer iCGL_AlarmDelayInstanceCurrent = 0;
+	Integer iCGL_AlarmDelayInstanceIgnored = 0;
+	String iCGL_AlarmSimulationEnabledIterations = "";
+	#String iCGL_AlarmSimulationType = "";  # csulliva comment out for tos3.10, can't co-exist with _UserVars.iCGL_AlarmSimulationType
+	String iCGL_DFF_Source = "RC:PBIC_S1/RC_S1:FC_S1/PBIC_S1:PBIC_S2/RC_S1:FC_S2/PBIC_S2:SORT/SORT:DEFAULT/RC_S1SR:DEFAULT/SORTOLF:DEFAULT/SORT";
+	String iCGL_EmbeddedPythonUnloadPydOrder = "";
+	String iCGL_EnableAlarmSimulation = "";
+	#String iCGL_EnableBabystep = "FALSE";  # csulliva comment out for tos3.10, can't co-exist with _UserVars.iCGL_EnableBabystep
+	String iCGL_EnableLsaSupport = "TRUE";
+	String iCGL_EnableMIDAS = "FALSE";
+	String iCGL_EnablePUDLLogtoFile = "TRUE";
+	#String iCGL_EnableRaster = "TRUE";  # csulliva comment out for tos3.10, can't co-exist with _UserVars.iCGL_EnableRaster
+	#String iCGL_EnableTrace = "OFF";  # csulliva comment out for tos3.10, can't co-exist with _UserVars.iCGL_EnableTrace
+	String iCGL_InstanceProfileTarget = "";
+	Integer iCGL_is_800mdm = 99;
+	Integer iCGL_is_dm250 = 99;
+	Integer iCGL_is_dps150a = 99;
+	String iCGL_ItuffLimitsForContinuity = "FALSE";
+	String iCGL_ItuffLimitsForLeakage = "FALSE";
+	String iCGL_ItuffLimitsForShops = "FALSE";
+	Integer iCGL_PacMonCaptureVectorMaximumCount = 4000000;
+	String iCGL_PowerUpTCName = "dps_on_0V_lvl_cat0";
+	String iCGL_PyLicense_Enable = "FALSE";
+	Integer iCGL_PythonExceedsTimePerTest = 0;
+	Integer iCGL_PythonExceedsTimePerUnit = 0;
+	String iCGL_RECOVERY_ALLOW_DOWN_BIN_FLOW = "DISABLED";
+	String iCGL_relay_token_name_space = "SORT_POR";
+	String iCGL_SSIDSetupName = "XX";
+	Integer iCGL_TciTdauValidationEnabled = 0;
+	String iCGL_TfileLeafPathNode = "tfile/";
+	String iCGL_TpAltName = "";
+	String iCGL_TraceLogDir = "X:/engtools/TRACE/TMMDATA/NOTAREALDIRECTORY";
+	String iCGL_UndoAutoBypass = "FALSE";
+	String iCGL_UseFlowFromInstanceParam = "";
+	Integer iCGL_ValidationEnabled = 0;
+	Integer iCGL_XsdLog_Enable = 0;
+}
+
+UserVars SCVars
+{
+	String EI_ATC_CHUCKDETAIL_INFO = "";
+	String EI_HANDLER_ID = "";
+	String EI_HWRT_FLG = "";
+	String EI_HWRT_ORG_HARD_BIN = "";
+	String EI_HWRT_ORG_SOFT_BIN = "";
+	String EI_HWRT_REPROBE_TIME = "";
+	String EI_HWRT_RETEST_NUM = "";
+	String PCATEnableFlags = "";
+	String PCATModelNames = "";
+	String PCATModelTokens = "";
+	String PUDL_CRC_ENABLE = "TRUE";
+	String SC_APPLIEDFUSEOPTION = "";
+	String SC_ASSEMID = "";
+	String SC_CELLID = "";
+	String SC_CHUCKID = "";
+	String SC_CHUCKID_INFO = "";
+	String SC_CTSC_ACTIVE = "FALSE";
+	String SC_CURRENT_PROCESS_STEP = "SORT";
+	String SC_CURRENT_PROCESS_TYPE = "";
+	String SC_DCP_INFO = "";
+	String SC_DEVICE = "8PEQCV";
+	String SC_DFF_INFO = "";
+	String SC_DOC_OVERTRAVEL = "0.0";
+	String SC_ELECZHT = "";
+	String SC_ENGID = "";
+	String SC_Env_File = "";
+	String SC_EZA_OPEN_PINS = "";
+	String SC_EZA_TEST_RESULT = "";
+	String SC_FABID = "";
+	String SC_FACILITYID = "";
+	String SC_FUSEID = "";
+	String SC_FUSEOPTIONS = "";
+	String SC_GROUPTESTITERATION = "-999";
+	String SC_Handler_Recipe = "";
+	String SC_HANDLERUNIQUEID = "";
+	String SC_HCSLMODE = "";
+	String SC_HRECIPENAME = "";
+	String SC_INTRO_METHOD = "SD";
+	String SC_LOADDFF = "";
+	String SC_LOADULT = "";
+	String SC_LOCN = "132310";
+	String SC_LOT_WAFER = "999";
+	String SC_LOTNAME = "41234567";
+	String SC_LOTSIZE = "";
+	String SC_LOTTYPE = "";
+	String SC_METRODATA = "";
+	String SC_MODULEID = "";
+	String SC_OPRID = "";
+	String SC_OPTIONALSTARTFLOW = "";
+	String SC_OPTIONALSTARTFLOWITEM = "";
+	String SC_ORG_DATABIN = "";
+	String SC_ORG_HARDBIN = "";
+	String SC_ORG_SOFTBIN = "";
+	String SC_PACKAGE = "XX";
+	String SC_PARTIALWAFID = "";
+	String SC_PROBER_HANDLER_ID = "";
+	String SC_PROCESS_STEP_SEQUENCE = "";
+	String SC_PRTTESTERID = "";
+	String SC_PUP_FILE = "";
+	String SC_RASTER_DLOG_PATH = "";
+	String SC_RECIPE_GUID = "";
+	String SC_RECIPE_MANIFEST = "";
+	String SC_RESERVED1 = "";
+	String SC_RESERVED2 = "";
+	String SC_RESERVED3 = "";
+	String SC_RESERVED4 = "";
+	String SC_RETEST_TYPE_NUMBER = "";
+	String SC_REV = "";
+	String SC_SCAN_DLOG_PATH = "";
+	String SC_SITE = "";
+	String SC_SITEID = "";
+	String SC_Soc_File = "";
+	String SC_SSPEC = "";
+	String SC_STDCORR_FLG = "FALSE";
+	String SC_STEP = "X";
+	String SC_STPL = "";
+	String SC_SUMMARY_NAME = "A";
+	String SC_SYNCTIME = "";
+	String SC_TCU_EFFORT = "";
+	String SC_TDNSEQ = "";
+	String SC_TEMPERATURE = "-10";
+	String SC_TEST_COUNT = "";
+	String SC_TEST_FLOW = "SDSSORT";
+	String SC_TEST_GROUP_COUNT = "";
+	String SC_TESTERID = "";
+	String SC_TESTERUSAGEMODEL = "";
+	String SC_THERMALHDID = "";
+	String SC_TIU_DISCONNECT = "FALSE";
+	String SC_TIU_MAX_SOCKET = "100";
+	String SC_TOTAL_TESTED = "1";
+	String SC_TP_CAL_FLG = "";
+	String SC_TP_RECIPE = "";
+	String SC_TRAYID = "";
+	String SC_TRAYX = "";
+	String SC_TRAYY = "";
+	String SC_ULT_DOWNLOAD_PATH = "";
+	String SC_ULT_REMOTE_PATH = "";
+	String SC_VISUALID = "35138423C0001";
+	String SC_WAFER_LIST = "999";
+	String SC_WAFERID = "999";
+	String SC_WAFERX = "1";
+	String SC_WAFERY = "1";
+	String SC_WS_PRODUCT = "";
+	String SC_XIU_CHECK_FLG = "";
+	String SC_XIU_MODE = "0";
+	String TP_ATC_CHUCKDETAIL_ENABLE = "TRUE";
+	String TP_ATC_CHUCKID_ENABLE = "TRUE";
+	String TP_ATC_CYCLES = "";
+	String TP_ENABLE_DFF_TIMESTAMP = "TRUE";
+	String TP_FLEXBOMHRI = "";
+	String TP_FLEXBOMRECIPE = "0000";
+	String TP_INIT_ERRMSG = "";
+	String TP_PROGRAM_NAME = "BaseTestPlan";
+	String TP_TESTBOARD_ID = "Default";
+	String TP_TIU_SOCKET_COUNT = "0";
+	String TP_ULTDB_VERSION = "4.0";
+	String TP_UNIT_ID = "";
+	String TP_ZHEIGHT_FAILPINS = "";
+	String TP_ZHEIGHT_FAILPINS_LIMIT = "100";
+}
+
+UserVars SysCUserVars
+{
+	String SC_CTSC_ACTIVE = "FALSE";
+	String SC_MODULE_TYPE = "SDX";
+	String SC_NAME = "ASTRA";
+	String SC_PACKAGE = "XX";
+	String SC_PUDL_SERVER_IPADDR = "10.250.0.200";
+}
+
+UserVars TPChassis
+{
+	String MajorRev = "049";
+	String MinorRev = "00";
+	String Platform = "HDMT";
+	String ReleaseRev = "Rev49";
+	String ReleaseURL = "https://wiki.ith.intel.com/pages/viewpage.action?pageId=1083873619";
+	String SortClass = "SDS";
+}
+
+UserVars TPI_SIU
+{
+	Double CORE_600MV = 0.6;
+	Double CORE_900MV = 1.0;
+}
+
+UserVars TSATTRSVars
+{
+	String RETEST_BINS = "";
+	String TPChassisReleaseRev = "SORT_SDS_Rev49";
+}
+
+UserVars
+{
+	String Frequency = "1.2GHz";
+	String BinMatrixXmlPath = "~HDMT_TPL_DIR/BinMatrix.xml";
+	String Binner_8Digit_Format = "FULL8DIGIT";
+	Integer cl_qa_flag = 1;
+	Integer ClampKitGlobal = 0;
+	Integer class_flag = 0;
+	Integer class_tdo_strb_mul = 0;
+	String CONTROLS_INIT_FLAG = "FAIL";
+	String CONTROLS_TPS_FLAG = "FAIL";
+	String CurrentBOMGroupType = "";
+	String Datalog_Validation_File = "";
+	String Datalog_Validation_Result = "";
+	String DATALOG_VALIDATOR = "ON";
+	String DFF_OVERWRITE_TO_GSDS = "TRUE";
+	String DFFTokenVersion = "B1.0";
+	String Disable_UltraBinner_B2690_Logic = "TRUE";
+	String DownstreamWithSearchSocketLocn = "";
+	String EnableGSDSCharSetCheck = "TRUE";
+	String Exit_From_Port2_On_Fail = "ON";
+	String FAB_PROCESS = "1276";
+	String FAST_AVIDCallbackPath = "";
+	String FAST_DIVACallbackPath = "";
+	Double FAST_ResolutionCheck = 0.01;
+	String FAST_SCANDATALOG_DEBUG = "FALSE";
+	String FAST_StartOnFirstFail = "TRUE";
+	String FAST_VminForwardingEnabled = "FALSE";
+	String FLXENABLE = "ON";
+	Integer GL_EnhancedCaptureMode_Enabled = 1;
+	String GL_TP_NAME = "";
+	String GlxPress_Use_13Fields_At_Sort = "TRUE";
+	String GROUP_DEFINITION_FILE = "./LocationsSets.txt";
+	Voltage hc_vcc_gb = 3mV;
+	Integer iBinValue = 6;
+	Integer iCGL_AlarmSimulationType = 0;
+	String iCGL_EnableBabystep = "FALSE";
+	String iCGL_EnableLdatRaster = "TRUE";
+	String iCGL_EnableRaster = "TRUE";
+	String iCGL_EnableRasterT = "TRUE";
+	String iCGL_EnableScanFI = "TRUE";
+	String iCGL_EnableScanFiHDMTPatLookUp = "TRUE";
+	String iCGL_EnableScanFITesterCycle = "FALSE";
+	String iCGL_EnableTFile = "TRUE";
+	String iCGL_EnableTrace = "OFF";
+	Integer iCGL_LegacyLabelAccessConvention = 1;
+	String iCGL_LsaRasterMetadataFile = "";
+	String iCGL_LsaRasterPatternNameVep2Format = "TRUE";
+	String iCGL_ProductName = "METEORLAKE";
+	String iCGL_UseUTCFileTimeStamps = "TRUE";
+	String InfraXmlPath = "~HDMT_TPL_DIR/FastInfra.xml";
+	Voltage lc_vcc_gb = 20mV;
+	String LocationMode = "COLD";
+	Integer NTSC_DIE_SAMPLE_1 = 0;
+	Integer NTSC_DIE_SAMPLE_10 = 0;
+	Integer NTSC_DIE_SAMPLE_15 = 0;
+	Integer NTSC_DIE_SAMPLE_2 = 0;
+	Integer NTSC_DIE_SAMPLE_20 = 0;
+	Integer NTSC_DIE_SAMPLE_30 = 0;
+	Integer NTSC_DIE_SAMPLE_4 = 0;
+	Integer NTSC_DIE_SAMPLE_40 = 0;
+	Integer NTSC_DIE_SAMPLE_5 = 0;
+	Integer NTSC_DIE_SAMPLE_50 = 0;
+	Integer NTSC_DIE_SAMPLE_8 = 0;
+	String OLB_TOKEN_NAME = "OLBBIN";
+	String OWNREMAIL = "";
+	Voltage pec_vcc_gb = 2mV;
+	String PRIMARY_OPTYPE = "ALL_SDS";
+	String PRIMARY_SOCKET = "TRUE";
+	String PrimarySocketLocn = "ALL_SDS";
+	String PUGXmlPath = "";
+	Integer QA_Enable = 0;
+	String QUERY_MODE = "ENG";
+	String SC_ActiveBinGroup = "MTL_CPU28_SDS";
+	String SC_GROUPID = "";
+	String SC_STEPPING = "A";
+	String SIGNAL_PIN_MAP_ENABLE = "FALSE";
+	Integer SignalFileOnWafer = 0;
+	String SKIP_DATALOG_WRITE = "TRUE";
+	String SSC_RTL_FAIL = "NO";
+	String SSID_ITUFF_TOKENS = "";
+	String Tester_Cfg = "";
+	String TP_GROUPID = "";
+	#String TP_INIT_ERRMSG = "FAIL";  # csulliva comment out for tos3.10, can't co-exist with SCVars.TP_INIT_ERRMSG
+	#String TP_TESTBOARD_ID = "Default";  # csulliva comment out for tos3.10, can't co-exist with SCVars.TP_TESTBOARD_ID
+	Integer TpFlagGlobal = 0;
+	String TPG_DIE_LOCATION = "X";
+	String TPG_DIE_RADIUS = "X";
+	String TPG_TEST_FLOW = "";
+	String TPG_TPREV = "MTLxx";
+	Integer TpGTPowerCommon = 1;
+	Current u_extbgref_clamp_hi = 0.1A;
+	Current u_extbgref_clamp_low = -0.1A;
+	Current u_v1p8a_clamp_hi = 0.49A;
+	Current u_v1p8a_clamp_low = -0.25A;
+	Current u_vccatom0_clamp_hi = 44A;
+	Current u_vccatom0_clamp_low = -20A;
+	Current u_vccatom1_clamp_hi = 44A;
+	Current u_vccatom1_clamp_low = -20A;
+	Current u_vcccore0_clamp_hi = 30A;
+	Current u_vcccore0_clamp_low = -20A;
+	Current u_vcccore1_clamp_hi = 30A;
+	Current u_vcccore1_clamp_low = -20A;
+	Current u_vccfpgm0_clamp_hi = 0.1A;
+	Current u_vccfpgm0_clamp_low = -0.1A;
+	Current u_vccfpgm1_clamp_hi = 0.1A;
+	Current u_vccfpgm1_clamp_low = -0.1A;
+	Current u_vccia_clamp_hi = 22A;
+	Current u_vccia_clamp_low = -10A;
+	Current u_vcciasensecep_clamp_hi = 0.1A;
+	Current u_vcciasensecep_clamp_low = -0.1A;
+	Current u_vccr_clamp_hi = 22A;
+	Current u_vccr_clamp_low = -10A;
+	Current u_vnnaon_clamp_hi = 4A;
+	Current u_vnnaon_clamp_low = -4A;
+	String UFG_Active_BomGroup = "MTL_CPU28_SDS";
+	Integer UFG_CL_QA_flag = 1;
+	String UFG_FUSE_L2NAME_MAP_FILE = "~FUSE_ROOT_DIR\\l2map.txt";
+	String UFG_PgmRules_BomGroup = "MTL_CPU28_SDS";
+	#String UFGL_Database_Lot = "D6263310";  # csulliva comment out for tos3.10, can't co-exist with FUSEUFGL.UFGL_Database_Lot
+	#String UFGL_Database_Wafer = "706";  # csulliva comment out for tos3.10, can't co-exist with FUSEUFGL.UFGL_Database_Wafer
+	#String UFGL_Database_X = "0";  # csulliva comment out for tos3.10, can't co-exist with FUSEUFGL.UFGL_Database_X
+	#String UFGL_Database_Y = "0";  # csulliva comment out for tos3.10, can't co-exist with FUSEUFGL.UFGL_Database_Y
+	String UFGL_FUSE_REV = "-999";
+	Integer UpperLeafValue = 1001;
+	String Vipr_9DigitCounters = "TRUE";
+}
+UserVars BOMGroups
+{
+	String MTL_CPU68_SDS = "MTL_CPU68_SDS";
+	String MTL_CPU28_SDS = "MTL_CPU28_SDS";
+}

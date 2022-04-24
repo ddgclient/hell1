@@ -1,0 +1,954 @@
+# Module Revision: milesyou - 05/19/21 03:06:52 PM
+
+Version 1.0;
+
+ProgramStyle = Modular;
+
+TestPlan TPI_BIN;
+
+
+
+
+Import OASIS_UserFunc_tt.xml;
+Import OASIS_Screen_tt.xml;
+Import OASIS_Auxiliary_tt.xml;
+Import OASIS_PowerDown_tt.xml;
+Import OASIS_UltraBinner_tt.xml;
+Import OASIS_SampleRate_tt.xml;
+
+
+
+
+#Test Counter Definition
+Counters
+{
+	n10260006_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_5,
+	n11260007_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_6,
+	n12260008_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_7,
+	n13260009_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_8,
+	n14260010_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_9,
+	n15260011_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_10,
+	n16260012_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_11,
+	n17200051_fail_CTRL_UB_X_K_FINAL_X_X_X_X_BIN17_CHECK_3,
+	n17260013_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_12,
+	n17650044_fail_CTRL_UB_X_K_FINAL_X_X_X_X_BIN17_CHECK_2,
+	n18260014_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_13,
+	n19260015_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_14,
+	n20260016_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_15,
+	n21260017_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_16,
+	n22260018_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_17,
+	n23260019_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_18,
+	n24260020_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_19,
+	n25260021_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_20,
+	n26000003_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_2,
+	n26010004_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_3,
+	n26020005_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_4,
+	n26030006_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_5,
+	n26040007_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_6,
+	n26050008_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_7,
+	n26060009_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_8,
+	n26070010_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_9,
+	n26080011_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_10,
+	n26090012_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_11,
+	n26100013_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_12,
+	n26110014_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_13,
+	n26120015_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_14,
+	n26130016_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_15,
+	n26140017_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_16,
+	n26150018_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_17,
+	n26160019_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_18,
+	n26170020_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_19,
+	n26180021_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_20,
+	n26190022_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_21,
+	n26200023_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_22,
+	n26210024_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_23,
+	n26220025_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_24,
+	n26230026_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_25,
+	n26240027_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_26,
+	n26250028_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_27,
+	n26260029_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_28,
+	n26264600_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_21,
+	n26270030_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_29,
+	n26280031_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_30,
+	n26290032_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_31,
+	n26300033_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_32,
+	n26310034_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_33,
+	n26320035_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_34,
+	n26330036_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_35,
+	n26340037_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_36,
+	n26350038_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_37,
+	n26360039_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_38,
+	n26370040_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_39,
+	n26380041_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_40,
+	n26390042_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_41,
+	n26400043_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_42,
+	n26410044_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_43,
+	n26430045_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_44,
+	n26450046_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_45,
+	n26460047_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_46,
+	n26470048_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_47,
+	n26480049_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_48,
+	n26490050_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_49,
+	n26500051_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_50,
+	n26510052_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_51,
+	n26520053_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_52,
+	n26530054_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_53,
+	n26540055_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_54,
+	n26550056_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_55,
+	n26560057_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_56,
+	n26570058_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_57,
+	n26580059_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_58,
+	n26590060_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_59,
+	n26600061_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_60,
+	n26610062_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_61,
+	n26620063_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_62,
+	n26630064_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_63,
+	n26640065_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_64,
+	n26650066_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_65,
+	n26660067_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_66,
+	n26670068_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_67,
+	n26680069_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_68,
+	n26690070_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_69,
+	n26700071_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_70,
+	n26710072_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_71,
+	n26720073_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_72,
+	n26730074_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_73,
+	n26740075_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_74,
+	n26750076_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_75,
+	n26760077_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_76,
+	n26770078_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_77,
+	n26780079_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_78,
+	n26790080_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_79,
+	n26800081_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_80,
+	n26810082_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_81,
+	n26820083_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_82,
+	n26830084_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_83,
+	n26840085_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_84,
+	n26850086_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_85,
+	n26860087_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_86,
+	n26870088_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_87,
+	n26880089_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_88,
+	n26890090_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_89,
+	n26900091_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_90,
+	n26910092_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_91,
+	n26920093_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_92,
+	n26930094_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_93,
+	n26940095_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_94,
+	n26950096_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_95,
+	n26960097_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_96,
+	n26970098_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_97,
+	n26980099_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_98,
+	n26990100_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_99,
+	n27260023_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_22,
+	n28260024_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_23,
+	n29260025_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_24,
+	n30260026_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_25,
+	n31260027_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_26,
+	n32260028_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_27,
+	n33260029_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_28,
+	n34260030_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_29,
+	n35260031_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_30,
+	n36260032_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_31,
+	n37260033_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_32,
+	n38260034_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_33,
+	n39260035_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_34,
+	n40260036_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_35,
+	n41260037_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_36,
+	n42260038_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_37,
+	n43260039_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_38,
+	n44260040_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_39,
+	n45260041_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_40,
+	n46260042_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_41,
+	n47260043_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_42,
+	n48260044_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_43,
+	n49000052_fail_CTRL_UB_X_K_FINAL_X_X_X_X_SETBIN_5,
+	n49260045_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_44,
+	n50260046_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_45,
+	n51260047_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_46,
+	n52260048_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_47,
+	n53260049_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_48,
+	n54260050_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_49,
+	n55260051_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_50,
+	n56260052_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_51,
+	n57260053_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_52,
+	n58260054_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_53,
+	n59260055_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_54,
+	n60260056_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_55,
+	n61260057_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_56,
+	n62260058_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_57,
+	n63260059_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_58,
+	n64260060_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_59,
+	n65260061_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_60,
+	n66260062_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_61,
+	n67260063_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_62,
+	n68260064_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_63,
+	n69010051_fail_CTRL_UB_X_K_FINAL_X_X_X_X_SETBIN_4,
+	n69260065_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_64,
+	n69690001_fail_CTRL_UB_X_K_START_X_X_X_X_SETDEFAULT_1,
+	n70260066_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_65,
+	n71260067_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_66,
+	n72260068_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_67,
+	n7260003_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_2,
+	n73260069_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_68,
+	n74260070_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_69,
+	n75260071_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_70,
+	n76260072_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_71,
+	n77260073_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_72,
+	n78260074_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_73,
+	n79260075_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_74,
+	n80260076_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_75,
+	n81260077_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_76,
+	n82260078_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_77,
+	n8260004_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_3,
+	n83260079_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_78,
+	n84260080_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_79,
+	n85260081_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_80,
+	n86260082_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_81,
+	n87260083_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_82,
+	n88260084_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_83,
+	n89260085_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_84,
+	n90060005_fail_CTRL_UF_X_K_INIT_X_X_X_X_FASTREVERIFY_0,
+	n90130024_fail_CTRL_UB_X_K_FINAL_X_X_X_X_BIN17_CHECK_0,
+	n90269998_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_0,
+	n90269999_fail_CTRL_UB_X_K_FINAL_X_X_X_X_STRESSINDUCEDFAILURE_0,
+	n90490027_fail_CTRL_UB_X_K_FINAL_X_X_X_X_GOODBIN3_0,
+	n90490028_fail_CTRL_UB_X_K_FINAL_X_X_X_X_GOODBIN1_0,
+	n90490034_fail_CTRL_UB_X_K_FINAL_X_X_X_X_GOODBIN2_0,
+	n90490035_fail_CTRL_UB_X_K_FINAL_X_X_X_X_GOODBIN4_0,
+	n90490036_fail_CTRL_UB_X_K_FINAL_X_X_X_X_GOODBIN5_0,
+	n90490037_fail_CTRL_UB_X_K_FINAL_X_X_X_X_GOODBIN6_0,
+	n90490050_fail_CTRL_UB_X_K_FINAL_X_X_X_X_SETBIN_0,
+	n90942422_fail_CTRL_UB_X_K_FINAL_X_X_X_X_PWRDWN_2,
+	n91260087_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_86,
+	n92260088_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_87,
+	n9260005_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_4,
+	n93260089_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_88,
+	n94000015_fail_CTRL_UB_X_K_START_X_X_X_X_SETDEFAULT_0,
+	n94010038_fail_CTRL_X_X_K_BEGIN_X_X_X_X_INITBIN17GSDS_0,
+	n94030036_fail_CTRL_X_X_K_BEGIN_X_X_X_X_INITBIN17GSDS_2,
+	n94090028_fail_CTRL_UB_X_K_START_X_X_X_X_SETNOREPAIR_0,
+	n94100029_fail_CTRL_UB_X_K_START_X_X_X_X_SETNOREPAIR_2,
+	n94110037_fail_CTRL_UB_X_K_START_X_X_X_X_SETNOREPAIR_3,
+	n94162420_fail_CTRL_UB_X_K_FINAL_X_X_X_X_PWRDWN_0,
+	n94170057_fail_CTRL_UB_X_K_FINAL_X_X_X_X_VMAX_BIN17_PRINT_2,
+	n94170060_fail_CTRL_UB_X_K_FINAL_X_X_X_X_VMAX_BIN17_PRINT_0,
+	n94180004_fail_CTRL_BINTRACE_X_K_END_X_X_X_X_START_0,
+	n94200010_fail_CTRL_BINTRACE_X_K_POSTHVQK_X_X_X_X_START_0,
+	n94240110_fail_CTRL_BINTRACE_X_K_STRESS_X_X_X_X_START_0,
+	n94252202_fail_CTRL_BINTRACE_X_K_FINAL_X_X_X_X_STOP_0,
+	n94260091_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_89,
+	n94262204_fail_CTRL_BINTRACE_X_K_END_X_X_X_X_STOP_0,
+	n94270012_fail_CTRL_UB_X_K_FINAL_X_X_X_X_PARSE_BIN_GOOD_2,
+	n94270013_fail_CTRL_UB_X_K_FINAL_X_X_X_X_SET_FBIN_2,
+	n94270014_fail_CTRL_UB_X_K_FINAL_X_X_X_X_PARSE_BIN_BAD_2,
+	n94270100_fail_CTRL_BINTRACE_X_K_STRESS_X_X_X_X_STOP_0,
+	n94270240_fail_CTRL_UB_X_K_FINAL_X_X_X_X_GET_BIN_0,
+	n94270243_fail_CTRL_UB_X_K_FINAL_X_X_X_X_GET_BIN_3,
+	n94270250_fail_CTRL_UB_X_K_FINAL_X_X_X_X_PARSE_BIN_GOOD_0,
+	n94270260_fail_CTRL_UB_X_K_FINAL_X_X_X_X_SET_FBIN_0,
+	n94270270_fail_CTRL_UB_X_K_FINAL_X_X_X_X_PARSE_BIN_BAD_0,
+	n94270280_fail_CTRL_UB_X_K_FINAL_X_X_X_X_PRINT_BIN_0,
+	n94270282_fail_CTRL_UB_X_K_FINAL_X_X_X_X_PRINT_BIN_2,
+	n94280006_fail_CTRL_BINTRACE_X_K_PREHVQK_X_X_X_X_START_0,
+	n94292210_fail_CTRL_BINTRACE_X_K_POSTHVQK_X_X_X_X_STOP_0,
+	n94332206_fail_CTRL_BINTRACE_X_K_PREHVQK_X_X_X_X_STOP_0,
+	n94340018_fail_CTRL_BINTRACE_X_K_BEGIN_X_X_X_X_START_0,
+	n94470030_fail_CTRL_UB_X_K_FINAL_X_X_X_X_COREFINALRESULT_0,
+	n94480032_fail_CTRL_UB_X_K_FINAL_X_X_X_X_COREFINALRESULT_2,
+	n94900020_fail_CTRL_X_X_K_FINAL_X_X_X_X_PRINTHVQKGOOD_0,
+	n94900021_fail_CTRL_X_X_K_FINAL_X_X_X_X_PRINTHVQKGOOD_2,
+	n94900023_fail_CTRL_X_X_K_FINAL_X_X_X_X_PRINTHVQKBAD_0,
+	n94900024_fail_CTRL_X_X_K_FINAL_X_X_X_X_PRINTHVQKBAD_2,
+	n94900025_fail_CTRL_X_X_K_FINAL_X_X_X_X_PRINTHVQKIB26_0,
+	n94900026_fail_CTRL_X_X_K_FINAL_X_X_X_X_PRINTHVQKIB26_2,
+	n94900031_fail_CTRL_X_X_E_INIT_X_X_X_X_SIGNALFILESETUP_0,
+	n95260091_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_90,
+	n96260092_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_91,
+	n97260093_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_92,
+	n98010001_fail_FAIL_SYSTEM_SOFTWARE,
+	n98260094_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_93,
+	n99010001_fail_FAIL_DPS_ALARM,
+	n99260095_fail_CTRL_UB_X_K_FINAL_X_X_X_X_HVQKFAILURE_94
+} # End of Test Counter Definition
+
+Test iCUserFuncTest CTRL_BINTRACE_X_K_BEGIN_X_X_X_X_START_P1
+{
+	function_name = "HSW_UF!BinTraceStart";
+	function_parameter = "BINTRACEBEGIN";
+}
+Test iCUserFuncTest CTRL_BINTRACE_X_K_FINAL_X_X_X_X_STOP_P1
+{
+	function_name = "HSW_UF!BinTraceStop";
+	function_parameter = "ITUFFOFF";
+	ignore_alarm = "CLAMP_ONLY";
+}
+Test iCUserFuncTest CTRL_BINTRACE_X_K_PREHVQK_X_X_X_X_START_P1
+{
+	function_name = "HSW_UF!BinTraceStart";
+	function_parameter = "BINTRACEPREHVQK";
+}
+Test iCUserFuncTest CTRL_BINTRACE_X_K_PREHVQK_X_X_X_X_STOP_P1
+{
+	function_name = "HSW_UF!BinTraceStop";
+	function_parameter = "ITUFFOFF";
+}
+Test iCUserFuncTest CTRL_BINTRACE_X_K_STRESS_X_X_X_X_START_P1
+{
+	function_name = "HSW_UF!BinTraceStart";
+	function_parameter = "BINTRACESTRESS";
+}
+Test iCUserFuncTest CTRL_BINTRACE_X_K_STRESS_X_X_X_X_STOP_P1
+{
+	function_name = "HSW_UF!BinTraceStop";
+	function_parameter = "ITUFFOFF";
+}
+Test iCScreenTest CTRL_UB_X_K_FINAL_X_X_X_X_COREFINALRESULT_P1
+{
+	screen_custom_file = "./Modules/TPI_BIN/InputFiles/ScreenCustom_Generic.txt";
+	screen_custom_setpoint = "ALL";
+	screen_test_set = "CoreFinalResult";
+	screen_tests_file = "./Modules/TPI_BIN/InputFiles/ScreenTest_CoreFinalResult.txt";
+}
+Test iCScreenTest CTRL_UB_X_K_FINAL_X_X_X_X_GET_BIN_P1
+{
+	datalog_mode = "DISABLED";
+	screen_custom_file = "./Modules/TPI_BIN/InputFiles/ScreenCustom_Generic.txt";
+	screen_custom_setpoint = "ALL";
+	screen_test_set = "PrintBinToItuff_GetBin";
+	screen_tests_file = "./Modules/TPI_BIN/InputFiles/screentest_hvqk.txt";
+}
+
+
+Test iCAuxiliaryTest CTRL_UB_X_K_FINAL_X_X_X_X_PARSE_BIN_GOOD_P1
+{
+	data_type = "STRING";
+	datalog_mode = "DISABLED";
+#	expression = "G.U.S.BIN_Tester[4:5]"; # on Prime 6.00 G.U.S.Bin_Tester was [10060100]
+	expression = "G.U.S.BIN_Tester[1:2]"; # on Prime 6.01 G.U.S.Bin_Tester was [601]
+	result_var = "G.U.I.BIN_FB";
+}
+Test iCScreenTest CTRL_UB_X_K_FINAL_X_X_X_X_PRINT_BIN_P1
+{
+	screen_custom_file = "./Modules/TPI_BIN/InputFiles/ScreenCustom_Generic.txt";
+	screen_custom_setpoint = "ALL";
+	screen_test_set = "PrintBinToItuff_FINAL";
+	screen_tests_file = "./Modules/TPI_BIN/InputFiles/screentest_hvqk.txt";
+}
+Test iCAuxiliaryTest CTRL_UB_X_K_FINAL_X_X_X_X_SET_FBIN_P1
+{
+	data_type = "NUMERIC";
+	datalog_mode = "DISABLED";
+	expression = "(_UserVars.I.iBinValue*100)+G.U.I.BIN_FB";
+	result_var = "G.U.I.BIN_FB";
+}
+Test iCUltraBinnerTest CTRL_UB_X_K_FINAL_X_X_X_X_SETBIN_P1
+{
+	binner_mode = "SET_BIN";
+}
+Test iCUltraBinnerTest CTRL_UB_X_K_INIT_X_X_X_X_TEMPLATE_BINNER_P1
+{
+	binner_config_file = "./Modules/TPI_BIN/InputFiles/MTL_CPU28_ultrabinner_config.ub.xml";
+	binner_mode = "READ_CONFIG_FILE";
+}
+Test iCUltraBinnerTest CTRL_UB_X_K_START_X_X_X_X_SETDEFAULT_P1
+{
+	binner_config_file = "./Modules/TPI_BIN/InputFiles/MTL_CPU28_ultrabinner_config.ub.xml";
+	binner_mode = "SET_INITIAL_VALUE";
+}
+Test iCScreenTest CTRL_UB_X_K_START_X_X_X_X_SETNOREPAIR_P1
+{
+	screen_custom_file = "./Modules/TPI_BIN/InputFiles/ScreenCustom_Generic.txt";
+	screen_custom_setpoint = "ALL";
+	screen_test_set = "SetNoRepair";
+	screen_tests_file = "./Modules/TPI_BIN/InputFiles/ScreenTest_SetNoRepair.txt";
+}
+Test iCUserFuncTest CTRL_UF_X_K_INIT_X_X_X_X_FASTREVERIFY_P1
+{
+	function_name = "OASIS_GEN_FAST_tt!FASTReVerify";
+}
+Test iCSampleRateTest CTRL_X_X_E_INIT_X_X_X_X_SIGNALFILESETUP_P2
+{
+	sample_rate = "0";
+	signalfile_path = "I:/signal/1272/prod/CML/SDS/";
+	skip_global = "SignalFileOnWafer";
+	skip_port = "";
+	sort_sample_form = "SIGNAL_FILE";
+}
+
+DUTFlow TPI_BIN_BEGIN
+{
+	DUTFlowItem CTRL_BINTRACE_X_K_BEGIN_X_X_X_X_START_P1 CTRL_BINTRACE_X_K_BEGIN_X_X_X_X_START_P1
+	{
+		Result -2
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+			Return -2;
+		}		
+		Result -1
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+			Return -1;
+		}		
+		Result 0
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_BIN::n94340018_fail_CTRL_BINTRACE_X_K_BEGIN_X_X_X_X_START_0;
+			SetBin SoftBins.b94340018_fail_TPI_BIN_CTRL_BINTRACE_X_K_BEGIN_X_X_X_X_START_0;
+			Return 0;
+		}		
+		Result 1
+		{
+			Property PassFail = "Pass";
+			Return 1;
+		}		
+	}	
+}
+
+DUTFlow TPI_BIN_FINAL
+{
+	DUTFlowItem CTRL_UB_X_K_FINAL_X_X_X_X_COREFINALRESULT_P1 CTRL_UB_X_K_FINAL_X_X_X_X_COREFINALRESULT_P1
+	{
+		Result -2
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+			Return -2;
+		}		
+		Result -1
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+			Return -1;
+		}		
+		Result 0
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_BIN::n94470030_fail_CTRL_UB_X_K_FINAL_X_X_X_X_COREFINALRESULT_0;
+			SetBin SoftBins.b94470030_fail_TPI_BIN_CTRL_UB_X_K_FINAL_X_X_X_X_COREFINALRESULT_SHARED_BIN;
+			Return 0;
+		}		
+		Result 1
+		{
+			Property PassFail = "Pass";
+			GoTo CTRL_BINTRACE_X_K_FINAL_X_X_X_X_STOP_P1;
+		}		
+		Result 2
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_BIN::n94480032_fail_CTRL_UB_X_K_FINAL_X_X_X_X_COREFINALRESULT_2;
+			SetBin SoftBins.b94480032_fail_TPI_BIN_CTRL_UB_X_K_FINAL_X_X_X_X_COREFINALRESULT_SHARED_BIN;
+			Return 0;
+		}		
+		Result 3
+		{
+			Property PassFail = "Pass";
+			Return 0;
+		}		
+	}	
+	DUTFlowItem CTRL_BINTRACE_X_K_FINAL_X_X_X_X_STOP_P1 CTRL_BINTRACE_X_K_FINAL_X_X_X_X_STOP_P1
+	{
+		Result -2
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+			Return -2;
+		}		
+		Result -1
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+			Return -1;
+		}		
+		Result 0
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_BIN::n94252202_fail_CTRL_BINTRACE_X_K_FINAL_X_X_X_X_STOP_0;
+			SetBin SoftBins.b94252202_fail_TPI_BIN_CTRL_BINTRACE_X_K_FINAL_X_X_X_X_STOP_0;
+			Return 0;
+		}		
+		Result 1
+		{
+			Property PassFail = "Pass";
+			GoTo CTRL_UB_X_K_FINAL_X_X_X_X_SETBIN_P1;
+		}		
+	}	
+	DUTFlowItem CTRL_UB_X_K_FINAL_X_X_X_X_SETBIN_P1 CTRL_UB_X_K_FINAL_X_X_X_X_SETBIN_P1
+	{
+		Result -2
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+			Return -2;
+		}		
+		Result -1
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+			Return -1;
+		}		
+		Result 0
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_BIN::n90490050_fail_CTRL_UB_X_K_FINAL_X_X_X_X_SETBIN_0;
+			SetBin SoftBins.b90490050_fail_TPI_BIN_CTRL_UB_X_K_FINAL_X_X_X_X_SETBIN_0;
+			Return 0;
+		}		
+		Result 1
+		{
+			Property PassFail = "Pass";
+			GoTo CTRL_UB_X_K_FINAL_X_X_X_X_GET_BIN_P1;
+		}		
+		Result 2
+		{
+			Property PassFail = "Pass";
+			Return 0;
+		}		
+		Result 3
+		{
+			Property PassFail = "Pass";
+			Return 0;
+		}		
+		Result 4
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_BIN::n69010051_fail_CTRL_UB_X_K_FINAL_X_X_X_X_SETBIN_4;
+			SetBin SoftBins.b69010051_fail_TPI_BIN_CTRL_UB_X_K_FINAL_X_X_X_X_SETBIN_4;
+			Return 0;
+		}		
+		Result 5
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_BIN::n49000052_fail_CTRL_UB_X_K_FINAL_X_X_X_X_SETBIN_5;
+			SetBin SoftBins.b49000052_fail_TPI_BIN_CTRL_UB_X_K_FINAL_X_X_X_X_SETBIN_5;
+			Return 0;
+		}		
+	}	
+	DUTFlowItem CTRL_UB_X_K_FINAL_X_X_X_X_GET_BIN_P1 CTRL_UB_X_K_FINAL_X_X_X_X_GET_BIN_P1
+	{
+		Result -2
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+			Return -2;
+		}		
+		Result -1
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+			Return -1;
+		}		
+		Result 0
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_BIN::n94270240_fail_CTRL_UB_X_K_FINAL_X_X_X_X_GET_BIN_0;
+			SetBin SoftBins.b94270240_fail_TPI_BIN_CTRL_UB_X_K_FINAL_X_X_X_X_GET_BIN_0;
+			Return 0;
+		}		
+		Result 1
+		{
+			Property PassFail = "Pass";
+			GoTo CTRL_UB_X_K_FINAL_X_X_X_X_PARSE_BIN_GOOD_P1;
+		}		
+		Result 2
+		{
+			Property PassFail = "Pass";
+			Return 0;
+		}		
+		Result 3
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_BIN::n94270243_fail_CTRL_UB_X_K_FINAL_X_X_X_X_GET_BIN_3;
+			SetBin SoftBins.b94270243_fail_TPI_BIN_CTRL_UB_X_K_FINAL_X_X_X_X_GET_BIN_3;
+			Return 0;
+		}		
+	}	
+	DUTFlowItem CTRL_UB_X_K_FINAL_X_X_X_X_PARSE_BIN_GOOD_P1 CTRL_UB_X_K_FINAL_X_X_X_X_PARSE_BIN_GOOD_P1
+	{
+		Result -2
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+			Return -2;
+		}		
+		Result -1
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+			Return -1;
+		}		
+		Result 0
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_BIN::n94270250_fail_CTRL_UB_X_K_FINAL_X_X_X_X_PARSE_BIN_GOOD_0;
+			SetBin SoftBins.b94270250_fail_TPI_BIN_CTRL_UB_X_K_FINAL_X_X_X_X_PARSE_BIN_GOOD_0;
+			Return 0;
+		}		
+		Result 1
+		{
+			Property PassFail = "Pass";
+			GoTo CTRL_UB_X_K_FINAL_X_X_X_X_SET_FBIN_P1;
+		}		
+		Result 2
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_BIN::n94270012_fail_CTRL_UB_X_K_FINAL_X_X_X_X_PARSE_BIN_GOOD_2;
+			SetBin SoftBins.b94270012_fail_TPI_BIN_CTRL_UB_X_K_FINAL_X_X_X_X_PARSE_BIN_GOOD_2;
+			Return 0;
+		}		
+	}	
+	DUTFlowItem CTRL_UB_X_K_FINAL_X_X_X_X_SET_FBIN_P1 CTRL_UB_X_K_FINAL_X_X_X_X_SET_FBIN_P1
+	{
+		Result -2
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+			Return -2;
+		}		
+		Result -1
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+			Return -1;
+		}		
+		Result 0
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_BIN::n94270260_fail_CTRL_UB_X_K_FINAL_X_X_X_X_SET_FBIN_0;
+			SetBin SoftBins.b94270260_fail_TPI_BIN_CTRL_UB_X_K_FINAL_X_X_X_X_SET_FBIN_0;
+			Return 0;
+		}		
+		Result 1
+		{
+			Property PassFail = "Pass";
+			GoTo CTRL_UB_X_K_FINAL_X_X_X_X_PRINT_BIN_P1;
+		}		
+		Result 2
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_BIN::n94270013_fail_CTRL_UB_X_K_FINAL_X_X_X_X_SET_FBIN_2;
+			SetBin SoftBins.b94270013_fail_TPI_BIN_CTRL_UB_X_K_FINAL_X_X_X_X_SET_FBIN_2;
+			Return 0;
+		}		
+	}	
+	DUTFlowItem CTRL_UB_X_K_FINAL_X_X_X_X_PRINT_BIN_P1 CTRL_UB_X_K_FINAL_X_X_X_X_PRINT_BIN_P1
+	{
+		Result -2
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+			Return -2;
+		}		
+		Result -1
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+			Return -1;
+		}		
+		Result 0
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_BIN::n94270280_fail_CTRL_UB_X_K_FINAL_X_X_X_X_PRINT_BIN_0;
+			SetBin SoftBins.b94270280_fail_TPI_BIN_CTRL_UB_X_K_FINAL_X_X_X_X_PRINT_BIN_0;
+			Return 0;
+		}		
+		Result 1
+		{
+			Property PassFail = "Pass";
+			Return 1;
+		}		
+		Result 2
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_BIN::n94270282_fail_CTRL_UB_X_K_FINAL_X_X_X_X_PRINT_BIN_2;
+			SetBin SoftBins.b94270282_fail_TPI_BIN_CTRL_UB_X_K_FINAL_X_X_X_X_PRINT_BIN_2;
+			Return 0;
+		}		
+	}	
+}
+
+Flow TPI_BIN_INIT
+{
+	FlowItem CTRL_UB_X_K_INIT_X_X_X_X_TEMPLATE_BINNER_P1 CTRL_UB_X_K_INIT_X_X_X_X_TEMPLATE_BINNER_P1
+	{
+		Result -2
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+			Return -2;
+		}		
+		Result -1
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+			Return -1;
+		}		
+		Result 0
+		{
+			Property PassFail = "Fail";
+			Return 0;
+		}		
+		Result 1
+		{
+			Property PassFail = "Pass";
+			GoTo CTRL_UF_X_K_INIT_X_X_X_X_FASTREVERIFY_P1;
+		}		
+	}	
+	FlowItem CTRL_UF_X_K_INIT_X_X_X_X_FASTREVERIFY_P1 CTRL_UF_X_K_INIT_X_X_X_X_FASTREVERIFY_P1
+	{
+		Result -2
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+			Return -2;
+		}		
+		Result -1
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+			Return -1;
+		}		
+		Result 0
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_BIN::n90060005_fail_CTRL_UF_X_K_INIT_X_X_X_X_FASTREVERIFY_0;
+			SetBin SoftBins.b90060005_fail_TPI_BIN_CTRL_UF_X_K_INIT_X_X_X_X_FASTREVERIFY_0;
+			Return 0;
+		}		
+		Result 1
+		{
+			Property PassFail = "Pass";
+			GoTo CTRL_X_X_E_INIT_X_X_X_X_SIGNALFILESETUP_P2;
+		}		
+	}	
+	FlowItem CTRL_X_X_E_INIT_X_X_X_X_SIGNALFILESETUP_P2 CTRL_X_X_E_INIT_X_X_X_X_SIGNALFILESETUP_P2
+	{
+		Result -2
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+			Return -2;
+		}		
+		Result -1
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+			Return -1;
+		}		
+		Result 0
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_BIN::n94900031_fail_CTRL_X_X_E_INIT_X_X_X_X_SIGNALFILESETUP_0;
+			Return 1;
+		}		
+		Result 1
+		{
+			Property PassFail = "Pass";
+			Return 1;
+		}		
+		Result 2
+		{
+			Property PassFail = "Pass";
+			Return 1;
+		}		
+		Result 3
+		{
+			Property PassFail = "Pass";
+			Return 1;
+		}		
+	}	
+}
+
+DUTFlow TPI_BIN_PREHVQK
+{
+	DUTFlowItem CTRL_BINTRACE_X_K_PREHVQK_X_X_X_X_STOP_P1 CTRL_BINTRACE_X_K_PREHVQK_X_X_X_X_STOP_P1
+	{
+		Result -2
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+			Return -2;
+		}		
+		Result -1
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+			Return -1;
+		}		
+		Result 0
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_BIN::n94332206_fail_CTRL_BINTRACE_X_K_PREHVQK_X_X_X_X_STOP_0;
+			SetBin SoftBins.b94332206_fail_TPI_BIN_CTRL_BINTRACE_X_K_PREHVQK_X_X_X_X_STOP_0;
+			Return 0;
+		}		
+		Result 1
+		{
+			Property PassFail = "Pass";
+			GoTo CTRL_BINTRACE_X_K_PREHVQK_X_X_X_X_START_P1;
+		}		
+	}	
+	
+	DUTFlowItem CTRL_BINTRACE_X_K_PREHVQK_X_X_X_X_START_P1 CTRL_BINTRACE_X_K_PREHVQK_X_X_X_X_START_P1
+	{
+		Result -2
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+			Return -2;
+		}		
+		Result -1
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+			Return -1;
+		}		
+		Result 0
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_BIN::n94280006_fail_CTRL_BINTRACE_X_K_PREHVQK_X_X_X_X_START_0;
+			SetBin SoftBins.b94280006_fail_TPI_BIN_CTRL_BINTRACE_X_K_PREHVQK_X_X_X_X_START_0;
+			Return 0;
+		}		
+		Result 1
+		{
+			Property PassFail = "Pass";
+			Return 1;
+		}		
+	}	
+}
+
+DUTFlow TPI_BIN_START
+{
+	DUTFlowItem CTRL_UB_X_K_START_X_X_X_X_SETDEFAULT_P1 CTRL_UB_X_K_START_X_X_X_X_SETDEFAULT_P1
+	{
+		Result -2
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+			Return -2;
+		}		
+		Result -1
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+			Return -1;
+		}		
+		Result 0
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_BIN::n94000015_fail_CTRL_UB_X_K_START_X_X_X_X_SETDEFAULT_0;
+			SetBin SoftBins.b94000015_fail_TPI_BIN_CTRL_UB_X_K_START_X_X_X_X_SETDEFAULT_0;
+			Return 0;
+		}		
+		Result 1
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_BIN::n69690001_fail_CTRL_UB_X_K_START_X_X_X_X_SETDEFAULT_1;
+			SetBin SoftBins.b69690001_fail_TPI_BIN_CTRL_UB_X_K_START_X_X_X_X_SETDEFAULT_1;
+			GoTo CTRL_UB_X_K_START_X_X_X_X_SETNOREPAIR_P1;
+		}		
+	}	
+	
+	DUTFlowItem CTRL_UB_X_K_START_X_X_X_X_SETNOREPAIR_P1 CTRL_UB_X_K_START_X_X_X_X_SETNOREPAIR_P1
+	{
+		Result -2
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+			Return -2;
+		}		
+		Result -1
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+			Return -1;
+		}		
+		Result 0
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_BIN::n94090028_fail_CTRL_UB_X_K_START_X_X_X_X_SETNOREPAIR_0;
+			SetBin SoftBins.b94090028_fail_TPI_BIN_CTRL_UB_X_K_START_X_X_X_X_SETNOREPAIR_0;
+			Return 0;
+		}		
+		Result 1
+		{
+			Property PassFail = "Pass";
+			Return 1;
+		}		
+		Result 2
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_BIN::n94100029_fail_CTRL_UB_X_K_START_X_X_X_X_SETNOREPAIR_2;
+			SetBin SoftBins.b94100029_fail_TPI_BIN_CTRL_UB_X_K_START_X_X_X_X_SETNOREPAIR_2;
+			Return 0;
+		}		
+		Result 3
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_BIN::n94110037_fail_CTRL_UB_X_K_START_X_X_X_X_SETNOREPAIR_3;
+			SetBin SoftBins.b94110037_fail_TPI_BIN_CTRL_UB_X_K_START_X_X_X_X_SETNOREPAIR_3;
+			Return 0;
+		}		
+	}	
+}
+
+DUTFlow TPI_BIN_STRESS
+{
+	DUTFlowItem CTRL_BINTRACE_X_K_STRESS_X_X_X_X_STOP_P1 CTRL_BINTRACE_X_K_STRESS_X_X_X_X_STOP_P1
+	{
+		Result -2
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+			Return -2;
+		}		
+		Result -1
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+			Return -1;
+		}		
+		Result 0
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_BIN::n94270100_fail_CTRL_BINTRACE_X_K_STRESS_X_X_X_X_STOP_0;
+			SetBin SoftBins.b94270100_fail_TPI_BIN_CTRL_BINTRACE_X_K_STRESS_X_X_X_X_STOP_0;
+			Return 0;
+		}		
+		Result 1
+		{
+			Property PassFail = "Pass";
+			GoTo CTRL_BINTRACE_X_K_STRESS_X_X_X_X_START_P1;
+		}		
+	}	
+	
+	DUTFlowItem CTRL_BINTRACE_X_K_STRESS_X_X_X_X_START_P1 CTRL_BINTRACE_X_K_STRESS_X_X_X_X_START_P1
+	{
+		Result -2
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+			Return -2;
+		}		
+		Result -1
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+			Return -1;
+		}		
+		Result 0
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_BIN::n94240110_fail_CTRL_BINTRACE_X_K_STRESS_X_X_X_X_START_0;
+			SetBin SoftBins.b94240110_fail_TPI_BIN_CTRL_BINTRACE_X_K_STRESS_X_X_X_X_START_0;
+			Return 0;
+		}		
+		Result 1
+		{
+			Property PassFail = "Pass";
+			Return 1;
+		}		
+	}	
+}

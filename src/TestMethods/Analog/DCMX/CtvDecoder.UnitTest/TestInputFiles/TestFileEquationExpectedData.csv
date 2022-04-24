@@ -1,0 +1,11 @@
+Pin,IP,Sequence,Subsequence,Field,Size,ExpectedData,Equation,ItuffToken
+DDR1_DQ50,V0,training,subseq1,val1,6,-,-,<TssidRename>_Token1
+DDR1_DQ50,V0,training,subseq2,val2,3,-,-,<TssidRename>_Token1
+DDR1_DQ50,V0,training,subseq2,result,0,108,val2*DDR1_DQ50.V0.training.subseq1.val1,<TssidRename>_Token1
+DDR1_DQ50,V0,training,subseq2,result2,0,1,result==108,-
+DDR1_DQ50,V0,training,subseq2,result3,0,1,result<109,-
+DDR1_DQ50,V0,training,subseq2,result4,0,1,result<=108,-
+DDR1_DQ50,V0,training,subseq2,result5,0,1,result!=107,-
+DDR1_DQ50,V0,training,subseq2,result6,0,1,result>107,-
+DDR1_DQ50,V0,training,subseq2,result7,0,1,result>=108,-
+DDR1_DQ50,V0,training,subseq2,result8,0,0,result!=108,-

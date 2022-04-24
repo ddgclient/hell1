@@ -1,0 +1,44 @@
+[
+ 	{
+		"GSDSList": ["BGDEFTEMPCO_BGTRIM_AVG"],
+		"GSDSSCopeType": "U.I",
+		"Delimiter": "|",
+		"DFF": "BGRTF_S",
+		"DFFOpType": "SORT",
+		"GSDS2DFF": true,
+		"DFF2GSDS": false,
+		"PrintDFF": true
+	},
+	{
+		"GSDSList": ["LO_BGTEMPCO_BGTRIM_AVG", "HI_BGTEMPCO_BGTRIM_AVG"],
+		"GSDSSCopeType": "U.I",
+		"Delimiter": "|",
+		"DFF": "BGRTR_S",
+		"DFFOpType": "SORT",
+		"GSDS2DFF": true,
+		"DFF2GSDS": false,
+		"PrintDFF": true
+	},
+	{
+		"GSDSList": ["DEFTC_DFF"],
+		"GSDSSCopeType": "U.I",
+		"DFF": "BGRTC_S",
+		"DFFOpType": "SORT",
+		"GSDS2DFF": true,
+		"DFF2GSDS": false,
+		"PrintDFF": true
+	},
+	{
+		"GSDSList": ["G.U.S.VminCF6CR_Test"],
+		"DFF" : "SORT:CF6CR",
+		"DFF2GSDS" : true,
+		"SearchReplace": { "v": "," }
+	},
+	{
+		"GSDSList": ["G.U.S.VminCF5CR_Test"],
+		"DFF" : "SORT:CF5CR",
+		"DFF2GSDS" : true,
+		"SearchReplace": { "v": "," }
+	}
+]
+

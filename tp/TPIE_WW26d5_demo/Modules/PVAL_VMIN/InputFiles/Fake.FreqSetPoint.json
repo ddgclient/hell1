@@ -1,0 +1,18 @@
+{
+	"CornerIdentifiers": {
+		"CLR0@F1": [ 
+			{
+				"Module": "PVAL_VMIN",
+				"Group": "ring_freq",
+				"SetPoint": "{CLR_F1_FREQ}"
+			}
+		],
+		"CLR0@F2": [ 
+			{
+				"Module": "PVAL_VMIN",
+				"Group": "ring_freq",
+				"SetPoint": "{CLR_F2_FREQ}"
+			}
+		]
+	}
+}

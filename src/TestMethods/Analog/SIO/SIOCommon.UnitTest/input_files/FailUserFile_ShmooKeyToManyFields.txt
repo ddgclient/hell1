@@ -1,0 +1,2 @@
+LOCAL_OPTIONS_SETUP      	RKEY                   KeyValueR:SomeType:ToManyFields
+LOCAL_OPTIONS_SETUP			RVALUE				   00

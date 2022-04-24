@@ -1,0 +1,240 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>ImpactStudiesVmin template</title>
+</head>
+<body>
+
+    <h1 id="impactstudiesvmin-template">ImpactStudiesVmin template</h1>
+<h2 id="debug-only-not-for-production-test">DEBUG ONLY -- NOT FOR PRODUCTION TEST</h2>
+<h3 id="rev-0">Rev 0</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1. <a href="#introduction">Introduction</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">2. <a href="#test-instance-parameters">Test Instance Parameters</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">3. <a href="#datalog-output">Datalog output</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">4. <a href="#tpl-samples">TPL Samples</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">5. <a href="#exit-ports">Exit Ports</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="section"></h3>
+<hr />
+<h2 id="introduction">1. Introduction</h2>
+<p>This is a debug/dv test template designed to run a series of Vmin searches in order to find the best patterns to use.<br />
+The user supplies a base set of VminTC parameters and a list of patternlists. The template will run a Vmin search on each
+patternlist (forwarding the vmin from one to the next) and run a custom per-IP scoreboard on each.</p>
+<hr />
+<h2 id="test-instance-parameters">2. Test Instance Parameters</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Parameter Name</th>
+<th style="text-align: left;">Required?</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">ConfigurationFile</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">File</td>
+<td style="text-align: left;">Configuration file to use. See details below.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="parameter-details">2.1. Parameter Details</h3>
+<h4 id="configurationfile">ConfigurationFile</h4>
+<p>The configuration file contains 2 main sections:</p>
+<ol>
+<li>VminParameters
+<ol>
+<li>This is a dictionary containing the base VminTC parameters to use for each search (eg TimingsTc, LevelsTc, PinMap, ...)</li>
+</ol>
+</li>
+<li>Tests
+<ol>
+<li>This is the list of Vmin searches to run. It contains 3 elements.
+<ol>
+<li>Name: This is the name to use when logging information about this search. It can be anything, but should be unique.</li>
+<li>Patlist: This is the plist to run the search on.</li>
+<li>Overrides: [Optional] This is a dictionary containing VminTC parameters to use for this test. They can be in addtion to the ones under the VminParametes section, or can overwrite them.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p>The first Test in the Tests section will have its StartVoltages parameter set to the StartVoltages in the VminParameters section.
+All subsequent tests will use the vmin result from the previous test.</p>
+<pre><code class="language-json">{
+  &quot;VminParameters&quot;: 
+  {
+    &quot;ParameterA&quot;: &quot;ValueA&quot;,
+    &quot;ParameterB&quot;: &quot;ValueB&quot;
+  },
+  &quot;Tests&quot;: 
+  [
+    { 
+      &quot;Name&quot;: &quot;BaselineTest&quot;,
+      &quot;Patlist&quot;: &quot;BaselinePlist&quot;,
+      &quot;Overrides&quot;: { &quot;ParameterC&quot;: &quot;ValueC&quot; }
+    },
+    { 
+      &quot;Name&quot;: &quot;SearchTest1&quot;,
+      &quot;Patlist&quot;: &quot;Plist1&quot;,
+    },
+    { 
+      &quot;Name&quot;: &quot;SearchTest2&quot;,
+      &quot;Patlist&quot;: &quot;Plist1&quot;,
+      &quot;Overrides&quot;: { &quot;ParameterC&quot;: &quot;ValueC&quot;, &quot;ParameterA&quot;: &quot;ValueD&quot; }
+    }
+  ]
+}
+</code></pre>
+<hr />
+<h2 id="datalog-output">3. Datalog output</h2>
+<p>This information is logged for each &quot;Test&quot; listed in the Configuration File.
+For the examples below, the test instance was called &quot;IP_CPU::IMPACT_STUDIES::TestImpactStudiesVmin&quot; and the
+test from the ConfigFile was called &quot;baseline&quot;.</p>
+<p>The first thing logged is the standard Vmin results.<br />
+tname is TestInstanceName|TestNameFromConfigFile
+strgval is FinalVoltageValues|StartingVoltageValues|UpperLimitVoltageValues|NumberOfExecutions</p>
+<pre><code>0_tname_IP_CPU::IMPACT_STUDIES::TestImpactStudiesVmin|baseline
+0_strgval_0.510_0.490_0.520_0.530|0.400_0.400_0.400_0.400|1.200_1.200_1.200_1.200|14
+</code></pre>
+<p>The next thing is the scoreboard test details.
+tname is TestInstanceName|TestNameFromConfigFile|scb
+strgval is TargetVoltageValues|StartingPatternName|StartingPatternBurst|StartingPatternIndex|NumberOfFailuresLogged</p>
+<pre><code>0_tname_IP_CPU::IMPACT_STUDIES::TestImpactStudiesVmin|baseline|scb
+0_strgval_0.49_0.47_0.5_0.51|g1153682F1905720I_Mg_VTB044T_Finm042h2ibn_a121216xx00022xbx1xxxalb_TB1PThTC003J1y3_LJx0A42x3nxx0000_DS02_Frenzy_Y_880012CC|0|1|6
+</code></pre>
+<p>The next thing logged (if the scoreboard test had failures) will be the per-IP failures.
+tname is TestInstanceName|TestNameFromConfigFile|PinMap
+(if the failure cannot be mapped to a PinMap, then the failing pin will be used instead)
+strgval is the list of ScoreboardBaseNum + ScoreBoardNum
+(ScoreBoardNum is generated using the PatternNameMap parameter)</p>
+<pre><code>0_tname_IP_CPU::IMPACT_STUDIES::TestImpactStudiesVmin|baseline|CORE0_NOA
+0_strgval_00011153682|00011153739
+
+0_tname_IP_CPU::IMPACT_STUDIES::TestImpactStudiesVmin|baseline|CORE1_NOA
+0_strgval_00011153682|00011153739
+
+0_tname_IP_CPU::IMPACT_STUDIES::TestImpactStudiesVmin|baseline|CORE2_NOA
+0_strgval_00011153682|00011153739
+
+0_tname_IP_CPU::IMPACT_STUDIES::TestImpactStudiesVmin|baseline|CORE3_NOA
+0_strgval_00011153697
+</code></pre>
+<p>If the failure was due to an AMBLE pattern (preburst/prepattern/postburst/postpattern)
+it will be logged as a AMBLE IP failure with the full pattern name (not a scoreboard number)</p>
+<pre><code>0_tname_IP_CPU::IMPACT_STUDIES::TestImpactStudiesVmin|baseline|AMBLE
+0_strgval_tgl_pre_F9999991G_040416xxx10040x44xxalb_T0ax2i_0439_Mdrv_0_vrevTB1P_hdmt2_hvm_hdmt2_CXJ_cf1y2_0
+</code></pre>
+<p>The last information logged comes from the normal VminTC ituff information.
+This includes the search results and the limiting patterns.
+This information will not include the TestName from the Configuration File.</p>
+<pre><code>0_tname_IP_CPU::IMPACT_STUDIES::TestImpactStudiesVmin
+0_strgval_0.510_0.490_0.520_0.530|0.400_0.400_0.400_0.400|1.200_1.200_1.200_1.200|14
+
+0_tname_IP_CPU::IMPACT_STUDIES::TestImpactStudiesVmin_lp
+0_strgval_1153787|1153682|1153697|1153739
+</code></pre>
+<h3 id="section-1"></h3>
+<hr />
+<h2 id="tpl-samples">4. TPL Samples</h2>
+<h3 id="section-2"></h3>
+<pre><code class="language-csharp">Test ImpactStudiesVmin TestImpactStudiesVmin
+{
+    ConfigurationFile = &quot;./Modules/IMPACT_STUDIES/InputFiles/impactstudies.vminconfig.json&quot;;
+    LogLevel = &quot;PRIME_DEBUG&quot;;
+}
+</code></pre>
+<p>Example impactstudies.vminconfig.json</p>
+<pre><code class="language-json">{
+  &quot;VminParameters&quot;: 
+  {
+    &quot;TimingsTc&quot;: &quot;IP_CPU::IP_CPU_BASE::cpu_func_sdr_univ_sta_univ_univ_b100_t100_d100&quot;,
+    &quot;LevelsTc&quot;: &quot;IP_CPU::IP_CPU_BASE::DDR_univ_lvl_nom_lvl&quot;,
+    &quot;PinMap&quot;: &quot;CORE0_NOA,CORE1_NOA,CORE2_NOA,CORE3_NOA&quot;,
+    &quot;StartVoltages&quot;: &quot;0.4,0.4,0.4,0.4&quot;,
+    &quot;EndVoltageLimits&quot;: &quot;1.2,1.2,1.2,1.2&quot;,
+    &quot;StepSize&quot;: &quot;0.01&quot;,
+    &quot;VoltageTargets&quot;: &quot;CORE0,CORE1,CORE2,CORE3&quot;,
+    &quot;TestMode&quot;: &quot;MultiVmin&quot;,
+    &quot;PatternNameMap&quot;: &quot;1,2,3,4,5,6,7&quot;,
+    &quot;ScoreboardBaseNumber&quot;: &quot;0000&quot;,
+    &quot;ScoreboardEdgeTicks&quot;: 2,
+    &quot;FeatureSwitchSettings&quot;: &quot;fivr_mode_on&quot;,
+    &quot;FivrCondition&quot;: &quot;NOM&quot;,
+    &quot;PreInstance&quot;: &quot;WriteSharedStorage(--token G.U.S.Dummy1 --value A)&quot;
+  },
+  &quot;Tests&quot;: 
+  [
+    { 
+      &quot;Name&quot;: &quot;baseline&quot;,
+      &quot;Patlist&quot;: &quot;IP_CPU::fun_core_sbft_vcc_f5_srhcrx2f5_mci_nc_drg_list&quot;,
+      &quot;Overrides&quot;: { &quot;ScoreboardBaseNumber&quot;: &quot;0001&quot; }
+    },
+    { 
+      &quot;Name&quot;: &quot;search1&quot;,
+      &quot;Patlist&quot;: &quot;IP_CPU::experimental_list&quot;,
+      &quot;Overrides&quot;: { &quot;ScoreboardBaseNumber&quot;: &quot;0002&quot; }
+    }
+  ]
+}
+</code></pre>
+<hr />
+<h2 id="exit-ports">5. Exit Ports</h2>
+<table>
+<thead>
+<tr>
+<th>Exit Port</th>
+<th>Condition</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-2</td>
+<td>Alarm</td>
+<td>Any HW alarm condition</td>
+</tr>
+<tr>
+<td>-1</td>
+<td>Error</td>
+<td>Any software error</td>
+</tr>
+<tr>
+<td>0</td>
+<td>Fail</td>
+<td>not used.</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Pass</td>
+<td>normal exit port if the searches ran.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="section-3"></h3>
+<hr />
+
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+<HdmtReferenceFile>
+  <IPReference name="IP_PCH" path=".\PLIST_ALL_IP_PCH.xml" />
+  <IPReference name="IP_CPU" path=".\PLIST_ALL_IP_CPU.xml" />
+  <PList>
+    <PListFile name="drv_mcp.plist" />
+  </PList>
+</HdmtReferenceFile>

@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>Prime.TestMethods.$(MSBuildProjectName)</AssemblyName>
+    <RootNamespace>Prime.TestMethods.$(MSBuildProjectName)</RootNamespace>
+    <TargetName>Prime.TestMethods.$(MSBuildProjectName)</TargetName>
+	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	<PackageId>Prime.TestMethods.$(MSBuildProjectName).$(Configuration)</PackageId>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <ConfigurationGroup>Debug</ConfigurationGroup>
+    <DebugType>full</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <ConfigurationGroup>Release</ConfigurationGroup>
+    <DebugType>pdbonly</DebugType>
+  </PropertyGroup>
+    <Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="Exists('..\..\..\..\temp\packages\$(PackageId)')" >
+    <Exec Command="Echo Removing ..\..\..\..\temp\packages\$(PackageId)" />
+    <Exec Command="RD /S /Q ..\..\..\..\temp\packages\$(PackageId)" />
+  </Target>
+
+</Project>

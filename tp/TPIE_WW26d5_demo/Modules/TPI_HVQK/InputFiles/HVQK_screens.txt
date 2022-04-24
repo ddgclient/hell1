@@ -1,0 +1,70 @@
+START_SCREEN:InitHVQKGSDS
+#Run: Test :  Data  : Param : Param1             : Oper  : Param   : Param2   : Tmp  : On       : On
+#On : Name :  Type  : Type  :                    :       : Type    :          : Store: True     : False
+EXEC: Test1:  STRING: GSDS  : U.S.WASBIN26	 :  SET  : LITERAL : "0"      : -    :   Test2  : 1
+EXEC: Test2:  STRING: GSDS  : U.S.WASVADTL	 :  SET  : LITERAL : "0"      : -    :   Test3  : 1
+EXEC: Test3:  STRING: GSDS  : U.S.WASNONSTANDARD :  SET  : LITERAL : "0"      : -    :   Test4  : 1
+EXEC: Test4:  STRING: GSDS  : U.S.WASSTRESS    	 :  SET  : LITERAL : "0"      : -    :   Test5  : 1
+EXEC: Test5:  STRING: GSDS  : U.S.ISBIN26	 :  SET  : LITERAL : "0"      : -    :   Test6  : 1
+EXEC: Test6:  STRING: GSDS  : U.S.ISVADTL	 :  SET  : LITERAL : "0"      : -    :   Test7  : 1
+EXEC: Test7:  STRING: GSDS  : U.S.ISSTRESS	 :  SET  : LITERAL : "0"      : -    :   Test8  : 1
+EXEC: Test8:  STRING: GSDS  : U.S.ISNONSTANDARD  :  SET  : LITERAL : "0"      : -    :   Test9  : 1
+EXEC: Test9:  STRING: GSDS  : U.S.WASULTPROG	 :  SET  : LITERAL : "0"      : -    :   1	: 1
+END_SCREEN
+
+START_SCREEN:CheckWasStress
+##Run : Test             : Data  : Param Type  : Param1                           : Operation : Param   : Param2       : TmpStore         : OnTrue                : OnFalse
+##On  : Name             : Type  :             :                                  :           : Type    :              :                  :                       :        
+EXEC  : CheckForceStress : STRING: GLOBAL      : EDCVars.HVQK_Force_Stress        : ==        : LITERAL : "1"          :  -               : CheckIntraDie         : CheckSD
+EXEC  : CheckIntraDie    : STRING: GSDS        : U.S.LoopProtection        	  : ==        : LITERAL : "1"          :  -               : 3		          : SetNonStandard
+EXEC  : SetNonStandard   : STRING: GSDS        : U.S.ISNONSTANDARD                : SET       : LITERAL : "1"          :  -               : 1                     : 1
+EXEC  : CheckSD		 : STRING: GLOBAL      : SCVars.SC_INTRO_METHOD           : ==        : LITERAL : "SD"         :  -               : CheckwasStress        : CheckF3
+EXEC  : CheckF3		 : STRING: GLOBAL      : SCVars.SC_INTRO_METHOD           : ==        : LITERAL : "PROD"       :  -               : CheckwasStress        : 2
+EXEC  : CheckwasStress   : STRING: GSDS        : U.S.WASSTRESS                    : ==        : LITERAL : "1"          :  -               : 2      		  : 1
+END_SCREEN
+
+START_SCREEN:CoreResultPreStress
+#RunOn	: TestName  	: DataType  : ParamType 	: Param1                    		: Operation 	 : ParamType    : Param2 		: TmpStore : OnTrue  		: OnFalse
+EXEC  	: MirrorDFF  	: -	    : FUNCTION 		: EXECUSERFUNC(DIE_RECOVERY!ExecSequence,MirrorDFF) : -  : - 		: -			:    -	: 	Test1a   	:  2			
+
+# 4 Core
+EXEC  	: Test1a 	: STRING    : EXPRESSION	: G.U.S.SLICE like '11110000' 		:	-	 : -		: -			:    -	: 	Test1c   	:  Test2a
+#EXEC  	: Test1b 	: STRING    : DFF	 	: WFR.SORT.SLICE			:	SET	 : GSDS		: U.S.SLICE		:    -	: 	Test1c   	:  2
+EXEC  	: Test1c 	: STRING    : GSDS	 	: U.S.CoreSelect	 		:	SET	 : LITERAL	: "4"			:    -	: 	ItuffPrint	:  2
+
+# 2 Core Recovery
+EXEC  	: Test2a 	: STRING    : EXPRESSION	: G.U.S.SLICE like '11111100' 		:	-	 : -		: -			:    -	: 	Test2h   	:  Test2b
+EXEC  	: Test2b 	: STRING    : EXPRESSION	: G.U.S.SLICE like '11110011' 		:	-	 : -		: -			:    -	: 	Test2h   	:  3
+#EXEC  	: Test2g 	: STRING    : DFF	 	: WFR.SORT.SLICE			:	SET	 : GSDS		: U.S.SLICE		:    - 	: 	Test2h   	:  2
+EXEC  	: Test2h 	: STRING    : GSDS	 	: U.S.CoreSelect	 		:	SET	 : LITERAL	: "2"			:    -	: 	ItuffPrint	:  2
+# Print to ituff
+EXEC 	: ItuffPrint	: -    	    : FUNCTION   	: EXECUSERFUNC(CPD_DEBUG!PrintToItuff, -body_type strgval -body_data G.U.S.CoreSelect)  	: - : - : - : - : 1 		:  2
+END_SCREEN   
+
+START_SCREEN:PrintBinToItuff_GetBin
+
+EXEC  : GetBin 	    	:     -     	: FUNCTION  	: GETCURRENTBINSET()                 :  -     :    -     : -     :    - 	: CopyValue1   :  3
+EXEC  : CopyValue1    	: INT    	: GSDS		: U.I.BIN_IB	 	:   SET		: GLOBAL	: _UserVars.iBinValue	:    -     	: CopyValue2	:  3
+EXEC  : CopyValue2    	: STRING    	: GSDS		: U.S.BIN_Tester	:   SET		: CUSTOM	: BIN_TOS_SOFT		:    -     	: CheckBin	:  3
+EXEC  : CheckBin     	: INT    	: GSDS   	: U.I.BIN_IB      	:  <=    	: LITERAL  	:  6    		:    - 		:  1        	:  2 
+
+END_SCREEN
+
+START_SCREEN:PrintBinToItuff_PRESTRESS
+
+EXEC : PRINT_FORMAT_1  : -      : FUNCTION : PRINTFORMAT(-clear, all)                              : -   : -       : -            : - :  PRINT_FORMAT_2   : 2
+EXEC : PRINT_FORMAT_2  : -      : FUNCTION : PRINTFORMAT(-prefix, HVQK_)                           : -   : -       : -            : - :  PRINT_FORMAT_3   : 2
+EXEC : PRINT_FORMAT_3  : -      : FUNCTION : PRINTFORMAT(-suffix, PRESTRESS_)                      : -   : -       : -            : - :  PRINT_FORMAT_4   : 2
+EXEC : PRINT_FORMAT_4  : -      : FUNCTION : PRINTFORMAT(-delimit, |)                              : -   : -       : -            : - :  PRINT_FORMAT_5   : 2
+EXEC : PRINT_FORMAT_5  : -      : FUNCTION : PRINTFORMAT(-midas, true)                             : -   : -       : -            : - :  PRINT_FORMAT_6   : 2
+EXEC : PRINT_FORMAT_6  : -      : FUNCTION : PRINTFORMAT(-compressOutputFormat, false)             : -   : -       : -            : - :  PRINT_FORMAT_7   : 2
+EXEC : PRINT_FORMAT_7  : -      : FUNCTION : PRINTFORMAT(-compressKeyNameInValue, false)           : -   : -       : -            : - :  PRINT_FORMAT_8   : 2
+EXEC : PRINT_FORMAT_8  : -      : FUNCTION : PRINTFORMAT(-missingDataControl, false)               : -   : -       : -            : - :  PRINT_FORMAT_9   : 2
+EXEC : PRINT_FORMAT_9  : -      : FUNCTION : PRINTFORMAT(-missingDataFormat, NA)                   : -   : -       : -            : - :  PRINT_FORMAT_10  : 2
+EXEC : PRINT_FORMAT_10 : -     	: FUNCTION : PRINTFORMAT(-precision, 6)                            : -   : -       : -            : - :  PRINT_FORMAT_11  : 2
+EXEC : PRINT_FORMAT_11 : -     	: FUNCTION : PRINTFORMAT(-instanceName, false)                     : -   : -       : -            : - :  DLCP_TOKENS_1    : 2
+
+EXEC : DLCP_TOKENS_1   : -      : FUNCTION : PRINTNAMESTACK(G.U.I.BIN_IB,G.U.I.BIN_FB) 		   : -   : -       : -            : - : DLCP_PRINT 	  : 2
+EXEC : DLCP_PRINT      : -      : FUNCTION : PRINTDATA()                                           : -   : -       : -            : - : 1 		  : 2
+
+END_SCREEN

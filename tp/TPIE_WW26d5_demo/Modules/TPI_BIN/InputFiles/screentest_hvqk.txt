@@ -1,0 +1,36 @@
+START_SCREEN:PrintHVQKCurrent
+#RunOn 	: TestName : DataType 	: ParamType	: Param1			: Operation 	: ParamType : Param2   		: TmpStore : OnTrue 	: OnFalse
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------
+EXEC: TestA :  -:  FUNCTION  : EXECUSERFUNC(CPD_DEBUG!PrintToItuff,-tname_suf 'ISSTRESS' -body_type strgval -body_data G.U.S.ISSTRESS) 			:  - : - : -    : -    : TestB   :  2
+EXEC: TestB :  -:  FUNCTION  : EXECUSERFUNC(CPD_DEBUG!PrintToItuff,-tname_suf 'ISVADTL' -body_type strgval -body_data G.U.S.ISVADTL) 			:  - : - : -    : -    : TestC   :  2
+EXEC: TestC :  -:  FUNCTION  : EXECUSERFUNC(CPD_DEBUG!PrintToItuff,-tname_suf 'ISBIN26' -body_type strgval -body_data G.U.S.ISBIN26) 			:  - : - : -    : -    : TestD   :  2
+EXEC: TestD :  -:  FUNCTION  : EXECUSERFUNC(CPD_DEBUG!PrintToItuff,-tname_suf 'ISNONSTANDARD' -body_type strgval -body_data G.U.S.ISNONSTANDARD) 	:  - : - : -    : -    : 1   	 :  2
+END_SCREEN
+
+START_SCREEN:PrintBinToItuff_GetBin
+
+EXEC  : GetBin 	    	:     -     	: FUNCTION  	: GETCURRENTBINSET()                 :  -     :    -     : -     :    - 	: CopyValue1   :  3
+EXEC  : CopyValue1    	: INT    	: GSDS		: U.I.BIN_IB	 	:   SET		: GLOBAL	: _UserVars.iBinValue	:    -     	: CopyValue2	:  3
+EXEC  : CopyValue2    	: STRING    	: GSDS		: U.S.BIN_Tester	:   SET		: CUSTOM	: BIN_TOS_SOFT		:    -     	: CheckBin	:  3
+EXEC  : CheckBin     	: INT    	: GSDS   	: U.I.BIN_IB      	:  <=    	: LITERAL  	:  6    		:    - 		:  1        	:  2 
+
+END_SCREEN
+
+START_SCREEN:PrintBinToItuff_FINAL
+
+EXEC : PRINT_FORMAT_1  : -      : FUNCTION : PRINTFORMAT(-clear, all)                              : -   : -       : -            : - :  PRINT_FORMAT_2   : 2
+EXEC : PRINT_FORMAT_2  : -      : FUNCTION : PRINTFORMAT(-prefix, BIN_)                     	   : -   : -       : -            : - :  PRINT_FORMAT_3   : 2
+EXEC : PRINT_FORMAT_3  : -      : FUNCTION : PRINTFORMAT(-suffix, FINAL_)                          : -   : -       : -            : - :  PRINT_FORMAT_4   : 2
+EXEC : PRINT_FORMAT_4  : -      : FUNCTION : PRINTFORMAT(-delimit, |)                              : -   : -       : -            : - :  PRINT_FORMAT_5   : 2
+EXEC : PRINT_FORMAT_5  : -      : FUNCTION : PRINTFORMAT(-midas, true)                             : -   : -       : -            : - :  PRINT_FORMAT_6   : 2
+EXEC : PRINT_FORMAT_6  : -      : FUNCTION : PRINTFORMAT(-compressOutputFormat, false)             : -   : -       : -            : - :  PRINT_FORMAT_7   : 2
+EXEC : PRINT_FORMAT_7  : -      : FUNCTION : PRINTFORMAT(-compressKeyNameInValue, false)           : -   : -       : -            : - :  PRINT_FORMAT_8   : 2
+EXEC : PRINT_FORMAT_8  : -      : FUNCTION : PRINTFORMAT(-missingDataControl, false)               : -   : -       : -            : - :  PRINT_FORMAT_9   : 2
+EXEC : PRINT_FORMAT_9  : -      : FUNCTION : PRINTFORMAT(-missingDataFormat, NA)                   : -   : -       : -            : - :  PRINT_FORMAT_10  : 2
+EXEC : PRINT_FORMAT_10 : -     	: FUNCTION : PRINTFORMAT(-precision, 6)                            : -   : -       : -            : - :  PRINT_FORMAT_11  : 2
+EXEC : PRINT_FORMAT_11 : -     	: FUNCTION : PRINTFORMAT(-instanceName, false)                     : -   : -       : -            : - :  DLCP_TOKENS_1    : 2
+
+EXEC : DLCP_TOKENS_1   : -      : FUNCTION : PRINTNAMESTACK(G.U.I.BIN_IB,G.U.I.BIN_FB) 		   : -   : -       : -            : - : DLCP_PRINT        : 2
+EXEC : DLCP_PRINT      : -      : FUNCTION : PRINTDATA()                                           : -   : -       : -            : - : 1                 : 2
+
+END_SCREEN

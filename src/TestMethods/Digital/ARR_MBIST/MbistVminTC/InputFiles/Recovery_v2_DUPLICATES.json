@@ -1,0 +1,28 @@
+{
+  "Version": [ 1.0 ],
+  "RecoveryToken": [ "IPU2", "IPU3" ],
+  "ValidOptions": [ "0,2", "0,3", "1,023" ],
+  "RecoveryPriority": [ 1, 2, 3 ],
+  "ErrorValue": "9",
+  "FailValue": "1",
+  "PassValue": "0",
+  "DesignIps": {
+    "IPU2": {
+      "Type": "Full",
+      "Required": [],
+      "RecoveryOptions": {
+        "1": [ "LEHP_BP35_WBP0_MEM2" ]
+      }
+    },
+    "IPU3": {
+      "Type": "Partial",
+      "Required": [ "LEHP_BP34_WBP0_MEM2" ],
+      "RecoveryOptions": {
+        "2": [ "LEHP_BP34_WBP0_MEM1" ],
+        "3": [ "LEHP_BP34_WBP0_MEM3", "LEHP_BP34_WBP0_MEM1" ]
+      }
+    }
+  }
+}
+
+

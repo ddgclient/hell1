@@ -1,0 +1,334 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>DDG Shmoo template</title>
+</head>
+<body>
+
+    <h1 id="ddg-shmoo-template">DDG Shmoo template</h1>
+<h3 id="rev-0">Rev 0</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1. <a href="#introduction">Introduction</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">2. <a href="#test-instance-parameters">Test Instance Parameters</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">3. <a href="#datalog-output">Datalog output</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">4. <a href="#tpl-samples">TPL Samples</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">5. <a href="#exit-ports">Exit Ports</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="section"></h3>
+<hr />
+<h2 id="introduction">1. Introduction</h2>
+<p>This TestMethod extends the default Prime Shmoo testclass with support for different axis types. See the <a href="https://dev.azure.com/mit-us/PrimeWiki/_wiki/wikis/PrimeWiki.wiki/33613/Readme">Prime Wiki</a> for details on the base shmoo class.</p>
+<hr />
+<h2 id="test-instance-parameters">2. Test Instance Parameters</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Parameter Name</th>
+<th style="text-align: left;">Required?</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Values</th>
+<th style="text-align: left;">Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Patlist</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">Plist</td>
+<td style="text-align: left;">Plist name to be executed</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">TimingsTc</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">TimingCondition</td>
+<td style="text-align: left;">Timing test condition required for plist execution</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">LevelsTc</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">LevelsCondition</td>
+<td style="text-align: left;">Levels test condition required for plist execution</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">MaskPins</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">CommaSeparatedString</td>
+<td style="text-align: left;">Comma separated list of pins to mask before executing Plist</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">XAxisType</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;"><a href="#axistype">Axis</a></td>
+<td style="text-align: left;">X-Axis Mode</td>
+</tr>
+<tr>
+<td style="text-align: left;">XAxisParam</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">CommaSeparatedString</td>
+<td style="text-align: left;"><a href="#parametertype">Parameter</a></td>
+<td style="text-align: left;">X-Axis parameter to shmoo</td>
+</tr>
+<tr>
+<td style="text-align: left;">XAxisRange</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;"><a href="#rangetype">Range</a></td>
+<td style="text-align: left;">X-Axis values to shmoo</td>
+</tr>
+<tr>
+<td style="text-align: left;">YAxisType</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;"><a href="#axistype">Axis</a></td>
+<td style="text-align: left;">Y-Axis Mode</td>
+</tr>
+<tr>
+<td style="text-align: left;">YAxisParam</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">CommaSeparatedString</td>
+<td style="text-align: left;"><a href="#parametertype">Parameter</a></td>
+<td style="text-align: left;">Y-Axis parameter to shmoo</td>
+</tr>
+<tr>
+<td style="text-align: left;">YAxisRange</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;"><a href="#rangetype">Range</a></td>
+<td style="text-align: left;">Y-Axis values to shmoo</td>
+</tr>
+<tr>
+<td style="text-align: left;">VoltageConverter</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">See VoltageConverter Callbacks for details</td>
+</tr>
+<tr>
+<td style="text-align: left;">DataLogType</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">ECADS, SHMOO_HUB</td>
+<td style="text-align: left;">defaults to SHMOO_HUB</td>
+</tr>
+<tr>
+<td style="text-align: left;">PrePointExecMode</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">See <a href="#prepointexec">PrePointExec</a></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">PrePointExecTest</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">See <a href="#prepointexec">PrePointExec</a></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">IfeObject</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">&quot;&quot;</td>
+<td style="text-align: left;">Useless inherited parameter, always set to &quot;&quot;.</td>
+</tr>
+<tr>
+<td style="text-align: left;">XAxisParamType</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">UserDefined/None</td>
+<td style="text-align: left;">Set to None if XAxisType is None, othwise leave it a UserDefined.</td>
+</tr>
+<tr>
+<td style="text-align: left;">YAxisParamType</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">UserDefined/None</td>
+<td style="text-align: left;">Set to None if YAxisType is None, othwise leave it a UserDefined.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="parameter-types">2.1. Parameter Types</h2>
+<h4 id="axistype">AxisType</h4>
+<p><strong>None</strong>: Axis is disabled.<br />
+<strong>UserVarTiming</strong>: Axis is an Hdmt User Variable used in timing equations. Parameter should be <em>collection</em>.<em>variable</em><br />
+<strong>UserVarLevels</strong>: Axis is an Hdmt User Variable used in levels equations.  Parameter should be <em>collection</em>.<em>variable</em><br />
+<strong>SpecSetVariable</strong>: Axis is a TestCondition/SpecSet variable.<br />
+<strong>FIVR</strong>: Axis is a FIVR domain. Parameter must be defined in a Prime ALEPH .fivrDomain.json file.<br />
+<strong>DLVR</strong>: Axis is a DLVR domain. Parameter must be defined in a Prime ALEPH .fivrDomain.json file and the VoltageConverter parameter must be specified with the DLVR configurations/settings.<br />
+<strong>PatConfig</strong>: Axis is a Prime PatConfig Handle. Paramter must be defined in a Prime ALEPH .patmod.json file.<br />
+<strong>PatConfigSetPoint</strong>: Axis is a Prime PatConfig SetPoint. Parameter must be defined in a Prime ALEPH .PatConfigSetpoints.json file.</p>
+<h4 id="parametertype">ParameterType</h4>
+<p>The name of the parameter to shmoo.
+See <a href="#axistype">AxisType</a> section for details on what parameter types are allowed.
+The SpecSetVariable type must be a single parameter, all the others can be a comma separated list of parameters.
+(in which case all will get the same value, so if the cores are all on different FIVR rails you can still shmoo them all at the same time)</p>
+<p>Both X and Y parameters are required but you can set the YAxisParam &amp; YAxisRange to &quot;&quot; if you only want to do a 1-Dimension shmoo.</p>
+<h4 id="rangetype">RangeType</h4>
+<p>Two formats are supported.<br />
+<strong>Format1</strong>: <code>StartValue:StepSize:NumberOfSteps</code><br />
+All values should be numbers (double type). For some Axis types the value will be converted to the appropriate format (ie for PatConfig it will be converted to a binary string of the proper length)</p>
+<p><strong>Format2</strong>: Comma-Separated-String<br />
+In this format, all the values to shmoo must be listed out separately, deliminated by commas. In this mode the values will not be altered before being written to the parameter, so its up to the user to use the correct format/length for each value.</p>
+<h4 id="prepointexec">PrePointExec</h4>
+<p>PrePointExecMode/PrePointExecTest parameters provides a mechanism for running a separate test instance before execution of a shmoo testpoint.
+If the test fails (exits other than port 1) then the shmoo test point will be marked as SKIPPED (&quot;#&quot;).</p>
+<p>The test will be run BEFORE the shmoo parameter is updated. After the test is executed the shmoo parameters will be updated and BOTH shmoo timings/levels will be re-applied to the hardware (regardless of which one was changed).</p>
+<p><strong>PrePointExecTest</strong> should be the name of the test instance to run (fully scoped if this is an intradut/modular testprogram).
+Also note that for intradut the test must be in the same scope as the shmoo. A shmoo in IP1 cannot run a test from IP2 or from the package.</p>
+<p><strong>PrePointExecMode</strong> can be one of:</p>
+<ul>
+<li>Never : feature is disabled.</li>
+<li>OnXChange : Run PrePointExecTest when the X Parameter changes.</li>
+<li>OnYChange : Run PrePointExecTest when the Y Parameter changes.</li>
+<li>OnAnyChange : Run PrePointExecTest when either Axis parameter changes.</li>
+</ul>
+<p>Example:</p>
+<pre><code>PrePointExecMode = &quot;OnYChange&quot;;  
+PrePointExecTest = &quot;DRV_RESET_BASE::RESET_X_FUNC_K_START_X_XXXXXX_X_X_FIVR_PWRON&quot;;  
+</code></pre>
+<hr />
+<h2 id="datalog-output">3. Datalog output</h2>
+<p>Supports SHMOO_HUB and ECADS formats.
+The base Prime Shmoo will always print the SHMOO_HUB format if either axis is SpecSetVariable.
+Ticket filed with MIT but for now selecting ECADS format will cause both formats to be logged.</p>
+<p>The &quot;current&quot; X/Y value is only correct for SpecSetVariable types.</p>
+<p>If the failing pattern is not the first instance of the pattern then it will be displayed as &quot;patternname|instanceid&quot;.</p>
+<p>Sample SHMOO_HUB format.</p>
+<pre><code>0_tname_TPI_BASE_PRIME::TestDDGFivrShmoo_SSTP
+0_strgval_X_1E-08_Y_-1
+
+0_tname_TPI_BASE_PRIME::TestDDGFivrShmoo^p_bclkper_spec^8E-09^1.1E-08^1E-09_CORE0,CORE1,CORE2,CORE3^0.75^0.95^0.05
+0_strgval_aaaa_bbbb_cc**_****_****
+
+0_tname_TPI_BASE_PRIME::TestDDGFivrShmoo^LEGEND^a
+0_strgval_tgl_pre_F9999991G_040416xxx1a040x22xxalb_T0xx2i_4l00_Mdrv_0_vrevTB1P_hdmt2mcpi_flat_hdmt2_CXJ_cf2kg_0:myplist:LEG(0,557,-1,-1):IP_CPU::TDO
+
+0_tname_TPI_BASE_PRIME::TestDDGFivrShmoo^LEGEND^b
+0_strgval_tgl_pre_F9999991G_040416xxx1a040x22xxalb_T0xx2i_4l00_Mdrv_0_vrevTB1P_hdmt2mcpi_flat_hdmt2_CXJ_cf2kg_0:myplist:LEG(0,561,-1,-1):IP_CPU::TDO
+
+0_tname_TPI_BASE_PRIME::TestDDGFivrShmoo^LEGEND^c
+0_strgval_tgl_pre_F9999991G_040416xxx1a040x22xxalb_T0xx2i_4l00_Mdrv_0_vrevTB1P_hdmt2mcpi_flat_hdmt2_CXJ_cf2kg_0:myplist:LEG(0,581,-1,-1):IP_CPU::TDO
+</code></pre>
+<p>Sample ECADS format.</p>
+<pre><code>0_tname_TPI_BASE_PRIME::TestDDGFivrShmoo
+0_comnt_PLOT_PXName,p_bclkper_spec
+0_comnt_PLOT_PYName,CORE0,CORE1,CORE2,CORE3
+0_comnt_PLOT_PXStart,8E-09
+0_comnt_PLOT_PYStart,0.75
+0_comnt_PLOT_PXStop,1.1E-08
+0_comnt_PLOT_PYStop,0.95
+0_comnt_PLOT_PXStep,4
+0_comnt_PLOT_PYStep,5
+0_comnt_PLOT_PXValue,1E-08
+0_comnt_PLOT_PYValue,-1
+0_comnt_P3Data_aaaa
+0_comnt_P3Data_bbbb
+0_comnt_P3Data_cc**
+0_comnt_P3Data_****
+0_comnt_P3Data_****
+0_comnt_P3Legend_a_tgl_pre_F9999991G_040416xxx1a040x22xxalb_T0xx2i_4l00_Mdrv_0_vrevTB1P_hdmt2mcpi_flat_hdmt2_CXJ_cf2kg_0:myplist:LEG(0,557,-1,-1):IP_CPU::TDO
+0_comnt_P3Legend_b_tgl_pre_F9999991G_040416xxx1a040x22xxalb_T0xx2i_4l00_Mdrv_0_vrevTB1P_hdmt2mcpi_flat_hdmt2_CXJ_cf2kg_0:myplist:LEG(0,561,-1,-1):IP_CPU::TDO
+0_comnt_P3Legend_c_tgl_pre_F9999991G_040416xxx1a040x22xxalb_T0xx2i_4l00_Mdrv_0_vrevTB1P_hdmt2mcpi_flat_hdmt2_CXJ_cf2kg_0:myplist:LEG(0,581,-1,-1):IP_CPU::TDO
+</code></pre>
+<h3 id="section-1"></h3>
+<hr />
+<h2 id="tpl-samples">4. TPL Samples</h2>
+<h3 id="section-2"></h3>
+<p>MTL DLVR (class) Example:</p>
+<pre><code class="language-perl">Test DDGShmooTC DIAG_CORE_SHMOO_E_BEGCPU_X_VCORE_F1_X_STF200
+{
+	LevelsTc = &quot;IP_CPU_BASE::cpu_all_bf_x_x_ipcpu_lvl_min_lvl&quot;;
+	TimingsTc = &quot;SCN_CORE_C68::cpu_stf_timing_tclk100_sclk200_cclk400&quot;;
+	Patlist = &quot;scn_core_c68_vccc_f1_begcpu_sNs200_mix_core0_atpg_classhvm_list&quot;;
+	SetPointsPlistParamName = &quot;Patlist&quot;;
+	SetPointsPreInstance = &quot;MaaaCdrv:atomfreq:0.8GHz,MaaaCdrv:ringfreq:1.3GHz,MaaaCdrv:corefreq:1.3GHz&quot;;
+	XAxisType = &quot;SpecSetVariable&quot;;
+	XAxisParam = &quot;p_mtd_per&quot;;
+	XAxisDatalogPrefix = &quot;Nano&quot;;
+	XAxisRange = &quot;8e-9:1e-9:4&quot;;
+	YAxisType = &quot;FIVR&quot;;
+	YAxisParam = &quot;CORE5,CORE4,CORE3,CORE2,CORE1,CORE0&quot;;
+	YAxisRange = &quot;0.5:0.02:41&quot;;
+	VoltageConverter = &quot;--dlvrpins IP_CPU::VCCIA_HC --fivrcondition NOM&quot;;
+}
+
+</code></pre>
+<p>TGL FIVR Example:</p>
+<pre><code class="language-perl">Test DDGShmooTC TestDDGFivrShmoo
+{
+    Patlist = &quot;list_drv_mcp_tgl_pre_F9999991G_040416xxx1a040x22xxalb_T0xx2i_4l00_Mdrv_0_vrevTB1P_hdmt2mcpi_flat_hdmt2_CXJ_cf2kg_0&quot;;
+    TimingsTc = &quot;__main__::mcp_func_univ_pkg_mcp_univ_univ_b100_t100_d100_p4ns&quot;;
+    LevelsTc = &quot;__main__::DDR_univ_lvl_pkg_nom_lvl&quot;;
+    XAxisType = &quot;SpecSetVariable&quot;;
+    XAxisParam = &quot;p_bclkper_spec&quot;;
+    XAxisRange = &quot;8e-9:1e-9:4&quot;;
+    YAxisType = &quot;FIVR&quot;;
+    YAxisParam = &quot;CORE0,CORE1,CORE2,CORE3&quot;;
+    YAxisRange = &quot;0.75:0.05:5&quot;;
+    VoltageConverter = &quot;--fivrcondition=NOM&quot;;
+    IfeObject = &quot;&quot;;
+    LogLevel = &quot;PRIME_DEBUG&quot;;
+}
+</code></pre>
+<hr />
+<h2 id="exit-ports">5. Exit Ports</h2>
+<table>
+<thead>
+<tr>
+<th>Exit Port</th>
+<th>Condition</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-2</td>
+<td>Alarm</td>
+<td>Any HW alarm condition</td>
+</tr>
+<tr>
+<td>-1</td>
+<td>Error</td>
+<td>Any software error</td>
+</tr>
+<tr>
+<td>0</td>
+<td>Fail</td>
+<td>At least one point failed in the shmoo.</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Pass</td>
+<td>All points passed in the shmoo.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="section-3"></h3>
+<hr />
+
+
+</body>
+</html>

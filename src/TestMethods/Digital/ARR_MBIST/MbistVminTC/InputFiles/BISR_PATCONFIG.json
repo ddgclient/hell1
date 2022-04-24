@@ -1,0 +1,22 @@
+{
+  "Configurations": [
+    {
+      "Name": "BISR1",
+      "ConfigurationElemesnt": [
+        {
+          "Type": "PINDATA",
+          "IsChannelLink": false,
+          "Pin": "TDI",
+          "StartAddress": "DEBUG_ENG_WAIT_0",
+          "StartAddressOffset": 0,
+          "EndAddress": "DEBUG_ENG_WAIT_0",
+          "EndAddressOffset": 0,
+          "Ratio": 2,
+          "PatternsRegEx": [
+            "mb_tim0_par_par_a_ssa_pmovi_x_s"
+          ]
+        }
+      ]
+    }
+  ]
+} 

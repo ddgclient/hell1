@@ -1,0 +1,5 @@
+Pin,IP,Field,Size,ExpectedData,ItuffToken,StringData
+DDR1_DQ50,IP1,Field0,0,-,Token1,Test
+DDR1_DQ50,IP1,Field1,3,5,Token1,-
+DDR1_DQ50,IP1,Field2,0,-,Token1,<IP>_<Field>
+DDR1_DQ50,IP1,Field3,0,-,Token1,Field0

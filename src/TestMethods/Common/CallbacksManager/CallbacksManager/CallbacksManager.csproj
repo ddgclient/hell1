@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace>$(AssemblyName)</RootNamespace>
+    <TargetName>$(AssemblyName)</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <ConfigurationGroup>Debug</ConfigurationGroup>
+    <DebugType>full</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <ConfigurationGroup>Release</ConfigurationGroup>
+    <DebugType>pdbonly</DebugType>
+  </PropertyGroup>
+  <ItemGroup>
+	<PackageReference Include="Prime.TestMethods.CallbacksRegistrar.Release" Version="$(PrimeVersion)">
+		<PrivateAssets>all</PrivateAssets>
+		<ExcludeAssets>runtime</ExcludeAssets>
+	</PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\DebugCallbacks\DebugCallbacks\DebugCallbacks.csproj" />
+    <ProjectReference Include="..\..\FlowControlCallbacks\FlowControlCallbacks\FlowControlCallbacks.csproj" />
+    <ProjectReference Include="..\..\DfxTimingTuner\DfxTimingTuner\DfxTimingTuner.csproj" />
+    <ProjectReference Include="..\..\DieRecoveryCallbacks\DieRecoveryCallbacks\DieRecoveryCallbacks.csproj" />
+    <ProjectReference Include="..\..\PupCallBacks\PupCallBacks\PupCallBacks.csproj" />
+    <ProjectReference Include="..\..\SocRecoveryCallbacks\SocRecoveryCallbacks\SocRecoveryCallbacks.csproj" />
+    <ProjectReference Include="..\..\TosTriggersCallbacks\TosTriggersCallbacks\TosTriggersCallbacks.csproj" />
+    <ProjectReference Include="..\..\VminForwardingCallbacks\VminForwardingCallbacks\VminForwardingCallbacks.csproj" />
+    <ProjectReference Include="..\..\VoltageConverterCallbacks\VoltageConverterCallbacks\VoltageConverterCallbacks.csproj" />
+    <ProjectReference Include="..\..\UserCodeTC\UserCodeTC\UserCodeTC.csproj" />
+    <PackageReference Include="Prime.TestMethods.Dc.Release" Version="$(PrimeVersion)">
+		<PrivateAssets>all</PrivateAssets>
+		<ExcludeAssets>runtime</ExcludeAssets>
+	</PackageReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <PostBuildEvent>copy $(MSBuildProjectDirectory)\*.xml $(PreHeaderLocationRelativePath)</PostBuildEvent>
+  </PropertyGroup>
+</Project>

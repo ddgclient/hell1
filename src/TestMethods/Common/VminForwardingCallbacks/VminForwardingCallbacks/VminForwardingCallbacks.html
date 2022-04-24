@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>DDG Prime VminForwarding Callbacks</title>
+</head>
+<body>
+
+    <h1 id="ddg-prime-vminforwarding-callbacks">DDG Prime VminForwarding Callbacks</h1>
+<h3 id="rev-0">Rev 0</h3>
+<p><a href="#vminsearchstore">VminSearchStore</a></p>
+<p><a href="#vmininterpolation">VminInterpolation</a></p>
+<p><a href="#loadvminfromdff">LoadVminFromDFF</a></p>
+<h2 id="section"></h2>
+<h2 id="enabling-the-callbacks">Enabling the Callbacks</h2>
+<p>Add an instance of CallbacksManager in your INIT flow. No parameters are necessary.</p>
+<h2 id="using-callbacks">Using callbacks</h2>
+<p>Callbacks can be executed from CommonParameters in Prime test instances and from anywhere an Evergreen UserFunction
+can be executed. See the prime wiki for more details.</p>
+<p><a href="https://dev.azure.com/mit-us/PRIME/_wiki/wikis/PRIME.wiki/3019/Calling-Prime-C-Sharp-Code-from-EVG-UF">Prime WIKI - Calling Cs from Evg</a></p>
+<p><a href="https://dev.azure.com/mit-us/PRIME/_wiki/wikis/PRIME.wiki/3020/Common-Parameters">Prime WIKI - Common Parameters</a></p>
+<h4 id="simple-example-from-icuserfunctest">Simple Example from ICUserFuncTest</h4>
+<span style="font-family:monospace; font-size:8; color:blue">
+Test iCUserFuncTest ExampleCallbackUF<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;function_name = "CPD_DEBUG!ExecPrimeCsCallback";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;function_parameter = "CallbackName(--arg1 val1 --arg2 val2)";<br>
+}<br>
+</span>
+<h2 id="available-functions">Available Functions</h2>
+<hr />
+<h3 id="vminsearchstore">VminSearchStore</h3>
+<p>This function saves the current vmins for the given domains (or all domains if none are specified).
+It is meant to save a snapshot of the vmins after the &quot;Search&quot; flows are run but before the &quot;Check&quot; flows.</p>
+<h4 id="usages">Usages</h4>
+<p>VminSearchStore(--domains <em>ListOfDomains</em>)<br />
+VminSearchStore()</p>
+<h4 id="arguments">Arguments</h4>
+<p>--domains:     [optional] A comma separated list of Domain names. These domains will have all their current vmin data stored to a &quot;snapshot&quot;. This should be the main domain names, not the instance names (ie CR, CRF ... not CR0, CR1...)</p>
+<h3 id="section-1"></h3>
+<hr />
+<h3 id="vmininterpolation">VminInterpolation</h3>
+<p>This function runs the Search-To-Check interpolation on the given vmin domains.
+The corners supplied are used to run interpolation on the other corners.
+It is meant to update the vmin forwarding values for corners that do not run &quot;Check&quot; flows by using data for the corners that did.
+It requires &quot;VminSearchStore&quot; to have been run.</p>
+<h4 id="usages-1">Usages</h4>
+<p>VminInterpolation(--domains <em>ListOfDomains</em> --corners <em>ListOfCorners</em> --flow <em>GSDSFlowToken</em>)</p>
+<h4 id="arguments-1">Arguments</h4>
+<p>--domains:     [required] A comma separated list of Domain names to run interpolation on. This should be the main domain names, not the instance names (ie CR, CRF ... not CR0, CR1...)</p>
+<p>--check_corners:     [required] A comma separate list of Corner names with 'check' data. (ie this is the list of corners that did NOT have -stc_interpolation=true in the FastInfra.xml file and will be used to run interpolation on the other corners.).</p>
+<p>--flow:        [required] GSDS token (of the form G.U.I.tokenname or G.U.S.tokenname) containing the current/passing flow number. It must be an integer but it can be stored in a String GSDS token.</p>
+<hr />
+<h4 id="examples">Examples</h4>
+<span style="font-family:monospace; font-size:8; color:blue">
+Test iCUserFuncTest IaCoresVminSnapshot<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;function_name = "CPD_DEBUG!ExecPrimeCsCallback";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;function_parameter = "VminSearchStore(--domains CR,CRF,CRX2,CRX3)";<br>
+}<br>
+</span>
+<br><br>
+<span style="font-family:monospace; font-size:8; color:blue">
+Test iCUserFuncTest IaCoresStcInterpolation<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;function_name = "CPD_DEBUG!ExecPrimeCsCallback";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;function_parameter = "VminInterpolation(--domains CR,CRF,CRX2,CRX3 --check_corners F1,F3,F6 --flow G.U.I.PassingFlow)";<br>
+}<br>
+</span>
+<h3 id="loadvminfromdff">LoadVminFromDFF</h3>
+<p>This function loads DFF values for VminData into SharedStorage tokens to be used by the VminForwarding infrastructure.
+The names of the DFF and sharedstorage tokens must be setup by an instance of the VminForwardingBase testclass.
+See the documentation for DDG_Prime_Vmin_Forwarding for more details.</p>
+<h4 id="usages-2">Usages</h4>
+<p>LoadVminFromDFF()</p>
+<h4 id="arguments-2">Arguments</h4>
+<p>None.</p>
+<h3 id="section-2"></h3>
+
+
+</body>
+</html>

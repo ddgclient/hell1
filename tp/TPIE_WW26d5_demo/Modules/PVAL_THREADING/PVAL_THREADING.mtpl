@@ -1,0 +1,251 @@
+Version 1.0;
+
+ProgramStyle = Modular;
+
+TestPlan PVAL_THREADING;
+
+
+Import OASIS_UserFunc_tt.xml;
+Import RunCallback.xml;
+Import PrimeDcTestMethod.xml;
+
+Test PrimeDcTestMethod CONT_SAMPLE1_START_X_X_X_X_P1
+{
+	MeasurementTypes = "Current";
+	DatalogLevel = "All";
+	Pins = "HC1_VCCCORE0,HC2_VCCCORE1,HC3_VCCATOM0,HC4_VCCATOM1";
+	LowLimits = "";
+	HighLimits = "";
+    LevelsTc = "__main__::simple_hddps_measure_lvl_defaultExact";
+}
+Test PrimeDcTestMethod CONT_SAMPLE2_START_X_X_X_X_P1
+{
+	MeasurementTypes = "Current";
+	DatalogLevel = "All";
+	Pins = "HC1_VCCCORE0,HC2_VCCCORE1,HC3_VCCATOM0,HC4_VCCATOM1";
+	LowLimits = "";
+	HighLimits = "";
+    LevelsTc = "__main__::simple_hddps_measure_lvl_defaultExact";
+}
+Test PrimeDcTestMethod CONT_SAMPLE3_START_X_X_X_X_P1
+{
+	MeasurementTypes = "Current";
+	DatalogLevel = "All";
+	Pins = "HC1_VCCCORE0,HC2_VCCCORE1,HC3_VCCATOM0,HC4_VCCATOM1";
+	LowLimits = "";
+	HighLimits = "";
+    LevelsTc = "__main__::simple_hddps_measure_lvl_defaultExact";
+}
+Test PrimeDcTestMethod CONT_SAMPLE4_START_X_X_X_X_P1
+{
+	MeasurementTypes = "Current";
+	DatalogLevel = "All";
+	Pins = "HC1_VCCCORE0,HC2_VCCCORE1,HC3_VCCATOM0,HC4_VCCATOM1";
+	LowLimits = "";
+	HighLimits = "";
+    LevelsTc = "__main__::simple_hddps_measure_lvl_defaultExact";
+}
+Test PrimeDcTestMethod CONT_SAMPLE5_START_X_X_X_X_P1
+{
+	MeasurementTypes = "Current";
+	DatalogLevel = "All";
+	Pins = "HC1_VCCCORE0,HC2_VCCCORE1,HC3_VCCATOM0,HC4_VCCATOM1";
+	LowLimits = "";
+	HighLimits = "";
+    LevelsTc = "__main__::simple_hddps_measure_lvl_defaultExact";
+}
+
+Test RunCallback LaunchBackgroundPatMods_P1
+{
+	BypassPort = 1; # Problem with gitlab runner and new TOSUserSDK
+    Callback = "BackgroundPatConfigSetpoint";
+    Parameters = "PVAL_THREADING:threading_dummy:SETA:global,PVAL_THREADING:threading_dummy:SETB:global,PVAL_THREADING:threading_dummy:SETA:global,PVAL_THREADING:threading_dummy:SETB:global,PVAL_THREADING:threading_dummy:SETA:global,PVAL_THREADING:threading_dummy:SETB:global,PVAL_THREADING:threading_dummy:SETA:global,PVAL_THREADING:threading_dummy:SETB:global";
+    LogLevel = "PRIME_DEBUG";
+}
+Test RunCallback WaitForBackgroundPatMods_P1
+{
+	BypassPort = 1; # Problem with gitlab runner and new TOSUserSDK
+    Callback = "BackgroundWait";
+    Parameters = "2000";
+    LogLevel = "PRIME_DEBUG";
+}
+
+DUTFlow PVAL_THREADING_MAIN
+{
+    DUTFlowItem LaunchBackgroundPatMods_P1 LaunchBackgroundPatMods_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo CONT_SAMPLE1_START_X_X_X_X_P1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo CONT_SAMPLE1_START_X_X_X_X_P1;
+        }
+    }
+    DUTFlowItem CONT_SAMPLE1_START_X_X_X_X_P1 CONT_SAMPLE1_START_X_X_X_X_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo CONT_SAMPLE2_START_X_X_X_X_P1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo CONT_SAMPLE2_START_X_X_X_X_P1;
+        }
+    }
+    DUTFlowItem CONT_SAMPLE2_START_X_X_X_X_P1 CONT_SAMPLE2_START_X_X_X_X_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo CONT_SAMPLE3_START_X_X_X_X_P1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo CONT_SAMPLE3_START_X_X_X_X_P1;
+        }
+    }
+    DUTFlowItem CONT_SAMPLE3_START_X_X_X_X_P1 CONT_SAMPLE3_START_X_X_X_X_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo CONT_SAMPLE4_START_X_X_X_X_P1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo CONT_SAMPLE4_START_X_X_X_X_P1;
+        }
+    }
+    DUTFlowItem CONT_SAMPLE4_START_X_X_X_X_P1 CONT_SAMPLE4_START_X_X_X_X_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo CONT_SAMPLE5_START_X_X_X_X_P1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo CONT_SAMPLE5_START_X_X_X_X_P1;
+        }
+    }
+    DUTFlowItem CONT_SAMPLE5_START_X_X_X_X_P1 CONT_SAMPLE5_START_X_X_X_X_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo WaitForBackgroundPatMods_P1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo WaitForBackgroundPatMods_P1;
+        }
+    }
+    DUTFlowItem WaitForBackgroundPatMods_P1 WaitForBackgroundPatMods_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            Return 1;
+        }
+    }
+
+}

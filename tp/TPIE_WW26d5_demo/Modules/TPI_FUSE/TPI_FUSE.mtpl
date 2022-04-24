@@ -1,0 +1,198 @@
+Version 1.0;
+
+ProgramStyle = Modular;
+
+TestPlan TPI_FUSE;
+
+Import OASIS_NGFuseBurn_tt.xml;
+Import OASIS_NGFuseRead_tt.xml;
+Import OASIS_PatternModify_tt.xml;
+Import OASIS_Screen_tt.xml;
+#Test Counter Definition
+Counters
+{
+    n17900016_fail_FUSE_X_SCREEN_K_FINAL_X_X_X_X_PRINT_NONSTANDARD_0, 
+    n17900017_fail_FUSE_X_SCREEN_K_FINAL_X_X_X_X_PRINT_NONSTANDARD_2, 
+    n31010107_fail_FUSE_X_FUSEREAD_K_START_X_X_X_X_INITIAL_READ_7, 
+    n31010108_fail_FUSE_X_FUSEREAD_K_START_X_X_X_X_INITIAL_READ_8, 
+    n31010109_fail_FUSE_X_FUSEREAD_K_START_X_X_X_X_INITIAL_READ_9, 
+    n31010110_fail_FUSE_X_FUSEREAD_K_START_X_X_X_X_INITIAL_READ_10, 
+    n31020207_fail_FUSE_X_FUSEREAD_K_FINAL_X_X_X_X_ULT_RAP_7, 
+    n31020208_fail_FUSE_X_FUSEREAD_K_FINAL_X_X_X_X_ULT_RAP_8, 
+    n31020209_fail_FUSE_X_FUSEREAD_K_FINAL_X_X_X_X_ULT_RAP_9, 
+    n31020210_fail_FUSE_X_FUSEREAD_K_FINAL_X_X_X_X_ULT_RAP_10, 
+    n31020211_fail_FUSE_X_FUSEREAD_K_FINAL_X_X_X_X_ULT_RAP_11, 
+    n31020216_fail_FUSE_X_FUSEREAD_K_FINAL_X_X_X_X_YIELDMON_RAP_7, 
+    n31020217_fail_FUSE_X_FUSEREAD_K_FINAL_X_X_X_X_YIELDMON_RAP_8, 
+    n31020218_fail_FUSE_X_FUSEREAD_K_FINAL_X_X_X_X_YIELDMON_RAP_9, 
+    n31020219_fail_FUSE_X_FUSEREAD_K_FINAL_X_X_X_X_YIELDMON_RAP_11, 
+    n31030006_fail_FUSE_X_FUSEREAD_K_START_X_X_X_X_SPROW_IR_3, 
+    n31040016_fail_FUSE_X_FUSEREAD_K_FINAL_X_X_X_X_SPROW_RAP_3, 
+    n31050507_fail_FUSE_X_FUSEBURN_K_FINAL_X_X_X_X_ULT_WRITE_7, 
+    n31060001_fail_FUSE_X_FUSEBURN_K_FINAL_X_X_X_X_SACROW_BURN_7, 
+    n31070005_fail_FUSE_X_FUSEREAD_K_FINAL_X_X_X_X_SACROW_READ_3, 
+    n31900002_fail_FUSE_X_FUSEBURN_K_FINAL_X_X_X_X_SACROW_BURN_0, 
+    n31900020_fail_FUSE_X_SCREEN_K_START_X_X_X_X_PRINTHVQK_0, 
+    n31900021_fail_FUSE_X_SCREEN_K_START_X_X_X_X_PRINTHVQK_2, 
+    n31900100_fail_FUSE_X_FUSEREAD_K_START_X_X_X_X_INITIAL_READ_0, 
+    n31900113_fail_FUSE_X_FUSEREAD_K_FINAL_X_X_X_X_SPROW_RAP_0, 
+    n31900120_fail_FUSE_X_FUSEREAD_K_START_X_X_X_X_SPROW_IR_0, 
+    n31900200_fail_FUSE_X_FUSEREAD_K_FINAL_X_X_X_X_ULT_RAP_0, 
+    n31900212_fail_FUSE_X_FUSEREAD_K_FINAL_X_X_X_X_YIELDMON_RAP_0, 
+    n31900500_fail_FUSE_X_FUSEBURN_K_FINAL_X_X_X_X_ULT_WRITE_0, 
+    n31909080_fail_FUSE_X_SCREEN_K_START_X_X_X_X_PERDIE_STATE_INIT_0, 
+    n31909082_fail_FUSE_X_SCREEN_K_START_X_X_X_X_PERDIE_STATE_INIT_2, 
+    n31909089_fail_FUSE_X_SCREEN_K_FINAL_X_X_X_X_SET_ULT_DFFX_GOOD_0, 
+    n31909090_fail_FUSE_X_SCREEN_K_FINAL_X_X_X_X_SET_ULT_DFFX_GOOD_2, 
+    n31909091_fail_FUSE_X_SCREEN_K_FINAL_X_X_X_X_SET_ULT_DFFX_BAD_0, 
+    n31909092_fail_FUSE_X_SCREEN_K_FINAL_X_X_X_X_SET_ULT_DFFX_BAD_2, 
+    n90310003_fail_FUSE_X_FUSEREAD_K_FINAL_X_X_X_X_SACROW_READ_0, 
+    n98010001_fail_FAIL_SYSTEM_SOFTWARE, 
+    n99010001_fail_FAIL_DPS_ALARM, 
+    p99310002_pass_FUSE_X_FUSEREAD_K_FINAL_X_X_X_X_SACROW_READ_2, 
+    p99310045_pass_FUSE_X_FUSEBURN_K_FINAL_X_X_X_X_SACROW_BURN_1, 
+    p99310047_pass_FUSE_X_FUSEBURN_K_FINAL_X_X_X_X_SACROW_BURN_2, 
+    p99310101_pass_FUSE_X_FUSEREAD_K_START_X_X_X_X_INITIAL_READ_1, 
+    p99310102_pass_FUSE_X_FUSEREAD_K_START_X_X_X_X_INITIAL_READ_2, 
+    p99310103_pass_FUSE_X_FUSEREAD_K_START_X_X_X_X_INITIAL_READ_3, 
+    p99310104_pass_FUSE_X_FUSEREAD_K_START_X_X_X_X_INITIAL_READ_4, 
+    p99310105_pass_FUSE_X_FUSEREAD_K_START_X_X_X_X_INITIAL_READ_5, 
+    p99310114_pass_FUSE_X_FUSEREAD_K_FINAL_X_X_X_X_SPROW_RAP_1, 
+    p99310115_pass_FUSE_X_FUSEREAD_K_FINAL_X_X_X_X_SPROW_RAP_2, 
+    p99310121_pass_FUSE_X_FUSEREAD_K_START_X_X_X_X_SPROW_IR_1, 
+    p99310122_pass_FUSE_X_FUSEREAD_K_START_X_X_X_X_SPROW_IR_2, 
+    p99310148_pass_FUSE_X_FUSEREAD_K_FINAL_X_X_X_X_SACROW_READ_1, 
+    p99310201_pass_FUSE_X_FUSEREAD_K_FINAL_X_X_X_X_ULT_RAP_1, 
+    p99310202_pass_FUSE_X_FUSEREAD_K_FINAL_X_X_X_X_ULT_RAP_2, 
+    p99310205_pass_FUSE_X_FUSEREAD_K_FINAL_X_X_X_X_ULT_RAP_5, 
+    p99310213_pass_FUSE_X_FUSEREAD_K_FINAL_X_X_X_X_YIELDMON_RAP_1, 
+    p99310214_pass_FUSE_X_FUSEREAD_K_FINAL_X_X_X_X_YIELDMON_RAP_2, 
+    p99310215_pass_FUSE_X_FUSEREAD_K_FINAL_X_X_X_X_YIELDMON_RAP_5, 
+    p99310501_pass_FUSE_X_FUSEBURN_K_FINAL_X_X_X_X_ULT_WRITE_1, 
+    p99310502_pass_FUSE_X_FUSEBURN_K_FINAL_X_X_X_X_ULT_WRITE_2, 
+    p99311001_pass_FUSE_X_SCREEN_K_START_X_X_X_X_PERDIE_STATE_INIT_1, 
+    p99311002_pass_FUSE_X_SCREEN_K_START_X_X_X_X_PRINTHVQK_1, 
+    p99311008_pass_FUSE_X_SCREEN_K_FINAL_X_X_X_X_SET_ULT_DFFX_GOOD_1, 
+    p99311009_pass_FUSE_X_SCREEN_K_FINAL_X_X_X_X_SET_ULT_DFFX_BAD_1 
+} # End of Test Counter Definition
+
+Test iCPatternModifyTest FUSE_X_PATMOD_K_INIT_X_X_X_X_BURN_TTR_P1
+{
+    input_file = "./Modules/TPI_FUSE/InputFiles/TPI_FUSE_burn_setup.txt";
+    modify_token = "FUSEBURNMIN";
+    bypass_global = "1";
+}
+
+Test iCScreenTest FUSE_X_SCREEN_K_INIT_X_X_X_X_SET_VF_SIZE_P1
+{
+    screen_custom_file = "./Modules/TPI_FUSE/InputFiles/custom_fuse_read.txt";
+    screen_custom_setpoint = "IR";
+    screen_test_set = "SetVFSize";
+    screen_tests_file = "./Modules/TPI_FUSE/InputFiles/screentest_fuse_read.txt";
+}
+
+Test iCScreenTest FUSE_X_SCREEN_K_START_X_X_X_X_PERDIE_STATE_INIT_P1
+{
+    screen_custom_file = "./Modules/TPI_FUSE/InputFiles/custom_fuse_read.txt";
+    screen_custom_setpoint = "IR";
+    screen_test_set = "PerDieValuesInit";
+    screen_tests_file = "./Modules/TPI_FUSE/InputFiles/screentest_fuse_read.txt";
+}
+
+Flow TPI_FUSE_INIT
+{
+    FlowItem FUSE_X_SCREEN_K_INIT_X_X_X_X_SET_VF_SIZE_P1 FUSE_X_SCREEN_K_INIT_X_X_X_X_SET_VF_SIZE_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -2;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo FUSE_X_PATMOD_K_INIT_X_X_X_X_BURN_TTR_P1;
+        }
+        Result 2
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+    }
+    FlowItem FUSE_X_PATMOD_K_INIT_X_X_X_X_BURN_TTR_P1 FUSE_X_PATMOD_K_INIT_X_X_X_X_BURN_TTR_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -2;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            Return 1;
+        }
+    }
+}
+
+DUTFlow TPI_FUSE_START
+{
+    DUTFlowItem FUSE_X_SCREEN_K_START_X_X_X_X_PERDIE_STATE_INIT_P1 FUSE_X_SCREEN_K_START_X_X_X_X_PERDIE_STATE_INIT_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -2;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+			IncrementCounters TPI_FUSE::n31909080_fail_FUSE_X_SCREEN_K_START_X_X_X_X_PERDIE_STATE_INIT_0;
+            SetBin SoftBins.b31909080_fail_TPI_FUSE_FUSE_X_SCREEN_K_START_X_X_X_X_PERDIE_STATE_INIT_0;
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+			IncrementCounters TPI_FUSE::p99311001_pass_FUSE_X_SCREEN_K_START_X_X_X_X_PERDIE_STATE_INIT_1;
+            Return 1;
+        }
+        Result 2
+        {
+            Property PassFail = "Fail";
+			IncrementCounters TPI_FUSE::n31909082_fail_FUSE_X_SCREEN_K_START_X_X_X_X_PERDIE_STATE_INIT_2;
+            SetBin SoftBins.b31909082_fail_TPI_FUSE_FUSE_X_SCREEN_K_START_X_X_X_X_PERDIE_STATE_INIT_2;
+            Return 0;
+        }
+    }
+}

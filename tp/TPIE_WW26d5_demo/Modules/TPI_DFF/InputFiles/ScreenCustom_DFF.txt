@@ -1,0 +1,4 @@
+#DEFINE:	SETPOINT:	DATA_TYPE:	VARIABLE:	VARIABLE_TYPE:	VALUE:	CONDITION
+ define:    	ALL:   		INTEGER:   	DUMMYVAR:	LITERAL:	-1:	*
+ define:   	ALL:   		INTEGER:   	BIN:		LITERAL:	0:	*
+ define:   	ALL:   		STRING:   	INT2STR:	LITERAL:	"0"	:	*

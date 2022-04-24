@@ -1,0 +1,5 @@
+START_SCREEN:InitializeBin17
+##Run       : Test             		: Data   : Param Type: Param1                                       : Operation: Param  : Param2: TmpStore: OnTrue           		: OnFalse
+EXEC        : ARR_GT          		: INTEGER: GSDS      : U.I.ARR_GT_BIN17                      	  	: SET      : LITERAL: 0     : -       : SCN_GT     				: SCN_GT
+EXEC        : SCN_GT	          	: INTEGER: GSDS      : U.I.SCN_GT_BIN17                        		: SET      : LITERAL: 0     : -       : 1          				: 2
+END_SCREEN

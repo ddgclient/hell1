@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReportParams>
+  <Source>C:\Users\caiofern\source\repos\poc_tp_validation\logs\dotCover\coverLogComplete.dcvr</Source>
+  <Output>C:\Users\caiofern\source\repos\poc_tp_validation\logs\dotCover\coverLogComplete.html</Output>
+  <ReportType>HTML</ReportType>
+</ReportParams>

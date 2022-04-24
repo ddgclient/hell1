@@ -1,0 +1,35 @@
+Version 5.0;
+
+## unix OASIS_PATOBJ_PATH /p/pde/tvpv/mtl/hdmt2/central/vrevC28A4P/sort/hvm/indv_bin 
+## unix OASIS_PATOBJ_PATH /p/pde/tvpv/mtl/hdmt2/central/cfx/03x 
+## unix OASIS_TMAP_PATH /p/pde/tvpv/mtl/hdmt2/central/cfx/03x 
+
+#PREPEND OASIS_PATOBJ_PATH I:\engineering\tvpv\mtl\hdmt2\central\vrevC28A4P\sort\hvm\indv_bin 
+#PREPEND OASIS_PATOBJ_PATH I:\engineering\tvpv\mtl\hdmt2\central\cfx\03x 
+#PREPEND OASIS_TMAP_PATH I:\engineering\tvpv\mtl\hdmt2\central\cfx\03x 
+
+GlobalPList arr_atom_m0_prescreen_doe_list [Flatten] {
+    # VMVT_INFO: vrev=vrevC28A4P mode=sort vectype=hvm tester=hdmt2 target=central target_cf=central
+    Pat d0016406W4596667A_M7_VC28xCA044_Xm020s00xxx0a_dxxx080808xxxxxxxxxxx_sC28A4PxxATC025J03x_x00_ic_btb_pmovi_x_s_hry;
+} #end of GlobalPList arr_atom_m0_prescreen_doe_list
+
+GlobalPList arr_atom_m1_prescreen_doe_list [Flatten] {
+    # VMVT_INFO: vrev=vrevC28A4P mode=sort vectype=hvm tester=hdmt2 target=central target_cf=central
+    Pat d0016407W4596667A_M8_VC28xCA044_Xm020s00xxx0a_dxxx080808xxxxxxxxxxx_sC28A4PxxATC025J03x_x00_ic_btb_pmovi_x_s_hry;
+} #end of GlobalPList arr_atom_m1_prescreen_doe_list
+
+GlobalPList arr_atom_m0_raster_doe_list [Flatten] {
+    # VMVT_INFO: vrev=vrevC28A4P mode=sort vectype=hvm tester=hdmt2 target=central target_cf=central
+    Pat d0016456W4473594A_Ph_VC28xCA044_Xm020s00xxx0a_dxxx080808xxxxxxxxxxx_sC28A4PxxATC025J03x_x00_ic_btb_pmovi_x_s_sof;
+} #end of GlobalPList arr_atom_m0_raster_doe_list
+
+GlobalPList arr_atom_m1_raster_doe_list [Flatten] {
+    # VMVT_INFO: vrev=vrevC28A4P mode=sort vectype=hvm tester=hdmt2 target=central target_cf=central
+    Pat d0016457W4473594A_Ph_VC28xCA044_Xm020s00xxx0a_dxxx080808xxxxxxxxxxx_sC28A4PxxATC025J03x_x00_ic_btb_pmovi_x_s_sof;
+} #end of GlobalPList arr_atom_m1_raster_doe_list
+
+GlobalPList arr_atom_dierec_on_main_doe_list [Flatten] {
+    # VMVT_INFO: vrev=vrevC28A4P mode=sort vectype=hvm tester=hdmt2 target=central target_cf=central
+    Pat d0015952W4012254A_Lg_VC28xCA044_Xm022600xxx0a_dxxx0808081bxxxxxxxxx_sC28A4PxxATC025J03x_x00_ic_btb_pmovi_x_x;
+	Pat d0015953W4520039A_DJ_VC28xCA044_Xm022600xxx0a_dxxx0808081bxxxxxxxxx_sC28A4PxxATC025J03x_x00_ic_btb_scanfail_lc_x_s;
+} #end of GlobalPList arr_atom_dierec_on_main_doe_list

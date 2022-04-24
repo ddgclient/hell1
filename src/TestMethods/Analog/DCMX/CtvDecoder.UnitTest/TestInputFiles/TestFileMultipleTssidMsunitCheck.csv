@@ -1,0 +1,5 @@
+Pin,IP,Sequence,Subsequence,Field,Size,ItuffToken,ItuffDescriptor
+DDR1_DQ50,V0,training,subseq1,val1,4,<TssidRename>_Token1,MNEMONIC1
+DDR1_DQ50,V0,training,subseq1,val2,4,<TssidRename>_Token1,MNEMONIC1
+DDR1_DQ51,V0,training,subseq1,val3,4,<TssidRename>_Token1,MNEMONIC2
+DDR1_DQ51,V0,training,subseq1,val4,4,<TssidRename>_Token1,MNEMONIC2

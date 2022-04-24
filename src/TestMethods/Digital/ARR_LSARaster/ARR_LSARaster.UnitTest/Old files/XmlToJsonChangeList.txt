@@ -1,0 +1,20 @@
+﻿Changes from XML -> JSON
+	- Many elements are now in a DICT format
+		* SlicePinMappings is now an object that holds a map of: string (name of pinMappingSet) -> pinMappingSet obj
+		* CaptureConfigSets is now an object that holds a map of: string (name of captureSet) -> captureSet obj
+		* PatModConfigSets is now an object that holds a map of: string (name of PatternModify) -> patternModify obj
+	
+	- PinMappingSet LabelRegExTokens is just a List of strings
+		* When fetching the PreScreenLabelRegex, each element within the LabelRegExTokens corresponds to the each character of the Regex match according to its index
+			- Ex. LabelRegexTokens =["Slice", "Multiport", "Bank", "Dword"]... the PreScreenLabelRegex returns the string "1101"
+			
+			Slice     = 1 as it's the first element within the LabelRegexTokens list and it matches with the first char of the found string
+			Multiport = 1 as it's the second element within the LabelRegexTokens list and it matches with the second char of the found string
+			Bank      = 0 as it's the third element and it matches with the third character
+			Dword     = 1 as it's the fourth element and it matches with the fourth character
+
+			- If the length of the LabelRegexTokens array is a mismatch with the found regex length for whatever reason, we throw an error
+
+Want to haves:
+	- Make it so that PinMappings within SlicePinMapping is a direct map of pin/patName to sliceId/hryName
+		* Not sure whether a PinMapping can have only one or both of these attributes, if it's only one then we can create a direct map and just search for the pin/pat name in both the current pat name/current pin name

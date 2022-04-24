@@ -1,0 +1,15 @@
+{
+  "ConfigName": "ImpactStudiesBaseWaits",
+  "ValidResults": {
+    "MOV 105, R7|MOV 105, R7": [
+      "g0179772W5014240A_L8_VC28xCA08a_Fm020v18xxx0q_dxxx0808081bxxxxxxxxx_sC28A6PxxATC029J052_x00_il_LengthChangePrefixes_Random_16bit_26530"
+    ],
+    "MOV 160, R7|MOV 160, R7": [
+      "g0179785W5014598A_KX_VC28xCA08a_Fm020v18xxx0q_dxxx0808081bxxxxxxxxx_sC28A6PxxATC029J052_x00_gather_scatter_address_ver2_3091756"
+    ]
+  },
+  "InvalidPatterns": [
+    "g0179780W5014242A_LY_VC28xCA08a_Fm020v18xxx0q_dxxx0808081bxxxxxxxxx_sC28A6PxxATC029J052_x00_il_LengthChangePrefixes_Random_16bit_26698"
+  ],
+  "SkippedPatterns": []
+}

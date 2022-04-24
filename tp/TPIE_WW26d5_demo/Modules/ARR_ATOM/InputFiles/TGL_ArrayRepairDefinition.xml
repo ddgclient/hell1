@@ -1,0 +1,1799 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+	<!--	REVISION 	DATE		OWNER		COMMENT													-->
+	<!--	01		18ww41.3 	Mike 		Modified to split out llc slices - there are 4 patterns, one per slice with IOs from both chunks	-->
+	<!--	02		18ww48.1 	Ale 		Add corerfall and updated the file format								-->
+	<!--	03		18ww52.5	Mike		Changed the repair globals so that they are tied directly to thier corresponding DFF values to miminize handshaking	-->
+	<!--    04		19ww09.2	Mike		Changed the array_definitions to align to pattern methodology for tag, cv, lru and state arrays.  It was incorrect -->
+	<!--	05		19ww09.5	Mike		Changed all capture CTV definitions for each array based on CTV captures found in SPF files (pattern level) -->
+	<!--	06		19ww11.1	Mike		Updated to align to CTV capture for core and Tfile formatting -->
+	<!--	07		19ww15.2	Mike		Added array names for LSARaster to iCRepair hanshaking/enabling -->
+
+<arr_setup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="GEN_Repair_tt.xsd">
+	<product_setup				name="TGL4x2"			description="Tiger Lake 4 by 2">
+		<global>
+			<!-- Input parameters global setup -->
+			<resources_per_ssi		value="53" />
+			<total_number_of_ssi		value="8" />
+			<!-- Multicore repair tracking.-->
+			<ssi_tracking_order		mode="msbR" />
+			<define_cr_dis_from_tp		gsds="G.U.S.SLICESTATUS" />
+			<define_cr_repaired		gsds="G.U.S.ARR_REPAIRED_CORES" />
+			<define_cr_dis_by_arr		gsds="G.U.S.ARR_CR_DIS" />
+			<!-- Other misc setup -->
+			<defect_matrix_max_size	 maximum="5000" />
+		</global>   
+		<array_code_mapping>  
+			<mapping array_code="LDC" spares="1"  fuse_to_domain="10-18" />							<!-- LLC Dat Column Fuse description -->
+			<mapping array_code="LDR" spares="4"  fuse_to_domain="10-18" assign_order="ascending"/>				<!-- LLC Dat Row Fuse description -->
+			<mapping array_code="LTR" spares="4"  fuse_to_domain="12-18" assign_order="ascending"/>				<!-- LLC Tag Row Fuse description -->
+			<mapping array_code="LCR" spares="1"  fuse_to_domain="12-18" />							<!-- LLC CV/LRU/STA Row Fuse description -->
+			<mapping array_code="MDC" spares="1"  fuse_to_domain="11-17" />							<!-- MLC Dat & C6S Column Fuse description -->
+			<mapping array_code="MDR" spares="4"  fuse_to_domain="10-17" assign_order="ascending"/>				<!-- MLC Dat & C6S Row Fuse description -->
+			<mapping array_code="MTR" spares="1"  fuse_to_domain="13-17" />							<!-- MLC Tag Row Fuse description -->
+			<mapping array_code="CRF" spares="2"  fuse_to_domain="20-24" ignore="0-14,19" assign_order="ascending"/>	<!-- Core RF Row Fuse description -->
+			<mapping array_code="SNR" spares="4"  fuse_to_domain="8-10,13-15" assign_order="ascending" />			<!-- CBOPAIR0,1,2,3_RAM, SBOIDP_RAM and GIP_RAM Row Fuse description -->
+		</array_code_mapping>
+		<array_definition>
+			<array label="llcdat" >
+				<define_repair_global			gsds="G.U.S.SLLCR" fullfit="false" />			<!-- For DFF purposes the repair DFF should be string, not binary.  Disable range check etc. Only sending what needs to be repaired--> 
+				<define_counter_fuse_group		gsds="G.U.I.CounterFuseGroup" />
+				<raster_reduce_parameters>
+					<row_decoders			value="1" />
+					<column_decoders		value="1"/>
+					<row_vs_single_bit_threshold	value="3"/>
+					<column_vs_single_bit_threshold	value="3"/>
+					<massive_array_fail		 value="1024"/>
+					<bit_density			value="0.33"/>
+				</raster_reduce_parameters>
+				<sticky match_label="slice0">
+					<disable_ssi			value="true"/>								<!-- -->
+					<repair_domain			array_code="LDC" /> 
+					<start_offset			value="0" />						<!-- Is it optional? -->
+					<ssi				value="0">							<!-- Is it optional? -->
+					</ssi>
+					<bits_per_ssi			value="1096" />
+					<arraymap_set			value="0" />							<!-- Optional -->
+					<arraymap_way			value="0" />							<!-- Optional -->
+					<arraymap_bit			value="0" />
+					<valid				bits="32-1095"/>
+				</sticky>
+				<sticky match_label="slice1">
+					<disable_ssi			value="true"/>								<!-- -->
+					<repair_domain			array_code="LDC" /> 
+					<start_offset			value="0" />						<!-- Is it optional? -->
+					<ssi				value="1">							<!-- Is it optional? -->
+					</ssi>
+					<bits_per_ssi			value="1096" />
+					<arraymap_set			value="0" />							<!-- Optional -->
+					<arraymap_way			value="0" />							<!-- Optional -->
+					<arraymap_bit			value="0" />
+					<valid				bits="32-1095"/>
+				</sticky>
+				<sticky match_label="slice2">
+					<disable_ssi			value="true"/>								<!-- -->
+					<repair_domain			array_code="LDC" /> 
+					<start_offset			value="0" />						<!-- Is it optional? -->
+					<ssi				value="2">							<!-- Is it optional? -->
+					</ssi>
+					<bits_per_ssi			value="1096" />
+					<arraymap_set			value="0" />							<!-- Optional -->
+					<arraymap_way			value="0" />							<!-- Optional -->
+					<arraymap_bit			value="0" />
+					<valid				bits="32-1095"/>
+				</sticky>
+				<sticky match_label="slice3">
+					<disable_ssi			value="true"/>								<!-- -->
+					<repair_domain			array_code="LDC" /> 
+					<start_offset			value="0" />						<!-- Is it optional? -->
+					<ssi				value="3">							<!-- Is it optional? -->
+					</ssi>
+					<bits_per_ssi			value="1096" />
+					<arraymap_set			value="0" />							<!-- Optional -->
+					<arraymap_way			value="0" />							<!-- Optional -->
+					<arraymap_bit			value="0" />
+					<valid				bits="32-1095"/>
+				</sticky>
+				<raster match_label="slice0">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="LDC" />
+					<repair_domain			array_code="LDR" />
+					<start_offset			value="0"/>
+					<multiple_xbist			value="false" offset="50"/>					<!-- Use false for LLC Dat -->
+					<ssi				value="0" />							<!-- Indicates which slice - Hardcoded -->
+					<bits_per_ssi			value="1064" />
+					<arraymap_set			bits="37-47" />
+					<arraymap_way			bits="30-34" />
+					<arraymap_bit			bits="0-1063" />
+				</raster>				
+				<raster match_label="slice0_old">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="LDC" />
+					<repair_domain			array_code="LDR" />
+					<start_offset			value="0"/>
+					<multiple_xbist			value="false" offset="50"/>					<!-- Use false for LLC Dat -->
+					<ssi				value="0" />							<!-- Indicates which slice - Hardcoded -->
+					<bits_per_ssi			value="1064" />
+					<arraymap_set			bits="37-47" />
+					<arraymap_way			bits="30-34" />
+					<arraymap_bit			bits="32-63,96-127,160-191,224-255,288-319,352-383,416-447,480-511,522-531,564-595,628-659,692-723,756-787,820-851,884-915,948-979,1012-1043,1054-1063" />
+					<!-- <arraymap_bit			bits="0-531" /> -->
+					<subarray			label="chunk0" />
+				</raster>
+				<raster match_label="slice0_old">
+					<arraymap_set			bits="37-47" value="2048" />
+					<arraymap_way			bits="30-34" />
+					<arraymap_bit			bits="0-31,64-95,128-159,192-223,256-287,320-351,384-415,448-479,512-521,532-563,596-627,660-691,724-755,788-819,852-883,916-947,980-1011,1044-1053" />
+					<!-- <arraymap_bit			bits="532-1063" value="532" /> -->
+					<subarray			label="chunk1" />
+				</raster>
+				<raster match_label="slice1">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="LDC" />
+					<repair_domain			array_code="LDR" />
+					<start_offset			value="0"/>
+					<multiple_xbist			value="false" offset="50"/>					<!-- Use false for LLC Dat -->
+					<ssi				value="1" />							<!-- Indicates which slice - Hardcoded -->
+					<bits_per_ssi			value="1064" />
+					<arraymap_set			bits="37-47" />
+					<arraymap_way			bits="30-34" />
+					<arraymap_bit			bits="0-1063" />
+				</raster>
+				<raster match_label="slice2">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="LDC" />
+					<repair_domain			array_code="LDR" />
+					<start_offset			value="0"/>
+					<multiple_xbist			value="false" offset="50"/>					<!-- Use false for LLC Dat -->
+					<ssi				value="2" />							<!-- Indicates which slice - Hardcoded -->
+					<bits_per_ssi			value="1064" />
+					<arraymap_set			bits="37-47" />
+					<arraymap_way			bits="30-34" />
+					<arraymap_bit			bits="0-1063" />
+				</raster>		
+				<raster match_label="slice3">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="LDC" />
+					<repair_domain			array_code="LDR" />
+					<start_offset			value="0"/>
+					<multiple_xbist			value="false" offset="50"/>					<!-- Use false for LLC Dat -->
+					<ssi				value="3" />							<!-- Indicates which slice - Hardcoded -->
+					<bits_per_ssi			value="1064" />
+					<arraymap_set			bits="37-47" />
+					<arraymap_way			bits="30-34" />
+					<arraymap_bit			bits="0-1063" />
+				</raster>
+				<raster match_label="debug">
+					<!-- Raster status		way ______set_______CL Core 0 CL Core 1 CL Core 2 CL Core 3 -->
+					<!-- Use CACHE.RASTER_GLOBAL = "010000000011100000000000010000010000000000100000000001000000" -->
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="LDC" />
+					<repair_domain			array_code="LDR" />
+					<start_offset			value="0"/>
+					<multiple_xbist			value="false" offset="20"/>					<!-- Use false for LLC dat, which means there is only one DFT/ePBIST.  Skipping raster status bits-->
+					<ssi				value="0-3" />
+					<bits_per_ssi			value="10" />
+					<arraymap_set			bits="10-12" />							<!-- This pertains to raster status, not raster IO bits-->
+					<arraymap_way			bits="0-3" />							<!-- This pertains to raster status, not raster IO bits-->
+					<arraymap_bit			bits="0-4" />							<!-- This pertains to cache line, not raster status starting from offset-->
+					<subarray			label="chunk0" />
+				</raster>
+				<raster match_label="debug">
+					<arraymap_set			bits="10-12" value="2048" />					<!-- This is hard-coding the chunk bit from raster status to 1, because chunk doesn't come from raster status, it comes from IO offset-->
+					<arraymap_way			bits="0-3" />
+					<arraymap_bit			bits="5-9" value="5" />						<!-- This value="5" is needed to offset the bits within a chunk.  Since this is second chunk it offsets from the first chunk that has 5 bits-->
+					<subarray			label="chunk1" />
+				</raster>
+			</array>
+			<array label="llc_tag" >
+				<define_repair_global			gsds="G.U.S.SLLCR" fullfit="false" />			<!-- For DFF purposes the repair DFF should be string, not binary.  Disable range check etc. Only sending what needs to be repaired--> 
+				<define_counter_fuse_group		gsds="G.U.I.CounterFuseGroup" />
+				<t_file_format_setup>
+					<bsv  name="slice"         format="dec" />
+					<bsv  name="dword"         format="dec" />
+					<bsv  name="bank"          format="dec" />
+					<bsv  name="fast_address"  format="dec" />
+					<bsv  name="fail_io"       format="dec" />
+				</t_file_format_setup>
+				<raster_reduce_parameters>
+					<row_decoders			value="1" />
+					<column_decoders		value="1"/>
+					<row_vs_single_bit_threshold	value="3"/>
+					<column_vs_single_bit_threshold	value="3"/>
+					<massive_array_fail		 value="1024"/>
+					<bit_density			value="0.33"/>
+				</raster_reduce_parameters>
+				<raster match_label="slice0_l">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="LTR" />
+					<start_offset			value="0"/>
+					<multiple_xbist			value="false" offset="50"/>					<!-- Use false for LLC Tag -->
+					<ssi				value="0" />							<!-- Indicates which slice - Hardcoded -->
+					<bits_per_ssi			value="32" />
+					<arraymap_set			bits="37-47,34" />
+					<arraymap_way			bits="30-33" />
+					<arraymap_bit			bits="0-27,31" />
+					<subarray			label="half0" />
+				</raster>
+				<raster match_label="slice0_h">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="LTR" />
+					<start_offset			value="0"/>
+					<multiple_xbist			value="false" offset="50"/>					<!-- Use false for LLC Tag -->
+					<ssi				value="0" />							<!-- Indicates which slice - Hardcoded -->						<!-- Indicates which slice - Hardcoded -->
+					<bits_per_ssi			value="32" />
+					<arraymap_set			bits="37-47,34" />
+					<arraymap_way			bits="30-33" />
+					<arraymap_bit			bits="0-27,31" value="29"/>
+					<subarray			label="half1" />
+				</raster>			
+				<raster match_label="slice1_l">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="LTR" />
+					<start_offset			value="0"/>
+					<multiple_xbist			value="false" offset="50"/>					<!-- Use false for LLC Tag -->
+					<ssi				value="1" />							<!-- Indicates which slice - Hardcoded -->
+					<bits_per_ssi			value="32" />
+					<arraymap_set			bits="37-47,34" />
+					<arraymap_way			bits="30-33" />
+					<arraymap_bit			bits="0-27,31" />
+					<subarray			label="half0" />
+				</raster>
+				<raster match_label="slice1_h">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="LTR" />
+					<start_offset			value="0"/>
+					<multiple_xbist			value="false" offset="50"/>					<!-- Use false for LLC Tag -->
+					<ssi				value="1" />							<!-- Indicates which slice - Hardcoded -->						<!-- Indicates which slice - Hardcoded -->
+					<bits_per_ssi			value="32" />
+					<arraymap_set			bits="37-47,34" />
+					<arraymap_way			bits="30-33" />
+					<arraymap_bit			bits="0-27,31" value="29"/>
+					<subarray			label="half1" />
+				</raster>
+				<raster match_label="slice2_l">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="LTR" />
+					<start_offset			value="0"/>
+					<multiple_xbist			value="false" offset="50"/>					<!-- Use false for LLC Tag -->
+					<ssi				value="2" />							<!-- Indicates which slice - Hardcoded -->
+					<bits_per_ssi			value="32" />
+					<arraymap_set			bits="37-47,34" />
+					<arraymap_way			bits="30-33" />
+					<arraymap_bit			bits="0-27,31" />
+					<subarray			label="half0" />
+				</raster>
+				<raster match_label="slice2_h">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="LTR" />
+					<start_offset			value="0"/>
+					<multiple_xbist			value="false" offset="50"/>					<!-- Use false for LLC Tag -->
+					<ssi				value="2" />							<!-- Indicates which slice - Hardcoded -->						<!-- Indicates which slice - Hardcoded -->
+					<bits_per_ssi			value="32" />
+					<arraymap_set			bits="37-47,34" />
+					<arraymap_way			bits="30-33" />
+					<arraymap_bit			bits="0-27,31" value="29"/>
+					<subarray			label="half1" />
+				</raster>
+				<raster match_label="slice3_l">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="LTR" />
+					<start_offset			value="0"/>
+					<multiple_xbist			value="false" offset="50"/>					<!-- Use false for LLC Tag -->
+					<ssi				value="3" />							<!-- Indicates which slice - Hardcoded -->
+					<bits_per_ssi			value="32" />
+					<arraymap_set			bits="37-47,34" />
+					<arraymap_way			bits="30-33" />
+					<arraymap_bit			bits="0-27,31" />
+					<subarray			label="half0" />
+				</raster>
+				<raster match_label="slice3_h">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="LTR" />
+					<start_offset			value="0"/>
+					<multiple_xbist			value="false" offset="50"/>					<!-- Use false for LLC Tag -->
+					<ssi				value="3" />							<!-- Indicates which slice - Hardcoded -->						<!-- Indicates which slice - Hardcoded -->
+					<bits_per_ssi			value="32" />
+					<arraymap_set			bits="37-47,34" />
+					<arraymap_way			bits="30-33" />
+					<arraymap_bit			bits="0-27,31" value="29"/>
+					<subarray			label="half1" />
+				</raster>
+			</array>
+			<array label="llc_cv" >
+				<define_repair_global			gsds="G.U.S.SLLCR" fullfit="false" />			<!-- For DFF purposes the repair DFF should be string, not binary.  Disable range check etc. Only sending what needs to be repaired--> 
+				<define_counter_fuse_group		gsds="G.U.I.CounterFuseGroup" />
+				<t_file_format_setup>
+					<bsv  name="slice"         format="dec" />
+					<bsv  name="dword"         format="dec" />
+					<bsv  name="bank"          format="dec" />
+					<bsv  name="fast_address"  format="dec" />
+					<bsv  name="fail_io"       format="dec" />
+				</t_file_format_setup>
+				<raster_reduce_parameters>
+					<row_decoders			value="1" /> 
+					<column_decoders		value="1"/>
+					<row_vs_single_bit_threshold	value="3"/>
+					<column_vs_single_bit_threshold	value="3"/>
+					<massive_array_fail		value="1024"/>
+					<bit_density			value="0.33"/>
+				</raster_reduce_parameters>
+				<raster match_label="slice0_l">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="LCR" />
+					<start_offset			value="0"/>
+					<multiple_xbist			value="false" offset="50"/>					<!-- Use false for LLC Tag -->
+					<ssi				value="0" />							<!-- Indicates which slice - Hardcoded -->
+					<bits_per_ssi			value="10" />
+					<arraymap_set			bits="37-47" />
+					<arraymap_way			bits="30-34" />
+					<arraymap_bit			bits="0-9" />
+					<subarray			label="half0" />
+				</raster>
+				<raster match_label="slice0_h">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="LCR" />
+					<start_offset			value="0"/>
+					<multiple_xbist			value="false" offset="50"/>					<!-- Use false for LLC Tag -->
+					<ssi				value="0" />							<!-- Indicates which slice - Hardcoded -->
+					<bits_per_ssi			value="10" />
+					<arraymap_set			bits="37-47" />
+					<arraymap_way			bits="30-34" />
+					<arraymap_bit			bits="0-9" value="10"/>
+					<subarray			label="half1" />
+				</raster>			
+				<raster match_label="slice1_l">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="LCR" />
+					<start_offset			value="0"/>
+					<multiple_xbist			value="false" offset="50"/>					<!-- Use false for LLC Tag -->
+					<ssi				value="1" />							<!-- Indicates which slice - Hardcoded -->
+					<bits_per_ssi			value="10" />
+					<arraymap_set			bits="37-47" />
+					<arraymap_way			bits="30-34" />
+					<arraymap_bit			bits="0-9" />
+					<subarray			label="half0" />
+				</raster>
+				<raster match_label="slice1_h">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="LCR" />
+					<start_offset			value="0"/>
+					<multiple_xbist			value="false" offset="50"/>					<!-- Use false for LLC Tag -->
+					<ssi				value="1" />							<!-- Indicates which slice - Hardcoded -->
+					<bits_per_ssi			value="10" />
+					<arraymap_set			bits="37-47" />
+					<arraymap_way			bits="30-34" />
+					<arraymap_bit			bits="0-9" value="10"/>
+					<subarray			label="half1" />
+				</raster>
+				<raster match_label="slice2_l">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="LCR" />
+					<start_offset			value="0"/>
+					<multiple_xbist			value="false" offset="50"/>					<!-- Use false for LLC Tag -->
+					<ssi				value="2" />							<!-- Indicates which slice - Hardcoded -->
+					<bits_per_ssi			value="10" />
+					<arraymap_set			bits="37-47" />
+					<arraymap_way			bits="30-34" />
+					<arraymap_bit			bits="0-9" />
+					<subarray			label="half0" />
+				</raster>
+				<raster match_label="slice2_h">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="LCR" />
+					<start_offset			value="0"/>
+					<multiple_xbist			value="false" offset="50"/>					<!-- Use false for LLC Tag -->
+					<ssi				value="2" />							<!-- Indicates which slice - Hardcoded -->
+					<bits_per_ssi			value="10" />
+					<arraymap_set			bits="37-47" />
+					<arraymap_way			bits="30-34" />
+					<arraymap_bit			bits="0-9" value="10"/>
+					<subarray			label="half1" />
+				</raster>
+				<raster match_label="slice3_l">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="LCR" />
+					<start_offset			value="0"/>
+					<multiple_xbist			value="false" offset="50"/>					<!-- Use false for LLC Tag -->
+					<ssi				value="3" />							<!-- Indicates which slice - Hardcoded -->
+					<bits_per_ssi			value="10" />
+					<arraymap_set			bits="37-47" />
+					<arraymap_way			bits="30-34" />
+					<arraymap_bit			bits="0-9" />
+					<subarray			label="half0" />
+				</raster>
+				<raster match_label="slice3_h">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="LCR" />
+					<start_offset			value="0"/>
+					<multiple_xbist			value="false" offset="50"/>					<!-- Use false for LLC Tag -->
+					<ssi				value="3" />							<!-- Indicates which slice - Hardcoded -->
+					<bits_per_ssi			value="10" />
+					<arraymap_set			bits="37-47" />
+					<arraymap_way			bits="30-34" />
+					<arraymap_bit			bits="0-9" value="10"/>
+					<subarray			label="half1" />
+				</raster>								
+			</array>
+			<array label="llc_sta" >
+				<define_repair_global			gsds="G.U.S.SLLCR" fullfit="false" />			<!-- For DFF purposes the repair DFF should be string, not binary.  Disable range check etc. Only sending what needs to be repaired--> 
+				<define_counter_fuse_group		gsds="G.U.I.CounterFuseGroup" />
+				<t_file_format_setup>
+					<bsv  name="slice"         format="dec" />
+					<bsv  name="dword"         format="dec" />
+					<bsv  name="bank"          format="dec" />
+					<bsv  name="fast_address"  format="dec" />
+					<bsv  name="fail_io"       format="dec" />
+				</t_file_format_setup>
+				<raster_reduce_parameters>
+					<row_decoders			value="1" /> 
+					<column_decoders		value="1"/>
+					<row_vs_single_bit_threshold	value="3"/>
+					<column_vs_single_bit_threshold	value="3"/>
+					<massive_array_fail		value="1024"/>
+					<bit_density			value="0.33"/>
+				</raster_reduce_parameters>
+				<raster match_label="slice0_l">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="LCR" />
+					<start_offset			value="0"/>
+					<multiple_xbist			value="false" offset="50"/>					<!-- Use false for LLC Tag -->
+					<ssi				value="0" />							<!-- Indicates which slice - Hardcoded -->
+					<bits_per_ssi			value="8" />
+					<arraymap_set			bits="37-47" />
+					<arraymap_way			bits="30-34" />
+					<arraymap_bit			bits="0-7" />
+					<subarray			label="half0" />
+				</raster>
+				<raster match_label="slice0_h">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="LCR" />
+					<start_offset			value="0"/>
+					<multiple_xbist			value="false" offset="50"/>					<!-- Use false for LLC Tag -->
+					<ssi				value="0" />							<!-- Indicates which slice - Hardcoded -->
+					<bits_per_ssi			value="8" />
+					<arraymap_set			bits="37-47" />
+					<arraymap_way			bits="30-34" />
+					<arraymap_bit			bits="0-7" value="8"/>
+					<subarray			label="half1" />
+				</raster>			
+				<raster match_label="slice1_l">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="LCR" />
+					<start_offset			value="0"/>
+					<multiple_xbist			value="false" offset="50"/>					<!-- Use false for LLC Tag -->
+					<ssi				value="1" />							<!-- Indicates which slice - Hardcoded -->
+					<bits_per_ssi			value="8" />
+					<arraymap_set			bits="37-47" />
+					<arraymap_way			bits="30-34" />
+					<arraymap_bit			bits="0-7" />
+					<subarray			label="half0" />
+				</raster>
+				<raster match_label="slice1_h">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="LCR" />
+					<start_offset			value="0"/>
+					<multiple_xbist			value="false" offset="50"/>					<!-- Use false for LLC Tag -->
+					<ssi				value="1" />							<!-- Indicates which slice - Hardcoded -->
+					<bits_per_ssi			value="8" />
+					<arraymap_set			bits="37-47" />
+					<arraymap_way			bits="30-34" />
+					<arraymap_bit			bits="0-7" value="8"/>
+					<subarray			label="half1" />
+				</raster>
+				<raster match_label="slice2_l">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="LCR" />
+					<start_offset			value="0"/>
+					<multiple_xbist			value="false" offset="50"/>					<!-- Use false for LLC Tag -->
+					<ssi				value="2" />							<!-- Indicates which slice - Hardcoded -->
+					<bits_per_ssi			value="8" />
+					<arraymap_set			bits="37-47" />
+					<arraymap_way			bits="30-34" />
+					<arraymap_bit			bits="0-7" />
+					<subarray			label="half0" />
+				</raster>
+				<raster match_label="slice2_h">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="LCR" />
+					<start_offset			value="0"/>
+					<multiple_xbist			value="false" offset="50"/>					<!-- Use false for LLC Tag -->
+					<ssi				value="2" />							<!-- Indicates which slice - Hardcoded -->
+					<bits_per_ssi			value="8" />
+					<arraymap_set			bits="37-47" />
+					<arraymap_way			bits="30-34" />
+					<arraymap_bit			bits="0-7" value="8"/>
+					<subarray			label="half1" />
+				</raster>
+				<raster match_label="slice3_l">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="LCR" />
+					<start_offset			value="0"/>
+					<multiple_xbist			value="false" offset="50"/>					<!-- Use false for LLC Tag -->
+					<ssi				value="3" />							<!-- Indicates which slice - Hardcoded -->
+					<bits_per_ssi			value="8" />
+					<arraymap_set			bits="37-47" />
+					<arraymap_way			bits="30-34" />
+					<arraymap_bit			bits="0-7" />
+					<subarray			label="half0" />
+				</raster>
+				<raster match_label="slice3_h">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="LCR" />
+					<start_offset			value="0"/>
+					<multiple_xbist			value="false" offset="50"/>					<!-- Use false for LLC Tag -->
+					<ssi				value="3" />							<!-- Indicates which slice - Hardcoded -->
+					<bits_per_ssi			value="8" />
+					<arraymap_set			bits="37-47" />
+					<arraymap_way			bits="30-34" />
+					<arraymap_bit			bits="0-7" value="8"/>
+					<subarray			label="half1" />
+				</raster>								
+			</array>			
+			<array label="llc_lru" >
+				<define_repair_global			gsds="G.U.S.SLLCR" fullfit="false" />			<!-- For DFF purposes the repair DFF should be string, not binary.  Disable range check etc. Only sending what needs to be repaired--> 
+				<define_counter_fuse_group		gsds="G.U.I.CounterFuseGroup" />
+				<t_file_format_setup>
+					<bsv  name="slice"         format="dec" />
+					<bsv  name="dword"         format="dec" />
+					<bsv  name="bank"          format="dec" />
+					<bsv  name="fast_address"  format="dec" />
+					<bsv  name="fail_io"       format="dec" />
+				</t_file_format_setup>
+				<raster_reduce_parameters>
+					<row_decoders			value="1" /> 
+					<column_decoders		value="1"/>
+					<row_vs_single_bit_threshold	value="3"/>
+					<column_vs_single_bit_threshold	value="3"/>
+					<massive_array_fail		value="1024"/>
+					<bit_density			value="0.33"/>
+				</raster_reduce_parameters>
+				<raster match_label="slice0_l">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="LCR" />
+					<start_offset			value="0"/>
+					<multiple_xbist			value="false" offset="50"/>					<!-- Use false for LLC LRU -->
+					<ssi				value="0" />							<!-- Indicates which slice - Hardcoded -->
+					<bits_per_ssi			value="48" />
+					<arraymap_set			bits="37-47" />
+					<arraymap_way			bits="30-34" />
+					<arraymap_bit			bits="0-47" />
+					<subarray			label="half0" />
+				</raster>
+				<raster match_label="slice0_h">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="LCR" />
+					<start_offset			value="0"/>
+					<multiple_xbist			value="false" offset="50"/>					<!-- Use false for LLC LRU -->
+					<ssi				value="0" />							<!-- Indicates which slice - Hardcoded -->
+					<bits_per_ssi			value="48" />
+					<arraymap_set			bits="37-47" />
+					<arraymap_way			bits="30-34" />
+					<arraymap_bit			bits="0-47" value="48"/>
+					<subarray			label="half1" />
+				</raster>			
+				<raster match_label="slice1_l">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="LCR" />
+					<start_offset			value="0"/>
+					<multiple_xbist			value="false" offset="50"/>					<!-- Use false for LLC LRU -->
+					<ssi				value="1" />							<!-- Indicates which slice - Hardcoded -->
+					<bits_per_ssi			value="48" />
+					<arraymap_set			bits="37-47" />
+					<arraymap_way			bits="30-34" />
+					<arraymap_bit			bits="0-47" />
+					<subarray			label="half0" />
+				</raster>
+				<raster match_label="slice1_h">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="LCR" />
+					<start_offset			value="0"/>
+					<multiple_xbist			value="false" offset="50"/>					<!-- Use false for LLC LRU -->
+					<ssi				value="1" />							<!-- Indicates which slice - Hardcoded -->
+					<bits_per_ssi			value="48" />
+					<arraymap_set			bits="37-47" />
+					<arraymap_way			bits="30-34" />
+					<arraymap_bit			bits="0-47" value="48"/>
+					<subarray			label="half1" />
+				</raster>
+				<raster match_label="slice2_l">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="LCR" />
+					<start_offset			value="0"/>
+					<multiple_xbist			value="false" offset="50"/>					<!-- Use false for LLC LRU -->
+					<ssi				value="2" />							<!-- Indicates which slice - Hardcoded -->
+					<bits_per_ssi			value="48" />
+					<arraymap_set			bits="37-47" />
+					<arraymap_way			bits="30-34" />
+					<arraymap_bit			bits="0-47" />
+					<subarray			label="half0" />
+				</raster>
+				<raster match_label="slice2_h">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="LCR" />
+					<start_offset			value="0"/>
+					<multiple_xbist			value="false" offset="50"/>					<!-- Use false for LLC LRU -->
+					<ssi				value="2" />							<!-- Indicates which slice - Hardcoded -->
+					<bits_per_ssi			value="48" />
+					<arraymap_set			bits="37-47" />
+					<arraymap_way			bits="30-34" />
+					<arraymap_bit			bits="0-47" value="48"/>
+					<subarray			label="half1" />
+				</raster>
+				<raster match_label="slice3_l">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="LCR" />
+					<start_offset			value="0"/>
+					<multiple_xbist			value="false" offset="50"/>					<!-- Use false for LLC LRU -->
+					<ssi				value="3" />							<!-- Indicates which slice - Hardcoded -->
+					<bits_per_ssi			value="48" />
+					<arraymap_set			bits="37-47" />
+					<arraymap_way			bits="30-34" />
+					<arraymap_bit			bits="0-47" />
+					<subarray			label="half0" />
+				</raster>
+				<raster match_label="slice3_h">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="LCR" />
+					<start_offset			value="0"/>
+					<multiple_xbist			value="false" offset="50"/>					<!-- Use false for LLC LRU -->
+					<ssi				value="3" />							<!-- Indicates which slice - Hardcoded -->
+					<bits_per_ssi			value="48" />
+					<arraymap_set			bits="37-47" />
+					<arraymap_way			bits="30-34" />
+					<arraymap_bit			bits="0-47" value="48"/>
+					<subarray			label="half1" />
+				</raster>				
+			</array>
+			<array label="mlc_dat" >
+				<define_repair_global			gsds="G.U.S.SMLCR" fullfit="false" />			<!-- For DFF purposes the repair DFF should be string, not binary.  Disable range check etc. Only sending what needs to be repaired--> 
+				<define_counter_fuse_group		gsds="G.U.I.CounterFuseGroup" />
+				<t_file_format_setup>
+					<bsv  name="coreid"        format="dec" />
+					<bsv  name="dword"         format="dec" />
+					<bsv  name="bank"          format="dec" />
+					<bsv  name="fast_address"  format="dec" />
+					<bsv  name="fail_io"       format="dec" />
+				</t_file_format_setup>
+				<raster_reduce_parameters>
+					<row_decoders			value="1" /> 
+					<column_decoders		value="1"/>
+					<row_vs_single_bit_threshold	value="3"/>
+					<column_vs_single_bit_threshold	value="3"/>
+					<massive_array_fail		value="1024"/>
+					<bit_density			value="0.33"/>
+				</raster_reduce_parameters>
+				<sticky>
+					<disable_ssi			value="true"/>							<!-- -->
+					<repair_domain			array_code="MDC" /> 
+					<start_offset			value="0" />							<!-- Is it optional? -->
+					<ssi				value="0-3">							<!-- Is it optional? -->
+					</ssi>
+					<bits_per_ssi		value="290" />
+					<arraymap_set			value="0" />							<!-- Optional -->
+					<arraymap_way			value="0" />							<!-- Optional -->
+					<arraymap_bit			value="0" />
+					<valid				bits="2-289"/>
+				</sticky>
+				<raster match_label="core0">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="MDC" />
+					<repair_domain			array_code="MDR" />
+					<start_offset			value="0"/>
+					<multiple_xbist			value="true" />							<!-- Use false for MLC Data -->
+					<ssi				value="0" />							<!-- Indicates which core and it's hard coded -->
+					<bits_per_ssi			value="308" />							<!-- if multiple_xbist set to true, total bits per ssi will need to be include raster status bits -->
+					<arraymap_set			bits="7-15,2-4" />
+					<arraymap_way			bits="6,5,0-1" />
+					<arraymap_bit			bits="20-285" />
+				</raster>
+				<raster match_label="core1">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="MDC" />
+					<repair_domain			array_code="MDR" />
+					<start_offset			value="0"/>
+					<multiple_xbist			value="true" />							<!-- Use false for MLC Data -->
+					<ssi				value="1" />							<!-- Indicates which core and it's hard coded -->
+					<bits_per_ssi			value="308" />							<!-- if multiple_xbist set to true, total bits per ssi will need to be include raster status bits -->
+					<arraymap_set			bits="7-15,2-4" />
+					<arraymap_way			bits="6,5,0-1" />
+					<arraymap_bit			bits="20-285" />
+				</raster>
+				<raster match_label="core2">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="MDC" />
+					<repair_domain			array_code="MDR" />
+					<start_offset			value="0"/>
+					<multiple_xbist			value="true" />							<!-- Use false for MLC Data -->
+					<ssi				value="2" />							<!-- Indicates which core and it's hard coded -->
+					<bits_per_ssi			value="308" />							<!-- if multiple_xbist set to true, total bits per ssi will need to be include raster status bits -->
+					<arraymap_set			bits="7-15,2-4" />
+					<arraymap_way			bits="6,5,0-1" />
+					<arraymap_bit			bits="20-285" />
+				</raster>
+				<raster match_label="core3">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="MDC" />
+					<repair_domain			array_code="MDR" />
+					<start_offset			value="0"/>
+					<multiple_xbist			value="true" />							<!-- Use false for MLC Data -->
+					<ssi				value="3" />							<!-- Indicates which core and it's hard corded -->
+					<bits_per_ssi			value="308" />							<!-- if multiple_xbist set to true, total bits per ssi will need to be include raster status bits -->
+					<arraymap_set			bits="7-15,2-4" />
+					<arraymap_way			bits="6,5,0-1" />
+					<arraymap_bit			bits="20-285" />
+				</raster>
+			</array>
+			<array label="mlc_c6s" >
+				<define_repair_global			gsds="G.U.S.SMLCR" fullfit="false" />			<!-- For DFF purposes the repair DFF should be string, not binary.  Disable range check etc. Only sending what needs to be repaired--> 
+				<define_counter_fuse_group		gsds="G.U.I.CounterFuseGroup" />
+				<t_file_format_setup>
+					<bsv  name="coreid"        format="dec" />
+					<bsv  name="dword"         format="dec" />
+					<bsv  name="bank"          format="dec" />
+					<bsv  name="fast_address"  format="dec" />
+					<bsv  name="fail_io"       format="dec" />
+				</t_file_format_setup>
+				<raster_reduce_parameters>
+					<row_decoders			value="1" /> 
+					<column_decoders		value="1"/>
+					<row_vs_single_bit_threshold	value="3"/>
+					<column_vs_single_bit_threshold	value="3"/>
+					<massive_array_fail		value="1024"/>
+					<bit_density			value="0.33"/>
+				</raster_reduce_parameters>
+				<sticky>
+					<disable_ssi			value="true"/>							<!-- -->
+					<repair_domain			array_code="MDC" /> 
+					<start_offset			value="0" />							<!-- Is it optional? -->
+					<ssi				value="0-3">							<!-- Is it optional? -->
+					</ssi>
+					<bits_per_ssi		value="290" />
+					<arraymap_set			value="0" />							<!-- Optional -->
+					<arraymap_way			value="0" />							<!-- Optional -->
+					<arraymap_bit			value="0" />
+					<valid				bits="2-289"/>
+				</sticky>				
+				<raster match_label="core0">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="MDC" />
+					<repair_domain			array_code="MDR" />
+					<start_offset			value="0"/>
+					<multiple_xbist			value="true" />							<!-- Use false for MLC C6S -->
+					<ssi				value="0" />							<!-- Indicates which core and it's hard coded -->
+					<bits_per_ssi			value="308" />							<!-- if multiple_xbist set to true, total bits per ssi will need to be include raster status bits -->
+					<arraymap_set			bits="7-15,0" />
+					<arraymap_way			bits="6,1-4" />
+					<arraymap_bit			bits="20-285" />
+				</raster>
+				<raster match_label="core1">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="MDC" />
+					<repair_domain			array_code="MDR" />
+					<start_offset			value="0"/>
+					<multiple_xbist			value="true" />							<!-- Use false for MLC C6S -->
+					<ssi				value="1" />							<!-- Indicates which core and it's hard coded -->
+					<bits_per_ssi			value="308" />							<!-- if multiple_xbist set to true, total bits per ssi will need to be include raster status bits -->
+					<arraymap_set			bits="7-15,0" />
+					<arraymap_way			bits="6,1-4" />
+					<arraymap_bit			bits="20-285" />
+				</raster>
+				<raster match_label="core2">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="MDC" />
+					<repair_domain			array_code="MDR" />
+					<start_offset			value="0"/>
+					<multiple_xbist			value="true" />							<!-- Use false for MLC C6S -->
+					<ssi				value="2" />							<!-- Indicates which core and it's hard coded -->
+					<bits_per_ssi			value="308" />							<!-- if multiple_xbist set to true, total bits per ssi will need to be include raster status bits -->
+					<arraymap_set			bits="7-15,0" />
+					<arraymap_way			bits="6,1-4" />
+					<arraymap_bit			bits="20-285" />			
+				</raster>
+				<raster match_label="core3">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="MDC" />
+					<repair_domain			array_code="MDR" />
+					<start_offset			value="0"/>
+					<multiple_xbist			value="true" />							<!-- Use false for MLC C6S -->
+					<ssi				value="3" />							<!-- Indicates which core and it's hard coded -->
+					<bits_per_ssi			value="308" />							<!-- if multiple_xbist set to true, total bits per ssi will need to be include raster status bits -->
+					<arraymap_set			bits="7-15,0" />
+					<arraymap_way			bits="6,1-4" />
+					<arraymap_bit			bits="20-285" />
+				</raster>		
+			</array>
+			<array label="mlc_tag" >
+				<define_repair_global			gsds="G.U.S.SMLCR" fullfit="false" />			<!-- For DFF purposes the repair DFF should be string, not binary.  Disable range check etc. Only sending what needs to be repaired--> 
+				<define_counter_fuse_group		gsds="G.U.I.CounterFuseGroup" />
+				<t_file_format_setup>
+					<bsv  name="coreid"        format="dec" />
+					<bsv  name="dword"         format="dec" />
+					<bsv  name="bank"          format="dec" />
+					<bsv  name="fast_address"  format="dec" />
+					<bsv  name="fail_io"       format="dec" />
+				</t_file_format_setup>
+				<raster_reduce_parameters>
+					<row_decoders			value="1" /> 
+					<column_decoders		value="1"/>
+					<row_vs_single_bit_threshold	value="3"/>
+					<column_vs_single_bit_threshold	value="3"/>
+					<massive_array_fail		value="1024"/>
+					<bit_density			value="0.33"/>
+				</raster_reduce_parameters>
+				<raster match_label="core0">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="MTR" />
+					<start_offset			value="0"/>
+					<multiple_xbist			value="true" />							<!-- Use false for MLC Tag -->
+					<ssi				value="0" />							<!-- Indicates which core and it's hard coded -->
+					<bits_per_ssi			value="84" />							<!-- if multiple_xbist set to true, total bits per ssi will need to be include raster status bits -->
+					<arraymap_set			bits="7-15,2-4" />
+					<arraymap_way			bits="6,0-1" />
+					<arraymap_bit			bits="20-65" />
+				</raster>
+				<raster match_label="core1">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="MTR" />
+					<start_offset			value="0"/>
+					<multiple_xbist			value="true" />							<!-- Use false for MLC Tag -->
+					<ssi				value="1" />							<!-- Indicates which core and it's hard coded -->
+					<bits_per_ssi			value="84" />							<!-- if multiple_xbist set to true, total bits per ssi will need to be include raster status bits -->
+					<arraymap_set			bits="7-15,2-4" />
+					<arraymap_way			bits="6,0-1" />
+					<arraymap_bit			bits="20-65" />
+				</raster>
+				<raster match_label="core2">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="MTR" />
+					<start_offset			value="0"/>
+					<multiple_xbist			value="true" />							<!-- Use false for MLC Tag -->
+					<ssi				value="2" />							<!-- Indicates which core and it's hard coded -->
+					<bits_per_ssi			value="84" />							<!-- if multiple_xbist set to true, total bits per ssi will need to be include raster status bits -->
+					<arraymap_set			bits="7-15,2-4" />
+					<arraymap_way			bits="6,0-1" />
+					<arraymap_bit			bits="20-65" />
+				</raster>
+				<raster match_label="core3">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="MTR" />
+					<start_offset			value="0"/>
+					<multiple_xbist			value="true" />							<!-- Use false for MLC Tag -->
+					<ssi				value="3" />							<!-- Indicates which core and it's hard coded -->
+					<bits_per_ssi			value="84" />							<!-- if multiple_xbist set to true, total bits per ssi will need to be include raster status bits -->
+					<arraymap_set			bits="7-15,2-4" />
+					<arraymap_way			bits="6,0-1" />
+					<arraymap_bit			bits="20-65" />
+				</raster>
+			</array>
+			<array label="corerf" >
+				<define_repair_global			gsds="G.U.S.SCORRFR" fullfit="false" />		<!-- For DFF purposes the repair DFF should be string, not binary.  Disable range check etc. Only sending what needs to be repaired--> 
+				<define_counter_fuse_group		gsds="G.U.I.CounterFuseGroup" />
+				<!-- Core 0 RF -->
+				<raster match_label="PMH_SND_C0">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="0" />							<!-- Core tested individually -->
+					<bits_per_ssi			value="82" />							<!-- Raster Status bits 0-19 -->
+					<arraymap_set			bits="30-41"/>							
+					<arraymap_way			bits="42-49" value="3328" />					<!-- Selector = 1101 get padded to the 4 MSB bits of the way -->
+					<arraymap_bit			bits="50-81" />							<!-- This is not a ctv position, this is a fixed value! -->
+					<subarray			label="PMH_SND_C0" />
+				</raster>
+				<raster match_label="PMH_SNT_C0">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="0" />
+					<bits_per_ssi			value="82" />
+					<arraymap_set			bits="30-41"/>
+					<arraymap_way			bits="42-49" value="3584"/>					<!-- Selector = 1110 get padded to the 4 MSB bits of the way -->
+					<arraymap_bit			bits="50-81" />
+					<subarray			label="PMH_SNT" />
+				</raster>
+				<raster match_label="IQ_MRN_C0">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="0" />
+					<bits_per_ssi			value="82" />
+					<arraymap_set			bits="30-41"/>
+					<arraymap_way			bits="42-49" value="3072"/>					<!-- Selector = 1100 get padded to the 4 MSB bits of the way -->
+					<arraymap_bit			bits="50-81" />
+					<subarray			label="IQ_MRN_C0" />
+				</raster>
+				<raster match_label="DSB_IMMD_C0">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="0" />
+					<bits_per_ssi			value="82" />
+					<arraymap_set			bits="30-41"/>
+					<arraymap_way			bits="42-49" value="2304"/>					<!-- Selector = 1001 get padded to the 4 MSB bits of the way -->
+					<arraymap_bit			bits="50-81" />
+					<subarray			label="DSB_IMMD_C0" />
+				</raster>
+				<raster match_label="BPU_TBIQ_C0">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="0" />
+					<bits_per_ssi			value="82" />
+					<arraymap_set			bits="30-41"/>
+					<arraymap_way			bits="42-49" value="2048"/>					<!-- Selector = 1000 get padded to the 4 MSB bits of the way -->
+					<arraymap_bit			bits="50-81" />
+					<subarray			label="BPU_TBIQ_C0" />
+				</raster>
+				<raster match_label="BPU_BM_C0">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="0" />
+					<bits_per_ssi			value="82" />
+					<arraymap_set			bits="30-41"/>
+					<arraymap_way			bits="42-49" value="1536"/>					<!-- Selector = 0110 get padded to the 4 MSB bits of the way -->
+					<arraymap_bit			bits="50-81" />
+					<subarray			label="BPU_BM_C0" />
+				</raster>
+				<raster match_label="BPU_ITR_C0">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="0" />
+					<bits_per_ssi			value="82" />
+					<arraymap_set			bits="30-41"/>
+					<arraymap_way			bits="42-49" value="1792"/>					<!-- Selector = 0111 get padded to the 4 MSB bits of the way -->
+					<arraymap_bit			bits="50-81" />
+					<subarray			label="BPU_ITR_C0" />
+				</raster>
+				<raster match_label="BPU_TR_C0">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="0" />
+					<bits_per_ssi			value="82" />
+					<arraymap_set			bits="30-41"/>
+					<arraymap_way			bits="42-49" value="1280"/>					<!-- Selector = 0101 get padded to the 4 MSB bits of the way -->
+					<arraymap_bit			bits="50-81" />
+					<subarray			label="BPU_TR_C0" />
+				</raster>
+				<raster match_label="IEU_RAM_C0">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="0" />
+					<bits_per_ssi			value="82" />
+					<arraymap_set			bits="30-41"/>
+					<arraymap_way			bits="42-49" value="0"/>					<!-- Selector = 0000 get padded to the 4 MSB bits of the way -->
+					<arraymap_bit			bits="50-81" />
+					<subarray			label="BPU_TR_C0" />
+				</raster>
+				<raster match_label="MLC_STA_C0">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="0" />
+					<bits_per_ssi			value="82" />
+					<arraymap_set			bits="30-41"/>
+					<arraymap_way			bits="42-49" value="3840"/>					<!-- Selector = 1111 get padded to the 4 MSB bits of the way -->
+					<arraymap_bit			bits="50-81" />
+					<subarray			label="MLC_STA_C0" />
+				</raster>
+				<raster match_label="DCU_DL_C0">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="0" />
+					<bits_per_ssi			value="82" />
+					<arraymap_set			bits="30-41"/>
+					<arraymap_way			bits="42-49" value="256"/>					<!-- Selector = 0001 get padded to the 4 MSB bits of the way -->
+					<arraymap_bit			bits="50-81" />
+					<subarray			label="DCU_DL_C0" />
+				</raster>
+				<raster match_label="BPU_GL_C0">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="0" />
+					<bits_per_ssi			value="82" />
+					<arraymap_set			bits="30-41"/>
+					<arraymap_way			bits="42-49" value="768"/>					<!-- Selector = 0011 get padded to the 4 MSB bits of the way -->
+					<arraymap_bit			bits="50-81" />
+					<subarray			label="BPU_GL_C0" />
+				</raster>
+				<raster match_label="IFU_DAT_C0">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="0" />
+					<bits_per_ssi			value="82" />
+					<arraymap_set			bits="30-41"/>
+					<arraymap_way			bits="42-49" value="512"/>					<!-- Selector = 0010 get padded to the 4 MSB bits of the way -->
+					<arraymap_bit			bits="50-81" />
+					<subarray			label="IFU_DAT_C0" />
+				</raster>
+				<raster match_label="IFU_C0">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="0" />
+					<bits_per_ssi			value="82" />
+					<arraymap_set			bits="30-41"/>
+					<arraymap_way			bits="42-49" value="2816"/>					<!-- Selector = 1011 get padded to the 4 MSB bits of the way -->
+					<arraymap_bit			bits="50-81" />
+					<subarray			label="IFU_C0" />
+				</raster>
+				<!-- Core 1 RF -->
+				<raster match_label="PMH_SND_C1">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="1" />							<!-- Core tested individually -->
+					<bits_per_ssi			value="82" />							<!-- Raster Status bits 0-19 -->
+					<arraymap_set			bits="30-41"/>							
+					<arraymap_way			bits="42-49" value="3328" />					<!-- Selector = 1101 get padded to the 4 MSB bits of the way -->
+					<arraymap_bit			bits="50-81" />							<!-- This is not a ctv position, this is a fixed value! -->
+					<subarray			label="PMH_SND_C1" />
+				</raster>
+				<raster match_label="PMH_SNT_C1">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="1" />
+					<bits_per_ssi			value="82" />
+					<arraymap_set			bits="30-41"/>
+					<arraymap_way			bits="42-49" value="3584"/>					<!-- Selector = 1110 get padded to the 4 MSB bits of the way -->
+					<arraymap_bit			bits="50-81" />
+					<subarray			label="PMH_SNT" />
+				</raster>
+				<raster match_label="IQ_MRN_C1">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="1" />
+					<bits_per_ssi			value="82" />
+					<arraymap_set			bits="30-41"/>
+					<arraymap_way			bits="42-49" value="3072"/>					<!-- Selector = 1100 get padded to the 4 MSB bits of the way -->
+					<arraymap_bit			bits="50-81" />
+					<subarray			label="IQ_MRN_C1" />
+				</raster>
+				<raster match_label="DSB_IMMD_C1">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="1" />
+					<bits_per_ssi			value="82" />
+					<arraymap_set			bits="30-41"/>
+					<arraymap_way			bits="42-49" value="2304"/>					<!-- Selector = 1001 get padded to the 4 MSB bits of the way -->
+					<arraymap_bit			bits="50-81" />
+					<subarray			label="DSB_IMMD_C1" />
+				</raster>
+				<raster match_label="BPU_TBIQ_C1">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="1" />
+					<bits_per_ssi			value="82" />
+					<arraymap_set			bits="30-41"/>
+					<arraymap_way			bits="42-49" value="2048"/>					<!-- Selector = 1000 get padded to the 4 MSB bits of the way -->
+					<arraymap_bit			bits="50-81" />
+					<subarray			label="BPU_TBIQ_C1" />
+				</raster>
+				<raster match_label="BPU_BM_C1">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="1" />
+					<bits_per_ssi			value="82" />
+					<arraymap_set			bits="30-41"/>
+					<arraymap_way			bits="42-49" value="1536"/>					<!-- Selector = 0110 get padded to the 4 MSB bits of the way -->
+					<arraymap_bit			bits="50-81" />
+					<subarray			label="BPU_BM_C1" />
+				</raster>
+				<raster match_label="BPU_ITR_C1">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="1" />
+					<bits_per_ssi			value="82" />
+					<arraymap_set			bits="30-41"/>
+					<arraymap_way			bits="42-49" value="1792"/>					<!-- Selector = 0111 get padded to the 4 MSB bits of the way -->
+					<arraymap_bit			bits="50-81" />
+					<subarray			label="BPU_ITR_C1" />
+				</raster>
+				<raster match_label="BPU_TR_C1">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="1" />
+					<bits_per_ssi			value="82" />
+					<arraymap_set			bits="30-41"/>
+					<arraymap_way			bits="42-49" value="1280"/>					<!-- Selector = 0101 get padded to the 4 MSB bits of the way -->
+					<arraymap_bit			bits="50-81" />
+					<subarray			label="BPU_TR_C1" />
+				</raster>
+				<raster match_label="IEU_RAM_C1">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="1" />
+					<bits_per_ssi			value="82" />
+					<arraymap_set			bits="30-41"/>
+					<arraymap_way			bits="42-49" value="0"/>					<!-- Selector = 0000 get padded to the 4 MSB bits of the way -->
+					<arraymap_bit			bits="50-81" />
+					<subarray			label="BPU_TR_C1" />
+				</raster>
+				<raster match_label="MLC_STA_C1">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="1" />
+					<bits_per_ssi			value="82" />
+					<arraymap_set			bits="30-41"/>
+					<arraymap_way			bits="42-49" value="3840"/>					<!-- Selector = 1111 get padded to the 4 MSB bits of the way -->
+					<arraymap_bit			bits="50-81" />
+					<subarray			label="MLC_STA_C1" />
+				</raster>
+				<raster match_label="DCU_DL_C1">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="1" />
+					<bits_per_ssi			value="82" />
+					<arraymap_set			bits="30-41"/>
+					<arraymap_way			bits="42-49" value="256"/>					<!-- Selector = 0001 get padded to the 4 MSB bits of the way -->
+					<arraymap_bit			bits="50-81" />
+					<subarray			label="DCU_DL_C1" />
+				</raster>
+				<raster match_label="BPU_GL_C1">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="1" />
+					<bits_per_ssi			value="82" />
+					<arraymap_set			bits="30-41"/>
+					<arraymap_way			bits="42-49" value="768"/>					<!-- Selector = 0011 get padded to the 4 MSB bits of the way -->
+					<arraymap_bit			bits="50-81" />
+					<subarray			label="BPU_GL_C1" />
+				</raster>
+				<raster match_label="IFU_DAT_C1">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="1" />
+					<bits_per_ssi			value="82" />
+					<arraymap_set			bits="30-41"/>
+					<arraymap_way			bits="42-49" value="512"/>					<!-- Selector = 0010 get padded to the 4 MSB bits of the way -->
+					<arraymap_bit			bits="50-81" />
+					<subarray			label="IFU_DAT_C1" />
+				</raster>
+				<raster match_label="IFU_C1">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="1" />
+					<bits_per_ssi			value="82" />
+					<arraymap_set			bits="30-41"/>
+					<arraymap_way			bits="42-49" value="2816"/>					<!-- Selector = 1011 get padded to the 4 MSB bits of the way -->
+					<arraymap_bit			bits="50-81" />
+					<subarray			label="IFU_C1" />
+				</raster>
+				<!-- Core 2 RF -->
+				<raster match_label="PMH_SND_C2">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="2" />							<!-- Core tested individually -->
+					<bits_per_ssi			value="82" />							<!-- Raster Status bits 0-19 -->
+					<arraymap_set			bits="30-41"/>							
+					<arraymap_way			bits="42-49" value="3328" />					<!-- Selector = 1101 get padded to the 4 MSB bits of the way -->
+					<arraymap_bit			bits="50-81" />							<!-- This is not a ctv position, this is a fixed value! -->
+					<subarray			label="PMH_SND_C2" />
+				</raster>
+				<raster match_label="PMH_SNT_C2">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="2" />
+					<bits_per_ssi			value="82" />
+					<arraymap_set			bits="30-41"/>
+					<arraymap_way			bits="42-49" value="3584"/>					<!-- Selector = 1110 get padded to the 4 MSB bits of the way -->
+					<arraymap_bit			bits="50-81" />
+					<subarray			label="PMH_SNT" />
+				</raster>
+				<raster match_label="IQ_MRN_C2">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="2" />
+					<bits_per_ssi			value="82" />
+					<arraymap_set			bits="30-41"/>
+					<arraymap_way			bits="42-49" value="3072"/>					<!-- Selector = 1100 get padded to the 4 MSB bits of the way -->
+					<arraymap_bit			bits="50-81" />
+					<subarray			label="IQ_MRN_C2" />
+				</raster>
+				<raster match_label="DSB_IMMD_C2">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="2" />
+					<bits_per_ssi			value="82" />
+					<arraymap_set			bits="30-41"/>
+					<arraymap_way			bits="42-49" value="2304"/>					<!-- Selector = 1001 get padded to the 4 MSB bits of the way -->
+					<arraymap_bit			bits="50-81" />
+					<subarray			label="DSB_IMMD_C2" />
+				</raster>
+				<raster match_label="BPU_TBIQ_C2">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="2" />
+					<bits_per_ssi			value="82" />
+					<arraymap_set			bits="30-41"/>
+					<arraymap_way			bits="42-49" value="2048"/>					<!-- Selector = 1000 get padded to the 4 MSB bits of the way -->
+					<arraymap_bit			bits="50-81" />
+					<subarray			label="BPU_TBIQ_C2" />
+				</raster>
+				<raster match_label="BPU_BM_C2">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="2" />
+					<bits_per_ssi			value="82" />
+					<arraymap_set			bits="30-41"/>
+					<arraymap_way			bits="42-49" value="1536"/>					<!-- Selector = 0110 get padded to the 4 MSB bits of the way -->
+					<arraymap_bit			bits="50-81" />
+					<subarray			label="BPU_BM_C2" />
+				</raster>
+				<raster match_label="BPU_ITR_C2">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="2" />
+					<bits_per_ssi			value="82" />
+					<arraymap_set			bits="30-41"/>
+					<arraymap_way			bits="42-49" value="1792"/>					<!-- Selector = 0111 get padded to the 4 MSB bits of the way -->
+					<arraymap_bit			bits="50-81" />
+					<subarray			label="BPU_ITR_C2" />
+				</raster>
+				<raster match_label="BPU_TR_C2">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="2" />
+					<bits_per_ssi			value="82" />
+					<arraymap_set			bits="30-41"/>
+					<arraymap_way			bits="42-49" value="1280"/>					<!-- Selector = 0101 get padded to the 4 MSB bits of the way -->
+					<arraymap_bit			bits="50-81" />
+					<subarray			label="BPU_TR_C2" />
+				</raster>
+				<raster match_label="IEU_RAM_C2">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="2" />
+					<bits_per_ssi			value="82" />
+					<arraymap_set			bits="30-41"/>
+					<arraymap_way			bits="42-49" value="0"/>					<!-- Selector = 0000 get padded to the 4 MSB bits of the way -->
+					<arraymap_bit			bits="50-81" />
+					<subarray			label="BPU_TR_C2" />
+				</raster>
+				<raster match_label="MLC_STA_C2">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="2" />
+					<bits_per_ssi			value="82" />
+					<arraymap_set			bits="30-41"/>
+					<arraymap_way			bits="42-49" value="3840"/>					<!-- Selector = 1111 get padded to the 4 MSB bits of the way -->
+					<arraymap_bit			bits="50-81" />
+					<subarray			label="MLC_STA_C2" />
+				</raster>
+				<raster match_label="DCU_DL_C2">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="2" />
+					<bits_per_ssi			value="82" />
+					<arraymap_set			bits="30-41"/>
+					<arraymap_way			bits="42-49" value="256"/>					<!-- Selector = 0001 get padded to the 4 MSB bits of the way -->
+					<arraymap_bit			bits="50-81" />
+					<subarray			label="DCU_DL_C2" />
+				</raster>
+				<raster match_label="BPU_GL_C2">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="2" />
+					<bits_per_ssi			value="82" />
+					<arraymap_set			bits="30-41"/>
+					<arraymap_way			bits="42-49" value="768"/>					<!-- Selector = 0011 get padded to the 4 MSB bits of the way -->
+					<arraymap_bit			bits="50-81" />
+					<subarray			label="BPU_GL_C2" />
+				</raster>
+				<raster match_label="IFU_DAT_C2">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="2" />
+					<bits_per_ssi			value="82" />
+					<arraymap_set			bits="30-41"/>
+					<arraymap_way			bits="42-49" value="512"/>					<!-- Selector = 0010 get padded to the 4 MSB bits of the way -->
+					<arraymap_bit			bits="50-81" />
+					<subarray			label="IFU_DAT_C2" />
+				</raster>
+				<raster match_label="IFU_C2">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="2" />
+					<bits_per_ssi			value="82" />
+					<arraymap_set			bits="30-41"/>
+					<arraymap_way			bits="42-49" value="2816"/>					<!-- Selector = 1011 get padded to the 4 MSB bits of the way -->
+					<arraymap_bit			bits="50-81" />
+					<subarray			label="IFU_C2" />
+				</raster>
+				<!-- Core 3 RF -->
+				<raster match_label="PMH_SND_C3">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="3" />							<!-- Core tested individually -->
+					<bits_per_ssi			value="82" />							<!-- Raster Status bits 0-19 -->
+					<arraymap_set			bits="30-41"/>							
+					<arraymap_way			bits="42-49" value="3328" />					<!-- Selector = 1101 get padded to the 4 MSB bits of the way -->
+					<arraymap_bit			bits="50-81" />							<!-- This is not a ctv position, this is a fixed value! -->
+					<subarray			label="PMH_SND_C3" />
+				</raster>
+				<raster match_label="PMH_SNT_C3">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="3" />
+					<bits_per_ssi			value="82" />
+					<arraymap_set			bits="30-41"/>
+					<arraymap_way			bits="42-49" value="3584"/>					<!-- Selector = 1110 get padded to the 4 MSB bits of the way -->
+					<arraymap_bit			bits="50-81" />
+					<subarray			label="PMH_SNT" />
+				</raster>
+				<raster match_label="IQ_MRN_C3">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="3" />
+					<bits_per_ssi			value="82" />
+					<arraymap_set			bits="30-41"/>
+					<arraymap_way			bits="42-49" value="3072"/>					<!-- Selector = 1100 get padded to the 4 MSB bits of the way -->
+					<arraymap_bit			bits="50-81" />
+					<subarray			label="IQ_MRN_C3" />
+				</raster>
+				<raster match_label="DSB_IMMD_C3">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="3" />
+					<bits_per_ssi			value="82" />
+					<arraymap_set			bits="30-41"/>
+					<arraymap_way			bits="42-49" value="2304"/>					<!-- Selector = 1001 get padded to the 4 MSB bits of the way -->
+					<arraymap_bit			bits="50-81" />
+					<subarray			label="DSB_IMMD_C3" />
+				</raster>
+				<raster match_label="BPU_TBIQ_C3">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="3" />
+					<bits_per_ssi			value="82" />
+					<arraymap_set			bits="30-41"/>
+					<arraymap_way			bits="42-49" value="2048"/>					<!-- Selector = 1000 get padded to the 4 MSB bits of the way -->
+					<arraymap_bit			bits="50-81" />
+					<subarray			label="BPU_TBIQ_C3" />
+				</raster>
+				<raster match_label="BPU_BM_C3">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="3" />
+					<bits_per_ssi			value="82" />
+					<arraymap_set			bits="30-41"/>
+					<arraymap_way			bits="42-49" value="1536"/>					<!-- Selector = 0110 get padded to the 4 MSB bits of the way -->
+					<arraymap_bit			bits="50-81" />
+					<subarray			label="BPU_BM_C3" />
+				</raster>
+				<raster match_label="BPU_ITR_C3">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="3" />
+					<bits_per_ssi			value="82" />
+					<arraymap_set			bits="30-41"/>
+					<arraymap_way			bits="42-49" value="1792"/>					<!-- Selector = 0111 get padded to the 4 MSB bits of the way -->
+					<arraymap_bit			bits="50-81" />
+					<subarray			label="BPU_ITR_C3" />
+				</raster>
+				<raster match_label="BPU_TR_C3">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="3" />
+					<bits_per_ssi			value="82" />
+					<arraymap_set			bits="30-41"/>
+					<arraymap_way			bits="42-49" value="1280"/>					<!-- Selector = 0101 get padded to the 4 MSB bits of the way -->
+					<arraymap_bit			bits="50-81" />
+					<subarray			label="BPU_TR_C3" />
+				</raster>
+				<raster match_label="IEU_RAM_C3">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="3" />
+					<bits_per_ssi			value="82" />
+					<arraymap_set			bits="30-41"/>
+					<arraymap_way			bits="42-49" value="0"/>					<!-- Selector = 0000 get padded to the 4 MSB bits of the way -->
+					<arraymap_bit			bits="50-81" />
+					<subarray			label="BPU_TR_C3" />
+				</raster>
+				<raster match_label="MLC_STA_C3">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="3" />
+					<bits_per_ssi			value="82" />
+					<arraymap_set			bits="30-41"/>
+					<arraymap_way			bits="42-49" value="3840"/>					<!-- Selector = 1111 get padded to the 4 MSB bits of the way -->
+					<arraymap_bit			bits="50-81" />
+					<subarray			label="MLC_STA_C3" />
+				</raster>
+				<raster match_label="DCU_DL_C3">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="3" />
+					<bits_per_ssi			value="82" />
+					<arraymap_set			bits="30-41"/>
+					<arraymap_way			bits="42-49" value="256"/>					<!-- Selector = 0001 get padded to the 4 MSB bits of the way -->
+					<arraymap_bit			bits="50-81" />
+					<subarray			label="DCU_DL_C3" />
+				</raster>
+				<raster match_label="BPU_GL_C3">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="3" />
+					<bits_per_ssi			value="82" />
+					<arraymap_set			bits="30-41"/>
+					<arraymap_way			bits="42-49" value="768"/>					<!-- Selector = 0011 get padded to the 4 MSB bits of the way -->
+					<arraymap_bit			bits="50-81" />
+					<subarray			label="BPU_GL_C3" />
+				</raster>
+				<raster match_label="IFU_DAT_C3">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="3" />
+					<bits_per_ssi			value="82" />
+					<arraymap_set			bits="30-41"/>
+					<arraymap_way			bits="42-49" value="512"/>					<!-- Selector = 0010 get padded to the 4 MSB bits of the way -->
+					<arraymap_bit			bits="50-81" />
+					<subarray			label="IFU_DAT_C3" />
+				</raster>
+				<raster match_label="IFU_C3">
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="3" />
+					<bits_per_ssi			value="82" />
+					<arraymap_set			bits="30-41"/>
+					<arraymap_way			bits="42-49" value="2816"/>					<!-- Selector = 1011 get padded to the 4 MSB bits of the way -->
+					<arraymap_bit			bits="50-81" />
+					<subarray			label="IFU_C3" />
+				</raster>
+			</array>
+			<array label="ccfrf" >
+				<define_repair_global			gsds="G.U.S.SCCFRFR" fullfit="false" />		<!-- For DFF purposes the repair DFF should be string, not binary.  Disable range check etc. Only sending what needs to be repaired--> 
+				<define_counter_fuse_group		gsds="G.U.I.CounterFuseGroup" />
+				<raster match_label="CBOPAIR0_RAM">
+					<disable_ssi			value="true" />
+					<repair_domain			array_code="SNR" />
+					<start_offset			value="0"    />
+					<multiple_xbist			value="true" />
+					<ssi				value="0" />							<!-- Determines array based on array_id -->
+					<bits_per_ssi			value="52" />							<!-- Raster Status bits 0-19. 52bits= IObits(32) + Raster_status_bits(20) -->
+					<arraymap_set			bits="0-11" />							<!-- Gives x_addr [7:0] and y_addr [11:8] --> 
+					<arraymap_way			bits="12-19" value="256" />					<!-- Gives dword [15:12] and bank [19:16] -->
+					<arraymap_bit			bits="20-51" />							<!-- This is not a ctv position, this is a fixed value!  IO bits -->
+					<subarray			label="CBOPAIR0_RAM" />						<!-- Optional Might not need if  part of  test instance name -->
+					</raster>
+				<raster match_label="CBOPAIR1_RAM">
+					<disable_ssi			value="true" />
+					<repair_domain			array_code="SNR" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true" />
+					<ssi				value="0" />							<!-- Determines array based on array_id -->
+					<bits_per_ssi			value="52" />							<!-- Raster Status bits 0-19. 52bits= IObits(32) + Raster_status_bits(20)  -->
+					<arraymap_set			bits="0-11" />							<!-- Gives x_addr [7:0] and y_addr [11:8] --> 
+					<arraymap_way			bits="12-19"  value="512" />					<!-- Gives dword [15:12] and bank [19:16] -->
+					<arraymap_bit			bits="20-51" />							<!-- This is not a ctv position, this is a fixed value!  IO bits -->
+					<subarray			label="CBOPAIR1_RAM" />
+				</raster>
+				<raster match_label="CBOPAIR2_RAM">									<!-- It's 8 Core product--> 
+					<disable_ssi			value="true" />
+					<repair_domain			array_code="SNR" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true" />
+					<ssi				value="0" />							<!-- Determines array based on array_id -->
+					<bits_per_ssi			value="52" />							<!-- Raster Status bits 0-19. 52bits= IObits(32) + Raster_status_bits(20)  -->
+					<arraymap_set			bits="0-11" />							<!-- Gives x_addr [7:0] and y_addr [11:8] --> 
+					<arraymap_way			bits="12-19"  value="768" />					<!-- Gives dword [15:12] and bank [19:16] -->
+					<arraymap_bit			bits="20-51" />							<!-- This is not a ctv position, this is a fixed value!  IO bits -->
+					<subarray			label="CBOPAIR2_RAM" />
+				</raster>
+				<raster match_label="CBOPAIR3_RAM">									<!-- It's 8 Core Product --> 
+					<disable_ssi			value="true" />
+					<repair_domain			array_code="SNR" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true" />
+					<ssi				value="0" />							<!-- Determines array based on array_id -->
+					<bits_per_ssi			value="52" />							<!-- Raster Status bits 0-19. 52bits= IObits(32) + Raster_status_bits(20)  -->
+					<arraymap_set			bits="0-11" />							<!-- Gives x_addr [7:0] and y_addr [11:8] --> 
+					<arraymap_way			bits="12-19"  value="1024" />					<!-- Gives dword [15:12] and bank [19:16] -->
+					<arraymap_bit			bits="20-51" />							<!-- This is not a ctv position, this is a fixed value!  IO bits -->
+					<subarray			label="CBOPAIR3_RAM" />
+				</raster>
+				<raster match_label="GIP_RAM">
+					<disable_ssi			value="true" />
+					<repair_domain			array_code="SNR" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true" />
+					<ssi				value="0" />							<!-- Determines array based on array_id -->
+					<bits_per_ssi			value="52" />							<!-- Raster Status bits 0-19. 52bits= IObits(32) + Raster_status_bits(20)  -->
+					<arraymap_set			bits="0-11" />							<!-- Gives x_addr [7:0] and y_addr [11:8] --> 
+					<arraymap_way			bits="12-19"  value="1280" />					<!-- Gives dword [15:12] and bank [19:16] -->
+					<arraymap_bit			bits="20-51" />							<!-- This is not a ctv position, this is a fixed value!  IO bits -->
+					<subarray			label="GIP_RAM" />
+				</raster>
+				<raster match_label="SBOIDP_RAM">
+					<disable_ssi			value="true" />
+					<repair_domain			array_code="SNR" />
+					<start_offset			value="0"    />
+					<multiple_xbist			value="true" />
+					<ssi				value="0" />							<!-- Determines array based on array_id -->
+					<bits_per_ssi			value="52" />							<!-- Raster Status bits 0-19. 52bits= IObits(32) + Raster_status_bits(20)  -->
+					<arraymap_set			bits="0-11" />							<!-- Gives x_addr [7:0] and y_addr [11:8] --> 
+					<arraymap_way			bits="12-19"  value="1536" />					<!-- Gives dword [15:12] and bank [19:16] -->
+					<arraymap_bit			bits="20-51" />							<!-- This is not a ctv position, this is a fixed value!  IO bits -->
+					<subarray			label="SBOIDP_RAM" />
+				</raster>
+			</array>
+			<array label="corerfall" >											<!-- Match ICXR setup -->
+				<define_repair_global			gsds="G.U.S.SCORRFR" />
+				<define_counter_fuse_group		gsds="G.U.I.CounterFuseGroup" />
+				<raster match_label="PMH_SND_C0">									<!-- PMH_SND_C0 : pmsnddatad(13) Reference from Mike (TGL) -->
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF" />
+					<start_offset			value="0" />
+					<multiple_xbist			value="true"/>
+					<ssi				value="0" />							<!-- Core tested individually -->
+					<bits_per_ssi			value="82" />							<!-- Raster Status bits 0-19 -->
+					<arraymap_set			bits="0-6"/>							<!-- fixed_set[6:0] = FastAddr[6:0] --> 
+					<arraymap_way			bits="8-10" value="832" />					<!-- The offset applied by value =832 is offsetting the selector by 6 bits -->
+					<arraymap_bit			bits="50-81" />							<!-- This is not a ctv position, this is a fixed value! -->
+					<subarray			label="PMH_SND_C0" />
+				</raster>
+				<lsaraster>												<!-- IEU: Iescratchd(0)  -->
+					<disable_ssi			value="true"/>
+					<repair_domain			array_code="CRF"/>
+					<arraymap_ssi			slice="0-10"/>
+					<arraymap_set			fastAddress="0-11" />
+					<arraymap_way			value="0" >							<!-- Iescratchd offset is 0 -->
+						<bits dword="0-3"/>									<!-- LSB of way is dword[0] -->
+						<bits bank="0-3"/>
+					</arraymap_way>
+					<arraymap_bit			iodata="0-10" />
+					<subarray			label="IEU" />
+					<valid_arrays			list="ieu_ram" />						<!-- Need confirmation from LSAraster side -->
+				</lsaraster>
+				<lsaraster>												<!-- DCU: dcl1bankd(1)   -->
+					<arraymap_ssi			slice="0-10"/>
+					<arraymap_set			fastAddress="0-11" />
+					<arraymap_way			value="256" >							<!-- dcl1bankd offset is 1-->
+						<bits dword="0-3"/>									<!-- LSB of way is dword[0]-->
+						<bits bank="0-3"/>
+					</arraymap_way>
+					<arraymap_bit			iodata="0-10" />
+					<subarray			label="DCU" />							<!-- OPTIONAL -->
+					<valid_arrays			list="dcu_dl1,dcu_dl1p" />						<!-- Need confirmation from LSAraster side -->
+				</lsaraster>
+				<lsaraster>												<!-- IFU: Ifdatabank(2)  -->
+					<arraymap_ssi			slice="0-10"/>
+					<arraymap_set			fastAddress="0-11" />
+					<arraymap_way			value="512" >							<!-- Ifdatabank offset is 2-->
+						<bits dword="0-3"/>									<!-- LSB of way is dword[0]-->
+						<bits bank="0-3"/>
+					</arraymap_way>
+					<arraymap_bit			iodata="0-10" />
+					<subarray			label="IFU" />
+					<valid_arrays			list="ifu_dat" />						<!-- Need confirmation from LSAraster side -->
+				</lsaraster>
+				<lsaraster>												<!-- BPU: bpglobalm(3)   -->
+					<arraymap_ssi			slice="0-10"/>
+					<arraymap_set			fastAddress="0-11" />
+					<arraymap_way			value="768" >							<!-- bpglobalm offset is 3-->
+						<bits dword="0-3"/>									<!-- LSB of way is dword[0]-->
+						<bits bank="0-3"/>
+					</arraymap_way>
+					<arraymap_bit			iodata="0-10" />
+					<subarray			label="BPU" />
+					<valid_arrays			list="bpu_gll,bpu_glh" />						<!-- Need confirmation from LSAraster side -->
+				</lsaraster>
+				<lsaraster>												<!-- BPU: Bptargettrgm(5)-->
+					<arraymap_ssi			slice="0-10"/>
+					<arraymap_set			fastAddress="0-11" />
+					<arraymap_way			value="1280" >							<!-- Bptargettrgm offset is 5 -->
+						<bits dword="0-3"/>									<!-- LSB of way is dword[0] -->
+						<bits bank="0-3"/>
+					</arraymap_way>
+					<arraymap_bit			iodata="0-10" />
+					<subarray			label="BPU" />
+					<valid_arrays			list="bpu_trel,bpu_tres0,bpu_tres1,bpu_tres2,bpu_trol,bpu_tros0,bpu_tros1,bpu_tros2" />						<!-- Need confirmation from LSAraster side -->
+				</lsaraster>
+				<lsaraster>												<!-- BPU: Bpbimodalm(6)  -->
+					<arraymap_ssi			slice="0-10"/>
+					<arraymap_set			fastAddress="0-11" />
+					<arraymap_way			value="1536" >							<!-- Bpbimodalm offset is 6 -->
+						<bits dword="0-3"/>									<!-- LSB of way is dword[0] -->
+						<bits bank="0-3"/>
+					</arraymap_way>
+					<arraymap_bit			iodata="0-10" />
+					<subarray			label="BPU" />
+					<valid_arrays			list="bpu_bme,bpu_bm0" />						<!-- Need confirmation from LSAraster side -->
+				</lsaraster>
+				<lsaraster>												<!-- BPU: Bpindirectm(7) -->
+					<arraymap_ssi			slice="0-10"/>
+					<arraymap_set			fastAddress="0-11" />
+					<arraymap_way			value="1792" >							<!-- Bpindirectm offset is 7 -->
+						<bits dword="0-3"/>									<!-- LSB of way is dword[0] -->
+						<bits bank="0-3"/>
+					</arraymap_way>
+					<arraymap_bit			iodata="0-10" />
+					<subarray			label="BPU" />
+					<valid_arrays			list="bpu_itr" />						<!-- Need confirmation from LSAraster side -->
+				</lsaraster>
+				<lsaraster>												<!-- BPU: Bptbiqm(8)     -->
+					<arraymap_ssi			slice="0-10"/>
+					<arraymap_set			fastAddress="0-11" />
+					<arraymap_way			value="2048" >							<!-- Bptbiqm offset is 8 -->
+						<bits dword="0-3"/>									<!-- LSB of way is dword[0] -->
+						<bits bank="0-3"/>
+					</arraymap_way>
+					<arraymap_bit			iodata="0-10" />
+					<subarray			label="BPU" />
+					<valid_arrays			list="bpu_tbiq" />						<!-- Need confirmation from LSAraster side -->
+				</lsaraster>
+				<lsaraster>												<!-- BPU: dsbimmdatad(9) -->
+					<arraymap_ssi			slice="0-10"/>
+					<arraymap_set			fastAddress="0-11" />
+					<arraymap_way			value="2304" >							<!-- dsbimmdatad offset is 9 -->
+						<bits dword="0-3"/>									<!-- LSB of way is dword[0] -->
+						<bits bank="0-3"/>
+					</arraymap_way>
+					<arraymap_bit			iodata="0-10" />
+					<subarray			label="BPU" />
+					<valid_arrays			list="dsb_immd" />						<!-- Need confirmation from LSAraster side -->
+				</lsaraster>
+				<lsaraster>												<!-- IFU: Ifmemd(11)     -->
+					<arraymap_ssi			slice="0-10"/>
+					<arraymap_set			fastAddress="0-11" />
+					<arraymap_way			value="2816" >							<!-- Ifmemd offset is b1011 = 11dec -->
+						<bits dword="0-3"/>									<!-- LSB of way is dword[0]-->
+						<bits bank="0-3"/>
+					</arraymap_way>
+					<arraymap_bit			iodata="0-10" />
+					<subarray			label="IFU" />
+					<valid_arrays			list="ifu_tag,ifu_snp" />						<!-- Need confirmation from LSAraster side -->
+				</lsaraster>
+				<lsaraster>												<!-- IQ:  iqmrnpred(12)  -->
+					<arraymap_ssi			slice="0-10"/>
+					<arraymap_set			fastAddress="0-11" />
+					<arraymap_way			value="3072" >							<!-- iqmrnpred offset is b1100 = 12dec -->
+						<bits dword="0-3"/>									<!-- LSB of way is dword[0]-->
+						<bits bank="0-3"/>
+					</arraymap_way>
+					<arraymap_bit			iodata="0-10" />
+					<subarray			label="IQ" />
+					<valid_arrays			list="iq_mrn,iq_mrnlru" />						<!-- Need confirmation from LSAraster side -->
+				</lsaraster>
+				<lsaraster>												<!-- PMH: pmsnddatad(13) -->
+					<arraymap_ssi			slice="0-10"/>
+					<arraymap_set			fastAddress="0-11" />
+					<arraymap_way			value="3328" >							<!-- pmsnddatad offset is b1101 = 13dec -->
+						<bits dword="0-3"/>									<!-- LSB of way is dword[0]-->
+						<bits bank="0-3"/>
+					</arraymap_way>
+					<arraymap_bit			iodata="0-10" />
+					<subarray			label="PMH" />
+					<valid_arrays			list="pmh_snd" />						<!-- Need confirmation from LSAraster side -->
+				</lsaraster>
+				<lsaraster>												<!-- PMH: pmsndtagd(14)  -->
+					<arraymap_ssi			slice="0-10"/>
+					<arraymap_set			fastAddress="0-11" />
+					<arraymap_way			value="3584" >							<!-- pmsndtagd offset is b1110 = 14dec -->
+						<bits dword="0-3"/>									<!-- LSB of way is dword[0]-->
+						<bits bank="0-3"/>
+					</arraymap_way>
+					<arraymap_bit			iodata="0-10" />
+					<subarray			label="PMH" />
+					<valid_arrays			list="pmh_snt" />						<!-- Need confirmation from LSAraster side -->
+				</lsaraster>
+				<lsaraster>												<!-- MLC: MLC_STA(15)    -->
+					<arraymap_ssi			slice="0-10"/>
+					<arraymap_set			fastAddress="0-11" />
+					<arraymap_way			value="3840" >							<!-- mlstlruarym,mlstlruaryserm offset is b1111 = 15dec -->
+						<bits dword="0-3"/>									<!-- LSB of way is dword[0]-->
+						<bits bank="0-3"/>
+					</arraymap_way>
+					<arraymap_bit			iodata="0-10" />
+					<subarray			label="mlcsta" />
+					<valid_arrays			list="mlc_sta" />				<!-- Need confirmation from LSAraster side -->
+				</lsaraster>
+			</array>
+		</array_definition>
+	</product_setup>
+</arr_setup>

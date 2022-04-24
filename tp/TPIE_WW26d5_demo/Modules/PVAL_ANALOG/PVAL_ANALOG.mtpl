@@ -1,0 +1,400 @@
+Version 1.0;
+
+ProgramStyle = Modular;
+
+TestPlan PVAL_ANALOG;
+
+
+Import RunCallback.xml;
+Import AnalogFuncCaptureCtv.xml;
+Import DcPrint.xml;
+Import ExitPortFromGsds.xml;
+Import PTHGetSetGsdsDffTC.xml;
+Import PTHBgTrimTC.xml;
+
+
+
+Test RunCallback InitGSDS1_P1
+{
+    Callback = "WriteSharedStorage";
+    Parameters = "--token G.U.I.BGDEFTEMPCO_BGTRIM_AVG --value 1";
+    LogLevel = "PRIME_DEBUG";
+}
+Test RunCallback InitGSDS2_P1
+{
+    Callback = "WriteSharedStorage";
+    Parameters = "--token G.U.I.LO_BGTEMPCO_BGTRIM_AVG --value 2";
+    LogLevel = "PRIME_DEBUG";
+}
+Test RunCallback InitGSDS3_P1
+{
+    Callback = "WriteSharedStorage";
+    Parameters = "--token G.U.I.HI_BGTEMPCO_BGTRIM_AVG --value 3";
+    LogLevel = "PRIME_DEBUG";
+}
+Test RunCallback InitGSDS4_P1
+{
+    Callback = "WriteSharedStorage";
+    Parameters = "--token G.U.I.DEFTC_DFF --value 4";
+    LogLevel = "PRIME_DEBUG";
+}
+Test PTHGetSetGsdsDffTC SampleGsdsToDFF_P1
+{
+	ConfigurationFile = "./Modules/PVAL_ANALOG/InputFiles/sample_gsds2dff.json";
+	OPType = "GSDS2DFF";
+}
+
+Test PTHGetSetGsdsDffTC SampleDFFToGsds_P1
+{
+	PreInstance = "Call(WriteDFF(--token CF6CR --value 1.5v1.4|0.9v1.0|-8.888v-8.888) | WriteDFF(--token CF5CR --value 1.0v1.1|-8.888v-8.888|0.77v0.8))";
+	ConfigurationFile = "./Modules/PVAL_ANALOG/InputFiles/sample_gsds2dff.json";
+	OPType = "DFF2GSDS";
+	PostInstance = "Call(PrintToItuff(--body_type strgval --body_data G.U.S.VminCF6CR_Test --tname_suf _F6) | PrintToItuff(--body_type strgval --body_data G.U.S.VminCF5CR_Test --tname_suf _F5))";
+}
+
+
+Test AnalogFuncCaptureCtv SimpleAnalogCaptureTDO_P1
+{
+    LevelsTc = "__main__::bf_lvl_nom_lvl";
+    Patlist = "drv_cdie_maintap_bbs_list";
+    TimingsTc = "__main__::cpu_stf_timing_tclk100_sclk100_cclk100";
+	CtvCapturePins = "YY_TAP_TDO_C2S";
+
+	ConfigurationFile = "./Modules/PVAL_ANALOG/InputFiles/analogcapture_sample.csv";
+	CsvDelimiter = ";";
+	Kill = "DISABLED";
+	PinRename = "TDO";
+}
+
+Test PTHBgTrimTC TestPTHBgTrimTC_P1
+{
+	LevelsTc = "__main__::bf_lvl_nom_lvl";
+    Patlist = "drv_cdie_maintap_bbs_list";
+    TimingsTc = "__main__::cpu_stf_timing_tclk100_sclk100_cclk100";
+	CtvCapturePins = "YY_TAP_TDO_C2S";
+
+	PatternName = "g0019815W4480630A_92_VC28xCA066_Rm000000xxx0v_nxxx080808xxxxxxxxxxx_sC28A6PxxBTC002J052_x07_A07_CDU_CDIE_TAP_TAPLINKCFG_DR_OVRSHIFT";
+	GSDSAvgName = "G.U.I.BGR1_BG_0_0_trim_result_avg";
+	CodeLimitMax = 140;
+	CodeLimitMin = 80;
+	CodeLimitRange = 10;
+    LogLevel = "PRIME_DEBUG";
+}
+
+Test DcPrint DcPrint_CurrentMeasure_P1
+{
+	MeasurementTypes = "Current";
+	DatalogLevel = "All";
+	Pins = "HC1_VCCCORE0,HC2_VCCCORE1,HC3_VCCATOM0,HC4_VCCATOM1";
+	LowLimits = "";
+	HighLimits = "";
+
+    LevelsTc = "__main__::simple_hddps_measure_lvl_defaultExact";
+}
+
+Test ExitPortFromGsds ExitPortFromGSDS_Sample_P2
+{
+	PreInstance = "WriteSharedStorage(--token G.U.S.DummyFlowName --value ShortMV)";
+	InputFile = "./Modules/PVAL_ANALOG/InputFiles/exitport_sample.json";
+}
+
+
+DUTFlow PVAL_ANALOG_MAIN
+{
+    DUTFlowItem SimpleAnalogCaptureTDO_P1 SimpleAnalogCaptureTDO_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo TestPTHBgTrimTC_P1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo TestPTHBgTrimTC_P1;
+        }
+    }
+    DUTFlowItem TestPTHBgTrimTC_P1 TestPTHBgTrimTC_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo DcPrint_CurrentMeasure_P1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo DcPrint_CurrentMeasure_P1;
+        }
+        Result 3
+        {
+            Property PassFail = "Fail";
+            GoTo DcPrint_CurrentMeasure_P1;
+        }
+        Result 4
+        {
+            Property PassFail = "Fail";
+            GoTo DcPrint_CurrentMeasure_P1;
+        }
+        Result 5
+        {
+            Property PassFail = "Fail";
+            GoTo DcPrint_CurrentMeasure_P1;
+        }
+        Result 6
+        {
+            Property PassFail = "Fail";
+            GoTo DcPrint_CurrentMeasure_P1;
+        }
+        Result 7
+        {
+            Property PassFail = "Fail";
+            GoTo DcPrint_CurrentMeasure_P1;
+        }
+        Result 8
+        {
+            Property PassFail = "Fail";
+            GoTo DcPrint_CurrentMeasure_P1;
+        }
+    }
+    DUTFlowItem DcPrint_CurrentMeasure_P1 DcPrint_CurrentMeasure_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo InitGSDS1_P1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo InitGSDS1_P1;
+        }
+    }
+    DUTFlowItem InitGSDS1_P1 InitGSDS1_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo InitGSDS2_P1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo InitGSDS2_P1;
+        }
+    }
+    DUTFlowItem InitGSDS2_P1 InitGSDS2_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo InitGSDS3_P1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo InitGSDS3_P1;
+        }
+    }
+    DUTFlowItem InitGSDS3_P1 InitGSDS3_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo InitGSDS4_P1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo InitGSDS4_P1;
+        }
+    }
+    DUTFlowItem InitGSDS4_P1 InitGSDS4_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo SampleGsdsToDFF_P1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo SampleGsdsToDFF_P1;
+        }
+    }
+    DUTFlowItem SampleGsdsToDFF_P1 SampleGsdsToDFF_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo SampleDFFToGsds_P1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo SampleDFFToGsds_P1;
+        }
+    }
+    DUTFlowItem SampleDFFToGsds_P1 SampleDFFToGsds_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo ExitPortFromGSDS_Sample_P2;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo ExitPortFromGSDS_Sample_P2;
+        }
+    }
+    DUTFlowItem ExitPortFromGSDS_Sample_P2 ExitPortFromGSDS_Sample_P2
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            Return 1;
+        }
+        Result 2
+        {
+            Property PassFail = "Pass";
+            Return 1;
+        }
+        Result 3
+        {
+            Property PassFail = "Pass";
+            Return 1;
+        }
+        Result 4
+        {
+            Property PassFail = "Pass";
+            Return 1;
+        }
+    }
+}
+

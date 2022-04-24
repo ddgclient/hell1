@@ -1,0 +1,69 @@
+Version 1.0;
+
+#Import ThermalMeas.thm;
+Import ThermalCont.thc;
+
+SpecificationSet Basic_Thermal_SpecSet 		(SDS,SDT,CLASSHOT,CLASSCOLD)
+{
+#	Enum SCOCAL_Method_CPU28	=	"ThreeCurrentIdealityWithLeakage", "ThreeCurrentIdealityWithLeakage", "ThreeCurrentIdealityWithLeakage", "ThreeCurrentIdealityWithLeakage";
+	Double Ideality_CPU28 =	1.0043, 1.0043, 1.0043, 1.0043;
+	Double D_Slope_CPU28 =	-583.1, -583.1, -583.1, -583.1;
+	Current IC1_CPU28 =	0.000170, 0.000170, 0.000170, 0.000170;
+	Current IC2_CPU28 =	0.000090, 0.000090, 0.000090, 0.000090;
+	Current IC3_CPU28 =	0.000030, 0.000030, 0.000030, 0.000030;
+	Boolean BaseLeakage_CPU28 =	True, True, True, True;
+	Temperature Offset_CPU28 =	0, 0, 0, 0;
+}
+
+SpecificationSet Basic_Thermal_Control_SpecSet (min, typ, max, stop)
+{
+  Integer factor = 1, 2, 3, 0;
+}
+
+TestConditionGroup PowerSumming_TCG
+{
+  SpecificationSet = Basic_Thermal_Control_SpecSet;
+  ThermalControl = __main__::ThermalControl_TDYN_09;
+}
+TestCondition PowerSumming_TC
+{
+  TestConditionGroup = PowerSumming_TCG;
+  Selector = min;
+}
+TestCondition PowerSummingStop_TC
+{
+  TestConditionGroup = PowerSumming_TCG;
+  Selector = stop;
+}
+
+TestConditionGroup TDAU_SCOC_TC_TCG
+{
+  SpecificationSet = Basic_Thermal_SpecSet;
+  ThermalMeasure = __main__::ThermalBlock_TDAU_SOT;
+}
+TestCondition TDAU_SCOC_SDS_TC
+{
+  TestConditionGroup = TDAU_SCOC_TC_TCG;
+  Selector = SDS;
+}
+TestCondition TDAU_SCOC_SDT_TC
+{
+  TestConditionGroup = TDAU_SCOC_TC_TCG;
+  Selector = SDT;
+}
+
+TestConditionGroup TDAU_CAL_TC_TCG
+{
+  SpecificationSet = Basic_Thermal_SpecSet;
+  ThermalMeasure = __main__::ThermalBlock_All_TDAU_Channel;
+}
+TestCondition TDAU_CAL_SDS_TC
+{
+  TestConditionGroup = TDAU_CAL_TC_TCG;
+  Selector = SDS;
+}
+TestCondition TDAU_CAL_SDT_TC
+{
+  TestConditionGroup = TDAU_CAL_TC_TCG;
+  Selector = SDT;
+}

@@ -1,0 +1,56 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace>$(AssemblyName)</RootNamespace>
+    <TargetName>$(AssemblyName)</TargetName>
+    <TargetProjectUnderTestName>$(TargetName.Replace('.UnitTest', ''))</TargetProjectUnderTestName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <ConfigurationGroup>Debug</ConfigurationGroup>
+    <DebugType>full</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <ConfigurationGroup>Release</ConfigurationGroup>
+    <DebugType>pdbonly</DebugType>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
+  <ItemGroup>
+    <None Remove="TestInputFiles\TestFileBaseExpectedData1.csv" />
+    <None Remove="TestInputFiles\TestFileBaseExpectedDataFailPort.csv" />
+    <None Remove="TestInputFiles\TestFileBaseExpectedDataFailPort6.csv" />
+    <None Remove="TestInputFiles\TestFileBaseLimits.csv" />
+    <None Remove="TestInputFiles\TestFileCodification.csv" />
+    <None Remove="TestInputFiles\TestFileEquationExpectedData.csv" />
+    <None Remove="TestInputFiles\TestFileEquationLimits.csv" />
+    <None Remove="TestInputFiles\TestFileExpecteDataHighLimits.csv" />
+    <None Remove="TestInputFiles\TestFileGenericPass.csv" />
+    <None Remove="TestInputFiles\TestFileHighLimits.csv" />
+    <None Remove="TestInputFiles\TestFileLowLimits.csv" />
+    <None Remove="TestInputFiles\TestFilePerBit.csv" />
+    <None Remove="TestInputFiles\TestFileSharedStorageDblStr.csv" />
+  </ItemGroup>
+  <ItemGroup>
+	<EmbeddedResource Include="TestInputFiles\TestFileBaseExpectedDataFailPort.csv" />
+	<EmbeddedResource Include="TestInputFiles\TestFileBaseExpectedDataFailPort6.csv" />
+	<EmbeddedResource Include="TestInputFiles\TestFileExpecteDataHighLimits.csv" />
+	<EmbeddedResource Include="TestInputFiles\TestFileHighLimits.csv" />
+	<EmbeddedResource Include="TestInputFiles\TestFileLowLimits.csv" />
+	<EmbeddedResource Include="TestInputFiles\TestFileBaseLimits.csv" />
+	<EmbeddedResource Include="TestInputFiles\TestFileBaseExpectedData.csv" />
+    <EmbeddedResource Include="TestInputFiles\TestFilePerBit.csv" />
+    <EmbeddedResource Include="TestInputFiles\TestFileSharedStorage.csv" />
+    <EmbeddedResource Include="TestInputFiles\TestFileCodification.csv" />
+    <EmbeddedResource Include="TestInputFiles\TestFileEquationLimits.csv" />
+    <EmbeddedResource Include="TestInputFiles\TestFileEquationExpectedData.csv" />
+    <EmbeddedResource Include="TestInputFiles\TestFileGenericPass.csv" />
+    <EmbeddedResource Include="TestInputFiles\TestFileSharedStorageDblStr.csv" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AnalogFuncCaptureCtv\AnalogFuncCaptureCtv.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Prime.TestMethods.Functional.Release" Version="$(PrimeVersion)" />
+  </ItemGroup>
+</Project>

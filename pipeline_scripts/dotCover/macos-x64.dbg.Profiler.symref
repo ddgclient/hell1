@@ -1,0 +1,6 @@
+﻿macos-x64.dbg/libJetBrains.Profiler.Core.dylib                                                                      libjetbrains.profiler.core.dylib/mach-uuid-bc6ea52a46f73966aa450a12fac8376c/libjetbrains.profiler.core.dylib
+macos-x64.dbg/libJetBrains.Profiler.CoreApi.dylib                                                                   libjetbrains.profiler.coreapi.dylib/mach-uuid-2c32514f44e7305aae8ce0336dcb27b9/libjetbrains.profiler.coreapi.dylib
+macos-x64.dbg/JetBrains.Profiler.PdbServer                                                                          jetbrains.profiler.pdbserver/mach-uuid-cab2d974e31c3f33a535a9a6bc350638/jetbrains.profiler.pdbserver
+macos-x64.dbg/libJetBrains.Profiler.Core.dylib.dSYM/Contents/Resources/DWARF/libJetBrains.Profiler.Core.dylib       _.dwarf/mach-uuid-sym-bc6ea52a46f73966aa450a12fac8376c/_.dwarf
+macos-x64.dbg/libJetBrains.Profiler.CoreApi.dylib.dSYM/Contents/Resources/DWARF/libJetBrains.Profiler.CoreApi.dylib _.dwarf/mach-uuid-sym-2c32514f44e7305aae8ce0336dcb27b9/_.dwarf
+macos-x64.dbg/JetBrains.Profiler.PdbServer.dSYM/Contents/Resources/DWARF/JetBrains.Profiler.PdbServer               _.dwarf/mach-uuid-sym-cab2d974e31c3f33a535a9a6bc350638/_.dwarf

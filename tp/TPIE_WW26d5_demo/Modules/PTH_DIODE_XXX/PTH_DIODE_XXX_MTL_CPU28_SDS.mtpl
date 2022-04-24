@@ -1,0 +1,322 @@
+Version 1.0;
+
+ProgramStyle = Modular;
+
+TestPlan PTH_DIODE_XXX;
+
+Import PTH_DIODE_XXX_MTL_CPU28_SDS.usrv;
+Import PrimeApplyTestConditionTestMethod.xml;
+Import OASIS_Auxiliary_tt.xml;
+Import PrimeThermalControlSetTestMethod.xml;
+Import PrimeThermalControlSetInitTestMethod.xml;
+Import OASIS_Pause_tt.xml;
+Import PrimeThermalSingleMeasurementTestMethod.xml;
+Import PrimeThermalUeiStreamTestMethod.xml;
+#Test Counter Definition
+Counters
+{
+    n90050085_fail_TD_X_AUX_E_FINAL_X_X_X_X_DISABLE_0, 
+    n90050086_fail_TD_X_AUX_E_TESTPLANSTARTFLOW_X_X_X_X_ENABLE_0, 
+    n90050087_fail_TD_X_AUX_E_TESTPLANENDFLOW_X_X_X_X_DISABLE_0, 
+    n97000167_fail_TD_X_UEISTREAM_E_LOTENDFLOW_X_X_X_X_STOP_0, 
+    n97000168_fail_TD_X_UEISTREAM_E_LOTENDFLOW_X_X_X_X_STOP_2, 
+    n97000169_fail_TD_X_APPLYTC_E_TESTPLANENDFLOW_X_X_X_X_PSMSTOP_0, 
+    n97161600_fail_TD_X_TDAU_E_FINAL_X_X_X_X_0, 
+    n97161602_fail_TD_X_TDAU_E_FINAL_X_X_X_X_2, 
+    n97161603_fail_TD_X_TDAU_E_FINAL_X_X_X_X_3, 
+    n97161604_fail_TD_X_TDAU_E_FINAL_X_X_X_X_4, 
+    n97161605_fail_TD_X_TDAU_E_FINAL_X_X_X_X_5, 
+    n97161606_fail_TD_X_TDAU_E_TESTPLANENDFLOW_X_X_X_X_0, 
+    n97161608_fail_TD_X_TDAU_E_TESTPLANENDFLOW_X_X_X_X_2, 
+    n97161609_fail_TD_X_TDAU_E_TESTPLANENDFLOW_X_X_X_X_3, 
+    n97161610_fail_TD_X_TDAU_E_TESTPLANENDFLOW_X_X_X_X_4, 
+    n97161611_fail_TD_X_TDAU_E_TESTPLANENDFLOW_X_X_X_X_5, 
+    n97190101_fail_TD_X_UEISTREAM_E_LOTSTARTFLOW_X_X_X_X_START_0, 
+    n97190102_fail_TD_X_UEISTREAM_E_LOTSTARTFLOW_X_X_X_X_START_2, 
+    n97270011_fail_TD_X_CS_E_TESTPLANENDFLOW_X_X_X_X_DESOAK_0, 
+    n97470039_fail_TD_X_TDAU_E_TESTPLANENDFLOW_X_X_X_X_EOT_4, 
+    n97479704_fail_TD_X_TDAU_K_FINAL_X_X_X_X_EOT_4, 
+    n97510001_fail_TD_X_TDAU_K_START_X_X_X_X_SOT_0, 
+    n97520002_fail_TD_X_TDAU_K_START_X_X_X_X_SOT_2, 
+    n97530003_fail_TD_X_TDAU_K_START_X_X_X_X_SOT_3, 
+    n97540004_fail_TD_X_TDAU_K_START_X_X_X_X_SOT_4, 
+    n97550005_fail_TD_X_TDAU_K_START_X_X_X_X_SOT_5, 
+    n97610036_fail_TD_X_TDAU_E_TESTPLANENDFLOW_X_X_X_X_EOT_0, 
+    n97611100_fail_TD_X_TDAU_K_FINAL_X_X_X_X_EOT_0, 
+    n97620037_fail_TD_X_TDAU_E_TESTPLANENDFLOW_X_X_X_X_EOT_2, 
+    n97621202_fail_TD_X_TDAU_K_FINAL_X_X_X_X_EOT_2, 
+    n97630038_fail_TD_X_TDAU_E_TESTPLANENDFLOW_X_X_X_X_EOT_3, 
+    n97631303_fail_TD_X_TDAU_K_FINAL_X_X_X_X_EOT_3, 
+    n97650040_fail_TD_X_TDAU_E_TESTPLANENDFLOW_X_X_X_X_EOT_5, 
+    n97651505_fail_TD_X_TDAU_K_FINAL_X_X_X_X_EOT_5, 
+    n97700182_fail_TD_X_APPLYTC_K_TESTPLANSTARTFLOW_X_X_X_X_SCOCAL_0, 
+    n97810008_fail_TD_X_PAUSE_E_TESTPLANSTARTFLOW_X_X_X_X_PUC_0, 
+    n97820009_fail_TD_X_CS_E_BEGIN_X_X_X_X_TEST_0, 
+    n97970057_fail_TD_X_APPLYTC_K_INIT_X_X_X_X_TDSETUP_0, 
+    n98010001_fail_FAIL_SYSTEM_SOFTWARE, 
+    n99010001_fail_FAIL_DPS_ALARM 
+} # End of Test Counter Definition
+
+Test PrimeApplyTestConditionTestMethod TD_X_APPLYTC_E_TESTPLANENDFLOW_X_X_X_X_PSMSTOP_P1
+{
+    TestConditionCategory = "THERMAL";
+    TestConditionName = "PowerSummingStop_TC";
+}
+
+Test PrimeApplyTestConditionTestMethod TD_X_APPLYTC_K_INIT_X_X_X_X_TDSETUP_P1
+{
+    TestConditionCategory = "THERMAL";
+    TestConditionName = "TDAU_CAL_SDS_TC";
+}
+
+Test PrimeApplyTestConditionTestMethod TD_X_APPLYTC_K_TESTPLANSTARTFLOW_X_X_X_X_SCOCAL_P1
+{
+    TestConditionCategory = "THERMAL";
+    TestConditionName = "TDAU_SCOC_SDS_TC";
+}
+
+Test PrimeThermalControlSetTestMethod TD_X_CS_E_TESTPLANENDFLOW_X_X_X_X_DESOAK_P1
+{
+    ControlSet = "DESOAK";
+}
+
+Test PrimeThermalControlSetInitTestMethod TD_X_CS_K_INIT_X_X_X_X_TCISETUP_P1
+{
+    # ConfigurationFile = "./Modules/PTH_DIODE_XXX/InputFiles/TCConfig_MTL.xml"; Moved to ALEPH in Prime8
+    PinName = "UEISLAVE_100";
+    TemperatureSetName = "MTL_SDX_TCC";
+}
+
+Test PrimeThermalUeiStreamTestMethod TD_X_UEISTREAM_E_LOTENDFLOW_X_X_X_X_STOP_P1
+{
+    ActionType = "Stop";
+    CollectPins = "TDIODE_CORE";
+    UeiSlaveType = "DTC";
+}
+
+Test PrimeThermalUeiStreamTestMethod TD_X_UEISTREAM_E_LOTSTARTFLOW_X_X_X_X_START_P1
+{
+    ActionType = "Start";
+    CollectPins = "TDIODE_CORE";
+    UeiSlaveType = "DTC";
+}
+
+Flow PTH_DIODE_XXX_INIT
+{
+    FlowItem TD_X_CS_K_INIT_X_X_X_X_TCISETUP_P1 TD_X_CS_K_INIT_X_X_X_X_TCISETUP_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -2;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo TD_X_APPLYTC_K_INIT_X_X_X_X_TDSETUP_P1;
+        }
+        Result 2
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+    }
+    FlowItem TD_X_APPLYTC_K_INIT_X_X_X_X_TDSETUP_P1 TD_X_APPLYTC_K_INIT_X_X_X_X_TDSETUP_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -2;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+			IncrementCounters PTH_DIODE_XXX::n97970057_fail_TD_X_APPLYTC_K_INIT_X_X_X_X_TDSETUP_0;
+            SetBin SoftBins.b97970057_fail_PTH_DIODE_XXX_TD_X_APPLYTC_K_INIT_X_X_X_X_TDSETUP_0;
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            Return 1;
+        }
+    }
+}
+
+DUTFlow PTH_DIODE_XXX_LOTENDFLOW
+{
+    DUTFlowItem TD_X_UEISTREAM_E_LOTENDFLOW_X_X_X_X_STOP_P1 TD_X_UEISTREAM_E_LOTENDFLOW_X_X_X_X_STOP_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return 1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return 1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+			IncrementCounters PTH_DIODE_XXX::n97000167_fail_TD_X_UEISTREAM_E_LOTENDFLOW_X_X_X_X_STOP_0;
+            Return 1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            Return 1;
+        }
+        Result 2
+        {
+            Property PassFail = "Fail";
+			IncrementCounters PTH_DIODE_XXX::n97000168_fail_TD_X_UEISTREAM_E_LOTENDFLOW_X_X_X_X_STOP_2;
+            Return 1;
+        }
+    }
+}
+
+DUTFlow PTH_DIODE_XXX_LOTSTARTFLOW
+{
+    DUTFlowItem TD_X_UEISTREAM_E_LOTSTARTFLOW_X_X_X_X_START_P1 TD_X_UEISTREAM_E_LOTSTARTFLOW_X_X_X_X_START_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -2;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+			IncrementCounters PTH_DIODE_XXX::n97190101_fail_TD_X_UEISTREAM_E_LOTSTARTFLOW_X_X_X_X_START_0;
+            Return 1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            Return 1;
+        }
+        Result 2
+        {
+            Property PassFail = "Fail";
+			IncrementCounters PTH_DIODE_XXX::n97190102_fail_TD_X_UEISTREAM_E_LOTSTARTFLOW_X_X_X_X_START_2;
+            Return 1;
+        }
+    }
+}
+
+DUTFlow PTH_DIODE_XXX_TESTPLANENDFLOW
+{
+    DUTFlowItem TD_X_CS_E_TESTPLANENDFLOW_X_X_X_X_DESOAK_P1 TD_X_CS_E_TESTPLANENDFLOW_X_X_X_X_DESOAK_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            GoTo TD_X_APPLYTC_E_TESTPLANENDFLOW_X_X_X_X_PSMSTOP_P1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            GoTo TD_X_APPLYTC_E_TESTPLANENDFLOW_X_X_X_X_PSMSTOP_P1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+			IncrementCounters PTH_DIODE_XXX::n97270011_fail_TD_X_CS_E_TESTPLANENDFLOW_X_X_X_X_DESOAK_0;
+            GoTo TD_X_APPLYTC_E_TESTPLANENDFLOW_X_X_X_X_PSMSTOP_P1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo TD_X_APPLYTC_E_TESTPLANENDFLOW_X_X_X_X_PSMSTOP_P1;
+        }
+    }
+    DUTFlowItem TD_X_APPLYTC_E_TESTPLANENDFLOW_X_X_X_X_PSMSTOP_P1 TD_X_APPLYTC_E_TESTPLANENDFLOW_X_X_X_X_PSMSTOP_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -2;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+			IncrementCounters PTH_DIODE_XXX::n97610036_fail_TD_X_TDAU_E_TESTPLANENDFLOW_X_X_X_X_EOT_0;
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            Return 1;
+        }
+    }
+}
+
+DUTFlow PTH_DIODE_XXX_TESTPLANSTARTFLOW
+{
+    DUTFlowItem TD_X_APPLYTC_K_TESTPLANSTARTFLOW_X_X_X_X_SCOCAL_P1 TD_X_APPLYTC_K_TESTPLANSTARTFLOW_X_X_X_X_SCOCAL_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -2;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+			IncrementCounters PTH_DIODE_XXX::n97700182_fail_TD_X_APPLYTC_K_TESTPLANSTARTFLOW_X_X_X_X_SCOCAL_0;
+            SetBin SoftBins.b97700182_fail_PTH_DIODE_XXX_TD_X_APPLYTC_K_TESTPLANSTARTFLOW_X_X_X_X_SCOCAL_0;
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            Return 1;
+        }
+    }
+}

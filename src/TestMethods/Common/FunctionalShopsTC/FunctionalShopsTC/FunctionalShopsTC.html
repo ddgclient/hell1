@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>DDG Prime FunctionalShopsTC Specification REP</title>
+</head>
+<body>
+
+    <h1 id="ddg-prime-functionalshopstc-specification-rep">DDG Prime FunctionalShopsTC Specification REP</h1>
+<p>Revision 1.0.0 6/2/2021</p>
+<h2 id="methodology">Methodology</h2>
+<p>This test method performs the shorts &amp; opens testings in both production and engineering mode utilizing walking 1 functional SHOPS pattern</p>
+<p>Production:
+Pattern is run with predefined VOX value set in the PinConfigFile JSON file. <br></p>
+<p>Characterization:
+Search is done on VOX values for from VOX_LL to VOX_HL. Before each point, test method will update the VOX value of pins through setPinAttributes call. Once a passing point is found, it VOX won't be updated.<br></p>
+<p>The attributes get restored to the original values before moving to next pin.</p>
+<h2 id="test-instance-parameters">Test Instance Parameters</h2>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter Name</strong></th>
+<th><strong>Required?</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Values</strong></th>
+<th><strong>Comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TestMode</td>
+<td>Yes</td>
+<td>ENUM</td>
+<td></td>
+<td>Produciton or Characterization</td>
+</tr>
+<tr>
+<td>PinConfigFile</td>
+<td>Yes</td>
+<td>String</td>
+<td></td>
+<td>JSON file that sets the VOX limits</td>
+</tr>
+</tbody>
+</table>
+<h2 id="exit-ports">Exit Ports</h2>
+<p>The CallbacksRegistrar test method supports the following exit ports:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Exit Port</strong></th>
+<th><strong>Condition</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>-2</strong></td>
+<td><em><strong>Alarm</strong></em></td>
+<td>Any alarm condition.</td>
+</tr>
+<tr>
+<td><strong>-1</strong></td>
+<td><em><strong>Error</strong></em></td>
+<td>Any software condition error.</td>
+</tr>
+<tr>
+<td><strong>0</strong></td>
+<td><em><strong>Fail</strong></em></td>
+<td>Fail condition, failing more than one pin or number of pins overflow(more than 28).</td>
+</tr>
+<tr>
+<td><strong>1</strong></td>
+<td><em><strong>Pass</strong></em></td>
+<td>Passing condition.</td>
+</tr>
+<tr>
+<td><strong>2-30</strong></td>
+<td><em><strong>Fail</strong></em></td>
+<td>Fail single rail. Failing por is PinIndex+; meaning if you fail first pin exits port 2, second pin port 3 and so on.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="additional-dependencies">Additional Dependencies</h2>
+<h3 id="related-test-methods">Related Test Methods</h3>
+<ul>
+<li>PrimeDcTestMethod</li>
+</ul>
+<h2 id="version-tracking">Version tracking</h2>
+<table>
+<thead>
+<tr>
+<th><strong>Date</strong></th>
+<th><strong>Version</strong></th>
+<th><strong>Author</strong></th>
+<th><strong>Comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>June 2nd, 2021</td>
+<td>1.0.0</td>
+<td>jhanbaba</td>
+<td>Initial doc</td>
+</tr>
+</tbody>
+</table>
+
+
+</body>
+</html>

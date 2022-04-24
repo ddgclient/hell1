@@ -1,0 +1,9 @@
+Version 1.0;
+
+UserVars PVAL_DIGITAL
+{
+    Integer HRY_Global_1 = 1;
+    Integer HRY_Global_2 = 1;
+    Integer HRY_Global_3 = 1;
+    Integer HRY_Global_4 = 1;
+}

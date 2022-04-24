@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace>$(AssemblyName)</RootNamespace>
+    <TargetName>$(AssemblyName)</TargetName>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	<PackageId>DDG.$(AssemblyName).$(Configuration)</PackageId>
+	<Version>2.0.0</Version>
+        <DocumentationFile></DocumentationFile>
+	<GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <ConfigurationGroup>Debug</ConfigurationGroup>
+    <DebugType>full</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <ConfigurationGroup>Release</ConfigurationGroup>
+    <DebugType>pdbonly</DebugType>
+  </PropertyGroup>
+  <ItemGroup>
+	<PackageReference Include="Prime.TestMethods.CallbacksRegistrar.Release" Version="$(PrimeVersion)">
+		<PrivateAssets>all</PrivateAssets>
+		<ExcludeAssets>runtime</ExcludeAssets>
+	</PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\VminForwarding\VminForwarding\VminForwardingBase.csproj" />
+  </ItemGroup>
+</Project>

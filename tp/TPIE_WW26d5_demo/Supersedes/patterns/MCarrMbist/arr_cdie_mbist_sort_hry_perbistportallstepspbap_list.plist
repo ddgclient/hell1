@@ -1,0 +1,12 @@
+Version 5.0;
+# Plist ID : 9d70ad7ea012b9221c1bf4d97f6656d206a1fbcb
+# pcar_file: /p/pde/tvpv/mtl/run_logs/vcf/vrevC28A6P/hmmanuel/Rundir_vcf_009253A_mtlJF_cencen_rel_hdmt2_vrevC28A6P_sort_flattap_None/pcar3/mtl_cdie_a0_hry.pcar3
+
+   
+GlobalPList arr_cdie_mbist_sort_hry_perbistportallstepspbap_ssa_all_all_list [PreBurstPList resetplb_xxx080808xxx_phase2_MarrMbist_C28A6P_sort_flattap_list] [Flatten] {
+         
+   GlobalPList arr_cdie_mbist_sort_hry_perbistportallstepspbap_ssa_cbp0_all_list [PreBurstPList resetplb_xxx080808xxx_phase2_MarrMbist_C28A6P_sort_flattap_list] [Flatten] {
+      Pat g0045371W5098708A_Bd_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC004J052_x00_mb_cbp0_pbp0__a_ssa_pmovi_x_s_hry;
+   }  # End of arr_cdie_mbist_sort_hry_perbistportallstepspbap_ssa_cbp0_all_list
+   
+}  # End of arr_cdie_mbist_sort_hry_perbistportallstepspbap_ssa_all_all_list

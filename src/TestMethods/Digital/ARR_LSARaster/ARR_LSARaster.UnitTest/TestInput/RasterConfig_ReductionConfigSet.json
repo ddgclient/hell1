@@ -1,0 +1,336 @@
+{
+  "Setup": {
+    "LdatArrays": {
+      "bpu_bme": {
+        "PlistName": [ "arr_pbist_mclk_x_mcis_core_raster_lsa_bpu_bme_indirect_list" ],
+        "PatModConfigSetName": "LSA_RASTER_PAT_MODIFY_SET_CORE",
+        "CaptureSetName": "LSA_RASTER_CAPTURE_DECODING_SET_CORE",
+        "DwordElement": [
+          {
+            "PatModifyElement": [
+              {
+                "PatTarget": "MaxDefectsCount",
+                "Value": "0x103"
+              },
+              {
+                "PatTarget": "Multiport",
+                "Value": "0x0"
+              },
+              {
+                "PatTarget": "Bank",
+                "Value": "0x0"
+              },
+              {
+                "PatTarget": "Dword",
+                "Value": "0x0"
+              },
+              {
+                "PatTarget": "IOMask",
+                "Value": "0xFF000000"
+              }
+            ]
+          },
+          {
+            "PatModifyElement": [
+              {
+                "PatTarget": "MaxDefectsCount",
+                "Value": "0x103"
+              },
+              {
+                "PatTarget": "Multiport",
+                "Value": "0x0"
+              },
+              {
+                "PatTarget": "Bank",
+                "Value": "0x0"
+              },
+              {
+                "PatTarget": "Dword",
+                "Value": "0x1"
+              },
+              {
+                "PatTarget": "IOMask",
+                "Value": "0xFFFFFF00"
+              }
+            ]
+          },
+          {
+            "PatModifyElement": [
+              {
+                "PatTarget": "MaxDefectsCount",
+                "Value": "0x103"
+              },
+              {
+                "PatTarget": "Multiport",
+                "Value": "0x1"
+              },
+              {
+                "PatTarget": "Bank",
+                "Value": "0x0"
+              },
+              {
+                "PatTarget": "Dword",
+                "Value": "0x0"
+              },
+              {
+                "PatTarget": "IOMask",
+                "Value": "0xFF000000"
+              }
+            ]
+          },
+          {
+            "PatModifyElement": [
+              {
+                "PatTarget": "MaxDefectsCount",
+                "Value": "0x103"
+              },
+              {
+                "PatTarget": "Multiport",
+                "Value": "0x1"
+              },
+              {
+                "PatTarget": "Bank",
+                "Value": "0x0"
+              },
+              {
+                "PatTarget": "Dword",
+                "Value": "0x1"
+              },
+              {
+                "PatTarget": "IOMask",
+                "Value": "0xFFFF0000"
+              }
+            ]
+          }
+        ]
+      },
+      "bpu_bmo": {
+        "PlistName": [ "arr_pbist_mclk_x_mcis_core_raster_lsa_bpu_bmo_indirect_list" ],
+        "PatModConfigSetName": "LSA_RASTER_PAT_MODIFY_SET_CORE",
+        "CaptureSetName": "LSA_RASTER_CAPTURE_DECODING_SET_CORE",
+        "DwordElement": [
+          {
+            "PatModifyElement": [
+              {
+                "PatTarget": "MaxDefectsCount",
+                "Value": "0x103"
+              },
+              {
+                "PatTarget": "Multiport",
+                "Value": "0x0"
+              },
+              {
+                "PatTarget": "Bank",
+                "Value": "0x0"
+              },
+              {
+                "PatTarget": "Dword",
+                "Value": "0x0"
+              },
+              {
+                "PatTarget": "IOMask",
+                "Value": "0xFF000000"
+              }
+            ]
+          },
+          {
+            "PatModifyElement": [
+              {
+                "PatTarget": "MaxDefectsCount",
+                "Value": "0x103"
+              },
+              {
+                "PatTarget": "Multiport",
+                "Value": "0x0"
+              },
+              {
+                "PatTarget": "Bank",
+                "Value": "0x0"
+              },
+              {
+                "PatTarget": "Dword",
+                "Value": "0x1"
+              },
+              {
+                "PatTarget": "IOMask",
+                "Value": "0xFFFFFF00"
+              }
+            ]
+          },
+          {
+            "PatModifyElement": [
+              {
+                "PatTarget": "MaxDefectsCount",
+                "Value": "0x103"
+              },
+              {
+                "PatTarget": "Multiport",
+                "Value": "0x1"
+              },
+              {
+                "PatTarget": "Bank",
+                "Value": "0x0"
+              },
+              {
+                "PatTarget": "Dword",
+                "Value": "0x0"
+              },
+              {
+                "PatTarget": "IOMask",
+                "Value": "0xFF000000"
+              }
+            ]
+          },
+          {
+            "PatModifyElement": [
+              {
+                "PatTarget": "MaxDefectsCount",
+                "Value": "0x103"
+              },
+              {
+                "PatTarget": "Multiport",
+                "Value": "0x1"
+              },
+              {
+                "PatTarget": "Bank",
+                "Value": "0x0"
+              },
+              {
+                "PatTarget": "Dword",
+                "Value": "0x1"
+              },
+              {
+                "PatTarget": "IOMask",
+                "Value": "0xFFFF0000"
+              }
+            ]
+          }
+        ]
+      },
+      "bpu_trel": {
+        "PlistName": [ "arr_pbist_mclk_x_mcis_core_raster_lsa_bpu_trel_indirect_list" ],
+        "PatModConfigSetName": "LSA_RASTER_PAT_MODIFY_SET_CORE",
+        "CaptureSetName": "LSA_RASTER_CAPTURE_DECODING_SET_CORE",
+        "DwordElement": [
+          {
+            "PatModifyElement": [
+              {
+                "PatTarget": "MaxDefectsCount",
+                "Value": "0x103"
+              },
+              {
+                "PatTarget": "Multiport",
+                "Value": "0x0"
+              },
+              {
+                "PatTarget": "Bank",
+                "Value": "0x0"
+              },
+              {
+                "PatTarget": "Dword",
+                "Value": "0x0"
+              },
+              {
+                "PatTarget": "IOMask",
+                "Value": "0xFFFE0000"
+              }
+            ]
+          },
+          {
+            "PatModifyElement": [
+              {
+                "PatTarget": "MaxDefectsCount",
+                "Value": "0x103"
+              },
+              {
+                "PatTarget": "Multiport",
+                "Value": "0x0"
+              },
+              {
+                "PatTarget": "Bank",
+                "Value": "0x0"
+              },
+              {
+                "PatTarget": "Dword",
+                "Value": "0x1"
+              },
+              {
+                "PatTarget": "IOMask",
+                "Value": "0xFFFF0000"
+              }
+            ]
+          }
+        ]
+      },
+      "bpu_trol": {
+        "PlistName": [ "arr_pbist_mclk_x_mcis_core_raster_lsa_bpu_trol_indirect_list" ],
+        "PatModConfigSetName": "LSA_RASTER_PAT_MODIFY_SET_CORE",
+        "CaptureSetName": "LSA_RASTER_CAPTURE_DECODING_SET_CORE",
+        "DwordElement": [
+          {
+            "PatModifyElement": [
+              {
+                "PatTarget": "MaxDefectsCount",
+                "Value": "0x103"
+              },
+              {
+                "PatTarget": "Multiport",
+                "Value": "0x0"
+              },
+              {
+                "PatTarget": "Bank",
+                "Value": "0x0"
+              },
+              {
+                "PatTarget": "Dword",
+                "Value": "0x0"
+              },
+              {
+                "PatTarget": "IOMask",
+                "Value": "0xFFFE0000"
+              }
+            ]
+          },
+          {
+            "PatModifyElement": [
+              {
+                "PatTarget": "MaxDefectsCount",
+                "Value": "0x103"
+              },
+              {
+                "PatTarget": "Multiport",
+                "Value": "0x0"
+              },
+              {
+                "PatTarget": "Bank",
+                "Value": "0x0"
+              },
+              {
+                "PatTarget": "Dword",
+                "Value": "0x1"
+              },
+              {
+                "PatTarget": "IOMask",
+                "Value": "0xFFFF0000"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "ReductionConfigSets": {
+      "Example_Set": {
+        "MaxCoresCount": 2,
+        "ArrayMaxCount": 2,
+        "ArrayMAFMax": 3,
+        "ArrayPriority": ["bpu_bme", "bpu_bmo", "bpu_glh"],
+        "MaxMBDsCount": {
+          "bpu_bme": 2,
+          "bpu_bmo": 5,
+          "bpu_glh": 10
+        },
+        "ItuffPrint": true
+      }
+    }
+  }
+}

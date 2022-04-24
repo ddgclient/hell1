@@ -1,0 +1,7 @@
+* Open a "Developer Command Prompt for VS 2019"
+cd <repo>/pipeline_scripts/pVal/PrimeValTool
+dotnet publish -r win-x64 -c Release /p:PublishSingleFile=true /p:UseAppHost=true
+	- It will error on PrimeValTool.csproj, Logger.csproj, Wrapper.csprog … just ignore
+	- .exe & .pdb files will be in %CD%/bin/Release/netcoreapp3.1/win-x64/publish/
+robocopy bin/Release/netcoreapp3.1/win-x64/publish/ ../
+

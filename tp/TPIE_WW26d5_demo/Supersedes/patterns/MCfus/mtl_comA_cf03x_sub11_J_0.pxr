@@ -1,0 +1,49 @@
+#
+# Filename : mtl_comA_cf03x_sub11_J_0.pxr
+#
+
+PxrFile
+{
+    PinDescription    pintim_files.pin;
+    Subroutine    mtl_comA_cf03x_sub11_J_0;
+    DisplayOrder
+    {
+        Domain CPU_TAP_ALL
+        {
+            cpu_tap_all
+        }
+        Domain CPU_FAB_ALL
+        {
+            cpu_fab_all
+        }
+    }
+    PatternTriggerTable
+    {
+        TriggerType LevelsTC
+        {
+            Trigger0
+	    Trigger1
+	    Trigger2
+	    Trigger3
+	    Trigger4
+	    Trigger5
+	    Trigger6
+	    Trigger7
+	    Trigger8
+	    Trigger9
+	    Trigger10
+	    Trigger11
+	    Trigger12
+	    Trigger13
+	    Trigger14
+	    Trigger15
+        }
+    }
+    LinkPins
+    {
+        Domain CPU_FAB_ALL LinkMode Link2
+        {
+            stf_in,stf_out
+        }
+    }
+}

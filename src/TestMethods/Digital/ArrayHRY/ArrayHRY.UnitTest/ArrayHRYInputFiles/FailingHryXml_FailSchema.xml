@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HSR_HRY_config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="GEN_HSR_HRY.xsd">
+
+	<ReverseCtvCaptureData>Y</ReverseCtvCaptureData>
+
+	<CtvToHryMapping>
+		<Map ctv_data="0" hry_data="0" />
+		<Map ctv_data="1" hry_data="9" /> <!-- 9 is a saved character, invalid in this context -->
+	</CtvToHryMapping>
+
+	<HryPrePostMapping>
+		<Map hry_data="0" status="pass" />
+		<Map hry_data="1" status="fail" />
+		<Map hry_data="8" status="fail" />
+		<PostRepairSymbol  symbol="R" />
+	</HryPrePostMapping>
+
+	<ConditionFailKeys>
+		<ConditionFailKey name="key1">
+			<Map expected_data="01" hry_output="7"/>
+			<Map expected_data="10" hry_output="6"/>
+			<Map expected_data="11" hry_output="5"/>
+		</ConditionFailKey>
+		<ConditionFailKey name="key2">
+			<Map expected_data="0" hry_output="4"/>
+		</ConditionFailKey>
+	</ConditionFailKeys>
+
+	<BypassGlobalPrefix>HSR.HRY_Global_</BypassGlobalPrefix>
+	
+	<Criterias>
+		<Criteria hry_index="0"  pin="P001" ctv_index_range="2"     condition="P002,0-1,00,key1|P002,3,1,key2"    hry_output_on_condition_fail="8" bypass_global="1" />
+		<Criteria hry_index="1"  pin="P001" ctv_index_range="6"     condition="P002,4-5,00,key1|P002,7,1,key2"    hry_output_on_condition_fail="8" bypass_global="1" />
+		<Criteria hry_index="2"  pin="P001" ctv_index_range="10"    condition="P002,8-9,00,key1|P002,11,1,key2"   hry_output_on_condition_fail="8" bypass_global="1" />
+		<Criteria hry_index="3"  pin="P001" ctv_index_range="14"    condition="P002,12-13,00|P002,15,1" hry_output_on_condition_fail="8" bypass_global="1" />
+		<Criteria hry_index="4"  pin="P001" ctv_index_range="18"    condition="P002,16-17,00|P002,19,1" hry_output_on_condition_fail="8" bypass_global="2" />
+		<Criteria hry_index="5"  pin="P001" ctv_index_range="22"    condition="P002,20-21,00|P002,23,1" hry_output_on_condition_fail="8" bypass_global="3" />
+		<Criteria hry_index="6"  pin="P001" ctv_index_range="26"    condition="P002,24-25,00" hry_output_on_condition_fail="8" bypass_global="3" />
+		<Criteria hry_index="7"  pin="P001" ctv_index_range="30-35" condition="P002,28-29,00" hry_output_on_condition_fail="8" bypass_global="3" />
+		<Criteria hry_index="8"  pin="P001" ctv_index_range="none"  condition="P002,32-33,00" hry_output_on_condition_fail="8" bypass_global="4" />
+	</Criterias>
+
+	<Algorithms>
+		<Algorithm index="0" name="SCAN"    pat_modify_label="" ctv_size="36" />
+		<Algorithm index="1" name="PMOVI"   pat_modify_label="" ctv_size="36" />
+		<Algorithm index="2" name="March-C" pat_modify_label="" ctv_size="36" />
+	</Algorithms>
+
+</HSR_HRY_config>

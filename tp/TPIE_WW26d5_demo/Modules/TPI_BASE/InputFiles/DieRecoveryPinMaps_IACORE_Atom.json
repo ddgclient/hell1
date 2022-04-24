@@ -1,0 +1,10 @@
+[
+	{
+		"Name":"ATOM_M0", "Module":0, "PatternModify":"null", "Size":4,
+		"Pin":"YY_TEST_PORT_OUT_C2S_10"
+	},
+	{
+		"Name":"ATOM_M1", "Module":1, "PatternModify":"null", "Size":4,
+		"Pin":"YY_TEST_PORT_OUT_C2S_11"
+	}
+]

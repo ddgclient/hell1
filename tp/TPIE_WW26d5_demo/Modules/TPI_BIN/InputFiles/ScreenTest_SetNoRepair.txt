@@ -1,0 +1,5 @@
+START_SCREEN:SetNoRepair
+#RunOn	: TestName  	: DataType  : ParamType 	: Param1                 	: Operation 	: ParamType     : Param2 	: TmpStore 	: OnTrue  	: OnFalse
+EXEC  	: Test1		: STRING    : GSDS		: U.S.VMINREPAIR		:	SET	: LITERAL	: "0"		:    -		: Test2   	:  2
+EXEC  	: Test2		: STRING    : GSDS	 	: U.S.DEFECTREPAIR	 	:	SET	: LITERAL	: "0"		:    -		: 1		:  2
+END_SCREEN   

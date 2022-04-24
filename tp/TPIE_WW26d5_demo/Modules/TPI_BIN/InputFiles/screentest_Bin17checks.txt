@@ -1,0 +1,23 @@
+START_SCREEN:GetCheckBin
+##Run       : Test             	: Data   	: Param Type: Param1                : Operation	: Param  	: Param2				: TmpStore	: OnTrue        : OnFalse
+EXEC        : GetBin           	:     -  	: FUNCTION  : GETCURRENTBINSET()    :  -       	:    -   	: -     				:    -    	: CopyValue1    :  3
+EXEC  		: CopyValue1    	: INT    	: GSDS		: U.I.BIN_IB	 		:   SET		: GLOBAL	: _UserVars.iBinValue	:    -     	: CheckBin		:  3
+EXEC  		: CheckBin     		: INT    	: GSDS   	: U.I.BIN_IB      		:  <=    	: LITERAL  	:  6    				:    - 		:  1        	:  2 
+END_SCREEN
+
+START_SCREEN:ArrBin17Check
+##Run   	: Test               			: Data   : Param Type: Param1                      					:Operation: Param  :Param2 : TmpStore: OnTrue              			: OnFalse
+EXEC        : ARR_GT_BIN17         			: INTEGER: GSDS      : U.I.ARR_GT_BIN17                           	: ==      : LITERAL: 0     : -       : 1	         	: Print_ARR_GT         		
+EXEC        : Print_ARR_GT     				: -      : FUNCTION  : EXECUSERFUNC(CPD_DEBUG!PrintToItuff, -tname_suf 'B17' -body_type strgval -body_data 'ARR_GT')                  	: -        : -      : -     : -       : 2               : 2
+END_SCREEN
+
+
+
+START_SCREEN:ScanBin17Check
+##Run   	: Test             				: Data   : Param Type: Param1                                       : Operation: Param  : Param2: TmpStore: OnTrue            			: OnFalse
+EXEC   		: SCN_GT_BIN17    				: INTEGER: GSDS      : U.I.SCN_GT_BIN17                   			: ==       : LITERAL: 0     : -       : 1			     			: Print_SCN_GT_FAIL  
+EXEC   		: Print_SCN_GT_FAIL      		: -   	 : FUNCTION  : EXECUSERFUNC(CPD_DEBUG!PrintToItuff, -tname_suf 'B17' -body_type strgval -body_data 'SCN_GT_FAIL')          	: -        : -      : -     : -       : 2    : 2
+END_SCREEN
+
+
+

@@ -1,0 +1,222 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>DDGCapturePacketsTC Test Class</title>
+</head>
+<body>
+
+    <h1 id="ddgcapturepacketstc-test-class">DDGCapturePacketsTC Test Class</h1>
+<h3 id="rev-0">Rev 0</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1. <a href="#introduction">Introduction</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">2. <a href="#test-instance-parameters">Test Instance Parameters</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">3. <a href="#datalog-output">Datalog output</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">4. <a href="#tpl-samples">TPL Samples</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">5. <a href="#exit-ports">Exit Ports</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="section"></h3>
+<hr />
+<h2 id="introduction">1. Introduction</h2>
+<p>This testclass is meant to replace the Evergreen iCCapturePacketsTest template.
+It executes a pattern list, captures CTV data, processes the data and saves it to a GSDS token
+where it can be used by the iCRepair test template.</p>
+<p>To use a GSDS as input for the iCRepair tempate, set &quot;mode_of_execution&quot; = &quot;simulation&quot; and &quot;input_test&quot; to the gsds token.</p>
+<p>iCCapturePacketsTest supports 4 modes - PER_PIN, PER_VECTOR, PACKETS, and PACKETS_DFM.<br />
+<strong>This template only supports PER_PIN mode.</strong><br />
+If you require any other mode, submit an <a href="https://gitlab.devtools.intel.com/ddg-client-prime-code-base-tgl/tgl_poc_code/-/issues">issue</a> to request it.</p>
+<hr />
+<h2 id="test-instance-parameters">2. Test Instance Parameters</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Parameter Name</th>
+<th style="text-align: left;">Required?</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Patlist</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">PatternList to run.</td>
+</tr>
+<tr>
+<td style="text-align: left;">TimingsTc</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">Timings TestCondition to use.</td>
+</tr>
+<tr>
+<td style="text-align: left;">LevelsTc</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">Levels TestCondition to use.</td>
+</tr>
+<tr>
+<td style="text-align: left;">MaskPins</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Comma separated list of pins to mask.</td>
+</tr>
+<tr>
+<td style="text-align: left;">ExecutionMode</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">The Templates mode. Currently only PER_PIN is supported. See <a href="#execution-modes">Execution Modes</a> for details</td>
+</tr>
+<tr>
+<td style="text-align: left;">DataPins</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">Comma separated list of pins to capture data from.</td>
+</tr>
+<tr>
+<td style="text-align: left;">OutputGsds</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">GSDS token to save the captured data to. Format=G.[LUI].S.<em>tokenname</em> -- where [LUI] specifies the context, L for Lot, U for DUT/Unit or I for IP (Prime only).</td>
+</tr>
+<tr>
+<td style="text-align: left;">TotalSize</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Expected size of the final captured data. If this is specified and it mismatches, the template exits port 0. If its not specified, no check is done.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="execution-modes">2.1. Execution Modes</h3>
+<h4 id="per_pin">2.1.1 PER_PIN</h4>
+<p>This mode simply concatenates all the CTV data from the DataPins into a single string.
+All the data for the first DataPin is first, then all the data for the 2nd DataPin, etc...</p>
+<p><em>Example</em>:<br />
+DataPins = &quot;P002,P004,P006&quot;;</p>
+<p>CapturedData:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Vector</th>
+<th style="text-align: left;">P002</th>
+<th style="text-align: left;">P004</th>
+<th style="text-align: left;">P006</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">45</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr>
+<td style="text-align: left;">46</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr>
+<td style="text-align: left;">47</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr>
+<td style="text-align: left;">48</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr>
+<td style="text-align: left;">49</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">1</td>
+</tr>
+</tbody>
+</table>
+<p>Result: 111110000001101 (P002 + P004 + P006)<br />
+In this case, if TotalSize was specified it should be 15 (3 Pins * 5 vectors)</p>
+<hr />
+<h2 id="datalog-output">3. Datalog output</h2>
+<p>The first failure will be logged using the standard format.<br />
+No other information is saved to ituff.</p>
+<pre><code>2_tname_PVAL_COMMON::DDGCapturePackets_NonAmbleFail_P1
+2_category_1
+2_fdpmv_571
+2_fcpmv_-1
+2_fsdmv_-1
+2_pttrn_CPU_TAP_ALL:g0019815W4480630A_92_VC28xCA066_Rm000000xxx0v_nxxx080808xxxxxxxxxxx_sC28A6PxxBTC002J052_x07_A07_CDU_CDIE_TAP_TAPLINKCFG_DR_OVRSHIFT:drv_cdie_maintap_bbs_list
+2_vcont_10571
+2_faildata_4024
+
+</code></pre>
+<h3 id="section-1"></h3>
+<hr />
+<h2 id="tpl-samples">4. TPL Samples</h2>
+<h3 id="section-2"></h3>
+<pre><code class="language-csharp">Test DDGCapturePacketsTC DDGCapturePackets_MultiPin_P1
+{
+    LevelsTc = &quot;__main__::bf_lvl_nom_lvl&quot;;
+    Patlist = &quot;drv_cdie_maintap_bbs_list&quot;;
+    TimingsTc = &quot;__main__::cpu_stf_timing_tclk100_sclk100_cclk100&quot;;
+    ExecutionMode = &quot;PER_PIN&quot;;
+    DataPins = &quot;YY_TEST_PORT_OUT_C2S_00,YY_TEST_PORT_OUT_C2S_01&quot;;
+    OutputGsds = &quot;G.U.S.CP1&quot;;
+    TotalSize = 4;
+}
+
+</code></pre>
+<hr />
+<h2 id="exit-ports">5. Exit Ports</h2>
+<table>
+<thead>
+<tr>
+<th>Exit Port</th>
+<th>Condition</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-2</td>
+<td>Alarm</td>
+<td>Any HW alarm condition</td>
+</tr>
+<tr>
+<td>-1</td>
+<td>Error</td>
+<td>Any software error</td>
+</tr>
+<tr>
+<td>0</td>
+<td>Fail</td>
+<td>The total bits captured is 0 or does not match the TotalSize parameter.</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Pass</td>
+<td>Captured data has at least a one &quot;1&quot; bit, total bits captured matches the TotalSize parameter and no Amble patterns failed. Its possible a main pattern failed (would be logged to ituff)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Fail</td>
+<td>All bits captured are &quot;0&quot; or an Amble pattern failed (preamble, postamble, midamble). The GSDS token is still written in this case.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="section-3"></h3>
+<hr />
+
+
+</body>
+</html>

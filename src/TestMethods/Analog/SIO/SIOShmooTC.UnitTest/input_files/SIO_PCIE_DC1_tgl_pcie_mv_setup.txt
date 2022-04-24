@@ -1,0 +1,19 @@
+
+#====================================================================================================
+RESET_PMOD			MODIFY_TOKEN		DEFAULT
+RESET_PMOD			MODIFY_VALUE		MODE
+#====================================================================================================
+SET_PMOD			MODIFY_TOKEN		SET
+SET_PMOD			MODIFY_VALUE		MODE
+
+#====================================================================================================
+########################################## LONG MV ##################################################
+#====================================================================================================
+#===================================PCIE GEN1 EXTLB =================================================================
+#PCIE_CALCODE_DC1         	DLOG_NAME             	SIO_PCIE_LPBK1::PCIE_Iso_BringUp_Gen1_EXTLB_PRBS7_HVM_svtt
+PCIE_CALCODE_DC1           	SEQ_FILE	      	    Modules\SIO_PCIE_DC1\InputFiles\sequence_merged_dkl_pcie_dfx_dl_rcomp_code_read_Rx.csv
+PCIE_CALCODE_DC1          	FORMAT_FILE	      	    Modules\SIO_PCIE_DC1\InputFiles\format_merged_dkl_pcie_dfx_dl_rcomp_code_read_Rx.csv
+PCIE_CALCODE_DC1           	SEQ_ID		      	    class_edc_g3
+PCIE_CALCODE_DC1 			NUMOFTESTRUN	      	1
+PCIE_CALCODE_DC1           	TESTTYPE			    CAPTURE
+PCIE_CALCODE_DC1           	REGDEF			    	CLIENT

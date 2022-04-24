@@ -1,0 +1,19 @@
+<?xml version= "1.0" encoding= "utf-8"?>
+<recovery>
+    <defeaturing_rules>
+		<rules name = "Callbacks_TwoBitCombinations"    index= "0-1" >
+			<rule mode = "ValidCombinations"  name = "2C" size = "2"  type= "FullyFeatured">
+				<bitvector  value = "00"/>
+			</rule>
+			<rule mode = "ValidCombinations"  name = "1C" size = "1"  type= "Recovery">
+				<bitvector  value = "01"/>
+				<bitvector  value = "10"/>
+			</rule>
+			<rule mode = "ValidCombinations"  name = "0C" size = "0"  type= "FirstSiliconRecovery">
+				<bitvector  value = "00"/>
+			</rule>
+		</rules>
+	</defeaturing_rules>
+</recovery>
+
+

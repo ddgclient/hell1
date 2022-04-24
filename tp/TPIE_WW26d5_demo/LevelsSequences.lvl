@@ -1,0 +1,1766 @@
+Version 1.0;
+
+Levels bf_lvl
+{
+	all_dpin_pins
+	{
+		FixedDriveState = "Off";
+		PinModeSel = "Digital";
+		TermMode = "TermVRef";
+		TermVRef = 0V;
+		VCH = 4V;
+		VCL = -1V;
+		VIH = 0V;
+		VIL = 0V;
+		VOX = 0V;
+	}	
+	SequenceBreak 0.001S;	
+	YY_CDIE_BREAKPOINT_S2C
+	{
+		FixedDriveState = "HiZ";
+		PinModeSel = "Digital";
+		TermMode = "Off";
+	}	
+	SequenceBreak 0.001S;	
+	LC1_V1P8A
+	{
+		FreeDriveTime = 1mS;
+		IClampHi = c_v1p8a_clamp_hi;
+		IClampLo = c_v1p8a_clamp_low;
+		IRange = "IR1_2A";
+		OPModeCheck = "VSIM";
+		VForce = c_v1p8a_prog;
+	}	
+	SequenceBreak 3mS;	
+	HV1_VNNAON
+	{
+		FreeDriveTime = 1mS;
+		IClampHi = c_vnnaon_clamp_hi;
+		IClampLo = c_vnnaon_clamp_low;
+		IRange = "IR7_5A";
+		OPModeCheck = "VSIM";
+		VForce = c_vnnaon_prog;
+		VRange = "VR6V";
+		VSlewStepRatio = 60;
+	}	
+	SequenceBreak 3mS;	
+	LC2_VCCVINFGT0
+	{
+		OPModeCheck = "VM";
+	}	
+	SequenceBreak 3mS;	
+	LC3_VCCVINFGT1
+	{
+		OPModeCheck = "VM";
+	}	
+	SequenceBreak 3mS;	
+	LC4_VCCFPGM0
+	{
+		FreeDriveTime = 1mS;
+		IClampHi = c_vccfpgm0_clamp_hi;
+		IClampLo = c_vccfpgm0_clamp_low;
+		IRange = "IR500mA";
+		OPModeCheck = "VSIM";
+		VForce = c_vccfpgm0_prog;
+	}	
+	SequenceBreak 3mS;	
+	LC5_VCCFPGM1
+	{
+		FreeDriveTime = 1mS;
+		IClampHi = c_vccfpgm1_clamp_hi;
+		IClampLo = c_vccfpgm1_clamp_low;
+		IRange = "IR500mA";
+		OPModeCheck = "VSIM";
+		VForce = c_vccfpgm1_prog;
+	}	
+	SequenceBreak 3mS;	
+	HC6_VCCIA
+	{
+		FreeDriveTime = 1mS;
+		IClampHi = c_vccia_clamp_hi;
+		IClampLo = c_vccia_clamp_low;
+		IRange = "IR24A";
+		OPModeCheck = "VSIM";
+		VForce = c_vccia_prog;
+		VSlewStepRatio = 60;
+	}	
+	SequenceBreak 3mS;	
+	LC7_VCCIASENSECEP
+	{
+		FreeDriveTime = 1mS;
+		IClampHi = c_vcciasensecep_clamp_hi;
+		IClampLo = c_vcciasensecep_clamp_low;
+		IRange = "IR500mA";
+		OPModeCheck = "VSIM";
+		VForce = c_vcciasensecep_prog;
+	}	
+	SequenceBreak 3mS;	
+	LC6_EXTBGREF
+	{
+		FreeDriveTime = 1mS;
+		IClampHi = c_extbgref_clamp_hi;
+		IClampLo = c_extbgref_clamp_low;
+		IRange = "IR500mA";
+		OPModeCheck = "VSIM";
+		VForce = c_extbgref_prog;
+	}	
+	SequenceBreak 3mS;	
+	HC5_VCCR
+	{
+		FreeDriveTime = 1mS;
+		IClampHi = c_vccr_clamp_hi;
+		IClampLo = c_vccr_clamp_low;
+		IRange = "IR24A";
+		OPModeCheck = "VSIM";
+		VForce = c_vccr_prog;
+		VSlewStepRatio = 60;
+	}	
+	SequenceBreak 3mS;	
+	HC1_VCCCORE0
+	{
+		FreeDriveTime = 1mS;
+		IClampHi = c_vcccore0_clamp_hi;
+		IClampLo = c_vcccore0_clamp_low;
+		IRange = "IR24A";
+		OPModeCheck = "VSIM";
+		VForce = c_vcccore0_prog;
+		VSlewStepRatio = 60;
+	}	
+	SequenceBreak 3mS;	
+	HC2_VCCCORE1
+	{
+		FreeDriveTime = 1mS;
+		IClampHi = c_vcccore1_clamp_hi;
+		IClampLo = c_vcccore1_clamp_low;
+		IRange = "IR24A";
+		OPModeCheck = "VSIM";
+		VForce = c_vcccore1_prog;
+		VSlewStepRatio = 60;
+	}	
+	SequenceBreak 3mS;	
+	HC3_VCCATOM0
+	{
+		FreeDriveTime = 1mS;
+		IClampHi = c_vccatom0_clamp_hi;
+		IClampLo = c_vccatom0_clamp_low;
+		IRange = "IR24A";
+		OPModeCheck = "VSIM";
+		VForce = c_vccatom0_prog;
+		VSlewStepRatio = 60;
+	}	
+	SequenceBreak 3mS;	
+	HC4_VCCATOM1
+	{
+		FreeDriveTime = 1mS;
+		IClampHi = c_vccatom1_clamp_hi;
+		IClampLo = c_vccatom1_clamp_low;
+		IRange = "IR24A";
+		OPModeCheck = "VSIM";
+		VForce = c_vccatom1_prog;
+		VSlewStepRatio = 60;
+	}	
+	SequenceBreak 3mS;	
+	YY_CDIE_TESTMODE_S2C
+	{
+		FixedDriveState = "VIH";
+		PinModeSel = "Digital";
+		TermMode = "Off";
+		VCH = 4V;
+		VCL = -1V;
+		VIH = c_tap_testmode_vih_prog;
+	}	
+	SequenceBreak 3mS;	
+	tap_all_jtag
+	{
+		FixedDriveState = "Off";
+		PinModeSel = "Digital";
+		TermMode = "TermVRef";
+		TermVRef = c_tap_vterm_prog;
+		VCH = 4V;
+		VCL = -1V;
+		VIH = c_tap_vih_prog;
+		VIL = c_tap_vil_prog;
+		VOX = c_tap_vox_prog;
+	}	
+	misc_lvl_tap
+	{
+		FixedDriveState = "Off";
+		PinModeSel = "Digital";
+		TermMode = "TermVRef";
+		TermVRef = c_gpio_vref_prog;
+		VCH = 4V;
+		VCL = -1V;
+		VIH = c_tap_misc_vih_prog;
+		VIL = c_tap_misc_vil_prog;
+		VOX = c_tap_misc_vox_prog;
+	}	
+	viewana_pins
+	{
+		FixedDriveState = "Off";
+		PinModeSel = "Digital";
+		TermMode = "TermVRef";
+		TermVRef = c_gpio2_vref_prog;
+		VCH = 4V;
+		VCL = -1V;
+		VIH = c_tap_viewana_vih_prog;
+		VIL = c_tap_viewana_vil_prog;
+		VOX = c_tap_viewana_vox_prog;
+	}	
+	lya_pins
+	{
+		FixedDriveState = "Off";
+		PinModeSel = "Digital";
+		TermMode = "TermVRef";
+		TermVRef = c_gpio2_vref_prog;
+		VCH = 4V;
+		VCL = -1V;
+		VIH = c_tap_lya_vih_prog;
+		VIL = c_tap_lya_vil_prog;
+		VOX = c_tap_lya_vox_prog;
+	}	
+	all_fab_dpin
+	{
+		FixedDriveState = "Off";
+		PinModeSel = "Digital";
+		TermMode = "TermVRef";
+		TermVRef = c_fab_vterm_prog;
+		VCH = 4V;
+		VCL = -1V;
+		VIH = c_fab_vih_prog;
+		VIL = c_fab_vil_prog;
+		VOX = c_fab_vox_prog;
+	}	
+	all_edm
+	{
+		FixedDriveState = "Off";
+		PinModeSel = "Digital";
+		TermMode = "Off";
+		TermVRef = 0V;
+		VCH = 4V;
+		VCL = -1V;
+	}	
+	SequenceBreak 0S;	
+	YY_TAP_TCK_S2C_ec
+	{
+		FixedDriveState = "Off";
+		PinModeSel = "Digital";
+		VIH = c_tap_vih_prog;
+		VIL = c_tap_vil_prog;
+		VOX = c_tap_vox_prog;
+	}	
+	YY_TEST_CLK_IN_S2C_ec
+	{
+		FixedDriveState = "Off";
+		PinModeSel = "Digital";
+		VIH = c_fab_vih_prog;
+		VIL = c_fab_vil_prog;
+		VOX = c_fab_vox_prog;
+	}	
+	YY_CROCLK_S2C_hpc
+	{
+		FixedDriveState = "Off";
+		PinModeSel = "Digital";
+		TermMode = "Off";
+		VIH = c_tap_vih_prog;
+		VIL = c_tap_vil_prog;
+		VOX = c_tap_vox_prog;
+	}	
+	SequenceBreak 0S;	
+}
+
+Levels cpu_clk_univ_x_x_pkg_lvl
+{
+	all_dpin_pins
+	{
+		FixedDriveState = "Off";
+		PinModeSel = "Digital";
+		TermMode = "TermVRef";
+		TermVRef = 0V;
+		VCH = 4V;
+		VCL = -1V;
+		VIH = 0V;
+		VIL = 0V;
+		VOX = 0V;
+	}	
+	SequenceBreak 0.001S;	
+	YY_CDIE_BREAKPOINT_S2C
+	{
+		FixedDriveState = "HiZ";
+		PinModeSel = "Digital";
+		TermMode = "Off";
+	}	
+	SequenceBreak 0.001S;	
+	LC1_V1P8A
+	{
+		FreeDriveTime = 1mS;
+		IClampHi = c_v1p8a_clamp_hi;
+		IClampLo = c_v1p8a_clamp_low;
+		IRange = "IR1_2A";
+		OPModeCheck = "VSIM";
+		VForce = c_v1p8a_prog;
+	}	
+	SequenceBreak 3mS;	
+	HV1_VNNAON
+	{
+		FreeDriveTime = 1mS;
+		IClampHi = c_vnnaon_clamp_hi;
+		IClampLo = c_vnnaon_clamp_low;
+		IRange = "IR7_5A";
+		OPModeCheck = "VSIM";
+		VForce = c_vnnaon_prog;
+		VRange = "VR6V";
+		VSlewStepRatio = 60;
+	}	
+	SequenceBreak 3mS;	
+	LC2_VCCVINFGT0
+	{
+		OPModeCheck = "VM";
+	}	
+	SequenceBreak 3mS;	
+	LC3_VCCVINFGT1
+	{
+		OPModeCheck = "VM";
+	}	
+	SequenceBreak 3mS;	
+	LC4_VCCFPGM0
+	{
+		FreeDriveTime = 1mS;
+		IClampHi = c_vccfpgm0_clamp_hi;
+		IClampLo = c_vccfpgm0_clamp_low;
+		IRange = "IR500mA";
+		OPModeCheck = "VSIM";
+		VForce = c_vccfpgm0_prog;
+	}	
+	SequenceBreak 3mS;	
+	LC5_VCCFPGM1
+	{
+		FreeDriveTime = 1mS;
+		IClampHi = c_vccfpgm1_clamp_hi;
+		IClampLo = c_vccfpgm1_clamp_low;
+		IRange = "IR500mA";
+		OPModeCheck = "VSIM";
+		VForce = c_vccfpgm1_prog;
+	}	
+	SequenceBreak 3mS;	
+	HC6_VCCIA
+	{
+		FreeDriveTime = 1mS;
+		IClampHi = c_vccia_clamp_hi;
+		IClampLo = c_vccia_clamp_low;
+		IRange = "IR24A";
+		OPModeCheck = "VSIM";
+		VForce = c_vccia_prog;
+		VSlewStepRatio = 60;
+	}	
+	SequenceBreak 3mS;	
+	LC7_VCCIASENSECEP
+	{
+		FreeDriveTime = 1mS;
+		IClampHi = c_vcciasensecep_clamp_hi;
+		IClampLo = c_vcciasensecep_clamp_low;
+		IRange = "IR500mA";
+		OPModeCheck = "VSIM";
+		VForce = c_vcciasensecep_prog;
+	}	
+	SequenceBreak 3mS;	
+	LC6_EXTBGREF
+	{
+		FreeDriveTime = 1mS;
+		IClampHi = c_extbgref_clamp_hi;
+		IClampLo = c_extbgref_clamp_low;
+		IRange = "IR500mA";
+		OPModeCheck = "VSIM";
+		VForce = c_extbgref_prog;
+	}	
+	SequenceBreak 3mS;	
+	HC5_VCCR
+	{
+		FreeDriveTime = 1mS;
+		IClampHi = c_vccr_clamp_hi;
+		IClampLo = c_vccr_clamp_low;
+		IRange = "IR24A";
+		OPModeCheck = "VSIM";
+		VForce = c_vccr_prog;
+		VSlewStepRatio = 60;
+	}	
+	SequenceBreak 3mS;	
+	HC1_VCCCORE0
+	{
+		FreeDriveTime = 1mS;
+		IClampHi = c_vcccore0_clamp_hi;
+		IClampLo = c_vcccore0_clamp_low;
+		IRange = "IR24A";
+		OPModeCheck = "VSIM";
+		VForce = c_vcccore0_prog;
+		VSlewStepRatio = 60;
+	}	
+	SequenceBreak 3mS;	
+	HC2_VCCCORE1
+	{
+		FreeDriveTime = 1mS;
+		IClampHi = c_vcccore1_clamp_hi;
+		IClampLo = c_vcccore1_clamp_low;
+		IRange = "IR24A";
+		OPModeCheck = "VSIM";
+		VForce = c_vcccore1_prog;
+		VSlewStepRatio = 60;
+	}	
+	SequenceBreak 3mS;	
+	HC3_VCCATOM0
+	{
+		FreeDriveTime = 1mS;
+		IClampHi = c_vccatom0_clamp_hi;
+		IClampLo = c_vccatom0_clamp_low;
+		IRange = "IR24A";
+		OPModeCheck = "VSIM";
+		VForce = c_vccatom0_prog;
+		VSlewStepRatio = 60;
+	}	
+	SequenceBreak 3mS;	
+	HC4_VCCATOM1
+	{
+		FreeDriveTime = 1mS;
+		IClampHi = c_vccatom1_clamp_hi;
+		IClampLo = c_vccatom1_clamp_low;
+		IRange = "IR24A";
+		OPModeCheck = "VSIM";
+		VForce = c_vccatom1_prog;
+		VSlewStepRatio = 60;
+	}	
+	SequenceBreak 3mS;	
+	YY_CDIE_TESTMODE_S2C
+	{
+		FixedDriveState = "VIH";
+		PinModeSel = "Digital";
+		TermMode = "Off";
+		VCH = 4V;
+		VCL = -1V;
+		VIH = c_tap_testmode_vih_prog;
+	}	
+	SequenceBreak 3mS;	
+	tap_all_jtag
+	{
+		FixedDriveState = "Off";
+		PinModeSel = "Digital";
+		TermMode = "TermVRef";
+		TermVRef = c_tap_vterm_prog;
+		VCH = 4V;
+		VCL = -1V;
+		VIH = c_tap_vih_prog;
+		VIL = c_tap_vil_prog;
+		VOX = c_tap_vox_prog;
+	}	
+	misc_lvl_tap
+	{
+		FixedDriveState = "Off";
+		PinModeSel = "Digital";
+		TermMode = "TermVRef";
+		TermVRef = c_gpio_vref_prog;
+		VCH = 4V;
+		VCL = -1V;
+		VIH = c_tap_misc_vih_prog;
+		VIL = c_tap_misc_vil_prog;
+		VOX = c_tap_misc_vox_prog;
+	}	
+	viewana_pins
+	{
+		FixedDriveState = "Off";
+		PinModeSel = "Digital";
+		TermMode = "TermVRef";
+		TermVRef = c_gpio2_vref_prog;
+		VCH = 4V;
+		VCL = -1V;
+		VIH = c_tap_viewana_vih_prog;
+		VIL = c_tap_viewana_vil_prog;
+		VOX = c_tap_viewana_vox_prog;
+	}	
+	lya_pins
+	{
+		FixedDriveState = "Off";
+		PinModeSel = "Digital";
+		TermMode = "TermVRef";
+		TermVRef = c_gpio2_vref_prog;
+		VCH = 4V;
+		VCL = -1V;
+		VIH = c_tap_lya_vih_prog;
+		VIL = c_tap_lya_vil_prog;
+		VOX = c_tap_lya_vox_prog;
+	}	
+	all_fab_dpin
+	{
+		FixedDriveState = "Off";
+		PinModeSel = "Digital";
+		TermMode = "TermVRef";
+		TermVRef = c_fab_vterm_prog;
+		VCH = 4V;
+		VCL = -1V;
+		VIH = c_fab_vih_prog;
+		VIL = c_fab_vil_prog;
+		VOX = c_fab_vox_prog;
+	}	
+	all_edm
+	{
+		FixedDriveState = "Off";
+		PinModeSel = "Digital";
+		TermMode = "Off";
+		TermVRef = 0V;
+		VCH = 4V;
+		VCL = -1V;
+	}	
+	SequenceBreak 0S;	
+	YY_TAP_TCK_S2C_ec
+	{
+		FixedDriveState = "Off";
+		PinModeSel = "Digital";
+		VIH = c_tap_vih_prog;
+		VIL = c_tap_vil_prog;
+		VOX = c_tap_vox_prog;
+	}	
+	YY_TEST_CLK_IN_S2C_ec
+	{
+		FixedDriveState = "Off";
+		PinModeSel = "Digital";
+		VIH = c_fab_vih_prog;
+		VIL = c_fab_vil_prog;
+		VOX = c_fab_vox_prog;
+	}	
+	YY_CROCLK_S2C_hpc
+	{
+		FixedDriveState = "Off";
+		PinModeSel = "Digital";
+		TermMode = "Off";
+		VIH = c_tap_vih_prog;
+		VIL = c_tap_vil_prog;
+		VOX = c_tap_vox_prog;
+	}	
+	SequenceBreak 0S;	
+}
+
+Levels cpu_pth_24A_x_x_ipcpu_lvl
+{
+	all_dpin_pins
+	{
+		FixedDriveState = "Off";
+		PinModeSel = "Digital";
+		TermMode = "TermVRef";
+		TermVRef = 0V;
+		VCH = 4V;
+		VCL = -1V;
+		VIH = 0V;
+		VIL = 0V;
+		VOX = 0V;
+	}	
+	SequenceBreak 0.001S;	
+	YY_CDIE_BREAKPOINT_S2C
+	{
+		FixedDriveState = "HiZ";
+		PinModeSel = "Digital";
+		TermMode = "Off";
+	}	
+	SequenceBreak 0.001S;	
+	HC1_VCCCORE0
+	{
+		IClampHi = 24A;
+		IClampLo = -10A;
+		IRange = "IR24A";
+		OPModeCheck = "VSIM";
+	}	
+	HC2_VCCCORE1
+	{
+		IClampHi = 24A;
+		IClampLo = -10A;
+		IRange = "IR24A";
+		OPModeCheck = "VSIM";
+	}	
+	HC3_VCCATOM0
+	{
+		IClampHi = 24A;
+		IClampLo = -10A;
+		IRange = "IR24A";
+		OPModeCheck = "VSIM";
+	}	
+	HC4_VCCATOM1
+	{
+		IClampHi = 24A;
+		IClampLo = -10A;
+		IRange = "IR24A";
+		OPModeCheck = "VSIM";
+	}	
+	HC5_VCCR
+	{
+		IClampHi = 24A;
+		IClampLo = -10A;
+		IRange = "IR24A";
+		OPModeCheck = "VSIM";
+	}	
+	HV1_VNNAON
+	{
+		IClampHi = 7.5A;
+		IClampLo = -5A;
+		IRange = "IR7_5A";
+		OPModeCheck = "VSIM";
+		VRange = "VR6V";
+	}	
+	SequenceBreak 3mS;	
+	HC1_VCCCORE0
+	{
+		OPModeCheck = "VSIM";
+		PreMeasurementDelay = 0.0002;
+		SamplingCount = 35;
+		SamplingMode = "Trace";
+		SamplingRatio = 1;
+		StartMeasurement = True;
+	}	
+	HC2_VCCCORE1
+	{
+		OPModeCheck = "VSIM";
+		PreMeasurementDelay = 0.0002;
+		SamplingCount = 35;
+		SamplingMode = "Trace";
+		SamplingRatio = 1;
+		StartMeasurement = True;
+	}	
+	HC3_VCCATOM0
+	{
+		OPModeCheck = "VSIM";
+		PreMeasurementDelay = 0.0002;
+		SamplingCount = 35;
+		SamplingMode = "Trace";
+		SamplingRatio = 1;
+		StartMeasurement = True;
+	}	
+	HC4_VCCATOM1
+	{
+		OPModeCheck = "VSIM";
+		PreMeasurementDelay = 0.0002;
+		SamplingCount = 35;
+		SamplingMode = "Trace";
+		SamplingRatio = 1;
+		StartMeasurement = True;
+	}	
+	HC5_VCCR
+	{
+		OPModeCheck = "VSIM";
+		PreMeasurementDelay = 0.0002;
+		SamplingCount = 35;
+		SamplingMode = "Trace";
+		SamplingRatio = 1;
+		StartMeasurement = True;
+	}	
+	HV1_VNNAON
+	{
+		OPModeCheck = "VSIM";
+		PreMeasurementDelay = 0.0002;
+		SamplingCount = 35;
+		SamplingMode = "Trace";
+		SamplingRatio = 1;
+		StartMeasurement = True;
+		VRange = "VR6V";
+	}	
+}
+
+Levels cpu_pth_500mA_x_x_ipcpu_lvl
+{
+	all_dpin_pins
+	{
+		FixedDriveState = "Off";
+		PinModeSel = "Digital";
+		TermMode = "TermVRef";
+		TermVRef = 0V;
+		VCH = 4V;
+		VCL = -1V;
+		VIH = 0V;
+		VIL = 0V;
+		VOX = 0V;
+	}	
+	SequenceBreak 0.001S;	
+	YY_CDIE_BREAKPOINT_S2C
+	{
+		FixedDriveState = "HiZ";
+		PinModeSel = "Digital";
+		TermMode = "Off";
+	}	
+	SequenceBreak 0.001S;	
+	HC1_VCCCORE0
+	{
+		IClampHi = 500mA;
+		IClampLo = -500mA;
+		IRange = "IR500mA";
+		OPModeCheck = "VSIM";
+	}	
+	HC2_VCCCORE1
+	{
+		IClampHi = 500mA;
+		IClampLo = -500mA;
+		IRange = "IR500mA";
+		OPModeCheck = "VSIM";
+	}	
+	HC3_VCCATOM0
+	{
+		IClampHi = 500mA;
+		IClampLo = -500mA;
+		IRange = "IR500mA";
+		OPModeCheck = "VSIM";
+	}	
+	HC4_VCCATOM1
+	{
+		IClampHi = 500mA;
+		IClampLo = -500mA;
+		IRange = "IR500mA";
+		OPModeCheck = "VSIM";
+	}	
+	HC5_VCCR
+	{
+		IClampHi = 500mA;
+		IClampLo = -500mA;
+		IRange = "IR500mA";
+		OPModeCheck = "VSIM";
+	}	
+	HV1_VNNAON
+	{
+		IClampHi = 500mA;
+		IClampLo = -500mA;
+		IRange = "IR500mA";
+		OPModeCheck = "VSIM";
+		VRange = "VR6V";
+	}	
+	SequenceBreak 3mS;	
+	HC1_VCCCORE0
+	{
+		OPModeCheck = "VSIM";
+		PreMeasurementDelay = 0.0002;
+		SamplingCount = 35;
+		SamplingMode = "Trace";
+		SamplingRatio = 1;
+		StartMeasurement = True;
+	}	
+	HC2_VCCCORE1
+	{
+		OPModeCheck = "VSIM";
+		PreMeasurementDelay = 0.0002;
+		SamplingCount = 35;
+		SamplingMode = "Trace";
+		SamplingRatio = 1;
+		StartMeasurement = True;
+	}	
+	HC3_VCCATOM0
+	{
+		OPModeCheck = "VSIM";
+		PreMeasurementDelay = 0.0002;
+		SamplingCount = 35;
+		SamplingMode = "Trace";
+		SamplingRatio = 1;
+		StartMeasurement = True;
+	}	
+	HC4_VCCATOM1
+	{
+		OPModeCheck = "VSIM";
+		PreMeasurementDelay = 0.0002;
+		SamplingCount = 35;
+		SamplingMode = "Trace";
+		SamplingRatio = 1;
+		StartMeasurement = True;
+	}	
+	HC5_VCCR
+	{
+		OPModeCheck = "VSIM";
+		PreMeasurementDelay = 0.0002;
+		SamplingCount = 35;
+		SamplingMode = "Trace";
+		SamplingRatio = 1;
+		StartMeasurement = True;
+	}	
+	HV1_VNNAON
+	{
+		OPModeCheck = "VSIM";
+		PreMeasurementDelay = 0.0002;
+		SamplingCount = 35;
+		SamplingMode = "Trace";
+		SamplingRatio = 1;
+		StartMeasurement = True;
+		VRange = "VR6V";
+	}	
+}
+
+Levels dps_on_0V_lvl
+{
+	all_dpin_pins
+	{
+		FixedDriveState = "Off";
+		PinModeSel = "Off";
+	}	
+	LC1_V1P8A
+	{
+		FreeDriveTime = 1mS;
+		IClampHi = c_v1p8a_clamp_hi;
+		IClampLo = c_v1p8a_clamp_low;
+		IRange = "IR1_2A";
+		OPMode = "VSIM";
+		PowerSequence = TRUE;
+		VForce = 0V;
+	}	
+	SequenceBreak 3mS;	
+	HV1_VNNAON
+	{
+		FreeDriveTime = 1mS;
+		IClampHi = c_vnnaon_clamp_hi;
+		IClampLo = c_vnnaon_clamp_low;
+		IRange = "IR7_5A";
+		OPMode = "VSIM";
+		PowerSequence = TRUE;
+		VForce = 0V;
+		VRange = "VR6V";
+		VSlewStepRatio = 60;
+	}	
+	SequenceBreak 3mS;	
+	LC2_VCCVINFGT0
+	{
+		OPMode = "VM";
+	}	
+	SequenceBreak 3mS;	
+	LC3_VCCVINFGT1
+	{
+		OPMode = "VM";
+	}	
+	SequenceBreak 3mS;	
+	LC4_VCCFPGM0
+	{
+		FreeDriveTime = 1mS;
+		IClampHi = c_vccfpgm0_clamp_hi;
+		IClampLo = c_vccfpgm0_clamp_low;
+		IRange = "IR500mA";
+		OPMode = "VSIM";
+		PowerSequence = TRUE;
+		VForce = 0V;
+	}	
+	SequenceBreak 3mS;	
+	LC5_VCCFPGM1
+	{
+		FreeDriveTime = 1mS;
+		IClampHi = c_vccfpgm1_clamp_hi;
+		IClampLo = c_vccfpgm1_clamp_low;
+		IRange = "IR500mA";
+		OPMode = "VSIM";
+		PowerSequence = TRUE;
+		VForce = 0V;
+	}	
+	SequenceBreak 3mS;	
+	HC6_VCCIA
+	{
+		FreeDriveTime = 1mS;
+		IClampHi = c_vccia_clamp_hi;
+		IClampLo = c_vccia_clamp_low;
+		IRange = "IR24A";
+		OPMode = "VSIM";
+		PowerSequence = TRUE;
+		VForce = 0V;
+		VSlewStepRatio = 60;
+	}	
+	SequenceBreak 3mS;	
+	LC7_VCCIASENSECEP
+	{
+		FreeDriveTime = 1mS;
+		IClampHi = c_vcciasensecep_clamp_hi;
+		IClampLo = c_vcciasensecep_clamp_low;
+		IRange = "IR500mA";
+		OPMode = "VSIM";
+		PowerSequence = TRUE;
+		VForce = 0V;
+	}	
+	SequenceBreak 3mS;	
+	LC6_EXTBGREF
+	{
+		FreeDriveTime = 1mS;
+		IClampHi = c_extbgref_clamp_hi;
+		IClampLo = c_extbgref_clamp_low;
+		IRange = "IR500mA";
+		OPMode = "VSIM";
+		PowerSequence = TRUE;
+		VForce = 0V;
+	}	
+	SequenceBreak 3mS;	
+	HC5_VCCR
+	{
+		FreeDriveTime = 1mS;
+		IClampHi = c_vccr_clamp_hi;
+		IClampLo = c_vccr_clamp_low;
+		IRange = "IR24A";
+		OPMode = "VSIM";
+		PowerSequence = TRUE;
+		VForce = 0V;
+		VSlewStepRatio = 60;
+	}	
+	SequenceBreak 3mS;	
+	HC1_VCCCORE0
+	{
+		FreeDriveTime = 1mS;
+		IClampHi = c_vcccore0_clamp_hi;
+		IClampLo = c_vcccore0_clamp_low;
+		IRange = "IR24A";
+		OPMode = "VSIM";
+		PowerSequence = TRUE;
+		VForce = 0V;
+		VSlewStepRatio = 60;
+	}	
+	SequenceBreak 3mS;	
+	HC2_VCCCORE1
+	{
+		FreeDriveTime = 1mS;
+		IClampHi = c_vcccore1_clamp_hi;
+		IClampLo = c_vcccore1_clamp_low;
+		IRange = "IR24A";
+		OPMode = "VSIM";
+		PowerSequence = TRUE;
+		VForce = 0V;
+		VSlewStepRatio = 60;
+	}	
+	SequenceBreak 3mS;	
+	HC3_VCCATOM0
+	{
+		FreeDriveTime = 1mS;
+		IClampHi = c_vccatom0_clamp_hi;
+		IClampLo = c_vccatom0_clamp_low;
+		IRange = "IR24A";
+		OPMode = "VSIM";
+		PowerSequence = TRUE;
+		VForce = 0V;
+		VSlewStepRatio = 60;
+	}	
+	SequenceBreak 3mS;	
+	HC4_VCCATOM1
+	{
+		FreeDriveTime = 1mS;
+		IClampHi = c_vccatom1_clamp_hi;
+		IClampLo = c_vccatom1_clamp_low;
+		IRange = "IR24A";
+		OPMode = "VSIM";
+		PowerSequence = TRUE;
+		VForce = 0V;
+		VSlewStepRatio = 60;
+	}	
+	SequenceBreak 3mS;	
+}
+
+Levels eza_lvl
+{
+	vipr_eza_pins
+	{
+		PinModeSel = "Off";
+	}	
+	SequenceBreak 0.001S;	
+	vipr_eza_pins
+	{
+		FixedDriveState = "Off";
+		IClampHi = 0.04;
+		IClampLo = -0.04;
+		IRange = "IR40mA";
+		OPMode = "VSIM";
+		PinModeSel = "PMU";
+		VForce = 0V;
+	}	
+	SequenceBreak 0.001S;	
+	all_lcdps
+	{
+		OPMode = "VSIM";
+		PowerSequence = False;
+	}	
+	all_hvdps
+	{
+		OPMode = "VSIM";
+		PowerSequence = False;
+	}	
+	all_hcdps
+	{
+		OPMode = "VSIM";
+		PowerSequence = False;
+	}	
+}
+
+Levels power_up_lvl
+{
+	all_dpin_pins
+	{
+		FixedDriveState = "Off";
+		OPMode = "VSIM";
+		PinModeSel = "Off";
+		VForce = 0V;
+	}	
+	SequenceBreak 0.001S;	
+	all_dpin_pins
+	{
+		FixedDriveState = "Off";
+		PinModeSel = "Digital";
+		TermMode = "TermVRef";
+		TermVRef = 0V;
+		VCH = 4V;
+		VCL = -1V;
+		VIH = 0V;
+		VIL = 0V;
+		VOX = 0V;
+	}	
+	SequenceBreak 0.001S;	
+	YY_CDIE_BREAKPOINT_S2C
+	{
+		FixedDriveState = "HiZ";
+		PinModeSel = "Digital";
+		TermMode = "Off";
+	}	
+	SequenceBreak 0.001S;	
+	LC1_V1P8A
+	{
+		FreeDriveTime = 1mS;
+		IClampHi = c_v1p8a_clamp_hi;
+		IClampLo = c_v1p8a_clamp_low;
+		IRange = "IR1_2A";
+		OPMode = "VSIM";
+		PowerSequence = TRUE;
+		VForce = c_v1p8a_prog;
+	}	
+	SequenceBreak 3mS;	
+	HV1_VNNAON
+	{
+		FreeDriveTime = 1mS;
+		IClampHi = c_vnnaon_clamp_hi;
+		IClampLo = c_vnnaon_clamp_low;
+		IRange = "IR7_5A";
+		OPMode = "VSIM";
+		PowerSequence = TRUE;
+		VForce = c_vnnaon_prog;
+		VRange = "VR6V";
+		VSlewStepRatio = 60;
+	}	
+	SequenceBreak 3mS;	
+	LC2_VCCVINFGT0
+	{
+		OPMode = "VM";
+	}	
+	SequenceBreak 3mS;	
+	LC3_VCCVINFGT1
+	{
+		OPMode = "VM";
+	}	
+	SequenceBreak 3mS;	
+	LC4_VCCFPGM0
+	{
+		FreeDriveTime = 1mS;
+		IClampHi = c_vccfpgm0_clamp_hi;
+		IClampLo = c_vccfpgm0_clamp_low;
+		IRange = "IR500mA";
+		OPMode = "VSIM";
+		PowerSequence = TRUE;
+		VForce = c_vccfpgm0_prog;
+	}	
+	SequenceBreak 3mS;	
+	LC5_VCCFPGM1
+	{
+		FreeDriveTime = 1mS;
+		IClampHi = c_vccfpgm1_clamp_hi;
+		IClampLo = c_vccfpgm1_clamp_low;
+		IRange = "IR500mA";
+		OPMode = "VSIM";
+		PowerSequence = TRUE;
+		VForce = c_vccfpgm1_prog;
+	}	
+	SequenceBreak 3mS;	
+	HC6_VCCIA
+	{
+		FreeDriveTime = 1mS;
+		IClampHi = c_vccia_clamp_hi;
+		IClampLo = c_vccia_clamp_low;
+		IRange = "IR24A";
+		OPMode = "VSIM";
+		PowerSequence = TRUE;
+		VForce = c_vccia_prog;
+		VSlewStepRatio = 60;
+	}	
+	SequenceBreak 3mS;	
+	LC7_VCCIASENSECEP
+	{
+		FreeDriveTime = 1mS;
+		IClampHi = c_vcciasensecep_clamp_hi;
+		IClampLo = c_vcciasensecep_clamp_low;
+		IRange = "IR500mA";
+		OPMode = "VSIM";
+		PowerSequence = TRUE;
+		VForce = c_vcciasensecep_prog;
+	}	
+	SequenceBreak 3mS;	
+	LC6_EXTBGREF
+	{
+		FreeDriveTime = 1mS;
+		IClampHi = c_extbgref_clamp_hi;
+		IClampLo = c_extbgref_clamp_low;
+		IRange = "IR500mA";
+		OPMode = "VSIM";
+		PowerSequence = TRUE;
+		VForce = c_extbgref_prog;
+	}	
+	SequenceBreak 3mS;	
+	HC5_VCCR
+	{
+		FreeDriveTime = 1mS;
+		IClampHi = c_vccr_clamp_hi;
+		IClampLo = c_vccr_clamp_low;
+		IRange = "IR24A";
+		OPMode = "VSIM";
+		PowerSequence = TRUE;
+		VForce = c_vccr_prog;
+		VSlewStepRatio = 60;
+	}	
+	SequenceBreak 3mS;	
+	HC1_VCCCORE0
+	{
+		FreeDriveTime = 1mS;
+		IClampHi = c_vcccore0_clamp_hi;
+		IClampLo = c_vcccore0_clamp_low;
+		IRange = "IR24A";
+		OPMode = "VSIM";
+		PowerSequence = TRUE;
+		VForce = c_vcccore0_prog;
+		VSlewStepRatio = 60;
+	}	
+	SequenceBreak 3mS;	
+	HC2_VCCCORE1
+	{
+		FreeDriveTime = 1mS;
+		IClampHi = c_vcccore1_clamp_hi;
+		IClampLo = c_vcccore1_clamp_low;
+		IRange = "IR24A";
+		OPMode = "VSIM";
+		PowerSequence = TRUE;
+		VForce = c_vcccore1_prog;
+		VSlewStepRatio = 60;
+	}	
+	SequenceBreak 3mS;	
+	HC3_VCCATOM0
+	{
+		FreeDriveTime = 1mS;
+		IClampHi = c_vccatom0_clamp_hi;
+		IClampLo = c_vccatom0_clamp_low;
+		IRange = "IR24A";
+		OPMode = "VSIM";
+		PowerSequence = TRUE;
+		VForce = c_vccatom0_prog;
+		VSlewStepRatio = 60;
+	}	
+	SequenceBreak 3mS;	
+	HC4_VCCATOM1
+	{
+		FreeDriveTime = 1mS;
+		IClampHi = c_vccatom1_clamp_hi;
+		IClampLo = c_vccatom1_clamp_low;
+		IRange = "IR24A";
+		OPMode = "VSIM";
+		PowerSequence = TRUE;
+		VForce = c_vccatom1_prog;
+		VSlewStepRatio = 60;
+	}	
+	SequenceBreak 3mS;	
+	YY_CDIE_TESTMODE_S2C
+	{
+		FixedDriveState = "VIH";
+		PinModeSel = "Digital";
+		TermMode = "Off";
+		VCH = 4V;
+		VCL = -1V;
+		VIH = c_tap_testmode_vih_prog;
+	}	
+	SequenceBreak 3mS;	
+	tap_all_jtag
+	{
+		FixedDriveState = "Off";
+		PinModeSel = "Digital";
+		TermMode = "TermVRef";
+		TermVRef = c_tap_vterm_prog;
+		VCH = 4V;
+		VCL = -1V;
+		VIH = c_tap_vih_prog;
+		VIL = c_tap_vil_prog;
+		VOX = c_tap_vox_prog;
+	}	
+	misc_lvl_tap
+	{
+		FixedDriveState = "Off";
+		PinModeSel = "Digital";
+		TermMode = "TermVRef";
+		TermVRef = c_gpio_vref_prog;
+		VCH = 4V;
+		VCL = -1V;
+		VIH = c_tap_misc_vih_prog;
+		VIL = c_tap_misc_vil_prog;
+		VOX = c_tap_misc_vox_prog;
+	}	
+	viewana_pins
+	{
+		FixedDriveState = "Off";
+		PinModeSel = "Digital";
+		TermMode = "TermVRef";
+		TermVRef = c_gpio2_vref_prog;
+		VCH = 4V;
+		VCL = -1V;
+		VIH = c_tap_viewana_vih_prog;
+		VIL = c_tap_viewana_vil_prog;
+		VOX = c_tap_viewana_vox_prog;
+	}	
+	lya_pins
+	{
+		FixedDriveState = "Off";
+		PinModeSel = "Digital";
+		TermMode = "TermVRef";
+		TermVRef = c_gpio2_vref_prog;
+		VCH = 4V;
+		VCL = -1V;
+		VIH = c_tap_lya_vih_prog;
+		VIL = c_tap_lya_vil_prog;
+		VOX = c_tap_lya_vox_prog;
+	}	
+	all_fab_dpin
+	{
+		FixedDriveState = "Off";
+		PinModeSel = "Digital";
+		TermMode = "TermVRef";
+		TermVRef = c_fab_vterm_prog;
+		VCH = 4V;
+		VCL = -1V;
+		VIH = c_fab_vih_prog;
+		VIL = c_fab_vil_prog;
+		VOX = c_fab_vox_prog;
+	}	
+	all_edm
+	{
+		FixedDriveState = "Off";
+		PinModeSel = "Digital";
+		TermMode = "Off";
+		TermVRef = 0V;
+		VCH = 4V;
+		VCL = -1V;
+	}	
+	SequenceBreak 0S;	
+	YY_TAP_TCK_S2C_ec
+	{
+		FixedDriveState = "Off";
+		PinModeSel = "Digital";
+		VIH = c_tap_vih_prog;
+		VIL = c_tap_vil_prog;
+		VOX = c_tap_vox_prog;
+	}	
+	YY_TEST_CLK_IN_S2C_ec
+	{
+		FixedDriveState = "Off";
+		PinModeSel = "Digital";
+		VIH = c_fab_vih_prog;
+		VIL = c_fab_vil_prog;
+		VOX = c_fab_vox_prog;
+	}	
+	YY_CROCLK_S2C_hpc
+	{
+		FixedDriveState = "Off";
+		PinModeSel = "Digital";
+		TermMode = "Off";
+		VIH = c_tap_vih_prog;
+		VIL = c_tap_vil_prog;
+		VOX = c_tap_vox_prog;
+	}	
+	SequenceBreak 0S;	
+}
+
+Levels pwrdn_lvl
+{
+	all_dpin_pins
+	{
+		FixedDriveState = "Off";
+		PinModeSel = "Off";
+	}	
+	all_lcdps
+	{
+		FreeDriveTime = 1mS;
+		IClampHi = 500mA;
+		IClampLo = -500mA;
+		IRange = "IR500mA";
+		OPMode = "VSIM";
+		PowerSequence = True;
+		VForce = 0V;
+	}	
+	all_hvdps
+	{
+		FreeDriveTime = 15mS;
+		IClampHi = 500mA;
+		IClampLo = -500mA;
+		IRange = "IR500mA";
+		OPMode = "VSIM";
+		PowerSequence = True;
+		VForce = 0V;
+		VRange = "VR6V";
+		VSlewStepRatio = 127;
+	}	
+	all_hcdps
+	{
+		FreeDriveTime = 15mS;
+		IClampHi = 500mA;
+		IClampLo = -500mA;
+		IRange = "IR500mA";
+		OPMode = "VSIM";
+		PowerSequence = True;
+		VForce = 0V;
+		VSlewStepRatio = 127;
+	}	
+}
+
+Levels shops_dc_lvl
+{
+	all_dpin_pins
+	{
+		PinModeSel = "Off";
+	}	
+	SequenceBreak 0.001S;	
+	all_dpin_pins
+	{
+		FixedDriveState = "Off";
+		IClampHi = 0.04;
+		IClampLo = -0.04;
+		IRange = "IR40mA";
+		OPMode = "VSIM";
+		PinModeSel = "PMU";
+		VForce = 0V;
+	}	
+	SequenceBreak 0.001S;	
+	all_lcdps
+	{
+		FreeDriveTime = 1mS;
+		IClampHi = 500mA;
+		IClampLo = -500mA;
+		IRange = "IR500mA";
+		OPMode = "VSIM";
+		PowerSequence = True;
+		VForce = 0V;
+	}	
+	all_hvdps
+	{
+		FreeDriveTime = 15mS;
+		IClampHi = 500mA;
+		IClampLo = -500mA;
+		IRange = "IR500mA";
+		OPMode = "VSIM";
+		PowerSequence = True;
+		VForce = 0V;
+		VRange = "VR6V";
+		VSlewStepRatio = 127;
+	}	
+	all_hcdps
+	{
+		FreeDriveTime = 15mS;
+		IClampHi = 500mA;
+		IClampLo = -500mA;
+		IRange = "IR500mA";
+		OPMode = "VSIM";
+		PowerSequence = True;
+		VForce = 0V;
+		VSlewStepRatio = 127;
+	}	
+}
+
+Levels VBUMP_ATOM_lvl
+{
+	HC3_VCCATOM0
+	{
+		FreeDriveTime = 1mS;
+		OPModeCheck = "VSIM";
+		VForce = p_vbump_val;
+		VSlewStepRatio = 60;
+	}	
+	HC4_VCCATOM1
+	{
+		FreeDriveTime = 1mS;
+		OPModeCheck = "VSIM";
+		VForce = p_vbump_val;
+		VSlewStepRatio = 60;
+	}	
+}
+
+Levels VBUMP_CORE_lvl
+{
+	HC1_VCCCORE0
+	{
+		FreeDriveTime = 1mS;
+		OPModeCheck = "VSIM";
+		VForce = p_vbump_val;
+		VSlewStepRatio = 60;
+	}	
+	HC2_VCCCORE1
+	{
+		FreeDriveTime = 1mS;
+		OPModeCheck = "VSIM";
+		VForce = p_vbump_val;
+		VSlewStepRatio = 60;
+	}	
+}
+
+Levels VBUMP_RING_lvl
+{
+	HC5_VCCR
+	{
+		FreeDriveTime = 1mS;
+		OPModeCheck = "VSIM";
+		VForce = p_vbump_val;
+		VSlewStepRatio = 60;
+	}	
+}
+
+Levels VBUMP_VNNAON_lvl
+{
+	HV1_VNNAON
+	{
+		FreeDriveTime = 1mS;
+		OPModeCheck = "VSIM";
+		VForce = p_vbump_val_0p77;
+		VRange = "VR6V";
+		VSlewStepRatio = 60;
+	}	
+}
+
+Levels vcc_cont_hc_surge_lvl
+{
+	all_lcdps
+	{
+		OPMode = "VSIM";
+		PowerSequence = False;
+	}	
+	all_hvdps
+	{
+		OPMode = "VSIM";
+		PowerSequence = False;
+	}	
+	all_hcdps
+	{
+		OPMode = "VSIM";
+		PowerSequence = False;
+	}	
+	SequenceBreak 0S;	
+	all_hcdps
+	{
+		FreeDriveTime = 20mS;
+		IClampHi = 250mA;
+		IClampLo = -250mA;
+		IRange = "IR500mA";
+		OPMode = "VSIM";
+		PowerSequence = True;
+		VForce = 0V;
+		VSlewStepRatio = 120;
+	}	
+	SequenceBreak 0S;	
+	all_hcdps
+	{
+		FreeDriveTime = 20mS;
+		IClampHi = 250mA;
+		IClampLo = -250mA;
+		IRange = "IR500mA";
+		OPModeCheck = "VSIM";
+		VForce = 1.0V;
+		VSlewStepRatio = 120;
+	}	
+	SequenceBreak 0S;	
+	all_hcdps
+	{
+		FreeDriveTime = 20mS;
+		IClampHi = 250mA;
+		IClampLo = -250mA;
+		IRange = "IR500mA";
+		OPMode = "VSIM";
+		PowerSequence = True;
+		VForce = 0V;
+		VSlewStepRatio = 120;
+	}	
+	SequenceBreak 0S;	
+}
+
+Levels vcc_cont_hv_surge_lvl
+{
+	all_lcdps
+	{
+		OPMode = "VSIM";
+		PowerSequence = False;
+	}	
+	all_hvdps
+	{
+		OPMode = "VSIM";
+		PowerSequence = False;
+	}	
+	all_hcdps
+	{
+		OPMode = "VSIM";
+		PowerSequence = False;
+	}	
+	SequenceBreak 0S;	
+	all_hvdps
+	{
+		FreeDriveTime = 20mS;
+		IClampHi = 250mA;
+		IClampLo = -250mA;
+		IRange = "IR500mA";
+		OPMode = "VSIM";
+		PowerSequence = True;
+		VForce = 0V;
+		VRange = "VR6V";
+		VSlewStepRatio = 120;
+	}	
+	SequenceBreak 0S;	
+	all_hvdps
+	{
+		FreeDriveTime = 20mS;
+		IClampHi = 250mA;
+		IClampLo = -250mA;
+		IRange = "IR500mA";
+		OPModeCheck = "VSIM";
+		VForce = 1.0V;
+		VRange = "VR6V";
+		VSlewStepRatio = 120;
+	}	
+	SequenceBreak 0S;	
+	all_hvdps
+	{
+		FreeDriveTime = 20mS;
+		IClampHi = 250mA;
+		IClampLo = -250mA;
+		IRange = "IR500mA";
+		OPMode = "VSIM";
+		PowerSequence = True;
+		VForce = 0V;
+		VRange = "VR6V";
+		VSlewStepRatio = 120;
+	}	
+	SequenceBreak 0S;	
+}
+
+Levels vcc_cont_lc_surge_lvl
+{
+	all_lcdps
+	{
+		OPMode = "VSIM";
+		PowerSequence = False;
+	}	
+	all_hvdps
+	{
+		OPMode = "VSIM";
+		PowerSequence = False;
+	}	
+	all_hcdps
+	{
+		OPMode = "VSIM";
+		PowerSequence = False;
+	}	
+	SequenceBreak 0S;	
+	all_lcdps
+	{
+		FreeDriveTime = 10mS;
+		IClampHi = 250mA;
+		IClampLo = -250mA;
+		IRange = "IR500mA";
+		OPMode = "VSIM";
+		PowerSequence = True;
+		VForce = 0V;
+	}	
+	SequenceBreak 0S;	
+	surgeon_all_lc_1p0_group
+	{
+		FreeDriveTime = 10mS;
+		IClampHi = 250mA;
+		IClampLo = -250mA;
+		IRange = "IR500mA";
+		OPModeCheck = "VSIM";
+		VForce = 1.0V;
+	}	
+	surgeon_all_lc_1p8_group
+	{
+		FreeDriveTime = 10mS;
+		IClampHi = 250mA;
+		IClampLo = -250mA;
+		IRange = "IR500mA";
+		OPModeCheck = "VSIM";
+		VForce = 1.8V;
+	}	
+	SequenceBreak 0S;	
+	all_lcdps
+	{
+		FreeDriveTime = 10mS;
+		IClampHi = 250mA;
+		IClampLo = -250mA;
+		IRange = "IR500mA";
+		OPMode = "VSIM";
+		PowerSequence = True;
+		VForce = 0V;
+	}	
+	SequenceBreak 0S;	
+}
+
+Levels vcc_cont_lvl
+{
+	all_dpin_pins
+	{
+		FixedDriveState = "Off";
+		OPMode = "VSIM";
+		PinModeSel = "Off";
+		VForce = 0V;
+	}	
+	SequenceBreak 0.001S;	
+	all_dpin_pins
+	{
+		FixedDriveState = "Off";
+		PinModeSel = "Off";
+	}	
+	all_hcdps
+	{
+		FreeDriveTime = 8mS;
+		IClampHi = 500mA;
+		IClampLo = -500mA;
+		IRange = "IR500mA";
+		OPMode = "VSIM";
+		PowerSequence = True;
+		VForce = 0V;
+		VSlewStepRatio = 120;
+	}	
+	all_hvdps
+	{
+		FreeDriveTime = 8mS;
+		IClampHi = 500mA;
+		IClampLo = -500mA;
+		IRange = "IR500mA";
+		OPMode = "VSIM";
+		PowerSequence = True;
+		VForce = 0V;
+		VRange = "VR6V";
+		VSlewStepRatio = 120;
+	}	
+	all_lcdps
+	{
+		FreeDriveTime = 1mS;
+		IClampHi = 500mA;
+		IClampLo = -500mA;
+		IRange = "IR500mA";
+		OPMode = "VSIM";
+		PowerSequence = True;
+		VForce = 0V;
+	}	
+}
+
+Levels simple_hddps_measure_lvl
+{
+	all_dpin_pins
+	{
+		FixedDriveState = "Off";
+		PinModeSel = "Digital";
+		TermMode = "TermVRef";
+		TermVRef = 0V;
+		VCH = 4V;
+		VCL = -1V;
+		VIH = 0V;
+		VIL = 0V;
+		VOX = 0V;
+	}	
+	SequenceBreak 0.001S;	
+	YY_CDIE_BREAKPOINT_S2C
+	{
+		FixedDriveState = "HiZ";
+		PinModeSel = "Digital";
+		TermMode = "Off";
+	}	
+	SequenceBreak 0.001S;	
+	HC1_VCCCORE0
+	{
+		IClampHi = 24A;
+		IClampLo = -10A;
+		IRange = "IR24A";
+		OPModeCheck = "VSIM";
+	}	
+	HC2_VCCCORE1
+	{
+		IClampHi = 24A;
+		IClampLo = -10A;
+		IRange = "IR24A";
+		OPModeCheck = "VSIM";
+	}	
+	HC3_VCCATOM0
+	{
+		IClampHi = 24A;
+		IClampLo = -10A;
+		IRange = "IR24A";
+		OPModeCheck = "VSIM";
+	}	
+	HC4_VCCATOM1
+	{
+		IClampHi = 24A;
+		IClampLo = -10A;
+		IRange = "IR24A";
+		OPModeCheck = "VSIM";
+	}	
+	HC5_VCCR
+	{
+		IClampHi = 24A;
+		IClampLo = -10A;
+		IRange = "IR24A";
+		OPModeCheck = "VSIM";
+	}	
+	HV1_VNNAON
+	{
+		IClampHi = 7.5A;
+		IClampLo = -5A;
+		IRange = "IR7_5A";
+		OPModeCheck = "VSIM";
+		VRange = "VR6V";
+	}	
+	SequenceBreak 3mS;	
+	HC1_VCCCORE0
+	{
+		OPModeCheck = "VSIM";
+		PreMeasurementDelay = 0.0002;
+		SamplingCount = 35;
+		SamplingMode = "Average";
+		SamplingRatio = 1;
+		StartMeasurement = True;
+	}	
+	HC2_VCCCORE1
+	{
+		OPModeCheck = "VSIM";
+		PreMeasurementDelay = 0.0002;
+		SamplingCount = 35;
+		SamplingMode = "Average";
+		SamplingRatio = 1;
+		StartMeasurement = True;
+	}	
+	HC3_VCCATOM0
+	{
+		OPModeCheck = "VSIM";
+		PreMeasurementDelay = 0.0002;
+		SamplingCount = 35;
+		SamplingMode = "Average";
+		SamplingRatio = 1;
+		StartMeasurement = True;
+	}	
+	HC4_VCCATOM1
+	{
+		OPModeCheck = "VSIM";
+		PreMeasurementDelay = 0.0002;
+		SamplingCount = 35;
+		SamplingMode = "Average";
+		SamplingRatio = 1;
+		StartMeasurement = True;
+	}	
+	HC5_VCCR
+	{
+		OPModeCheck = "VSIM";
+		PreMeasurementDelay = 0.0002;
+		SamplingCount = 35;
+		SamplingMode = "Average";
+		SamplingRatio = 1;
+		StartMeasurement = True;
+	}	
+	HV1_VNNAON
+	{
+		OPModeCheck = "VSIM";
+		PreMeasurementDelay = 0.0002;
+		SamplingCount = 35;
+		SamplingMode = "Average";
+		SamplingRatio = 1;
+		StartMeasurement = True;
+		VRange = "VR6V";
+	}	
+}

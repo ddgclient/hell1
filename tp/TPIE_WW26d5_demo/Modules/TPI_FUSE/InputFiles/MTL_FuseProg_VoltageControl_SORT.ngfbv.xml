@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<setup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="FuseCoreTriggerVoltage.xsd">
+<voltages>
+    <voltage name="VCCF_Nominal">
+        <Operand>1</Operand>
+        <PowerPin name="LC4_VCCFPGM0">G.U.D.Fuse_Voltage_VCCF_Nominal</PowerPin>
+    </voltage>
+    <voltage name="VCCFHV_Nominal">
+        <Operand>2</Operand>
+        <PowerPin name="LC5_VCCFPGM1">G.U.D.Fuse_Voltage_VCCFHV_Nominal</PowerPin>
+    </voltage>
+    <voltage name="VCCFHV_Prog">
+        <Operand>10</Operand>
+        <PowerPin name="LC5_VCCFPGM1">G.U.D.Fuse_Voltage_VCCFHV_Prog</PowerPin>
+    </voltage>
+	<voltage name="VCCFHV_Nominal">
+        <Operand>3</Operand>
+		<PowerPin name="LC5_VCCFPGM1">G.U.D.Fuse_Voltage_VCCFHV_Nominal</PowerPin>
+    </voltage>
+    <voltage name="VCCF_Nominal">
+        <Operand>4</Operand>
+        <PowerPin name="LC4_VCCFPGM0">G.U.D.Fuse_Voltage_VCCF_Nominal</PowerPin>
+    </voltage>
+	<voltage name="VCCFHV_Base">
+        <Operand>5</Operand>
+		<PowerPin name="LC5_VCCFPGM1">G.U.D.Fuse_Voltage_VCCFHV_Base</PowerPin>
+    </voltage>
+    <voltage name="VCCF_Base">
+        <Operand>6</Operand>
+        <PowerPin name="LC4_VCCFPGM0">G.U.D.Fuse_Voltage_VCCF_Base</PowerPin>
+    </voltage>
+</voltages>
+<activity_log>G.U.S.Fuse_BurnSNDCActivityLog</activity_log>
+</setup>
+
+
+
+
+
+
+
+

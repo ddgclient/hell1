@@ -1,0 +1,12 @@
+START_SCREEN  : ResetDfxTuningUserVars
+#RunOn: TestName 	: DataType 	: ParamType   : Param1                                           : Operation : ParamType   : Param2                    : TmpStore  : OnTrue   : OnFalse
+EXEC  ; Test13      ; DOUBLE    ; GLOBAL      ; PVAL_DFXTUNER::STF100.STF003_drv_offset ; SET       ; GLOBAL      ; PVAL_DFXTUNER::STF100.RESETVAL_DRV ;    -      ; Test14   ; 2
+EXEC  ; Test14      ; DOUBLE    ; GLOBAL      ; PVAL_DFXTUNER::STF100.STF002_drv_offset ; SET       ; GLOBAL      ; PVAL_DFXTUNER::STF100.RESETVAL_DRV ;    -      ; Test15   ; 2
+EXEC  ; Test15      ; DOUBLE    ; GLOBAL      ; PVAL_DFXTUNER::STF100.STF001_drv_offset ; SET       ; GLOBAL      ; PVAL_DFXTUNER::STF100.RESETVAL_DRV ;    -      ; Test16   ; 2
+EXEC  ; Test16      ; DOUBLE    ; GLOBAL      ; PVAL_DFXTUNER::STF100.STF000_drv_offset ; SET       ; GLOBAL      ; PVAL_DFXTUNER::STF100.RESETVAL_DRV ;    -      ; Test29   ; 2
+
+EXEC  ; Test29      ; DOUBLE    ; GLOBAL      ; PVAL_DFXTUNER::STF100.STF003_stb_offset ; SET       ; GLOBAL      ; PVAL_DFXTUNER::STF100.RESETVAL_STB ;    -      ; Test30   ; 2
+EXEC  ; Test30      ; DOUBLE    ; GLOBAL      ; PVAL_DFXTUNER::STF100.STF002_stb_offset ; SET       ; GLOBAL      ; PVAL_DFXTUNER::STF100.RESETVAL_STB ;    -      ; Test31   ; 2
+EXEC  ; Test31      ; DOUBLE    ; GLOBAL      ; PVAL_DFXTUNER::STF100.STF001_stb_offset ; SET       ; GLOBAL      ; PVAL_DFXTUNER::STF100.RESETVAL_STB ;    -      ; Test32   ; 2
+EXEC  ; Test32      ; DOUBLE    ; GLOBAL      ; PVAL_DFXTUNER::STF100.STF000_stb_offset ; SET       ; GLOBAL      ; PVAL_DFXTUNER::STF100.RESETVAL_STB ;    -      ; 1        ; 2
+END_SCREEN

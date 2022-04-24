@@ -1,0 +1,13 @@
+Version 5.0;
+# Plist ID : cc746559ffa9f3af67be7e45081a07372eac6e86
+# pcar_file: /p/pde/tvpv/mtl/run_logs/vcf/vrevC28A6P/acwatson/Rundir_vcf_006398A_mtlJF_cencen_rel_hdmt2_vrevC28A6P_sort_flattap_None/pcar3/drv_reset.pcar3
+
+GlobalPList drv_cdie_lr_infra_list [Flatten] {
+   Pat g0019647W3719690A_DC_VC28xCA066_Rr0g0000xxxPP_axxx080808xxxxxxxxxxx_sC28A6PxxBTC002J052_x25_longreset_cpu_lr_infra;
+}  # End of drv_cdie_lr_infra_list
+
+GlobalPList drv_cdie_maintap_bbs_list [PreBurstPList resetplb_xxx080808xxx_no_longreset_Mdrv_C28A6P_sort_flattap_list] [Flatten] {
+   Pat g0019809W4480630A_8j_VC28xCA066_Rm000000xxx0v_nxxx080808xxxxxxxxxxx_sC28A6PxxBTC002J052_x01_A01_CDU_CDIE_TAP_IDCODE;
+   Pat g0019815W4480630A_92_VC28xCA066_Rm000000xxx0v_nxxx080808xxxxxxxxxxx_sC28A6PxxBTC002J052_x07_A07_CDU_CDIE_TAP_TAPLINKCFG_DR_OVRSHIFT;
+}  # End of drv_cdie_maintap_bbs_list
+

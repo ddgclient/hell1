@@ -1,0 +1,90 @@
+#-------------------------------------------------------------------------------
+#Disclaimer:     This file format is subject to change and enhancements.  Do not 
+#                create Production automation based on the syntax of this file.
+#-------------------------------------------------------------------------------
+
+
+#-------------------------------------------------------------------------------
+[Program Identification]
+#-------------------------------------------------------------------------------
+<Program Type>    Module Validation
+<Program Family>  Meteorlake
+<Subfamily>       MTL CPU28 SDx
+<Base TP Name>    Integ1
+<TP Revision>     jestevez 06/17/21_02:30:17_PM
+<Train Name>      No Train
+<Release Date>    06/17/21
+<Alt TP Name 1>   MTCSDSCZ0HX0H002125
+
+
+#-------------------------------------------------------------------------------
+[Environment settings]
+#-------------------------------------------------------------------------------
+<Runtime Code>    prime_v5.01.00-evg5040303-tos3900
+<Fuse File Rev>   cdie28_mtlc_a0_21ww22b_DRV
+<User Code Path>  \\amr.corp.intel.com\ec\proj\mdl\jf\intel\tpapps\userlibs\mtl\prime_v5.01.00-evg5040303-tos3900-ddg212400
+
+<Pattern Revs>    | Pattern Module | Revision       | Dependent modules      
+                   #------------------------------------------------------------
+                    carratom         RevTSC28A0.0p0   ARR_ATOM                
+                    cfus             RevTSC28A0.0p0   TPI_FUSE,TPI_FUSE_BIN26 
+                  #[* indicates modules which specify older/different pattern revs that 
+                  #   are eclipsed by the pattern rev in the Revision column above]
+
+
+#-------------------------------------------------------------------------------
+[Component Revisions]
+#-------------------------------------------------------------------------------
+<Base Inputs>     | Type              | Owner      | Commit Timestamp/Revision
+                   #------------------------------------------------------------
+                    Pindef              jestevez     06/10/21_01:55:02_PM      
+                    Levels              jthwing      06/16/21_02:08:28_PM      
+                    Timing              jestevez     06/10/21_03:02:40_PM      
+                    Uservars            jthwing      06/02/21_11:20:52_AM      
+                    Specs               jestevez     02/11/21_11:23:03_AM      
+                    Files               jestevez     06/17/21_02:23:16_PM      
+                    Locations           -            Standard_Rev14            
+                    FlowMatrix          jthwing      MTL_CPU_SDS_FM_Rev0       
+                    Guardbands          -            -                         
+<TP Modules>      | Module            | Owner      | Commit Timestamp/WIP     
+                   #------------------------------------------------------------
+                    ARR_ATOM            rcespiri     WIP                       
+                    PTH_DIODE_XXX       davidgba     05/14/21_12:36:20_PM      
+                    PTH_THRSOAK_XXX     davidgba     06/17/21_01:58:44_PM      
+                    TPI_BASE            jthwing      06/02/21_01:44:17_PM      
+                    TPI_BIN             milesyou     05/19/21_03:06:52_PM      
+                    TPI_DFF             milesyou     05/19/21_02:49:33_PM      
+                    TPI_EDM             npatil1      06/01/21_03:09:07_PM      
+                    TPI_FUSE            gjwoznia     06/16/21_01:51:53_PM      
+                    TPI_FUSE_BIN26      gjwoznia     06/17/21_02:09:35_PM      
+                    TPI_FUSE_CONFIG     gjwoznia     06/16/21_01:53:22_PM      
+                    TPI_HVQK            jthwing      06/11/21_11:42:51_AM      
+                    TPI_HVQK_ISSTRESS   jestevez     03/10/21_04:42:37_PM      
+                    TPI_POWER_SEQ       rbrar        04/01/21_12:40:28_AM      
+                    TPI_RECOVERY_C28    chenjona     06/16/21_11:15:41_AM      
+                    TPI_VCC             npatil1      06/01/21_11:41:42_AM      
+                    TPI_VIPR            rbrar        04/30/21_01:13:42_AM      
+
+#-------------------------------------------------------------------------------
+[TP Flow Structure]
+#-------------------------------------------------------------------------------
+<Regular Flows>   | INIT            | MAIN          | START           | BEGIN            | PREHVQK           | STRESS            | POSTHVQK         | END              | FINAL          | EDC | ALARM    | DEDC | SDTSTART        | SDTFINAL      | SDTSTRESS         | SDTEND           | SDTBEGIN         | SDTPREHVQK | NCS     
+                   #------------------------------------------------------------
+                    TPI_BASE          TPI_BASE        TPI_BASE          TPI_BIN            TPI_BIN             TPI_BIN             TPI_BIN            TPI_BIN            TPI_VCC          -     TPI_BASE   -      TPI_EDM           TPI_DFF         TPI_HVQK_ISSTRESS   TPI_HVQK           TPI_BIN            -            TPI_BIN* 
+                    TPI_HVQK          START(SF)       TPI_BIN           TPI_RECOVERY_C28   TPI_RECOVERY_C28    TPI_HVQK            TPI_RECOVERY_C28   TPI_HVQK           TPI_FUSE         -     -          -      TPI_DFF           TPI_VCC         TPI_HVQK            TPI_BIN            TPI_RECOVERY_C28   -            -        
+                    TPI_FUSE_CONFIG   BEGIN(SF)       TPI_DFF           PTH_DIODE_XXX      ARR_ATOM            TPI_HVQK_ISSTRESS   ARR_ATOM           TPI_RECOVERY_C28   PTH_DIODE_XXX    -     -          -      TPI_BASE          TPI_BIN         TPI_BIN             TPI_RECOVERY_C28   PTH_DIODE_XXX      -            -        
+                    TPI_FUSE          PREHVQK(SF)     TPI_HVQK          ARR_ATOM           -                   -                   -                  ARR_ATOM           TPI_BIN          -     -          -      TPI_VIPR          PTH_DIODE_XXX   -                   -                  -                  -            -        
+                    PTH_DIODE_XXX     STRESS(SF)      TPI_FUSE_CONFIG   -                  -                   -                   -                  -                  TPI_DFF          -     -          -      TPI_VCC           -               -                   -                  -                  -            -        
+                    TPI_BIN           POSTHVQK(SF)    PTH_THRSOAK_XXX   -                  -                   -                   -                  -                  TPI_FUSE_BIN26   -     -          -      TPI_HVQK          -               -                   -                  -                  -            -        
+                    -                 END(SF)         TPI_EDM           -                  -                   -                   -                  -                  TPI_HVQK         -     -          -      TPI_BIN           -               -                   -                  -                  -            -        
+                    -                 FINAL(SF)       TPI_VIPR          -                  -                   -                   -                  -                  -                -     -          -      TPI_POWER_SEQ     -               -                   -                  -                  -            -        
+                    -                 -               TPI_VCC           -                  -                   -                   -                  -                  -                -     -          -      PTH_DIODE_XXX     -               -                   -                  -                  -            -        
+                    -                 -               TPI_POWER_SEQ     -                  -                   -                   -                  -                  -                -     -          -      PTH_THRSOAK_XXX   -               -                   -                  -                  -            -        
+                    -                 -               PTH_DIODE_XXX     -                  -                   -                   -                  -                  -                -     -          -      -                 -               -                   -                  -                  -            -        
+                    -                 -               TPI_FUSE          -                  -                   -                   -                  -                  -                -     -          -      -                 -               -                   -                  -                  -            -        
+<Special Flows>   | DUTCHANGEFLOW   | LOTENDFLOW    | LOTSTARTFLOW    | TESTPLANENDFLOW  | TESTPLANSTARTFLOW
+                   #------------------------------------------------------------
+                    TPI_VIPR          PTH_DIODE_XXX   TPI_BASE          TPI_BASE           TPI_BASE          
+                    -                 TPI_BASE        PTH_DIODE_XXX     PTH_DIODE_XXX      TPI_HVQK          
+                    -                 -               -                 -                  PTH_DIODE_XXX     
+                  #[* indicates modules that are not enabled and will not generate to the output]

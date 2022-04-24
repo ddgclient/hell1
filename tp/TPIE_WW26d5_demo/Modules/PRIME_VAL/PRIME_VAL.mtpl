@@ -1,0 +1,201 @@
+Version 1.0;
+
+ProgramStyle = Modular;
+
+TestPlan PRIME_VAL;
+
+Import LSARasterTC.xml;
+Import VminTC.xml;
+Import MbistVminTC.xml;
+
+Test LSARasterTC LSARasterVal_P3
+{
+    FailuresToCaptureTotal = 0;
+    HryMapPath = "./Modules/PRIME_VAL/InputFiles/LSARaster/array_pbist_hry_atom_indirect_lsa_repairable_ic_list.xml";
+    LevelsTc = "__main__::bf_lvl_nom_lvl";
+    MetadataConfigPath = "./Modules/PRIME_VAL/InputFiles/LSARaster/MTL_PrimeMetaDataATOM.json";
+    MetadataConfigSchemaPath = "./Modules/PRIME_VAL/InputFiles/LSARaster/MTL_Prime_MetadataConfig_Schema.json";
+    OutputTag = "ATOMLSARasterTag";
+    Patlist = "arr_atom_m0_prescreen_doe_list";
+    PinMappingSetName = "ATOM_MOD0";
+    PrescreenHryFlowToken = "CORE_NOM";
+    PrescreenHryFreqToken = "800MHz";
+    PrescreenMapName = "LSA_CORERF_ATOM";
+    PrescreenPrintMode = "CTVMODE";
+    RasterConfigPath = ".Modules/PRIME_VAL/InputFiles/LSARaster/MTL_RasterConfigATOM.json";
+    RasterConfigSchemaPath = "./Modules/PRIME_VAL/InputFiles/LSARaster/MTL_Prime_RasterConfig_Schema.json";
+    TimingsTc = "__main__::cpu_stf_timing_tclk100_sclk100_cclk100";
+}
+
+Test VminTC VminVal_P1
+{
+    BypassPort = 1;
+    EndVoltageLimits = "1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1";
+    ForwardingMode = "Output";
+    LevelsTc = "__main__::bf_lvl_nom_lvl";
+    MultiPassMasks = "00001111,11110000";
+    Patlist = "array_pbist_ks_atom_lsa_list";
+    PinMap = "ATOM_M0, ATOM_M1";
+    RecoveryMode = "RecoveryPort";
+    RecoveryOptions = "AtomCoreDefeaturingVector,4";
+    RecoveryTrackingIncoming = "ATOM0_C0,ATOM0_C1,ATOM0_C2,ATOM0_C3,ATOM1_C0,ATOM1_C1,ATOM1_C2,ATOM1_C3";
+    RecoveryTrackingOutgoing = "ATOM0_C0,ATOM0_C1,ATOM0_C2,ATOM0_C3,ATOM1_C0,ATOM1_C1,ATOM1_C2,ATOM1_C3";
+    ScoreboardBaseNumber = "2100";
+    ScoreboardEdgeTicks = 3;
+    ScoreboardMaxFails = 1;
+    StartVoltages = "0.6,0.6,0.6,0.6,0.6,0.6,0.6,0.6";
+    StepSize = 0.01;
+    TestMode = "MultiVmin";
+    TimingsTc = "__main__::cpu_stf_timing_tclk100_sclk100_cclk100";
+    VoltageTargets = "HC3_VCCATOM0,HC3_VCCATOM0,HC3_VCCATOM0,HC3_VCCATOM0,HC4_VCCATOM1,HC4_VCCATOM1,HC4_VCCATOM1,HC4_VCCATOM1";
+}
+
+Test MbistVminTC MbistVminVal_P1
+{
+	ClearVariables = "all";
+	#PredictedEndVoltageLimits = "1.05";
+    #CapturePins = "ATOM_M0"; # parameter doesn't exist anymore
+	CtvPins = "YY_TAP_TDO_C2S"; # new parameter, not sure if this is correct.
+	FailCaptureCount = 1; # new parameter, not sure if this is correct.
+	FlowNumber = "1";
+	ForceConfigFileParseState = "Enabled";
+	LevelsTc = "__main__::bf_lvl_nom_lvl";
+	Patlist = "arr_cdie_mbist_sort_hry_perbistportallstepspbap_ssa_cbp0_all_list";
+	LookupTableConfigurationFile = "./Modules/PRIME_VAL/InputFiles/MbistVmin/MBIST_HRY.json";
+	MappingConfig = "./Modules/PRIME_VAL/InputFiles/MbistVmin/SharedStortoDFFMap.json";
+	PrintToItuff = "Disabled";
+	RecoveryModeDownbin = "Enabled";
+	#PredictedStartVoltage = "1.05";
+	TestMode = "Functional";
+	TimingsTc = "__main__::cpu_stf_timing_tclk100_sclk100_cclk100";
+	VoltageTargets = "HC3_VCCATOM0";
+    StartVoltages = "1.05"; # added to pass INIT
+    EndVoltageLimits = "1.2"; # added to pass INIT
+}
+
+DUTFlow PRIME_INSTANCES
+{
+    DUTFlowItem LSARasterVal_P3 LSARasterVal_P3
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo VminVal_P1;
+        }
+        Result 2
+        {
+            Property PassFail = "Fail";
+            GoTo VminVal_P1;
+        }
+        Result 3
+        {
+            Property PassFail = "Pass";
+            GoTo VminVal_P1;
+        }
+    }
+	DUTFlowItem VminVal_P1 VminVal_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -2;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+			Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+			GoTo MbistVminVal_P1;
+        }
+        Result 2
+        {
+            Property PassFail = "Fail";
+			Return 2;
+        }
+        Result 3
+        {
+            Property PassFail = "Fail";
+			Return 3;
+        }
+        Result 4
+        {
+            Property PassFail = "Fail";
+			Return 4;
+        }
+    }
+	DUTFlowItem MbistVminVal_P1 MbistVminVal_P1
+	{
+		Result -2
+		{
+			Property PassFail = "Fail";
+			Return -2;
+		}		
+		Result -1
+		{
+			Property PassFail = "Fail";
+			Return -1;
+		}		
+		Result 0
+		{
+			Property PassFail = "Fail";
+			Return 0;
+		}		
+		Result 1
+		{
+			Property PassFail = "Pass";
+			Return 1;
+		}		
+		Result 2
+		{
+			Property PassFail = "Pass";
+			Return 2;
+		}		
+		Result 3
+		{
+			Property PassFail = "Pass";
+			Return 3;
+		}		
+		Result 4
+		{
+			Property PassFail = "Pass";
+			Return 4;
+		}
+		Result 5
+		{
+			Property PassFail = "Fail";
+			Return 5;
+		}		
+		Result 6
+		{
+			Property PassFail = "Fail";
+			Return 6;
+		}		
+	}
+}

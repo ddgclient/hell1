@@ -1,0 +1,437 @@
+Version 1.0;
+
+SpecificationSet cpu_shops_timing_PARAMS (shops)
+{
+	Time p_shops_per = 100nS;
+	Time p_shops_drv = 0nS;
+	Time p_shops_offset = 50nS;
+	Time c_shops_stb = p_shops_per - p_shops_offset;
+}
+
+SpecificationSet cpu_stf_timing_PARAMS (idv_tclk50_sclk50_cclk100,tclk100_sclk100_cclk100,tclk100_sclk100_cclk200,tclk100_sclk100_cclk300,tclk100_sclk100_cclk400,tclk100_sclk100_cclk500,tclk100_sclk200_cclk100,tclk100_sclk200_cclk200,tclk100_sclk200_cclk300,tclk100_sclk200_cclk400,tclk100_sclk400_cclk100,tclk100_sclk400_cclk400,tclk25_sclk25_cclk100,tclk25_sclk25_cclk25,tclk50_sclk100_cclk100,tclk50_sclk100_cclk200,tclk50_sclk100_cclk300,tclk50_sclk100_cclk400,tclk50_sclk50_cclk100,tclk50_sclk50_cclk200,tclk50_sclk50_cclk300,tclk50_sclk50_cclk400,tclk50_sclk50_cclk50,tclk50_sclk50_cclk500,tclk96_sclk96_cclk384)
+{
+	Time p_mtd_per = 20nS,10nS,10nS,10nS,10nS,10nS,10nS,10nS,10nS,10nS,10nS,10nS,10nS,10nS,10nS,10nS,10nS,10nS,10nS,10nS,10nS,10nS,10nS,10nS,10.417nS;
+	Integer p_tap_domain_div = 1;
+	Integer p_tap_domain_mul = 1,1,1,1,1,1,1,1,1,1,1,1,4,4,2,2,2,2,2,2,2,2,2,2,1;
+	Time p_tclk_ec_global_skew = 0nS;
+	Time p_tclk_ec_tfall_offset = 0nS;
+	Integer p_tclk_ec_ratio = 1;
+	Double p_tap_in_drv_mul = 2,2,2,2,2,2,0,0,0,0,0,0,2,2,0,0,0,0,2,2,2,2,2,2,0;
+	Time p_tap_in_drv_offset = 0nS;
+	Time p_tap_in_stb_offset = 0nS;
+	Double p_tap_out_drv_mul = 0;
+	Time p_tap_out_drv_offset = 0nS;
+	Time p_tap_out_stb_offset = 0nS;
+	Double p_misc_tap_drv_mul = 0;
+	Time p_misc_tap_drv_offset = 0nS;
+	Double p_misc_tap_stb_mul = 0.5;
+	Time p_misc_tap_stb_offset = 0nS;
+	Time p_cclk_per = 10nS,10nS,5nS,3.33nS,2.5nS,2nS,10nS,5nS,3.33nS,2.5nS,10nS,2.5nS,10nS,40nS,10nS,5nS,3.33nS,2.5nS,10nS,5nS,3.33nS,2.5nS,20nS,2nS,2.604nS;
+	Time p_cclk_hpc_enable = 0nS;
+	Integer p_fab_domain_div = 1,1,1,1,1,1,2,2,2,2,4,4,1,1,1,1,1,1,1,1,1,1,1,1,1;
+	Integer p_fab_domain_mul = 1,1,1,1,1,1,1,1,1,1,1,1,4,4,1,1,1,1,2,2,2,2,2,2,1;
+	Time p_sclk_ec_global_skew = 0nS;
+	Time p_sclk_ec_tfall_offset = 0nS;
+	Integer p_sclk_ec_ratio = 1;
+	Double p_stf_in_drv_mul = 0;
+	Time p_stf_in_drv_offset = 0nS;
+	Double p_stf_in_stb_mul = 1;
+	Time p_stf_in_stb_offset = 0nS;
+	Double p_stf_out_drv_mul = 0;
+	Time p_stf_out_drv_offset = 0nS;
+	Time p_stf_out_stb_offset = 0nS;
+	Double p_tap_in_stb_mul = 2.25,2.25,2.25,2.25,2.25,2.25,0.25,0.25,0.25,0.25,0.25,0.25,2.25,2.25,0.25,0.25,0.25,0.25,2.25,2.25,2.25,2.25,2.25,2.25,0.75;
+	Double p_tap_out_stb_mul = 2.25,2.25,2.25,2.25,2.25,2.25,0.25,0.25,0.25,0.25,0.25,0.25,2.25,2.25,0.25,0.25,0.25,0.25,2.25,2.25,2.25,2.25,2.25,2.25,0.75;
+	Double p_stf_out_stb_mul = 2,2,2,2,2,2,1.5,1.5,1.5,1.5,1.5,1.5,2,2,1.5,1.5,1.5,1.5,2,2,2,2,2,2,2;
+	Time c_tap_domain_ratio = p_tap_domain_mul/p_tap_domain_div;
+	Double p_tper_multi = 1;
+	Time c_tclk_ec_per = p_mtd_per * p_tper_multi;
+	Time c_tclk_ec_per_resolved = p_mtd_per * c_tap_domain_ratio;
+	Time c_tclk_ec_tfall = p_tclk_ec_global_skew + p_tclk_ec_tfall_offset;
+	Time c_tclk_ec_trise = (c_tclk_ec_per_resolved * 0.5) + c_tclk_ec_tfall;
+	Time c_tap_in_drv = c_tclk_ec_tfall + (c_tclk_ec_per_resolved * 0.5 * p_tap_in_drv_mul) + p_tap_in_drv_offset;
+	Time c_tap_in_stb = p_tclk_ec_global_skew + (c_tclk_ec_per_resolved * 0.5 * p_tap_in_stb_mul) + p_tap_in_stb_offset;
+	Time c_tap_out_drv = p_tclk_ec_global_skew + (c_tclk_ec_per_resolved * 0.5 * p_tap_out_drv_mul) + p_tap_out_drv_offset;
+	Time c_tap_out_stb = c_tclk_ec_tfall + (c_tclk_ec_per_resolved * 0.5 * p_tap_out_stb_mul) + p_tap_out_stb_offset;
+	Time c_misc_tap_drv = c_tclk_ec_tfall + (c_tclk_ec_per_resolved * 0.5 * p_misc_tap_drv_mul) + p_misc_tap_drv_offset;
+	Time c_misc_tap_stb = c_tclk_ec_tfall + (c_tclk_ec_per_resolved * 0.5 * p_misc_tap_stb_mul) + p_misc_tap_stb_offset;
+	Time c_fab_domain_ratio = p_fab_domain_mul/p_fab_domain_div;
+	Time c_sclk_ec_per = p_mtd_per;
+	Time c_sclk_ec_per_resolved = p_mtd_per * c_fab_domain_ratio;
+	Time c_sclk_ec_tfall = p_sclk_ec_global_skew + p_sclk_ec_tfall_offset;
+	Time c_sclk_ec_trise = (c_sclk_ec_per_resolved * 0.5) + c_sclk_ec_tfall;
+	Time c_stf_in_drv = c_sclk_ec_tfall + (c_sclk_ec_per_resolved * 0.5 * p_stf_in_drv_mul) + p_stf_in_drv_offset;
+	Time c_stf_in_stb = p_sclk_ec_global_skew + (c_sclk_ec_per_resolved * 0.5 * p_stf_in_stb_mul) + p_stf_in_stb_offset;
+	Time c_stf_out_drv = p_sclk_ec_global_skew + (c_sclk_ec_per_resolved * 0.5 * p_stf_out_drv_mul) + p_stf_out_drv_offset;
+	Time c_stf_out_stb = c_sclk_ec_tfall + (c_sclk_ec_per_resolved * 0.5 * p_stf_out_stb_mul) + p_stf_out_stb_offset;
+}
+
+SpecificationSet cpu_tdo2stf_timing_PARAMS (tdo2stf_tclk100_sclk100_cclk100,tdo2stf_tclk100_sclk100_cclk200,tdo2stf_tclk100_sclk100_cclk300,tdo2stf_tclk100_sclk100_cclk400,tdo2stf_tclk100_sclk100_cclk500,tdo2stf_tclk100_sclk200_cclk100,tdo2stf_tclk100_sclk200_cclk200,tdo2stf_tclk100_sclk200_cclk300,tdo2stf_tclk100_sclk200_cclk400,tdo2stf_tclk100_sclk400_cclk100,tdo2stf_tclk100_sclk400_cclk400,tdo2stf_tclk25_sclk25_cclk100,tdo2stf_tclk25_sclk25_cclk25,tdo2stf_tclk50_sclk100_cclk100,tdo2stf_tclk50_sclk100_cclk200,tdo2stf_tclk50_sclk100_cclk300,tdo2stf_tclk50_sclk100_cclk400,tdo2stf_tclk50_sclk50_cclk100,tdo2stf_tclk50_sclk50_cclk200,tdo2stf_tclk50_sclk50_cclk300,tdo2stf_tclk50_sclk50_cclk400,tdo2stf_tclk50_sclk50_cclk50,tdo2stf_tclk50_sclk50_cclk500)
+{
+	Time p_mtd_per = 10nS;
+	Integer p_tap_domain_div = 1;
+	Integer p_tap_domain_mul = 1,1,1,1,1,1,1,1,1,1,1,4,4,2,2,2,2,2,2,2,2,2,2;
+	Time p_tclk_ec_global_skew = 0nS;
+	Time p_tclk_ec_tfall_offset = 0nS;
+	Integer p_tclk_ec_ratio = 1;
+	Double p_tap_in_drv_mul = 0;
+	Time p_tap_in_drv_offset = 0nS;
+	Time p_tap_in_stb_offset = 0nS;
+	Double p_tap_out_drv_mul = 0;
+	Time p_tap_out_drv_offset = 0nS;
+	Time p_tap_out_stb_offset = 0nS;
+	Double p_misc_tap_drv_mul = 0;
+	Time p_misc_tap_drv_offset = 0nS;
+	Double p_misc_tap_stb_mul = 0.5;
+	Time p_misc_tap_stb_offset = 0nS;
+	Time p_cclk_per = 10nS,5nS,3.33nS,2.5nS,2nS,10nS,5nS,3.33nS,2.5nS,10nS,2.5nS,10nS,40nS,10nS,5nS,3.33nS,2.5nS,10nS,5nS,3.33nS,2.5nS,20nS,2nS;
+	Time p_cclk_hpc_enable = 0nS;
+	Integer p_fab_domain_div = 1,1,1,1,1,2,2,2,2,4,4,1,1,1,1,1,1,1,1,1,1,1,1;
+	Integer p_fab_domain_mul = 1,1,1,1,1,1,1,1,1,1,1,4,4,1,1,1,1,2,2,2,2,2,2;
+	Time p_sclk_ec_global_skew = 0nS;
+	Time p_sclk_ec_tfall_offset = 0nS;
+	Integer p_sclk_ec_ratio = 1;
+	Double p_stf_in_drv_mul = 0;
+	Time p_stf_in_drv_offset = 0nS;
+	Double p_stf_in_stb_mul = 1;
+	Time p_stf_in_stb_offset = 0nS;
+	Double p_stf_out_drv_mul = 0;
+	Time p_stf_out_drv_offset = 0nS;
+	Time p_stf_out_stb_offset = 0nS;
+	Double p_tap_in_stb_mul = 0.25;
+	Double p_tap_out_stb_mul = 0.25;
+	Double p_stf_out_stb_mul = 0.5;
+	Time c_tap_domain_ratio = p_tap_domain_mul/p_tap_domain_div;
+	Time c_tclk_ec_per = p_mtd_per;
+	Time c_tclk_ec_per_resolved = p_mtd_per * c_tap_domain_ratio;
+	Time c_tclk_ec_tfall = p_tclk_ec_global_skew + p_tclk_ec_tfall_offset;
+	Time c_tclk_ec_trise = (c_tclk_ec_per_resolved * 0.5) + c_tclk_ec_tfall;
+	Time c_tap_in_drv = c_tclk_ec_tfall + (c_tclk_ec_per_resolved * 0.5 * p_tap_in_drv_mul) + p_tap_in_drv_offset;
+	Time c_tap_in_stb = p_tclk_ec_global_skew + (c_tclk_ec_per_resolved * 0.5 * p_tap_in_stb_mul) + p_tap_in_stb_offset;
+	Time c_tap_out_drv = p_tclk_ec_global_skew + (c_tclk_ec_per_resolved * 0.5 * p_tap_out_drv_mul) + p_tap_out_drv_offset;
+	Time c_tap_out_stb = c_tclk_ec_tfall + (c_tclk_ec_per_resolved * 0.5 * p_tap_out_stb_mul) + p_tap_out_stb_offset;
+	Time c_misc_tap_drv = c_tclk_ec_tfall + (c_tclk_ec_per_resolved * 0.5 * p_misc_tap_drv_mul) + p_misc_tap_drv_offset;
+	Time c_misc_tap_stb = c_tclk_ec_tfall + (c_tclk_ec_per_resolved * 0.5 * p_misc_tap_stb_mul) + p_misc_tap_stb_offset;
+	Time c_fab_domain_ratio = p_fab_domain_mul/p_fab_domain_div;
+	Time c_sclk_ec_per = p_mtd_per;
+	Time c_sclk_ec_per_resolved = p_mtd_per * c_fab_domain_ratio;
+	Time c_sclk_ec_tfall = p_sclk_ec_global_skew + p_sclk_ec_tfall_offset;
+	Time c_sclk_ec_trise = (c_sclk_ec_per_resolved * 0.5) + c_sclk_ec_tfall;
+	Time c_stf_in_drv = c_sclk_ec_tfall + (c_sclk_ec_per_resolved * 0.5 * p_stf_in_drv_mul) + p_stf_in_drv_offset;
+	Time c_stf_in_stb = p_sclk_ec_global_skew + (c_sclk_ec_per_resolved * 0.5 * p_stf_in_stb_mul) + p_stf_in_stb_offset;
+	Time c_stf_out_drv = p_sclk_ec_global_skew + (c_sclk_ec_per_resolved * 0.5 * p_stf_out_drv_mul) + p_stf_out_drv_offset;
+	Time c_stf_out_stb = c_sclk_ec_tfall + (c_sclk_ec_per_resolved * 0.5 * p_stf_out_stb_mul) + p_stf_out_stb_offset;
+}
+
+TestConditionGroup cpu_shops_timing_TCG
+{
+	SpecificationSet = cpu_shops_timing_PARAMS;
+	Timing = __main__::cpu_shops_timing;
+	
+}
+TestConditionGroup cpu_stf_timing_TCG
+{
+	SpecificationSet = cpu_stf_timing_PARAMS;
+	Timing = __main__::cpu_stf_timing;
+	
+}
+TestConditionGroup cpu_tdo2stf_timing_TCG
+{
+	SpecificationSet = cpu_tdo2stf_timing_PARAMS;
+	Timing = __main__::cpu_tdo2stf_timing;
+	
+}
+
+TestCondition cpu_shops_timing_shops
+{
+	TestConditionGroup  = cpu_shops_timing_TCG;
+	Selector = shops;
+}
+
+TestCondition cpu_stf_timing_idv_tclk50_sclk50_cclk100
+{
+	TestConditionGroup  = cpu_stf_timing_TCG;
+	Selector = idv_tclk50_sclk50_cclk100;
+}
+
+TestCondition cpu_stf_timing_tclk100_sclk100_cclk100
+{
+	TestConditionGroup  = cpu_stf_timing_TCG;
+	Selector = tclk100_sclk100_cclk100;
+}
+
+TestCondition cpu_stf_timing_tclk100_sclk100_cclk200
+{
+	TestConditionGroup  = cpu_stf_timing_TCG;
+	Selector = tclk100_sclk100_cclk200;
+}
+
+TestCondition cpu_stf_timing_tclk100_sclk100_cclk300
+{
+	TestConditionGroup  = cpu_stf_timing_TCG;
+	Selector = tclk100_sclk100_cclk300;
+}
+
+TestCondition cpu_stf_timing_tclk100_sclk100_cclk400
+{
+	TestConditionGroup  = cpu_stf_timing_TCG;
+	Selector = tclk100_sclk100_cclk400;
+}
+
+TestCondition cpu_stf_timing_tclk100_sclk100_cclk500
+{
+	TestConditionGroup  = cpu_stf_timing_TCG;
+	Selector = tclk100_sclk100_cclk500;
+}
+
+TestCondition cpu_stf_timing_tclk100_sclk200_cclk100
+{
+	TestConditionGroup  = cpu_stf_timing_TCG;
+	Selector = tclk100_sclk200_cclk100;
+}
+
+TestCondition cpu_stf_timing_tclk100_sclk200_cclk200
+{
+	TestConditionGroup  = cpu_stf_timing_TCG;
+	Selector = tclk100_sclk200_cclk200;
+}
+
+TestCondition cpu_stf_timing_tclk100_sclk200_cclk300
+{
+	TestConditionGroup  = cpu_stf_timing_TCG;
+	Selector = tclk100_sclk200_cclk300;
+}
+
+TestCondition cpu_stf_timing_tclk100_sclk200_cclk400
+{
+	TestConditionGroup  = cpu_stf_timing_TCG;
+	Selector = tclk100_sclk200_cclk400;
+}
+
+TestCondition cpu_stf_timing_tclk100_sclk400_cclk100
+{
+	TestConditionGroup  = cpu_stf_timing_TCG;
+	Selector = tclk100_sclk400_cclk100;
+}
+
+TestCondition cpu_stf_timing_tclk100_sclk400_cclk400
+{
+	TestConditionGroup  = cpu_stf_timing_TCG;
+	Selector = tclk100_sclk400_cclk400;
+}
+
+TestCondition cpu_stf_timing_tclk25_sclk25_cclk100
+{
+	TestConditionGroup  = cpu_stf_timing_TCG;
+	Selector = tclk25_sclk25_cclk100;
+}
+
+TestCondition cpu_stf_timing_tclk25_sclk25_cclk25
+{
+	TestConditionGroup  = cpu_stf_timing_TCG;
+	Selector = tclk25_sclk25_cclk25;
+}
+
+TestCondition cpu_stf_timing_tclk50_sclk100_cclk100
+{
+	TestConditionGroup  = cpu_stf_timing_TCG;
+	Selector = tclk50_sclk100_cclk100;
+}
+
+TestCondition cpu_stf_timing_tclk50_sclk100_cclk200
+{
+	TestConditionGroup  = cpu_stf_timing_TCG;
+	Selector = tclk50_sclk100_cclk200;
+}
+
+TestCondition cpu_stf_timing_tclk50_sclk100_cclk300
+{
+	TestConditionGroup  = cpu_stf_timing_TCG;
+	Selector = tclk50_sclk100_cclk300;
+}
+
+TestCondition cpu_stf_timing_tclk50_sclk100_cclk400
+{
+	TestConditionGroup  = cpu_stf_timing_TCG;
+	Selector = tclk50_sclk100_cclk400;
+}
+
+TestCondition cpu_stf_timing_tclk50_sclk50_cclk100
+{
+	TestConditionGroup  = cpu_stf_timing_TCG;
+	Selector = tclk50_sclk50_cclk100;
+}
+
+TestCondition cpu_stf_timing_tclk50_sclk50_cclk200
+{
+	TestConditionGroup  = cpu_stf_timing_TCG;
+	Selector = tclk50_sclk50_cclk200;
+}
+
+TestCondition cpu_stf_timing_tclk50_sclk50_cclk300
+{
+	TestConditionGroup  = cpu_stf_timing_TCG;
+	Selector = tclk50_sclk50_cclk300;
+}
+
+TestCondition cpu_stf_timing_tclk50_sclk50_cclk400
+{
+	TestConditionGroup  = cpu_stf_timing_TCG;
+	Selector = tclk50_sclk50_cclk400;
+}
+
+TestCondition cpu_stf_timing_tclk50_sclk50_cclk50
+{
+	TestConditionGroup  = cpu_stf_timing_TCG;
+	Selector = tclk50_sclk50_cclk50;
+}
+
+TestCondition cpu_stf_timing_tclk50_sclk50_cclk500
+{
+	TestConditionGroup  = cpu_stf_timing_TCG;
+	Selector = tclk50_sclk50_cclk500;
+}
+
+TestCondition cpu_stf_timing_tclk96_sclk96_cclk384
+{
+	TestConditionGroup  = cpu_stf_timing_TCG;
+	Selector = tclk96_sclk96_cclk384;
+}
+
+TestCondition cpu_tdo2stf_timing_tdo2stf_tclk100_sclk100_cclk100
+{
+	TestConditionGroup  = cpu_tdo2stf_timing_TCG;
+	Selector = tdo2stf_tclk100_sclk100_cclk100;
+}
+
+TestCondition cpu_tdo2stf_timing_tdo2stf_tclk100_sclk100_cclk200
+{
+	TestConditionGroup  = cpu_tdo2stf_timing_TCG;
+	Selector = tdo2stf_tclk100_sclk100_cclk200;
+}
+
+TestCondition cpu_tdo2stf_timing_tdo2stf_tclk100_sclk100_cclk300
+{
+	TestConditionGroup  = cpu_tdo2stf_timing_TCG;
+	Selector = tdo2stf_tclk100_sclk100_cclk300;
+}
+
+TestCondition cpu_tdo2stf_timing_tdo2stf_tclk100_sclk100_cclk400
+{
+	TestConditionGroup  = cpu_tdo2stf_timing_TCG;
+	Selector = tdo2stf_tclk100_sclk100_cclk400;
+}
+
+TestCondition cpu_tdo2stf_timing_tdo2stf_tclk100_sclk100_cclk500
+{
+	TestConditionGroup  = cpu_tdo2stf_timing_TCG;
+	Selector = tdo2stf_tclk100_sclk100_cclk500;
+}
+
+TestCondition cpu_tdo2stf_timing_tdo2stf_tclk100_sclk200_cclk100
+{
+	TestConditionGroup  = cpu_tdo2stf_timing_TCG;
+	Selector = tdo2stf_tclk100_sclk200_cclk100;
+}
+
+TestCondition cpu_tdo2stf_timing_tdo2stf_tclk100_sclk200_cclk200
+{
+	TestConditionGroup  = cpu_tdo2stf_timing_TCG;
+	Selector = tdo2stf_tclk100_sclk200_cclk200;
+}
+
+TestCondition cpu_tdo2stf_timing_tdo2stf_tclk100_sclk200_cclk300
+{
+	TestConditionGroup  = cpu_tdo2stf_timing_TCG;
+	Selector = tdo2stf_tclk100_sclk200_cclk300;
+}
+
+TestCondition cpu_tdo2stf_timing_tdo2stf_tclk100_sclk200_cclk400
+{
+	TestConditionGroup  = cpu_tdo2stf_timing_TCG;
+	Selector = tdo2stf_tclk100_sclk200_cclk400;
+}
+
+TestCondition cpu_tdo2stf_timing_tdo2stf_tclk100_sclk400_cclk100
+{
+	TestConditionGroup  = cpu_tdo2stf_timing_TCG;
+	Selector = tdo2stf_tclk100_sclk400_cclk100;
+}
+
+TestCondition cpu_tdo2stf_timing_tdo2stf_tclk100_sclk400_cclk400
+{
+	TestConditionGroup  = cpu_tdo2stf_timing_TCG;
+	Selector = tdo2stf_tclk100_sclk400_cclk400;
+}
+
+TestCondition cpu_tdo2stf_timing_tdo2stf_tclk25_sclk25_cclk100
+{
+	TestConditionGroup  = cpu_tdo2stf_timing_TCG;
+	Selector = tdo2stf_tclk25_sclk25_cclk100;
+}
+
+TestCondition cpu_tdo2stf_timing_tdo2stf_tclk25_sclk25_cclk25
+{
+	TestConditionGroup  = cpu_tdo2stf_timing_TCG;
+	Selector = tdo2stf_tclk25_sclk25_cclk25;
+}
+
+TestCondition cpu_tdo2stf_timing_tdo2stf_tclk50_sclk100_cclk100
+{
+	TestConditionGroup  = cpu_tdo2stf_timing_TCG;
+	Selector = tdo2stf_tclk50_sclk100_cclk100;
+}
+
+TestCondition cpu_tdo2stf_timing_tdo2stf_tclk50_sclk100_cclk200
+{
+	TestConditionGroup  = cpu_tdo2stf_timing_TCG;
+	Selector = tdo2stf_tclk50_sclk100_cclk200;
+}
+
+TestCondition cpu_tdo2stf_timing_tdo2stf_tclk50_sclk100_cclk300
+{
+	TestConditionGroup  = cpu_tdo2stf_timing_TCG;
+	Selector = tdo2stf_tclk50_sclk100_cclk300;
+}
+
+TestCondition cpu_tdo2stf_timing_tdo2stf_tclk50_sclk100_cclk400
+{
+	TestConditionGroup  = cpu_tdo2stf_timing_TCG;
+	Selector = tdo2stf_tclk50_sclk100_cclk400;
+}
+
+TestCondition cpu_tdo2stf_timing_tdo2stf_tclk50_sclk50_cclk100
+{
+	TestConditionGroup  = cpu_tdo2stf_timing_TCG;
+	Selector = tdo2stf_tclk50_sclk50_cclk100;
+}
+
+TestCondition cpu_tdo2stf_timing_tdo2stf_tclk50_sclk50_cclk200
+{
+	TestConditionGroup  = cpu_tdo2stf_timing_TCG;
+	Selector = tdo2stf_tclk50_sclk50_cclk200;
+}
+
+TestCondition cpu_tdo2stf_timing_tdo2stf_tclk50_sclk50_cclk300
+{
+	TestConditionGroup  = cpu_tdo2stf_timing_TCG;
+	Selector = tdo2stf_tclk50_sclk50_cclk300;
+}
+
+TestCondition cpu_tdo2stf_timing_tdo2stf_tclk50_sclk50_cclk400
+{
+	TestConditionGroup  = cpu_tdo2stf_timing_TCG;
+	Selector = tdo2stf_tclk50_sclk50_cclk400;
+}
+
+TestCondition cpu_tdo2stf_timing_tdo2stf_tclk50_sclk50_cclk50
+{
+	TestConditionGroup  = cpu_tdo2stf_timing_TCG;
+	Selector = tdo2stf_tclk50_sclk50_cclk50;
+}
+
+TestCondition cpu_tdo2stf_timing_tdo2stf_tclk50_sclk50_cclk500
+{
+	TestConditionGroup  = cpu_tdo2stf_timing_TCG;
+	Selector = tdo2stf_tclk50_sclk50_cclk500;
+}

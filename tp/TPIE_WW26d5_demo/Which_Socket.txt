@@ -1,0 +1,315 @@
+#####################################################################################################
+### HDMx Inline Fusing Location Code Standard           						###					 
+### Owner: Quek, Joo Chin                 										###					
+### Class Platform: HDMx	              										###					
+### Sort Platform: CMT                    										###					
+###                                       										###					
+### Change Description	                 										###	
+### Revision 2: Standard 														###  	
+### Revision 3: No Change. Pairing with location set (10/18/2016)				### 		
+### Revision 4: No Change. Pairing with location set (1/11/2017)				### 	
+### Revision 5: SDX location codes enabling 		 (5/31/2017)				### 			
+### Revision 6: Class hot/class cold fuse state change (8/3/2017)				### 	
+### Revision 7: Add engineering fusing location 9993 (10/24/2017)				###
+### 		  : Replace 129844 with 129869 as SDS Corr Location (11/16/2017)	### 		
+### Revision 8: Add HOP Wafer Sort location 7180 (3/6/2018)						###		
+### Revision 9: Add HOP Wafer Sort location 7609/7610/7611 (3/29/2018)			###		   
+### Revision 10: QA RV locations fuses change to "d" (6/28/2018)		    	###
+### 		   : Add BI stressed test locations 6731-6735(6/28/2018)			###
+### 		   : Add QA Hot Q&R test locations 6156/6159/6169(6/28/2018)		###
+### 		   : Add Fused unit class testing locations 6203/6204(6/28/2018)	###
+### Revision 11: Remove 6089 unused location (7/25/2018)		    	        ###
+### Revision 12: Add in RC Room RV 5165 location (10/23/2018)		    	    ###
+### Revision 13: Change 6204 optype to FC_S2 (3/12/2019)		    	        ###
+###            : Add 5980 FACR RV location										###
+### Revision 14: SDM Support (5/13/2020)		    	        				###
+####################################################################################################
+
+# locn <code>, <ws_port>, <fuses>, <ws_code>, <load ube>, <log ube>, <DFF Optype>	
+#
+# locn <locn>, <ws_port>, <x|p|d>, <hvm|eng|fuse|dmix|ult>, <ube|!ube>, <logube|!logube>, <Y/N>, <RC_S1, PBIC_S1...>								
+#								
+# <code>     - 4 character location code.								
+#								
+# <ws_port>  - Exit port for WhichSocket UF.								
+#								
+# <fuses>    - x = unprogrammed								
+#            - p = programmed								
+#            - d = don't care								
+#								
+# <ws_code>  - hvm								
+#            - eng								
+#            - fuse								
+#            - dmix								
+#            - ult								
+#            - vdmx			
+#					
+# <load ube> -  ube = load ube file								
+#            - !ube = don't load ube file.								
+#								
+# <log ube>	 -  logube = log ube data to datalogger							
+#            - !logube = don't log ube data to datalogger.								
+#								
+# [OPTIONAL] - Required if DFF is used								
+# <DFF Optype> - SORT								
+#              - BI								
+#              - PBIC_S1								
+#              - PBIC_S2								
+#              - FC_S1								
+#              - FC_S2								
+#              - OLF								
+#              - RC_S1								
+#              - RC_S2								
+#              - PPV_S								
+#              - PPV_M								
+#	       - PPV							
+
+#########################################################
+#      Class HDMx Testing Location Code 		#
+#########################################################
+
+#locn   Code Fork Port Fuse State	Socket Type		DFF Read	DFF Write	DFF Optype	Description
+
+########################### Raw Class HVM Testing Location  ############################ 
+locn	6163	1	x	hvm		ube		logube	RC_S1			#Raw Class Hot
+locn	6164	1	x	hvm		ube		logube	RC_S2			#Raw Class Cold
+locn	6165	1	x	hvm		ube		logube	RC_S2			#Raw Class Room
+locn	6166	1	x	hvm		ube		logube	RC_S1			#Raw Class Room
+locn	6167	1	x	hvm		ube		logube	RC_S2			#Raw Class Hot
+
+########################### Raw Class Reject Validation Testing Location  ############################ 
+locn	5163	1	x	eng		ube		!logube	RC_S1			#Raw Class Hot RV
+locn	5164	1	x	eng		ube		!logube	RC_S2			#Raw Class Cold RV
+locn	5165	1	x	eng		ube		!logube	RC_S2			#Raw Class Room RV
+locn	5166	1	x	eng		ube		!logube	RC_S1			#Raw Class Room RV
+locn	5167	1	x	eng		ube		!logube	RC_S2			#Raw Class Room RV
+
+
+########################### 	   PBIC Class Hot HVM Testing Location    ###########################       
+locn	6262	1	x	fuse	ube		logube	PBIC_DAB		#PBIC Class Hot/Inline Fusing
+locn	6263	1	d	hvm		ube		logube	PBIC_S2			#PBIC Class Hot Rescreen 1
+locn	6264	1	d	hvm		ube		logube	PBIC_S2			#PBIC Class Hot Rescreen 2
+locn	6265	1	d	hvm		ube		logube	PBIC_S2			#PBIC Class Hot Rescreen 3
+locn	6266	1	d	hvm		ube		logube	PBIC_S2			#PBIC Class Hot Rescreen 4
+locn	6267	1	x	fuse	ube		logube	PBIC_DAB		#PBIC Class Hot Rescreen 5    
+locn	6268	1	d	hvm		ube		logube	PBIC_S2			#PBIC Class Hot Rescreen 6
+locn	6269	1	d	hvm		ube		logube	PBIC_S2			#PBIC Class Hot Rescreen 7
+locn	6270	1	d	hvm		ube		logube	PBIC_S2			#PBIC Class Hot Rescreen 8
+
+
+###########################  PBIC Class Hot Reject Validation Testing Location  ########################### 
+locn	5262	2	d	eng		ube		!logube	PBIC_DAB		#PBIC Class Hot RV
+locn	5263	1	d	eng		ube		!logube	PBIC_S2			#PBIC Class Hot RV Rescreen 1
+locn	5264	1	d	eng		ube		!logube	PBIC_S2			#PBIC Class Hot RV Rescreen 2
+locn	5265	1	d	eng		ube		!logube	PBIC_S2			#PBIC Class Hot RV Rescreen 3
+locn	5266	1	d	eng		ube		!logube	PBIC_S2			#PBIC Class Hot RV Rescreen 4
+locn	5267	2	x	eng		ube		!logube	PBIC_DAB	 	#PBIC Class Hot RV Rescreen 5  
+locn	5268	1	d	eng		ube		!logube	PBIC_S2			#PBIC Class Hot RV Rescreen 6
+locn	5269	1	d	eng		ube		!logube	PBIC_S2			#PBIC Class Hot RV Rescreen 7
+locn	5270	1	d	eng		ube		!logube	PBIC_S2			#PBIC Class Hot RV Rescreen 8
+
+
+########################### 	   FC Class Cold HVM Testing Location    ###########################  
+locn	6212	1	d	hvm		ube		logube	FC_S1			#FC Class Cold 
+locn	6213	1	d	hvm		ube		logube	FC_S2			#FC Class Cold Rescreen 1
+locn	6214	1	d	hvm		ube		logube	FC_S1			#FC Class Cold Rescreen 2 (Extended Cold)
+locn	6215	1	d	hvm		ube		logube	FC_S1			#FC Class Cold Rescreen 3 (CSO)
+locn	6216	1	d	hvm		ube		logube	FC_S2			#FC Class Cold Rescreen 4
+locn	6217	1	d	hvm		ube		logube	FC_S2			#FC Class Cold Rescreen 5
+
+
+###########################  FC Class Cold Reject Validation Testing Location  ########################### 
+locn	5212	1	d	eng		ube		!logube	FC_S1			#FC Class Cold RV
+locn	5213	1	d	eng		ube		!logube	FC_S2			#FC Class Cold RV Rescreen 1
+locn	5214	1	d	eng		ube		!logube	FC_S1			#FC Class Cold RV Rescreen 2 (Extended Cold)
+locn	5215	1	d	eng		ube		!logube	FC_S1			#FC Class Cold RV Rescreen 3 (CSO)
+locn	5216	1	d	eng		ube		!logube	FC_S2			#FC Class Cold RV Rescreen 4
+locn	5217	1	d	eng		ube		!logube	FC_S2			#FC Class Cold RV Rescreen 5
+
+
+########################### 	   QA Hot HVM Testing Location    ###########################  
+locn	6242	1	p	hvm		ube		logube	QA_S1			#QA Hot 1
+locn	6245	1	p	hvm		ube		logube	QA_S2			#QA Hot 2
+locn	6257	1	p	hvm		ube		logube	QA_S1			#QA Hot 3
+locn	6260	1	p	hvm		ube		logube	QA_S1			#QA Hot 4
+locn	6156	1	p	hvm		ube		logube	QA_S1			#QA Hot 5
+locn	6159	1	p	hvm		ube		logube	QA_S1			#QA Hot 6
+locn	6169	1	p	hvm		ube		logube	QA_S1			#QA Hot 7
+
+###########################    QA Hot Reject Validation Testing Location    ########################### 
+locn	5242	1	d	eng		ube		!logube	QA_S1			#QA Hot RV 1
+locn	5245	1	d	eng		ube		!logube	QA_S2			#QA Hot RV 2
+locn	5257	1	d	eng		ube		!logube	QA_S1			#QA Hot RV 3
+locn	5260	1	d	eng		ube		!logube	QA_S1			#QA Hot RV 4
+locn  	5980    1   	d   	eng     	ube		!logube	QA_S1           	#QA Hot FACR/PPV RV
+
+########################### 	   QA Cold HVM Testing Location    ###########################  
+locn	6243	1	p	hvm		ube		logube	QA_S2			#QA Cold 1
+locn	6258	1	p	hvm		ube		logube	QA_S1			#QA Cold 2
+
+###########################    QA Cold Reject Validation Testing Location    ###########################
+locn	5243	1	d	eng		ube		!logube	QA_S2			#QA Cold RV 1
+locn	5258	1	d	eng		ube		!logube	QA_S1			#QA Cold RV 2
+locn	5254	1	d	eng		!ube		!logube	QA_S1			#QA Cold RV 3
+
+
+########################### 	   QA Room HVM Testing Location    ########################### 
+locn	6244	1	p	hvm		ube		logube	QA_S2			#QA Room 1
+locn	6259	1	p	hvm		ube		logube	QA_S1			#QA Room 2
+
+###########################    QA Room Reject Validation Testing Location    ###########################
+locn	5244	1	d	eng		ube		!logube	QA_S2			#QA Room RV 1
+locn	5259	1	d	eng		ube		!logube	QA_S1			#QA Room RV 2
+locn	5255	1	d	eng		ube		!logube	QA_S1			#QA Room RV 3
+
+
+########################### 	   ADPM HVM Testing Location    ########################### 
+locn	6208	1	p	hvm		ube		logube	EQAM_S1			#ADPM QA Hot
+locn	6207	1	p	hvm		ube		logube	CSM_S1			#ADPM QA Cold
+
+###########################    ADPM Reject Validation Testing Location    ###########################
+locn	5208	1	d	eng		ube		!logube	EQAM_S1			#ADPM QA Hot RV
+locn	5207	1	d	eng		ube		!logube	CSM_S1			#ADPM QA Cold RV
+
+
+###########################        DEMIX Location   		            ############################### 
+locn	6289	9	x	dmix	!ube	!logube					#Demix
+locn	6299	9	x	dmix	!ube	!logube					#Demix
+
+###########################        Standalone HDMT Offline Fusing Location    ############################### 
+locn	6197	2	x	fuse	ube		!logube	PBIC_S1			#Standalone HDMT Offline Fusing
+
+###########################        Standalone HDMT Offline Engineering Fusing Location    ############################### 
+locn	9993	2	x	fuse	ube		logube	PBIC_DAB		#Standalone HDMT Offline Engineering Fusing
+
+###########################        Standalone HDMT Burn In Location    ############################### 
+locn	6632	1	p	hvm		!ube	!logube					#Burn In Hot
+
+###########################        Fused Unit Class Testing Location    ############################### 
+locn	6203	1	d	eng		ube	    logube  PBIC_S2		    #Fuse unit Class Hot Testing
+locn	6204	1	d	eng		ube	    logube  FC_S2		    #Fuse unit Class Cold Testing
+
+###########################        Burn In Stressed Test Location    ############################### 
+locn	6731	1	x	hvm		ube		logube	BI				#Burn In Stressed Test Hot
+locn	6732	1	x	hvm		ube		logube	BI				#Burn In Stressed Test REBI 1 Hot
+locn	6733	1	x	hvm		ube		logube	BI				#Burn In Stressed Test REBI 2 Hot
+locn	6734	1	x	hvm		ube		logube	BI				#Burn In Stressed Test REBI 3 Hot
+locn	6735	1	x	hvm		ube		logube	BI				#Burn In Stressed Test K Lot Hot
+
+#########################################################
+#      SORT CMT Testing Location Code 			#
+#########################################################
+
+###########################        Sort Cold HVM Testing Location   	        ###########################
+locn	6051	1	x	hvm		!ube	logube	SORT			#Cold Sort
+
+###########################        Sort Cold Correlation Testing Location      ###########################
+locn	6029	1	x	hvm		!ube	logube	SORT			#Cold Sort Correlation (corr2)
+locn	6140	1	x	hvm		!ube	logube	SORT			#Cold Sort Correlation (golden corr)
+
+###########################        Sort Cold QRE Testing Location   	       ###########################
+locn	6196	1	x	hvm		!ube	logube	SORT			#Cold Sort QRE oper
+locn	6198	1	x	hvm		!ube	logube	SORT			#Cold Sort QRE oper
+
+###########################        Sort Cold Engineering Testing Location      ###########################
+locn	6160	1	x	eng		!ube	logube	SORT			#Sort Engineering (kappa operation)
+locn	9050	1	x	eng		!ube	logube	SORT			#Sort (No NTSC)
+locn	9051	1	x	eng		!ube	logube	SORT			#Sort Engineering
+
+###########################        Sort Hot HVM Testing Location   	           ###########################
+locn	6751	1	x	hvm		ube		logube	SORT			#Hot Sort
+
+###########################        Sort Hot Correlation Testing Location       ###########################
+locn	6739	1	x	hvm		ube		logube	SORT			#Hot Sort Correlation Hot (corr2)
+locn	6740	1	x	hvm		ube		logube	SORT			#Hot Sort Correlation (golden corr)
+
+
+#########################################################
+#      SDS HDMx Testing Location Code 			#
+#########################################################
+
+###########################        SDS Cold HVM Testing Location   	        ###########################
+locn 	132110	1	x	hvm		!ube	logube	SORT			#Cold SDS Production Run 
+
+###########################        SDS Cold Engineering Testing Location   	        ###########################
+locn 	132310	1	x	eng		!ube	logube	SORT			#Cold SDS Kappa 
+locn 	132321	1	x	eng		!ube	logube	SORT			#Cold SDS Kappa2 
+
+###########################        SDS Cold Correlation Testing Location   	        ###########################
+locn 	129869	1	x	eng		!ube	logube	SORT			#Cold SDS Correlation
+
+###########################        SDS Cold MV Testing Location   	        ###########################
+locn 	132311	1	x	eng		!ube	logube	SORT			#Cold SDS MV (Cache)
+locn	132312	1	x	eng		!ube	logube	SORT			#Cold SDS MV (Func)
+locn	132313	1	x	eng		!ube	logube	SORT			#Cold SDS MV (IO1)
+locn	132314	1	x	eng		!ube	logube	SORT			#Cold SDS MV (IO2)
+locn	132315	1	x	eng		!ube	logube	SORT			#Cold SDS MV (GFX)
+locn	132316	1	x	eng		!ube	logube	SORT			#Cold SDS MV (SCAN)
+locn	132317	1	x	eng		!ube	logube	SORT			#Cold SDS MV (Power/Thermal)
+locn	132318	1	x	eng		!ube	logube	SORT			#Cold SDS MV (PLL)
+locn	132320	1	x	eng		!ube	logube	SORT			#Cold SDS MV (Yield)
+
+
+#########################################################
+#      SDT HDMx Testing Location Code 			#
+#########################################################
+
+###########################        SDT Hot HVM Testing Location   	        ###########################
+locn 	132150	1	x	hvm		ube		logube	SORT			#Hot SDT Production Run	
+
+###########################        SDT Hot Engineering Testing Location   	        ###########################
+locn 	132350	1	x	eng		ube		logube	SORT			#Hot SDT Base Run	
+locn 	132361	1	x	eng		ube		logube	SORT			#Hot SDT Kappa 2	
+
+###########################        SDT Hot Correlation Testing Location   	        ###########################
+locn 	119372	1	x	eng		ube		logube	SORT			#Hot SDT Correlation	
+
+###########################        SDT Hot MV Testing Location   	        ###########################
+locn 	132351	1	x	eng		ube		logube	SORT			#Hot SDT MV (Cache) 	
+locn 	132352	1	x	eng		ube		logube	SORT			#Hot SDT MV (Func)	
+locn 	132353	1	x	eng		ube		logube	SORT			#Hot SDT MV (IO1)	
+locn 	132354	1	x	eng		ube		logube	SORT			#Hot SDT MV (IO2)	
+locn 	132355	1	x	eng		ube		logube	SORT			#Hot SDT MV (GFX)	
+locn 	132356	1	x	eng		ube		logube	SORT			#Hot SDT MV (SCAN)	
+locn 	132357	1	x	eng		ube		logube	SORT			#Hot SDT MV (Power Thermal)	
+locn 	132358	1	x	eng		ube		logube	SORT			#Hot SDT MV (PLL)	
+locn 	132360	1	x	eng		ube		logube	SORT			#Hot SDT MV (Yield)	
+
+
+##################################################################################
+#      HDMT on Prober (HOP) Wafer Sort HDMx Testing Location Code 			#
+##################################################################################
+
+###########################        HOP Cold HVM Testing Location   	        ###########################
+locn    7180   1    x   hvm		!ube	logube	SORT			#Cold HOP Production Run 
+locn    7609   1    x   hvm		!ube	logube	SORT			#Cold HOP Production Run 
+locn    7610   1    x   hvm		!ube	logube	SORT			#Cold HOP Production Run 
+locn    7611   1    x   hvm		!ube	logube	SORT			#Cold HOP Production Run 
+
+
+#########################################################
+#      SDM HDMx Testing Location Code 			#
+#########################################################
+
+###########################        SDM HVM Testing Location   	        ###########################
+locn 	119325	1	x	hvm		!ube	logube	SORT			#SDM Production Run 
+
+###########################        SDM Engineering Testing Location   	        ###########################
+locn 	132330	1	x	eng		!ube	logube	SORT			#SDM BaseRun split subfiles capability 
+locn	132331	1	x	eng		!ube	logube	SORT			#SDM Kappa1 split subfiles capability
+locn 	132332	1	x	eng		!ube	logube	SORT			#SDM Kappa2 split subfiles capability  
+
+###########################        SDM MV Testing Location   	        ###########################
+locn 	132322	1	x	eng		!ube	logube	SORT			#SDM MV (Cache)
+locn	132323	1	x	eng		!ube	logube	SORT			#SDM MV (Func)
+locn	132324	1	x	eng		!ube	logube	SORT			#SDM MV (IO1)
+locn	132325	1	x	eng		!ube	logube	SORT			#SDM MV (IO2)
+locn	132326	1	x	eng		!ube	logube	SORT			#SDM MV (GFX)
+locn	132327	1	x	eng		!ube	logube	SORT			#SDM MV (SCAN)
+locn	132328	1	x	eng		!ube	logube	SORT			#SDM MV (Power/Thermal)
+locn	132329	1	x	eng		!ube	logube	SORT			#SDM MV (PLL)
+
+
+
+
+

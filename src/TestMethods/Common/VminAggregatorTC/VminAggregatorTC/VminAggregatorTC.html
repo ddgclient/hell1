@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>DDG Prime VminAggregatorTC Specification REP</title>
+</head>
+<body>
+
+    <h1 id="ddg-prime-vminaggregatortc-specification-rep">DDG Prime VminAggregatorTC Specification REP</h1>
+<p>Revision 3/8/2022</p>
+<h2 id="methodology">Methodology</h2>
+<p>This test method is intended for Vmin datalogging and DFF at SORT locations where VminForwarding service is not used.<br>
+User is required to set a json input file with all the domain, corner, vmin tokens and DFF information.<br>
+The test method supports multiple VminTokens per domain+corner and built-in expression handling for Frequency and Vmin values.<br></p>
+<h2 id="test-instance-parameters">Test Instance Parameters</h2>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter Name</strong></th>
+<th><strong>Required?</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Values</strong></th>
+<th><strong>Comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>InputFile</td>
+<td>Yes</td>
+<td>String</td>
+<td></td>
+<td>.json Input File.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="otpl-sample">OTPL Sample:</h2>
+<pre><code class="language-Perl">Test VminAggregatorTC InstanceName
+{
+	InputFile = &quot;SomeFile&quot;;	
+}
+</code></pre>
+<h2 id="json-input-file">JSON Input File:</h2>
+<p>Input file consist of a list of Domain+Corner configurations where user can list the tokens to aggregate and/or DFF.</p>
+<h3 id="parameters">Parameters:</h3>
+<ul>
+<li><strong>Domain</strong>: Domain name. i.e. CORE</li>
+<li><strong>Corner</strong>: Corner name. i.e. F1, F2, F3</li>
+<li><strong>Frequency</strong>: Frequency value. It can take literal values with units or an expression value.</li>
+<li><strong>VminExpressions</strong>: List of Lists of expressions for voltage aggregation. Final Vmin is -9999 in case of any fail, highest vmin out of the list or -8888 for untested.</li>
+<li><strong>DffToken: (Optional)</strong> Token name for DFF store.</li>
+</ul>
+<pre><code class="language-JSON">[
+    {
+        &quot;Domain&quot;: &quot;CORE&quot;,
+        &quot;Corner&quot;: &quot;F1&quot;,
+        &quot;Frequency&quot;: &quot;[Collection.Uservar]&quot;,
+        &quot;VminExpressions&quot;: [
+            [&quot;[G.U.D.ARR_Core1]&quot;, &quot;[G.U.D.FUN_Core1]&quot;],
+            [&quot;[G.U.D.ARR_Core0]+0.01&quot;, &quot;[G.U.D.FUN_Core0]&quot;]
+        ],
+        &quot;DffToken&quot;: &quot;COREF1&quot;
+    },
+    {
+        &quot;Domain&quot;: &quot;CCF&quot;,
+        &quot;Corner&quot;: &quot;F1&quot;,
+        &quot;Frequency&quot;: &quot;'0.8GHz'&quot;,
+        &quot;VminExpressions&quot;: [
+            [&quot;[G.U.D.ARR_CCF]&quot;, &quot;[G.U.D.FUN_CCF]&quot;]
+        ]
+    }
+]
+</code></pre>
+<h3 id="expression-engine">Expression Engine:</h3>
+<p>This test method supports Ncalc as expression engine. <a href="https://github.com/ncalc/ncalc">https://github.com/ncalc/ncalc</a>
+It is able to evaluate simple mathematical expression using SharedStorage, Uservar and/or DFF tokens.
+All tokens must be specified using '[]'. Value will be evaluated in the following order:</p>
+<ul>
+<li><strong>SharedStorage</strong>: Should be of the form G.context.type.Token where context is L for Lot, U for DUT/Unit or I for IP, and type is S for string, D for double or I for integer.</li>
+<li><strong>UserVar</strong>: String, Double and Integer. Always using full collection.name format with the full IP/Module scoping on the collection.</li>
+<li><strong>DFF</strong>: Using token name. It will be read from the current optype and die id.</li>
+</ul>
+<h3 id="ituff">ITUFF:</h3>
+<pre><code>2_tname_PVAL_VMINAGG::VMIN_AGG_END_X_X_X_X_P1|CORE@F1
+2_strgval_1.200@0.500|-9999
+2_tname_PVAL_VMINAGG::VMIN_AGG_END_X_X_X_X_P1|CCF@F1
+2_strgval_0.800@0.800
+</code></pre>
+<h5 id="supported-functions">Supported functions:</h5>
+<p><a href="https://github.com/ncalc/ncalc/wiki/Functions">https://github.com/ncalc/ncalc/wiki/Functions</a></p>
+<h5 id="additional-functions">Additional functions:</h5>
+<ul>
+<li><strong>ToInt32</strong>: As the name suggests it converts a double or string to Integer.</li>
+<li><strong>ToDouble</strong>: As the name suggests it converts an int or string to Double.</li>
+<li><strong>Random</strong>: Generates a random double value between 0 and 1.</li>
+</ul>
+<h2 id="exit-ports">Exit Ports</h2>
+<p>The CallbacksRegistrar test method supports the following exit ports:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Exit Port</strong></th>
+<th><strong>Condition</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>-2</strong></td>
+<td><em><strong>Alarm</strong></em></td>
+<td>Any alarm condition</td>
+</tr>
+<tr>
+<td><strong>-1</strong></td>
+<td><em><strong>Error</strong></em></td>
+<td>Any software condition error</td>
+</tr>
+<tr>
+<td><strong>0</strong></td>
+<td><em><strong>Fail</strong></em></td>
+<td>Failing condition</td>
+</tr>
+<tr>
+<td><strong>1</strong></td>
+<td><em><strong>Pass</strong></em></td>
+<td>Passed</td>
+</tr>
+</tbody>
+</table>
+<h2 id="version-tracking">Version tracking</h2>
+<table>
+<thead>
+<tr>
+<th><strong>Date</strong></th>
+<th><strong>Version</strong></th>
+<th><strong>Author</strong></th>
+<th><strong>Comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>March 8, 2022</td>
+<td>1.0.0</td>
+<td>fmurillo</td>
+<td>Initial doc</td>
+</tr>
+</tbody>
+</table>
+
+
+</body>
+</html>

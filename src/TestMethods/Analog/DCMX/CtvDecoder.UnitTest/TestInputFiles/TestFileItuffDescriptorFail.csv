@@ -1,0 +1,5 @@
+Pin,IP,Field,Size,PerBit,LowLimit,HighLimit,ExpectedData,ItuffToken,ItuffDescriptor
+DDR1_DQ50,IP1,Field0,4,-,-,-,-,Token1,TokenA
+DDR1_DQ50,IP1,Field1,3,-,-,-,-,Token1,TokenB
+DDR1_DQ50,IP2,Field0,4,-,-,-,-,Token1,TokenC
+DDR1_DQ50,IP2,Field1,3,-,-,-,-,Token2,TokenB

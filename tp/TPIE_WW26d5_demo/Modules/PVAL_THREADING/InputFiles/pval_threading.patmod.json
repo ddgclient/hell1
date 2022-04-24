@@ -1,0 +1,72 @@
+ {
+    "Configurations": [
+       {
+            "Name": "PVAL_THREADING_1",
+            "ConfigurationElement": [
+                {
+                    "Pin": "YY_TAP_TDI_S2C", 
+                    "Type": "PINDATA",
+                    "StartAddress": "300", 
+                    "StartAddressOffset": 0, 
+                    "EndAddress": "300", 
+                    "EndAddressOffset": 99, 
+                    "IsChannelLink": false, 
+                    "PatternsRegEx": [
+                        ".*_longreset_cpu_lr_none"
+                    ]
+                }
+            ]
+        },
+       {
+            "Name": "PVAL_THREADING_2",
+            "ConfigurationElement": [
+                {
+                    "Pin": "YY_TAP_TDI_S2C", 
+                    "Type": "PINDATA",
+                    "StartAddress": "400", 
+                    "StartAddressOffset": 0, 
+                    "EndAddress": "400", 
+                    "EndAddressOffset": 99, 
+                    "IsChannelLink": false, 
+                    "PatternsRegEx": [
+                        ".*_longreset_cpu_lr_none"
+                    ]
+                }
+            ]
+        },
+       {
+            "Name": "PVAL_THREADING_3",
+            "ConfigurationElement": [
+                {
+                    "Pin": "YY_TAP_TDI_S2C", 
+                    "Type": "PINDATA",
+                    "StartAddress": "0", 
+                    "StartAddressOffset": 0, 
+                    "EndAddress": "0", 
+                    "EndAddressOffset": 99, 
+                    "IsChannelLink": false, 
+                    "PatternsRegEx": [
+                        ".*_longreset_cpu_lr_none"
+                    ]
+                }
+            ]
+        },
+       {
+            "Name": "PVAL_THREADING_4",
+            "ConfigurationElement": [
+                {
+                    "Pin": "YY_TAP_TDI_S2C", 
+                    "Type": "PINDATA",
+                    "StartAddress": "100", 
+                    "StartAddressOffset": 0, 
+                    "EndAddress": "100", 
+                    "EndAddressOffset": 99, 
+                    "IsChannelLink": false, 
+                    "PatternsRegEx": [
+                        ".*_longreset_cpu_lr_none"
+                    ]
+                }
+            ]
+        }
+    ]
+}

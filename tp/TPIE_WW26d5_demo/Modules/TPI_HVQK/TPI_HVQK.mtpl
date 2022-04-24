@@ -1,0 +1,352 @@
+# Module Revision: jthwing - 06/11/21 11:42:51 AM
+
+Version 1.0;
+
+ProgramStyle = Modular;
+
+TestPlan TPI_HVQK;
+
+
+
+
+Import OASIS_Bkgnd_tt.xml;
+Import OASIS_BinMatrixFlowControl_tt.xml;
+Import OASIS_UserFunc_tt.xml;
+Import OASIS_Screen_tt.xml;
+Import OASIS_Auxiliary_tt.xml;
+Import OASIS_UltraBinner_tt.xml;
+Import OASIS_PowerDown_tt.xml;
+Import OASIS_HVQK_tt.xml;
+Import OASIS_VADTL_tt.xml;
+
+
+
+
+#Test Counter Definition
+Counters
+{
+	n17900001_fail_CTRL_X_X_K_START_X_X_X_X_HVQKGSDSINIT_2,
+	n17900004_fail_CTRL_X_X_K_INIT_X_X_X_X_HVQKTOKENSSETUP_3,
+	n17900005_fail_CTRL_X_X_K_INIT_X_X_X_X_HVQKTOKENSSETUP_4,
+	n17900006_fail_CTRL_X_X_K_END_X_X_X_X_HVQKTOKENSLOG_3,
+	n17900007_fail_CTRL_X_X_K_END_X_X_X_X_HVQKTOKENSLOG_4,
+	n17900008_fail_CTRL_X_X_K_START_X_X_X_X_HVQKTOKENSINIT_3,
+	n17900009_fail_CTRL_X_X_K_START_X_X_X_X_HVQKTOKENSINIT_4,
+	n17900050_fail_CTRL_X_X_K_START_X_X_X_X_HVQKTOKENSINIT_2,
+	n17900052_fail_CTRL_X_X_K_INIT_X_X_X_X_HVQKTOKENSSETUP_0,
+	n17900053_fail_CTRL_X_X_K_INIT_X_X_X_X_HVQKTOKENSSETUP_2,
+	n17900054_fail_CTRL_X_X_K_END_X_X_X_X_HVQKTOKENSLOG_0,
+	n17900055_fail_CTRL_X_X_K_END_X_X_X_X_HVQKTOKENSLOG_2,
+	n17900056_fail_CTRL_X_X_K_FINAL_X_X_X_X_SET_LOOPPROTECTION_0,
+	n17900069_fail_CTRL_X_X_K_STRESS_X_X_X_X_STRESSOVERRIDE_0,
+	n17900074_fail_CTRL_X_X_K_FINAL_X_X_X_X_ISLOOPPROTECTION_0,
+	n17900075_fail_CTRL_X_X_K_FINAL_X_X_X_X_CURRENT_SESSION_BIN26_0,
+	n17900077_fail_CTRL_X_X_K_STRESS_X_X_X_X_SKIPTOFINAL_0,
+	n17900083_fail_CTRL_X_X_K_START_X_X_X_X_HVQKGSDSINIT_0,
+	n17900149_fail_CTRL_X_X_K_START_X_X_X_X_HVQKTOKENSINIT_0,
+	n69222001_fail_CTRL_BKGND_X_K_FINAL_X_X_X_X_HVQKSTOPTIMENOBIN_0,
+	n89070410_fail_CTRL_BKGND_X_K_FINAL_X_X_X_X_HVQKSTOPTIMENOBIN_n3,
+	n89080304_fail_CTRL_BKGND_X_K_FINAL_X_X_X_X_HVQKSTARTTIMEON_n3,
+	n89231400_fail_CTRL_BKGND_X_K_FINAL_X_X_X_X_HVQKSTARTTIMEON_0,
+	n90010020_fail_CTRL_BMFC_X_K_FINAL_X_X_X_X_HVQK_SETDUTFINALDATA_0,
+	n90170022_fail_CTRL_X_X_K_END_X_X_X_X_VMINSHIFT_0,
+	n90170038_fail_CTRL_X_X_K_START_X_X_X_X_VADTLINIT_0,
+	n94000016_fail_CTRL_X_X_K_STRESS_X_X_X_X_SHOULDISTRESS_0,
+	n94270017_fail_CTRL_UB_X_K_STRESS_X_X_X_X_PARSE_BIN_GOOD_2,
+	n94270019_fail_CTRL_UB_X_K_STRESS_X_X_X_X_SET_FBIN_2,
+	n94270022_fail_CTRL_UB_X_K_STRESS_X_X_X_X_PARSE_BIN_BAD_2,
+	n94270130_fail_CTRL_UB_X_K_STRESS_X_X_X_X_PRESTRESSBIN_0,
+	n94270140_fail_CTRL_UB_X_K_STRESS_X_X_X_X_GET_BIN_0,
+	n94270143_fail_CTRL_UB_X_K_STRESS_X_X_X_X_GET_BIN_3,
+	n94270150_fail_CTRL_UB_X_K_STRESS_X_X_X_X_PARSE_BIN_GOOD_0,
+	n94270160_fail_CTRL_UB_X_K_STRESS_X_X_X_X_SET_FBIN_0,
+	n94270170_fail_CTRL_UB_X_K_STRESS_X_X_X_X_PARSE_BIN_BAD_0,
+	n94270180_fail_CTRL_UB_X_K_STRESS_X_X_X_X_PRINT_BIN_0,
+	n94270182_fail_CTRL_UB_X_K_STRESS_X_X_X_X_PRINT_BIN_2,
+	n94449912_fail_CTRL_X_X_E_FINAL_X_X_X_X_ALARM_PWRDWNSAFETY_0,
+	n94449914_fail_CTRL_X_X_E_FINAL_X_X_X_X_ALARM_PWRDWNSAFETY_2,
+	n94470030_fail_CTRL_UB_X_K_STRESS_X_X_X_X_CORE_RESULT_PRESTRESS_0,
+	n94480007_fail_CTRL_UB_X_K_STRESS_X_X_X_X_CORE_RESULT_PRESTRESS_3,
+	n94480032_fail_CTRL_UB_X_K_STRESS_X_X_X_X_CORE_RESULT_PRESTRESS_2,
+	n94900310_fail_CTRL_X_X_K_FINAL_X_X_X_X_LOGHVQKTOKEN_0,
+	n94900412_fail_CTRL_BRITA_X_E_FINAL_X_X_X_X_LOG_0,
+	n98010001_fail_FAIL_SYSTEM_SOFTWARE,
+	n99010001_fail_FAIL_DPS_ALARM
+} # End of Test Counter Definition
+
+Test iCHVQKTest CTRL_X_X_K_INIT_X_X_X_X_HVQKTOKENSSETUP_P1
+{
+	execution_mode = "INIT";
+	meta_data_file = "./Modules/TPI_HVQK/InputFiles/CPU28_tokens.hvqk.metadata.txt";
+}
+Test iCScreenTest CTRL_X_X_K_START_X_X_X_X_HVQKGSDSINIT_P1
+{
+	screen_custom_file = "./Modules/TPI_HVQK/InputFiles/HVQK_custom.txt";
+	screen_custom_setpoint = "ALL";
+	screen_test_set = "InitHVQKGSDS";
+	screen_tests_file = "./Modules/TPI_HVQK/InputFiles/HVQK_screens.txt";
+}
+Test iCHVQKTest CTRL_X_X_K_START_X_X_X_X_HVQKTOKENSINIT_P1
+{
+	execution_mode = "START";
+}
+Test iCVADTLTest CTRL_X_X_K_START_X_X_X_X_VADTLINIT_P1
+{
+	config_file = "./Modules/TPI_HVQK/InputFiles/CPU28_VADTL.xml";
+	execution_mode = "START";
+}
+Test iCAuxiliaryTest CTRL_X_X_K_STRESS_X_X_X_X_SKIPTOFINAL_P2
+{
+	data_type = "NUMERIC";
+	expression = "G.U.S.LoopProtection";
+	result_port = "[R]=1|3^2";
+}
+Test iCAuxiliaryTest CTRL_X_X_K_TESTPLANSTARTFLOW_X_X_X_X_SETLOOPPROTECTION_P1
+{
+	data_type = "STRING";
+	expression = "'0'";
+	result_var = "G.U.S.LoopProtection";
+}
+
+Flow TPI_HVQK_INIT
+{
+	FlowItem CTRL_X_X_K_INIT_X_X_X_X_HVQKTOKENSSETUP_P1 CTRL_X_X_K_INIT_X_X_X_X_HVQKTOKENSSETUP_P1
+	{
+		Result -2
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+			Return -2;
+		}		
+		Result -1
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+			Return -1;
+		}		
+		Result 0
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_HVQK::n17900052_fail_CTRL_X_X_K_INIT_X_X_X_X_HVQKTOKENSSETUP_0;
+			SetBin SoftBins.b17900052_fail_TPI_HVQK_CTRL_X_X_K_INIT_X_X_X_X_HVQKTOKENSSETUP_0;
+			Return 0;
+		}		
+		Result 1
+		{
+			Property PassFail = "Pass";
+			Return 1;
+		}		
+		Result 2
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_HVQK::n17900053_fail_CTRL_X_X_K_INIT_X_X_X_X_HVQKTOKENSSETUP_2;
+			SetBin SoftBins.b17900053_fail_TPI_HVQK_CTRL_X_X_K_INIT_X_X_X_X_HVQKTOKENSSETUP_2;
+			Return 0;
+		}		
+		Result 3
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_HVQK::n17900004_fail_CTRL_X_X_K_INIT_X_X_X_X_HVQKTOKENSSETUP_3;
+			SetBin SoftBins.b17900004_fail_TPI_HVQK_CTRL_X_X_K_INIT_X_X_X_X_HVQKTOKENSSETUP_3;
+			Return 0;
+		}		
+		Result 4
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_HVQK::n17900005_fail_CTRL_X_X_K_INIT_X_X_X_X_HVQKTOKENSSETUP_4;
+			SetBin SoftBins.b17900005_fail_TPI_HVQK_CTRL_X_X_K_INIT_X_X_X_X_HVQKTOKENSSETUP_4;
+			Return 0;
+		}		
+	}	
+	
+}
+
+DUTFlow TPI_HVQK_START
+{
+	DUTFlowItem CTRL_X_X_K_START_X_X_X_X_HVQKTOKENSINIT_P1 CTRL_X_X_K_START_X_X_X_X_HVQKTOKENSINIT_P1
+	{
+		Result -2
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+			Return -2;
+		}		
+		Result -1
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+			Return -1;
+		}		
+		Result 0
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_HVQK::n17900149_fail_CTRL_X_X_K_START_X_X_X_X_HVQKTOKENSINIT_0;
+			SetBin SoftBins.b17900149_fail_TPI_HVQK_CTRL_X_X_K_START_X_X_X_X_HVQKTOKENSINIT_0;
+			Return 0;
+		}		
+		Result 1
+		{
+			Property PassFail = "Pass";
+			GoTo CTRL_X_X_K_START_X_X_X_X_HVQKGSDSINIT_P1;
+		}		
+		Result 2
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_HVQK::n17900050_fail_CTRL_X_X_K_START_X_X_X_X_HVQKTOKENSINIT_2;
+			SetBin SoftBins.b17900050_fail_TPI_HVQK_CTRL_X_X_K_START_X_X_X_X_HVQKTOKENSINIT_2;
+			Return 0;
+		}		
+		Result 3
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_HVQK::n17900008_fail_CTRL_X_X_K_START_X_X_X_X_HVQKTOKENSINIT_3;
+			SetBin SoftBins.b17900008_fail_TPI_HVQK_CTRL_X_X_K_START_X_X_X_X_HVQKTOKENSINIT_3;
+			Return 0;
+		}		
+		Result 4
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_HVQK::n17900009_fail_CTRL_X_X_K_START_X_X_X_X_HVQKTOKENSINIT_4;
+			SetBin SoftBins.b17900009_fail_TPI_HVQK_CTRL_X_X_K_START_X_X_X_X_HVQKTOKENSINIT_4;
+			Return 0;
+		}		
+	}	
+	
+	DUTFlowItem CTRL_X_X_K_START_X_X_X_X_HVQKGSDSINIT_P1 CTRL_X_X_K_START_X_X_X_X_HVQKGSDSINIT_P1
+	{
+		Result -2
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+			Return -2;
+		}		
+		Result -1
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+			Return -1;
+		}		
+		Result 0
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_HVQK::n17900083_fail_CTRL_X_X_K_START_X_X_X_X_HVQKGSDSINIT_0;
+			SetBin SoftBins.b17900083_fail_TPI_HVQK_CTRL_X_X_K_START_X_X_X_X_HVQKGSDSINIT_0;
+			Return 0;
+		}		
+		Result 1
+		{
+			Property PassFail = "Pass";
+			GoTo CTRL_X_X_K_START_X_X_X_X_VADTLINIT_P1;
+		}		
+		Result 2
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_HVQK::n17900001_fail_CTRL_X_X_K_START_X_X_X_X_HVQKGSDSINIT_2;
+			SetBin SoftBins.b17900001_fail_TPI_HVQK_CTRL_X_X_K_START_X_X_X_X_HVQKGSDSINIT_2;
+			Return 0;
+		}		
+	}	
+	DUTFlowItem CTRL_X_X_K_START_X_X_X_X_VADTLINIT_P1 CTRL_X_X_K_START_X_X_X_X_VADTLINIT_P1
+	{
+		Result -2
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+			Return -2;
+		}		
+		Result -1
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+			Return -1;
+		}		
+		Result 0
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_HVQK::n90170038_fail_CTRL_X_X_K_START_X_X_X_X_VADTLINIT_0;
+			SetBin SoftBins.b90170038_fail_TPI_HVQK_CTRL_X_X_K_START_X_X_X_X_VADTLINIT_0;
+			Return 0;
+		}		
+		Result 1
+		{
+			Property PassFail = "Pass";
+			Return 1;
+		}		
+		Result 2
+		{
+			Property PassFail = "Pass";
+			Return 1;
+		}		
+	}	
+}
+
+DUTFlow TPI_HVQK_STRESS
+{
+	DUTFlowItem CTRL_X_X_K_STRESS_X_X_X_X_SKIPTOFINAL_P2 CTRL_X_X_K_STRESS_X_X_X_X_SKIPTOFINAL_P2
+	{
+		Result -2
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+			Return -2;
+		}		
+		Result -1
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+			Return -1;
+		}		
+		Result 0
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_HVQK::n17900077_fail_CTRL_X_X_K_STRESS_X_X_X_X_SKIPTOFINAL_0;
+			SetBin SoftBins.b17900077_fail_TPI_HVQK_CTRL_X_X_K_STRESS_X_X_X_X_SKIPTOFINAL_0;
+			Return 0;
+		}		
+		Result 2
+		{
+			Property PassFail = "Pass";
+			Return 2;
+		}		
+		Result 3
+		{
+			Property PassFail = "Pass";
+			Return 3;
+		}		
+	}	
+}
+
+DUTFlow TPI_HVQK_TESTPLANSTARTFLOW
+{
+	DUTFlowItem CTRL_X_X_K_TESTPLANSTARTFLOW_X_X_X_X_SETLOOPPROTECTION_P1 CTRL_X_X_K_TESTPLANSTARTFLOW_X_X_X_X_SETLOOPPROTECTION_P1
+	{
+		Result -2
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+			Return -2;
+		}		
+		Result -1
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+			Return -1;
+		}		
+		Result 0
+		{
+			Property PassFail = "Fail";
+			Return 0;
+		}		
+		Result 1
+		{
+			Property PassFail = "Pass";
+			Return 1;
+		}		
+		Result 2
+		{
+			Property PassFail = "Fail";
+			Return 0;
+		}		
+	}	
+	
+}

@@ -1,0 +1,568 @@
+{
+  "Version": [ 1.0 ],
+  // TODO : Consider that mems may not be in numeric order
+  "Hry_string": [ "LEHP_BP34_WBP0_MEM1", "LEHP_BP34_WBP0_MEM2", "LEHP_BP34_WBP0_MEM3", "LEHP_BP35_WBP0_MEM1", "LEHP_BP35_WBP0_MEM2", "LEHP_BP35_WBP0_MEM3", "LEHP_BP35_WBP1_MEM1", "LEHP_BP35_WBP1_MEM2", "LEHP_BP35_WBP1_MEM3", "LEHP_BP36_WBP0_MEM1", "LEHP_BP36_WBP0_MEM2", "LEHP_BP36_WBP0_MEM3", "LEHP_BP36_WBP1_MEM1", "LEHP_BP36_WBP1_MEM2", "LEHP_BP36_WBP1_MEM3", "LEHP_BP37_WBP0_MEM1", "LEHP_BP37_WBP0_MEM2", "LEHP_BP37_WBP0_MEM3", "LEHP_BP37_WBP0_MEM4", "LEHP_BP38_WBP0_MEM1", "LEHP_BP38_WBP0_MEM2", "LEHP_BP38_WBP0_MEM3", "LEHP_BP38_WBP0_MEM4", "LEHP_BP38_WBP1_MEM1", "LEHP_BP38_WBP1_MEM2", "LEHP_BP38_WBP1_MEM3", "LEHP_BP39_WBP0_MEM1", "LEHP_BP39_WBP0_MEM2", "LEHP_BP39_WBP1_MEM1", "LEHP_BP39_WBP1_MEM2", "LEHP_BP40_WBP0_MEM10", "LEHP_BP40_WBP0_MEM21", "LEHP_BP40_WBP0_MEM33", "LEHP_BP40_WBP1_MEM1", "LEHP_BP40_WBP1_MEM2", "LEHP_BP40_WBP1_MEM3", "LEHP_BP42_WBP0_MEM10", "LEHP_BP42_WBP0_MEM21", "LEHP_BP42_WBP0_MEM33", "LEHP_BP43_WBP0_MEM45", "LEHP_BP43_WBP0_MEM46", "LEHP_BP43_WBP0_MEM47", "LEHP_BP44_WBP0_MEM12", "LEHP_BP44_WBP0_MEM2", "LEHP_BP44_WBP0_MEM21", "LEHP_BP44_WBP0_MEM22", "LEHP_BP44_WBP1_MEM11", "LEHP_BP44_WBP1_MEM12", "LEHP_BP44_WBP1_MEM2" ],
+  "Voltage_String": [ "VCCSA", "VCCSA", "VCCSA", "VCCSA", "VCCSA", "VCCSA", "VCCSA", "VCCSA", "VCCSA", "VCCSA", "VCCSA", "VCCSA", "VCCSA", "VCCSA", "VCCSA", "VCCSA", "VCCSA", "VCCSA", "VCCSA", "VCCSA", "VCCSA", "VCCSA", "VCCSA", "VCCSA", "VCCSA", "VCCSA", "VCCSA", "VCCSA", "VCCSA", "VCCSA", "VCCSA", "VCCSA", "VCCSA", "VCCSA", "VCCSA", "VCCSA", "VCCSA", "VCCSA", "VCCSA", "VCCSA", "VCCSA", "VCCSA", "VCCSA", "VCCSA", "VCCSA", "VCCSA", "VCCSA", "VCCSA", "VCCSA" ],
+  "BISR_CHAIN": {
+    "BISR_LEG_BISR1": {
+      "buffer_size": 10,
+      "zero_counter_bits": 11,
+      "fuse_box_size": 1024,
+      "tootallength": 419,
+      "fuseboxAddress": 10,
+      "chains": {
+        "PD_0": 419
+      }
+    },
+    "BISR_LEG_BISR2": {
+      "buffer_size": 10,
+      "zero_counter_bits": 11,
+      "fuse_box_size": 1024,
+      "tootallength": 419,
+      "fuseboxAddress": 10,
+      "chains": {
+        "PD_0": 419
+      }
+    },
+    "BISR_LEG_BISR3": {
+      "buffer_size": 10,
+      "zero_counter_bits": 11,
+      "fuse_box_size": 1024,
+      "tootallength": 419,
+      "fuseboxAddress": 10,
+      "chains": {
+        "PD_0": 419
+      }
+    }
+  },
+  "Plists": {
+    //1 IP,1pattern,1 controller,GOID mode
+    "Plist_1": {
+      "CapturePins": "TDO",
+      "CaptureCount": 21,
+      "Patterns": {
+        "mb_lehp_aud_l2sram_a_ssa_pmovi_x_s": {
+          "Controllers": {
+            "lehp_BP34_WBP0": {
+              "TYPE": "GOID",
+              "Execution": [
+                {
+                  "STATUS": [ 0, 1, 2, 3 ],
+                  "ALGO_SEL": "20-23",
+                  "PALGO_SEL": "4-7",
+                  "Memories": {
+                    "1": "8-11",
+                    "2": "12-15",
+                    "3": "16-19"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    // array collar sharing - when the same comparators are shared between memories
+    // Palgo should be global across the controller for each execution if in parallelBap mode
+    // *Memories from execution to execution : you will never see one of the previous series of memories, you will either match the previous
+    // execution or see an entirely new mem/set of mems
+    //2 patterns ,2 and 1 controller combination,3 and 2 execution combination
+    // pattern1 : array collar sharing, pattern 2 : non-array collar sharing
+    "Plist_2": {
+      "CapturePins": "TDO",
+      "CaptureCount": 21,
+      "Patterns": {
+        "mb_lehp_aud_l2sram_a_ssa_pmovi_x_s": {
+          "Controllers": {
+            "lehp_BP35_WBP0": {
+              "TYPE": "GOID",
+              "Execution": [
+                {
+                  "STATUS": [ 0, 1, 2, 3 ], //Step0
+                  "ALGO_SEL": "12-15",
+                  "PALGO_SEL": "",
+                  "Memories": {
+                    "1": "4-7",
+                    "2": "8-11"
+                  }
+                },
+                {
+                  "STATUS": [ 16, 17, 18, 19 ], //Step1
+                  "ALGO_SEL": "24-27",
+                  "PALGO_SEL": "",
+                  "Memories": {
+
+                    "3": "20-23"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "mb_lehp_aud_l2sram_a_ssa_hmr_x_s": {
+          "Controllers": {
+            "lehp_BP35_WBP1": {
+              "TYPE": "GOID",
+              "Execution": [
+                {
+                  "STATUS": [ 28, 29, 30, 31 ], //Step0
+                  "ALGO_SEL": "44-47",
+                  "PALGO_SEL": "",
+                  "Memories": {
+                    "1": "32-35",
+                    "2": "36-39",
+                    "3": "40-43"
+                  }
+                },
+                {
+                  // TODO : Continue bits
+                  "STATUS": [ 48, 49, 50, 51 ], //Step1
+                  "ALGO_SEL": "64-67",
+                  "PALGO_SEL": "",
+                  "Memories": {
+                    "1": "52-55",
+                    "2": "56-59",
+                    "3": "60-63"
+                  }
+                }
+              ]
+            }
+          }
+        }
+
+      }
+    },
+    // Parallel version of plist 2 - controller types have to be the same
+    "Plist_3": {
+      "CapturePins": "TDO",
+      "CaptureCount": 21,
+      "Patterns": {
+        "mb_lehp_aud_l2sram_a_ssa_pmovi_x_s": {
+          "Controllers": {
+            "lehp_BP36_WBP0": {
+              "TYPE": "GOID",
+              "Execution": [
+                {
+                  "STATUS": [ 0, 1, 2, 3 ], //Step0
+                  "ALGO_SEL": "15-18",
+                  "PALGO_SEL": "4-7",
+                  "Memories": {
+                    "1": "8-11",
+                    "2": "12-14"
+                  }
+                },
+                {
+                  "STATUS": [ 19, 20, 21, 22 ], //Step1
+                  "ALGO_SEL": "31-34",
+                  "PALGO_SEL": "23-26",
+                  "Memories": {
+                    "3": "27-30"
+                  }
+                }
+              ]
+            },
+            "lehp_BP36_WBP1": {
+              "TYPE": "GOID",
+              "Execution": [
+                {
+                  "STATUS": [ 35, 36, 37, 38 ], //Step0
+                  "ALGO_SEL": "51-54",
+                  "PALGO_SEL": "4-7",
+                  "Memories": {
+                    "1": "39-42",
+                    "2": "43-46",
+                    "3": "47-50"
+                  }
+                },
+                {
+                  // TODO : Continue bits
+                  "STATUS": [ 55, 56, 57, 58 ], //Step1
+                  "ALGO_SEL": "71-74",
+                  "PALGO_SEL": "23-26",
+                  "Memories": {
+                    "1": "59-62",
+                    "2": "63-66",
+                    "3": "67-70"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    //1 pattern ,1 IP, 2 Steps, 1 controller,RABits mode and has a combination of single and double RAbits
+    "Plist_4": {
+      "CapturePins": "TDO",
+      "CaptureCount": 30,
+      "Patterns": {
+        "mb_lehp_aud_csesram_a_ssa_pmovi_x_s": {
+          "Controllers": {
+            "lehp_BP37_WBP0": {
+              "TYPE": "RABITS",
+              "Execution": [
+                {
+                  "STATUS": [ 0, 1, 2, 3 ], ///Step0 
+                  "ALGO_SEL": "11-14",
+                  "PALGO_SEL": "4-7",
+                  "Memories": {
+                    "1": "8-9",
+                    "2": "10"
+                  }
+                },
+                {
+                  "STATUS": [ 15, 16, 17, 18 ], //Step1
+                  "ALGO_SEL": "26-29",
+                  "PALGO_SEL": "19-22",
+                  "Memories": {
+                    "3": "23-24",
+                    "4": "25"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    //1 pattern ,2 controllers and differnt executions and number of mems
+    "Plist_5": {
+      "CapturePins": "TDO",
+      "CaptureCount": 30,
+      "Patterns": {
+        "mb_lehp_aud_csesram_a_ssa_pmovi_x_s": {
+          "Controllers": {
+            "lehp_BP38_WBP0": {
+              "TYPE": "RABITS",
+              "Execution": [
+                {
+                  "STATUS": [ 0, 1, 2, 3 ], ///Step0 
+                  "ALGO_SEL": "11-14",
+                  "PALGO_SEL": "4-7",
+                  "Memories": {
+                    "1": "8-9",
+                    "2": "10"
+                  }
+                },
+                {
+                  "STATUS": [ 15, 16, 17, 18 ], //Step1
+                  "ALGO_SEL": "26-29",
+                  "PALGO_SEL": "19-22",
+                  "Memories": {
+                    "3": "23-24",
+                    "4": "25"
+                  }
+                }
+              ]
+            },
+            "lehp_BP38_WBP1": {
+              "TYPE": "RABITS",
+              "Execution": [
+                {
+                  "STATUS": [ 30, 31, 32, 33 ], ///Step0 
+                  "ALGO_SEL": "41-44",
+                  "PALGO_SEL": "34-37",
+                  "Memories": {
+                    "1": "38-39",
+                    "2": "40"
+                  }
+                },
+                {
+                  "STATUS": [ 45, 46, 47, 48 ], //Step1
+                  "ALGO_SEL": "55-58",
+                  "PALGO_SEL": "49-52",
+                  "Memories": {
+                    "3": "53-54"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    //1 pattern , 3 controllers: No Memories & no AlgoSel, No Memories & no PalgoSel
+    // RABITS always have to have Algo and never have Palgo, but always have mem level
+    // HRY [Algo, Palgo, Mems] - 
+    // TODO : Add in check for non meme's case
+    // [0,0,0], [0,0,1], [0,1,0]
+    "Plist_6": {
+      "CapturePins": "TDO",
+      "CaptureCount": 30,
+      "Patterns": {
+        "mb_lehp_aud_csesram_a_ssa_pmovi_x_s": {
+          "Controllers": {
+            "lehp_BP39_WBP0": {
+              "TYPE": "RABITS",
+              "Execution": [
+                {
+                  "STATUS": [ 1, 2, 3, 4 ], ///Step0 
+                  "ALGO_SEL": "5-8",
+                  "PALGO_SEL": ""
+                }
+              ]
+            },
+            "lehp_BP39_WBP1": {
+              "TYPE": "RABITS",
+              "Execution": [
+                {
+                  "STATUS": [ 9, 10, 11, 12 ], ///Step0 
+                  "ALGO_SEL": "",
+                  "PALGO_SEL": ""
+                }
+              ]
+            }
+          }
+        },
+        "mb_lehp_aud_l2sram_a_ssa_hmr_x_s": {
+          "Controllers": {
+            "lehp_BP40_WBP0": {
+              "TYPE": "RABITS",
+              "Execution": [
+                {
+                  "STATUS": [ 13, 14, 15, 16 ], ///Step0 
+                  "ALGO_SEL": "",
+                  "PALGO_SEL": "17-20"
+                }
+              ]
+            },
+            "lehp_BP40_WBP1": {
+              "TYPE": "RABITS",
+              "Execution": [
+                {
+                  "STATUS": [ 21, 22, 23, 24 ], ///Step0 
+                  "ALGO_SEL": "",
+                  "PALGO_SEL": "17-20"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "Plist_7": {
+      "CapturePins": "TDO",
+      "CaptureCount": 30,
+      "Patterns": {
+        "mb_lehp_aud_l2sram_a_ssa_pmovi_x_s": {
+          "Controllers": {
+            "lehp_BP42_WBP0": {
+              "TYPE": "GOID",
+              "Execution": [
+                {
+                  "STATUS": [ 0, 1, 2, 3 ], //Step0
+                  "ALGO_SEL": "12-15",
+                  "PALGO_SEL": "",
+                  "Memories": {
+                    "10": "4-7",
+                    "21": "8-11"
+                  }
+                },
+                {
+                  "STATUS": [ 16, 17, 18, 19 ], //Step1
+                  "ALGO_SEL": "24-27",
+                  "PALGO_SEL": "",
+                  "Memories": {
+
+                    "33": "20-23"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "mb_lehp_aud_l2sram_a_ssa_hmr_x_s": {
+          "Controllers": {
+            "lehp_BP43_WBP0": {
+              "TYPE": "GOID",
+              "Execution": [
+                {
+                  "STATUS": [ 28, 29, 30, 31 ], //Step0
+                  "ALGO_SEL": "44-47",
+                  "PALGO_SEL": "",
+                  "Memories": {
+                    "45": "32-35",
+                    "46": "36-39",
+                    "47": "40-43"
+                  }
+                },
+                {
+                  // TODO : Continue bits
+                  "STATUS": [ 48, 49, 50, 51 ], //Step1
+                  "ALGO_SEL": "64-67",
+                  "PALGO_SEL": "",
+                  "Memories": {
+                    "45": "52-55",
+                    "46": "56-59",
+                    "47": "60-63"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "mb_lehp_aud_csesram_a_ssa_pmovi_x_s": {
+          "Controllers": {
+            "lehp_BP44_WBP0": {
+              "TYPE": "RABITS",
+              "Execution": [
+                {
+                  "STATUS": [ 68, 69, 70, 71 ], ///Step0 
+                  "ALGO_SEL": "79-82",
+                  "PALGO_SEL": "72-75",
+                  "Memories": {
+                    "12": "76-77",
+                    "2": "78"
+                  }
+                },
+                {
+                  "STATUS": [ 83, 84, 85, 86 ], //Step1
+                  "ALGO_SEL": "94-97",
+                  "PALGO_SEL": "87-90",
+                  "Memories": {
+                    "21": "91-92",
+                    "22": "93"
+                  }
+                }
+              ]
+            },
+            "lehp_BP44_WBP1": {
+              "TYPE": "RABITS",
+              "Execution": [
+                {
+                  "STATUS": [ 98, 99, 100, 101 ], ///Step0 
+                  "ALGO_SEL": "109-112",
+                  "PALGO_SEL": "102-105",
+                  "Memories": {
+                    "11": "106-107",
+                    "12": "108"
+                  }
+                },
+                {
+                  "STATUS": [ 113, 114, 115, 116 ], //Step1
+                  "ALGO_SEL": "123-126",
+                  "PALGO_SEL": "117-120",
+                  "Memories": {
+                    "2": "121-122"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "Plist_7r": {
+      "CapturePins": "TDO",
+      "CaptureCount": 30,
+      "Patterns": {
+        "mb_lehp_aud_l2sram_a_ssa_pmovi_x_s": {
+          "Controllers": {
+            "lehp_BP42_WBP0": {
+              "TYPE": "GOID",
+              "Execution": [
+                {
+                  "STATUS": [ 0, 1, 2, 3 ], //Step0
+                  "ALGO_SEL": "12-15",
+                  "PALGO_SEL": "",
+                  "Memories": {
+                    "10": "4-7",
+                    "21": "8-11"
+                  }
+                },
+                {
+                  "STATUS": [ 16, 17, 18, 19 ], //Step1
+                  "ALGO_SEL": "24-27",
+                  "PALGO_SEL": "",
+                  "Memories": {
+
+                    "33": "20-23"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "mb_lehp_aud_l2sram_a_ssa_hmr_x_s": {
+          "Controllers": {
+            "lehp_BP43_WBP0": {
+              "TYPE": "GOID",
+              "Execution": [
+                {
+                  "STATUS": [ 28, 29, 30, 31 ], //Step0
+                  "ALGO_SEL": "44-47",
+                  "PALGO_SEL": "",
+                  "Memories": {
+                    "45": "32-35",
+                    "46": "36-39",
+                    "47": "40-43"
+                  }
+                },
+                {
+                  // TODO : Continue bits
+                  "STATUS": [ 48, 49, 50, 51 ], //Step1
+                  "ALGO_SEL": "64-67",
+                  "PALGO_SEL": "",
+                  "Memories": {
+                    "45": "52-55",
+                    "46": "56-59",
+                    "47": "60-63"
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "mb_lehp_aud_csesram_a_ssa_pmovi_x_s": {
+          "Controllers": {
+            "lehp_BP44_WBP0": {
+              "TYPE": "GOID",
+              "Execution": [
+                {
+                  "STATUS": [ 68, 69, 70, 71 ], ///Step0 
+                  "ALGO_SEL": "80-83",
+                  "PALGO_SEL": "",
+                  "Memories": {
+                    "12": "72-75",
+                    "2": "76-79"
+                  }
+                },
+                {
+                  "STATUS": [ 84, 85, 86, 87 ], //Step1
+                  "ALGO_SEL": "96-99",
+                  "PALGO_SEL": "",
+                  "Memories": {
+                    "21": "88-91",
+                    "22": "92-95"
+                  }
+                }
+              ]
+            },
+            "lehp_BP44_WBP1": {
+              "TYPE": "GOID",
+              "Execution": [
+                {
+                  "STATUS": [ 100, 101, 102, 103 ], ///Step0 
+                  "ALGO_SEL": "112-115",
+                  "PALGO_SEL": "102-105",
+                  "Memories": {
+                    "11": "104-107",
+                    "12": "108-111"
+                  }
+                },
+                {
+                  "STATUS": [ 116, 117, 118, 119 ], //Step1
+                  "ALGO_SEL": "124-127",
+                  "PALGO_SEL": "",
+                  "Memories": {
+                    "2": "120-123"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}

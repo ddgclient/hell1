@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!DOCTYPE HDMTFlowItemCoor[]>
+<HDMTFlowItemCoor>
+  <FlowItem name="Flows::TPI_DFF_FINAL.DFFX_X_CALC_K_FINAL_X_X_X_X_SET_SORTBIN" X="100" Y="20" />
+  <FlowItem name="Flows::TPI_DFF_FINAL.DFFX_X_X_K_FINAL_X_X_X_X_SETBADDIEDFFFLAG" X="250" Y="20" />
+  <FlowItem name="Flows::TPI_DFF_FINAL.DFFX_X_CALC_K_FINAL_X_X_X_X_VALIDATE" X="440" Y="20" />
+  <FlowItem name="Flows::TPI_DFF_START.DFFX_X_CALC_K_START_X_X_X_X_GETUBEDFF_SORT" X="100" Y="20" />
+  <FlowItem name="Flows::TPI_DFF_START.DFFX_X_X_K_START_X_X_X_X_INITBADDIEDFFFLAG" X="270" Y="20" />
+  <FlowItem name="Flows::TPI_DFF_START.DFFX_X_X_K_START_X_X_X_X_SETDFFGSDS_TPREV" X="450" Y="20" />
+  <FlowItem name="Flows::TPI_DFF_START.DFFX_X_X_K_START_X_X_X_X_SETDFFGSDS_FRV" X="650" Y="20" />
+</HDMTFlowItemCoor>

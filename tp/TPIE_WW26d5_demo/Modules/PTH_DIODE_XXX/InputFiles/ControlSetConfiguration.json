@@ -1,0 +1,37 @@
+{
+    "TCCTempSet": [
+        {
+            "name": "MTL_SDX_TCC",
+            "ControlSetMapping": [
+                {
+                    "index": "1",
+                    "value": "DIODESOT"
+                },
+                {
+                    "index": "2",
+                    "value": "DESOAK"
+                },
+                {
+                    "index": "3",
+                    "value": "SOAK"
+                },
+                {
+                    "index": "4",
+                    "value": "IDLE"
+                },
+                {
+                    "index": "5",
+                    "value": "DISPENSE"
+                },
+                {
+                    "index": "6",
+                    "value": "TEST"
+                },
+                {
+                    "index": "7",
+                    "value": "TESTRJH"
+                }
+            ]
+        }
+	]
+}

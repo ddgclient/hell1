@@ -1,0 +1,6 @@
+Version 1.0;
+
+UserVars TPI_FUSE_CONFIG
+{
+	String FRV = "";
+}

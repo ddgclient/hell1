@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<RootNamespace>$(AssemblyName)</RootNamespace>
+		<TargetName>$(AssemblyName)</TargetName>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+		<ConfigurationGroup>Debug</ConfigurationGroup>
+		<DebugType>full</DebugType>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+		<ConfigurationGroup>Release</ConfigurationGroup>
+		<DebugType>pdbonly</DebugType>
+	</PropertyGroup>
+	<PropertyGroup>
+		<AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+	</PropertyGroup>
+	<Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
+	<ItemGroup>
+	  <None Include="..\ArrayHRY\ArrayHRY_XML.xsd" Link="ArrayHRYInputFiles\ArrayHRY_XML.xsd" CopyToOutputDirectory="PreserveNewest" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\ArrayHRY\ArrayHRY.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+	  <None Update="ArrayHRYInputFiles\FailingHryXml_FailSchema.xml">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="ArrayHRYInputFiles\FailingHryXml_PassSchemaFailOther.xml">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="ArrayHRYInputFiles\PassingHryXml_1AlgMultiDomain.xml">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="ArrayHRYInputFiles\PassingHryXml_3AlgMultiDomain.xml">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="ArrayHRYInputFiles\PassingHryXml_AllOptions.xml">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="ArrayHRYInputFiles\PassingHryXml_MinRequiredOptionsWithReverse.xml">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+</Project>

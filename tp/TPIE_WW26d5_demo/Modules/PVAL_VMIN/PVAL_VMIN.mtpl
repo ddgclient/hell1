@@ -1,0 +1,1268 @@
+Version 1.0;
+
+ProgramStyle = Modular;
+
+TestPlan PVAL_VMIN;
+
+Import VminTC.xml;
+
+Test VminTC Vmin_Func_SingleTarget_NoRecNoFwrd_P1
+{
+    LevelsTc = "__main__::bf_lvl_nom_lvl";
+    Patlist = "drv_cdie_maintap_bbs_list";
+    TimingsTc = "__main__::cpu_stf_timing_tclk100_sclk100_cclk100";
+    TestMode = "Functional";
+    VoltageTargets = "HC1_VCCCORE0";
+    StartVoltages = "0.4";
+    EndVoltageLimits = "1.2";
+    StepSize = 0.01;
+    ForwardingMode = "None";
+    FlowIndex = "";
+    CornerIdentifiers = "";
+    InitialMaskBits = "";
+    PinMap = "";
+    RecoveryOptions = "";
+    LogLevel = "PRIME_DEBUG";
+}
+
+Test VminTC Vmin_Func_VoltageConverter_P1
+{
+    LevelsTc = "__main__::bf_lvl_nom_lvl";
+    Patlist = "drv_cdie_maintap_bbs_list";
+    TimingsTc = "__main__::cpu_stf_timing_tclk100_sclk100_cclk100";
+    TestMode = "Functional";
+    VoltageTargets = "HC1_VCCCORE0";
+    StartVoltages = "0.4";
+    EndVoltageLimits = "1.2";
+    StepSize = 0.01;
+    ForwardingMode = "None";
+    FlowIndex = "";
+    CornerIdentifiers = "";
+    InitialMaskBits = "";
+    PinMap = "";
+    RecoveryOptions = "";
+	VoltageConverter = "--railconfigurations=powerswitch0 powerswitch1";
+    LogLevel = "PRIME_DEBUG";
+}
+
+Test VminTC Vmin_Func_VoltageConverter_DLVR_P1
+{
+    LevelsTc = "__main__::bf_lvl_nom_lvl";
+    Patlist = "drv_cdie_maintap_bbs_list";
+    TimingsTc = "__main__::cpu_stf_timing_tclk100_sclk100_cclk100";
+    TestMode = "Functional";
+    VoltageTargets = "FIVRRAIL1";
+    StartVoltages = "0.4";
+    EndVoltageLimits = "1.2";
+    StepSize = 0.01;
+    ForwardingMode = "None";
+    FlowIndex = "";
+    CornerIdentifiers = "";
+    InitialMaskBits = "";
+    PinMap = "";
+    RecoveryOptions = "";
+	VoltageConverter = "--dlvrpins=HC6_VCCIA --expressions=Second_Expression";
+    LogLevel = "PRIME_DEBUG";
+	FeatureSwitchSettings = "fivr_mode_on";
+	FivrCondition = "NOM";
+}
+
+Test VminTC Vmin_Func_CornerPatConfigSetPoints_P1
+{
+    LevelsTc = "__main__::bf_lvl_nom_lvl";
+    Patlist = "drv_cdie_maintap_bbs_list";
+    TimingsTc = "__main__::cpu_stf_timing_tclk100_sclk100_cclk100";
+    TestMode = "Functional";
+    VoltageTargets = "HC1_VCCCORE0";
+    StartVoltages = "0.4";
+    EndVoltageLimits = "1.2";
+    StepSize = 0.01;
+    InitialMaskBits = "";
+    PinMap = "";
+    RecoveryOptions = "";
+	CornerPatConfigSetPoints = "FreqSetPoint_FakeFunc";
+    FlowIndex = "2";
+    CornerIdentifiers = "CLR0@F2";
+    ForwardingMode = "Input";
+    LogLevel = "PRIME_DEBUG";
+}
+
+Test VminTC Vmin_Func_MultiTarget_NoRecNoFwrd_P1
+{
+    LevelsTc = "__main__::bf_lvl_nom_lvl";
+    Patlist = "drv_cdie_maintap_bbs_list";
+    TimingsTc = "__main__::cpu_stf_timing_tclk100_sclk100_cclk100";
+    TestMode = "Functional";
+    VoltageTargets = "HC1_VCCCORE0,HC2_VCCCORE1,HC3_VCCATOM0,HC4_VCCATOM1";
+    StartVoltages = "0.4,0.4,0.4,0.4";
+    EndVoltageLimits = "1.2,1.2,1.2,1.2";
+    StepSize = 0.01;
+    ForwardingMode = "None";
+    FlowIndex = "";
+    CornerIdentifiers = "";
+    InitialMaskBits = "";
+    PinMap = "";
+    RecoveryOptions = "";
+    LogLevel = "PRIME_DEBUG";
+}
+
+Test VminTC Vmin_MultiVmin_ConcurrentTraces_NoRecNoFwrd_P1
+{
+    LevelsTc = "__main__::bf_lvl_nom_lvl";
+    Patlist = "drv_cdie_maintap_bbs_list";
+    TimingsTc = "__main__::cpu_stf_timing_tclk100_sclk100_cclk100";
+    TestMode = "MultiVmin";
+    VoltageTargets = "HC1_VCCCORE0,HC2_VCCCORE1,HC3_VCCATOM0,HC4_VCCATOM1";
+    StartVoltages = "0.55";
+    EndVoltageLimits = "0.75";
+    StepSize = 0.01;
+    ForwardingMode = "None";
+    FlowIndex = "";
+    CornerIdentifiers = "";
+    InitialMaskBits = "";
+    PinMap = "CCR_map";
+    RecoveryOptions = "";
+    LogLevel = "PRIME_DEBUG";
+	PreInstance = "LoadPinMapFile(--decoder ConcurrentTracesDecoder --file ./Modules/TPI_BASE/InputFiles/ccr.json)";
+}
+
+Test VminTC Vmin_MultiVmin_ConcurrentPlist_Base_P1
+{
+    LevelsTc = "__main__::bf_lvl_nom_lvl";
+    Patlist = "array_core_array_ccf_r1_list";
+    TimingsTc = "__main__::cpu_stf_timing_tclk100_sclk100_cclk100";
+    TestMode = "MultiVmin";
+    VoltageTargets = "HC1_VCCCORE0,HC2_VCCCORE1,HC5_VCCR,HC5_VCCR,HC5_VCCR,HC5_VCCR";
+    StartVoltages = "0.55";
+    EndVoltageLimits = "0.75";
+    StepSize = 0.01;
+    ForwardingMode = "None";
+    FlowIndex = "";
+    CornerIdentifiers = "";
+    InitialMaskBits = "";
+    PinMap = "CPlist_map";
+    RecoveryOptions = "";
+    LogLevel = "PRIME_DEBUG";
+	PreInstance = "LoadPinMapFile(--decoder ConcurrentPlistDecoder --file ./Modules/TPI_BASE/InputFiles/cplist.json)";
+	FeatureSwitchSettings = "start_on_first_fail_off,ctv_per_cycle,reset_pointers";
+	CtvPins = "YY_TEST_PORT_OUT_C2S_00";
+}
+
+Test VminTC Vmin_MultiVmin_ConcurrentPlist_MaskingCore_P1
+{
+    LevelsTc = "__main__::bf_lvl_nom_lvl";
+    Patlist = "array_core_array_ccf_r1_list";
+    TimingsTc = "__main__::cpu_stf_timing_tclk100_sclk100_cclk100";
+    TestMode = "MultiVmin";
+    VoltageTargets = "HC1_VCCCORE0,HC2_VCCCORE1,HC5_VCCR,HC5_VCCR,HC5_VCCR,HC5_VCCR";
+    StartVoltages = "0.55";
+    EndVoltageLimits = "0.75";
+    StepSize = 0.01;
+    ForwardingMode = "None";
+    FlowIndex = "";
+    CornerIdentifiers = "";
+    PinMap = "CPlist_map";
+    RecoveryOptions = "";
+    LogLevel = "PRIME_DEBUG";
+	PreInstance = "LoadPinMapFile(--decoder ConcurrentPlistDecoder --file ./Modules/TPI_BASE/InputFiles/cplist.json)";
+	FeatureSwitchSettings = "start_on_first_fail_off,ctv_per_cycle,reset_pointers";
+	CtvPins = "YY_TEST_PORT_OUT_C2S_00";
+	InitialMaskBits = "100000";
+}
+
+Test VminTC Vmin_MultiVmin_ConcurrentPlist_MaskingCcf_P1
+{
+    LevelsTc = "__main__::bf_lvl_nom_lvl";
+    Patlist = "array_core_array_ccf_r1_list";
+    TimingsTc = "__main__::cpu_stf_timing_tclk100_sclk100_cclk100";
+    TestMode = "MultiVmin";
+    VoltageTargets = "HC1_VCCCORE0,HC2_VCCCORE1,HC5_VCCR,HC5_VCCR,HC5_VCCR,HC5_VCCR";
+    StartVoltages = "0.55";
+    EndVoltageLimits = "0.75";
+    StepSize = 0.01;
+    ForwardingMode = "None";
+    FlowIndex = "";
+    CornerIdentifiers = "";
+    PinMap = "CPlist_map";
+    RecoveryOptions = "";
+    LogLevel = "PRIME_DEBUG";
+	PreInstance = "LoadPinMapFile(--decoder ConcurrentPlistDecoder --file ./Modules/TPI_BASE/InputFiles/cplist.json)";
+	FeatureSwitchSettings = "start_on_first_fail_off,ctv_per_cycle,reset_pointers";
+	CtvPins = "YY_TEST_PORT_OUT_C2S_00";
+	InitialMaskBits = "001111";
+}
+
+Test VminTC Vmin_MultiVmin_ConcurrentPlist_RecoveryFailRetest_P1
+{
+    LevelsTc = "__main__::bf_lvl_nom_lvl";
+    Patlist = "array_core_array_ccf_r1_list";
+    TimingsTc = "__main__::cpu_stf_timing_tclk100_sclk100_cclk100";
+    TestMode = "MultiVmin";
+    VoltageTargets = "HC1_VCCCORE0,HC2_VCCCORE1,HC5_VCCR,HC5_VCCR,HC5_VCCR,HC5_VCCR";
+    StartVoltages = "0.55";
+    EndVoltageLimits = "0.6";
+    StepSize = 0.01;
+    ForwardingMode = "None";
+    FlowIndex = "";
+    CornerIdentifiers = "";
+    PinMap = "CPlist_map";
+    RecoveryOptions = "000000";
+    LogLevel = "PRIME_DEBUG";
+	PreInstance = "LoadPinMapFile(--decoder ConcurrentPlistDecoder --file ./Modules/TPI_BASE/InputFiles/cplist.json)";
+	FeatureSwitchSettings = "start_on_first_fail_off,ctv_per_cycle,reset_pointers";
+	CtvPins = "YY_TEST_PORT_OUT_C2S_00";
+	InitialMaskBits = "000000";
+	RecoveryMode = "RecoveryFailRetest";
+	MaxRepetitionCount = 2;
+}
+
+Test VminTC Vmin_SingleVmin_SingleTarget_NoRecNoFwrd_P1
+{
+    LevelsTc = "__main__::bf_lvl_nom_lvl";
+    Patlist = "drv_cdie_maintap_bbs_list";
+    TimingsTc = "__main__::cpu_stf_timing_tclk100_sclk100_cclk100";
+    TestMode = "SingleVmin";
+    VoltageTargets = "HC1_VCCCORE0";
+    StartVoltages = "0.4";
+    EndVoltageLimits = "1.2";
+    StepSize = 0.01;
+    ForwardingMode = "None";
+    FlowIndex = "";
+    CornerIdentifiers = "";
+    InitialMaskBits = "";
+    PinMap = "";
+    RecoveryOptions = "";
+    LogLevel = "PRIME_DEBUG";
+}
+
+Test VminTC Vmin_SingleVmin_MulticoreNoFwrd_P1
+{
+    LevelsTc = "__main__::bf_lvl_nom_lvl";
+    Patlist = "drv_cdie_maintap_bbs_list";
+    TimingsTc = "__main__::cpu_stf_timing_tclk100_sclk100_cclk100";
+    TestMode = "SingleVmin";
+    VoltageTargets = "HC5_VCCR";
+    StartVoltages = "0.4";
+    EndVoltageLimits = "0.45";
+    StepSize = 0.01;
+    ForwardingMode = "None";
+    FlowIndex = "";
+    CornerIdentifiers = "";
+    InitialMaskBits = "0000";
+	PinMap = "CORE0,CORE1,CORE2,CORE3";
+    RecoveryOptions = "0000,0011,1100";
+    RecoveryMode = "RecoveryLoop";
+	MaxRepetitionCount = 2;
+	LogLevel = "PRIME_DEBUG";
+}
+
+Test VminTC Vmin_Scoreboard_SingleTarget_P0
+{
+    LevelsTc = "__main__::bf_lvl_nom_lvl";
+    Patlist = "drv_cdie_maintap_bbs_list";
+    TimingsTc = "__main__::cpu_stf_timing_tclk100_sclk100_cclk100";
+    TestMode = "Scoreboard";
+    VoltageTargets = "HC1_VCCCORE0";
+    StartVoltages = "0.4";
+    EndVoltageLimits = "1.2";
+    StepSize = 0.01;
+    ForwardingMode = "None";
+    FlowIndex = "";
+    CornerIdentifiers = "";
+    InitialMaskBits = "";
+    PinMap = "";
+    RecoveryOptions = "";
+	ScoreboardBaseNumber = "9901";
+	ScoreboardMaxFails = 2;
+	PatternNameMap = "1,2,3,4,5,6,7";
+    LogLevel = "PRIME_DEBUG";
+}
+
+Test VminTC Vmin_MultiVmin_MultiTarget_NoRecNoFwrd_P1
+{
+    LevelsTc = "__main__::bf_lvl_nom_lvl";
+    Patlist = "drv_cdie_maintap_bbs_list";
+    TimingsTc = "__main__::cpu_stf_timing_tclk100_sclk100_cclk100";
+    TestMode = "MultiVmin";
+    VoltageTargets = "HC1_VCCCORE0,HC2_VCCCORE1,HC3_VCCATOM0,HC4_VCCATOM1";
+    StartVoltages = "0.4,0.4,0.4,0.4";
+    EndVoltageLimits = "1.2,1.2,1.2,1.2";
+    StepSize = 0.01;
+    ForwardingMode = "None";
+    FlowIndex = "";
+    CornerIdentifiers = "";
+    InitialMaskBits = "";
+    PinMap = "CORE0,CORE1,CORE2,CORE3";
+    RecoveryOptions = "";
+	FeatureSwitchSettings = "print_per_target_increments";
+    LogLevel = "PRIME_DEBUG";
+}
+
+Test VminTC Vmin_Functional_RecoveryLoopNoFwrd_P1
+{
+    LevelsTc = "__main__::bf_lvl_nom_lvl";
+    Patlist = "drv_cdie_maintap_bbs_list";
+    TimingsTc = "__main__::cpu_stf_timing_tclk100_sclk100_cclk100";
+    TestMode = "Functional";
+    VoltageTargets = "HC1_VCCCORE0,HC2_VCCCORE1,HC3_VCCATOM0,HC4_VCCATOM1";
+    StartVoltages = "0.4";
+    EndVoltageLimits = "0.6";
+    StepSize = 0.1;
+    ForwardingMode = "None";
+    FlowIndex = "";
+    CornerIdentifiers = "";
+    InitialMaskBits = "";
+    PinMap = "CORE0,CORE1,CORE2,CORE3";
+    RecoveryOptions = "0000,1100,0011";
+	FeatureSwitchSettings = "print_per_target_increments";
+	RecoveryMode = "RecoveryLoop";
+	MaxRepetitionCount = 2;
+	ScoreboardPerPatternFails = 10;
+	FailCaptureCount = 1000;
+    LogLevel = "PRIME_DEBUG";
+}
+
+Test VminTC Vmin_MultiVmin_MultiTarget_RecFwrd_Initial_P1
+{
+    LevelsTc = "__main__::bf_lvl_nom_lvl";
+    Patlist = "drv_cdie_maintap_bbs_list";
+    TimingsTc = "__main__::cpu_stf_timing_tclk100_sclk100_cclk100";
+    TestMode = "MultiVmin";
+    VoltageTargets = "HC1_VCCCORE0,HC2_VCCCORE1,HC3_VCCATOM0,HC4_VCCATOM1";
+    StartVoltages = "0.4,0.4,0.4,0.4";
+    EndVoltageLimits = "1.2,1.2,1.2,1.2";
+    StepSize = 0.01;
+    ForwardingMode = "InputOutput";
+    FlowIndex = "1";
+    CornerIdentifiers = "CR0@F1,CR1@F1,CR2@F1,CR3@F1";
+    InitialMaskBits = "0011";
+    PinMap = "CORE0,CORE1,CORE2,CORE3";
+    RecoveryMode = "Default";
+    RecoveryOptions = "0011";
+    RecoveryTrackingIncoming = "CORE0,CORE1,CORE2,CORE3";
+    RecoveryTrackingOutgoing = "SCORE0,SCORE1,SCORE2,SCORE3";
+	FeatureSwitchSettings = "print_per_target_increments";
+	PreInstance = "CloneTracker(--existing_tracker=CORE0,CORE1,CORE2,CORE3 --new_tracker=SCORE0,SCORE1,SCORE2,SCORE3)";
+    LogLevel = "PRIME_DEBUG";
+}
+
+Test VminTC Vmin_MultiVmin_MultiTarget_RecFwrd_UsingPrevVmin_P1
+{
+    LevelsTc = "__main__::bf_lvl_nom_lvl";
+    Patlist = "drv_cdie_maintap_bbs_list";
+    TimingsTc = "__main__::cpu_stf_timing_tclk100_sclk100_cclk100";
+    TestMode = "MultiVmin";
+    VoltageTargets = "HC1_VCCCORE0,HC2_VCCCORE1,HC3_VCCATOM0,HC4_VCCATOM1";
+    StartVoltages = "0.4,0.4,0.4,0.4";
+    EndVoltageLimits = "1.2,1.2,1.2,1.2";
+    StepSize = 0.01;
+    ForwardingMode = "InputOutput";
+    FlowIndex = "1";
+    CornerIdentifiers = "CR0@F1,CR1@F1,CR2@F1,CR3@F1";
+    InitialMaskBits = "0011";
+    PinMap = "CORE0,CORE1,CORE2,CORE3";
+    RecoveryMode = "Default";
+    RecoveryOptions = "0011";
+    RecoveryTrackingIncoming = "CORE0,CORE1,CORE2,CORE3";
+    RecoveryTrackingOutgoing = "CORE0,CORE1,CORE2,CORE3";
+	FeatureSwitchSettings = "print_per_target_increments";
+    LogLevel = "PRIME_DEBUG";
+}
+
+Test VminTC Vmin_MultiVmin_MultiTarget_RecFwrd_UsingPrevVmin_Downbin_P1
+{
+    LevelsTc = "__main__::bf_lvl_nom_lvl";
+    Patlist = "drv_cdie_maintap_bbs_list";
+    TimingsTc = "__main__::cpu_stf_timing_tclk100_sclk100_cclk100";
+    TestMode = "MultiVmin";
+    VoltageTargets = "HC1_VCCCORE0,HC2_VCCCORE1,HC3_VCCATOM0,HC4_VCCATOM1";
+    StartVoltages = "0.4,0.4,0.4,0.4";
+    EndVoltageLimits = "0.50,0.50,0.50,0.50";
+    StepSize = 0.01;
+    ForwardingMode = "InputOutput";
+    FlowIndex = "1";
+    CornerIdentifiers = "CR0@F1,CR1@F1,CR2@F1,CR3@F1";
+    InitialMaskBits = "0011";
+    PinMap = "CORE0,CORE1,CORE2,CORE3";
+    RecoveryMode = "Default";
+    RecoveryOptions = "0011,1011";
+    RecoveryTrackingIncoming = "CORE0,CORE1,CORE2,CORE3";
+    RecoveryTrackingOutgoing = "CORE0,CORE1,CORE2,CORE3";
+	FeatureSwitchSettings = "print_per_target_increments";
+    LogLevel = "PRIME_DEBUG";
+}
+
+Test VminTC Vmin_SingleVmin_MultiCorner_RecFwrd_P1
+{
+    LevelsTc = "__main__::bf_lvl_nom_lvl";
+    Patlist = "drv_cdie_maintap_bbs_list";
+    TimingsTc = "__main__::cpu_stf_timing_tclk100_sclk100_cclk100";
+    TestMode = "SingleVmin";
+    VoltageTargets = "HC1_VCCCORE0";
+    StartVoltages = "0.4";
+    EndVoltageLimits = "0.60";
+    StepSize = 0.01;
+    ForwardingMode = "InputOutput";
+    FlowIndex = "1";
+    CornerIdentifiers = "CR0@F1,CR1@F1";
+    RecoveryMode = "Default";
+    LogLevel = "PRIME_DEBUG";
+}
+
+
+Test RunCallback ResetDieRecoveryCoreTrackers_P1
+{
+    Callback = "WriteTracker";
+    Parameters = "--tracker CORE0,CORE1,CORE2,CORE3,CORE4,CORE5 --value 000011";
+    LogLevel = "PRIME_DEBUG";
+}
+
+Test RunCallback PrintVminTable_P1
+{
+    Callback = "PrintSharedStorage";
+    Parameters = "--token G.U.D.CURRENT_FAST_VMIN_CR0@F1,G.U.D.CURRENT_FAST_VMIN_CR1@F1";
+    LogLevel = "PRIME_DEBUG";
+}
+
+DUTFlow PVAL_VMIN_FWRDFLOW1
+{
+    DUTFlowItem ResetDieRecoveryCoreTrackers_P1 ResetDieRecoveryCoreTrackers_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo Vmin_MultiVmin_MultiTarget_RecFwrd_Initial_P1;
+        }
+    }
+    DUTFlowItem Vmin_MultiVmin_MultiTarget_RecFwrd_Initial_P1 Vmin_MultiVmin_MultiTarget_RecFwrd_Initial_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo Vmin_MultiVmin_MultiTarget_RecFwrd_UsingPrevVmin_P1;
+        }
+        Result 2
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_MultiVmin_MultiTarget_RecFwrd_UsingPrevVmin_P1;
+        }
+        Result 3
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_MultiVmin_MultiTarget_RecFwrd_UsingPrevVmin_P1;
+        }
+        Result 4
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_MultiVmin_MultiTarget_RecFwrd_UsingPrevVmin_P1;
+        }
+    }
+    DUTFlowItem Vmin_MultiVmin_MultiTarget_RecFwrd_UsingPrevVmin_P1 Vmin_MultiVmin_MultiTarget_RecFwrd_UsingPrevVmin_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo Vmin_MultiVmin_MultiTarget_RecFwrd_UsingPrevVmin_Downbin_P1;
+        }
+        Result 2
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_MultiVmin_MultiTarget_RecFwrd_UsingPrevVmin_Downbin_P1;
+        }
+        Result 3
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_MultiVmin_MultiTarget_RecFwrd_UsingPrevVmin_Downbin_P1;
+        }
+        Result 4
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_MultiVmin_MultiTarget_RecFwrd_UsingPrevVmin_Downbin_P1;
+        }
+    }
+    DUTFlowItem Vmin_MultiVmin_MultiTarget_RecFwrd_UsingPrevVmin_Downbin_P1 Vmin_MultiVmin_MultiTarget_RecFwrd_UsingPrevVmin_Downbin_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo Vmin_SingleVmin_MultiCorner_RecFwrd_P1;
+        }
+        Result 2
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 3
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 4
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+    }
+    DUTFlowItem Vmin_SingleVmin_MultiCorner_RecFwrd_P1 Vmin_SingleVmin_MultiCorner_RecFwrd_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo PrintVminTable_P1;
+        }
+        Result 2
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 3
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 4
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+    }
+    DUTFlowItem PrintVminTable_P1 PrintVminTable_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            Return 1;
+        }
+    }
+}
+
+DUTFlow PVAL_VMIN_MAIN
+{
+    DUTFlowItem Vmin_Func_SingleTarget_NoRecNoFwrd_P1 Vmin_Func_SingleTarget_NoRecNoFwrd_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_Func_VoltageConverter_P1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo Vmin_Func_VoltageConverter_P1;
+        }
+        Result 2
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_Func_VoltageConverter_P1;
+        }
+        Result 3
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_Func_VoltageConverter_P1;
+        }
+        Result 4
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_Func_VoltageConverter_P1;
+        }
+    }
+    DUTFlowItem Vmin_Func_VoltageConverter_P1 Vmin_Func_VoltageConverter_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_Func_VoltageConverter_DLVR_P1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo Vmin_Func_VoltageConverter_DLVR_P1;
+        }
+        Result 2
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_Func_VoltageConverter_DLVR_P1;
+        }
+        Result 3
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_Func_VoltageConverter_DLVR_P1;
+        }
+        Result 4
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_Func_VoltageConverter_DLVR_P1;
+        }
+    }
+    DUTFlowItem Vmin_Func_VoltageConverter_DLVR_P1 Vmin_Func_VoltageConverter_DLVR_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_Func_CornerPatConfigSetPoints_P1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo Vmin_Func_CornerPatConfigSetPoints_P1;
+        }
+        Result 2
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_Func_CornerPatConfigSetPoints_P1;
+        }
+        Result 3
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_Func_CornerPatConfigSetPoints_P1;
+        }
+        Result 4
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_Func_CornerPatConfigSetPoints_P1;
+        }
+    }
+    DUTFlowItem Vmin_Func_CornerPatConfigSetPoints_P1 Vmin_Func_CornerPatConfigSetPoints_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_MultiVmin_ConcurrentPlist_Base_P1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo Vmin_MultiVmin_ConcurrentPlist_Base_P1;
+        }
+        Result 2
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_MultiVmin_ConcurrentPlist_Base_P1;
+        }
+        Result 3
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_MultiVmin_ConcurrentPlist_Base_P1;
+        }
+        Result 4
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_MultiVmin_ConcurrentPlist_Base_P1;
+        }
+    }
+    DUTFlowItem Vmin_MultiVmin_ConcurrentPlist_Base_P1 Vmin_MultiVmin_ConcurrentPlist_Base_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_MultiVmin_ConcurrentPlist_MaskingCore_P1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo Vmin_MultiVmin_ConcurrentPlist_MaskingCore_P1;
+        }
+        Result 2
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_MultiVmin_ConcurrentPlist_MaskingCore_P1;
+        }
+        Result 3
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_MultiVmin_ConcurrentPlist_MaskingCore_P1;
+        }
+        Result 4
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_MultiVmin_ConcurrentPlist_MaskingCore_P1;
+        }
+    }
+    DUTFlowItem Vmin_MultiVmin_ConcurrentPlist_MaskingCore_P1 Vmin_MultiVmin_ConcurrentPlist_MaskingCore_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_MultiVmin_ConcurrentPlist_MaskingCcf_P1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo Vmin_MultiVmin_ConcurrentPlist_MaskingCcf_P1;
+        }
+        Result 2
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_MultiVmin_ConcurrentPlist_MaskingCcf_P1;
+        }
+        Result 3
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_MultiVmin_ConcurrentPlist_MaskingCcf_P1;
+        }
+        Result 4
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_MultiVmin_ConcurrentPlist_MaskingCcf_P1;
+        }
+    }
+    DUTFlowItem Vmin_MultiVmin_ConcurrentPlist_MaskingCcf_P1 Vmin_MultiVmin_ConcurrentPlist_MaskingCcf_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_MultiVmin_ConcurrentPlist_RecoveryFailRetest_P1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo Vmin_MultiVmin_ConcurrentPlist_RecoveryFailRetest_P1;
+        }
+        Result 2
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_MultiVmin_ConcurrentPlist_RecoveryFailRetest_P1;
+        }
+        Result 3
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_MultiVmin_ConcurrentPlist_RecoveryFailRetest_P1;
+        }
+        Result 4
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_MultiVmin_ConcurrentPlist_RecoveryFailRetest_P1;
+        }
+    }
+    DUTFlowItem Vmin_MultiVmin_ConcurrentPlist_RecoveryFailRetest_P1 Vmin_MultiVmin_ConcurrentPlist_RecoveryFailRetest_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_MultiVmin_ConcurrentTraces_NoRecNoFwrd_P1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo Vmin_MultiVmin_ConcurrentTraces_NoRecNoFwrd_P1;
+        }
+        Result 2
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_MultiVmin_ConcurrentTraces_NoRecNoFwrd_P1;
+        }
+        Result 3
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_MultiVmin_ConcurrentTraces_NoRecNoFwrd_P1;
+        }
+        Result 4
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_MultiVmin_ConcurrentTraces_NoRecNoFwrd_P1;
+        }
+    }
+    DUTFlowItem Vmin_MultiVmin_ConcurrentTraces_NoRecNoFwrd_P1 Vmin_MultiVmin_ConcurrentTraces_NoRecNoFwrd_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_Func_MultiTarget_NoRecNoFwrd_P1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo Vmin_Func_MultiTarget_NoRecNoFwrd_P1;
+        }
+        Result 2
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_Func_MultiTarget_NoRecNoFwrd_P1;
+        }
+        Result 3
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_Func_MultiTarget_NoRecNoFwrd_P1;
+        }
+        Result 4
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_Func_MultiTarget_NoRecNoFwrd_P1;
+        }
+    }
+    DUTFlowItem Vmin_Func_MultiTarget_NoRecNoFwrd_P1 Vmin_Func_MultiTarget_NoRecNoFwrd_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_SingleVmin_SingleTarget_NoRecNoFwrd_P1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo Vmin_SingleVmin_SingleTarget_NoRecNoFwrd_P1;
+        }
+        Result 2
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_SingleVmin_SingleTarget_NoRecNoFwrd_P1;
+        }
+        Result 3
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_SingleVmin_SingleTarget_NoRecNoFwrd_P1;
+        }
+        Result 4
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_SingleVmin_SingleTarget_NoRecNoFwrd_P1;
+        }
+    }
+    DUTFlowItem Vmin_SingleVmin_SingleTarget_NoRecNoFwrd_P1 Vmin_SingleVmin_SingleTarget_NoRecNoFwrd_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_SingleVmin_MulticoreNoFwrd_P1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo Vmin_SingleVmin_MulticoreNoFwrd_P1;
+        }
+        Result 2
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_SingleVmin_MulticoreNoFwrd_P1;
+        }
+        Result 3
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_SingleVmin_MulticoreNoFwrd_P1;
+        }
+        Result 4
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_SingleVmin_MulticoreNoFwrd_P1;
+        }
+    }
+    DUTFlowItem Vmin_SingleVmin_MulticoreNoFwrd_P1 Vmin_SingleVmin_MulticoreNoFwrd_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_Scoreboard_SingleTarget_P0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo Vmin_Scoreboard_SingleTarget_P0;
+        }
+        Result 2
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_Scoreboard_SingleTarget_P0;
+        }
+        Result 3
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_Scoreboard_SingleTarget_P0;
+        }
+        Result 4
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_Scoreboard_SingleTarget_P0;
+        }
+    }
+    DUTFlowItem Vmin_Scoreboard_SingleTarget_P0 Vmin_Scoreboard_SingleTarget_P0
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_MultiVmin_MultiTarget_NoRecNoFwrd_P1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo Vmin_MultiVmin_MultiTarget_NoRecNoFwrd_P1;
+        }
+        Result 2
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_MultiVmin_MultiTarget_NoRecNoFwrd_P1;
+        }
+        Result 3
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_MultiVmin_MultiTarget_NoRecNoFwrd_P1;
+        }
+        Result 4
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_MultiVmin_MultiTarget_NoRecNoFwrd_P1;
+        }
+    }
+    DUTFlowItem Vmin_MultiVmin_MultiTarget_NoRecNoFwrd_P1 Vmin_MultiVmin_MultiTarget_NoRecNoFwrd_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_Functional_RecoveryLoopNoFwrd_P1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo Vmin_Functional_RecoveryLoopNoFwrd_P1;
+        }
+        Result 2
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_Functional_RecoveryLoopNoFwrd_P1;
+        }
+        Result 3
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_Functional_RecoveryLoopNoFwrd_P1;
+        }
+        Result 4
+        {
+            Property PassFail = "Fail";
+            GoTo Vmin_Functional_RecoveryLoopNoFwrd_P1;
+        }
+    }
+    DUTFlowItem Vmin_Functional_RecoveryLoopNoFwrd_P1 Vmin_Functional_RecoveryLoopNoFwrd_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo PVAL_VMIN_FWRDFLOW1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo PVAL_VMIN_FWRDFLOW1;
+        }
+        Result 2
+        {
+            Property PassFail = "Fail";
+            GoTo PVAL_VMIN_FWRDFLOW1;
+        }
+        Result 3
+        {
+            Property PassFail = "Fail";
+            GoTo PVAL_VMIN_FWRDFLOW1;
+        }
+        Result 4
+        {
+            Property PassFail = "Fail";
+            GoTo PVAL_VMIN_FWRDFLOW1;
+        }
+    }
+    DUTFlowItem PVAL_VMIN_FWRDFLOW1 PVAL_VMIN_FWRDFLOW1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            Return 1;
+        }
+    }
+}

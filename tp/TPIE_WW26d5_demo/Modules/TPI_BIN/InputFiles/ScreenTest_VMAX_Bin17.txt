@@ -1,0 +1,122 @@
+#START_SCREEN:GetCheckBin
+##Run       : Test             : Data   : Param Type: Param1                    : Operation: Param  : Param2: TmpStore: OnTrue           : OnFalse
+#EXEC        : GetBin           :     -  : FUNCTION  : GETCURRENTBINSET()        :  -       :    -   : -     :    -    : CheckBin         :  3
+#EXEC        : CheckBin         : INT    : CUSTOM    : BIN_TOS_HARD              :  <=      : LITERAL: 6     :    -    :  1               :  2
+#END_SCREEN
+
+
+START_SCREEN:InitializeBin17
+##Run       : Test             : Data   : Param Type: Param1                                     : Operation: Param  : Param2: TmpStore: OnTrue         : OnFalse
+EXEC        : ARRGT            : STRING: GSDS      : U.S.ARR_GT_BIN17                            : SET      : LITERAL: "0"     : -       : SCANGT        : SCANGT
+EXEC        : SCANGT           : STRING: GSDS      : U.S.SCN_GT_BIN17                            : SET      : LITERAL: "0"     : -       : SCANGT_GT     : SCANGT_GT
+EXEC        : SCANGT_GT        : STRING: GSDS      : U.S.SCN_GT_BIN17_GT                         : SET      : LITERAL: "0"     : -       : SCANGT_SA     : SCANGT_SA
+EXEC        : SCANGT_SA        : STRING: GSDS      : U.S.SCN_GT_BIN17_SA                         : SET      : LITERAL: "0"     : -       : SCANGT_RING   : SCANGT_RING
+EXEC        : SCANGT_RING      : STRING: GSDS      : U.S.SCN_GT_BIN17_RING                       : SET      : LITERAL: "0"     : -       : ARRDE         : ARRDE
+EXEC        : ARRDE            : STRING: GSDS      : U.S.ARR_DE_BIN17                            : SET      : LITERAL: "0"     : -       : ARRCCFSBCLK   : ARRCCFSBCLK
+EXEC        : ARRCCFSBCLK      : STRING: GSDS      : U.S.ARR_CCF_SBLCK_BIN17                     : SET      : LITERAL: "0"     : -       : ARRCCFALL     : ARRCCFALL
+EXEC        : ARRCCFALL        : STRING: GSDS      : U.S.ARR_CCF_ALL_BIN17                       : SET      : LITERAL: "0"     : -       : ARRCCF        : ARRCCF
+EXEC        : ARRCCF           : STRING: GSDS      : U.S.ARR_CCF_BIN17                           : SET      : LITERAL: "0"     : -       : SCANCCF_CBO0  : SCANCCF_CBO0
+EXEC        : SCANCCF_CBO0     : STRING: GSDS      : U.S.SCN_CCF_BIN17_CBO0                      : SET      : LITERAL: "0"     : -       : SCANCCF_CBO1  : SCANCCF_CBO1
+EXEC        : SCANCCF_CBO1     : STRING: GSDS      : U.S.SCN_CCF_BIN17_CBO1                      : SET      : LITERAL: "0"     : -       : SCANCCF_CBO2  : SCANCCF_CBO2
+EXEC        : SCANCCF_CBO2     : STRING: GSDS      : U.S.SCN_CCF_BIN17_CBO2                      : SET      : LITERAL: "0"     : -       : SCANCCF_CBO3  : SCANCCF_CBO3
+EXEC        : SCANCCF_CBO3     : STRING: GSDS      : U.S.SCN_CCF_BIN17_CBO3                      : SET      : LITERAL: "0"     : -       : SCANCCF       : SCANCCF
+EXEC        : SCANCCF          : STRING: GSDS      : U.S.SCN_CCF_BIN17                           : SET      : LITERAL: "0"     : -       : FUNCCF        : FUNCCF
+EXEC        : FUNCCF           : STRING: GSDS      : U.S.FUN_CCF_BIN17                           : SET      : LITERAL: "0"     : -       : ARRCORE       : ARRCORE
+EXEC        : ARRCORE          : STRING: GSDS      : U.S.ARR_CORE_BIN17                          : SET      : LITERAL: "0"     : -       : FUNCORE       : FUNCORE
+EXEC        : FUNCORE          : STRING: GSDS      : U.S.FUN_CORE_BIN17                          : SET      : LITERAL: "0"     : -       : SCANCORE_C0   : SCANCORE_C0
+EXEC        : SCANCORE_C0      : STRING: GSDS      : U.S.SCN_CORE_BIN17_CORE0                    : SET      : LITERAL: "0"     : -       : SCANCORE_C1   : SCANCORE_C1
+EXEC        : SCANCORE_C1      : STRING: GSDS      : U.S.SCN_CORE_BIN17_CORE1                    : SET      : LITERAL: "0"     : -       : SCANCORE_C2   : SCANCORE_C2
+EXEC        : SCANCORE_C2      : STRING: GSDS      : U.S.SCN_CORE_BIN17_CORE2                    : SET      : LITERAL: "0"     : -       : SCANCORE_C3   : SCANCORE_C3
+EXEC        : SCANCORE_C3      : STRING: GSDS      : U.S.SCN_CORE_BIN17_CORE3                    : SET      : LITERAL: "0"     : -       : SCANCORE      : SCANCORE
+EXEC        : SCANCORE         : STRING: GSDS      : U.S.SCN_CORE_BIN17                          : SET      : LITERAL: "0"     : -       : 1             : 1
+
+END_SCREEN
+
+
+START_SCREEN:Print_VMAX_Tokens
+##Run      : Test                 : Data   : Param Type : Param1                     : Operation : Param   : Param2 : TmpStore         : OnTrue             : OnFalse
+EXEC       : ConvertSCNGT_GT      : DOUBLE : GSDS       : U.D.SCN_GT_BIN17_GT_D       : SET    : EXPRESSION : "~{#G.U.S.SCN_GT_BIN17_GT}"	  :   -   : ConvertSCNGT_SA  	: ConvertSCNGT_SA
+EXEC       : ConvertSCNGT_SA      : DOUBLE : GSDS       : U.D.SCN_GT_BIN17_SA_D       : SET    : EXPRESSION : "~{#G.U.S.SCN_GT_BIN17_SA}"	  :   -   : ConvertSCNGT_RING	: ConvertSCNGT_RING
+EXEC       : ConvertSCNGT_RING    : DOUBLE : GSDS       : U.D.SCN_GT_BIN17_RING_D     : SET    : EXPRESSION : "~{#G.U.S.SCN_GT_BIN17_RING}" 	  :   -   : ConvertSCNGT   	: ConvertSCNGT
+EXEC       : ConvertSCNGT         : DOUBLE : GSDS       : U.D.SCN_GT_BIN17_D          : SET    : EXPRESSION : "~{#G.U.S.SCN_GT_BIN17}"   	  :   -   : ConvertARRGT    	: ConvertARRGT
+EXEC       : ConvertARRGT         : DOUBLE : GSDS       : U.D.ARR_GT_BIN17_D          : SET    : EXPRESSION : "~{#G.U.S.ARR_GT_BIN17}"  	  :   -   : ConvertARRDE     	: ConvertARRDE
+EXEC       : ConvertARRDE         : DOUBLE : GSDS       : U.D.ARR_DE_BIN17_D          : SET    : EXPRESSION : "~{#G.U.S.ARR_DE_BIN17}"   	  :   -   : ConvertARRCCFSBCLK  : ConvertARRCCFSBCLK
+EXEC       : ConvertARRCCFSBCLK   : DOUBLE : GSDS       : U.D.ARR_CCF_SBLCK_BIN17_D   : SET    : EXPRESSION : "~{#G.U.S.ARR_CCF_SBLCK_BIN17}"     :   -   : ConvertARRCCFALL    : ConvertARRCCFALL
+EXEC       : ConvertARRCCFALL     : DOUBLE : GSDS       : U.D.ARR_CCF_ALL_BIN17_D     : SET    : EXPRESSION : "~{#G.U.S.ARR_CCF_ALL_BIN17}"       :   -   : ConvertARRCCF 	: ConvertARRCCF
+EXEC       : ConvertARRCCF        : DOUBLE : GSDS       : U.D.ARR_CCF_BIN17_D         : SET    : EXPRESSION : "~{#G.U.S.ARR_CCF_BIN17}"           :   -   : ConvertSCANCCF_CBO0 : ConvertSCANCCF_CBO0
+EXEC       : ConvertSCANCCF_CBO0  : DOUBLE : GSDS       : U.D.SCN_CCF_BIN17_CBO0_D    : SET    : EXPRESSION : "~{#G.U.S.SCN_CCF_BIN17_CBO0}"      :   -   : ConvertSCANCCF_CBO1 : ConvertSCANCCF_CBO1
+EXEC       : ConvertSCANCCF_CBO1  : DOUBLE : GSDS       : U.D.SCN_CCF_BIN17_CBO1_D    : SET    : EXPRESSION : "~{#G.U.S.SCN_CCF_BIN17_CBO1}"      :   -   : ConvertSCANCCF_CBO2 : ConvertSCANCCF_CBO2
+EXEC       : ConvertSCANCCF_CBO2  : DOUBLE : GSDS       : U.D.SCN_CCF_BIN17_CBO2_D    : SET    : EXPRESSION : "~{#G.U.S.SCN_CCF_BIN17_CBO2}"      :   -   : ConvertSCANCCF_CBO3 : ConvertSCANCCF_CBO3
+EXEC       : ConvertSCANCCF_CBO3  : DOUBLE : GSDS       : U.D.SCN_CCF_BIN17_CBO3_D    : SET    : EXPRESSION : "~{#G.U.S.SCN_CCF_BIN17_CBO3}"      :   -   : ConvertSCANCCF      : ConvertSCANCCF
+EXEC       : ConvertSCANCCF       : DOUBLE : GSDS       : U.D.SCN_CCF_BIN17_D         : SET    : EXPRESSION : "~{#G.U.S.SCN_CCF_BIN17}"    	  :   -   : ConvertFUNCCF       : ConvertFUNCCF
+EXEC       : ConvertFUNCCF        : DOUBLE : GSDS       : U.D.FUN_CCF_BIN17_D         : SET    : EXPRESSION : "~{#G.U.S.FUN_CCF_BIN17}"    	  :   -   : ConvertARRCORE      : ConvertARRCORE
+EXEC       : ConvertARRCORE       : DOUBLE : GSDS       : U.D.ARR_CORE_BIN17_D        : SET    : EXPRESSION : "~{#G.U.S.ARR_CORE_BIN17}"   	  :   -   : ConvertFUNCORE      : ConvertFUNCORE
+EXEC       : ConvertFUNCORE       : DOUBLE : GSDS       : U.D.FUN_CORE_BIN17_D        : SET    : EXPRESSION : "~{#G.U.S.FUN_CORE_BIN17}"    	  :   -   : ConvertSCANCORE_C0  : ConvertSCANCORE_C0
+EXEC       : ConvertSCANCORE_C0   : DOUBLE : GSDS       : U.D.SCN_CORE_BIN17_CORE0_D  : SET    : EXPRESSION : "~{#G.U.S.SCN_CORE_BIN17_CORE0}"    :   -   : ConvertSCANCORE_C1  : ConvertSCANCORE_C1
+EXEC       : ConvertSCANCORE_C1   : DOUBLE : GSDS       : U.D.SCN_CORE_BIN17_CORE1_D  : SET    : EXPRESSION : "~{#G.U.S.SCN_CORE_BIN17_CORE1}"    :   -   : ConvertSCANCORE_C2  : ConvertSCANCORE_C2
+EXEC       : ConvertSCANCORE_C2   : DOUBLE : GSDS       : U.D.SCN_CORE_BIN17_CORE2_D  : SET    : EXPRESSION : "~{#G.U.S.SCN_CORE_BIN17_CORE2}"    :   -   : ConvertSCANCORE_C3  : ConvertSCANCORE_C3
+EXEC       : ConvertSCANCORE_C3   : DOUBLE : GSDS       : U.D.SCN_CORE_BIN17_CORE3_D  : SET    : EXPRESSION : "~{#G.U.S.SCN_CORE_BIN17_CORE3}"    :   -   : ConvertSCANCORE     : ConvertSCANCORE
+EXEC       : ConvertSCANCORE      : DOUBLE : GSDS       : U.D.SCN_CORE_BIN17_D        : SET    : EXPRESSION : "~{#G.U.S.SCN_CORE_BIN17}"    	  :   -   : PrintSCNGT_GT 	: PrintSCNGT_GT
+
+
+
+EXEC       : PrintSCNGT_GT        : -      : FUNCTION  : EXECUSERFUNC(CPD_DEBUG!PrintToItuff, -tname_suf 'SCN_GT_GT' -body_type mrslt -body_data G.U.D.SCN_GT_BIN17_GT_D)         : -        : -      : -     : -       : PrintSCNGT_SA      : PrintSCNGT_SA
+EXEC       : PrintSCNGT_SA        : -      : FUNCTION  : EXECUSERFUNC(CPD_DEBUG!PrintToItuff, -tname_suf 'SCN_GT_SA' -body_type mrslt -body_data G.U.D.SCN_GT_BIN17_SA_D)         : -        : -      : -     : -       : PrintSCNGT_RING    : PrintSCNGT_RING
+EXEC       : PrintSCNGT_RING      : -      : FUNCTION  : EXECUSERFUNC(CPD_DEBUG!PrintToItuff, -tname_suf 'SCN_GT_RING' -body_type mrslt -body_data G.U.D.SCN_GT_BIN17_RING_D)     : -        : -      : -     : -       : PrintSCNGT         : PrintSCNGT
+EXEC       : PrintSCNGT           : -      : FUNCTION  : EXECUSERFUNC(CPD_DEBUG!PrintToItuff, -tname_suf 'SCN_GT' -body_type mrslt -body_data G.U.D.SCN_GT_BIN17_D)               : -        : -      : -     : -       : PrintARRGT         : PrintARRGT
+EXEC       : PrintARRGT           : -      : FUNCTION  : EXECUSERFUNC(CPD_DEBUG!PrintToItuff, -tname_suf 'ARR_GT' -body_type mrslt -body_data G.U.D.ARR_GT_BIN17_D)               : -        : -      : -     : -       : PrintARRDE         : PrintARRDE       
+EXEC       : PrintARRDE           : -      : FUNCTION  : EXECUSERFUNC(CPD_DEBUG!PrintToItuff, -tname_suf 'ARRDE' -body_type mrslt -body_data G.U.D.ARR_DE_BIN17_D)                : -        : -      : -     : -       : PrintARRCCFSBCLK   : PrintARRCCFSBCLK      
+EXEC       : PrintARRCCFSBCLK     : -      : FUNCTION  : EXECUSERFUNC(CPD_DEBUG!PrintToItuff, -tname_suf 'ARRCCFSBCLK' -body_type mrslt -body_data G.U.D.ARR_CCF_SBLCK_BIN17_D)   : -        : -      : -     : -       : PrintARRCCFALL     : PrintARRCCFALL
+EXEC       : PrintARRCCFALL       : -      : FUNCTION  : EXECUSERFUNC(CPD_DEBUG!PrintToItuff, -tname_suf 'ARRCCFALL' -body_type mrslt -body_data G.U.D.ARR_CCF_ALL_BIN17_D)       : -        : -      : -     : -       : PrintARRCCF  	     : PrintARRCCF
+EXEC       : PrintARRCCF          : -      : FUNCTION  : EXECUSERFUNC(CPD_DEBUG!PrintToItuff, -tname_suf 'ARRCCF' -body_type mrslt -body_data G.U.D.ARR_CCF_BIN17_D)       	  : -        : -      : -     : -       : PrintSCANCCF_CBO0  : PrintSCANCCF_CBO0
+EXEC       : PrintSCANCCF_CBO0    : -      : FUNCTION  : EXECUSERFUNC(CPD_DEBUG!PrintToItuff, -tname_suf 'SCANCCF_CBO0' -body_type mrslt -body_data G.U.D.SCN_CCF_BIN17_CBO0_D)   : -        : -      : -     : -       : PrintSCANCCF_CBO1  : PrintSCANCCF_CBO1
+EXEC       : PrintSCANCCF_CBO1    : -      : FUNCTION  : EXECUSERFUNC(CPD_DEBUG!PrintToItuff, -tname_suf 'SCANCCF_CBO1' -body_type mrslt -body_data G.U.D.SCN_CCF_BIN17_CBO1_D)   : -        : -      : -     : -       : PrintSCANCCF_CBO2  : PrintSCANCCF_CBO2
+EXEC       : PrintSCANCCF_CBO2    : -      : FUNCTION  : EXECUSERFUNC(CPD_DEBUG!PrintToItuff, -tname_suf 'SCANCCF_CBO2' -body_type mrslt -body_data G.U.D.SCN_CCF_BIN17_CBO2_D)   : -        : -      : -     : -       : PrintSCANCCF_CBO3  : PrintSCANCCF_CBO3
+EXEC       : PrintSCANCCF_CBO3    : -      : FUNCTION  : EXECUSERFUNC(CPD_DEBUG!PrintToItuff, -tname_suf 'SCANCCF_CBO3' -body_type mrslt -body_data G.U.D.SCN_CCF_BIN17_CBO3_D)   : -        : -      : -     : -       : PrintSCANCCF       : PrintSCANCCF     
+EXEC       : PrintSCANCCF         : -      : FUNCTION  : EXECUSERFUNC(CPD_DEBUG!PrintToItuff, -tname_suf 'SCANCCF' -body_type mrslt -body_data G.U.D.SCN_CCF_BIN17_D)             : -        : -      : -     : -       : PrintFUNCCF        : PrintFUNCCF     
+EXEC       : PrintFUNCCF          : -      : FUNCTION  : EXECUSERFUNC(CPD_DEBUG!PrintToItuff, -tname_suf 'FUNCCF' -body_type mrslt -body_data G.U.D.FUN_CCF_BIN17_D)              : -        : -      : -     : -       : PrintARRCORE       : PrintARRCORE     
+EXEC       : PrintARRCORE         : -      : FUNCTION  : EXECUSERFUNC(CPD_DEBUG!PrintToItuff, -tname_suf 'ARRCORE' -body_type mrslt -body_data G.U.D.ARR_CORE_BIN17_D)            : -        : -      : -     : -       : PrintFUNCORE       : PrintFUNCORE     
+EXEC       : PrintFUNCORE         : -      : FUNCTION  : EXECUSERFUNC(CPD_DEBUG!PrintToItuff, -tname_suf 'FUNCORE' -body_type mrslt -body_data G.U.D.FUN_CORE_BIN17_D)            : -        : -      : -     : -       : PrintSCANCORE_C0   : PrintSCANCORE_C0 
+EXEC       : PrintSCANCORE_C0     : -      : FUNCTION  : EXECUSERFUNC(CPD_DEBUG!PrintToItuff, -tname_suf 'SCANCORE_C0 ' -body_type mrslt -body_data G.U.D.SCN_CORE_BIN17_CORE0_D) : -        : -      : -     : -       : PrintSCANCORE_C1   : PrintSCANCORE_C1 
+EXEC       : PrintSCANCORE_C1     : -      : FUNCTION  : EXECUSERFUNC(CPD_DEBUG!PrintToItuff, -tname_suf 'SCANCORE_C1 ' -body_type mrslt -body_data G.U.D.SCN_CORE_BIN17_CORE1_D) : -        : -      : -     : -       : PrintSCANCORE_C2   : PrintSCANCORE_C2 
+EXEC       : PrintSCANCORE_C2     : -      : FUNCTION  : EXECUSERFUNC(CPD_DEBUG!PrintToItuff, -tname_suf 'SCANCORE_C2 ' -body_type mrslt -body_data G.U.D.SCN_CORE_BIN17_CORE2_D) : -        : -      : -     : -       : PrintSCANCORE_C3   : PrintSCANCORE_C3 
+EXEC       : PrintSCANCORE_C3     : -      : FUNCTION  : EXECUSERFUNC(CPD_DEBUG!PrintToItuff, -tname_suf 'SCANCORE_C3 ' -body_type mrslt -body_data G.U.D.SCN_CORE_BIN17_CORE3_D) : -        : -      : -     : -       : PrintSCANCORE      : PrintSCANCORE    
+EXEC       : PrintSCANCORE        : -      : FUNCTION  : EXECUSERFUNC(CPD_DEBUG!PrintToItuff, -tname_suf 'SCANCORE' -body_type mrslt -body_data G.U.D.SCN_CORE_BIN17_D)           : -        : -      : -     : -       : 1                  : 1
+
+
+END_SCREEN
+
+
+START_SCREEN:Bin17Check
+##Run      : Test              : Data  : Param Type: Param1                    : Operation: Param   : Param2   : TmpStore : OnTrue            : OnFalse
+EXEC       : ARRDEBin17        : STRING: GSDS      : U.S.ARR_DE_BIN17          : ==       : LITERAL : "0"      : -        : ARRGTBin17        : PrintARRDE_Fail     
+EXEC       : ARRGTBin17        : STRING: GSDS      : U.S.ARR_GT_BIN17          : ==       : LITERAL : "0"      : -        : ARRCOREBin17      : PrintARRGT_Fail     
+EXEC       : ARRCOREBin17      : STRING: GSDS      : U.S.ARR_CORE_BIN17        : ==       : LITERAL : "0"      : -        : ARRCCFBin17       : PrintARRCORE_Fail     
+EXEC       : ARRCCFBin17       : STRING: GSDS      : U.S.ARR_CCF_BIN17         : ==       : LITERAL : "0"      : -        : SCANGTBin17       : PrintARRCCF_Fail     
+EXEC       : SCANGTBin17       : STRING: GSDS      : U.S.SCN_GT_BIN17          : ==       : LITERAL : "0"      : -        : SCANCOREBin17     : PrintSCANGT_Fail   
+EXEC       : SCANCOREBin17     : STRING: GSDS      : U.S.SCN_CORE_BIN17        : ==       : LITERAL : "0"      : -        : SCANCCFBin17      : PrintSCANCORE_Fail   
+EXEC       : SCANCCFBin17      : STRING: GSDS      : U.S.SCN_CCF_BIN17         : ==       : LITERAL : "0"      : -        : FUNCOREBin17      : PrintSCANCCF_Fail   
+EXEC       : FUNCOREBin17      : STRING: GSDS      : U.S.FUN_CORE_BIN17        : ==       : LITERAL : "0"      : -        : FUNCCFBin17       : PrintFUNCORE_Fail
+EXEC       : FUNCCFBin17       : STRING: GSDS      : U.S.FUN_CCF_BIN17         : ==       : LITERAL : "0"      : -        : 1                 : PrintFUNCCF_Fail   
+
+
+
+EXEC       : PrintARRDE_Fail        : -      : FUNCTION  : EXECUSERFUNC(CPD_DEBUG!PrintToItuff, -body_type strgval -body_data 'ARR_DE')             : -        : -      : -     : -       : 2    : 2
+EXEC       : PrintARRGT_Fail        : -      : FUNCTION  : EXECUSERFUNC(CPD_DEBUG!PrintToItuff, -body_type strgval -body_data 'ARR_GT')             : -        : -      : -     : -       : 2    : 2
+EXEC       : PrintARRCORE_Fail      : -      : FUNCTION  : EXECUSERFUNC(CPD_DEBUG!PrintToItuff, -body_type strgval -body_data 'ARR_CORE')           : -        : -      : -     : -       : 3    : 3
+EXEC       : PrintARRCCF_Fail       : -      : FUNCTION  : EXECUSERFUNC(CPD_DEBUG!PrintToItuff, -body_type strgval -body_data 'ARR_CCF')            : -        : -      : -     : -       : 3    : 3
+EXEC       : PrintSCANGT_Fail       : -      : FUNCTION  : EXECUSERFUNC(CPD_DEBUG!PrintToItuff, -body_type strgval -body_data 'SCN_GT')             : -        : -      : -     : -       : 4    : 4
+EXEC       : PrintSCANCORE_Fail     : -      : FUNCTION  : EXECUSERFUNC(CPD_DEBUG!PrintToItuff, -body_type strgval -body_data 'SCN_CORE')           : -        : -      : -     : -       : 5    : 5
+EXEC       : PrintSCANCCF_Fail      : -      : FUNCTION  : EXECUSERFUNC(CPD_DEBUG!PrintToItuff, -body_type strgval -body_data 'SCN_CCF')            : -        : -      : -     : -       : 5    : 5
+EXEC       : PrintFUNCORE_Fail      : -      : FUNCTION  : EXECUSERFUNC(CPD_DEBUG!PrintToItuff, -body_type strgval -body_data 'FUN_CORE')           : -        : -      : -     : -       : 6    : 6
+EXEC       : PrintFUNCCF_Fail       : -      : FUNCTION  : EXECUSERFUNC(CPD_DEBUG!PrintToItuff, -body_type strgval -body_data 'FUN_CCF')            : -        : -      : -     : -       : 7    : 7
+END_SCREEN
+
+
+#port 2: Bin1765 - ARR DE, ARR GT
+#port 3: Bin1720 - ARR CORE, ARR CCF
+#port 4: Bin1782 - SCN GT
+#port 5: Bin1742 - SCN CORE, SCN CCF
+#port 6: Bin1744 - FUN CORE
+#port 7: Bin1745 - FUN CCF
+

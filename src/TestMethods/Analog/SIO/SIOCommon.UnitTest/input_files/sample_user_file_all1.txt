@@ -1,0 +1,91 @@
+# Sample UserFile with all possible Tokens.
+
+#====================================================================================================
+GLOBAL_SETUP      PATMODIFY_TEST  	SOME_MODULE::GLOBAL_PATMOD_TEST  
+GLOBAL_SETUP      PYTHON_TEST		SOME_MODULE::GLOBAL_PYTHON_TEST  
+#====================================================================================================
+#====================================================================================================
+START_COMPARE_BLOCK CmpBlockName      
+PORTCOMPARE PortToCompare PortValue
+LANECOMPARE LaneToCompare LaneValue
+PINDEF SomePin SomeValue
+TESTDEF SomeTest SomeTestValue
+MASKPIN PinsToMask MaskValue
+NAME SomeName
+END_COMPARE_BLOCK
+#====================================================================================================
+
+#=================================== Test using GLOBAL options =================================================================
+GLOBAL_OPTIONS_SETUP				DLOG_NAME			SOME_MODULE::GLOBAL_OPTIONS_TEST
+GLOBAL_OPTIONS_SETUP				MODIFY_TOKEN		DEFAULT #	 Test end-of-line comments
+GLOBAL_OPTIONS_SETUP				MODIFY_VALUE		DEFAULT
+
+
+
+#=================================== Test Only using local options =================================================================
+LOCAL_OPTIONS_SETUP					DLOG_NAME			    SOME_MODULE::LOCAL_OPTIONS_TEST
+LOCAL_OPTIONS_SETUP					PATMODIFY_TEST			SOME_MODULE::LOCAL_PATMOD_TEST
+LOCAL_OPTIONS_SETUP					MODIFY_TOKEN		    TXEQPRECUR!TXEQPOSTCUR!TXEQCUR
+LOCAL_OPTIONS_SETUP					MODIFY_VALUE			MODE!MODE!MODE
+LOCAL_OPTIONS_SETUP			      	EXECUTE_TEST           	SIO_PCIE_LPBK1::REUTAFELB_X_FAST_E_END_X_X_VNOM_16000_TXEQ
+LOCAL_OPTIONS_SETUP 				NUMOFTESTRUN	      	5
+LOCAL_OPTIONS_SETUP 				TESTTYPE	      		CAPTURE
+LOCAL_OPTIONS_SETUP 				SEQ_ID	      			class_edc_g3
+LOCAL_OPTIONS_SETUP           		REGDEF			    	CLIENT
+LOCAL_OPTIONS_SETUP          		SEQ_FILE	      	    Modules\SIO_PCIE_LPBK1\InputFiles\sequence_merged_CMEM_pcie_8b_com_bcast_prbs7_extlb_Gen2__class.csv
+LOCAL_OPTIONS_SETUP          		FORMAT_FILE	      	    Modules\SIO_PCIE_LPBK1\InputFiles\format_merged_CMEM_pcie_8b_com_bcast_prbs7_extlb_Gen2__class.csv
+
+LOCAL_OPTIONS_SETUP					STEPSTARTVALUE			SomeStartValue
+LOCAL_OPTIONS_SETUP					STEPSTARTINTERVAL		SomeStartInterval
+LOCAL_OPTIONS_SETUP					NUMOFSTEP				3
+LOCAL_OPTIONS_SETUP					PEAKSTARTVALUE			SomePeakStartValue
+LOCAL_OPTIONS_SETUP					PEAKINCREMENTINTERVAL	SomePeakInterval
+LOCAL_OPTIONS_SETUP					NUMOFPEAK				14
+LOCAL_OPTIONS_SETUP					DATARATE				SomeDataRate
+LOCAL_OPTIONS_SETUP					TXEQSUM					SomeTxEqSum
+LOCAL_OPTIONS_SETUP					TXEQSTART				SomeTxEqStart
+LOCAL_OPTIONS_SETUP					TXEQSTOP				SomeTxEqStop
+LOCAL_OPTIONS_SETUP					TXEQRESOLUTION			SomeTxEqRes
+LOCAL_OPTIONS_SETUP					TXEQPATMODIFYTEST		SomeTxEqPatMod
+LOCAL_OPTIONS_SETUP					PATMODRESET				SomePatModReset
+LOCAL_OPTIONS_SETUP					TESTPIN					SomeTestPin
+LOCAL_OPTIONS_SETUP					FORCEVALUE				SomeForceValue
+LOCAL_OPTIONS_SETUP					IPO_USERVAR				SomeUserVar
+LOCAL_OPTIONS_SETUP					LOGTYPE					SomeLogType
+LOCAL_OPTIONS_SETUP					AM_GSDS					SomeAmGsds
+LOCAL_OPTIONS_SETUP					AM_FUNC					SomeAmFunc
+
+LOCAL_OPTIONS_SETUP					STEPKEY					SomeKeyForStep
+LOCAL_OPTIONS_SETUP					PEAKKEY					SomeKeyForPeak
+
+# Shmoo Key/Value testing
+LOCAL_OPTIONS_SETUP      	XKEY                   TXEQ_PRESET_G4
+LOCAL_OPTIONS_SETUP			XVALUE				   00!01!02!03!04!05!06!07!08!09!10
+LOCAL_OPTIONS_SETUP      	RKEY                   KeyValueR:SomeType
+LOCAL_OPTIONS_SETUP			RVALUE				   00
+LOCAL_OPTIONS_SETUP      	SKEY                   KeyValueS
+LOCAL_OPTIONS_SETUP			SVALUE				   00!01
+LOCAL_OPTIONS_SETUP      	TKEY                   KeyValueT
+LOCAL_OPTIONS_SETUP			TVALUE				   00!01!02
+LOCAL_OPTIONS_SETUP      	UKEY                   KeyValueU
+LOCAL_OPTIONS_SETUP			UVALUE				   00!01!02!03
+LOCAL_OPTIONS_SETUP      	VKEY                   KeyValueV
+LOCAL_OPTIONS_SETUP			VVALUE				   00!01!02!03!04
+LOCAL_OPTIONS_SETUP      	WKEY                   KeyValueW
+LOCAL_OPTIONS_SETUP			WVALUE				   00!01!02!03!04!05
+LOCAL_OPTIONS_SETUP      	ZKEY                   KeyValueZ
+LOCAL_OPTIONS_SETUP			ZVALUE				   00!01!02!03!04!05!06
+LOCAL_OPTIONS_SETUP      	YKEY                   KeyValueY
+LOCAL_OPTIONS_SETUP			YVALUE				   00!01!02!03!04!05!06!07
+
+# Shmoo X/Y Param testing
+LOCAL_OPTIONS_SETUP			SHMOO_XPARAM_NAME			XparamName
+LOCAL_OPTIONS_SETUP			SHMOO_XPARAM_START_VALUE    4
+LOCAL_OPTIONS_SETUP			SHMOO_XPARAM_RESOLUTION     0.2
+LOCAL_OPTIONS_SETUP			SHMOO_XPARAM_STEPS          20
+LOCAL_OPTIONS_SETUP			SHMOO_YPARAM_NAME			YparamName:SomeType
+LOCAL_OPTIONS_SETUP			SHMOO_YPARAM_START_VALUE    0
+LOCAL_OPTIONS_SETUP			SHMOO_YPARAM_RESOLUTION     1
+LOCAL_OPTIONS_SETUP			SHMOO_YPARAM_STEPS          37
+
+

@@ -1,0 +1,417 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>DDG Vmin Forwarding</title>
+</head>
+<body>
+
+    <h1 id="ddg-vmin-forwarding">DDG Vmin Forwarding</h1>
+<h3 id="rev-0">Rev 0</h3>
+<h2 id="section"></h2>
+<h2 id="contents">Contents</h2>
+<ol>
+<li><a href="#configuration">Configuration</a><br />
+1.1 <a href="#testprogram-overview">TestProgram Overview</a><br />
+1.2 <a href="#testprogram-instance-details">TestProgram Instance details</a></li>
+<li><a href="#usages">Usages</a><br />
+3.1 <a href="#vmin-template">Vmin Template</a><br />
+3.2 <a href="#callbacks-evergreen-or-prime-templates">Callbacks (Evergreen or Prime Templates)</a><br />
+3.3 <a href="#prime-usercode">Prime UserCode</a></li>
+<li><a href="#file-formats">File Formats</a></li>
+</ol>
+<hr />
+<h2 id="configuration">Configuration</h2>
+<h3 id="testprogram-overview">TestProgram Overview</h3>
+<p><img src="images/vminforwarding_tpflow1.png" alt="TestProgram Flow" /></p>
+<hr />
+<h3 id="testprogram-instance-details">TestProgram Instance details</h3>
+<ul>
+<li><p>INIT Flow</p>
+<ul>
+<li>VminForwardingBase TestClass
+<ul>
+<li>Builds all internal structures and configurations</li>
+<li>Must be run once in INIT, before the PrimeInitTestMethod
+instance</li>
+<li>Required Parameters
+<ul>
+<li>Mode = Configure</li>
+<li><del>ConfigFile = <em>vminconfig.json</em></del>
+<ul>
+<li>As of prime 5.02, the vmin forwarding configuration file is an ALEPH file, its no longer a parameter. Instead it should be included in the .env file under the ALEPH_FILES variable. The file name must contain &quot;VminForwardingConfiguration&quot;.</li>
+<li>Prime Vmin Forwarding configuration file which defines
+all Voltage domains and corners.</li>
+<li>See Prime Wiki for more details <a href="https://dev.azure.com/mit-us/PRIME/_wiki/wikis/PRIME.wiki/9978/VminForwarding-Service">Prime VminForwarding Service</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Optional Parameters for DownsStream Location support (defaults in <strong>bold</strong>)
+<ul>
+<li>UseDffAsSource = True / <strong>False</strong>
+<ul>
+<li>Maps to Prime OperationModeFlag.UseLimitCheckAsSource</li>
+<li>From Prime Wiki - _Usage of check/limit values as voltages sources at GetSourceVoltages method.</li>
+<li>This will be set to True for Downstream Sockets where you want to use DFF'd VminData from PBIC (or any other location).</li>
+</ul>
+</li>
+<li>VminSinglePointMode = True / <strong>False</strong>
+<ul>
+<li>When True, forces VminTC to only run single point tests. Any Vmin Search will only execute the 1st voltage point and pass/fail based on that one execution.</li>
+</ul>
+</li>
+<li>SearchGuardbandEnable = True / <strong>False</strong>
+<ul>
+<li>When True, enables VminTC SearchGuardband parameter which defines a pass/fail limit separate from the EndSearchVoltage parameter. See VminTC for more details.</li>
+</ul>
+</li>
+<li>UseLimitCheck = True / <strong>False</strong>
+<ul>
+<li>Maps to Prime OperationModeFlag.UseLimitCheck</li>
+<li>From Prime Wiki - <em>Usage of limit/check values to check if the input voltage is greater than the limit voltage at StoreVoltages method. If the comparison is true, the store operation for all the corners of the handler is not executed.</em></li>
+</ul>
+</li>
+<li>UseVoltagesSources = <strong>True</strong> / False
+<ul>
+<li>Maps to Prime OperationModeFlag.UseVoltagesSources</li>
+<li>From Prime Wiki - <em>Usage of the corner's voltage values as sources at GetSourceVoltages method.</em></li>
+<li>This should be False if UseDffAsSource is True.</li>
+</ul>
+</li>
+<li>StoreVoltages = <strong>True</strong> / False
+<ul>
+<li>Maps to Prime OperationModeFlag.StoreVoltages</li>
+<li>From Prime Wiki - <em>If the input voltages should be stored at StoreVoltages method.</em></li>
+<li>Probably should be False for downstream locations where you don't want to update the forwarded voltages.</li>
+</ul>
+</li>
+<li>DffMappingFile = <strong>File</strong> (required if UseDffAsSource is True)
+<ul>
+<li>File containing the VminCorner to DFF mapping information. See <a href="#dffmapping">DffMappingFile</a></li>
+</ul>
+</li>
+<li>DffMappingSet = <strong>string</strong> (required if UseDffAsSource is True)
+<ul>
+<li>Mapping set to use for VminCorner to DFF mapping. See <a href="#dffmapping">DffMappingFile</a></li>
+</ul>
+</li>
+<li>DffMappingOptype = <strong>string</strong> (rquired if UseDffAsSource is True)
+<ul>
+<li>DFF location (OpType) to use when loading dff data.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><del>VminForwardingCallbacks</del> CallbacksManager TestClass
+<ul>
+<li>Registers the prime callback functions so they are available
+to Evergreen or Prime test instances.</li>
+<li>The VminForwardingCallbacks template was replaced with the CallbacksManager template which will register all callbacks. It will part of the the base testprogram by default.</li>
+<li>No required parameters.</li>
+<li>See
+<a href="https://dev.azure.com/mit-us/PRIME/_wiki/wikis/PRIME.wiki/406/Calling-Prime-C-Sharp-Code-from-EVG-UF?anchor=%5B2%5D-call-your-new-callback-from-an-evg-uf">PrimeWiki</a>
+for more information on Prime callbacks and how to call
+them.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Begin Flow (or Start? just needs to be after DFF is initialized)</p>
+<ul>
+<li>LoadVminFromDFF Callback function (OPTIONAL)
+<ul>
+<li>Writes SharedStorage with DFF data using the tokens configured in the VminForwardingBase instance. If UseDffAsSource was False this will do nothing.</li>
+<li>Example
+<pre><code>Test iCUserFuncTest ReadVminDFF  
+{  
+    function_name = &quot;CPD_DEBUG!ExecPrimeCsCallback&quot;;  
+    function_parameter = &quot;LoadVminFromDFF()&quot;;  
+}  
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Post-Search Flow</p>
+<ul>
+<li>VminSearchStore Callback function (OPTIONAL)
+<ul>
+<li>This is equivalent to the Evergreen function
+OASIS_GEN_FAST_tt!STCSearchStore</li>
+<li>Creates a copy of the current VminForwarding Data tables
+which can be used for interpolation later.</li>
+<li>Optional argument &quot;--domains <em>domainlist</em>&quot;
+<ul>
+<li>where <em>domainlist</em> is a comma separate list of domain names to save.</li>
+<li>by default all domains are saved</li>
+</ul>
+</li>
+<li>Example – All Domains
+<pre><code>Test iCUserFuncTest SaveAllSearchResults  
+{  
+    function_name = &quot;CPD_DEBUG!ExecPrimeCsCallback&quot;;  
+    function_parameter = &quot;VminSearchStore()&quot;;  
+}  
+</code></pre>
+</li>
+<li>Example – Only IA Core data is saved
+<pre><code>Test iCUserFuncTest SaveCoreSearchResults  
+{  
+    function_name = &quot;CPD_DEBUG!ExecPrimeCsCallback&quot;;  
+    function_parameter = &quot;VminSearchStore(--domains CR,CRF,CRX2,CRX3)&quot;;  
+}  
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>END Flow</p>
+<ul>
+<li><p>VminInterpolation Callback function (OPTIONAL)</p>
+<ul>
+<li>This is equivalent to the Evergreen function
+OASIS_GEN_FAST_tt!STCInterpolationWithItuff</li>
+<li>Usage
+<ul>
+<li>VminInterpolation(--domains <em>ListOfDomains</em> --check_corners <em>ListOfCorners</em> --flow <em>GSDSFlowToken</em>)</li>
+<li><em>ListOfDomains</em> = A comma separated list of Domain names to run interpolation on. This should be the main domain names, not the instance names (ie CR, CRF ... not CR0, CR1...)</li>
+<li><em>ListOfCorners</em> = A comma separate list of Corner names with Check data to run interpolation on the other corners. (ie this is the list of corners that did NOT have -stc_interpolation=true in the FastInfra.xml file).</li>
+<li><em>GSDSFlowToken</em> = GSDS token (of the form G.U.I.tokenname) containing the current/passing flow number.</li>
+</ul>
+</li>
+<li>Example
+<pre><code>Test iCUserFuncTest StcIaCoreData  
+{  
+    function_name = &quot;CPD_DEBUG!ExecPrimeCsCallback&quot;;  
+    function_parameter = &quot;VminInterpolation(--domains CR,CRF,CRX2,CRX3 --check_corners F1,F3,F6 --flow G.U.I.PassingFlow)&quot;;  
+}  
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p>VminForwardingSaveAsUpsGsdsTC TestClass</p>
+<ul>
+<li>See also the full VminForwardingSaveAsUpsGsdsTC Template documentation.</li>
+<li>Converts the current VMin forwarding tables into GSDS tokens for
+UPS.</li>
+<li>This was previously done every time FAST was executed, now it
+needs to be done manually.</li>
+<li>Default GSDS tokens match Evergreen token names.</li>
+<li>GSDS Format matches Evergreen format.</li>
+<li>Required/Default Parameters
+<ul>
+<li>MergeWithEvgData = False/True
+<ul>
+<li>Default is False</li>
+<li>If True it will read the EVG Vmin data from
+G.U.S.FAST_STC_V and merge those results with the
+Prime Vmin data before exporting the new GSDS tokens.
+<ul>
+<li>It must be run after
+“OASIS_GEN_FAST_tt!STCInterpolationWithItuff” or
+the results will be invalid.</li>
+</ul>
+</li>
+<li>This is meant as a temporary work-around while the
+testprogram still includes iCFast test instances. It
+should not be used in production.</li>
+</ul>
+</li>
+<li>UpsVfGsds = G.U.S.FAST_UPSVF
+<ul>
+<li>domain:freq^vmin%freq^vmin%freq^vmin_domain:freq^vmin%freq^vmin%freq^vmin</li>
+<li>for domains with multiple instances &quot;vmin&quot; will have all vmins with 'v' as a separator (ie 1.0v1.1v1.2v1.3)</li>
+<li>for the 1<sup>st</sup> flow with data.</li>
+</ul>
+</li>
+<li>UpsVfPassingFlowGsds = G.U.S.FAST_UPSVFPASSFLOW
+<ul>
+<li>domain:freq^vmin%freq^vmin%freq^vmin_domain:freq^vmin%freq^vmin%freq^vmin</li>
+<li>for domains with multiple instances &quot;vmin&quot; will have all vmins with 'v' as a separator (ie 1.0v1.1v1.2v1.3)</li>
+<li>for the passing flow.</li>
+</ul>
+</li>
+<li>FastStcGsds = G.U.S.FAST_STC_V
+<ul>
+<li>domainX=cornerName:vmin|vmin|...|vmin_domainX=cornerName:vmin|vmin|...|vmin,...,domainZ=cornerName:vmin|vmin|...|vmin_domainZ=cornerName:vmin|vmin|...|vmin</li>
+<li>for domains with multiple instances &quot;vmin&quot; will have all vmins with 'v' as a separator (ie 1.0v1.1v1.2v1.3)</li>
+<li>Full vminforwarding data.</li>
+</ul>
+</li>
+<li>FastCornersGsds = G.U.S.FAST_CORNERS
+<ul>
+<li>domainX=cornerId1:vmin|vmin|...|vmin_domainX=cornerIdY:vmin|vmin|...|vmin,...,domainZ=cornerId1:vmin|vmin|...|vmin_domainZ=cornerIdY:vmin|vmin|...|vmin</li>
+<li>for domains with multiple instances &quot;vmin&quot; will have all vmins with 'v' as a separator (ie 1.0v1.1v1.2v1.3)</li>
+<li>Prime does not support the &quot;cornerId&quot; value ... these will all be 999 ... use FastStcGsds if possible.</li>
+<li>Full vminforwarding data.</li>
+</ul>
+</li>
+<li>PassingFlowInputGsds = G.U.I.DDGVminForwardPassingFlow
+<ul>
+<li><em>This will have to change once per-IP flow BFMC is supported</em>*</li>
+<li>GSDS token containing the passing/current flow.
+Eventually Prime will auto-populate this (name will
+likely change), but you can use a screen test
+(GETCURRENTFLOW command) to put the value in any GSDS
+token.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="section-1"></h2>
+<hr />
+<h2 id="basic-structures">Basic Structures</h2>
+<h3 id="section-2"></h3>
+<p>See the TestPrograms VminForwarding.json file to find which Domains/Instances/Corners are defined.<br />
+(insert link to base json for tgl here)</p>
+<hr />
+<h2 id="usages">Usages</h2>
+<h3 id="section-3"></h3>
+<hr />
+<h3 id="vmin-template">Vmin Template</h3>
+<p><em>see the VminTC document for the latest, these parameters might be out-of-date and are only for examples.</em></p>
+<ul>
+<li><p>Example</p>
+<pre><code>Test VminTC TRANS_CORE_VMIN_K_CHKCRF3_0808XX_VCORE_F3_2200_PRIME_1504  
+{  
+    TestMode = &quot;MultiVmin&quot;;  
+    CornerIdentifiers = &quot;CR0@F3,CR1@F3,CR2@F3,CR3@F3&quot;;  
+    FlowNumber = &quot;4&quot;;  
+
+    VoltageTargets = &quot;CORE0,CORE1,CORE2,CORE3&quot;;  
+    StartVoltages = &quot;0.55,0.55,0.55,0.55&quot;;  
+    EndVoltageLimits = &quot;1.35V,1.35V,1.35V,1.35V&quot;;  
+    StepSize = &quot;0.01&quot;;  
+
+    ForwardingMode = &quot;Merge&quot;;  
+    FeatureSwitchSettings = &quot;fivr_mode_on,disable_cores&quot;;  
+    VoltageOverrides = &quot;GT:0.6&quot;;  
+    FivrCondition = &quot;NOM&quot;;  
+
+    LevelsTc = &quot;SCN_CORE_PRIME::IO_DDR_univ_lvl_nom_lvl_SHARED_511E5BCD2BB65B457E04277F92FBBF5C77C6395E0D1AA5DDC416894A5DF4D1E4&quot;;  
+    TimingsTc = &quot;SCN_CORE_PRIME::cpu_func_sdr_univ_sta_univ_univ_b100_t100_d100_SHARED_0F9EB791BB9B601C383F5D7133A2C4CB6763527F7EB0E7EE842D9A424872470D&quot;;  
+    Patlist = &quot;scn_core_x_vccc_f3_chkcrf3_mEn100_tk6_core_trans_classhvm_list&quot;;  
+
+    ScoreboardBaseNumber = 3059;  
+    PatternNameMap = &quot;1,2,3,4,5,6,7&quot;;  
+    ScoreboardMaxFails = 20;  
+    ScoreboardEdgeTicks = 3;  
+    LogLevel = &quot;PRIME_DEBUG&quot;;  
+
+    RecoveryTracking = &quot;CORE0,CORE1,CORE2,CORE3&quot;;  
+    PinMap = &quot;CORE0_NOA,CORE1_NOA,CORE2_NOA,CORE3_NOA&quot;;  
+    InitialMaskBits = &quot;0000&quot;;  
+    RecoveryOptions = &quot;CoreDefeaturingVector,2&quot;;  
+}  
+</code></pre>
+<ul>
+<li>VoltageTargets defines the voltage domains/pins that are being
+searched. This is inherited from the Prime Vmin base class and
+doesn't allow sub-domains … so each domain/pin needs to be listed
+out. This is why all the other parameters are per-voltage domain.</li>
+<li>CornerIdentifier is the list of Corners. Similar to evg, but
+per-core.
+<ul>
+<li>Nothing prevents you from specifying different F corners. This
+is for concurrentplist testing so you can test cores at F1 and
+GT at F3 or whatever, but you can do &quot;CORE0@F1,CORE1@F1,CORE2@F6,CORE3@F6&quot;.</li>
+<li>The Domain/Corner separator is an @ symbol -- CR1@F1, CLR@F6</li>
+</ul>
+</li>
+<li>FlowNumber is the Flow ID, same as evg. Supports a comma separated list of flow numbers (one for each CornerIdentifier), pending BFMC updates to support flow numbers per IP.</li>
+</ul>
+</li>
+</ul>
+<h3 id="section-4"></h3>
+<hr />
+<h3 id="callbacks-evergreen-or-prime-templates">Callbacks (Evergreen or Prime Templates)</h3>
+<ul>
+<li><p>See the VminForwardingCallbacks documentation for specifics on the available functions and their usage/syntax.</p>
+</li>
+<li><p>See the VoltageConverterCallbacks documentation for specifics on using VminForwarded data in non-vmin-search templates.</p>
+</li>
+<li><p>See the PatternModification documentation for specifics on using VminForwarded data or Corner/Flow specific frequency data for pattern modifications.</p>
+</li>
+</ul>
+<h3 id="section-5"></h3>
+<hr />
+<h3 id="prime-usercode">Prime UserCode</h3>
+<ul>
+<li>All the underlying code is available to any Prime UserCode by
+including the DDG.VminForwardingBase.Release NuGet.</li>
+<li>Main Interfaces
+<ul>
+<li>IVminForwardingCorner x = DDG.VminForwarding.Service.Get
+(<em>&lt;comma_separated_list_of_corners&gt;</em>, <em>&lt;flow&gt;</em>);</li>
+<li>List&lt;double&gt; x.GetStartingVoltage(startVoltages)</li>
+<li>x.StoreVminResult(voltages)</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="file-formats">File Formats</h2>
+<hr />
+<h4 id="dffmapping">DffMapping</h4>
+<p>The DffMapping file is a .json format.<br />
+The DffMappingSet parameter should match one of the <em>mappingset</em> labels.<br />
+VminCorner is of the form <em>domain</em>@<em>corner</em><br />
+The Location/DieID for DFF can be supplied in this file (DieID:OpType:Token) or from the DffMappingOptype parameter.</p>
+<p>{<br />
+  &quot;UpsDffMap&quot;:<br />
+    {<br />
+      <em>mappingset</em>:<br />
+        {<br />
+          <em>VminCorner</em> : <em>DFFToken</em>,<br />
+          <em>VminCorner</em> : <em>DFFToken</em>,<br />
+          <em>VminCorner</em> : <em>DFFToken</em><br />
+        },<br />
+      <em>mappingset</em>:<br />
+        {<br />
+          <em>VminCorner</em> : <em>DFFToken</em>,<br />
+          <em>VminCorner</em> : <em>DFFToken</em>,<br />
+          <em>VminCorner</em> : <em>DFFToken</em><br />
+        }<br />
+    }<br />
+}</p>
+<p>example:</p>
+<pre><code class="language-json">{
+  &quot;UpsDffMap&quot;:
+    {
+      &quot;vmin_dff_token&quot;:
+        {
+          &quot;CR@F1&quot;:&quot;HF1CR&quot;,
+          &quot;CR@F2&quot;:&quot;HF2CR&quot;,
+          &quot;CLR@F4&quot;:&quot;HF4CLR&quot;,
+          &quot;CLR@F6&quot;:&quot;HF6CLR&quot;,
+          &quot;GTS@F1&quot;:&quot;HF1GTS&quot;,
+          &quot;GTS@F2&quot;:&quot;HF2GTS&quot;
+        },
+      &quot;itd_vmin_dff_token&quot;:
+        {
+          &quot;CR@F1&quot;:&quot;CF1CR&quot;,
+          &quot;CR@F2&quot;:&quot;CF2CR&quot;,
+          &quot;CLR@F4&quot;:&quot;CF4CLR&quot;,
+          &quot;CLR@F6&quot;:&quot;CF6CLR&quot;,
+          &quot;GTS@F1&quot;:&quot;CF1GTS&quot;,
+          &quot;GTS@F2&quot;:&quot;CF2GTS&quot;
+        }
+    }
+}
+</code></pre>
+<hr />
+<h4 id="prime-vminforwarding-configuration">Prime VminForwarding Configuration.</h4>
+<p><a href="https://dev.azure.com/mit-us/PRIME/_wiki/wikis/PRIME.wiki/9978/VminForwarding-Service">Prime VminForwarding</a></p>
+<p><br><br><br><br><br><br></p>
+
+
+</body>
+</html>

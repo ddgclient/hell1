@@ -1,0 +1,30 @@
+{
+  "VERSION" :  "1.0",
+  "VFDM_REPAIR": {
+    "GLOBALNAME0": {
+      "FUSE_POS": [ "4-0", "5-9" ],
+      "CONTROLLERS": {
+        "lehp_BP34_WBP0": {
+          "FUSEMEMMAP": {
+            "0": "3-2",
+            "1": "1"
+          }
+        }
+      }
+    },
+    "GLOBALNAME1": {
+      "FUSE_POS": [ "0-4", "5-9" ],
+      "CONTROLLERS": {
+        "lehp_BP34_WBP0": {
+          "FUSEMEMMAP": {
+            "0": "2-3",
+            "1": "1"
+          }
+        }
+      }
+    }
+  }
+}
+
+
+

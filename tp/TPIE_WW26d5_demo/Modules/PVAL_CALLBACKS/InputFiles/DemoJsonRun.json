@@ -1,0 +1,24 @@
+{
+	"instances": {
+		"demo_nested": {
+			"skip": false,
+			"instance": "PVAL_CALLBACKS::Callbacks_FuncTestForLevelsApply_P1",
+			"nested_loops": {
+				"iterations": [ "1", "(2:1:3)", "5", "(6:1:2)", "(8:2:2:10)" ]
+			},
+			"parameters":
+			{
+				"PreInstance": "SetAltInstanceName()"
+			}
+		},
+		"demo_single": {
+			"skip": false,
+			"instance": "PVAL_CALLBACKS::Callbacks_FuncTestForLevelsApply_P1",
+			"iteration": [ "(1:2:5:2:5:r)", "11111", "(20:1:2:2:5)" ]
+		},
+		"parameters":
+		{
+			"PreInstance": "SetAltInstanceName(${instance})"
+		}
+	}
+}

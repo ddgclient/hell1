@@ -1,0 +1,11 @@
+Version 1.0;
+
+UserVars TPI_DFF
+{
+	String DEFAULT = "0";
+	String DEFAULT1 = "NA";
+	String DEFAULT2 = "-999";
+	String DEFAULT3 = "00000";
+	String FRV = "DEFAULT";
+	String KILLMODE = "ALLKILL";
+}

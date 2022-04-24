@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Utility_bits xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="utility_bit.xsd">
+    <ConfigSet name="SORT_POR">
+      <RelayToken name="PRD_Bit19_Enable" waitMillisecondsToVerifyChange="5000">
+        <DriveVector>L,L,L,L,L,L,L,L,L,H</DriveVector>
+      </RelayToken>
+      <RelayToken name="PRD_Bit19_Disable" waitMillisecondsToVerifyChange="5000">
+        <DriveVector>L,L,L,L,L,L,L,L,L,L</DriveVector>
+      </RelayToken>      
+      <RelayPins>IO_RELAY_00,IO_RELAY_01,IO_RELAY_02,IO_RELAY_03,IO_RELAY_04,IO_RELAY_05,IO_RELAY_06,IO_RELAY_07,IO_RELAY_08,IO_RELAY_09,IO_RELAY_10,IO_RELAY_11,IO_RELAY_12,IO_RELAY_13,IO_RELAY_14,IO_RELAY_15,IO_RELAY_16,IO_RELAY_17,IO_RELAY_18,IO_RELAY_19</RelayPins>
+    </ConfigSet>
+</Utility_bits>

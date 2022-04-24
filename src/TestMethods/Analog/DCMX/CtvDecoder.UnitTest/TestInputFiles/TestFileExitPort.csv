@@ -1,0 +1,5 @@
+Pin,IP,Field,Size,PerBit,LowLimit,HighLimit,ExpectedData,ItuffToken,ExitPort,PinFinderFormat
+DDR1_DQ50,IP1,Field0,4,1,-,-,1,<TssidRename>_Token1,2,MDFI_<TssidRename>_<Field>_DQ[$bit$]
+DDR1_DQ50,IP1,Field1,3,-,-,4,-,<TssidRename>_Token1,0,-
+DDR1_DQ50,IP2,Field0,4,-,1,-,-,<TssidRename>_Token1,-,-
+DDR1_DQ50,IP2,Field1,3,-,-,-,-,<TssidRename>_Token1,-,-

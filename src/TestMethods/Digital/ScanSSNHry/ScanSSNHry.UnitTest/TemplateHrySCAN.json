@@ -1,0 +1,55 @@
+{
+	"HRYLength": 4,
+	"Patterns": [
+		{
+			"ContentType": "preamble",
+			"PatternRegex": ".*reset.*|.*precat.*|.*midcat.*",
+			"Packets": [
+				{
+					"SSNPacketBitPosition": ".*",
+					"Partitions": [
+						{
+							"HRYIndex": 0,
+							"HRYPrint": "Reset"
+						}
+					]
+				},
+			]
+		},
+		{
+			"ContentType": "mainContent",
+			"PacketSize": 54,
+			"OutputPacketOffset": 565,
+			"PatternRegex": ".*d0V0.*|.*scan.*",
+			"Packets": [
+				{
+					"SSNPacketBitPosition": "000|001|002|003|004|006|008|009|010|011|012|013|014|015|016",
+					"Partitions": [
+						{
+							"HRYIndex": 1,
+							"HRYPrint": "pariirp"
+						},
+					]
+				},
+				{
+					"SSNPacketBitPosition": "017|018|019|020|021|022|023|024|025|026|027|028|029|030|031|032|033|034|035|036|037|038",
+					"Partitions": [
+						{
+							"HRYIndex": 2,
+							"HRYPrint": "pariiommu"
+						}
+					]
+				},
+				{
+					"SSNPacketBitPosition": "039|040|041|042|043|044|045|046|047|048|049|050|051|052|053",
+					"Partitions": [
+						{
+							"HRYIndex": 3,
+							"HRYPrint": "pariitcotc"
+						}
+					]
+				}
+			]
+		}
+	]
+}

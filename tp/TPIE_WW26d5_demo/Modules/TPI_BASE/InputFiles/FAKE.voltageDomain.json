@@ -1,0 +1,73 @@
+{ 	"Domains" :[
+	{
+		"name": "FIVRRAIL1",
+		"default_value": 0.95,
+		"pattern_modify": {
+			"initial_voltage": {
+				"multiplier": 256,
+				"configuration": "FIVRRAIL1_CFG",
+				"number_of_targets": 1
+			}
+		}
+	},
+	{
+		"name": "FIVRRAIL2",
+		"default_value": 0.95,
+		"pattern_modify": {
+			"initial_voltage": {
+				"multiplier": 400,
+				"configuration": "FIVRRAIL2_CFG",
+				"number_of_targets": 1
+			}
+		}
+	},
+    {
+        "name" : "HC1_VCCCORE0",
+        "dps_pin" : "HC1_VCCCORE0"
+    },
+    {
+        "name" : "HC2_VCCCORE1",
+        "dps_pin" : "HC2_VCCCORE1"
+    },
+    {
+        "name" : "HC6_VCCIA",
+        "dps_pin" : "HC6_VCCIA"
+    }
+	],
+    "PatternModify" : [
+        {
+            "pattern_modify_name" : "powerswitch0",
+            "module" : "PVAL_BASE",
+            "group" : "pwrmux_sel_atom0",
+            "selector" : "0.775 < HC1_VCCCORE0",
+            "set_point_for_true" : "vcclogic",
+            "set_point_for_false" : "vnnaon"
+        },
+        {
+            "pattern_modify_name" : "powerswitch1",
+            "module" : "PVAL_BASE",
+            "group" : "pwrmux_sel_atom1",
+            "selector" : "0.775 < HC2_VCCCORE1",
+            "set_point_for_true" : "vcclogic",
+            "set_point_for_false" : "vnnaon"
+        }		
+	],
+	"DlvrPins": [
+        {
+            "pin_name" : "HC6_VCCIA",
+            "voltage_expression" :[
+				{
+					"expression_name" : "First_Expression",
+					"expression_value" : "max(FIVRRAIL1,FIVRRAIL2)+0.5"
+				},
+								{
+					"expression_name" : "Second_Expression",
+					"expression_value" : "min(FIVRRAIL1,FIVRRAIL2)+0.3"
+				}	
+			],			
+            "min": 0.5,
+            "max" : 2.0,
+            "step_size" : 0.1
+        }
+    ]	
+}

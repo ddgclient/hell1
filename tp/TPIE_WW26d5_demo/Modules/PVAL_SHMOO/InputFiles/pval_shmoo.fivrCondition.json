@@ -1,0 +1,16 @@
+[
+  {
+    "name": "NOM", 
+    "domains": [
+      {
+        "name": "FIVRRAIL1",
+        "voltage": { "type": "Literal", "value": "0.950" }
+      },
+      {
+        "name": "FIVRRAIL2",
+        "voltage": { "type": "Literal", "value": "0.950" }
+      }
+    ]
+  }
+]
+

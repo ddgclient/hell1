@@ -1,0 +1,49 @@
+{
+  "Registers": [
+    {
+      "Size": 40,
+      "LabelName": "CPU_TAP_ALL_phnone__StartofResetDelay",
+      "LabelOffset": 0,
+      "RegistersData": [
+        {
+          "RegisterName": "PVAL_SHMOO_VDAC",
+          "ReadPin": "YY_TAP_TDO_C2S",
+          "ModifyPin": "YY_TAP_TDI_S2C"
+        } 
+      ],
+      "FuseGroups": [
+        {
+          "Name": "FIVRRAIL1_CFG",
+          "Fuses": [
+            {
+              "Name": "FIVRRAIL1_CFG",
+              "StartAddress": [
+                10
+              ],
+              "EndAddress": [
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "Name": "FIVRRAIL2_CFG",
+          "Fuses": [
+            {
+              "Name": "FIVRRAIL2_CFG",
+              "StartAddress": [
+                20
+              ],
+              "EndAddress": [
+                10
+              ]
+            }
+          ]
+        }
+	  ]
+    }
+  ]
+}
+
+
+        

@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>DDG Prime Voltage Converter Callbacks</title>
+</head>
+<body>
+
+    <h1 id="ddg-prime-voltage-converter-callbacks">DDG Prime Voltage Converter Callbacks</h1>
+<h2 id="introduction">Introduction</h2>
+<p>The main purpose of this callback is to provide a common methodology for all EVG and Prime test clases to apply different options from DDG Prime Voltage Converter service.<br>
+Please also use Prime VoltageService documentation as reference:<br>
+<a href="https://dev.azure.com/mit-us/PrimeWiki/_wiki/wikis/PrimeWiki.wiki/42240/Readme">https://dev.azure.com/mit-us/PrimeWiki/_wiki/wikis/PrimeWiki.wiki/42240/Readme</a></p>
+<h2 id="enabling-the-callback">Enabling the Callback</h2>
+<p>Add CallbacksManager in INIT flow.</p>
+<h2 id="using-callback-in-prime-preplist-common-parameter">Using callback in Prime PrePlist Common Parameter</h2>
+<p>Once your callback is registered you can call it as common parameter callback at your test instance. Since this callback is intended to modify the voltage condition is recommended to run as <strong>PrePlist</strong> <br></p>
+<p><code>PrePlist = &quot;VoltageConverter(--railconfigurations pinattributes powermux --dlvrpins pinName --fivrcondition NOM --overrides CORE0:0.4)&quot;;</code></p>
+<h2 id="using-callback-in-evg-using-cpd_debugexecprimecscallback">Using callback in Evg using CPD_DEBUG!ExecPrimeCsCallback</h2>
+<p>CPD_DEBUG!ExecPrimeCsCallback  is able to call any registered Prime C# callback as regular UserFunction. Same as in Prime the recommeded use is <strong>preplist</strong></p>
+<p><code>preplist = &quot;CPD_DEBUG!PrimeCsCallbacks G.U.S.CallbackResult=VoltageConverter(--railconfigurations pinattributes powermux --dlvrpins pinName --fivrcondition NOM --overrides CORE0:0.4)&quot;;</code></p>
+<h2 id="using-callback-from-vmintc">Using callback from VminTC</h2>
+<p>VminTC has built-in voltage converter capability which means this callback is not required as PrePlist. User should use VoltageConverter parameter instead.</p>
+<p><strong>Important: VminTC FivrCondition must be specified using FivrCondition parameter instead of command line option.</strong></p>
+<p><code>VoltageConverter = &quot;--railconfigurations pinattributes powermux --dlvrpins VCCIA --expresssions CCF_ONLY --overrides CORE0:0.4)&quot;;</code></p>
+<h2 id="commandline-options-and-switches">CommandLine Options and Switches</h2>
+<h3 id="railconfigurationsconfiguration1.configurationn">--railconfigurations=[configuration1 ... configurationN]</h3>
+<p>Sets list of rail configurations to be applied when voltage gets applied. Refer to Prime Voltage Service documentation for configuration.</p>
+<h3 id="dlvrpinspin1.pinm">--dlvrpins=[pin1 ... pinM]</h3>
+<p>Sets list of dlvr pins to set based on <em>.voltageDomains.json</em> ALEPH configuration file.</p>
+<h3 id="expressionsexpr1.exprn">--expressions=[expr1 ... exprN]</h3>
+<p>Sets list of override expressions for dlvr pins. Number of expressions have to match the number of dlvrpins.<br>
+If parameter is not being set. The first expression on the list will be set as default.</p>
+<h3 id="fivrconditionname">--fivrcondition=[name]</h3>
+<p>FivrCondition to be applied. Configuration is in ALEPH input files. Option is not allowed from VminTC.</p>
+<h3 id="overridesdomain1value1.domainnvaluen">--overrides=[domain1:value1,...,domainN:valueN]</h3>
+<p>Comma-separated list of domain:value to be overrided from test condition.<br />
+Supported values for values, evaluated in this order:</p>
+<ol>
+<li>Literal double value: --overrides=CORE0:1.2</li>
+<li>SharedStorage token: --overrides=CORE0:TokenName</li>
+<li>UserVar: --overrides=CORE0:Collection.UserVar</li>
+<li>VminForwardingCorner using FlowDomain: --overrides=CORE0:FlowDomain^CR0@F1</li>
+<li>VminForwardingCorner using FlowIndex parameter: --overrides=CORE0:CR0@F1</li>
+<li>VminForwardingCorner Interpolation using Frequency (in GHz): --overrides=CORE0:CR0@2.75</li>
+</ol>
+
+
+</body>
+</html>

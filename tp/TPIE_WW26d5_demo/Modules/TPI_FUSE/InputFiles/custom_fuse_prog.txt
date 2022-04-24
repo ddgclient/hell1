@@ -1,0 +1,40 @@
+################################################################################
+#   Filename: custom_fuse_prog.txt
+#-------------------------------------------------------------------------------
+#    Purpose: Fuse Prog custom file
+#-------------------------------------------------------------------------------
+# Created by: Gary Wozniak
+#       Date: 1-Apr-2021 Rev0
+###############################################################################
+
+#############################################################################
+#DEFINE:	SETPOINT:         DATA_TYPE:      VARIABLE:              VARIABLE_TYPE:     VALUE:			CONDITION
+#############################################################################
+define:		BURN :		STRING:		intro_method_val_prod:	LITERAL:	"PROD"				: *
+define:        	BURN :     	STRING:         intro_method_val_eng:   LITERAL:	"ENG"                          	: *
+define:        	BURN :     	STRING:         intro_method_val_sd:  	LITERAL:	"SD"                          	: *
+define:		BURN :  	STRING:         intro_method_glb:     	GLOBAL:		SCVars.SC_INTRO_METHOD      	: *
+define:        	BURN :     	STRING:         operation_glb:     	GLOBAL:		SCVars.SC_LOCN	       		: *
+define:        	BURN :     	STRING:         operation_val_prod:	LITERAL:	"132110"                        : *
+define:		BURN :		STRING:		custom_UFGL_Fuse_ULT_Encode_String:	GLOBAL	: FUSEUFGL.UFGL_Fuse_ULT_Encode_String:	*
+define:        	BURN :     	STRING:         force_stress:     	GLOBAL:		EDCVars.HVQK_Force_Stress	: *
+define:        	BURN :     	STRING:         force_stress_enable:	LITERAL:	"1"                         	: *
+define:			BURN :	  	STRING:         custom_yieldmon_burn_string: FUNCTION:	GETGSDSDATA(FuseYieldmonBurn, UNT, -98)      	: *
+define:			BURN :	  	STRING:         custom_yieldmon_read_string: FUNCTION:	GETFUSEREADATA(YIELDMON)      	: *
+define:			BURN :		STRING:         custom_yieldmon_read_string: FUNCTION:	SETGSDSDATA(FuseYieldmonRead, UNT, -98, 1) : *
+define:			BURN :		STRING:			custom_datalog :			 GLOBAL :	FUSEUFGL.UFGL_MISMATCH_BITS : *
+
+################################################################################
+#VADTL recovery variables
+################################################################################
+#define:			BURN :	  	STRING:         is_vadtl_recovery			: FUNCTION	:	GETGSDSDATA(ISVADTL_RECOVERY_CORE, UNT, -98)      	: *
+#define:			BURN :	  	STRING:         was_vadtl_recovery			: FUNCTION	:	GETGSDSDATA(WASVADTL_RECOVERY_CORE, UNT, -98)      	: *
+#define:			BURN :	  	STRING:         no_core						: LITERAL	:	"00000000"											: *
+#define:			BURN :	  	STRING:         core_0						: LITERAL	:	"00010000"											: *
+#define:			BURN :	  	STRING:         core_1						: LITERAL	:	"00100000"											: *
+#define:			BURN :	  	STRING:         core_2						: LITERAL	:	"01000000"											: *
+#define:			BURN :	  	STRING:         core_3						: LITERAL	:	"10000000"											: *
+#define:			BURN :	  	STRING:         core_1_0					: LITERAL	:	"00110000"											: *
+#define:			BURN :	  	STRING:         core_3_2					: LITERAL	:	"11000000"											: *
+
+define : ALL     : STRING : NULL       : LITERAL       :   ""  :   *

@@ -1,0 +1,19 @@
+<HdmtReferenceFile>
+  <PList>
+    <PListFile name="AAA_drv_cdie_C28_vrevC28A6P_sort_flattap_allplist.plist" />
+    <PListFile name="drv_cdie_C28_reset_sort_allplist.plist" />
+    <PListFile name="fuse.plist" />
+    <PListFile name="array_pbist_ks_atom.plist" />
+    <PListFile name="array_atom_prescreen_doe.plist" />
+    <PListFile name="array_pbist_hry_atom.plist" />
+	<PListFile name="arr_cdie_mbist_sort_hry_perbistportallstepspbap_list.plist" />
+	<PListFile name="dfxtune_example.plist" />
+	<PListFile name="fun_core_sort_C28.plist" />
+	<PListFile name="ZZZ_ccr_arbiter_array_core_array_ccf_slim_list.plist" />
+  </PList>
+  <PatternConcat>
+    <VectorDataFile />
+    <PatInfoFile />
+    <MSFile />
+  </PatternConcat>
+</HdmtReferenceFile>

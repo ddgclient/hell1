@@ -1,0 +1,13 @@
+Version 1.0;
+
+UserVars PTH_DIODE_XXX
+{
+	Integer bypass_diode_characterization = 1;
+	Integer bypass_print = 1;
+	Double eotTempMeas = -99;
+	Double sotTempMeas = -99;
+	Integer TJIntegHigh = 200;
+	Integer TJIntegLow = 95;
+	String TJMAX = "30";
+	String TJMIN = "30";
+}

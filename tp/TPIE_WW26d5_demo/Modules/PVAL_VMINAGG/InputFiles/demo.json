@@ -1,0 +1,19 @@
+[
+    {
+        "Domain": "CORE",
+        "Corner": "F1",
+        "Frequency": "[Frequency]",
+        "VminExpressions": [
+            ["[G.U.D.ARR_Core1]", "[G.U.D.FUN_Core1]"],
+            ["[G.U.D.ARR_Core0]", "[G.U.D.FUN_Core0]"]
+        ]
+    },
+    {
+        "Domain": "CCF",
+        "Corner": "F1",
+        "Frequency": "'0.8GHz'",
+        "VminExpressions": [
+            ["[G.U.D.ARR_CCF]", "[G.U.D.FUN_CCF]"]
+        ]
+    }
+]

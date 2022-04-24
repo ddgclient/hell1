@@ -1,0 +1,4 @@
+Pin;IP;Sequence;Subsequence;Field;Size;SharedStorageToken;Equation;ItuffToken
+DDR1_DQ50;V0;training;subseq1;val1;6;I.AnalogFuncCaptureCtv;-;Token1
+DDR1_DQ50;V0;training;subseq1;val2;3;D.AnalogFuncCaptureCtvDbl;-;Token1
+DDR1_DQ50;V0;training;subseq1;val3;5;S.AnalogFuncCaptureCtvStr;-;Token1

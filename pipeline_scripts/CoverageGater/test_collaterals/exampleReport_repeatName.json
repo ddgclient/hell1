@@ -1,0 +1,417 @@
+{
+  "DotCoverVersion": "2021.1.3",
+  "Kind": "Root",
+  "CoveredStatements": 17002,
+  "TotalStatements": 26900,
+  "CoveragePercent": 63,
+  "Children": [
+    {
+      "Kind": "Assembly",
+      "Name": "BaseUtilities",
+      "CoveredStatements": 422,
+      "TotalStatements": 438,
+      "CoveragePercent": 96,
+      "Children": [
+        {
+          "Kind": "Namespace",
+          "Name": "DDG",
+          "CoveredStatements": 422,
+          "TotalStatements": 438,
+          "CoveragePercent": 96,
+          "Children": [
+            {
+              "Kind": "Type",
+              "Name": "BinMatrixServiceExtensions",
+              "CoveredStatements": 23,
+              "TotalStatements": 23,
+              "CoveragePercent": 100,
+              "Children": [
+                {
+                  "Kind": "Method",
+                  "Name": "EvaluateString(IBinMatrixService,string,int):string",
+                  "CoveredStatements": 23,
+                  "TotalStatements": 23,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "OwnCoverage",
+                      "CoveredStatements": 22,
+                      "TotalStatements": 22,
+                      "CoveragePercent": 100
+                    },
+                    {
+                      "Kind": "AnonymousMethod",
+                      "Name": "(Match):string",
+                      "CoveredStatements": 1,
+                      "TotalStatements": 1,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "Kind": "Type",
+              "Name": "BitArrayExtensions",
+              "CoveredStatements": 73,
+              "TotalStatements": 73,
+              "CoveragePercent": 100,
+              "Children": [
+                {
+                  "Kind": "Method",
+                  "Name": "Add(BitArray,BitArray):BitArray",
+                  "CoveredStatements": 25,
+                  "TotalStatements": 25,
+                  "CoveragePercent": 100
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "Slice(BitArray,int,int):BitArray",
+                  "CoveredStatements": 19,
+                  "TotalStatements": 19,
+                  "CoveragePercent": 100
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "ToBinaryString(BitArray):string",
+                  "CoveredStatements": 13,
+                  "TotalStatements": 13,
+                  "CoveragePercent": 100
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "ToBitArray(string):BitArray",
+                  "CoveredStatements": 16,
+                  "TotalStatements": 16,
+                  "CoveragePercent": 100
+                }
+              ]
+            },
+            {
+              "Kind": "Type",
+              "Name": "DoubleExtensions",
+              "CoveredStatements": 6,
+              "TotalStatements": 6,
+              "CoveragePercent": 100,
+              "Children": [
+                {
+                  "Kind": "Method",
+                  "Name": "Equals(double,double,uint):bool",
+                  "CoveredStatements": 6,
+                  "TotalStatements": 6,
+                  "CoveragePercent": 100
+                }
+              ]
+            },
+            {
+              "Kind": "Type",
+              "Name": "FileUtilities",
+              "CoveredStatements": 21,
+              "TotalStatements": 21,
+              "CoveragePercent": 100,
+              "Children": [
+                {
+                  "Kind": "Method",
+                  "Name": "GetFile(string):string",
+                  "CoveredStatements": 21,
+                  "TotalStatements": 21,
+                  "CoveragePercent": 100
+                }
+              ]
+            },
+            {
+              "Kind": "Type",
+              "Name": "Gsds",
+              "CoveredStatements": 50,
+              "TotalStatements": 50,
+              "CoveragePercent": 100,
+              "Children": [
+                {
+                  "Kind": "Method",
+                  "Name": "ReadToken(string):string",
+                  "CoveredStatements": 10,
+                  "TotalStatements": 10,
+                  "CoveragePercent": 100
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "SplitAndValidateTokenSize(string):string[]",
+                  "CoveredStatements": 7,
+                  "TotalStatements": 7,
+                  "CoveragePercent": 100
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "StringCharToContext(string,string):Context",
+                  "CoveredStatements": 11,
+                  "TotalStatements": 11,
+                  "CoveragePercent": 100
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "TokenExists(string):bool",
+                  "CoveredStatements": 10,
+                  "TotalStatements": 10,
+                  "CoveragePercent": 100
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "WriteToken(string,string):void",
+                  "CoveredStatements": 12,
+                  "TotalStatements": 12,
+                  "CoveragePercent": 100
+                }
+              ]
+            },
+            {
+              "Kind": "Type",
+              "Name": "RadixConversion",
+              "CoveredStatements": 129,
+              "TotalStatements": 129,
+              "CoveragePercent": 100,
+              "Children": [
+                {
+                  "Kind": "Method",
+                  "Name": "BinaryToHex(string):string",
+                  "CoveredStatements": 27,
+                  "TotalStatements": 27,
+                  "CoveragePercent": 100
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "BinaryToInteger(string):int",
+                  "CoveredStatements": 4,
+                  "TotalStatements": 4,
+                  "CoveragePercent": 100
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "HexToBinary(char,int):string",
+                  "CoveredStatements": 19,
+                  "TotalStatements": 19,
+                  "CoveragePercent": 100
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "HexToBinary(string,int):string",
+                  "CoveredStatements": 8,
+                  "TotalStatements": 8,
+                  "CoveragePercent": 100,
+                  "Children": [
+                    {
+                      "Kind": "OwnCoverage",
+                      "CoveredStatements": 7,
+                      "TotalStatements": 7,
+                      "CoveragePercent": 100
+                    },
+                    {
+                      "Kind": "AnonymousMethod",
+                      "Name": "(char):string",
+                      "CoveredStatements": 1,
+                      "TotalStatements": 1,
+                      "CoveragePercent": 100
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "IntegerToBinary(string,int):string",
+                  "CoveredStatements": 12,
+                  "TotalStatements": 12,
+                  "CoveragePercent": 100
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "IntegerToBinary(int,int):string",
+                  "CoveredStatements": 4,
+                  "TotalStatements": 4,
+                  "CoveragePercent": 100
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "NumberToPatternSymbol(string):string",
+                  "CoveredStatements": 34,
+                  "TotalStatements": 34,
+                  "CoveragePercent": 100
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "TwosComplementToInteger(string):int",
+                  "CoveredStatements": 21,
+                  "TotalStatements": 21,
+                  "CoveragePercent": 100
+                }
+              ]
+            },
+            {
+              "Kind": "Type",
+              "Name": "StringExtensions",
+              "CoveredStatements": 74,
+              "TotalStatements": 74,
+              "CoveragePercent": 100,
+              "Children": [
+                {
+                  "Kind": "Method",
+                  "Name": "RangeToList(string):List<int>",
+                  "CoveredStatements": 30,
+                  "TotalStatements": 30,
+                  "CoveragePercent": 100
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "ResizeBinary(string,int):string",
+                  "CoveredStatements": 12,
+                  "TotalStatements": 12,
+                  "CoveragePercent": 100
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "Reverse(string):string",
+                  "CoveredStatements": 8,
+                  "TotalStatements": 8,
+                  "CoveragePercent": 100
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "ToDouble(string,bool):double",
+                  "CoveredStatements": 21,
+                  "TotalStatements": 21,
+                  "CoveragePercent": 100
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "ToInt(string):int",
+                  "CoveredStatements": 3,
+                  "TotalStatements": 3,
+                  "CoveragePercent": 100
+                }
+              ]
+            },
+            {
+              "Kind": "Type",
+              "Name": "TestProgramServiceExtensions",
+              "CoveredStatements": 46,
+              "TotalStatements": 62,
+              "CoveragePercent": 74,
+              "Children": [
+                {
+                  "Kind": "Method",
+                  "Name": "GetCurrentFlowNumber(ITestProgramService):int",
+                  "CoveredStatements": 30,
+                  "TotalStatements": 30,
+                  "CoveragePercent": 100
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "GetCurrentLevels(ITestProgramService):string",
+                  "CoveredStatements": 0,
+                  "TotalStatements": 8,
+                  "CoveragePercent": 0,
+                  "Children": [
+                    {
+                      "Kind": "OwnCoverage",
+                      "CoveredStatements": 0,
+                      "TotalStatements": 6,
+                      "CoveragePercent": 0
+                    },
+                    {
+                      "Kind": "AnonymousMethod",
+                      "Name": "(string):bool",
+                      "CoveredStatements": 0,
+                      "TotalStatements": 1,
+                      "CoveragePercent": 0
+                    },
+                    {
+                      "Kind": "AnonymousMethod",
+                      "Name": "(string):string",
+                      "CoveredStatements": 0,
+                      "TotalStatements": 1,
+                      "CoveragePercent": 0
+                    }
+                  ]
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "GetCurrentPatternLists(ITestProgramService):List<string>",
+                  "CoveredStatements": 16,
+                  "TotalStatements": 16,
+                  "CoveragePercent": 100
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "GetCurrentTimings(ITestProgramService):string",
+                  "CoveredStatements": 0,
+                  "TotalStatements": 8,
+                  "CoveragePercent": 0,
+                  "Children": [
+                    {
+                      "Kind": "OwnCoverage",
+                      "CoveredStatements": 0,
+                      "TotalStatements": 6,
+                      "CoveragePercent": 0
+                    },
+                    {
+                      "Kind": "AnonymousMethod",
+                      "Name": "(string):bool",
+                      "CoveredStatements": 0,
+                      "TotalStatements": 1,
+                      "CoveragePercent": 0
+                    },
+                    {
+                      "Kind": "AnonymousMethod",
+                      "Name": "(string):string",
+                      "CoveredStatements": 0,
+                      "TotalStatements": 1,
+                      "CoveragePercent": 0
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Kind": "Assembly",
+      "Name": "BaseUtilities",
+      "CoveredStatements": 50,
+      "TotalStatements": 50,
+      "CoveragePercent": 100,
+      "Children": [
+        {
+          "Kind": "Namespace",
+          "Name": "CallbacksManager",
+          "CoveredStatements": 50,
+          "TotalStatements": 50,
+          "CoveragePercent": 100,
+          "Children": [
+            {
+              "Kind": "Type",
+              "Name": "CallbacksManager",
+              "CoveredStatements": 50,
+              "TotalStatements": 50,
+              "CoveragePercent": 100,
+              "Children": [
+                {
+                  "Kind": "Method",
+                  "Name": "Call(string):string",
+                  "CoveredStatements": 22,
+                  "TotalStatements": 22,
+                  "CoveragePercent": 100
+                },
+                {
+                  "Kind": "Method",
+                  "Name": "RegisterCallbacks():void",
+                  "CoveredStatements": 28,
+                  "TotalStatements": 28,
+                  "CoveragePercent": 100
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

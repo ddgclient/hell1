@@ -1,0 +1,11 @@
+#####################################################
+##### DFF
+#####################################################
+
+START_SCREEN:SetBinDFF
+#RunOn 	: TestName : DataType 	: ParamType 	: Param1			: Operation 	: ParamType : Param2   		: TmpStore : OnTrue 	: OnFalse
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------
+EXEC 	: Test1 	: -       	: FUNCTION   	: INT2STR(GLOBAL._UserVars.iBinValue) 	: -   		: - 		: -        	: -   	   : Test2  : 2
+EXEC 	: Test2    	: STRING   	: DFF	        : WFR.SORT.BIN			: SET		: CUSTOM    	: INT2STR	: 	   : 1      : 2
+END_SCREEN
+

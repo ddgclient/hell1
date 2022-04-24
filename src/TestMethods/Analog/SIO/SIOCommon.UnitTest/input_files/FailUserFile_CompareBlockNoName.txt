@@ -1,0 +1,10 @@
+#====================================================================================================
+START_COMPARE_BLOCK # Missing Name      
+PORTCOMPARE PortToCompare PortValue
+LANECOMPARE LaneToCompare LaneValue
+PINDEF SomePin SomeValue
+TESTDEF SomeTest SomeTestValue
+MASKPIN PinsToMask MaskValue
+NAME SomeName
+END_COMPARE_BLOCK
+#====================================================================================================

@@ -1,0 +1,19 @@
+﻿{
+  "TypoInName": {
+    "vmin_dff_token": {
+      "CR@F1": "HF1CR",
+      "CR@F2": "HF2CR",
+      "CR@F3": "HF3CR",
+      "CR@F4": "HF4CR",
+      "CR@F5": "HF5CR",
+      "CR@F6": "HF6CR",
+      "CR@F7": "HF7CR",
+      "CLR@F1": "HF1CLR",
+      "CLR@F2": "HF2CLR",
+      "CLR@F3": "HF3CLR",
+      "CLR@F4": "HF4CLR",
+      "CLR@F5": "HF5CLR",
+      "CLR@F6": "HF6CLR"
+    }
+  }
+}

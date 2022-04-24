@@ -1,0 +1,33 @@
+{
+  "pValRunList": [
+    {
+      "LogArea": ".\\test_collaterals\\fakeTP\\logs",
+      "TOSVersion": "TOS3900",
+      "TestPlan": [
+        {
+          "TestPlanName": "",
+          "TplFile": "",
+          "StplFile": "",
+          "PlistFile": "",
+          "SocFile": "",
+          "QuickSimFile": "",
+          "EnvFiles": {
+            "Release": ""
+          },
+          "ItuffTokensToIgnore": [
+            "|CoreTag|TDAU_CH_CORE|Thermal|",
+            "|Time:",
+            "2_mrslt_",
+            "3_lbeg",
+            "7_dsrcprg_HDMTG2",
+            "4_tsattrs_tplpath",
+            "4_tsattrs_stplpath",
+            "4_tsattrs_socpath",
+            "4_tsattrs_envpath",
+            "2_strgval_NWI"
+          ]
+        }
+      ]
+    }
+  ]
+}

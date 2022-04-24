@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "PrimeValTool": {
+      "commandName": "Project",
+      "commandLineArgs": "C:\\Intel\\hdmt\\hdmtOS_3.10.0.0_Release full",
+      "workingDirectory": "C:\\Users\\caiofern\\source\\repos\\tgl_poc_code\\pipeline_scripts\\pVal"
+    }
+  }
+}

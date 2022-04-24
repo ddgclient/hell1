@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HSR_HRY_config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="GEN_HSR_HRY.xsd">
+
+<ReverseCtvCaptureData>N</ReverseCtvCaptureData>
+
+<CtvToHryMapping>
+	<Map ctv_data="0" hry_data="0" />
+	<Map ctv_data="1" hry_data="1" />
+</CtvToHryMapping>
+
+<Criterias>
+	<Criteria hry_index="0"  pin="P001" ctv_index_range="2"  condition="P002,0-1,00|P002,3,1"    hry_output_on_condition_fail="8" bypass_global="HSR.HRY_Global_1" />
+	<Criteria hry_index="1"  pin="P001" ctv_index_range="6"  condition="P002,4-5,00|P002,7,1"    hry_output_on_condition_fail="8" bypass_global="HSR.HRY_Global_1" />
+</Criterias>
+
+<Algorithms>
+	<Algorithm index="0" name="SCAN"    pat_modify_label="" ctv_size="36" />
+	<Algorithm index="1" name="PMOVI"   pat_modify_label="" ctv_size="36" />
+	<Algorithm index="2" name="March-C" pat_modify_label="" ctv_size="36" />
+</Algorithms>
+
+</HSR_HRY_config>

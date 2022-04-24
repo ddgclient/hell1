@@ -1,0 +1,433 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>PatternDelayOptimizer template</title>
+</head>
+<body>
+
+    <h1 id="patterndelayoptimizer-template">PatternDelayOptimizer template</h1>
+<h2 id="debug-only-not-for-production-test">DEBUG ONLY -- NOT FOR PRODUCTION TEST</h2>
+<h3 id="rev-0">Rev 0</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1. <a href="#introduction">Introduction</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">2. <a href="#test-instance-parameters">Test Instance Parameters</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">3. <a href="#datalog-output">Datalog output</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">4. <a href="#tpl-samples">TPL Samples</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">5. <a href="#exit-ports">Exit Ports</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="section"></h3>
+<hr />
+<h2 id="introduction">1. Introduction</h2>
+<p>This is a debug/dv test template designed to find the minimum wait time for test execution in an SBFT test. It runs a per-pattern binary search on the wait time to determine the lowest passing value.</p>
+<p>The wait time can be done with a &quot;RPT&quot; or &quot;MOV&quot; instruction.</p>
+<hr />
+<h2 id="test-instance-parameters">2. Test Instance Parameters</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Parameter Name</th>
+<th style="text-align: left;">Required?</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Patlist</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">Plist</td>
+<td style="text-align: left;">Plist name to be executed</td>
+</tr>
+<tr>
+<td style="text-align: left;">TimingsTc</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">TimingCondition</td>
+<td style="text-align: left;">Timing test condition required for plist execution</td>
+</tr>
+<tr>
+<td style="text-align: left;">LevelsTc</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">LevelsCondition</td>
+<td style="text-align: left;">Levels test condition required for plist execution</td>
+</tr>
+<tr>
+<td style="text-align: left;">MaskPins</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Comma separated list of pins to mask before executing Plist</td>
+</tr>
+<tr>
+<td style="text-align: left;">PrePlist</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Prime Callback to execute before each execution of the plist.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#patmodinputfilepatmodconfig">PatmodConfig</a></td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Name of the Prime PatConfig to execute to update the pattern wait time.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#patmodinputfilepatmodconfig">PatmodInputFile</a></td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">File</td>
+<td style="text-align: left;">Prime Pattern Modify .patmod.json file containing the PatConfig named in the PatmodConfig parameter.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#patmodoutputfile">PatmodOutputFile</a></td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">File</td>
+<td style="text-align: left;">Output file in Prime Pattern Modify .patmod.json format containing the PatConfig needed to update all the patterns with their optimal wait time.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#summaryoutputfile">SummaryOutputFile</a></td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">File</td>
+<td style="text-align: left;">Output file in .json format containing a summary of the results including the Invalid/Failing patterns.</td>
+</tr>
+<tr>
+<td style="text-align: left;">PerRunPatternLimit</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Integer</td>
+<td style="text-align: left;">Sets a limit on how many patterns to execute at one time. If the plist contains 10 patterns and this value is 5, then the search will be run with the first 5 patterns enabled and then run again with the remaining 5 patterns. A value of 1 would run each pattern separately. Default of 0 will execute all patterns. This is only meant to help mitigate die heating and plist execution timeouts, it will not affect the results in any way.</td>
+</tr>
+<tr>
+<td style="text-align: left;">SearchValueMin</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">Integer</td>
+<td style="text-align: left;">Set the minimum wait time to check.</td>
+</tr>
+<tr>
+<td style="text-align: left;">SearchValueMax</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Integer</td>
+<td style="text-align: left;">If supplied and greater than 0 this sets the maximum wait time to check. Otherwise the existing wait time in the pattern is used.</td>
+</tr>
+<tr>
+<td style="text-align: left;">SearchValueResolution</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">Integer</td>
+<td style="text-align: left;">Sets the search resolution. If the current testpoint and the nextpoint are closer than this value, then the search will end and report the lowest passing wait time.</td>
+</tr>
+<tr>
+<td style="text-align: left;">MaxTestpoints</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">Integer</td>
+<td style="text-align: left;">Sets the maximum number of testpoints to check. Once this limit is reached it will return the lowest passing wait time.</td>
+</tr>
+<tr>
+<td style="text-align: left;">GuardbandMultiplier</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Double</td>
+<td style="text-align: left;">Guardband value. The final wait time will be the lowest passing wait time * (1 + GuardbandMultiplier)</td>
+</tr>
+<tr>
+<td style="text-align: left;">SearchMethod</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">enum</td>
+<td style="text-align: left;">Determines the type of search run: Binary, LinearLowToHigh (starts at minimum value, stops at first passing point), LinearHighToLow (starts at maximum values, stops at first failing point)</td>
+</tr>
+<tr>
+<td style="text-align: left;">RestorePatterns</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">True/False</td>
+<td style="text-align: left;">If True the patterns original wait times will be restored after the test has finished. If False the patterns will be left with the optimal wait times.</td>
+</tr>
+<tr>
+<td style="text-align: left;">ReloadPatConfig</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">True/False</td>
+<td style="text-align: left;">If True the PatmodInputFile will be loaded/reloaded when Verify is run on the instance. There is no need for PatmodInputFile to be in the env ALEPH_FILES definition in this case. It can also be used to override the definition of an existing ALEPH file that the user does not have write permissions for. <strong>This might fail due to Prime ticket 23312 and require reloading the testprogram.</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="parameter-details">2.1. Parameter Details</h3>
+<h4 id="patmodinputfilepatmodconfig">PatmodInputFile/PatmodConfig</h4>
+<p>PatmodInputFile is the Prime Pattern Modify file which defines the PatConfig (referenced
+by the PatmodConfig parameter) to use to update the wait times.
+It must be registered in the .env file in the ALEPH_FILES section.</p>
+<p>The PatternRegEx can be generic, the code will restrict it to modify one pattern at a time.
+(but making it more specific will speed up the ALEPH initialization done by PrimeInitTestMethod)</p>
+<p>The StartAddress/Offset should point to the Instruction vector controlling the main wait time to be searched.</p>
+<p>The file is used as a parameter so the template can read the default value of the wait instruction.
+Because of this the order of the ConfigurationElements is important. The 1st Domain listed will be used as the base.
+The wait times for all other domains must be an integer multiplier of the base domains wait time.
+So that means the 1st domain should be the one with the lowest frequency.</p>
+<p>Example PatmodInputFile: (PatmodConfig = &quot;ImpactStudiesBaseWaits&quot;)</p>
+<pre><code class="language-json">{
+	&quot;Configurations&quot;: [
+		{
+			&quot;Name&quot;: &quot;ImpactStudiesBaseWaits&quot;,
+			&quot;ConfigurationElement&quot;: [
+				{
+					&quot;Type&quot;: &quot;INSTRUCTION&quot;,
+					&quot;Domain&quot;: &quot;IP_CPU::LEG&quot;,
+					&quot;StartAddress&quot;: &quot;HVM_TEST_WAIT__BRK__ph0__HVMExecWait1&quot;,
+					&quot;StartAddressOffset&quot;: 84,
+					&quot;EndAddress&quot;: &quot;HVM_TEST_WAIT__BRK__ph0__HVMExecWait1&quot;,
+					&quot;EndAddressOffset&quot;: 84,
+					&quot;PatternsRegEx&quot;: [&quot;^[gds].*&quot;],
+					&quot;ValidationMode&quot; : &quot;ALLOW_LABEL_NO_MATCHING&quot;
+				},
+				{
+					&quot;Type&quot;: &quot;INSTRUCTION&quot;,
+					&quot;Domain&quot;: &quot;IP_CPU::DDR&quot;,
+					&quot;StartAddress&quot;: &quot;HVM_TEST_WAIT&quot;,
+					&quot;StartAddressOffset&quot;: 174,
+					&quot;EndAddress&quot;: &quot;HVM_TEST_WAIT&quot;,
+					&quot;EndAddressOffset&quot;: 174,
+					&quot;PatternsRegEx&quot;: [&quot;^[gds].*&quot;],
+					&quot;ValidationMode&quot; : &quot;ALLOW_LABEL_NO_MATCHING&quot;
+				}
+			]
+		}
+	]
+}
+</code></pre>
+<hr />
+<h4 id="patmodoutputfile">PatmodOutputFile</h4>
+<p>This is the main output of the template. Its a Prime .patmod.json file which contains all the
+Configurations and Data needed to update the patterns with their optimal wait times.
+It will only contain the passing patterns, any patterns which failed will not be listed here.</p>
+<p>The Configuration name will alway be &quot;ImpactStudiesOptimumWaits&quot;</p>
+<p>Example:</p>
+<pre><code class="language-json">{
+  &quot;Configurations&quot;: [
+    {
+      &quot;Name&quot;: &quot;ImpactStudiesOptimumWaits&quot;,
+      &quot;ConfigurationElement&quot;: [
+        {
+          &quot;Type&quot;: &quot;INSTRUCTION&quot;,
+          &quot;Domain&quot;: &quot;IP_CPU::LEG&quot;,
+          &quot;StartAddress&quot;: &quot;HVM_TEST_WAIT__BRK__ph0__HVMExecWait1&quot;,
+          &quot;StartAddressOffset&quot;: 84,
+          &quot;EndAddress&quot;: &quot;HVM_TEST_WAIT__BRK__ph0__HVMExecWait1&quot;,
+          &quot;EndAddressOffset&quot;: 84,
+          &quot;PatternsRegEx&quot;: [
+            &quot;^g1153694F1905750I_MM_VTB044T_Finm042h2ibn_a121216xx00022xbx1xxxalb_TB1PThTC003J1y3_LJx0A42x3nxx0000_DS02_Twiddle_3Y_880023AF$&quot;
+          ],
+          &quot;ValidationMode&quot;: &quot;ALLOW_LABEL_NO_MATCHING&quot;,
+          &quot;Data&quot;: &quot;MOV 1232, R7&quot;
+        },
+        {
+          &quot;Type&quot;: &quot;INSTRUCTION&quot;,
+          &quot;Domain&quot;: &quot;IP_CPU::DDR&quot;,
+          &quot;StartAddress&quot;: &quot;HVM_TEST_WAIT&quot;,
+          &quot;StartAddressOffset&quot;: 174,
+          &quot;EndAddress&quot;: &quot;HVM_TEST_WAIT&quot;,
+          &quot;EndAddressOffset&quot;: 174,
+          &quot;PatternsRegEx&quot;: [
+            &quot;^g1153694F1905750I_MM_VTB044T_Finm042h2ibn_a121216xx00022xbx1xxxalb_TB1PThTC003J1y3_LJx0A42x3nxx0000_DS02_Twiddle_3Y_880023AF$&quot;
+          ],
+          &quot;ValidationMode&quot;: &quot;ALLOW_LABEL_NO_MATCHING&quot;,
+          &quot;Data&quot;: &quot;MOV 2464, R7&quot;
+        },
+        {
+          &quot;Type&quot;: &quot;INSTRUCTION&quot;,
+          &quot;Domain&quot;: &quot;IP_CPU::LEG&quot;,
+          &quot;StartAddress&quot;: &quot;HVM_TEST_WAIT__BRK__ph0__HVMExecWait1&quot;,
+          &quot;StartAddressOffset&quot;: 84,
+          &quot;EndAddress&quot;: &quot;HVM_TEST_WAIT__BRK__ph0__HVMExecWait1&quot;,
+          &quot;EndAddressOffset&quot;: 84,
+          &quot;PatternsRegEx&quot;: [
+            &quot;^g1153697F1905744I_Ma_VTB044T_Finm042h2ibn_a121216xx00022xbx1xxxalb_TB1PThTC003J1y3_LJx0A42x3nxx0000_DS02_Scylla_SIJY_88001FDE$&quot;
+          ],
+          &quot;ValidationMode&quot;: &quot;ALLOW_LABEL_NO_MATCHING&quot;,
+          &quot;Data&quot;: &quot;MOV 2096, R7&quot;
+        },
+        {
+          &quot;Type&quot;: &quot;INSTRUCTION&quot;,
+          &quot;Domain&quot;: &quot;IP_CPU::DDR&quot;,
+          &quot;StartAddress&quot;: &quot;HVM_TEST_WAIT&quot;,
+          &quot;StartAddressOffset&quot;: 174,
+          &quot;EndAddress&quot;: &quot;HVM_TEST_WAIT&quot;,
+          &quot;EndAddressOffset&quot;: 174,
+          &quot;PatternsRegEx&quot;: [
+            &quot;^g1153697F1905744I_Ma_VTB044T_Finm042h2ibn_a121216xx00022xbx1xxxalb_TB1PThTC003J1y3_LJx0A42x3nxx0000_DS02_Scylla_SIJY_88001FDE$&quot;
+          ],
+          &quot;ValidationMode&quot;: &quot;ALLOW_LABEL_NO_MATCHING&quot;,
+          &quot;Data&quot;: &quot;MOV 4192, R7&quot;
+        },
+        {
+          &quot;Type&quot;: &quot;INSTRUCTION&quot;,
+          &quot;Domain&quot;: &quot;IP_CPU::LEG&quot;,
+          &quot;StartAddress&quot;: &quot;HVM_TEST_WAIT__BRK__ph0__HVMExecWait1&quot;,
+          &quot;StartAddressOffset&quot;: 84,
+          &quot;EndAddress&quot;: &quot;HVM_TEST_WAIT__BRK__ph0__HVMExecWait1&quot;,
+          &quot;EndAddressOffset&quot;: 84,
+          &quot;PatternsRegEx&quot;: [
+            &quot;^g1153682F1905720I_Mg_VTB044T_Finm042h2ibn_a121216xx00022xbx1xxxalb_TB1PThTC003J1y3_LJx0A42x3nxx0000_DS02_Frenzy_Y_880012CC$&quot;
+          ],
+          &quot;ValidationMode&quot;: &quot;ALLOW_LABEL_NO_MATCHING&quot;,
+          &quot;Data&quot;: &quot;MOV 2240, R7&quot;
+        },
+        {
+          &quot;Type&quot;: &quot;INSTRUCTION&quot;,
+          &quot;Domain&quot;: &quot;IP_CPU::DDR&quot;,
+          &quot;StartAddress&quot;: &quot;HVM_TEST_WAIT&quot;,
+          &quot;StartAddressOffset&quot;: 174,
+          &quot;EndAddress&quot;: &quot;HVM_TEST_WAIT&quot;,
+          &quot;EndAddressOffset&quot;: 174,
+          &quot;PatternsRegEx&quot;: [
+            &quot;^g1153682F1905720I_Mg_VTB044T_Finm042h2ibn_a121216xx00022xbx1xxxalb_TB1PThTC003J1y3_LJx0A42x3nxx0000_DS02_Frenzy_Y_880012CC$&quot;
+          ],
+          &quot;ValidationMode&quot;: &quot;ALLOW_LABEL_NO_MATCHING&quot;,
+          &quot;Data&quot;: &quot;MOV 4480, R7&quot;
+        },
+        {
+          &quot;Type&quot;: &quot;INSTRUCTION&quot;,
+          &quot;Domain&quot;: &quot;IP_CPU::LEG&quot;,
+          &quot;StartAddress&quot;: &quot;HVM_TEST_WAIT__BRK__ph0__HVMExecWait1&quot;,
+          &quot;StartAddressOffset&quot;: 84,
+          &quot;EndAddress&quot;: &quot;HVM_TEST_WAIT__BRK__ph0__HVMExecWait1&quot;,
+          &quot;EndAddressOffset&quot;: 84,
+          &quot;PatternsRegEx&quot;: [
+            &quot;^g1153668F1905746I_Mc_VTB044T_Finm042h2ibn_a121216xx00022xbx1xxxalb_TB1PThTC003J1y3_LJx0A42x3nxx0000_DS02_Scylla_SIJY_880020CE$&quot;,
+            &quot;^g1153748F1905747I_Md_VTB044T_Finm042h2ibn_a121216xx00022xbx1xxxalb_TB1PThTC003J1y3_LJx0A42x3nxx0000_DS02_Scylla_SIJY_880020FE$&quot;,
+            &quot;^g1153776F1905743I_Mc_VTB044T_Finm042h2ibn_a121216xx00022xbx1xxxalb_TB1PThTC003J1y3_LJx0A42x3nxx0000_DS02_Scylla_SIJY_88001F8E$&quot;,
+            &quot;^g1153787F1905742I_Md_VTB044T_Finm042h2ibn_a121216xx00022xbx1xxxalb_TB1PThTC003J1y3_LJx0A42x3nxx0000_DS02_Scylla_SIJY_88001E7E$&quot;
+          ],
+          &quot;ValidationMode&quot;: &quot;ALLOW_LABEL_NO_MATCHING&quot;,
+          &quot;Data&quot;: &quot;MOV 440, R7&quot;
+        },
+        {
+          &quot;Type&quot;: &quot;INSTRUCTION&quot;,
+          &quot;Domain&quot;: &quot;IP_CPU::DDR&quot;,
+          &quot;StartAddress&quot;: &quot;HVM_TEST_WAIT&quot;,
+          &quot;StartAddressOffset&quot;: 174,
+          &quot;EndAddress&quot;: &quot;HVM_TEST_WAIT&quot;,
+          &quot;EndAddressOffset&quot;: 174,
+          &quot;PatternsRegEx&quot;: [
+            &quot;^g1153668F1905746I_Mc_VTB044T_Finm042h2ibn_a121216xx00022xbx1xxxalb_TB1PThTC003J1y3_LJx0A42x3nxx0000_DS02_Scylla_SIJY_880020CE$&quot;,
+            &quot;^g1153748F1905747I_Md_VTB044T_Finm042h2ibn_a121216xx00022xbx1xxxalb_TB1PThTC003J1y3_LJx0A42x3nxx0000_DS02_Scylla_SIJY_880020FE$&quot;,
+            &quot;^g1153776F1905743I_Mc_VTB044T_Finm042h2ibn_a121216xx00022xbx1xxxalb_TB1PThTC003J1y3_LJx0A42x3nxx0000_DS02_Scylla_SIJY_88001F8E$&quot;,
+            &quot;^g1153787F1905742I_Md_VTB044T_Finm042h2ibn_a121216xx00022xbx1xxxalb_TB1PThTC003J1y3_LJx0A42x3nxx0000_DS02_Scylla_SIJY_88001E7E$&quot;
+          ],
+          &quot;ValidationMode&quot;: &quot;ALLOW_LABEL_NO_MATCHING&quot;,
+          &quot;Data&quot;: &quot;MOV 880, R7&quot;
+        }
+      ]
+    }
+  ]
+}
+</code></pre>
+<hr />
+<h4 id="summaryoutputfile">SummaryOutputFile</h4>
+<p>This is a secondary output of the template. It's a .json file containing a summary of the results.</p>
+<p>The &quot;ConfigName&quot; string is the name of the PatMod Configuration used to generate the results.
+It will be the PatmodConfig parameter value.</p>
+<p>The section called &quot;ValidResults&quot; is a dictionary where the Keys are the PatMod Data
+(domains are separated by the pipe symbol) and the Value is the list of patterns which use that wait time.</p>
+<p>The last section called &quot;InvalidPatterns&quot; is the list of patterns which fail the Maximum/default
+wait time and should be considered as bad/failing patterns.</p>
+<pre><code class="language-json">{
+  &quot;ConfigName&quot;: &quot;ImpactStudiesBaseWaits&quot;,
+  &quot;ValidResults&quot;: {
+    &quot;MOV 1232, R7|MOV 2464, R7&quot;: [
+      &quot;g1153694F1905750I_MM_VTB044T_Finm042h2ibn_a121216xx00022xbx1xxxalb_TB1PThTC003J1y3_LJx0A42x3nxx0000_DS02_Twiddle_3Y_880023AF&quot;
+    ],
+    &quot;MOV 2096, R7|MOV 4192, R7&quot;: [
+      &quot;g1153697F1905744I_Ma_VTB044T_Finm042h2ibn_a121216xx00022xbx1xxxalb_TB1PThTC003J1y3_LJx0A42x3nxx0000_DS02_Scylla_SIJY_88001FDE&quot;
+    ],
+    &quot;MOV 2240, R7|MOV 4480, R7&quot;: [
+      &quot;g1153682F1905720I_Mg_VTB044T_Finm042h2ibn_a121216xx00022xbx1xxxalb_TB1PThTC003J1y3_LJx0A42x3nxx0000_DS02_Frenzy_Y_880012CC&quot;
+    ],
+    &quot;MOV 440, R7|MOV 880, R7&quot;: [
+      &quot;g1153668F1905746I_Mc_VTB044T_Finm042h2ibn_a121216xx00022xbx1xxxalb_TB1PThTC003J1y3_LJx0A42x3nxx0000_DS02_Scylla_SIJY_880020CE&quot;,
+      &quot;g1153748F1905747I_Md_VTB044T_Finm042h2ibn_a121216xx00022xbx1xxxalb_TB1PThTC003J1y3_LJx0A42x3nxx0000_DS02_Scylla_SIJY_880020FE&quot;,
+      &quot;g1153776F1905743I_Mc_VTB044T_Finm042h2ibn_a121216xx00022xbx1xxxalb_TB1PThTC003J1y3_LJx0A42x3nxx0000_DS02_Scylla_SIJY_88001F8E&quot;,
+      &quot;g1153787F1905742I_Md_VTB044T_Finm042h2ibn_a121216xx00022xbx1xxxalb_TB1PThTC003J1y3_LJx0A42x3nxx0000_DS02_Scylla_SIJY_88001E7E&quot;
+    ]
+  },
+  &quot;InvalidPatterns&quot;: [
+    &quot;g1153699F1905722I_Mh_VTB044T_Finm042h2ibn_a121216xx00022xbx1xxxalb_TB1PThTC003J1y3_LJx0A42x3nxx0000_DS02_LeekSpin_Y_880019E0&quot;,
+    &quot;g1153739F1905748I_MM_VTB044T_Finm042h2ibn_a121216xx00022xbx1xxxalb_TB1PThTC003J1y3_LJx0A42x3nxx0000_DS02_Twiddle_3Y_880022EF&quot;
+  ]
+}
+</code></pre>
+<hr />
+<h2 id="datalog-output">3. Datalog output</h2>
+<p>None. There is no data logged to ituff.</p>
+<h3 id="section-1"></h3>
+<hr />
+<h2 id="tpl-samples">4. TPL Samples</h2>
+<h3 id="section-2"></h3>
+<pre><code class="language-csharp">Test PatternDelayOptimizer ImpactStudiesTest1
+{
+   LevelsTc = &quot;IP_CPU::IP_CPU_BASE::DDR_univ_lvl_nom_lvl&quot;;
+   TimingsTc = &quot;IP_CPU::IP_CPU_BASE::cpu_func_sdr_univ_sta_univ_univ_b100_t100_d100&quot;;
+   Patlist = &quot;IP_CPU::fun_core_sbft_vcc_f5_srhcrx2f5_mci_nc_drg_list&quot;;
+   
+   PerRunPatternLimit = 0;
+   SearchValueMin = 400,
+   SearchValueResolution = 100;
+   MaxTestpoints = 100;
+   GuardbandMultiplier = 0.1;
+   
+   PatmodConfig = &quot;ImpactStudiesBaseWaits&quot;;
+   PatmodInputFile = &quot;./Modules/IMPACT_STUDIES/InputFiles/impactstudies.patmod.json&quot;;
+   PatmodOutputFile = &quot;./Modules/IMPACT_STUDIES/InputFiles/is_final.patmod.json&quot;;
+   SummaryOutputFile = &quot;./Modules/IMPACT_STUDIES/InputFiles/is_final.summary.json&quot;;
+   
+   LogLevel = &quot;PRIME_DEBUG&quot;;
+}
+
+</code></pre>
+<hr />
+<h2 id="exit-ports">5. Exit Ports</h2>
+<table>
+<thead>
+<tr>
+<th>Exit Port</th>
+<th>Condition</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-2</td>
+<td>Alarm</td>
+<td>Any HW alarm condition</td>
+</tr>
+<tr>
+<td>-1</td>
+<td>Error</td>
+<td>Any software error</td>
+</tr>
+<tr>
+<td>0</td>
+<td>Fail</td>
+<td>not used.</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Pass</td>
+<td>normal exit port if the search ran.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="section-3"></h3>
+<hr />
+
+
+</body>
+</html>

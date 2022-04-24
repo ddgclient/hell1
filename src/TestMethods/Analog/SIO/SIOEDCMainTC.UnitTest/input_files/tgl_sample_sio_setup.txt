@@ -1,0 +1,307 @@
+#====================================================================================================
+GLOBAL_SETUP      PATMODIFY_TEST  SIO_PCIE_LPBK1::REUTAFELB_X_PMOD_E_END_X_X_X_X_GLOBAL  
+#====================================================================================================
+
+###################################################################################################################
+#====================================================================================================
+RESET_TXEQ					MODIFY_TOKEN		TXEQPRECUR!TXEQPOSTCUR!TXEQCUR
+RESET_TXEQ					MODIFY_VALUE		DEFAULT!DEFAULT!DEFAULT
+#====================================================================================================
+
+#====================================================================================================
+RESET_PMOD			MODIFY_TOKEN		DEFAULT
+RESET_PMOD			MODIFY_VALUE		MODE
+#====================================================================================================
+SET_PMOD			MODIFY_TOKEN		SET
+SET_PMOD			MODIFY_VALUE		MODE
+
+#====================================================================================================
+########################################## LONG MV ##################################################
+#====================================================================================================
+#===================================PCIE GEN1 EXTLB =================================================================
+#PCIE_CALCODE_EXTLB_GEN1          	DLOG_NAME             	SIO_PCIE_LPBK1::PCIE_Iso_BringUp_Gen1_EXTLB_PRBS7_HVM_svtt
+PCIE_CALCODE_EXTLB_GEN1           	SEQ_FILE	      	    Modules\SIO_PCIE_LPBK1\InputFiles\sequence_merged_CMEM_pcie_8b_com_bcast_prbs7_extlb_Gen1__class.csv
+PCIE_CALCODE_EXTLB_GEN1          	FORMAT_FILE	      	    Modules\SIO_PCIE_LPBK1\InputFiles\format_merged_CMEM_pcie_8b_com_bcast_prbs7_extlb_Gen1__class.csv
+PCIE_CALCODE_EXTLB_GEN1           	SEQ_ID		      	    class_edc_g3
+PCIE_CALCODE_EXTLB_GEN1 			NUMOFTESTRUN	      	1
+PCIE_CALCODE_EXTLB_GEN1           	TESTTYPE			    CAPTURE
+PCIE_CALCODE_EXTLB_GEN1           	REGDEF			    	CLIENT
+
+
+#===================================PCIE GEN2 EXTLB =================================================================
+#PCIE_CALCODE_EXTLB_GEN2          		DLOG_NAME             	SIO_PCIE_LPBK1::PCIE_FW_BringUp_Gen2_EXTLB_PRBS7_svtt
+PCIE_CALCODE_EXTLB_GEN2          		SEQ_FILE	      	    Modules\SIO_PCIE_LPBK1\InputFiles\sequence_merged_CMEM_pcie_8b_com_bcast_prbs7_extlb_Gen2__class.csv
+PCIE_CALCODE_EXTLB_GEN2          		FORMAT_FILE	      	    Modules\SIO_PCIE_LPBK1\InputFiles\format_merged_CMEM_pcie_8b_com_bcast_prbs7_extlb_Gen2__class.csv
+PCIE_CALCODE_EXTLB_GEN2          		SEQ_ID		      	    class_edc_g3
+PCIE_CALCODE_EXTLB_GEN2 				NUMOFTESTRUN	      	1
+PCIE_CALCODE_EXTLB_GEN2           		TESTTYPE			    CAPTURE
+PCIE_CALCODE_EXTLB_GEN2          		REGDEF					CLIENT
+
+#===================================PCIE GEN3 EXTLB=================================================================
+#PCIE_CALCODE_EXTLB_GEN3         		DLOG_NAME             	SIO_PCIE_LPBK1::PCIE_FW_BringUp_Gen3_EXTLB_PRBS23_svtt
+PCIE_CALCODE_EXTLB_GEN3         		SEQ_FILE	      	    Modules\SIO_PCIE_LPBK1\InputFiles\sequence_merged_CMEM_pcie_bob_8b_bcast_prbs23_extlb_Gen3__class.csv
+PCIE_CALCODE_EXTLB_GEN3         		FORMAT_FILE	      	    Modules\SIO_PCIE_LPBK1\InputFiles\format_merged_CMEM_pcie_bob_8b_bcast_prbs23_extlb_Gen3__class.csv
+PCIE_CALCODE_EXTLB_GEN3         		SEQ_ID		      	    class_edc_g3
+PCIE_CALCODE_EXTLB_GEN3					NUMOFTESTRUN	      	1
+PCIE_CALCODE_EXTLB_GEN3          		TESTTYPE			    CAPTURE
+PCIE_CALCODE_EXTLB_GEN3         		REGDEF					CLIENT
+
+
+#===================================PCIE GEN4 EXTLB=================================================================
+#PCIE_CALCODE_EXTLB_GEN4         		DLOG_NAME             	SIO_PCIE_LPBK1::PCIE_FW_BringUp_Gen4_EXTLB_PRBS23_svtt
+PCIE_CALCODE_EXTLB_GEN4         		SEQ_FILE	      	    Modules\SIO_PCIE_LPBK1\InputFiles\sequence_merged_CMEM_pcie_bob_8b_bcast_prbs23_extlb_Gen4__class.csv
+PCIE_CALCODE_EXTLB_GEN4         		FORMAT_FILE	      	    Modules\SIO_PCIE_LPBK1\InputFiles\format_merged_CMEM_pcie_bob_8b_bcast_prbs23_extlb_Gen4__class.csv
+PCIE_CALCODE_EXTLB_GEN4         		SEQ_ID		      	    class_edc_g3
+PCIE_CALCODE_EXTLB_GEN4					NUMOFTESTRUN	      	1
+PCIE_CALCODE_EXTLB_GEN4          		TESTTYPE			    CAPTURE
+PCIE_CALCODE_EXTLB_GEN4         		REGDEF					CLIENT
+
+####Class EHM/JINJ####
+#===================================PCIE GEN1 JINJ =================================================================
+#PCIE_CALCODE_JINJ_GEN1          	DLOG_NAME             	SIO_PCIE_LPBK1::PCIE_Iso_BringUp_Gen1_JINJ_PRBS7_HVM_svtt
+PCIE_CALCODE_JINJ_GEN1           	SEQ_FILE	      	    Modules\SIO_PCIE_LPBK1\InputFiles\sequence_merged_CMEM_PCIE_CDR_JINJ_PRBS7_EXTLB_Gen1_g1__class.csv
+PCIE_CALCODE_JINJ_GEN1          	FORMAT_FILE	      	    Modules\SIO_PCIE_LPBK1\InputFiles\format_merged_CMEM_PCIE_CDR_JINJ_PRBS7_EXTLB_Gen1_g1__class.csv
+PCIE_CALCODE_JINJ_GEN1           	SEQ_ID		      	    class_edc_g3
+PCIE_CALCODE_JINJ_GEN1 				NUMOFTESTRUN	      	1
+PCIE_CALCODE_JINJ_GEN1           	TESTTYPE			    CAPTURE
+PCIE_CALCODE_JINJ_GEN1           	REGDEF			    	CLIENT
+
+
+#===================================PCIE GEN2 JINJ =================================================================
+#PCIE_CALCODE_JINJ_GEN2          		DLOG_NAME             	SIO_PCIE_LPBK1::PCIE_FW_BringUp_Gen2_JINJ_PRBS7_svtt
+PCIE_CALCODE_JINJ_GEN2          		SEQ_FILE	      	    Modules\SIO_PCIE_LPBK1\InputFiles\sequence_merged_CMEM_PCIE_CDR_JINJ_PRBS7_EXTLB_Gen1_g2__class.csv
+PCIE_CALCODE_JINJ_GEN2          		FORMAT_FILE	      	    Modules\SIO_PCIE_LPBK1\InputFiles\format_merged_CMEM_PCIE_CDR_JINJ_PRBS7_EXTLB_Gen1_g2__class.csv
+PCIE_CALCODE_JINJ_GEN2          		SEQ_ID		      	    class_edc_g3
+PCIE_CALCODE_JINJ_GEN2 					NUMOFTESTRUN	      	1
+PCIE_CALCODE_JINJ_GEN2           		TESTTYPE			    CAPTURE
+PCIE_CALCODE_JINJ_GEN2          		REGDEF					CLIENT
+
+#===================================PCIE GEN3 JINJ=================================================================
+#PCIE_CALCODE_JINJ_GEN3         		DLOG_NAME             	SIO_PCIE_LPBK1::PCIE_FW_BringUp_Gen3_JINJ_PRBS23_svtt
+PCIE_CALCODE_JINJ_GEN3         			SEQ_FILE	      	    Modules\SIO_PCIE_LPBK1\InputFiles\sequence_merged_CMEM_PCIE_CDR_JINJ_PRBS23_EXTLB_Gen4_g3__class.csv
+PCIE_CALCODE_JINJ_GEN3         			FORMAT_FILE	      	    Modules\SIO_PCIE_LPBK1\InputFiles\format_merged_CMEM_PCIE_CDR_JINJ_PRBS23_EXTLB_Gen4_g3__class.csv
+PCIE_CALCODE_JINJ_GEN3					NUMOFTESTRUN	      	1
+PCIE_CALCODE_JINJ_GEN3          		TESTTYPE			    CAPTURE
+PCIE_CALCODE_JINJ_GEN3         			REGDEF					CLIENT
+
+
+#===================================PCIE GEN4 JINJ=================================================================
+#PCIE_CALCODE_JINJ_GEN4         		DLOG_NAME             	SIO_PCIE_LPBK1::PCIE_FW_BringUp_Gen4_JINJ_PRBS23_svtt
+PCIE_CALCODE_JINJ_GEN4         			SEQ_FILE	      	    Modules\SIO_PCIE_LPBK1\InputFiles\sequence_merged_CMEM_PCIE_CDR_JINJ_PRBS23_EXTLB_Gen4_g4__class.csv
+PCIE_CALCODE_JINJ_GEN4         			FORMAT_FILE	      	    Modules\SIO_PCIE_LPBK1\InputFiles\format_merged_CMEM_PCIE_CDR_JINJ_PRBS23_EXTLB_Gen4_g4__class.csv
+PCIE_CALCODE_JINJ_GEN4         			SEQ_ID		      	    class_edc_g3
+PCIE_CALCODE_JINJ_GEN4					NUMOFTESTRUN	      	1
+PCIE_CALCODE_JINJ_GEN4          		TESTTYPE			    CAPTURE
+PCIE_CALCODE_JINJ_GEN4         			REGDEF					CLIENT
+
+###Class EHM####
+#===================================PCIE GEN4 EHM ODD=================================================================
+#PCIE_CALCODE_EHM_ODD_GEN4         		DLOG_NAME             	SIO_PCIE_LPBK1::PCIE_FW_BringUp_Gen4_EHM_PRBS23_svtt
+PCIE_CALCODE_EHM_ODD_GEN4         		SEQ_FILE	      	    Modules\SIO_PCIE_LPBK1\InputFiles\sequence_merged_CMEM_PCIE_EHM_BCAST_PRBS23_EXTLB_ODD_Gen4__class.csv
+PCIE_CALCODE_EHM_ODD_GEN4         		FORMAT_FILE	      	    Modules\SIO_PCIE_LPBK1\InputFiles\format_merged_CMEM_PCIE_EHM_BCAST_PRBS23_EXTLB_ODD_Gen4__class.csv
+PCIE_CALCODE_EHM_ODD_GEN4         		SEQ_ID		      	    class_edc_g3
+PCIE_CALCODE_EHM_ODD_GEN4				NUMOFTESTRUN	      	1
+PCIE_CALCODE_EHM_ODD_GEN4          		TESTTYPE			    CAPTURE
+PCIE_CALCODE_EHM_ODD_GEN4         		REGDEF					CLIENT
+
+#===================================PCIE GEN4 EHM EVEN=================================================================
+#PCIE_CALCODE_EHM_EVEN_GEN4         	DLOG_NAME             	SIO_PCIE_LPBK1::PCIE_FW_BringUp_Gen4_EHM_PRBS23_svtt
+PCIE_CALCODE_EHM_EVEN_GEN4         		SEQ_FILE	      	    Modules\SIO_PCIE_LPBK1\InputFiles\sequence_merged_CMEM_PCIE_EHM_BCAST_PRBS23_EXTLB_EVEN_Gen4__class.csv
+PCIE_CALCODE_EHM_EVEN_GEN4         		FORMAT_FILE	      	    Modules\SIO_PCIE_LPBK1\InputFiles\format_merged_CMEM_PCIE_EHM_BCAST_PRBS23_EXTLB_EVEN_Gen4__class.csv
+PCIE_CALCODE_EHM_EVEN_GEN4         		SEQ_ID		      	    class_edc_g3
+PCIE_CALCODE_EHM_EVEN_GEN4				NUMOFTESTRUN	      	1
+PCIE_CALCODE_EHM_EVEN_GEN4          	TESTTYPE			    CAPTURE
+PCIE_CALCODE_EHM_EVEN_GEN4         		REGDEF					CLIENT
+
+##### SORT EXTLB#####
+#===================================PCIE GEN1 EXTLB SORT=================================================================
+#PCIE_CALCODE_EXTLB_GEN1_SORT          	DLOG_NAME             	SIO_PCIE_LPBK1::PCIE_Iso_BringUp_Gen1_EXTLB_PRBS7__svtt
+PCIE_CALCODE_EXTLB_GEN1_SORT           	SEQ_FILE	      	    Modules\SIO_PCIE_LPBK1\InputFiles\sequence_merged_CMEM_pcie_8b_com_b_prbs7_extlb_Gen1_Sort__sort.csv
+PCIE_CALCODE_EXTLB_GEN1_SORT          	FORMAT_FILE	      	    Modules\SIO_PCIE_LPBK1\InputFiles\format_merged_CMEM_pcie_8b_com_b_prbs7_extlb_Gen1_Sort__sort.csv
+PCIE_CALCODE_EXTLB_GEN1_SORT           	SEQ_ID		      	    class_edc_g3
+PCIE_CALCODE_EXTLB_GEN1_SORT 			NUMOFTESTRUN	      	1
+PCIE_CALCODE_EXTLB_GEN1_SORT           	TESTTYPE			    CAPTURE
+PCIE_CALCODE_EXTLB_GEN1_SORT           	REGDEF			    	CLIENT
+
+
+#===================================PCIE GEN2 EXTLB SORT=================================================================
+#PCIE_CALCODE_EXTLB_GEN2_SORT          		DLOG_NAME             	SIO_PCIE_LPBK1::PCIE_FW_BringUp_Gen2_EXTLB_PRBS7_svtt
+PCIE_CALCODE_EXTLB_GEN2_SORT          		SEQ_FILE	      	    Modules\SIO_PCIE_LPBK1\InputFiles\sequence_merged_CMEM_pcie_8b_com_b_prbs7_extlb_Gen2_Sort__sort.csv
+PCIE_CALCODE_EXTLB_GEN2_SORT          		FORMAT_FILE	      	    Modules\SIO_PCIE_LPBK1\InputFiles\format_merged_CMEM_pcie_8b_com_b_prbs7_extlb_Gen2_Sort__sort.csv
+PCIE_CALCODE_EXTLB_GEN2_SORT          		SEQ_ID		      	    class_edc_g3
+PCIE_CALCODE_EXTLB_GEN2_SORT 				NUMOFTESTRUN	      	1
+PCIE_CALCODE_EXTLB_GEN2_SORT           		TESTTYPE			    CAPTURE
+PCIE_CALCODE_EXTLB_GEN2_SORT          		REGDEF					CLIENT
+
+#===================================PCIE GEN3 EXTLB SORT=================================================================
+#PCIE_CALCODE_EXTLB_GEN3_SORT         		DLOG_NAME             	SIO_PCIE_LPBK1::PCIE_FW_BringUp_Gen3_EXTLB_PRBS23_svtt
+PCIE_CALCODE_EXTLB_GEN3_SORT         		SEQ_FILE	      	    Modules\SIO_PCIE_LPBK1\InputFiles\sequence_merged_CMEM_pcie_bob_8b_b_prbs23_extlb_Gen3_Sort__sort.csv
+PCIE_CALCODE_EXTLB_GEN3_SORT         		FORMAT_FILE	      	    Modules\SIO_PCIE_LPBK1\InputFiles\format_merged_CMEM_pcie_bob_8b_b_prbs23_extlb_Gen3_Sort__sort.csv
+PCIE_CALCODE_EXTLB_GEN3_SORT         		SEQ_ID		      	    class_edc_g3
+PCIE_CALCODE_EXTLB_GEN3_SORT				NUMOFTESTRUN	      	1
+PCIE_CALCODE_EXTLB_GEN3_SORT          		TESTTYPE			    CAPTURE
+PCIE_CALCODE_EXTLB_GEN3_SORT         		REGDEF					CLIENT
+
+
+#===================================PCIE GEN4 EXTLB SORT=================================================================
+#PCIE_CALCODE_EXTLB_GEN4_SORT         		DLOG_NAME             	SIO_PCIE_LPBK1::PCIE_FW_BringUp_Gen4_EXTLB_PRBS23_svtt
+PCIE_CALCODE_EXTLB_GEN4_SORT         		SEQ_FILE	      	    Modules\SIO_PCIE_LPBK1\InputFiles\sequence_merged_CMEM_pcie_bob_8b_b_prbs23_extlb_Gen4_Sort__sort.csv
+PCIE_CALCODE_EXTLB_GEN4_SORT         		FORMAT_FILE	      	    Modules\SIO_PCIE_LPBK1\InputFiles\format_merged_CMEM_pcie_bob_8b_b_prbs23_extlb_Gen4_Sort__sort.csv
+PCIE_CALCODE_EXTLB_GEN4_SORT         		SEQ_ID		      	    class_edc_g3
+PCIE_CALCODE_EXTLB_GEN4_SORT				NUMOFTESTRUN	      	1
+PCIE_CALCODE_EXTLB_GEN4_SORT          		TESTTYPE			    CAPTURE
+PCIE_CALCODE_EXTLB_GEN4_SORT         		REGDEF					CLIENT
+
+##### SORT EXTLB#####
+####Sort EHM/JINJ####
+#===================================PCIE GEN1 JINJ =================================================================
+#PCIE_CALCODE_JINJ_GEN1_SORT          	DLOG_NAME             	SIO_PCIE_LPBK1::PCIE_Iso_BringUp_Gen1_JINJ_PRBS7_HVM_svtt
+PCIE_CALCODE_JINJ_GEN1_SORT           	SEQ_FILE	      	    Modules\SIO_PCIE_LPBK1\InputFiles\sequence_merged_CMEM_PCIE_CDR_JINJ_PRBS7_EXTLB_Gen1_g1__sort.csv
+PCIE_CALCODE_JINJ_GEN1_SORT          	FORMAT_FILE	      	    Modules\SIO_PCIE_LPBK1\InputFiles\format_merged_CMEM_PCIE_CDR_JINJ_PRBS7_EXTLB_Gen1_g1__sort.csv
+PCIE_CALCODE_JINJ_GEN1_SORT           	SEQ_ID		      	    class_edc_g3
+PCIE_CALCODE_JINJ_GEN1_SORT 			NUMOFTESTRUN	      	1
+PCIE_CALCODE_JINJ_GEN1_SORT           	TESTTYPE			    CAPTURE
+PCIE_CALCODE_JINJ_GEN1_SORT           	REGDEF			    	CLIENT
+
+
+#===================================PCIE GEN2 JINJ =================================================================
+#PCIE_CALCODE_JINJ_GEN2_SORT          		DLOG_NAME             	SIO_PCIE_LPBK1::PCIE_FW_BringUp_Gen2_JINJ_PRBS7_svtt
+PCIE_CALCODE_JINJ_GEN2_SORT          		SEQ_FILE	      	    Modules\SIO_PCIE_LPBK1\InputFiles\sequence_merged_CMEM_PCIE_CDR_JINJ_PRBS7_EXTLB_Gen1_g2__sort.csv
+PCIE_CALCODE_JINJ_GEN2_SORT          		FORMAT_FILE	      	    Modules\SIO_PCIE_LPBK1\InputFiles\format_merged_CMEM_PCIE_CDR_JINJ_PRBS7_EXTLB_Gen1_g2__sort.csv
+PCIE_CALCODE_JINJ_GEN2_SORT          		SEQ_ID		      	    class_edc_g3
+PCIE_CALCODE_JINJ_GEN2_SORT 				NUMOFTESTRUN	      	1
+PCIE_CALCODE_JINJ_GEN2_SORT           		TESTTYPE			    CAPTURE
+PCIE_CALCODE_JINJ_GEN2_SORT          		REGDEF					CLIENT
+
+#===================================PCIE GEN3 JINJ=================================================================
+#PCIE_CALCODE_JINJ_GEN3_SORT         		DLOG_NAME             	SIO_PCIE_LPBK1::PCIE_FW_BringUp_Gen3_JINJ_PRBS23_svtt
+PCIE_CALCODE_JINJ_GEN3_SORT         		SEQ_FILE	      	    Modules\SIO_PCIE_LPBK1\InputFiles\sequence_merged_CMEM_PCIE_CDR_JINJ_PRBS23_EXTLB_Gen4_g3__sort.csv
+PCIE_CALCODE_JINJ_GEN3_SORT         		FORMAT_FILE	      	    Modules\SIO_PCIE_LPBK1\InputFiles\format_merged_CMEM_PCIE_CDR_JINJ_PRBS23_EXTLB_Gen4_g3__sort.csv
+PCIE_CALCODE_JINJ_GEN3_SORT					NUMOFTESTRUN	      	1
+PCIE_CALCODE_JINJ_GEN3_SORT          		TESTTYPE			    CAPTURE
+PCIE_CALCODE_JINJ_GEN3_SORT         		REGDEF					CLIENT
+
+
+#===================================PCIE GEN4 JINJ=================================================================
+#PCIE_CALCODE_JINJ_GEN4_SORT         		DLOG_NAME             	SIO_PCIE_LPBK1::PCIE_FW_BringUp_Gen4_JINJ_PRBS23_svtt
+PCIE_CALCODE_JINJ_GEN4_SORT         		SEQ_FILE	      	    Modules\SIO_PCIE_LPBK1\InputFiles\sequence_merged_CMEM_PCIE_CDR_JINJ_PRBS23_EXTLB_Gen4_g4__sort.csv
+PCIE_CALCODE_JINJ_GEN4_SORT         		FORMAT_FILE	      	    Modules\SIO_PCIE_LPBK1\InputFiles\format_merged_CMEM_PCIE_CDR_JINJ_PRBS23_EXTLB_Gen4_g4__sort.csv
+PCIE_CALCODE_JINJ_GEN4_SORT         		SEQ_ID		      	    class_edc_g3
+PCIE_CALCODE_JINJ_GEN4_SORT					NUMOFTESTRUN	      	1
+PCIE_CALCODE_JINJ_GEN4_SORT          		TESTTYPE			    CAPTURE
+PCIE_CALCODE_JINJ_GEN4_SORT         		REGDEF					CLIENT
+
+###Sort EHM####
+#===================================PCIE GEN4 EHM ODD=================================================================
+#PCIE_CALCODE_EHM_ODD_GEN4_SORT         	DLOG_NAME             	SIO_PCIE_LPBK1::PCIE_FW_BringUp_Gen4_EHM_PRBS23_svtt
+PCIE_CALCODE_EHM_ODD_GEN4_SORT         		SEQ_FILE	      	    Modules\SIO_PCIE_LPBK1\InputFiles\sequence_merged_CMEM_PCIE_EHM_BCAST_PRBS23_EXTLB_ODD_Gen4__sort.csv
+PCIE_CALCODE_EHM_ODD_GEN4_SORT         		FORMAT_FILE	      	    Modules\SIO_PCIE_LPBK1\InputFiles\format_merged_CMEM_PCIE_EHM_BCAST_PRBS23_EXTLB_ODD_Gen4__sort.csv
+PCIE_CALCODE_EHM_ODD_GEN4_SORT         		SEQ_ID		      	    class_edc_g3
+PCIE_CALCODE_EHM_ODD_GEN4_SORT				NUMOFTESTRUN	      	1
+PCIE_CALCODE_EHM_ODD_GEN4_SORT          	TESTTYPE			    CAPTURE
+PCIE_CALCODE_EHM_ODD_GEN4_SORT         		REGDEF					CLIENT
+
+#===================================PCIE GEN4 EHM EVEN=================================================================
+#PCIE_CALCODE_EHM_EVEN_GEN4_SORT         	DLOG_NAME             	SIO_PCIE_LPBK1::PCIE_FW_BringUp_Gen4_EHM_PRBS23_svtt
+PCIE_CALCODE_EHM_EVEN_GEN4_SORT         	SEQ_FILE	      	    Modules\SIO_PCIE_LPBK1\InputFiles\sequence_merged_CMEM_PCIE_EHM_BCAST_PRBS23_EXTLB_EVEN_Gen4__sort.csv
+PCIE_CALCODE_EHM_EVEN_GEN4_SORT         	FORMAT_FILE	      	    Modules\SIO_PCIE_LPBK1\InputFiles\format_merged_CMEM_PCIE_EHM_BCAST_PRBS23_EXTLB_EVEN_Gen4__sort.csv
+PCIE_CALCODE_EHM_EVEN_GEN4_SORT         	SEQ_ID		      	    class_edc_g3
+PCIE_CALCODE_EHM_EVEN_GEN4_SORT				NUMOFTESTRUN	      	1
+PCIE_CALCODE_EHM_EVEN_GEN4_SORT          	TESTTYPE			    CAPTURE
+PCIE_CALCODE_EHM_EVEN_GEN4_SORT         	REGDEF					CLIENT
+
+####SORT/CLASS DNELB######
+#===================================PCIE GEN1 DNELB =================================================================
+#PCIE_CALCODE_DNELB_GEN1          	DLOG_NAME             	SIO_PCIE_LPBK1::REUTAFELB_X_CMEM_E_END_X_X_VNOM_8000_HVM_svtt
+PCIE_CALCODE_DNELB_GEN1           	SEQ_FILE	      	    Modules\SIO_PCIE_LPBK1\InputFiles\sequence_merged_CMEM_pcie_8b_com_bcast_prbs7_dnelb_Gen1__class.csv
+PCIE_CALCODE_DNELB_GEN1          	FORMAT_FILE	      	    Modules\SIO_PCIE_LPBK1\InputFiles\format_merged_CMEM_pcie_8b_com_bcast_prbs7_dnelb_Gen1__class.csv
+PCIE_CALCODE_DNELB_GEN1           	SEQ_ID		      	    class_edc_g3
+PCIE_CALCODE_DNELB_GEN1 			NUMOFTESTRUN	      	1
+PCIE_CALCODE_DNELB_GEN1           	TESTTYPE			    CAPTURE
+PCIE_CALCODE_DNELB_GEN1           	REGDEF			    	CLIENT
+
+
+#===================================PCIE GEN2 DNELB =================================================================
+#PCIE_CALCODE_DNELB_GEN2          		DLOG_NAME             	SIO_PCIE_LPBK1::REUTAFELB_X_CMEM_E_END_X_X_VMAX_8000_EMB_svtt
+PCIE_CALCODE_DNELB_GEN2          		SEQ_FILE	      	    Modules\SIO_PCIE_LPBK1\InputFiles\sequence_merged_CMEM_pcie_8b_com_bcast_prbs7_dnelb_Gen2__class.csv
+PCIE_CALCODE_DNELB_GEN2          		FORMAT_FILE	      	    Modules\SIO_PCIE_LPBK1\InputFiles\format_merged_CMEM_pcie_8b_com_bcast_prbs7_dnelb_Gen2__class.csv
+PCIE_CALCODE_DNELB_GEN2          		SEQ_ID		      	    class_edc_g3
+PCIE_CALCODE_DNELB_GEN2 				NUMOFTESTRUN	      	1
+PCIE_CALCODE_DNELB_GEN2           		TESTTYPE			    CAPTURE
+PCIE_CALCODE_DNELB_GEN2          		REGDEF					CLIENT
+
+#===================================PCIE GEN3 DNELB=================================================================
+#PCIE_CALCODE_DNELB_GEN3         		DLOG_NAME             	SIO_PCIE_LPBK1::REUTAFELB_X_CMEM_E_END_X_X_VNOM_8000_EMB_svtt
+PCIE_CALCODE_DNELB_GEN3         		SEQ_FILE	      	    Modules\SIO_PCIE_LPBK1\InputFiles\sequence_merged_CMEM_pcie_bob_8b_bacst_prbs23_dnelb_Gen3__class.csv
+PCIE_CALCODE_DNELB_GEN3         		FORMAT_FILE	      	    Modules\SIO_PCIE_LPBK1\InputFiles\format_merged_CMEM_pcie_bob_8b_bacst_prbs23_dnelb_Gen3__class.csv
+PCIE_CALCODE_DNELB_GEN3         		SEQ_ID		      	    class_edc_g3
+PCIE_CALCODE_DNELB_GEN3					NUMOFTESTRUN	      	1
+PCIE_CALCODE_DNELB_GEN3          		TESTTYPE			    CAPTURE
+PCIE_CALCODE_DNELB_GEN3         		REGDEF					CLIENT
+
+
+#===================================PCIE GEN4 DNELB=================================================================
+#PCIE_CALCODE_DNELB_GEN4         		DLOG_NAME             	SIO_PCIE_LPBK1::REUTAFELB_X_CMEM_E_END_X_X_VMIN_8000_EMB_svtt
+PCIE_CALCODE_DNELB_GEN4         		SEQ_FILE	      	    Modules\SIO_PCIE_LPBK1\InputFiles\sequence_merged_CMEM_pcie_bob_8b_bcast_prbs23_dnelb_Gen4__class.csv
+PCIE_CALCODE_DNELB_GEN4         		FORMAT_FILE	      	    Modules\SIO_PCIE_LPBK1\InputFiles\format_merged_CMEM_pcie_bob_8b_bcast_prbs23_dnelb_Gen4__class.csv
+PCIE_CALCODE_DNELB_GEN4         		SEQ_ID		      	    class_edc_g3
+PCIE_CALCODE_DNELB_GEN4					NUMOFTESTRUN	      	1
+PCIE_CALCODE_DNELB_GEN4          		TESTTYPE			    CAPTURE
+PCIE_CALCODE_DNELB_GEN4         		REGDEF					CLIENT
+
+#===================================PCIE GEN1 ANELB =================================================================
+#PCIE_CALCODE_ANELB_GEN1          	DLOG_NAME             	SIO_PCIE_LPBK1::REUTAFELB_PRBS_CMEM_K_END_X_X_VNOM_2500_ANELB_svtt
+PCIE_CALCODE_ANELB_GEN1           	SEQ_FILE	      	    Modules\SIO_PCIE_LPBK1\InputFiles\sequence_merged_CMEM_pcie_8b_com_bcast_prbs7_anelb_Gen1__class.csv
+PCIE_CALCODE_ANELB_GEN1          	FORMAT_FILE	      	    Modules\SIO_PCIE_LPBK1\InputFiles\format_merged_CMEM_pcie_8b_com_bcast_prbs7_anelb_Gen1__class.csv
+PCIE_CALCODE_ANELB_GEN1           	SEQ_ID		      	    class_edc_g3
+PCIE_CALCODE_ANELB_GEN1 			NUMOFTESTRUN	      	1
+PCIE_CALCODE_ANELB_GEN1           	TESTTYPE			    CAPTURE
+PCIE_CALCODE_ANELB_GEN1           	REGDEF			    	CLIENT
+
+#====================================================================================================
+########################################## TXEQ Sweep LONG MV #######################################
+#====================================================================================================
+TXEQSWEEP_GEN4_FUNC      	EXECUTE_TEST           SIO_PCIE_LPBK1::REUTAFELB_X_FAST_E_END_X_X_VNOM_16000_TXEQ
+TXEQSWEEP_GEN4_FUNC      	DLOG_NAME              SIO_PCIE_LPBK1::REUTAFELB_X_FAST_E_END_X_X_VNOM_16000_TXEQ
+TXEQSWEEP_GEN4_FUNC      	XKEY                   TXEQ_PRESET_G4
+TXEQSWEEP_GEN4_FUNC			XVALUE				   00!01!02!03!04!05!06!07!08!09!10
+TXEQSWEEP_GEN4_FUNC      	NUMOFTESTRUN           1
+TXEQSWEEP_GEN4_FUNC      	TESTTYPE               GONOGO
+#====================================================================================================
+TXEQSWEEP_GEN3_FUNC      	EXECUTE_TEST           SIO_PCIE_LPBK1::REUTAFELB_X_FAST_E_END_X_X_VNOM_8000_TXEQ
+TXEQSWEEP_GEN3_FUNC      	DLOG_NAME              SIO_PCIE_LPBK1::REUTAFELB_X_FAST_E_END_X_X_VNOM_8000_TXEQ
+TXEQSWEEP_GEN3_FUNC      	XKEY                   TXEQ_PRESET_G3
+TXEQSWEEP_GEN3_FUNC			XVALUE				   00!01!02!03!04!05!06!07!08!09!10
+TXEQSWEEP_GEN3_FUNC      	NUMOFTESTRUN           1
+TXEQSWEEP_GEN3_FUNC      	TESTTYPE               GONOGO
+#=======================================================================================================
+TXEQSWEEP_GEN2_FUNC      	EXECUTE_TEST           SIO_PCIE_LPBK1::REUTAFELB_X_FAST_E_END_X_X_VNOM_5000_TXEQ
+TXEQSWEEP_GEN2_FUNC      	DLOG_NAME              SIO_PCIE_LPBK1::REUTAFELB_X_FAST_E_END_X_X_VNOM_5000_TXEQ
+TXEQSWEEP_GEN2_FUNC      	XKEY                   TXEQ_PRESET_G2
+TXEQSWEEP_GEN2_FUNC			XVALUE				   00!01!02!03!04!05!06!07!08!09!10
+TXEQSWEEP_GEN2_FUNC      	NUMOFTESTRUN           1
+TXEQSWEEP_GEN2_FUNC      	TESTTYPE               GONOGO
+
+		
+TXEQSWEEP_GEN4_SHMOO      	EXECUTE_TEST           SIO_PCIE_LPBK1::REUTAFELB_X_SHM_E_END_X_X_X_16000_EXTL23VCCPCIE
+TXEQSWEEP_GEN4_SHMOO      	DLOG_NAME              SIO_PCIE_LPBK1::REUTAFELB_X_SHM_E_END_X_X_X_16000_TXEQ
+TXEQSWEEP_GEN4_SHMOO      	XKEY                   TXEQ_PRESET_G4
+TXEQSWEEP_GEN4_SHMOO		XVALUE				   00!01!02!03!04!05!06!07!08!09!10
+TXEQSWEEP_GEN4_SHMOO      	NUMOFTESTRUN           1
+TXEQSWEEP_GEN4_SHMOO      	TESTTYPE               GONOGO
+#====================================================================================================
+TXEQSWEEP_GEN3_SHMOO      	EXECUTE_TEST           SIO_PCIE_LPBK1::REUTAFELB_X_SHM_E_END_X_X_X_8000_EXTLB23VCCPCIE
+TXEQSWEEP_GEN3_SHMOO      	DLOG_NAME              SIO_PCIE_LPBK1::REUTAFELB_X_SHM_E_END_X_X_X_8000_TXEQ
+TXEQSWEEP_GEN3_SHMOO      	XKEY                   TXEQ_PRESET_G3
+TXEQSWEEP_GEN3_SHMOO		XVALUE				   00!01!02!03!04!05!06!07!08!09!10
+TXEQSWEEP_GEN3_SHMOO      	NUMOFTESTRUN           1
+TXEQSWEEP_GEN3_SHMOO      	TESTTYPE               GONOGO
+#=======================================================================================================
+TXEQSWEEP_GEN2_SHMOO      	EXECUTE_TEST           SIO_PCIE_LPBK1::REUTAFELB_X_SHM_E_END_X_X_X_5000_EXTLB7VCCPCIE
+TXEQSWEEP_GEN2_SHMOO      	DLOG_NAME              SIO_PCIE_LPBK1::REUTAFELB_X_SHM_E_END_X_X_X_5000_TXEQ
+TXEQSWEEP_GEN2_SHMOO      	XKEY                   TXEQ_PRESET_G2
+TXEQSWEEP_GEN2_SHMOO		XVALUE				   00!01!02!03!04!05!06!07!08!09!10
+TXEQSWEEP_GEN2_SHMOO      	NUMOFTESTRUN           1
+TXEQSWEEP_GEN2_SHMOO      	TESTTYPE               GONOGO
+
+

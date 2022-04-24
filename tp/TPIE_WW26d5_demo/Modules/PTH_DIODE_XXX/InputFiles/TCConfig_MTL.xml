@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Setups xmlns="ThermalControlSetConfigurationFileSchema" >
+    <TCCTempSet name = "MTL_SDX_TCC">
+        <TAFilePath></TAFilePath>
+			<ControlSet index="1">DIODESOT</ControlSet>
+			<ControlSet index="2">DESOAK</ControlSet>
+			<ControlSet index="3">SOAK</ControlSet>
+			<ControlSet index="4">IDLE</ControlSet>
+			<ControlSet index="5">DISPENSE</ControlSet>
+			<ControlSet index="6">TEST</ControlSet>
+			<ControlSet index="7">TESTRJH</ControlSet>			
+    </TCCTempSet>
+</Setups>

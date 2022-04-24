@@ -1,0 +1,10 @@
+﻿{
+ "ExitPorts": {
+ 	 "Babysteps" : 1,
+     "ShortMV" : 2, 
+     "LongMV" : 3, 
+     "HVM" : 4,
+     "RejectVal" : 5
+ },
+ "GSDSName" : "GCD.CLK_GCD_ALL.Flow"
+}

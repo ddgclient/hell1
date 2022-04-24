@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<infra_setup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="GEN_FASTINFRA_tt.xsd">
+	<dfdv_evaluation_order>CR:F6,CR:F1,CLR:F5,CLR:F1</dfdv_evaluation_order>
+	<corner_identifier_mapping>
+		<!-- Core Domain's Core, Ring and AVX -->
+		<map_item shortcut="CR_F6">206</map_item>
+		<map_item shortcut="CR_F1">201</map_item>
+		<map_item shortcut="CLR_F5">215</map_item>
+		<map_item shortcut="CLR_F1">211</map_item>
+
+	</corner_identifier_mapping>
+	<power_domain name="CR%core%" instances="core:0,1" group="CR">
+		<pin>FIVR_C%core%_VT_VLC</pin>
+		<apply_voltage_expression>V[]</apply_voltage_expression>
+		<corners>
+			<corner name="F6">
+				<timings_freq_attr>CR_F6_FREQ</timings_freq_attr>
+				<tokens_for_downstream_sockets>
+					<vmin_dff_token>HF6CR</vmin_dff_token>
+					<itd_vmin_dff_token>CF6CR</itd_vmin_dff_token>
+				</tokens_for_downstream_sockets>
+				<lvl_selects>
+					<value>206</value>
+				</lvl_selects>
+				<gsds_vmin_source>
+					<voltage volt_unit="V" datatype="piped">G.U.S.DFFCHECK_CRF6</voltage>
+				</gsds_vmin_source>
+				<interdomaincorner_vmin_source>
+					<domaincorner>
+						<domain_name>CR%core%</domain_name>
+						<corner_name>F5</corner_name>
+					</domaincorner>
+				</interdomaincorner_vmin_source>
+				<store_results_in_gsds>
+					<voltage>G.U.D.CURRENT_FAST_VMIN_VCCC_CR%core%_F6</voltage>
+					<frequency>G.U.D.CURRENT_FAST_VMINFREQUENCY_CR%core%_F6</frequency>
+				</store_results_in_gsds>
+			</corner>
+			<corner name="F1">
+				<timings_freq_attr>CR_F1_FREQ</timings_freq_attr>
+				<tokens_for_downstream_sockets>
+					<vmin_dff_token>HF1CR</vmin_dff_token>
+					<itd_vmin_dff_token>CF1CR</itd_vmin_dff_token>
+				</tokens_for_downstream_sockets>
+				<lvl_selects>
+					<value>201</value>
+				</lvl_selects>
+				<gsds_vmin_source>
+					<voltage volt_unit="V" datatype="piped">G.U.S.DFFCHECK_CRF1</voltage>
+				</gsds_vmin_source>
+				<interdomaincorner_vmin_source>
+					<domaincorner>
+						<domain_name>CR%core%F</domain_name>
+						<corner_name>F1</corner_name>
+					</domaincorner>
+				</interdomaincorner_vmin_source>
+				<store_results_in_gsds>
+					<voltage>G.U.D.CURRENT_FAST_VMIN_VCCC_CR%core%_F1</voltage>
+					<frequency>G.U.D.CURRENT_FAST_VMINFREQUENCY_CR%core%_F1</frequency>
+				</store_results_in_gsds>
+			</corner>
+		</corners>
+	</power_domain>
+	<power_domain name="CLR">
+		<pin>FIVR_CCF_VT_VLC</pin>
+		<apply_voltage_expression>V[]</apply_voltage_expression>
+		<corners>
+			<corner name="F5" stc_interpolation="true">
+				<timings_freq_attr>CLR_F5_FREQ</timings_freq_attr>
+				<tokens_for_downstream_sockets>
+					<vmin_dff_token>HF5CLR</vmin_dff_token>
+					<itd_vmin_dff_token>CF5CLR</itd_vmin_dff_token>
+				</tokens_for_downstream_sockets>
+				<lvl_selects>
+					<value>215</value>
+				</lvl_selects>
+				<gsds_vmin_source>
+					<voltage volt_unit="V" datatype="piped">G.U.S.DFFCHECK_CLRF5</voltage>
+				</gsds_vmin_source>
+				<interdomaincorner_vmin_source>
+					<domaincorner>
+						<domain_name>CLR</domain_name>
+						<corner_name>F4</corner_name>
+					</domaincorner>
+				</interdomaincorner_vmin_source>
+				<store_results_in_gsds>
+					<voltage>G.U.D.CURRENT_FAST_VMIN_VCCC_CLR_F5</voltage>
+					<frequency>G.U.D.CURRENT_FAST_VMINFREQUENCY_CLR_F5</frequency>
+				</store_results_in_gsds>
+			</corner>
+			<corner name="F1">
+				<timings_freq_attr>CLR_F1_FREQ</timings_freq_attr>
+				<tokens_for_downstream_sockets>
+					<vmin_dff_token>HF1CLR</vmin_dff_token>
+					<itd_vmin_dff_token>CF1CLR</itd_vmin_dff_token>
+				</tokens_for_downstream_sockets>
+				<lvl_selects>
+					<value>211</value>
+				</lvl_selects>
+				<gsds_vmin_source>
+					<voltage volt_unit="V" datatype="piped">G.U.S.DFFCHECK_CLRF1</voltage>
+				</gsds_vmin_source>
+				<store_results_in_gsds>
+					<voltage>G.U.D.CURRENT_FAST_VMIN_VCCC_CLR_F1</voltage>
+					<frequency>G.U.D.CURRENT_FAST_VMINFREQUENCY_CLR_F1</frequency>
+				</store_results_in_gsds>
+			</corner>
+		</corners>
+	</power_domain>
+</infra_setup>

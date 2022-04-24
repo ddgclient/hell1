@@ -1,0 +1,95 @@
+﻿{
+	"Domains" : 
+	{
+		"SA" :
+		{
+			"instances" :
+			{
+				"VPU" :
+				{
+					"_register" :
+					{
+						"length" : "32",
+					},
+					"pll_enable" : 
+					{
+						"positions" : "0",
+						"expression" : "",
+						"limits" : "==1",
+						"datalog" : "0",
+					},
+					"raw_lock" : 
+					{
+						"positions" : "1",
+						"expression" : "",
+						"limits" : "==1",
+						"datalog" : "1",
+					},
+					"sticky_lock" : 
+					{
+						"positions" : "2",
+						"expression" : "",
+						"limits" : "==1",
+						"datalog" : "2",
+					},
+					"unlock" : 
+					{
+						"positions" : "3",
+						"expression" : "",
+						"limits" : "==0",
+						"datalog" : "3",
+					},
+					"lock_time" : 
+					{
+						"positions" : "13:4",
+						"expression" : "",
+						"limits" : "<512",
+						"datalog" : "4",
+					},
+				},
+				"NoC" :
+				{
+					"_register" :
+					{
+						"length" : "32",
+					},
+					"pll_enable" : 
+					{
+						"positions" : "0",
+						"expression" : "",
+						"limits" : "==1",
+						"datalog" : "0",
+					},
+					"raw_lock" : 
+					{
+						"positions" : "1",
+						"expression" : "",
+						"limits" : "==1",
+						"datalog" : "1",
+					},
+					"sticky_lock" : 
+					{
+						"positions" : "2",
+						"expression" : "",
+						"limits" : "==1",
+						"datalog" : "2",
+					},
+					"unlock" : 
+					{
+						"positions" : "3",
+						"expression" : "",
+						"limits" : "==0",
+						"datalog" : "3",
+					},
+					"lock_time" : 
+					{
+						"positions" : "13:4",
+						"expression" : "",
+						"limits" : "<512",
+						"datalog" : "4",
+					},
+				},				
+			}
+		}
+	}
+}

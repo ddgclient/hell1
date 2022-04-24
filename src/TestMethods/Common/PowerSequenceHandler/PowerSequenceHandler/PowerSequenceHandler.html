@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>DDG Prime Power Sequence Handler</title>
+</head>
+<body>
+
+    <h1 id="ddg-prime-power-sequence-handler">DDG Prime Power Sequence Handler</h1>
+<h3 id="rev-1112021-fmurillo">Rev 11/1/2021 (fmurillo)</h3>
+<h2 id="introduction">Introduction</h2>
+<p>The main purpose of this test class is to control power-down and power-up sequence in the test program. It provides knobs to force test conditions or apply them only when the power-on levels are changed.</p>
+<h2 id="parameters">Parameters</h2>
+<h3 id="powerontc">PowerOnTc</h3>
+<p>--Test Condition Name. Required while using ApplyPowerOn &quot;Always&quot; or &quot;Switch&quot;.</p>
+<h3 id="powerdowntc">PowerDownTc</h3>
+<p>--Test Condition Name. Required while using ApplyPowerOn &quot;Always&quot; or &quot;Switch&quot;.</p>
+<h3 id="applypowerdown">ApplyPowerDown</h3>
+<h4 id="skip">Skip:</h4>
+<p>--Sets power-on TC name but skips apply.</p>
+<h4 id="swtich">Swtich:</h4>
+<p>--Sets power-on TC name and applies TC when is different than the previous configuration.</p>
+<h4 id="always">Always:</h4>
+<p>--Dets power-on TC name and forces TC apply.</p>
+<h3 id="applypoweron">ApplyPowerOn</h3>
+<h4 id="skip-1">Skip:</h4>
+<p>--Skips TC.</p>
+<h4 id="switch">Switch:</h4>
+<p>--Applies TC when is different than the previous configuration.</p>
+<h4 id="always-1">Always:</h4>
+<p>--Forces TC apply.</p>
+<h3 id="alarmmode">AlarmMode</h3>
+<p>-- Enabled will redirect all alarms to port 2.</p>
+<h2 id="ports">Ports</h2>
+<p>1 = alarm<br>
+1 = pass<br>
+0 = fail</p>
+
+
+</body>
+</html>

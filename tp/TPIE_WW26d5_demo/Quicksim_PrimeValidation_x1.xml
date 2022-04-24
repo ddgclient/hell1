@@ -1,0 +1,1077 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<Quicksim xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Quicksim.xsd">    
+
+    <virtualdut name="primeValidation" type="flow" >
+		<!--Module 0 Fail-->
+		<response testInstance="*LSARasterVal*" plist="arr_atom_m0_prescreen_doe_list">
+            <plistResult>
+                <occurrence default="true" status="Fail">
+                    <patternData pattern="d0016406W4596667A_M7_VC28xCA044_Xm020s00xxx0a_dxxx080808xxxxxxxxxxx_sC28A4PxxATC025J03x_x00_ic_btb_pmovi_x_s_hry">
+						<domainData name="CPU_TAP_ALL">
+							<cycleData address="2622" cycle="2622" >
+								<pinData pin="YY_TAP_TDO_C2S" value="0"/>
+							</cycleData>
+						</domainData>
+                    </patternData>
+						<ctvData pin="YY_TAP_TDO_C2S" value="001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"/>
+                </occurrence>
+            </plistResult>
+        </response>
+
+		<!-- ************************************************************************ -->
+		<!-- ******            PVAL FUNC                                    ********* -->
+		<!-- ************************************************************************ -->
+		<response testInstance="PVAL_FUNC::BasicFunc_CaptFirstFail_P1" plist="drv_cdie_maintap_bbs_list">
+            <plistResult>
+                <occurrence default="true" status="Pass"/>
+            </plistResult>
+        </response>
+		<response testInstance="PVAL_FUNC::BasicFunc_CaptFirstFail_F0" plist="drv_cdie_maintap_bbs_list">
+            <plistResult>
+                <occurrence default="true" status="Fail">
+                    <patternData pattern="g0066765W3719690A_6I_VC28xCA078_Rr0e0000xxxPP_nxxx040404xxxxxxxxxxx_sC28A6PxxBTC013J052_x20_longreset_cpu_lr_none">
+						<domainData name="CPU_TAP_ALL">
+							<cycleData address="571" cycle="10571" >
+                              	<pinData pin="YY_TAP_TDO_C2S" value="0"/>
+							</cycleData>
+						</domainData>
+                    </patternData>
+                </occurrence>
+            </plistResult>
+        </response>
+
+		<!-- ************************************************************************ -->
+		<!-- ******            PVAL VMIN                                    ********* -->
+		<!-- ************************************************************************ -->
+
+		<!-- FuncMode SingleTarget Pass -->
+		<response testInstance="PVAL_VMIN::Vmin_Func_SingleTarget_NoRecNoFwrd_P1" plist="drv_cdie_maintap_bbs_list">
+            <plistResult>
+                <occurrence default="true" status="Pass"/>
+            </plistResult>
+        </response>
+		<response testInstance="PVAL_VMIN::Vmin_Func_VoltageConverter_P1" plist="drv_cdie_maintap_bbs_list">
+            <plistResult>
+                <occurrence default="true" status="Pass"/>
+            </plistResult>
+        </response>
+		<response testInstance="PVAL_VMIN::Vmin_Func_CornerPatConfigSetPoints_P1" plist="drv_cdie_maintap_bbs_list">
+            <plistResult>
+                <occurrence default="true" status="Pass"/>
+            </plistResult>
+        </response>
+
+		<!-- FuncMode MultiTarget Pass -->
+		<response testInstance="PVAL_VMIN::Vmin_Func_MultiTarget_NoRecNoFwrd_P1" plist="drv_cdie_maintap_bbs_list">
+            <plistResult>
+                <occurrence default="true" status="Pass"/>
+            </plistResult>
+        </response>
+
+		<!-- Single Vmin Pass -->
+		<response testInstance="PVAL_VMIN::Vmin_SingleVmin_SingleTarget_NoRecNoFwrd_P1" plist="drv_cdie_maintap_bbs_list">
+            <plistResult>
+                <occurrence start="0" stop="1" status="Fail">
+                    <patternData pattern="g0066765W3719690A_6I_VC28xCA078_Rr0e0000xxxPP_nxxx040404xxxxxxxxxxx_sC28A6PxxBTC013J052_x20_longreset_cpu_lr_none">
+						<domainData name="CPU_TAP_ALL">
+							<cycleData address="571" cycle="571">
+                              	<pinData pin="YY_TAP_TDO_C2S" value="0"/>
+							</cycleData>
+						</domainData>
+                    </patternData>
+                </occurrence>
+                <occurrence start="2" stop="3" status="Fail">
+                    <patternData pattern="g0019809W4480630A_8j_VC28xCA066_Rm000000xxx0v_nxxx080808xxxxxxxxxxx_sC28A6PxxBTC002J052_x01_A01_CDU_CDIE_TAP_IDCODE">
+						<domainData name="CPU_FAB_ALL">
+							<cycleData address="113" cycle="113">
+                              	<pinData pin="YY_TEST_PORT_OUT_C2S_00" value="0"/>
+							</cycleData>
+						</domainData>
+                    </patternData>
+                </occurrence>
+                <occurrence default="true" status="Pass"/>
+            </plistResult>
+        </response>
+		
+		<response testInstance="PVAL_VMIN::Vmin_SingleVmin_MulticoreNoFwrd_P1" plist="drv_cdie_maintap_bbs_list">
+            <plistResult>
+                <occurrence start="0" stop="1" status="Fail">
+                    <patternData pattern="g0066765W3719690A_6I_VC28xCA078_Rr0e0000xxxPP_nxxx040404xxxxxxxxxxx_sC28A6PxxBTC013J052_x20_longreset_cpu_lr_none">
+						<domainData name="CPU_TAP_ALL">
+							<cycleData address="571" cycle="571">
+                              	<pinData pin="YY_TAP_TDO_C2S" value="0"/>
+							</cycleData>
+						</domainData>
+                    </patternData>
+                </occurrence>
+                <occurrence start="2" stop="3" status="Fail">
+                    <patternData pattern="g0019809W4480630A_8j_VC28xCA066_Rm000000xxx0v_nxxx080808xxxxxxxxxxx_sC28A6PxxBTC002J052_x01_A01_CDU_CDIE_TAP_IDCODE">
+						<domainData name="CPU_FAB_ALL">
+							<cycleData address="113" cycle="113">
+                              	<pinData pin="YY_TEST_PORT_OUT_C2S_00" value="0"/>
+                              	<pinData pin="YY_TEST_PORT_OUT_C2S_01" value="0"/>
+							</cycleData>
+						</domainData>
+                    </patternData>
+                </occurrence>
+                <occurrence start="4" stop="5" status="Fail">
+                    <patternData pattern="g0019809W4480630A_8j_VC28xCA066_Rm000000xxx0v_nxxx080808xxxxxxxxxxx_sC28A6PxxBTC002J052_x01_A01_CDU_CDIE_TAP_IDCODE">
+						<domainData name="CPU_FAB_ALL">
+							<cycleData address="119" cycle="119">
+                              	<pinData pin="YY_TEST_PORT_OUT_C2S_00" value="0"/>
+							</cycleData>
+						</domainData>
+                    </patternData>
+                </occurrence>
+                <occurrence start="6" stop="6" status="Fail">
+                    <patternData pattern="g0019809W4480630A_8j_VC28xCA066_Rm000000xxx0v_nxxx080808xxxxxxxxxxx_sC28A6PxxBTC002J052_x01_A01_CDU_CDIE_TAP_IDCODE">
+						<domainData name="CPU_FAB_ALL">
+							<cycleData address="119" cycle="119">
+                              	<pinData pin="YY_TEST_PORT_OUT_C2S_10" value="0"/>
+							</cycleData>
+						</domainData>
+                    </patternData>
+                </occurrence>
+				<occurrence default="true" status="Pass"/>
+            </plistResult>
+        </response>
+
+		<!-- Scoreboard Vmin Fail -->
+		<response testInstance="PVAL_VMIN::Vmin_Scoreboard_SingleTarget_P0" plist="drv_cdie_maintap_bbs_list">
+            <plistResult>
+                <occurrence default="true" status="Fail">
+                    <patternData pattern="g0066765W3719690A_6I_VC28xCA078_Rr0e0000xxxPP_nxxx040404xxxxxxxxxxx_sC28A6PxxBTC013J052_x20_longreset_cpu_lr_none">
+						<domainData name="CPU_TAP_ALL">
+							<cycleData address="571" cycle="571">
+                              	<pinData pin="YY_TAP_TDO_C2S" value="0"/>
+							</cycleData>
+						</domainData>
+                    </patternData>
+                    <patternData pattern="g0019809W4480630A_8j_VC28xCA066_Rm000000xxx0v_nxxx080808xxxxxxxxxxx_sC28A6PxxBTC002J052_x01_A01_CDU_CDIE_TAP_IDCODE">
+						<domainData name="CPU_FAB_ALL">
+							<cycleData address="113" cycle="113">
+                              	<pinData pin="YY_TEST_PORT_OUT_C2S_00" value="0"/>
+							</cycleData>
+						</domainData>
+                    </patternData>					
+                </occurrence>
+            </plistResult>
+        </response>
+
+		<!-- Multi Vmin Pass -->
+		<response testInstance="PVAL_VMIN::Vmin_MultiVmin_ConcurrentTraces_NoRecNoFwrd_P1" plist="drv_cdie_maintap_bbs_list">
+            <plistResult>
+                <occurrence start="0" stop="1" status="Fail">
+                    <patternData pattern="g0066765W3719690A_6I_VC28xCA078_Rr0e0000xxxPP_nxxx040404xxxxxxxxxxx_sC28A6PxxBTC013J052_x20_longreset_cpu_lr_none">
+						<domainData name="CPU_TAP_ALL">
+							<cycleData address="571" cycle="571">
+                              	<pinData pin="YY_TAP_TDO_C2S" value="0"/>
+							</cycleData>
+						</domainData>
+                    </patternData>
+                </occurrence>
+                <occurrence start="2" stop="3" status="Fail">
+                    <patternData pattern="g0019809W4480630A_8j_VC28xCA066_Rm000000xxx0v_nxxx080808xxxxxxxxxxx_sC28A6PxxBTC002J052_x01_A01_CDU_CDIE_TAP_IDCODE">
+						<domainData name="CPU_FAB_ALL">
+							<cycleData address="113" cycle="113">
+                              	<pinData pin="YY_TEST_PORT_OUT_C2S_00" value="0"/>
+                              	<pinData pin="YY_TEST_PORT_OUT_C2S_01" value="0"/>
+							</cycleData>
+						</domainData>
+                    </patternData>
+                </occurrence>
+                <occurrence start="4" stop="4" status="Fail">
+                    <patternData pattern="g0019809W4480630A_8j_VC28xCA066_Rm000000xxx0v_nxxx080808xxxxxxxxxxx_sC28A6PxxBTC002J052_x01_A01_CDU_CDIE_TAP_IDCODE">
+						<domainData name="CPU_FAB_ALL">
+							<cycleData address="113" cycle="113">
+                              	<pinData pin="YY_TEST_PORT_OUT_C2S_01" value="0"/>
+							</cycleData>
+						</domainData>
+                    </patternData>
+                </occurrence>
+                <occurrence start="5" stop="6" status="Fail">
+                    <patternData pattern="g0019815W4480630A_92_VC28xCA066_Rm000000xxx0v_nxxx080808xxxxxxxxxxx_sC28A6PxxBTC002J052_x07_A07_CDU_CDIE_TAP_TAPLINKCFG_DR_OVRSHIFT">
+						<domainData name="CPU_FAB_ALL">
+							<cycleData address="119" cycle="119">
+                              	<pinData pin="YY_TEST_PORT_OUT_C2S_10" value="0"/>
+							</cycleData>
+						</domainData>
+                    </patternData>
+                </occurrence>
+                <occurrence default="true" status="Pass"/>
+            </plistResult>
+        </response>
+		
+		<response testInstance="PVAL_VMIN::Vmin_MultiVmin_ConcurrentPlist_MaskingCore_P1" plist="array_core_array_ccf_r1_list">
+            <plistResult>
+                <occurrence start="0" stop="1" status="Fail">
+                    <patternData pattern="g0515034W5427906A_QD_VC28xCA09i_Rr020000xxxPP_dxxx040404xxxmxxxxxxx_sC28A8XxxMTQ003J0l8_x45_longreset_cpu_lr_phase2">
+						<domainData name="CPU_TAP_ALL">
+							<cycleData address="571" cycle="571">
+                              	<pinData pin="YY_TAP_TDO_C2S" value="0"/>
+							</cycleData>
+						</domainData>
+                    </patternData>
+                </occurrence>
+                <occurrence start="2" stop="2" status="Fail">
+					<patternData pattern="g0140311W4514604A_B0_VC28xCA078_Dm021g00xxx0i_dxxx0808081bxxxxxxxxx_sC28A8XxxMTQ002J0l8_x00_rsu_vec01prf_scan_x_s_ff" parentPlist="arr_cdie_pbist_core_ccr_r1">
+						<domainData name="CPU_FAB_ALL">
+							<cycleData address="113" cycle="113">
+                              	<pinData pin="YY_TEST_PORT_OUT_C2S_00" value="0"/>								
+							</cycleData>
+						</domainData>
+                    </patternData>
+                    <ctvData pin="YY_TAP_TDO_C2S" value="0" pattern="g0140311W4514604A_B0_VC28xCA078_Dm021g00xxx0i_dxxx0808081bxxxxxxxxx_sC28A8XxxMTQ002J0l8_x00_rsu_vec01prf_scan_x_s_ff" burst="0" /> 					
+                </occurrence>
+                <occurrence start="3" stop="3" status="Fail">
+					<patternData pattern="g0140323W4765522A_ey_VC28xCA078_Dm021g00xxx0i_dxxx0808081bxxxxxxxxx_sC28A8XxxMTQ002J0l8_x00_rsu_vec01prf_mpmchi2m_x_s" parentPlist="arr_cdie_pbist_core_ccr_r1">
+						<domainData name="CPU_FAB_ALL">
+							<cycleData address="113" cycle="113">
+                              	<pinData pin="YY_TEST_PORT_OUT_C2S_00" value="0"/>								
+							</cycleData>
+						</domainData>
+                    </patternData>
+                    <ctvData pin="YY_TEST_PORT_OUT_C2S_00" value="0" pattern="g0140323W4765522A_ey_VC28xCA078_Dm021g00xxx0i_dxxx0808081bxxxxxxxxx_sC28A8XxxMTQ002J0l8_x00_rsu_vec01prf_mpmchi2m_x_s" burst="0" /> 
+                    <ctvData pin="YY_TAP_TDO_C2S" value="0" pattern="g0092503W4654207A_cy_VC28xCA078_Hm1r1j00xxx0p_ebab0808081bxxxxxxxxx_sC28A8XxxMTQ002J0l8_x00_llc_cv_galcol_x_s" burst="0" /> 					
+                </occurrence>
+                <occurrence start="4" stop="4" status="Fail">
+					<patternData pattern="g0092503W4654207A_cy_VC28xCA078_Hm1r1j00xxx0p_ebab0808081bxxxxxxxxx_sC28A8XxxMTQ002J0l8_x00_llc_cv_galcol_x_s" parentPlist="arr_cdie_pbist_ccf_ccr_r1">
+						<domainData name="CPU_TAP_ALL">
+							<cycleData address="113" cycle="113">
+                              	<pinData pin="YY_TAP_TDO_C2S" value="0"/>								
+							</cycleData>
+						</domainData>
+                    </patternData>
+                    <ctvData pin="YY_TEST_PORT_OUT_C2S_00" value="0" pattern="g0140323W4765522A_ey_VC28xCA078_Dm021g00xxx0i_dxxx0808081bxxxxxxxxx_sC28A8XxxMTQ002J0l8_x00_rsu_vec01prf_mpmchi2m_x_s" burst="0" /> 
+                    <ctvData pin="YY_TAP_TDO_C2S" value="0" pattern="g0092503W4654207A_cy_VC28xCA078_Hm1r1j00xxx0p_ebab0808081bxxxxxxxxx_sC28A8XxxMTQ002J0l8_x00_llc_cv_galcol_x_s" burst="0" /> 					
+                </occurrence>
+                <occurrence default="true" status="Pass"/>
+            </plistResult>
+        </response>
+		
+		<response testInstance="PVAL_VMIN::Vmin_MultiVmin_ConcurrentPlist_Base_P1" plist="array_core_array_ccf_r1_list">
+            <plistResult>
+                <occurrence start="0" stop="1" status="Fail">
+                    <patternData pattern="g0515034W5427906A_QD_VC28xCA09i_Rr020000xxxPP_dxxx040404xxxmxxxxxxx_sC28A8XxxMTQ003J0l8_x45_longreset_cpu_lr_phase2">
+						<domainData name="CPU_TAP_ALL">
+							<cycleData address="571" cycle="571">
+                              	<pinData pin="YY_TAP_TDO_C2S" value="0"/>
+							</cycleData>
+						</domainData>
+                    </patternData>
+                </occurrence>
+                <occurrence start="2" stop="2" status="Fail">
+					<patternData pattern="g0140311W4514604A_B0_VC28xCA078_Dm021g00xxx0i_dxxx0808081bxxxxxxxxx_sC28A8XxxMTQ002J0l8_x00_rsu_vec01prf_scan_x_s_ff" parentPlist="arr_cdie_pbist_core_ccr_r1">
+						<domainData name="CPU_FAB_ALL">
+							<cycleData address="113" cycle="113">
+                              	<pinData pin="YY_TEST_PORT_OUT_C2S_00" value="0"/>								
+							</cycleData>
+						</domainData>
+                    </patternData>
+                    <ctvData pin="YY_TAP_TDO_C2S" value="0" pattern="g0140311W4514604A_B0_VC28xCA078_Dm021g00xxx0i_dxxx0808081bxxxxxxxxx_sC28A8XxxMTQ002J0l8_x00_rsu_vec01prf_scan_x_s_ff" burst="0" /> 					
+                </occurrence>
+                <occurrence start="3" stop="3" status="Fail">
+					<patternData pattern="g0140323W4765522A_ey_VC28xCA078_Dm021g00xxx0i_dxxx0808081bxxxxxxxxx_sC28A8XxxMTQ002J0l8_x00_rsu_vec01prf_mpmchi2m_x_s" parentPlist="arr_cdie_pbist_core_ccr_r1">
+						<domainData name="CPU_FAB_ALL">
+							<cycleData address="113" cycle="113">
+                              	<pinData pin="YY_TEST_PORT_OUT_C2S_00" value="0"/>								
+							</cycleData>
+						</domainData>
+                    </patternData>
+                    <ctvData pin="YY_TEST_PORT_OUT_C2S_00" value="0" pattern="g0140323W4765522A_ey_VC28xCA078_Dm021g00xxx0i_dxxx0808081bxxxxxxxxx_sC28A8XxxMTQ002J0l8_x00_rsu_vec01prf_mpmchi2m_x_s" burst="0" /> 
+                    <ctvData pin="YY_TAP_TDO_C2S" value="0" pattern="g0092503W4654207A_cy_VC28xCA078_Hm1r1j00xxx0p_ebab0808081bxxxxxxxxx_sC28A8XxxMTQ002J0l8_x00_llc_cv_galcol_x_s" burst="0" /> 					
+                </occurrence>
+                <occurrence start="4" stop="4" status="Fail">
+					<patternData pattern="g0092503W4654207A_cy_VC28xCA078_Hm1r1j00xxx0p_ebab0808081bxxxxxxxxx_sC28A8XxxMTQ002J0l8_x00_llc_cv_galcol_x_s" parentPlist="arr_cdie_pbist_ccf_ccr_r1">
+						<domainData name="CPU_TAP_ALL">
+							<cycleData address="113" cycle="113">
+                              	<pinData pin="YY_TAP_TDO_C2S" value="0"/>								
+							</cycleData>
+						</domainData>
+                    </patternData>
+                    <ctvData pin="YY_TEST_PORT_OUT_C2S_00" value="0" pattern="g0140323W4765522A_ey_VC28xCA078_Dm021g00xxx0i_dxxx0808081bxxxxxxxxx_sC28A8XxxMTQ002J0l8_x00_rsu_vec01prf_mpmchi2m_x_s" burst="0" /> 
+                    <ctvData pin="YY_TAP_TDO_C2S" value="0" pattern="g0092503W4654207A_cy_VC28xCA078_Hm1r1j00xxx0p_ebab0808081bxxxxxxxxx_sC28A8XxxMTQ002J0l8_x00_llc_cv_galcol_x_s" burst="0" /> 					
+                </occurrence>
+                <occurrence default="true" status="Pass"/>
+            </plistResult>
+        </response>
+		
+		<response testInstance="PVAL_VMIN::Vmin_MultiVmin_ConcurrentPlist_MaskingCore_P1" plist="array_core_array_ccf_r1_list">
+            <plistResult>
+                <occurrence start="0" stop="1" status="Fail">
+                    <patternData pattern="g0515034W5427906A_QD_VC28xCA09i_Rr020000xxxPP_dxxx040404xxxmxxxxxxx_sC28A8XxxMTQ003J0l8_x45_longreset_cpu_lr_phase2">
+						<domainData name="CPU_TAP_ALL">
+							<cycleData address="571" cycle="571">
+                              	<pinData pin="YY_TAP_TDO_C2S" value="0"/>
+							</cycleData>
+						</domainData>
+                    </patternData>
+                </occurrence>
+                <occurrence start="2" stop="2" status="Fail">
+					<patternData pattern="g0140311W4514604A_B0_VC28xCA078_Dm021g00xxx0i_dxxx0808081bxxxxxxxxx_sC28A8XxxMTQ002J0l8_x00_rsu_vec01prf_scan_x_s_ff" parentPlist="arr_cdie_pbist_core_ccr_r1">
+						<domainData name="CPU_FAB_ALL">
+							<cycleData address="113" cycle="113">
+                              	<pinData pin="YY_TEST_PORT_OUT_C2S_00" value="0"/>								
+							</cycleData>
+						</domainData>
+                    </patternData>
+                    <ctvData pin="YY_TAP_TDO_C2S" value="0" pattern="g0140311W4514604A_B0_VC28xCA078_Dm021g00xxx0i_dxxx0808081bxxxxxxxxx_sC28A8XxxMTQ002J0l8_x00_rsu_vec01prf_scan_x_s_ff" burst="0" /> 					
+                </occurrence>
+                <occurrence start="3" stop="3" status="Fail">
+					<patternData pattern="g0140323W4765522A_ey_VC28xCA078_Dm021g00xxx0i_dxxx0808081bxxxxxxxxx_sC28A8XxxMTQ002J0l8_x00_rsu_vec01prf_mpmchi2m_x_s" parentPlist="arr_cdie_pbist_core_ccr_r1">
+						<domainData name="CPU_FAB_ALL">
+							<cycleData address="113" cycle="113">
+                              	<pinData pin="YY_TEST_PORT_OUT_C2S_00" value="0"/>								
+							</cycleData>
+						</domainData>
+                    </patternData>
+                    <ctvData pin="YY_TEST_PORT_OUT_C2S_00" value="0" pattern="g0140323W4765522A_ey_VC28xCA078_Dm021g00xxx0i_dxxx0808081bxxxxxxxxx_sC28A8XxxMTQ002J0l8_x00_rsu_vec01prf_mpmchi2m_x_s" burst="0" /> 
+                    <ctvData pin="YY_TAP_TDO_C2S" value="0" pattern="g0092503W4654207A_cy_VC28xCA078_Hm1r1j00xxx0p_ebab0808081bxxxxxxxxx_sC28A8XxxMTQ002J0l8_x00_llc_cv_galcol_x_s" burst="0" /> 					
+                </occurrence>
+                <occurrence start="4" stop="4" status="Fail">
+					<patternData pattern="g0092503W4654207A_cy_VC28xCA078_Hm1r1j00xxx0p_ebab0808081bxxxxxxxxx_sC28A8XxxMTQ002J0l8_x00_llc_cv_galcol_x_s" parentPlist="arr_cdie_pbist_ccf_ccr_r1">
+						<domainData name="CPU_TAP_ALL">
+							<cycleData address="113" cycle="113">
+                              	<pinData pin="YY_TAP_TDO_C2S" value="0"/>								
+							</cycleData>
+						</domainData>
+                    </patternData>
+                    <ctvData pin="YY_TEST_PORT_OUT_C2S_00" value="0" pattern="g0140323W4765522A_ey_VC28xCA078_Dm021g00xxx0i_dxxx0808081bxxxxxxxxx_sC28A8XxxMTQ002J0l8_x00_rsu_vec01prf_mpmchi2m_x_s" burst="0" /> 
+                    <ctvData pin="YY_TAP_TDO_C2S" value="0" pattern="g0092503W4654207A_cy_VC28xCA078_Hm1r1j00xxx0p_ebab0808081bxxxxxxxxx_sC28A8XxxMTQ002J0l8_x00_llc_cv_galcol_x_s" burst="0" /> 					
+                </occurrence>
+                <occurrence default="true" status="Pass"/>
+            </plistResult>
+        </response>
+
+		<response testInstance="PVAL_VMIN::Vmin_MultiVmin_ConcurrentPlist_MaskingCcf_P1" plist="array_core_array_ccf_r1_list">
+            <plistResult>
+                <occurrence start="0" stop="1" status="Fail">
+                    <patternData pattern="g0515034W5427906A_QD_VC28xCA09i_Rr020000xxxPP_dxxx040404xxxmxxxxxxx_sC28A8XxxMTQ003J0l8_x45_longreset_cpu_lr_phase2">
+						<domainData name="CPU_TAP_ALL">
+							<cycleData address="571" cycle="571">
+                              	<pinData pin="YY_TAP_TDO_C2S" value="0"/>
+							</cycleData>
+						</domainData>
+                    </patternData>
+                </occurrence>
+                <occurrence start="2" stop="2" status="Fail">
+					<patternData pattern="g0140311W4514604A_B0_VC28xCA078_Dm021g00xxx0i_dxxx0808081bxxxxxxxxx_sC28A8XxxMTQ002J0l8_x00_rsu_vec01prf_scan_x_s_ff" parentPlist="arr_cdie_pbist_core_ccr_r1">
+						<domainData name="CPU_FAB_ALL">
+							<cycleData address="113" cycle="113">
+                              	<pinData pin="YY_TEST_PORT_OUT_C2S_00" value="0"/>								
+							</cycleData>
+						</domainData>
+                    </patternData>
+                    <ctvData pin="YY_TAP_TDO_C2S" value="0" pattern="g0140311W4514604A_B0_VC28xCA078_Dm021g00xxx0i_dxxx0808081bxxxxxxxxx_sC28A8XxxMTQ002J0l8_x00_rsu_vec01prf_scan_x_s_ff" burst="0" /> 					
+                </occurrence>
+                <occurrence start="3" stop="3" status="Fail">
+					<patternData pattern="g0140323W4765522A_ey_VC28xCA078_Dm021g00xxx0i_dxxx0808081bxxxxxxxxx_sC28A8XxxMTQ002J0l8_x00_rsu_vec01prf_mpmchi2m_x_s" parentPlist="arr_cdie_pbist_core_ccr_r1">
+						<domainData name="CPU_FAB_ALL">
+							<cycleData address="113" cycle="113">
+                              	<pinData pin="YY_TEST_PORT_OUT_C2S_00" value="0"/>								
+							</cycleData>
+						</domainData>
+                    </patternData>
+                    <ctvData pin="YY_TEST_PORT_OUT_C2S_00" value="0" pattern="g0140323W4765522A_ey_VC28xCA078_Dm021g00xxx0i_dxxx0808081bxxxxxxxxx_sC28A8XxxMTQ002J0l8_x00_rsu_vec01prf_mpmchi2m_x_s" burst="0" /> 
+                    <ctvData pin="YY_TAP_TDO_C2S" value="0" pattern="g0092503W4654207A_cy_VC28xCA078_Hm1r1j00xxx0p_ebab0808081bxxxxxxxxx_sC28A8XxxMTQ002J0l8_x00_llc_cv_galcol_x_s" burst="0" /> 					
+                </occurrence>
+                <occurrence default="true" status="Pass"/>
+            </plistResult>
+        </response>
+
+		<response testInstance="PVAL_VMIN::Vmin_MultiVmin_ConcurrentPlist_RecoveryFailRetest_P1" plist="array_core_array_ccf_r1_list">
+            <plistResult>
+                <occurrence start="0" stop="1" status="Fail">
+                    <patternData pattern="g0515034W5427906A_QD_VC28xCA09i_Rr020000xxxPP_dxxx040404xxxmxxxxxxx_sC28A8XxxMTQ003J0l8_x45_longreset_cpu_lr_phase2">
+						<domainData name="CPU_TAP_ALL">
+							<cycleData address="571" cycle="571">
+                              	<pinData pin="YY_TAP_TDO_C2S" value="0"/>
+							</cycleData>
+						</domainData>
+                    </patternData>
+                </occurrence>
+                <occurrence start="2" stop="5" status="Fail">
+					<patternData pattern="g0140311W4514604A_B0_VC28xCA078_Dm021g00xxx0i_dxxx0808081bxxxxxxxxx_sC28A8XxxMTQ002J0l8_x00_rsu_vec01prf_scan_x_s_ff" parentPlist="arr_cdie_pbist_core_ccr_r1">
+						<domainData name="CPU_FAB_ALL">
+							<cycleData address="113" cycle="113">
+                              	<pinData pin="YY_TEST_PORT_OUT_C2S_00" value="0"/>								
+							</cycleData>
+						</domainData>
+                    </patternData>
+                    <ctvData pin="YY_TAP_TDO_C2S" value="0" pattern="g0140311W4514604A_B0_VC28xCA078_Dm021g00xxx0i_dxxx0808081bxxxxxxxxx_sC28A8XxxMTQ002J0l8_x00_rsu_vec01prf_scan_x_s_ff" burst="0" /> 					
+                </occurrence>
+				<occurrence start="6" stop="6" status="Pass"/>
+                <occurrence start="7" stop="7" status="Fail">
+					<patternData pattern="g0140323W4765522A_ey_VC28xCA078_Dm021g00xxx0i_dxxx0808081bxxxxxxxxx_sC28A8XxxMTQ002J0l8_x00_rsu_vec01prf_mpmchi2m_x_s" parentPlist="arr_cdie_pbist_core_ccr_r1">
+						<domainData name="CPU_FAB_ALL">
+							<cycleData address="113" cycle="113">
+                              	<pinData pin="YY_TEST_PORT_OUT_C2S_00" value="0"/>								
+							</cycleData>
+						</domainData>
+                    </patternData>
+                    <ctvData pin="YY_TEST_PORT_OUT_C2S_00" value="0" pattern="g0140323W4765522A_ey_VC28xCA078_Dm021g00xxx0i_dxxx0808081bxxxxxxxxx_sC28A8XxxMTQ002J0l8_x00_rsu_vec01prf_mpmchi2m_x_s" burst="0" /> 
+                    <ctvData pin="YY_TAP_TDO_C2S" value="0" pattern="g0092503W4654207A_cy_VC28xCA078_Hm1r1j00xxx0p_ebab0808081bxxxxxxxxx_sC28A8XxxMTQ002J0l8_x00_llc_cv_galcol_x_s" burst="0" /> 					
+                </occurrence>
+                <occurrence default="true" status="Pass"/>
+            </plistResult>
+        </response>
+		
+		<!-- Multi Vmin Pass -->
+		<response testInstance="PVAL_VMIN::Vmin_MultiVmin_MultiTarget_NoRecNoFwrd_P1" plist="drv_cdie_maintap_bbs_list">
+            <plistResult>
+                <occurrence start="0" stop="1" status="Fail">
+                    <patternData pattern="g0066765W3719690A_6I_VC28xCA078_Rr0e0000xxxPP_nxxx040404xxxxxxxxxxx_sC28A6PxxBTC013J052_x20_longreset_cpu_lr_none">
+						<domainData name="CPU_TAP_ALL">
+							<cycleData address="571" cycle="571">
+                              	<pinData pin="YY_TAP_TDO_C2S" value="0"/>
+							</cycleData>
+						</domainData>
+                    </patternData>
+                </occurrence>
+                <occurrence start="2" stop="3" status="Fail">
+                    <patternData pattern="g0019809W4480630A_8j_VC28xCA066_Rm000000xxx0v_nxxx080808xxxxxxxxxxx_sC28A6PxxBTC002J052_x01_A01_CDU_CDIE_TAP_IDCODE">
+						<domainData name="CPU_FAB_ALL">
+							<cycleData address="113" cycle="113">
+                              	<pinData pin="YY_TEST_PORT_OUT_C2S_00" value="0"/>
+                              	<pinData pin="YY_TEST_PORT_OUT_C2S_01" value="0"/>
+							</cycleData>
+						</domainData>
+                    </patternData>
+                </occurrence>
+                <occurrence start="4" stop="5" status="Fail">
+                    <patternData pattern="g0019809W4480630A_8j_VC28xCA066_Rm000000xxx0v_nxxx080808xxxxxxxxxxx_sC28A6PxxBTC002J052_x01_A01_CDU_CDIE_TAP_IDCODE">
+						<domainData name="CPU_FAB_ALL">
+							<cycleData address="119" cycle="119">
+                              	<pinData pin="YY_TEST_PORT_OUT_C2S_00" value="0"/>
+							</cycleData>
+						</domainData>
+                    </patternData>
+                </occurrence>
+                <occurrence default="true" status="Pass"/>
+            </plistResult>
+        </response>
+
+		<response testInstance="PVAL_VMIN::Vmin_Functional_RecoveryLoopNoFwrd_P1" plist="drv_cdie_maintap_bbs_list">
+            <plistResult>
+                <occurrence start="0" stop="0" status="Fail">
+                    <patternData pattern="g0019809W4480630A_8j_VC28xCA066_Rm000000xxx0v_nxxx080808xxxxxxxxxxx_sC28A6PxxBTC002J052_x01_A01_CDU_CDIE_TAP_IDCODE">
+						<domainData name="CPU_FAB_ALL">
+							<cycleData address="113" cycle="113">
+                              	<pinData pin="YY_TEST_PORT_OUT_C2S_00" value="0"/>
+							</cycleData>
+							<cycleData address="114" cycle="111">
+                              	<pinData pin="YY_TEST_PORT_OUT_C2S_01" value="0"/>
+							</cycleData>
+						</domainData>
+                    </patternData>
+                </occurrence>
+                <occurrence default="true" status="Pass"/>
+            </plistResult>
+        </response>
+
+		<!-- Multi Vmin With Outgoing Fowarding, 2 cores pass: 0.440_0.430_-8.888_-8.888|0.400_0.400_0.400_0.400|1.200_1.200_1.200_1.200 -->
+		<response testInstance="PVAL_VMIN::Vmin_MultiVmin_MultiTarget_RecFwrd_Initial_P1" plist="drv_cdie_maintap_bbs_list">
+            <plistResult>
+                <occurrence start="0" stop="1" status="Fail">
+                    <patternData pattern="g0066765W3719690A_6I_VC28xCA078_Rr0e0000xxxPP_nxxx040404xxxxxxxxxxx_sC28A6PxxBTC013J052_x20_longreset_cpu_lr_none">
+						<domainData name="CPU_TAP_ALL">
+							<cycleData address="571" cycle="571">
+                              	<pinData pin="YY_TAP_TDO_C2S" value="0"/>
+							</cycleData>
+						</domainData>
+                    </patternData>
+                </occurrence>
+                <occurrence start="2" stop="2" status="Fail">
+                    <patternData pattern="g0019809W4480630A_8j_VC28xCA066_Rm000000xxx0v_nxxx080808xxxxxxxxxxx_sC28A6PxxBTC002J052_x01_A01_CDU_CDIE_TAP_IDCODE">
+						<domainData name="CPU_FAB_ALL">
+							<cycleData address="113" cycle="113">
+                              	<pinData pin="YY_TEST_PORT_OUT_C2S_00" value="0"/>
+                              	<pinData pin="YY_TEST_PORT_OUT_C2S_01" value="0"/>
+							</cycleData>
+						</domainData>
+                    </patternData>
+                </occurrence>
+                <occurrence start="3" stop="3" status="Fail">
+                    <patternData pattern="g0019809W4480630A_8j_VC28xCA066_Rm000000xxx0v_nxxx080808xxxxxxxxxxx_sC28A6PxxBTC002J052_x01_A01_CDU_CDIE_TAP_IDCODE">
+						<domainData name="CPU_FAB_ALL">
+							<cycleData address="119" cycle="119">
+                              	<pinData pin="YY_TEST_PORT_OUT_C2S_00" value="0"/>
+							</cycleData>
+						</domainData>
+                    </patternData>
+                </occurrence>
+                <occurrence default="true" status="Pass"/>
+            </plistResult>
+        </response>
+
+		<!-- Multi Vmin With Incoming Fowarding, 2 cores pass: 0.460_0.440_-8.888_-8.888|0.440_0.430_0.400_0.400|1.200_1.200_1.200_1.200 -->
+		<response testInstance="PVAL_VMIN::Vmin_MultiVmin_MultiTarget_RecFwrd_UsingPrevVmin_P1" plist="drv_cdie_maintap_bbs_list">
+            <plistResult>
+                <occurrence start="0" stop="0" status="Fail">
+                    <patternData pattern="g0019809W4480630A_8j_VC28xCA066_Rm000000xxx0v_nxxx080808xxxxxxxxxxx_sC28A6PxxBTC002J052_x01_A01_CDU_CDIE_TAP_IDCODE">
+						<domainData name="CPU_FAB_ALL">
+							<cycleData address="113" cycle="113">
+                              	<pinData pin="YY_TEST_PORT_OUT_C2S_00" value="0"/>
+                              	<pinData pin="YY_TEST_PORT_OUT_C2S_01" value="0"/>
+							</cycleData>
+						</domainData>
+                    </patternData>
+                </occurrence>
+                <occurrence start="1" stop="1" status="Fail">
+                    <patternData pattern="g0019809W4480630A_8j_VC28xCA066_Rm000000xxx0v_nxxx080808xxxxxxxxxxx_sC28A6PxxBTC002J052_x01_A01_CDU_CDIE_TAP_IDCODE">
+						<domainData name="CPU_FAB_ALL">
+							<cycleData address="119" cycle="119">
+                              	<pinData pin="YY_TEST_PORT_OUT_C2S_00" value="0"/>
+							</cycleData>
+						</domainData>
+                    </patternData>
+                </occurrence>
+                <occurrence default="true" status="Pass"/>
+            </plistResult>
+        </response>
+
+		<!-- Multi Vmin With Incoming Fowarding, 1 core pass: -9.999_0.440_-8.888_-8.888|0.460_0.440_0.400_0.400|0.500_0.500_0.500_0.500 -->
+		<response testInstance="PVAL_VMIN::Vmin_MultiVmin_MultiTarget_RecFwrd_UsingPrevVmin_Downbin_P1" plist="drv_cdie_maintap_bbs_list">
+            <plistResult>
+                <occurrence start="0" stop="4" status="Fail">
+                    <patternData pattern="g0019809W4480630A_8j_VC28xCA066_Rm000000xxx0v_nxxx080808xxxxxxxxxxx_sC28A6PxxBTC002J052_x01_A01_CDU_CDIE_TAP_IDCODE">
+						<domainData name="CPU_FAB_ALL">
+							<cycleData address="113" cycle="113">
+                              	<pinData pin="YY_TEST_PORT_OUT_C2S_00" value="0"/>
+							</cycleData>
+						</domainData>
+                    </patternData>
+                </occurrence>
+                <occurrence default="true" status="Pass"/>
+            </plistResult>
+        </response>
+
+		<response testInstance="PVAL_VMIN::Vmin_SingleVmin_MultiCorner_RecFwrd_P1" plist="drv_cdie_maintap_bbs_list">
+            <plistResult>
+                <occurrence start="0" stop="4" status="Fail">
+                    <patternData pattern="g0019809W4480630A_8j_VC28xCA066_Rm000000xxx0v_nxxx080808xxxxxxxxxxx_sC28A6PxxBTC002J052_x01_A01_CDU_CDIE_TAP_IDCODE">
+						<domainData name="CPU_FAB_ALL">
+							<cycleData address="113" cycle="113">
+                              	<pinData pin="YY_TEST_PORT_OUT_C2S_00" value="0"/>
+							</cycleData>
+						</domainData>
+                    </patternData>
+                </occurrence>
+                <occurrence default="true" status="Pass"/>
+            </plistResult>
+        </response>
+
+		<!-- ************************************************************************ -->
+		<!-- ******            PVAL SHMOO                                    ********* -->
+		<!-- ************************************************************************ -->
+
+		<response testInstance="PVAL_SHMOO::Shmoo_SpecSetxSpecSet_ShmooHUB_F0" plist="drv_cdie_maintap_bbs_list">
+            <plistResult>
+                <occurrence start="0" stop="3" status="Fail">
+                    <patternData pattern="g0066765W3719690A_6I_VC28xCA078_Rr0e0000xxxPP_nxxx040404xxxxxxxxxxx_sC28A6PxxBTC013J052_x20_longreset_cpu_lr_none">
+						<domainData name="CPU_TAP_ALL">
+							<cycleData address="571" cycle="571">
+                              	<pinData pin="YY_TAP_TDO_C2S" value="0"/>
+							</cycleData>
+						</domainData>
+                    </patternData>
+                </occurrence>
+                <occurrence start="4" stop="7" status="Fail">
+                    <patternData pattern="g0019809W4480630A_8j_VC28xCA066_Rm000000xxx0v_nxxx080808xxxxxxxxxxx_sC28A6PxxBTC002J052_x01_A01_CDU_CDIE_TAP_IDCODE">
+						<domainData name="CPU_FAB_ALL">
+							<cycleData address="113" cycle="113">
+                              	<pinData pin="YY_TEST_PORT_OUT_C2S_00" value="0"/>
+                              	<pinData pin="YY_TEST_PORT_OUT_C2S_01" value="0"/>
+							</cycleData>
+						</domainData>
+                    </patternData>
+                </occurrence>
+                <occurrence start="8" stop="9" status="Fail">
+                    <patternData pattern="g0019809W4480630A_8j_VC28xCA066_Rm000000xxx0v_nxxx080808xxxxxxxxxxx_sC28A6PxxBTC002J052_x01_A01_CDU_CDIE_TAP_IDCODE">
+						<domainData name="CPU_FAB_ALL">
+							<cycleData address="119" cycle="119">
+                              	<pinData pin="YY_TEST_PORT_OUT_C2S_00" value="0"/>
+							</cycleData>
+						</domainData>
+                    </patternData>
+                </occurrence>
+                <occurrence default="true" status="Pass"/>
+            </plistResult>
+        </response>
+
+		<response testInstance="PVAL_SHMOO::Shmoo_SpecSetxSpecSet_ECADS_F0" plist="drv_cdie_maintap_bbs_list">
+            <plistResult>
+                <occurrence start="0" stop="5" status="Fail">
+                    <patternData pattern="g0066765W3719690A_6I_VC28xCA078_Rr0e0000xxxPP_nxxx040404xxxxxxxxxxx_sC28A6PxxBTC013J052_x20_longreset_cpu_lr_none">
+						<domainData name="CPU_TAP_ALL">
+							<cycleData address="513" cycle="513">
+                              	<pinData pin="YY_TAP_TDO_C2S" value="0"/>
+							</cycleData>
+						</domainData>
+                    </patternData>
+                </occurrence>
+                <occurrence start="6" stop="7" status="Fail">
+                    <patternData pattern="g0019809W4480630A_8j_VC28xCA066_Rm000000xxx0v_nxxx080808xxxxxxxxxxx_sC28A6PxxBTC002J052_x01_A01_CDU_CDIE_TAP_IDCODE">
+						<domainData name="CPU_FAB_ALL">
+							<cycleData address="57" cycle="57">
+                              	<pinData pin="YY_TEST_PORT_OUT_C2S_01" value="0"/>
+							</cycleData>
+						</domainData>
+                    </patternData>
+                </occurrence>
+                <occurrence start="8" stop="9" status="Fail">
+                    <patternData pattern="g0019809W4480630A_8j_VC28xCA066_Rm000000xxx0v_nxxx080808xxxxxxxxxxx_sC28A6PxxBTC002J052_x01_A01_CDU_CDIE_TAP_IDCODE">
+						<domainData name="CPU_FAB_ALL">
+							<cycleData address="119" cycle="119">
+                              	<pinData pin="YY_TEST_PORT_OUT_C2S_00" value="0"/>
+							</cycleData>
+						</domainData>
+                    </patternData>
+                </occurrence>
+                <occurrence default="true" status="Pass"/>
+            </plistResult>
+        </response>
+
+		<response testInstance="PVAL_SHMOO::Shmoo_PatConfigSetPointxFIVR_ECADS_F0" plist="drv_cdie_maintap_bbs_list">
+            <plistResult>
+                <occurrence start="0" stop="1" status="Fail">
+                    <patternData pattern="g0066765W3719690A_6I_VC28xCA078_Rr0e0000xxxPP_nxxx040404xxxxxxxxxxx_sC28A6PxxBTC013J052_x20_longreset_cpu_lr_none">
+						<domainData name="CPU_TAP_ALL">
+							<cycleData address="5" cycle="5">
+                              	<pinData pin="YY_TAP_TDO_C2S" value="0"/>
+							</cycleData>
+						</domainData>
+                    </patternData>
+                </occurrence>
+                <occurrence start="2" stop="7" status="Fail">
+                    <patternData pattern="g0019809W4480630A_8j_VC28xCA066_Rm000000xxx0v_nxxx080808xxxxxxxxxxx_sC28A6PxxBTC002J052_x01_A01_CDU_CDIE_TAP_IDCODE">
+						<domainData name="CPU_FAB_ALL">
+							<cycleData address="113" cycle="113">
+                              	<pinData pin="YY_TEST_PORT_OUT_C2S_00" value="0"/>
+                              	<pinData pin="YY_TEST_PORT_OUT_C2S_01" value="0"/>
+							</cycleData>
+						</domainData>
+                    </patternData>
+                </occurrence>
+                <occurrence start="8" stop="11" status="Fail">
+                    <patternData pattern="g0019809W4480630A_8j_VC28xCA066_Rm000000xxx0v_nxxx080808xxxxxxxxxxx_sC28A6PxxBTC002J052_x01_A01_CDU_CDIE_TAP_IDCODE">
+						<domainData name="CPU_FAB_ALL">
+							<cycleData address="119" cycle="119">
+                              	<pinData pin="YY_TEST_PORT_OUT_C2S_02" value="0"/>
+							</cycleData>
+						</domainData>
+                    </patternData>
+                </occurrence>
+                <occurrence default="true" status="Pass"/>
+            </plistResult>
+        </response>
+
+		<response testInstance="PVAL_SHMOO::Shmoo_PatConfig1D_F0" plist="drv_cdie_maintap_bbs_list">
+            <plistResult>
+                <occurrence start="0" stop="0" status="Fail">
+                    <patternData pattern="g0066765W3719690A_6I_VC28xCA078_Rr0e0000xxxPP_nxxx040404xxxxxxxxxxx_sC28A6PxxBTC013J052_x20_longreset_cpu_lr_none">
+						<domainData name="CPU_TAP_ALL">
+							<cycleData address="5" cycle="35">
+                              	<pinData pin="YY_TAP_TDO_C2S" value="0"/>
+							</cycleData>
+						</domainData>
+                    </patternData>
+                </occurrence>
+                <occurrence start="1" stop="2" status="Fail">
+                    <patternData pattern="g0019809W4480630A_8j_VC28xCA066_Rm000000xxx0v_nxxx080808xxxxxxxxxxx_sC28A6PxxBTC002J052_x01_A01_CDU_CDIE_TAP_IDCODE">
+						<domainData name="CPU_FAB_ALL">
+							<cycleData address="113" cycle="1013">
+                              	<pinData pin="YY_TEST_PORT_OUT_C2S_00" value="0"/>
+                              	<pinData pin="YY_TEST_PORT_OUT_C2S_01" value="0"/>
+							</cycleData>
+						</domainData>
+                    </patternData>
+                </occurrence>
+                <occurrence default="true" status="Pass"/>
+            </plistResult>
+        </response>
+
+		<!-- ************************************************************************ -->
+		<!-- ******            PVAL DFXTUNER                                    ********* -->
+		<!-- ************************************************************************ -->
+	    <response testInstance="PVAL_DFXTUNER::TuneSTF100_Drive_P1" plist="dfx_stf100_tune_drv_list">
+            <plistResult>
+				<!-- TestInstance Range = 0->10ns 100ps steps = 41 captures (0->4ns) + 41 captures (4.1ns->8.1ns) + 19 captures (8.2->10ns)
+					Each capture = 4 pins X 3 sequences. 0 means pass, 1 means fail -->
+                <occurrence start="0" stop="0" status="Pass">
+				<!--                                       
+				                                        012301230123 -->
+					<ctvData pin="YY_TAP_TDO_C2S" value="011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111010100000001010100000001010100000001010100000001010100000001010100000001010100000001010100000001000100000001000100000001000100000001"/> 
+                </occurrence>
+                <occurrence start="1" stop="1" status="Pass">
+				<!--                                       
+				                                        012301230123 -->
+					<ctvData pin="YY_TAP_TDO_C2S" value="000000000001000000000001000000000001000000000001000000000001000000000001000000000001000000000001000000000001000000000001000000000001000000000001000000000001000000000001000000000001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000000001000000000001000000000001000000000001001000000001001000000001001000000001001000000001001000000001001000000001011101110111011101110111011101110111011101110111"/> 
+                </occurrence>
+                <occurrence start="2" stop="2" status="Pass">
+				<!--                                       
+				                                        012301230123 -->
+					<ctvData pin="YY_TAP_TDO_C2S" value="011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111011101110111"/> 
+                </occurrence>
+            </plistResult>
+       </response>
+
+		<response testInstance="PVAL_DFXTUNER::TuneSTF100_Compare_P1" plist="dfx_stf100_tune_stb_list">
+			<plistResult>
+				<!-- TestInstance Range = 0->4ns 100ps steps = 41 captures per pin. 0 means pass, 1 means fail-->
+
+				<occurrence default="true" status="Pass">
+				<!--                                                                                 
+                                                                            111111111122222222223333333333
+		                                                          0123456789012345678901234567890123456789   -->
+					<ctvData pin="YY_TEST_PORT_OUT_C2S_00" value="00000000000000000000000000000000000000000"/> 
+					<ctvData pin="YY_TEST_PORT_OUT_C2S_01" value="00000000000000000000000000000000000111111"/> 
+					<ctvData pin="YY_TEST_PORT_OUT_C2S_02" value="11111111111111100000000000000000000000000"/> 
+					<ctvData pin="YY_TEST_PORT_OUT_C2S_03" value="11111111111001100000000111010101011111111"/> 
+				</occurrence>
+			</plistResult>
+		</response>
+
+		<!-- ************************************************************************ -->
+		<!-- ******            PVAL PATTERN DELAY OPTIMIZER                 ********* -->
+		<!-- ************************************************************************ -->
+		<response testInstance="PVAL_DEBUGDV::TestWaitTimeFinder_LinearHighToLow_P1" plist="fun_core_cdie_preposthvqk_sbft_lfm_vadtl_stf100_mlc_AVX_sublist">
+            <plistResult>
+                <occurrence start="0" stop="0" status="Fail">
+                    <patternData pattern="g0179780W5014242A_LY_VC28xCA08a_Fm020v18xxx0q_dxxx0808081bxxxxxxxxx_sC28A6PxxATC029J052_x00_il_LengthChangePrefixes_Random_16bit_26698">
+						<domainData name="CPU_TAP_ALL">
+							<cycleData address="571" cycle="571">
+                              	<pinData pin="YY_TAP_TDO_C2S" value="0"/>
+							</cycleData>
+						</domainData>
+                    </patternData>
+                </occurrence>
+
+                <occurrence start="1" stop="3" status="Pass"/>
+
+                <occurrence start="4" stop="4" status="Fail">
+                    <patternData pattern="g0179785W5014598A_KX_VC28xCA08a_Fm020v18xxx0q_dxxx0808081bxxxxxxxxx_sC28A6PxxATC029J052_x00_gather_scatter_address_ver2_3091756">
+						<domainData name="CPU_FAB_ALL">
+							<cycleData address="113" cycle="113">
+                              	<pinData pin="YY_TEST_PORT_OUT_C2S_00" value="0"/>
+                              	<pinData pin="YY_TEST_PORT_OUT_C2S_01" value="0"/>
+							</cycleData>
+						</domainData>
+                    </patternData>
+                </occurrence>
+
+                <occurrence start="5" stop="8" status="Pass"/>
+
+                <occurrence start="9" stop="9" status="Fail">
+                    <patternData pattern="g0179772W5014240A_L8_VC28xCA08a_Fm020v18xxx0q_dxxx0808081bxxxxxxxxx_sC28A6PxxATC029J052_x00_il_LengthChangePrefixes_Random_16bit_26530">
+						<domainData name="CPU_FAB_ALL">
+							<cycleData address="119" cycle="119">
+                              	<pinData pin="YY_TEST_PORT_OUT_C2S_00" value="0"/>
+							</cycleData>
+						</domainData>
+                    </patternData>
+                </occurrence>
+            </plistResult>
+        </response>
+
+		<!-- ************************************************************************ -->
+		<!-- ******            PVAL IMPACT STUDIES                          ********* -->
+		<!-- ************************************************************************ -->
+		<response testInstance="PVAL_DEBUGDV::TestImpactStudiesVmin_P1" plist="drv_cdie_maintap_bbs_list">
+            <plistResult>
+                <occurrence start="0" stop="8" status="Fail">
+                    <patternData pattern="g0066765W3719690A_6I_VC28xCA078_Rr0e0000xxxPP_nxxx040404xxxxxxxxxxx_sC28A6PxxBTC013J052_x20_longreset_cpu_lr_none">
+						<domainData name="CPU_TAP_ALL">
+							<cycleData address="571" cycle="571">
+                              	<pinData pin="YY_TAP_TDO_C2S" value="0"/>
+							</cycleData>
+						</domainData>
+                    </patternData>
+                </occurrence>
+                <occurrence start="9" stop="11" status="Fail">
+                    <patternData pattern="g0019809W4480630A_8j_VC28xCA066_Rm000000xxx0v_nxxx080808xxxxxxxxxxx_sC28A6PxxBTC002J052_x01_A01_CDU_CDIE_TAP_IDCODE">
+						<domainData name="CPU_FAB_ALL">
+							<cycleData address="113" cycle="113">
+                              	<pinData pin="YY_TEST_PORT_OUT_C2S_00" value="0"/>
+                              	<pinData pin="YY_TEST_PORT_OUT_C2S_01" value="0"/>
+							</cycleData>
+						</domainData>
+                    </patternData>
+                </occurrence>
+                <occurrence start="12" stop="14" status="Fail">
+                    <patternData pattern="g0019809W4480630A_8j_VC28xCA066_Rm000000xxx0v_nxxx080808xxxxxxxxxxx_sC28A6PxxBTC002J052_x01_A01_CDU_CDIE_TAP_IDCODE">
+						<domainData name="CPU_FAB_ALL">
+							<cycleData address="119" cycle="119">
+                              	<pinData pin="YY_TEST_PORT_OUT_C2S_00" value="0"/>
+							</cycleData>
+						</domainData>
+                    </patternData>
+                </occurrence>
+
+                <occurrence start="15" stop="15" status="Pass"/>
+
+                <occurrence start="16" stop="16" status="Fail">
+                    <patternData pattern="g0019809W4480630A_8j_VC28xCA066_Rm000000xxx0v_nxxx080808xxxxxxxxxxx_sC28A6PxxBTC002J052_x01_A01_CDU_CDIE_TAP_IDCODE">
+						<domainData name="CPU_FAB_ALL">
+							<cycleData address="113" cycle="113">
+                              	<pinData pin="YY_TEST_PORT_OUT_C2S_00" value="0"/>
+                              	<pinData pin="YY_TEST_PORT_OUT_C2S_01" value="0"/>
+							</cycleData>
+						</domainData>
+                    </patternData>
+                </occurrence>
+
+
+                <occurrence default="true" status="Pass"/>
+            </plistResult>
+        </response>
+
+		<response testInstance="PVAL_DEBUGDV::TestImpactStudiesVmin_P1" plist="fun_core_cdie_preposthvqk_sbft_lfm_vadtl_stf100_mlc_AVX_sublist">
+            <plistResult>
+                <occurrence start="0" stop="4" status="Fail">
+                    <patternData pattern="g0179772W5014240A_L8_VC28xCA08a_Fm020v18xxx0q_dxxx0808081bxxxxxxxxx_sC28A6PxxATC029J052_x00_il_LengthChangePrefixes_Random_16bit_26530">
+						<domainData name="CPU_TAP_ALL">
+							<cycleData address="571" cycle="571">
+                              	<pinData pin="YY_TAP_TDO_C2S" value="0"/>
+							</cycleData>
+						</domainData>
+                    </patternData>
+                </occurrence>
+                <occurrence start="5" stop="9" status="Fail">
+                    <patternData pattern="g0179780W5014242A_LY_VC28xCA08a_Fm020v18xxx0q_dxxx0808081bxxxxxxxxx_sC28A6PxxATC029J052_x00_il_LengthChangePrefixes_Random_16bit_26698">
+						<domainData name="CPU_FAB_ALL">
+							<cycleData address="113" cycle="113">
+                              	<pinData pin="YY_TEST_PORT_OUT_C2S_00" value="0"/>
+                              	<pinData pin="YY_TEST_PORT_OUT_C2S_01" value="0"/>
+							</cycleData>
+						</domainData>
+                    </patternData>
+                </occurrence>
+
+                <occurrence start="10" stop="10" status="Pass"/>
+
+                <occurrence start="11" stop="11" status="Fail">
+                    <patternData pattern="g0179780W5014242A_LY_VC28xCA08a_Fm020v18xxx0q_dxxx0808081bxxxxxxxxx_sC28A6PxxATC029J052_x00_il_LengthChangePrefixes_Random_16bit_26698">
+						<domainData name="CPU_FAB_ALL">
+							<cycleData address="113" cycle="113">
+                              	<pinData pin="YY_TEST_PORT_OUT_C2S_00" value="0"/>
+                              	<pinData pin="YY_TEST_PORT_OUT_C2S_01" value="0"/>
+							</cycleData>
+						</domainData>
+                    </patternData>
+                    <patternData pattern="g0179785W5014598A_KX_VC28xCA08a_Fm020v18xxx0q_dxxx0808081bxxxxxxxxx_sC28A6PxxATC029J052_x00_gather_scatter_address_ver2_3091756">
+						<domainData name="CPU_FAB_ALL">
+							<cycleData address="1013" cycle="1013">
+                              	<pinData pin="YY_TEST_PORT_OUT_C2S_01" value="0"/>
+							</cycleData>
+						</domainData>
+                    </patternData>
+                </occurrence>
+
+
+                <occurrence default="true" status="Pass"/>
+            </plistResult>
+        </response>
+
+		<!-- ************************************************************************ -->
+		<!-- ******            IV CURVE                                     ********* -->
+		<!-- ************************************************************************ -->
+		<response testInstance="PVAL_COMMON::IVCurve_ProductionModeCurrent_P1" >
+			<dcResult>
+				<occurrence default="true">
+					<pinData pin="HC1_VCCCORE0" value="0.3A" />
+				</occurrence>
+			</dcResult>
+		</response>
+
+		<!-- ************************************************************************ -->
+		<!-- ******            SIMPLECTVTC                                     ********* -->
+		<!-- ************************************************************************ -->
+		<response testInstance="PVAL_COMMON::CaptureAndDecodeTDO_Simple_P1" plist="drv_cdie_maintap_bbs_list">
+			<plistResult>
+				<occurrence default="true" status="Pass">
+					<!--                                           11111 -->
+					<!--                                 012345678901234 -->
+					<ctvData pin="YY_TAP_TDO_C2S" value="111000000000110"/> 
+				</occurrence>
+			</plistResult>
+		</response>
+
+		<!-- ************************************************************************ -->
+		<!-- ******            CAPTUREPACKETS                               ********* -->
+		<!-- ************************************************************************ -->
+		<response testInstance="PVAL_COMMON::DDGCapturePackets_MultiPin_P1" plist="drv_cdie_maintap_bbs_list">
+			<plistResult>
+                <occurrence default="true" status="Pass">
+					<ctvData pin="YY_TEST_PORT_OUT_C2S_00" value="11"/> 
+					<ctvData pin="YY_TEST_PORT_OUT_C2S_01" value="01"/> 
+				</occurrence>
+			</plistResult>
+		</response>
+		<response testInstance="PVAL_COMMON::DDGCapturePackets_NonAmbleFail_P1" plist="drv_cdie_maintap_bbs_list">
+			<plistResult>
+                <occurrence default="true" status="Fail">
+                    <patternData pattern="g0019815W4480630A_92_VC28xCA066_Rm000000xxx0v_nxxx080808xxxxxxxxxxx_sC28A6PxxBTC002J052_x07_A07_CDU_CDIE_TAP_TAPLINKCFG_DR_OVRSHIFT">
+						<domainData name="CPU_TAP_ALL">
+							<cycleData address="571" cycle="10571" >
+                              	<pinData pin="YY_TAP_TDO_C2S" value="0"/>
+							</cycleData>
+						</domainData>
+                    </patternData>
+					<ctvData pin="YY_TAP_TDO_C2S" value="10"/> 
+				</occurrence>
+			</plistResult>
+		</response>
+		<response testInstance="PVAL_COMMON::DDGCapturePackets_AmbleFail_P2" plist="drv_cdie_maintap_bbs_list">
+			<plistResult>
+                <occurrence default="true" status="Fail">
+                    <patternData pattern="g0066765W3719690A_6I_VC28xCA078_Rr0e0000xxxPP_nxxx040404xxxxxxxxxxx_sC28A6PxxBTC013J052_x20_longreset_cpu_lr_none">
+						<domainData name="CPU_TAP_ALL">
+							<cycleData address="71" cycle="39" >
+                              	<pinData pin="YY_TAP_TDO_C2S" value="0"/>
+							</cycleData>
+						</domainData>
+                    </patternData>
+					<ctvData pin="YY_TAP_TDO_C2S" value="01"/> 
+				</occurrence>
+			</plistResult>
+		</response>
+		<response testInstance="PVAL_COMMON::DDGCapturePackets_AllZero_P2" plist="drv_cdie_maintap_bbs_list">
+			<plistResult>
+                <occurrence default="true" status="Pass">
+					<ctvData pin="YY_TAP_TDO_C2S" value="00"/> 
+				</occurrence>
+			</plistResult>
+		</response>
+		<response testInstance="PVAL_COMMON::DDGCapturePackets_LengthMismatch_P0" plist="drv_cdie_maintap_bbs_list">
+			<plistResult>
+                <occurrence default="true" status="Pass">
+					<ctvData pin="YY_TAP_TDO_C2S" value="1"/> 
+				</occurrence>
+			</plistResult>
+		</response>
+
+		<!-- ************************************************************************ -->
+		<!-- ******            ANALOG CAPTURE                               ********* -->
+		<!-- ************************************************************************ -->
+		<response testInstance="PVAL_ANALOG::SimpleAnalogCaptureTDO_P1" plist="drv_cdie_maintap_bbs_list">
+			<plistResult>
+				<occurrence default="true" status="Pass">
+					<!--                                 012345678012345678012345678012345678 -->
+					<ctvData pin="YY_TAP_TDO_C2S" value="100000000110000000111000000111100000"/> 
+				</occurrence>
+			</plistResult>
+		</response>
+
+		<!-- ************************************************************************ -->
+		<!-- ******            ANALOG PTHBgTrimTC                               ********* -->
+		<!-- ************************************************************************ -->
+		<response testInstance="PVAL_ANALOG::TestPTHBgTrimTC_P1" plist="drv_cdie_maintap_bbs_list">
+			<plistResult>
+				<occurrence default="true" status="Pass">
+					<ctvData pin="YY_TAP_TDO_C2S" value="0101011110"/> 
+				</occurrence>
+			</plistResult>
+		</response>
+
+		<!-- ************************************************************************ -->
+		<!-- ******            DCPRINT                                      ********* -->
+		<!-- ************************************************************************ -->
+		<response testInstance="PVAL_ANALOG::DcPrint_CurrentMeasure_P1" >
+			<dcResult>
+				<occurrence default="true">
+					<pinData pin="HC1_VCCCORE0" value="0.0013A" />
+					<pinData pin="HC2_VCCCORE1" value="0.0024A" />
+					<pinData pin="HC3_VCCATOM0" value="0.0009A" />
+					<pinData pin="HC4_VCCATOM1" value="0.0008A" />
+				</occurrence>
+			</dcResult>
+		</response>
+
+		<!-- ************************************************************************ -->
+		<!-- ******            ANALOGMEASURE                                ********* -->
+		<!-- ************************************************************************ -->
+		<response testInstance="PVAL_COMMON::AnalogMeasure_3Pins2Measures_P1" >
+			<dcResult>
+				<occurrence default="true">
+					<pinData pin="HV1_VNNAON" value="12A" />
+					<pinData pin="HC1_VCCCORE0" value="1.0V" />
+					<pinData pin="HC2_VCCCORE1" value="0.8V" />
+				</occurrence>
+			</dcResult>
+		</response>
+
+		<!-- ************************************************************************ -->
+		<!-- ******            ARRAY_HRY                                    ********* -->
+		<!-- ************************************************************************ -->
+		<response testInstance="PVAL_DIGITAL::*ArrayHRY_SamplePre_P2" plist="drv_cdie_maintap_bbs_list">
+			<plistResult>
+                <occurrence default="true" status="Pass">
+<!--                                                                             SCAN                                PMOVI                        March-C                -->
+<!--                                                                        11111111112222222222333333          11111111112222222222333333          11111111112222222222333333 -->
+<!--                                                              012345678901234567890123456789012345012345678901234567890123456789012345012345678901234567890123456789012345 -->
+					<ctvData pin="YY_TEST_PORT_OUT_C2S_00" value="001000000000001000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000 "/> 
+					<ctvData pin="YY_TAP_TDO_C2S"          value="000100001001000101010001110000001000010111010001000100010001000000000100000100010001000100010001000000001100"/> 
+<!--                                                                1   4   6   1   8   0   8   0   8   7   5   0   0   1   0   0   0   8   0   0   0   0   0   0   0   0   8 -->
+				</occurrence>
+			</plistResult>
+		</response>
+
+		<response testInstance="PVAL_DIGITAL::*ArrayHRY_SamplePost_P2" plist="drv_cdie_maintap_bbs_list">
+			<plistResult>
+                <occurrence default="true" status="Pass">
+<!--                                                                              SCAN                                PMOVI                       March-C               -->
+<!--                                                                        11111111112222222222333333          11111111112222222222333333          11111111112222222222333333 -->
+<!--                                                              012345678901234567890123456789012345012345678901234567890123456789012345012345678901234567890123456789012345 -->
+					<ctvData pin="YY_TEST_PORT_OUT_C2S_00" value="000000000000001000100010000000000000000000000000000000000000000000000000000000000000000000000000000000000000 "/> 
+					<ctvData pin="YY_TAP_TDO_C2S"          value="000100000001000100010001000000001000010111010001000111010001000000000100000100010001000100010001000000001100"/> 
+<!--                                                              1->R   4  6->R   1   *8  0->1 8->R   0    8     7    5    0    0   *1  0    0    0    8   0   0   0   0    0    0    0    0    8 -->
+<!--                                                                                 *should be 8->1 and 1->8 but evg doesn't change bad-to-bad char  -->
+				</occurrence>
+			</plistResult>
+		</response>
+
+		<response testInstance="PVAL_DIGITAL::*ArrayHRY_SampleNoAlgName_P1" plist="drv_cdie_maintap_bbs_list">
+			<plistResult>
+                <occurrence default="true" status="Pass">
+<!--                                                                             SCAN                   -->
+<!--                                                                        11111111112222222222333333 -->
+<!--                                                              012345678901234567890123456789012345 -->
+					<ctvData pin="YY_TEST_PORT_OUT_C2S_00" value="000000000000000000000000000000000000 "/> 
+					<ctvData pin="YY_TAP_TDO_C2S"          value="000100010001000100010001000100000000"/> 
+				</occurrence>
+			</plistResult>
+		</response>
+
+		<response testInstance="PVAL_DIGITAL::*ArrayHRY_SampleMultiAlgReverse_P2" plist="drv_cdie_maintap_bbs_list">
+			<plistResult>
+                <occurrence default="true" status="Pass">
+<!--                                                               AlgA  AlgB  AlgC   -->
+<!--                                                              543210543210543210 -->
+					<ctvData pin="YY_TEST_PORT_OUT_C2S_00" value="000100100000000000 "/> 
+					<ctvData pin="YY_TAP_TDO_C2S"          value="000000000000000000 "/> 
+				</occurrence>
+			</plistResult>
+		</response>
+
+		<response testInstance="PVAL_DIGITAL::PrimeArrayHRY_MultiDomain1Alg_P1" plist="drv_cdie_maintap_bbs_list">
+			<plistResult>
+                <occurrence default="true" status="Pass">
+					<ctvData pin="YY_TEST_PORT_OUT_C2S_00" value="00"/> 
+					<ctvData pin="YY_TAP_TDO_C2S"          value="0000"/> 
+				</occurrence>
+			</plistResult>
+		</response>
+
+		<response testInstance="PVAL_DIGITAL::PrimeArrayHRY_MultiDomain3Alg_P2" plist="drv_cdie_maintap_bbs_list">
+			<plistResult>
+                <occurrence default="true" status="Pass">
+					<ctvData pin="YY_TEST_PORT_OUT_C2S_00" value="000100"/> 
+					<ctvData pin="YY_TAP_TDO_C2S"          value="000000000001"/> 
+				</occurrence>
+			</plistResult>
+		</response>
+
+	</virtualdut>
+	
+</Quicksim>

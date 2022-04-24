@@ -1,0 +1,197 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>AuxiliaryTC Template</title>
+</head>
+<body>
+
+    <h1 id="auxiliarytc-template">AuxiliaryTC Template</h1>
+<h3 id="rev-1102022-fmurillo">Rev 1/10/2022 (fmurillo)</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1. <a href="#introduction">Introduction</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">2. <a href="#test-instance-parameters">Test Instance Parameters</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">3. <a href="#expression-engine">Expression Engine</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">4. <a href="#tpl-samples">TPL Samples</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">5. <a href="#exit-ports">Exit Ports</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="section"></h3>
+<hr />
+<h2 id="introduction">1. Introduction</h2>
+<p>AuxiliaryTC is a basic utility test method that allows user to evaluate expressions using SharedStorage, Uservars and/or DFF and store evaluate result into a new token, and/or assign an exit port based on a second expression.</p>
+<hr />
+<h2 id="test-instance-parameters">2. Test Instance Parameters</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Parameter Name</th>
+<th style="text-align: left;">Required?</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Values</th>
+<th style="text-align: left;">Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Expression</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Expression to be evaluated. Uses NCalc third party as engine. Tokens should use '[]'.</td>
+</tr>
+<tr>
+<td style="text-align: left;">DataType</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">String, Double or Integer.</td>
+</tr>
+<tr>
+<td style="text-align: left;">Storage</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Defines storage type for ResultToken. SharedStorage, Uservar or DFF.</td>
+</tr>
+<tr>
+<td style="text-align: left;">ResultToken</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Token name where result will be stored. Uses Storage and DataType to define the variable to use but shared storge should still be the full format G.U.S.blah.</td>
+</tr>
+<tr>
+<td style="text-align: left;">ResultPort</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Expression to determine exit port. Expected to be solved as int. Uses [R] as result token.</td>
+</tr>
+<tr>
+<td style="text-align: left;">Datalog</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">Enum</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Enabled or Disabled. Integer and string will be printed as strgval while double will be set as msrlt.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="expression-engine">3. Expression Engine</h2>
+<p>This test method supports Ncalc as expression engine. <a href="https://github.com/ncalc/ncalc">https://github.com/ncalc/ncalc</a> <br>
+It is able to evaluate simple mathematical expression using SharedStorage, Uservar and/or DFF tokens.<br></p>
+<p>All tokens must be specified using '[]'. Value will be evaluated in the following order:</p>
+<ul>
+<li>SharedStorage: Should be of the form G.<em>context</em>.<em>type</em>.Token where <em>context</em> is L for Lot, U for DUT/Unit or I for IP, and <em>type</em> is S for string, D for double or I for integer.</li>
+<li>UserVar: String, Double and Integer. Always using full <em>collection</em>.<em>name</em> format with the full IP/Module scoping on the collection.</li>
+<li>DFF: Using token name. It will be read from the current optype and die id.</li>
+</ul>
+<h4 id="supported-functions">Supported functions:</h4>
+<p><a href="https://github.com/ncalc/ncalc/wiki/Functions">https://github.com/ncalc/ncalc/wiki/Functions</a></p>
+<h4 id="additional-functions">Additional functions:</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Function</th>
+<th style="text-align: left;">Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">ToInt32(<em>value</em>)</td>
+<td style="text-align: left;">Converts a string or double value to an integer</td>
+</tr>
+<tr>
+<td style="text-align: left;">ToDouble(<em>value</em>)</td>
+<td style="text-align: left;">Converts a string or int value to a double</td>
+</tr>
+<tr>
+<td style="text-align: left;">Random()</td>
+<td style="text-align: left;">Generates a random value between 0 and 1</td>
+</tr>
+<tr>
+<td style="text-align: left;">Substring(<em>value</em>, <em>start</em>, <em>length</em>)</td>
+<td style="text-align: left;">Creates a substring of <em>value</em>, starting at index <em>start</em> (0 is first bit), and containing <em>length</em> bits</td>
+</tr>
+<tr>
+<td style="text-align: left;">Bin2Dec(<em>value</em></td>
+<td style="text-align: left;">Converts the binary string <em>value</em> into an integer. <em>value</em> must be less than 32 bits.</td>
+</tr>
+<tr>
+<td style="text-align: left;">Dec2Bin(<em>value</em>, <em>bits</em>)</td>
+<td style="text-align: left;">Converts the integer <em>value</em> into a binary string containing <em>bits</em> number of bits. MSB first, no radix, just a raw binary string: Dec2Bin(5, 6) -&gt; 000101</td>
+</tr>
+<tr>
+<td style="text-align: left;">Reverse(<em>value</em>)</td>
+<td style="text-align: left;">Reverses the string <em>value</em></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="tpl-samples">4. TPL Samples</h2>
+<h3 id="section-1"></h3>
+<pre><code class="language-perl">Test AuxiliaryTC InstanceName  
+{
+    Expression = &quot;[Token1]+ToInt32[Token2]&quot;;  
+    DataType = &quot;Integer&quot;;  
+    Storage = &quot;SharedStorage&quot;;  
+    ResultToken = &quot;ResultToken&quot;;  
+    ResultPort = &quot;[R]&gt;0?2:1&quot;;  
+}  
+
+</code></pre>
+<hr />
+<h2 id="exit-ports">4. Exit Ports</h2>
+<table>
+<thead>
+<tr>
+<th>Exit Port</th>
+<th>Condition</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-2</td>
+<td>Alarm</td>
+<td>Any HW alarm condition</td>
+</tr>
+<tr>
+<td>-1</td>
+<td>Error</td>
+<td>Any software error</td>
+</tr>
+<tr>
+<td>0</td>
+<td>Fail</td>
+<td>nothing causes this today.</td>
+</tr>
+<tr>
+<td>1-20</td>
+<td>Pass</td>
+<td>User assigned.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="section-2"></h3>
+<hr />
+
+
+</body>
+</html>

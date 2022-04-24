@@ -1,0 +1,210 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Prime.Services.VoltageService</name>
+    </assembly>
+    <members>
+        <member name="T:Prime.VoltageService.RailHandlerType">
+            <summary>
+            Rail handler type to apply expression override.
+            </summary>
+        </member>
+        <member name="F:Prime.VoltageService.RailHandlerType.DLVR">
+            <summary>
+            DlvrPin Configuration.
+            </summary>
+        </member>
+        <member name="T:Prime.VoltageService.IVoltageService">
+            <summary>
+            Handles all voltages applications to the DUT(DPS, VDAC, etc..)
+            </summary>
+        </member>
+        <member name="M:Prime.VoltageService.IVoltageService.CreateVForceForPinAttribute(System.Collections.Generic.List{System.String},System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.Dictionary{System.String,System.String}})">
+            <summary>
+            Creates a new DPS voltage test object to apply voltages to dps pins.
+            </summary>
+            <param name="pinNames">A list containing the names of the DPS pins.</param>
+            <param name="attributes">The attributes and its values per pin to apply with the application of the VForce.</param>
+            <returns>IVForcePinAttribute interface to the DPS features from the VoltageService.</returns>
+        </member>
+        <member name="M:Prime.VoltageService.IVoltageService.CreateVForceForPinTestCondition(System.Collections.Generic.List{System.String},System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.Dictionary{System.String,System.String}},System.String)">
+            <summary>
+            Creates a new TestCondition voltage test object to apply the voltage value of a TestCondition.
+            </summary>
+            <param name="pinNames">A list containing the names of the pins to which the voltage must be applied to.</param>
+            <param name="attributes">The attributes and its values per pin to apply with the application of the VForce.</param>
+            <param name="testConditionName">The name of the test condition to apply.</param>
+            <returns>IVForcePinAttribute interface to the TestCondition features from the VoltageService.</returns>
+        </member>
+        <member name="M:Prime.VoltageService.IVoltageService.CreateFivrForDomains(System.Collections.Generic.List{System.String},System.String)">
+            <summary>
+            Creates a new FIVR voltage test object to apply voltages to FIVR domains.
+            </summary>
+            <param name="domainNames">A list containing the FIVR domain names.</param>
+            <param name="plist">Plist name.</param>
+            <returns>IFivrDomains interface to the FIVR features from the VoltageService.</returns>
+        </member>
+        <member name="M:Prime.VoltageService.IVoltageService.CreateFivrForCondition(System.String,System.String)">
+            <summary>
+            Creates a new FIVR voltage test object to apply voltages to FIVR domains specified in the FIVR test condition.
+            </summary>
+            <param name="conditionName">FIVR condition name.</param>
+            <param name="plist">Plist name.</param>
+            <returns>IFivrCondition interface to the FIVR features from the VoltageService.</returns>
+        </member>
+        <member name="M:Prime.VoltageService.IVoltageService.CreateFivrForDomainsAndCondition(System.Collections.Generic.List{System.String},System.String,System.String)">
+            <summary>
+            Creates a new FIVR voltage test object to apply voltages to FIVR domains.
+            </summary>
+            <param name="domainNames">A list containing the FIVR domain names.</param>
+            <param name="conditionName">FIVR condition name.</param>
+            <param name="plist">Plist name.</param>
+            <returns>CreateFivrForDomainsAndCondition interface to the FIVR features from the VoltageService.</returns>
+        </member>
+        <member name="M:Prime.VoltageService.IVoltageService.CreateFivrDomainsAndConditionWithRails(System.Collections.Generic.List{System.String},System.String,System.String,System.Collections.Generic.List{System.String},System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.Dictionary{System.String,System.String}})">
+            <summary>
+            Creates a new FIVR voltage test object.
+            </summary>
+            <param name="domainNames">A list containing the FIVR domain names.</param>
+            <param name="conditionName">FIVR condition name.</param>
+            <param name="plist">Plist name.</param>
+            <param name="railConfigurationNames">A list containing the rail configuration names.</param>
+            <param name="dlvrPinAttributes">Pin attributes for every dlvr pin.</param>
+            <returns>IFivrDomainsAndConditionWithRails interface to the FIVR features from the VoltageService.</returns>
+        </member>
+        <member name="M:Prime.VoltageService.IVoltageService.CreateFivrDomainsAndConditionWithRails(System.Collections.Generic.List{System.String},System.String,System.String,System.Collections.Generic.List{System.String})">
+            <summary>
+            Creates a new FIVR voltage test object.
+            </summary>
+            <param name="domainNames">A list containing the FIVR domain names.</param>
+            <param name="conditionName">FIVR condition name.</param>
+            <param name="plist">Plist name.</param>
+            <param name="railConfigurationNames">A list containing the rail configuration names.</param>
+            <returns>IFivrDomainsAndConditionWithRails interface to the FIVR features from the VoltageService.</returns>
+        </member>
+        <member name="M:Prime.VoltageService.IVoltageService.CreateVForceForPinAttributeWithRails(System.Collections.Generic.List{System.String},System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.Dictionary{System.String,System.String}},System.Collections.Generic.List{System.String},System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.Dictionary{System.String,System.String}})">
+            <summary>
+            Creates a new DPS voltage test object with rail configurations.
+            </summary>
+            <param name="domainNames">A list containing the DPS domain names.</param>
+            <param name="domainPinAttributes">Domain pin attributes.</param>
+            <param name="railConfigurationNames">A list containing the rail configuration names.</param>
+            <param name="dlvrPinAttributes">Dlvr pin attributes.</param>
+            <returns>IVForcePinAttributeWithRails interface to the DPS features from the VoltageService.</returns>
+        </member>
+        <member name="M:Prime.VoltageService.IVoltageService.CreateVForceForPinAttributeWithRails(System.Collections.Generic.List{System.String},System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.Dictionary{System.String,System.String}},System.Collections.Generic.List{System.String})">
+            <summary>
+            Creates a new DPS voltage test object with rail configurations.
+            </summary>
+            <param name="domainNames">A list containing the DPS domain names.</param>
+            <param name="domainPinAttributes">Domain pin attributes.</param>
+            <param name="railConfigurationNames">A list containing the rail configuration names.</param>
+            <returns>IVForcePinAttributeWithRails interface to the DPS features from the VoltageService.</returns>
+        </member>
+        <member name="T:Prime.VoltageService.IVoltage">
+            <summary>
+            A voltage test object to apply voltages to dps pins or domains.
+            </summary>
+        </member>
+        <member name="M:Prime.VoltageService.IVoltage.GetAppliedValuesPerTarget">
+            <summary>
+            Gets the applied value per target.
+            </summary>
+            <returns>The applied value per target.</returns>
+        </member>
+        <member name="M:Prime.VoltageService.IVoltage.Reset">
+            <summary>
+            Reset the calculated or saved data from the previous applies.
+            </summary>
+        </member>
+        <member name="M:Prime.VoltageService.IVoltage.Restore">
+            <summary>
+            Restore the voltages to the initial values (when the test object was created).
+            </summary>
+        </member>
+        <member name="T:Prime.VoltageService.IVForcePinAttribute">
+            <summary>
+            A voltage test object to apply voltages to dps pins or domains.
+            </summary>
+        </member>
+        <member name="M:Prime.VoltageService.IVForcePinAttribute.Apply(System.Collections.Generic.List{System.Double})">
+            <summary>
+            Applies the specified list of voltages to the corresponding pins or domains.
+            </summary>
+            <param name="values">Voltage values for the pin or domain.</param>
+        </member>
+        <member name="M:Prime.VoltageService.IVForcePinAttribute.GetRestoreValues">
+            <summary>
+            Returns the current restore values for the corresponding pins.
+            </summary>
+            <returns>The restore values per pin.</returns>
+        </member>
+        <member name="T:Prime.VoltageService.IFivrDomains">
+            <summary>
+            A voltage test object to apply voltages to dps pins or domains.
+            </summary>
+        </member>
+        <member name="M:Prime.VoltageService.IFivrDomains.Apply(System.Collections.Generic.List{System.Double})">
+            <summary>
+            Applies the specified list of voltages to the corresponding pins or domains.
+            </summary>
+            <param name="values">Voltage values for the pin or domain.</param>
+        </member>
+        <member name="T:Prime.VoltageService.IFivrCondition">
+            <summary>
+            A voltage test object to apply voltages to domains.
+            </summary>
+        </member>
+        <member name="M:Prime.VoltageService.IFivrCondition.ApplyConditionWithOverride(System.Collections.Generic.Dictionary{System.String,System.Double})">
+            <summary>
+            Applies the specified list of voltages to the corresponding domains. This method can override the
+            values specified in the configuration file.
+            </summary>
+            <param name="values">Values by domain name to override.</param>
+        </member>
+        <member name="M:Prime.VoltageService.IFivrCondition.ApplyCondition">
+            <summary>
+            Applies the voltages indicated in the FIVR condition.
+            </summary>
+        </member>
+        <member name="M:Prime.VoltageService.IFivrCondition.GetCurrentResolvedValuesPerDomain">
+            <summary>
+            Gets the current resolved value per domain considering guardband values.
+            </summary>
+            <returns>The resolved value per domain.</returns>
+        </member>
+        <member name="T:Prime.VoltageService.IFivrDomainsAndCondition">
+            <summary>
+            A voltage test object to apply voltages to domains.
+            </summary>
+        </member>
+        <member name="T:Prime.VoltageService.IFivrDomainsAndConditionWithRails">
+            <summary>
+            A voltage test object to apply voltages to domains, conditions and executes a rail configuration.
+            </summary>
+        </member>
+        <member name="M:Prime.VoltageService.IFivrDomainsAndConditionWithRails.OverrideExpression(Prime.VoltageService.RailHandlerType,System.String,System.String)">
+            <summary>
+            set the input expression name to as the active one.
+            the evaluated value to apply will be based on that expression.
+            </summary>
+            <param name="railHandlerType">PatConfig, DlvrPin or TimingAttribute.</param>
+            <param name="expressionName">each expression corresponded to a name.</param>
+            <param name="configName">Configuration name, for dlvr pin set the pin name.</param>
+        </member>
+        <member name="T:Prime.VoltageService.IVForcePinAttributeWithRails">
+            <summary>
+            Creates a new DPS voltage test object with rail configurations.
+            </summary>
+        </member>
+        <member name="M:Prime.VoltageService.IVForcePinAttributeWithRails.OverrideExpression(Prime.VoltageService.RailHandlerType,System.String,System.String)">
+            <summary>
+            set the input expression name to as the active one.
+            the evaluated value to apply will be based on that expression.
+            </summary>
+            <param name="railHandlerType">PatConfig, DlvrPin or TimingAttribute.</param>
+            <param name="expressionName">each expression corresponded to a name.</param>
+            <param name="configName">Configuration name, for dlvr pin set the pin name.</param>
+        </member>
+    </members>
+</doc>

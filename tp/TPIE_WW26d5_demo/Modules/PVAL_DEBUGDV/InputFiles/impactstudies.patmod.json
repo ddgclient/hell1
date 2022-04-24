@@ -1,0 +1,29 @@
+{
+	"Configurations": [
+		{
+			"Name": "ImpactStudiesBaseWaits",
+			"ConfigurationElement": [
+				{
+					"Type": "INSTRUCTION",
+					"Domain": "CPU_TAP_ALL",
+					"StartAddress": "ph0__HVMExecWait1",
+					"StartAddressOffset": 84,
+					"EndAddress": "ph0__HVMExecWait1",
+					"EndAddressOffset": 84,
+					"PatternsRegEx": ["^[gds].*"],
+					"ValidationMode" : "ALLOW_LABEL_NO_MATCHING"
+				},
+				{
+					"Type": "INSTRUCTION",
+					"Domain": "CPU_FAB_ALL",
+					"StartAddress": "HVMExecWait",
+					"StartAddressOffset": 84,
+					"EndAddress": "HVMExecWait",
+					"EndAddressOffset": 84,
+					"PatternsRegEx": ["^[gds].*"],
+					"ValidationMode" : "ALLOW_LABEL_NO_MATCHING"
+				}
+			]
+		}
+	]
+}

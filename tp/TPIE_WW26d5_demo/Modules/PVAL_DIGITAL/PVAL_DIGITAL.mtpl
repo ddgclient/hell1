@@ -1,0 +1,510 @@
+Version 1.0;
+
+ProgramStyle = Modular;
+
+TestPlan PVAL_DIGITAL;
+
+Import ArrayHRY.xml;
+
+Import PVAL_DIGITAL.usrv;
+Import OASIS_HSR_tt.xml;
+
+# --------------------------------------------------------------------------------------------
+# Array HRY Testing
+Test iCHSRTest EvgArrayHRY_SampleNoAlgName_P1
+{
+	level = "__main__::bf_lvl_nom_lvl";
+	patlist = "drv_cdie_maintap_bbs_list";
+	timings = "__main__::cpu_stf_timing_tclk100_sclk100_cclk100";
+	xml_config_file_path = "./Modules/PVAL_DIGITAL/InputFiles/PassingHryXml_NoAlgName.xml";
+	debug_mode = "VERBOSE";
+	postinstance = "CPD_DEBUG!ExecPrimeCsCallback PrintToItuff(--body_type strgval --tname_suf BypassVars --body_data PVAL_DIGITAL::PVAL_DIGITAL.HRY_Global_1,|,PVAL_DIGITAL::PVAL_DIGITAL.HRY_Global_2,|,PVAL_DIGITAL::PVAL_DIGITAL.HRY_Global_3,|,PVAL_DIGITAL::PVAL_DIGITAL.HRY_Global_4)";
+}
+
+Test ArrayHRY PrimeArrayHRY_SampleNoAlgName_P1
+{
+    LevelsTc = "__main__::bf_lvl_nom_lvl";
+    Patlist = "drv_cdie_maintap_bbs_list";
+    TimingsTc = "__main__::cpu_stf_timing_tclk100_sclk100_cclk100";
+	ConfigFile = "./Modules/PVAL_DIGITAL/InputFiles/PassingHryXml_NoAlgName.xml";
+	LogLevel = "PRIME_DEBUG";
+	PostInstance = "PrintToItuff(--body_type strgval --tname_suf BypassVars --body_data PVAL_DIGITAL::PVAL_DIGITAL.HRY_Global_1,|,PVAL_DIGITAL::PVAL_DIGITAL.HRY_Global_2,|,PVAL_DIGITAL::PVAL_DIGITAL.HRY_Global_3,|,PVAL_DIGITAL::PVAL_DIGITAL.HRY_Global_4)";
+}
+
+Test iCHSRTest EvgArrayHRY_SamplePre_P2
+{
+	level = "__main__::bf_lvl_nom_lvl";
+	patlist = "drv_cdie_maintap_bbs_list";
+	timings = "__main__::cpu_stf_timing_tclk100_sclk100_cclk100";
+	xml_config_file_path = "./Modules/PVAL_DIGITAL/InputFiles/PassingHryXml_AllOptions.xml";
+	hry_execution_mode = "PRE";
+	hry_key = "EvgArrayPrePostKey1";
+	debug_mode = "VERBOSE";
+	postinstance = "CPD_DEBUG!ExecPrimeCsCallback PrintToItuff(--body_type strgval --tname_suf BypassVars --body_data PVAL_DIGITAL::PVAL_DIGITAL.HRY_Global_1,|,PVAL_DIGITAL::PVAL_DIGITAL.HRY_Global_2,|,PVAL_DIGITAL::PVAL_DIGITAL.HRY_Global_3,|,PVAL_DIGITAL::PVAL_DIGITAL.HRY_Global_4)";
+}
+
+Test ArrayHRY PrimeArrayHRY_SamplePre_P2
+{
+    LevelsTc = "__main__::bf_lvl_nom_lvl";
+    Patlist = "drv_cdie_maintap_bbs_list";
+    TimingsTc = "__main__::cpu_stf_timing_tclk100_sclk100_cclk100";
+	ConfigFile = "./Modules/PVAL_DIGITAL/InputFiles/PassingHryXml_AllOptions.xml";
+	RawStringForwardingMode = "PRE";
+	SharedStorageKey = "PrimeArrayPrePostKey1";
+	LogLevel = "PRIME_DEBUG";
+	PostInstance = "PrintToItuff(--body_type strgval --tname_suf BypassVars --body_data PVAL_DIGITAL::PVAL_DIGITAL.HRY_Global_1,|,PVAL_DIGITAL::PVAL_DIGITAL.HRY_Global_2,|,PVAL_DIGITAL::PVAL_DIGITAL.HRY_Global_3,|,PVAL_DIGITAL::PVAL_DIGITAL.HRY_Global_4)";
+}
+
+Test iCHSRTest EvgArrayHRY_SamplePost_P2
+{
+	level = "__main__::bf_lvl_nom_lvl";
+	patlist = "drv_cdie_maintap_bbs_list";
+	timings = "__main__::cpu_stf_timing_tclk100_sclk100_cclk100";
+	xml_config_file_path = "./Modules/PVAL_DIGITAL/InputFiles/PassingHryXml_AllOptions.xml";
+	hry_execution_mode = "POST";
+	hry_key = "EvgArrayPrePostKey1";
+	debug_mode = "VERBOSE";
+	postinstance = "CPD_DEBUG!ExecPrimeCsCallback PrintToItuff(--body_type strgval --tname_suf BypassVars --body_data PVAL_DIGITAL::PVAL_DIGITAL.HRY_Global_1,|,PVAL_DIGITAL::PVAL_DIGITAL.HRY_Global_2,|,PVAL_DIGITAL::PVAL_DIGITAL.HRY_Global_3,|,PVAL_DIGITAL::PVAL_DIGITAL.HRY_Global_4)";
+}
+
+Test ArrayHRY PrimeArrayHRY_SamplePost_P2
+{
+    LevelsTc = "__main__::bf_lvl_nom_lvl";
+    Patlist = "drv_cdie_maintap_bbs_list";
+    TimingsTc = "__main__::cpu_stf_timing_tclk100_sclk100_cclk100";
+	ConfigFile = "./Modules/PVAL_DIGITAL/InputFiles/PassingHryXml_AllOptions.xml";
+	RawStringForwardingMode = "POST";
+	SharedStorageKey = "PrimeArrayPrePostKey1";
+	LogLevel = "PRIME_DEBUG";
+	PostInstance = "PrintToItuff(--body_type strgval --tname_suf BypassVars --body_data PVAL_DIGITAL::PVAL_DIGITAL.HRY_Global_1,|,PVAL_DIGITAL::PVAL_DIGITAL.HRY_Global_2,|,PVAL_DIGITAL::PVAL_DIGITAL.HRY_Global_3,|,PVAL_DIGITAL::PVAL_DIGITAL.HRY_Global_4)";
+}
+
+Test iCHSRTest EvgArrayHRY_SampleMultiAlgReverse_P2
+{
+	level = "__main__::bf_lvl_nom_lvl";
+	patlist = "drv_cdie_maintap_bbs_list";
+	timings = "__main__::cpu_stf_timing_tclk100_sclk100_cclk100";
+	xml_config_file_path = "./Modules/PVAL_DIGITAL/InputFiles/PassingHryXml_MultiAlgReverse.xml";
+	debug_mode = "VERBOSE";
+	postinstance = "CPD_DEBUG!ExecPrimeCsCallback PrintToItuff(--body_type strgval --tname_suf BypassVars --body_data PVAL_DIGITAL::PVAL_DIGITAL.HRY_Global_1,|,PVAL_DIGITAL::PVAL_DIGITAL.HRY_Global_2)";
+}
+
+Test ArrayHRY PrimeArrayHRY_SampleMultiAlgReverse_P2
+{
+    LevelsTc = "__main__::bf_lvl_nom_lvl";
+    Patlist = "drv_cdie_maintap_bbs_list";
+    TimingsTc = "__main__::cpu_stf_timing_tclk100_sclk100_cclk100";
+	ConfigFile = "./Modules/PVAL_DIGITAL/InputFiles/PassingHryXml_MultiAlgReverse.xml";
+	RawStringForwardingMode = "PRE";
+	LogLevel = "PRIME_DEBUG";
+	PostInstance = "PrintToItuff(--body_type strgval --tname_suf BypassVars --body_data PVAL_DIGITAL::PVAL_DIGITAL.HRY_Global_1,|,PVAL_DIGITAL::PVAL_DIGITAL.HRY_Global_2)";
+}
+
+Test ArrayHRY PrimeArrayHRY_MultiDomain1Alg_P1
+{
+    LevelsTc = "__main__::bf_lvl_nom_lvl";
+    Patlist = "drv_cdie_maintap_bbs_list";
+    TimingsTc = "__main__::cpu_stf_timing_tclk100_sclk100_cclk100";
+	ConfigFile = "./Modules/PVAL_DIGITAL/InputFiles/PassingHryXml_1AlgMultiDomain.xml";
+	LogLevel = "PRIME_DEBUG";
+	PostInstance = "PrintToItuff(--body_type strgval --tname_suf BypassVars --body_data PVAL_DIGITAL::PVAL_DIGITAL.HRY_Global_1,|,PVAL_DIGITAL::PVAL_DIGITAL.HRY_Global_2)";
+}
+
+Test ArrayHRY PrimeArrayHRY_MultiDomain3Alg_P2
+{
+    LevelsTc = "__main__::bf_lvl_nom_lvl";
+    Patlist = "drv_cdie_maintap_bbs_list";
+    TimingsTc = "__main__::cpu_stf_timing_tclk100_sclk100_cclk100";
+	ConfigFile = "./Modules/PVAL_DIGITAL/InputFiles/PassingHryXml_3AlgMultiDomain.xml";
+	RawStringForwardingMode = "PRE";
+	SharedStorageKey = "PrimeArrayPrePostKey1";
+	LogLevel = "PRIME_DEBUG";
+	PostInstance = "PrintToItuff(--body_type strgval --tname_suf BypassVars --body_data PVAL_DIGITAL::PVAL_DIGITAL.HRY_Global_1,|,PVAL_DIGITAL::PVAL_DIGITAL.HRY_Global_2)";
+}
+
+
+# --------------------------------------------------------------------------------------------
+DUTFlow PVAL_DIGITAL_ARRAY_HRY
+{
+    DUTFlowItem EvgArrayHRY_SampleNoAlgName_P1 EvgArrayHRY_SampleNoAlgName_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo EvgArrayHRY_SamplePre_P2;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo EvgArrayHRY_SamplePre_P2;
+        }
+        Result 2
+        {
+            Property PassFail = "Pass";
+            GoTo EvgArrayHRY_SamplePre_P2;
+        }
+        Result 3
+        {
+            Property PassFail = "Pass";
+            GoTo EvgArrayHRY_SamplePre_P2;
+        }
+    }
+    DUTFlowItem EvgArrayHRY_SamplePre_P2 EvgArrayHRY_SamplePre_P2
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo EvgArrayHRY_SamplePost_P2;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo EvgArrayHRY_SamplePost_P2;
+        }
+        Result 2
+        {
+            Property PassFail = "Pass";
+            GoTo EvgArrayHRY_SamplePost_P2;
+        }
+        Result 3
+        {
+            Property PassFail = "Pass";
+            GoTo EvgArrayHRY_SamplePost_P2;
+        }
+    }
+    DUTFlowItem EvgArrayHRY_SamplePost_P2 EvgArrayHRY_SamplePost_P2
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo PrimeArrayHRY_SampleNoAlgName_P1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo PrimeArrayHRY_SampleNoAlgName_P1;
+        }
+        Result 2
+        {
+            Property PassFail = "Pass";
+            GoTo PrimeArrayHRY_SampleNoAlgName_P1;
+        }
+        Result 3
+        {
+            Property PassFail = "Pass";
+            GoTo PrimeArrayHRY_SampleNoAlgName_P1;
+        }
+    }
+    DUTFlowItem PrimeArrayHRY_SampleNoAlgName_P1 PrimeArrayHRY_SampleNoAlgName_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo PrimeArrayHRY_SamplePre_P2;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo PrimeArrayHRY_SamplePre_P2;
+        }
+        Result 2
+        {
+            Property PassFail = "Pass";
+            GoTo PrimeArrayHRY_SamplePre_P2;
+        }
+        Result 3
+        {
+            Property PassFail = "Pass";
+            GoTo PrimeArrayHRY_SamplePre_P2;
+        }
+    }
+    DUTFlowItem PrimeArrayHRY_SamplePre_P2 PrimeArrayHRY_SamplePre_P2
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo PrimeArrayHRY_SamplePost_P2;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo PrimeArrayHRY_SamplePost_P2;
+        }
+        Result 2
+        {
+            Property PassFail = "Pass";
+            GoTo PrimeArrayHRY_SamplePost_P2;
+        }
+        Result 3
+        {
+            Property PassFail = "Pass";
+            GoTo PrimeArrayHRY_SamplePost_P2;
+        }
+    }
+    DUTFlowItem PrimeArrayHRY_SamplePost_P2 PrimeArrayHRY_SamplePost_P2
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo PrimeArrayHRY_MultiDomain1Alg_P1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo PrimeArrayHRY_MultiDomain1Alg_P1;
+        }
+        Result 2
+        {
+            Property PassFail = "Pass";
+            GoTo PrimeArrayHRY_MultiDomain1Alg_P1;
+        }
+        Result 3
+        {
+            Property PassFail = "Pass";
+            GoTo PrimeArrayHRY_MultiDomain1Alg_P1;
+        }
+    }
+    DUTFlowItem PrimeArrayHRY_MultiDomain1Alg_P1 PrimeArrayHRY_MultiDomain1Alg_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo PrimeArrayHRY_MultiDomain3Alg_P2;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo PrimeArrayHRY_MultiDomain3Alg_P2;
+        }
+        Result 2
+        {
+            Property PassFail = "Pass";
+            GoTo PrimeArrayHRY_MultiDomain3Alg_P2;
+        }
+        Result 3
+        {
+            Property PassFail = "Pass";
+            GoTo PrimeArrayHRY_MultiDomain3Alg_P2;
+        }
+    }
+    DUTFlowItem PrimeArrayHRY_MultiDomain3Alg_P2 PrimeArrayHRY_MultiDomain3Alg_P2
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo EvgArrayHRY_SampleMultiAlgReverse_P2;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo EvgArrayHRY_SampleMultiAlgReverse_P2;
+        }
+        Result 2
+        {
+            Property PassFail = "Pass";
+            GoTo EvgArrayHRY_SampleMultiAlgReverse_P2;
+        }
+        Result 3
+        {
+            Property PassFail = "Pass";
+            GoTo EvgArrayHRY_SampleMultiAlgReverse_P2;
+        }
+    }
+    DUTFlowItem EvgArrayHRY_SampleMultiAlgReverse_P2 EvgArrayHRY_SampleMultiAlgReverse_P2
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo PrimeArrayHRY_SampleMultiAlgReverse_P2;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo PrimeArrayHRY_SampleMultiAlgReverse_P2;
+        }
+        Result 2
+        {
+            Property PassFail = "Pass";
+            GoTo PrimeArrayHRY_SampleMultiAlgReverse_P2;
+        }
+        Result 3
+        {
+            Property PassFail = "Pass";
+            GoTo PrimeArrayHRY_SampleMultiAlgReverse_P2;
+        }
+    }
+    DUTFlowItem PrimeArrayHRY_SampleMultiAlgReverse_P2 PrimeArrayHRY_SampleMultiAlgReverse_P2
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            Return 1;
+        }
+        Result 2
+        {
+            Property PassFail = "Pass";
+            Return 1;
+        }
+        Result 3
+        {
+            Property PassFail = "Pass";
+            Return 1;
+        }
+    }
+}
+
+# --------------------------------------------------------------------------------------------
+DUTFlow PVAL_DIGITAL_MAIN
+{
+    DUTFlowItem PVAL_DIGITAL_ARRAY_HRY PVAL_DIGITAL_ARRAY_HRY
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            Return 1;
+        }
+    }
+}
+

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PrimeVersion>8.02.02</PrimeVersion>
+    <TosVersion>3.10.0.0</TosVersion>
+    <PrimePath>\\amr.corp.intel.com\ec\proj\mdl\jf\intel\tpapps\tmmlibs\prime\prime_v8.02.02-evg5040502-tos31000</PrimePath>
+    <PrimePHGeneratorVersion>20211111.2.0</PrimePHGeneratorVersion>
+  </PropertyGroup>
+  <!-- New for Prime8.02, see I:\tpapps\tmmlibs\prime\prime_v8.02.00-evg5040500-tos3920\src\Prime.Cs.Default.props -->
+  <PropertyGroup Label="PrimeNuGetVersions">
+    <!-- [20.0.0,21.0.0) -> Accepts 20.0.0 up to 20.1.0, but not 21.0.0 and higher.
+     Will resolve to the smallest acceptable stable version but still allow users to upgrade. -->
+    <BaseExceptionsVersion>[20.0.0,21.0.0)</BaseExceptionsVersion>
+    <BaseIAlephAbleVersion>[20.0.0,21.0.0)</BaseIAlephAbleVersion>
+    <BaseIStorableServiceVersion>[20.0.0,21.0.0)</BaseIStorableServiceVersion>
+    <BaseServiceStoreVersion>[20.0.0,21.0.0)</BaseServiceStoreVersion>
+    <BaseUtilitiesVersion>[20.1.0,21.0.0)</BaseUtilitiesVersion>
+    <BasePrimeAttributesVersion>[20.0.0,21.0.0)</BasePrimeAttributesVersion>
+  </PropertyGroup>
+</Project>

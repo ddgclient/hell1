@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace>$(AssemblyName)</RootNamespace>
+    <TargetName>$(AssemblyName)</TargetName>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	<PackageId>DDG.$(AssemblyName).$(Configuration)</PackageId>
+	<Version>1.5.0</Version>
+    <DocumentationFile></DocumentationFile>
+	<GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <ConfigurationGroup>Debug</ConfigurationGroup>
+    <DebugType>full</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <ConfigurationGroup>Release</ConfigurationGroup>
+    <DebugType>pdbonly</DebugType>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>copy $(MSBuildProjectDirectory)\*.xml $(PreHeaderLocationRelativePath)</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>DEBUG</DefineConstants>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\BaseUtilities\BaseUtilities\BaseUtilities.csproj" />
+    <ProjectReference Include="..\..\PlistModifications\PlistModifications\PlistModificationsBase.csproj" />
+	<PackageReference Include="DDG.TOSUserSDK.Release" Version="$(TosVersion)" />
+  </ItemGroup>
+</Project>

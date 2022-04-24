@@ -1,0 +1,323 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>DDG Prime Debug Callbacks</title>
+</head>
+<body>
+
+    <h1 id="ddg-prime-debug-callbacks">DDG Prime Debug Callbacks</h1>
+<h3 id="rev-0">Rev 0</h3>
+<p><a href="#applyendsequence">ApplyEndSequence</a></p>
+<p><a href="#applypatterntriggermap">ApplyPatternTriggerMap</a></p>
+<p><a href="#bitvectorpatconfigsetpoint">BitVectorPatConfigSetPoint</a></p>
+<p><a href="#disablesmarttc">DisableSmartTC</a></p>
+<p><a href="#enablesmarttc">EnableSmartTC</a></p>
+<p><a href="#executeinstance">ExecuteInstance</a></p>
+<p><a href="#executenocaptureplist">ExecuteNoCapturePlist</a></p>
+<p><a href="#executepatconfig">ExecutePatConfig</a></p>
+<p><a href="#executepatconfigsetpoint">ExecutePatConfigSetPoint</a></p>
+<p><a href="#evaluateexpression">EvaluateExpression</a></p>
+<p><a href="#flushallsmarttccategories">FlushAllSmartTCCategories</a></p>
+<p><a href="#flushsmarttccategory">FlushSmartTCCategory</a></p>
+<p><a href="#mirrordff">MirrorDff</a></p>
+<p><a href="#printdff">PrintDff</a></p>
+<p><a href="#printsharedstorage">PrintSharedStorage</a></p>
+<p><a href="#printtoituff">PrintToItuff</a></p>
+<p><a href="#processalephfiles">ProcessAlephFiles</a></p>
+<p><a href="#sleep">Sleep</a></p>
+<p><a href="#setaltinstanceName">SetAltInstanceName</a></p>
+<p><a href="#setcurrentdieid">SetCurrentDieId</a></p>
+<p><a href="#setpinattributes">SetPinAttributes</a></p>
+<p><a href="#setpoweruptcname">SetPowerUpTCName</a></p>
+<p><a href="#validatepatterntriggermap">ValidatePatternTriggerMap</a></p>
+<p><a href="#writedff">WriteDff</a></p>
+<p><a href="#writesharedstorage">WriteSharedStorage</a></p>
+<p><a href="#writeuservar">WriteUserVar</a></p>
+<h2 id="section"></h2>
+<hr />
+<h2 id="enabling-the-callbacks">Enabling the Callbacks</h2>
+<p>Add an instance of CallbacksManager in your INIT flow. No parameters are necessary.</p>
+<h2 id="using-callbacks">Using callbacks</h2>
+<p>Callbacks can be executed from CommonParameters in Prime test instances and from anywhere an Evergreen UserFunction
+can be executed. See the prime wiki for more details.</p>
+<p><a href="https://dev.azure.com/mit-us/PRIME/_wiki/wikis/PRIME.wiki/3019/Calling-Prime-C-Sharp-Code-from-EVG-UF">Prime WIKI - Calling Cs from Evg</a></p>
+<p><a href="https://dev.azure.com/mit-us/PRIME/_wiki/wikis/PRIME.wiki/3020/Common-Parameters">Prime WIKI - Common Parameters</a></p>
+<h4 id="simple-example-from-icuserfunctest">Simple Example from ICUserFuncTest</h4>
+<span style="font-family:monospace; font-size:8; color:blue">
+Test iCUserFuncTest LoadIaCoreNoaDieRecoveryPinMaps<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;function_name = "CPD_DEBUG!ExecPrimeCsCallback";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;function_parameter = "CallbackName(--arg1 val1 --arg2 val2)";<br>
+}<br>
+</span>
+<p>If the function_paramter contains an equals sign, then you must assign the result to a GSDS variable.
+Unless specified this GSDS value will be empty, its a Prime/Evergreen handshaking thing.
+The &quot;--arg1=val1&quot; syntax is functionally equivalent to &quot;--arg1 val1&quot;.</p>
+<span style="font-family:monospace; font-size:8; color:blue">
+Test iCUserFuncTest LoadIaCoreNoaDieRecoveryPinMaps<br>
+{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;function_name = "CPD_DEBUG!ExecPrimeCsCallback";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;function_parameter = "G.U.S.DummyValue=CallbackName(--arg1=val1 --arg2=val2)";<br>
+}<br>
+</span>
+<h2 id="available-functions">Available Functions</h2>
+<hr />
+<h3 id="writesharedstorage">WriteSharedStorage</h3>
+<p>This function writes the given value to the sharedstorage or gsds token.
+The value can be from a literal value for from another GSDS Token or a UserVar.</p>
+<h4 id="usages">Usages</h4>
+<p>WriteSharedStorage(--token <em>sharedstoragename</em> --value <em>value</em>)</p>
+<h4 id="arguments">Arguments</h4>
+<p>--token:     [required] The SharedStorage or GSDS token to write to, in GSDS format (see <a href="#gsds-token-format">GSDS Token Format</a>).</p>
+<p>--value:     [required] The value to write. Can be a GSDS token (see <a href="#gsds-token-format">GSDS Token Format</a>) or an Hdmt UserVariable (of the form Collection.UserVar) or a literal value.</p>
+<h4 id="examples">Examples</h4>
+<p>WriteSharedStorage(--token G.U.S.DestToken --value G.L.I.SourceToken) -&gt; G.L.I.SourceToken will be read and its value stored in G.U.S.DestToken<br />
+WriteSharedStorage(--token G.U.S.DestToken --value FUSEUFGL.UFGL_Resort) -&gt; The UserVar GFUSEUFGL.UFGL_Resort will be read and its value stored in G.U.S.DestToken<br />
+WriteSharedStorage(--token G.L.I.DestToken --value 45) -&gt; The value 45 will be written to G.L.I.DestToken</p>
+<p>Note: If the UserVar/Gsds Token doesn't exist then it will be treated like any other literal data.<br />
+WriteSharedStorage(--token G.U.S.DestToken --value G.L.S.NotaToken)
+-&gt; if G.L.S.NotaToken doesn't exist then G.U.S.DestToken will be written to &quot;G.L.S.NotaToken&quot;.</p>
+<h4 id="gsds-token-format">GSDS Token Format</h4>
+<p>Format=<strong>G.<em>scope</em>.<em>type</em>.<em>tokenname</em></strong></p>
+<p><em>scope</em> =  <strong>U</strong> for unit/dut, <strong>L</strong> for lot, or <strong>I</strong> for Ip. (I is only valid for sharedstorage)</p>
+<p><em>type</em> = <strong>S</strong> for string, <strong>D</strong> for double, or <strong>I</strong> for integer.</p>
+<p>Examples= G.U.S.SliceTracking</p>
+<hr />
+<h3 id="printsharedstorage">PrintSharedStorage</h3>
+<p>This function reads the given sharedstorage or gsds token and prints its value to the console. The token can be a comma separated list of token names. If no token is given, all shared storage values will be printed.</p>
+<h4 id="usages-1">Usages</h4>
+<p>PrintSharedStorage()<br />
+PrintSharedStorage(--token <em>sharedstoragename1</em>)<br />
+PrintSharedStorage(--token <em>sharedstoragename1</em>,<em>sharedstoragename2</em>,<em>sharedstoragename3</em>)</p>
+<h4 id="arguments-1">Arguments</h4>
+<p>--token:     [optional] The SharedStorage or GSDS token (or comma separate list of tokens), in GSDS format (see <a href="#gsds-token-format">GSDS Token Format</a>).</p>
+<hr />
+<h3 id="enablesmarttc">EnableSmartTC</h3>
+<p>This callback enables SmartTC.</p>
+<h4 id="usages-2">Usages</h4>
+<p>EnableSmartTC()</p>
+<hr />
+<h3 id="disablesmarttc">DisableSmartTC</h3>
+<p>This callback disables SmartTC.</p>
+<h4 id="usages-3">Usages</h4>
+<p>DisableSmartTC()</p>
+<hr />
+<h3 id="applyendsequence">ApplyEndSequence</h3>
+<p>This callback applies EndSequence as defined in tpl.</p>
+<h4 id="usages-4">Usages</h4>
+<p>ApplyEndSequence()</p>
+<hr />
+<h3 id="setpoweruptcname">SetPowerUpTCName</h3>
+<p>This callback sets a new PowerUpTC name.</p>
+<h4 id="arguments-2">Arguments</h4>
+<p>Test condition name.</p>
+<h4 id="usages-5">Usages</h4>
+<p>SetPowerUpTCName(<em>testcondition</em>)</p>
+<hr />
+<h3 id="flushallsmarttccategories">FlushAllSmartTCCategories</h3>
+<p>This callback flushes <strong>ALL</strong> SmartTC categories.</p>
+<h4 id="usages-6">Usages</h4>
+<p>FlushAllSmartTCCategories()</p>
+<hr />
+<h3 id="flushsmarttccategory">FlushSmartTCCategory</h3>
+<p>This callback enables SmartTC.</p>
+<h4 id="arguments-3">Arguments</h4>
+<p>Test condition category. LEVELS_SETUP, LEVELS_POWER_ON, LEVELS_POWER_DOWN, TIMING, RELAY and THERMAL</p>
+<h4 id="usages-7">Usages</h4>
+<p>FlushSmartTCCategory(<em>category</em>)</p>
+<hr />
+<h3 id="executeinstance">ExecuteInstance</h3>
+<p>This callback executes a comma-separated list of test instances and returns their exit ports
+(as a comma-separated string).</p>
+<h4 id="usages-8">Usages</h4>
+<p>ExecuteInstance(--test PkgTest1,PkgTest2 --save_exit_port G.U.S.ExitPorts)<br />
+ExecuteInstance(--test IP_CPU::IPTest1 --exception_on_fail)</p>
+<h4 id="arguments-4">Arguments</h4>
+<p>--test:                [required] Comma-separated list of tests to run.</p>
+<p>--save_exit_port:      [optional] GSDS token to save the exit ports of the tests (comma-separated for multiple tets).</p>
+<p>--exception_on_fail:   [optional] If any of the executed tests exits through a port &lt; 1, an exception is thrown which will cause the calling instance to exit port -1.</p>
+<hr />
+<h3 id="executenocaptureplist">ExecuteNoCapturePlist</h3>
+<p>Executes a plist without loading test conditions or setting any capture mode.</p>
+<h4 id="usages-9">Usages</h4>
+<p>ExecuteNoCapturePlist(plist_name)</p>
+<h4 id="arguments-5">Arguments</h4>
+<p>plist_name:            [required] plist name. <br>
+<strong>Important</strong>: needs to be compatible with current instance levels and timings (same timing and power domains).</p>
+<hr />
+<h3 id="executepatconfig">ExecutePatConfig</h3>
+<p>This callback executes list of Prime PatConfig configurations for local plist only.</p>
+<h4 id="usages-10">Usages</h4>
+<p>ExecutePatConfig(Configuration1:Data1,...,ConfigurationN:DataN)</p>
+<h4 id="data-format">Data Format</h4>
+<p>Hex: 0xFF<br />
+Decimal: 0d8<br />
+Binary: 0b1011, 1011<br />
+Reverse data: 0x0F'r</p>
+<h4 id="example">Example</h4>
+<p>ExecutePatConfig(Config1:LLHH,Config2:0x7F)</p>
+<hr />
+<h3 id="executepatconfigsetpoint">ExecutePatConfigSetPoint</h3>
+<p>This callback executes list of Prime PatConfig SetPoints.</p>
+<h4 id="usages-11">Usages</h4>
+<p>ExecutePatConfigSetPoint(Module1:Group1:SetPoint1,...,ModuleN:GroupN:SetPointN)   --&gt; Local plist only.
+ExecutePatConfigSetPoint(Module1:Group1:SetPoint1,...,ModuleN:GroupN:SetPointN:Global)   --&gt; Apply to all matching patterns</p>
+<h4 id="example-1">Example</h4>
+<p>ExecutePatConfigSetPoint(MGFun:GTRatio:1.5GHz,MScn:SomeFuse:Enabled)</p>
+<hr />
+<h3 id="bitvectorpatconfigsetpoint">BitVectorPatConfigSetPoint</h3>
+<p>This callback executes a different Prime PatConfig SetPoint for each bit in a binary string.
+The name of the SetPoint will be generated from a user supplied template which can include the index and value of the bit.</p>
+<p>Usage: BitVectorPatConfigSetPoint(--bitvector <em>token</em> --setpoint <em>module</em>:<em>group</em>:<em>setpoint</em> [--msb_first] [--value_map <em>map</em>] [--index_width <em>size</em>])</p>
+<h4 id="bitvector-token">--bitvector <em>token</em></h4>
+<p>Specifies the binary string to use.
+<em>token</em> is a comma-separate list of literal binary strings and/or GSDS tokens containing binary strings.</p>
+<h4 id="setpoint-modulegroupsetpoint">--setpoint <em>module</em>:<em>group</em>:<em>setpoint</em></h4>
+<h4 id="setpoint-modulegroup">--setpoint <em>module</em>:<em>group</em></h4>
+<p>Specifies the PatConfigSetPoint to be executed for each bit in the bitvector.</p>
+<ul>
+<li><em>module</em> is the SetPoint module.</li>
+<li><em>group</em> is the SetPoint group.</li>
+<li><em>setpoint</em> is the SetPoint to execute. If it is omitted the default will be used.</li>
+</ul>
+<p>** Any of the above can contain the variables %INDEX% (will be replaced with the index of the current bit) and/or %VALUE% (will be replaced with the value of the current bit)</p>
+<h4 id="value_map-0valuea1valueb-optional">--value_map 0:valueA,1:valueB [optional]</h4>
+<p>This provides alternative data to use in the %VALUE% replacement. valueA will be used when the bit is 0, valueB will be used when the bit is 1</p>
+<h4 id="msb_first-optional">--msb_first [optional]</h4>
+<p>By default the left-most binary bit is considered bit 0 for the %INDEX% replacement. With this option, the right-most binary bit will be bit 0.</p>
+<h4 id="index_width-size-optional">--index_width size [optional]</h4>
+<p>Sets the minimum width for %INDEX% replacements (left-padded with 0). By default %INDEX% will be replaced with 0,1,2,3, but with --index_width 3 it would be 000, 001, 002, 003,</p>
+<h4 id="example-2">Example</h4>
+<p>BitVectorPatConfigSetPoint(--bitvector G.U.S.Tracker1 --setpoint FUNC:CoreStatus:Core%INDEX%_%VALUE%  --value_map 0:STROBE,1:MASK)</p>
+<ul>
+<li>If G.U.S.Tracker1=&quot;1011&quot; then the following setpoints are executed:
+<ul>
+<li>FUNC:CoreStatus:Core0_MASK</li>
+<li>FUNC:CoreStatus:Core1_STROBE</li>
+<li>FUNC:CoreStatus:Core2_MASK</li>
+<li>FUNC:CoreStatus:Core3_MASK</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="sleep">Sleep</h3>
+<p>This callback executes thread sleep for the specified number of mS.</p>
+<h4 id="usages-12">Usages</h4>
+<p>Sleep(time)</p>
+<h4 id="example-3">Example</h4>
+<p>Sleep(10)</p>
+<hr />
+<h3 id="setpinattributes">SetPinAttributes</h3>
+<p>Executes SetPinAttributeCallback. User should follow TOS rules.</p>
+<h4 id="prepause-time-in-ms">--prepause [time in mS]</h4>
+<p>Pause before callbacks execution.</p>
+<h4 id="postpause-time-in-ms">--postpause [time in mS]</h4>
+<p>Pause after callbacks execution.</p>
+<h4 id="settings-pin1attribute1value1-pinnattributenvaluen">--settings [pin1:attribute1:value1 pinN:attributeN:valueN]</h4>
+<p>List of settings to apply.</p>
+<h4 id="example-4">Example:</h4>
+<pre><code>       SetPinAttributes(&quot;--prepause=1 --postpause=2 --settings=PinA:VForce:1.1&quot;);
+</code></pre>
+<hr />
+<h3 id="applypatterntriggermap">ApplyPatternTriggerMap</h3>
+<p>This callback applies a pre-validated triggermap for a given plist.</p>
+<h4 id="usages-13">Usages</h4>
+<p>ApplyPatternTriggerMap(TriggerName,PlistName)</p>
+<hr />
+<h3 id="validatepatterntriggermap">ValidatePatternTriggerMap</h3>
+<p>This callback applies a validates triggermap for a given plist.</p>
+<h4 id="usages-14">Usages</h4>
+<p>ValidatePatternTriggerMap(TriggerName,PlistName)</p>
+<hr />
+<h3 id="processalephfiles">ProcessAlephFiles</h3>
+<p>This callback processes a list of ALEPH files separated by semicolon (;) regardless if they were defined in ENV.</p>
+<h4 id="usages-15">Usages</h4>
+<p>ProcessAlephFiles(FileName)</p>
+<hr />
+<h3 id="mirrordff">MirrorDff</h3>
+<p>Mirrors a list of DFF tokens into ShareStorage using MD_token_optype_targetdie as key.</p>
+<h4 id="usages-16">Usages</h4>
+<p>MirrorDff(--tokens=token1,token2 --optype=optype --targetdie=dieId),
+targetdie and optype are optional fields.</p>
+<hr />
+<h3 id="printdff">PrintDff</h3>
+<p>Prints a list of DFF tokens to console while log level is set.</p>
+<h4 id="usages-17">Usages</h4>
+<p>PrintDff(--tokens=token1,token2 --optype=optype --targetdie=dieId),
+targetdie and optype are optional fields.</p>
+<hr />
+<h3 id="writedff">WriteDff</h3>
+<p>Writes a DFF token.</p>
+<h4 id="usages-18">Usages</h4>
+<p>WriteDff(--token=token --value=value --targetdie=dieId), targetdie is an optional field.</p>
+<hr />
+<h3 id="setaltinstancename">SetAltInstanceName</h3>
+<p>Sets the alternative test instance name. Equivalent to Prime.Services.DatalogService.SetAltInstanceName(NAME)</p>
+<h4 id="usages-19">Usages</h4>
+<p>SetAltInstanceName(NAME)</p>
+<hr />
+<h3 id="setcurrentdieid">SetCurrentDieId</h3>
+<p>Sets the current DieID for DFF operations. Equivalent to Prime.Services.DffService.SetCurrentDieId(dieId)</p>
+<h4 id="usages-20">Usages</h4>
+<p>SetCurrentDieId(dieId)</p>
+<hr />
+<h3 id="writeuservar">WriteUserVar</h3>
+<p>This function writes the given value to the Hdmt UserVariable.
+The value can be from a literal value, a GSDS Token or another UserVar.</p>
+<h4 id="usages-21">Usages</h4>
+<p>WriteUserVar(--uservar <em>uservariable</em> --value <em>value</em> --type <em>type_of_uservar</em>)</p>
+<h4 id="arguments-6">Arguments</h4>
+<p>--uservar:   [required] The UserVariable to write to, in the format <em>collection</em>.<em>varname</em></p>
+<p>--value:     [required] The value to write. Can be a GSDS token (see <a href="#gsds-token-format">GSDS Token Format</a>) or an Hdmt UserVariable (of the form <em>collection</em>.<em>varname</em>) or a literal value.</p>
+<p>--type:      [required] The Hdmt Type of the destination UserVar (applies to the --value if that is a UserVar as well). One of Boolean, Double, Integer, String, ArrayBoolean, ArrayDouble, ArrayInteger, or ArrayString. When writing to an Array type, input should be either a UserVar of the same type or a comma separated string.</p>
+<h4 id="examples-1">Examples</h4>
+<p>WriteUserVar(--uservar RecoveryVars.IsDownBin --value False --type Boolean)<br />
+WriteUserVar(--uservar ARR_COMMON_CXX.ARR_ARIQD0_SCBD_0_0_0_1 --value 1 --type Integer)<br />
+WriteUserVar(--uservar SCVars.SC_WAFERID --value G.U.I.Wafer --type String) --&gt; If the source is not a UserVar, then its type does not have to match the destination type, as long its valid (eg can't store NOTANUMBER as a Double). In this case, the Integer stored in the GSDS will be stored as a String UserVar.</p>
+<h3 id="printtoituff">PrintToItuff</h3>
+<p>This function writes the given values to the Ituff datalog.</p>
+<h4 id="usages-22">Usages</h4>
+<p>PrintToItuff(--body_type <em>type</em> --body_data <em>data</em> [--tname_suf <em>tnamepostfix</em>])</p>
+<h4 id="arguments-7">Arguments</h4>
+<p>--body_type:   [required] The Ituff format. Must be one of mrslt, strgval or rawbinary_msbF.</p>
+<p>--body_data:   [required] The value to write. Can be a GSDS token (see <a href="#gsds-token-format">GSDS Token Format</a>) or an Hdmt UserVariable (of the form <em>collection</em>.<em>varname</em>) or a literal value. Multiple comma separated values will be concatenated together (or added in the case of mrslt format)</p>
+<p>--tname_suf:   [optional] A string to add to the end of the testname on the tname line.</p>
+<h4 id="examples-2">Examples</h4>
+<p>Example Input for a single token:</p>
+<pre><code class="language-perl">PrintToItuff(--body_type strgval --body_data G.U.S.Token1 --tname_suf _SomePostFix)  
+</code></pre>
+<p>Output:</p>
+<pre><code class="language-perl">2_tname_MyTestName_SomePostFix
+2_strgval_DataThatWasInToken1
+</code></pre>
+<p>Example Input for multiple tokens:</p>
+<pre><code class="language-perl">PrintToItuff(--body_type strgval --body_data G.U.S.Token1,|,G.U.S.Token2,|,G.U.S.Token3 --tname_suf _SomePostFix)  
+</code></pre>
+<p>Output:</p>
+<pre><code class="language-perl">2_tname_MyTestName_SomePostFix
+2_strgval_DataThatWasInToken1|DataThatWasInToken2|DataThatWasInToken3
+</code></pre>
+<h3 id="evaluateexpression">EvaluateExpression</h3>
+<p>This function evaluates a numerical expression and saves the result to a GSDS, UserVar or DFF token.<br />
+See the AuxiliaryTC testclass for details about the Expression engine and available operations.</p>
+<h4 id="usages-23">Usages</h4>
+<p>EvaluateExpression(--result <em>resultToken</em> --datatype <em>datatype</em> --storagetype <em>storagetype</em> --expression -- <em>expression</em>)</p>
+<h4 id="arguments-8">Arguments</h4>
+<p>--result:      [required] The token to write with the result. Can be a GSDS token (see <a href="#gsds-token-format">GSDS Token Format</a>) or an Hdmt UserVariable (of the form <em>collection</em>.<em>varname</em>), or a DFF token (just the token name, will be written using the current optype and die_id).</p>
+<p>--storagetype: [required] The type of the result token. Must be GSDS, UserVar or DFF.</p>
+<p>--datatype:    [required] The data type of the result. Must be String, Integer or Double.</p>
+<p>--expression:  [required] The mathematical expression to evaluate. Can contain GSDS, UserVar or DFF tokens of the form [token] to be evaluated. If the expression contains a minus (-) sign, then it must be the last argument, and it must be of the form &quot;--expression -- <em>expression</em>&quot;. Otherwise it can be anywhere and doesn't require the extra --</p>
+<h4 id="examples-3">Examples</h4>
+<ul>
+<li><p>Subtract a DFF and UserVar and store the result in a GSDS. Since the operation includes subtracting, the expression must be at the end and include --expression --<br />
+EvaluateExpression(--result G.U.D.OffsetValue --storagetype gsds --datatype double --expression -- [DffVMinToken] - [GBVars.VminGuardband]&quot;)</p>
+</li>
+<li><p>Add a literal value to a GSDS and update the same token. Since the operation is +, the --expression can be anywere.<br />
+EvaluateExpression(--result G.U.D.Token --expression G.U.D.Token + 0.1 --storeagetype gsds --datatype double)</p>
+</li>
+</ul>
+<hr />
+
+
+</body>
+</html>

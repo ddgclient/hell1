@@ -1,0 +1,8 @@
+{
+  "Trackers": [
+    { "Name": "DUMMY1",           "Size": 2,    "InitialValue": "00" },
+    { "Name": "DUMMY2",           "Size": 2,    "InitialValue": "00" },
+    { "Name": "DUMMY3",           "Size": 2,    "InitialValue": "00" },
+    { "Name": "DUMMY4",           "Size": 2,    "InitialValue": "00" },
+  ]
+}

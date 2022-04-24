@@ -1,0 +1,6 @@
+{
+  "CoverageReport": "C:\\someDirectory\\sampleRepo\\coverageReport.json",
+  "CoverageTarget": 90,
+  "PassOverride": [ "Test1", "Test2" ],
+  "FailOverride": [ "Test3", "Test4" ]
+}

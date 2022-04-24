@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>DDG Prime TOSTriggersCallbacks</title>
+</head>
+<body>
+
+    <h1 id="ddg-prime-tostriggerscallbacks">DDG Prime TOSTriggersCallbacks</h1>
+<h3 id="rev-0-4272021-fmurillo">Rev 0 4/27/2021 (fmurillo)</h3>
+<h2 id="introduction">Introduction</h2>
+<p>The main purpose of this callback is to provide a common callbacks manager for different TOSTriggers types. Currently supports SetPinAttributes only.</p>
+<h2 id="enabling-the-callback">Enabling the Callback</h2>
+<p>Add CallbacksManager instance in your INIT flow.</p>
+<h2 id="using-callback">Using callback</h2>
+<p>1- Add TosTriggersCallbackSetup callback as pre-instance to setup your settings.<br>
+2- Functional service will need to set TosTriggersCallbackExecute callback.<br></p>
+<h2 id="tostriggerscallbacksetup-commandline-options-and-switches">TosTriggersCallbackSetup CommandLine Options and Switches</h2>
+<h3 id="type-setpinattributes">--type SetPinAttributes</h3>
+<p>Sets callback type. Right now only SetPinAttributes is supported.</p>
+<h3 id="prepause-time-in-ms">--prepause [time in mS]</h3>
+<p>Pause before callbacks execution.</p>
+<h3 id="postpause-time-in-ms">--postpause [time in mS]</h3>
+<p>Pause after callbacks execution.</p>
+<h3 id="settings-index1pin1attribute1value1-indexnpinnattributenvaluen">--settings index1:pin1:attribute1:value1 indexN:pinN:attributeN:valueN]</h3>
+<p>List of settings to apply. [TOSTrigger operand (uint)]:[PinName]:[AttibuteName]:[AttributeValue].</p>
+<h4 id="note-tos3.9-requires-tpo-set-multiple-attributes-for-dps-settings">Note: TOS3.9+ requires tpo set multiple attributes for DPS settings.</h4>
+<h4 id="examples">Examples:</h4>
+<pre><code>       TosTriggersCallbackSetup(&quot;--type=setpinattributes --prepause=1 --postpause=2 --settings=1:PinA:VForce:1.1&quot;);
+       TosTriggersCallbackExecute(&quot;1&quot;);
+
+       TosTriggersCallbackSetup(&quot;--type setpinattributes --settings 2:PinA:VForce:1.1 2:PinB:VForce:1.2&quot;);
+       TosTriggersCallbackExecute(&quot;1&quot;);
+</code></pre>
+
+
+</body>
+</html>

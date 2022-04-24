@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>DDG Prime Pattern Modifications Base</title>
+</head>
+<body>
+
+    <h1 id="ddg-prime-pattern-modifications-base">DDG Prime Pattern Modifications Base</h1>
+<h3 id="rev-232022">Rev 2/3/2022</h3>
+<h2 id="introduction">Introduction</h2>
+<p>DDG Prime PatternModificationsBase test class is an auxiliary test class to load a FreqSetPoint map into Prime SharedStorage.<br>
+The map enables the user to apply multiple PatConfigSetPoints for a given list for CornerIdentifiers while using BinMatrix tokens.</p>
+<h2 id="parameters">Parameters</h2>
+<h4 id="configurationfile">ConfigurationFile</h4>
+<p>Configuration file in json format. Supported format in the example below.
+User can defined as many CornerIdentifiers as needed and each corner can defined as many SetPoints as needed.
+For &quot;SetPoint&quot; value the user can enter {specset} which will be automatically evaluated using Prime BinMatrixService and current flow for each corner.</p>
+<h5 id="condition">Condition:</h5>
+<p>Each SetPoint includes a condition to validate if the patconfig must be applied. When evaluated condition is false, the patconfig gets skipped.<br>
+Expression evaluator supports Gsds, Usrv, DFF and SpecSet tokens.</p>
+<pre>
+{
+	"CornerIdentifiers": {
+		"CRF1": [ 
+			{
+			"Module": "FUN",
+			"Group": "core_freq",
+			"SetPoint": "{binmatrix_core_F1_spec}"
+			},
+			{
+			"Module": "FUN",
+			"Group": "ring_freq",
+			"SetPoint": "3GHz",
+			"Condition": "[S.T.bclk_per_spec] == '9nS'"
+			}
+		],
+		"CRF2": [ 
+			{
+			"Module": "FUN",
+			"Group": "core_freq",
+			"SetPoint": "{binmatrix_core_F2_spec}"
+			},
+			{
+			"Module": "FUN",
+			"Group": "ring_freq",
+			"SetPoint": "1.2GHz",
+            "Condition": "[G.U.I.Token] > 2"
+			}
+		]
+	}
+}
+</pre>
+<h4 id="sharedstoragekey">SharedStorageKey</h4>
+<p>String key for Shared Storage where serialized json object will be stored. Set to Contex.DUT.</p>
+
+
+</body>
+</html>

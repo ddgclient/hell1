@@ -1,0 +1,1948 @@
+Version 1.0;
+
+ProgramStyle = Modular;
+
+TestPlan TPI_BASE;
+
+Import PrimeDeviceEndTestMethod.xml;
+Import OASIS_Bkgnd_tt.xml;
+Import OASIS_BinMatrixFlowControl_tt.xml;
+Import OASIS_UserFunc_tt.xml;
+Import OASIS_GlXpress_tt.xml;
+Import OASIS_Screen_tt.xml;
+Import CallbacksManager.xml;
+Import DieRecoveryBase.xml;
+Import VminForwardingBase.xml;
+Import OASIS_PowerDown_tt.xml;
+Import OASIS_Auxiliary_tt.xml;
+Import OASIS_PyLicense_tt.xml;
+Import OASIS_Init_tt.xml;
+Import PrimeInitTestMethod.xml;
+Import OASIS_SiteLoad_tt.xml;
+Import OASIS_Ituff_tt.xml;
+Import HMI_Ituff.xml;
+Import PrimeLotEndTestMethod.xml;
+Import PrimeLotStartTestMethod.xml;
+Import HMI_TestPlanSetup.xml;
+Import PrimeDeviceStartTestMethod.xml;
+Import OASIS_XiuCheck_tt.xml;
+Import PrimeDffEndOfFlowValidationTestMethod.xml;
+Import RunCallback.xml;
+Import DTSBase.xml;
+Import PatternModificationsBase.xml;
+
+#Test Counter Definition
+Counters
+{
+    n53900010_fail_DFFX_X_X_K_TESTPLANENDFLOW_X_X_X_X_CHECKBADDIEDFFFLAG_0, 
+    n53900015_fail_DFFX_X_X_K_TESTPLANENDFLOW_X_X_X_X_VALIDATE_0, 
+    n53900016_fail_DFFX_X_X_K_TESTPLANENDFLOW_X_X_X_X_VALIDATE_2, 
+    n53900046_fail_CTRL_BKGND_X_K_TESTPLANENDFLOW_X_X_X_X_PRIMEDEVICEEND_0, 
+    n69101000_fail_CTRL_X_X_K_START_X_X_X_X_SIGFILECHK_0, 
+    n69900231_fail_CTRL_BKGND_X_K_TESTPLANENDFLOW_X_X_X_X_STOPTIMENOBIN_0, 
+    n69986998_fail_CTRL_X_X_E_START_X_X_X_X_MEMUSE_0, 
+    n90660068_fail_CTRL_BMFC_X_K_TESTPLANENDFLOW_X_X_X_X_SETDUTFINALDATA_0, 
+    n90680267_fail_CTRL_BMFC_X_K_START_X_X_X_X_CLEARDUTDATA_0, 
+    n94010046_fail_CTRL_X_X_K_TESTPLANENDFLOW_X_X_X_X_HMITESTPLANEND_n3, 
+    n94020090_fail_CTRL_SCREEN_X_K_START_X_X_X_X_DIEPOS_CALC_4, 
+    n94030047_fail_CTRL_X_X_K_TESTPLANENDFLOW_X_X_X_X_HMITESTPLANEND_0, 
+    n94131300_fail_CTRL_X_X_K_START_X_X_X_X_ENABLEFLOWTRACE_0, 
+    n94141400_fail_CTRL_X_X_K_TESTPLANENDFLOW_X_X_X_X_FLOWTRACESTOP_0, 
+    n94169901_fail_CTRL_X_X_E_ALARM_X_X_X_X_ALARM_PWRDWN_0, 
+    n94169902_fail_CTRL_X_X_E_ALARM_X_X_X_X_ALARM_PWRDWN_2, 
+    n94440210_fail_CTRL_X_X_E_TESTPLANENDFLOW_X_X_X_X_ALARM_PWRDWNSAFETY_0, 
+    n94440211_fail_CTRL_X_X_E_TESTPLANENDFLOW_X_X_X_X_ALARM_PWRDWNSAFETY_2, 
+    n94450057_fail_CTRL_SCREEN_X_K_START_X_X_X_X_DIEPOS_CALC_0, 
+    n94460009_fail_CTRL_X_X_K_START_X_X_X_X_DIEPOS_CALC_DATALOG_2, 
+    n94460059_fail_CTRL_X_X_K_START_X_X_X_X_DIEPOS_CALC_DATALOG_0, 
+    n94900000_fail_CTRL_X_X_K_LOTENDFLOW_X_X_X_X_ITUFFENDHMI_n3, 
+    n94900002_fail_CTRL_X_X_K_LOTSTARTFLOW_X_X_X_X_ITUFFSTARTHMI_0, 
+    n94900003_fail_CTRL_X_X_K_LOTSTARTFLOW_X_X_X_X_SET_WAFERID_0, 
+    n94900011_fail_CTRL_X_X_K_LOTSTARTFLOW_X_X_X_X_STARTLOT_0, 
+    n94900029_fail_CTRL_X_X_K_LOTENDFLOW_X_X_X_X_ENDLOT_n3, 
+    n94900033_fail_CTRL_X_X_K_LOTSTARTFLOW_X_X_X_X_STARTLOT_n3, 
+    n94900034_fail_CTRL_X_X_K_LOTSTARTFLOW_X_X_X_X_ITUFFSTARTHMI_n3, 
+    n94900042_fail_CTRL_X_X_K_LOTSTARTFLOW_X_X_X_X_PRIMELOTSTART_0, 
+    n94900043_fail_CTRL_X_X_K_LOTSTARTFLOW_X_X_X_X_PRIMELOTSTART_2, 
+    n94900044_fail_CTRL_X_X_K_TESTPLANSTARTFLOW_X_X_X_X_PRIMEDEVICESTART_0, 
+    n94900045_fail_CTRL_X_X_K_LOTENDFLOW_X_X_X_X_PRIMELOTEND_0, 
+    n94900200_fail_CTRL_BRITA_X_E_TESTPLANENDFLOW_X_X_X_X_LOG_0, 
+    n94900230_fail_CTRL_BKGND_X_K_TESTPLANENDFLOW_X_X_X_X_STOPTIMENOBIN_n3, 
+    n94900300_fail_CTRL_X_X_K_TESTPLANSTARTFLOW_X_X_X_X_LOGHVQKTOKEN_0, 
+    n94900303_fail_CTRL_BKGND_X_K_TESTPLANSTARTFLOW_X_X_X_X_STARTTIMEON_n3, 
+    n94901301_fail_CTRL_BKGND_X_K_TESTPLANSTARTFLOW_X_X_X_X_STARTTIMEON_0, 
+    n94909920_fail_CTRL_X_X_E_ALARM_X_X_X_X_ALARM_CHKFLOW_0, 
+    n98010001_fail_FAIL_SYSTEM_SOFTWARE, 
+    n99010001_fail_FAIL_DPS_ALARM 
+} # End of Test Counter Definition
+
+Test DTSBase DTS_X_DTSBASE_K_INIT_X_X_X_X_P1
+{
+	ConfigurationFile = "./Modules/TPI_BASE/InputFiles/MTL_DTSBase_Config.json";
+}
+
+Test PatternModificationsBase PATMOD_X_PATTERNMODBASE_K_INIT_X_X_X_X_P1
+{
+	ConfigurationFile = "./Modules/PVAL_VMIN/InputFiles/Fake.FreqSetPoint.json";
+	SharedStorageKey = "FreqSetPoint_FakeFunc";
+}
+
+Test PrimeDeviceEndTestMethod CTRL_BKGND_X_K_TESTPLANENDFLOW_X_X_X_X_PRIMEDEVICEEND_P1
+{
+    Param1 = "";
+	BypassPort = 1;
+}
+
+Test iCBkgndTest CTRL_BKGND_X_K_TESTPLANENDFLOW_X_X_X_X_STOPTIMENOBIN_P1
+{
+    debug_mode = "DISABLED";
+    ignore_alarm = "CLAMP_KELVIN_OSC_SPIKE";
+    inst_type = "END_DEVICE";
+    itime_summary = "ON";
+    memory_summary = "OFF";
+    production_mode = "OFF";
+    smart_TC_load = "ON";
+}
+
+Test iCBkgndTest CTRL_BKGND_X_K_TESTPLANSTARTFLOW_X_X_X_X_STARTTIMEON_P1
+{
+    ignore_alarm = "CLAMP_KELVIN_OSC_SPIKE";
+    inst_type = "START_DEVICE";
+    itime_summary = "ON";
+    memory_summary = "OFF";
+    production_mode = "OFF";
+    smart_TC_load = "ON";
+}
+
+Test iCBinMatrixFlowControlTest CTRL_BMFC_X_K_INIT_X_X_X_X_CLEARDUTDATA_P1
+{
+    active_bingroup_uservar = "_UserVars.SC_ActiveBinGroup";
+    bin_matrix_file_path = "~HDMT_TPL_DIR/BMFC.xml";
+    operating_mode = "CLEAR_DUT_DATA";
+}
+
+Test iCBinMatrixFlowControlTest CTRL_BMFC_X_K_START_X_X_X_X_CLEARDUTDATA_P1
+{
+    active_bingroup_uservar = "_UserVars.SC_ActiveBinGroup";
+    bin_matrix_file_path = "~HDMT_TPL_DIR/BMFC.xml";
+    operating_mode = "CLEAR_DUT_DATA";
+}
+
+Test iCBinMatrixFlowControlTest CTRL_BMFC_X_K_TESTPLANENDFLOW_X_X_X_X_SETDUTFINALDATA_P1
+{
+    active_bingroup_uservar = "_UserVars.SC_ActiveBinGroup";
+    bin_matrix_file_path = "~HDMT_TPL_DIR/BMFC.xml";
+    ignore_alarm = "CLAMP_KELVIN_OSC_SPIKE";
+    operating_mode = "SET_DUT_FINAL_DATA";
+    set_dff_olb_token = "DISABLED";
+    bypass_global = "1";
+}
+
+Test iCUserFuncTest CTRL_BRITA_X_E_TESTPLANENDFLOW_X_X_X_X_LOG_P1
+{
+    datalog_mode = "ON";
+    function_name = "BRITA_UF!LogTraceId";
+    ignore_alarm = "CLAMP_KELVIN_OSC_SPIKE";
+}
+
+Test iCUserFuncTest CTRL_BRITA_X_K_INIT_X_X_X_X_ENABLE_P1
+{
+    bypass_global = "";
+    datalog_mode = "DISABLED";
+    function_name = "BRITA_UF!EnableBrita";
+}
+
+Test iCGlXpressTest CTRL_GLX_X_K_INIT_X_X_X_X_BASEPGMRULE_P1
+{
+    allow_multiple_gl_xpress_match = "TRUE";
+    allow_zero_gl_xpress_match = "FALSE";
+    datalog_mode = "DISABLED";
+    gl_xpress_file_path = "./PGMRule_Base.txt";
+    user_mode = "DEFAULT_MODE";
+    bypass_global = "1";
+}
+
+Test iCScreenTest CTRL_SCREEN_X_K_INIT_X_X_X_X_CHECKTOS_P1
+{
+    screen_custom_file = "./Modules/TPI_BASE/InputFiles/ScreenCustom_TPChassis.txt";
+    screen_custom_setpoint = "ALL";
+    screen_test_set = "CheckTOS";
+    screen_tests_file = "./Modules/TPI_BASE/InputFiles/ScreenTest_TPChassis.txt";
+}
+
+Test iCScreenTest CTRL_SCREEN_X_K_START_X_X_X_X_DIEPOS_CALC_P3
+{
+    screen_custom_file = "./Modules/TPI_BASE/InputFiles/ScreenCustom_TPChassis.txt";
+    screen_custom_setpoint = "ALL";
+    screen_test_set = "DieLocationCalculation";
+    screen_tests_file = "./Modules/TPI_BASE/InputFiles/ScreenTest_DiePositionCalculation.txt";
+}
+
+Test iCUserFuncTest CTRL_UF_X_K_INIT_X_X_X_X_PATCACHEENABLE_P1
+{
+    datalog_mode = "DISABLED";
+    function_name = "CPD_DEBUG!SetPatternModifyCache";
+    function_parameter = "FORCE_CACHE";
+}
+
+Test CallbacksManager CTRL_X_DIERECOVERY_K_INIT_X_X_X_X_CALLBACKS_PRIME_P1
+{
+}
+
+Test RunCallback CTRL_X_DIERECOVERY_K_INIT_X_X_X_X_PINMAP_ARR_PRIME_P1
+{
+    Callback = "LoadPinMapFile";
+    Parameters = "--decoder PinToSliceIndexDecoder --file ./Modules/TPI_BASE/InputFiles/DieRecoveryPinMaps_IACORE_NOA.json";
+}
+
+Test RunCallback CTRL_X_DIERECOVERY_K_INIT_X_X_X_X_PINMAP_ATOM_PRIME_P1
+{
+    Callback = "LoadPinMapFile";
+    Parameters = "--decoder  AtomDecoder --file ./Modules/TPI_BASE/InputFiles/DieRecoveryPinMaps_IACORE_Atom.json";
+}
+
+Test RunCallback CTRL_X_DIERECOVERY_K_INIT_X_X_X_X_PINMAP_SCN_PRIME_P1
+{
+    Callback = "LoadPinMapFile";
+    Parameters = "--decoder AnyFailSingleSliceDecoder --file ./Modules/TPI_BASE/InputFiles/DieRecoveryPinMaps_IACORE_SCAN.json";
+}
+
+Test RunCallback CTRL_X_DIERECOVERY_K_INIT_X_X_X_X_PINMAP_CCR_PRIME_P1
+{
+    Callback = "LoadPinMapFile";
+    Parameters = "--decoder ConcurrentTracesDecoder --file ./Modules/TPI_BASE/InputFiles/ccr.json";
+}
+
+Test RunCallback CTRL_X_DIERECOVERY_K_INIT_X_X_X_X_PINMAP_CPLIST_PRIME_P1
+{
+    Callback = "LoadPinMapFile";
+    Parameters = "--decoder ConcurrentPlistDecoder --file ./Modules/TPI_BASE/InputFiles/cplist.json";
+}
+
+Test DieRecoveryBase CTRL_X_DIERECOVERY_K_INIT_X_X_X_X_PRIME_P1
+{
+    RulesFile = "./Modules/TPI_RECOVERY_C28/InputFiles/Recovery.xml";
+    TrackerFile = "./Modules/TPI_RECOVERY_C28/InputFiles/DieRecoveryTrackers.json";
+}
+
+Test VminForwardingBase CTRL_X_DIERECOVERY_K_INIT_X_X_X_X_PRIME_VMINFORWARDING_P1
+{
+    BypassPort = -1;
+    Mode = "Configure";
+    VminSinglePointMode = "False";
+    UseDffAsSource = "False";
+    UseLimitCheck = "False";
+    UseVoltagesSources = "True";
+    StoreVoltages = "True";
+}
+
+Test iCAuxiliaryTest CTRL_X_X_E_MAIN_X_X_X_X_DUMMYTPIEPLACEHOLDER_P1
+{
+    data_type = "STRING";
+    expression = "1";
+}
+
+Test iCUserFuncTest CTRL_X_X_E_START_X_X_X_X_MEMUSE_P1
+{
+    function_name = "HWI_UF!LogCurrentMemUsage";
+    function_parameter = "2_tname_MEM0_BEGIN";
+}
+
+Test iCPowerDownTest CTRL_X_X_E_TESTPLANENDFLOW_X_X_X_X_ALARM_PWRDWNSAFETY_P1
+{
+    ignore_alarm = "CLAMP_KELVIN_OSC_SPIKE";
+    level = "__main__::pwrdn_lvl_cat0";
+}
+
+Test iCPyLicenseTest CTRL_X_X_K_INIT_X_X_X_X_BASEPYLICENSE_P1
+{
+    action = "REGISTER";
+    py_license_file = "./Modules/TPI_BASE/InputFiles/License_4_9_x_x.license";
+    bypass_global = "1";
+}
+
+Test iCAuxiliaryTest CTRL_X_X_K_INIT_X_X_X_X_FORCE_D1C_D1D_SAMPLING_P1
+{
+    data_type = "STRING";
+    datalog_mode = "DISABLED";
+    expression = "SCVars.S.SC_LOTNAME[0:0]";
+    result_var = "G.U.S.FabFromLot";
+}
+
+Test iCInitTest CTRL_X_X_K_INIT_X_X_X_X_INIT_P1
+{
+    debug_mode = "BRIEF";
+    location_code = 7721;
+    preinstance = "HWI_UF!MemLogOn";
+    verify_all_instances = "ONLYONCE";
+    which_socket_file = "./which_socket.txt";
+}
+
+Test PrimeInitTestMethod CTRL_X_X_K_INIT_X_X_X_X_INITPRIME_P1
+{
+    BypassPort = -1;
+	LogLevel = "TEST_METHOD";
+	VerifyAll = "True";
+	#PostInstance = "VerifyAllPrimeInstances()"; # uncomment if VerifyAll = "False";
+}
+
+Test iCInitTest CTRL_X_X_K_INIT_X_X_X_X_PREINIT_P1
+{
+    debug_mode = "BRIEF";
+    location_code = 7721;
+    verify_all_instances = "DISABLED";
+    which_socket_file = "./which_socket.txt";
+}
+
+Test iCScreenTest CTRL_X_X_K_INIT_X_X_X_X_SET_D1C_D1D_SAMPLING_P1
+{
+    fuse_register_name = "";
+    screen_custom_file = "./Modules/TPI_BASE/InputFiles/ScreenCustom_TPChassis.txt";
+    screen_custom_setpoint = "ALL";
+    screen_test_set = "Force_D1C_D1D_Sampling";
+    screen_tests_file = "./Modules/TPI_BASE/InputFiles/ScreenTest_TPChassis.txt";
+}
+
+Test iCSiteLoadTest CTRL_X_X_K_INIT_X_X_X_X_SITELOAD_P1
+{
+    enable_clocked_powerdown = "FALSE";
+    enable_HCDPS_clamp_alarms = "TRUE";
+}
+
+Test iCItuffTest CTRL_X_X_K_LOTENDFLOW_X_X_X_X_ENDLOT_P1
+{
+    datalog_add_stream_type = "OVERWRITE";
+    datalog_stream_output = "ITUFF";
+    ituff_type = "ENDLOT";
+}
+
+Test HMI_Ituff CTRL_X_X_K_LOTENDFLOW_X_X_X_X_ITUFFENDHMI_P1
+{
+    OperationMode = "LOTTEST_END";
+    StreamDestination = "OUTPUT_TO_FILE";
+}
+
+Test PrimeLotEndTestMethod CTRL_X_X_K_LOTENDFLOW_X_X_X_X_PRIMELOTEND_P1
+{
+    Param1 = "";
+}
+
+Test HMI_Ituff CTRL_X_X_K_LOTSTARTFLOW_X_X_X_X_ITUFFSTARTHMI_P1
+{
+    StreamDestination = "OUTPUT_TO_FILE";
+}
+
+Test PrimeLotStartTestMethod CTRL_X_X_K_LOTSTARTFLOW_X_X_X_X_PRIMELOTSTART_P1
+{
+    DatalogStreamOutput = "ITUFF";
+    PrintItuffHeader = "Disable";
+    LogLevel = "DISABLED";
+}
+
+Test iCAuxiliaryTest CTRL_X_X_K_LOTSTARTFLOW_X_X_X_X_SET_WAFERID_P1
+{
+    data_type = "STRING";
+    datalog_mode = "DISABLED";
+    expression = "SCVars.S.SC_WAFERID";
+    ignore_alarm = "CLAMP_KELVIN_OSC_SPIKE";
+    result_var = "SCVars.S.SC_LOT_WAFER";
+}
+
+Test iCItuffTest CTRL_X_X_K_LOTSTARTFLOW_X_X_X_X_STARTLOT_P1
+{
+    datalog_add_stream_type = "OVERWRITE";
+    datalog_stream_output = "ITUFF";
+    ituff_type = "STARTLOT";
+}
+
+Test iCAuxiliaryTest CTRL_X_X_K_START_X_X_X_X_DIEPOS_CALC_DATALOG_P1
+{
+    data_type = "STRING";
+    expression = "G.U.S.DiePositionLocation";
+}
+
+Test iCUserFuncTest CTRL_X_X_K_START_X_X_X_X_ENABLEFLOWTRACE_P1
+{
+    function_name = "NHM_UF!EnableFlowTrace";
+}
+
+Test iCScreenTest CTRL_X_X_K_START_X_X_X_X_SIGFILECHK_P2
+{
+    capture_result = "CLEAR";
+    screen_custom_file = "./Modules/TPI_BASE/InputFiles/ScreenCustom_TPChassis.txt";
+    screen_custom_setpoint = "ALL";
+    screen_test_set = "CheckSignalFileOnUnit";
+    screen_tests_file = "./Modules/TPI_BASE/InputFiles/ScreenTest_TPChassis.txt";
+}
+
+Test iCUserFuncTest CTRL_X_X_K_TESTPLANENDFLOW_X_X_X_X_FLOWTRACESTOP_P1
+{
+    function_name = "NHM_UF!DisableFlowTrace";
+    ignore_alarm = "CLAMP_KELVIN_OSC_SPIKE";
+}
+
+Test HMI_TestPlanSetup CTRL_X_X_K_TESTPLANENDFLOW_X_X_X_X_HMITESTPLANEND_P1
+{
+    OperationMode = "TESTPLAN_END";
+}
+
+Test HMI_TestPlanSetup CTRL_X_X_K_TESTPLANSTARTFLOW_X_X_X_X_HMISTARTTEST_P1
+{
+    IgnoreAlarms = "ALL";
+}
+
+Test iCUserFuncTest CTRL_X_X_K_TESTPLANSTARTFLOW_X_X_X_X_LOGHVQKTOKEN_P1
+{
+    function_name = "TEMPLATE_UF!WriteHvqkMsgToOpenDataStreams";
+    function_parameter = "value=Off streams=All";
+}
+
+Test PrimeDeviceStartTestMethod CTRL_X_X_K_TESTPLANSTARTFLOW_X_X_X_X_PRIMEDEVICESTART_P1
+{
+    Param1 = "";
+}
+
+Test iCXiuCheckTest CTRL_XIU_X_K_INIT_X_X_X_X_TDR_P1
+{
+    bypassXiuTest = "BYPASS_DC";
+    debug_mode = "VERBOSE";
+    leakPingroupName = "vipr_eza_pins";
+    level = "__main__::pwrdn_lvl_cat0";
+    vccPindefName = "VCC0";
+    xiuCalPins = "vipr_eza_pins";
+    xiuValidName = "REMB**A***A*** REAM**A***A*** SPHT NA";
+}
+
+Test iCAuxiliaryTest DFFX_X_X_K_TESTPLANENDFLOW_X_X_X_X_CHECKBADDIEDFFFLAG_P1
+{
+    data_type = "STRING";
+    expression = "'1' in G.U.S.BADDIEDFFFLAG";
+    ignore_alarm = "CLAMP_KELVIN_OSC_SPIKE";
+    result_port = "[R]='1'|1^2";
+    bypass_global = "-1";
+}
+
+Test iCGlXpressTest TPIE_PgmRules_P1
+{
+    allow_multiple_gl_xpress_match = "TRUE";
+    allow_zero_gl_xpress_match = "FALSE";
+    user_mode = "DEFAULT_MODE";
+    gl_xpress_file_path = "./Modules/TPI_BASE/TPIE_pgmRules_MTL_CPU28_SDS.txt";
+}
+
+DUTFlow BadDieDFF
+{
+    DUTFlowItem DFFX_X_X_K_TESTPLANENDFLOW_X_X_X_X_CHECKBADDIEDFFFLAG_P1 DFFX_X_X_K_TESTPLANENDFLOW_X_X_X_X_CHECKBADDIEDFFFLAG_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return 1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return 1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+			IncrementCounters TPI_BASE::n53900010_fail_DFFX_X_X_K_TESTPLANENDFLOW_X_X_X_X_CHECKBADDIEDFFFLAG_0;
+            SetBin SoftBins.b53900010_fail_TPI_BASE_DFFX_X_X_K_TESTPLANENDFLOW_X_X_X_X_CHECKBADDIEDFFFLAG_0;
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            Return 1;
+        }
+        Result 2
+        {
+            Property PassFail = "Pass";
+            Return 1;
+        }
+    }
+}
+
+Flow CTRL_X_X_INIT_X_X_X_X_DIERECOVERY_VMINFWD_SETUP
+{
+    FlowItem CTRL_X_DIERECOVERY_K_INIT_X_X_X_X_CALLBACKS_PRIME_P1 CTRL_X_DIERECOVERY_K_INIT_X_X_X_X_CALLBACKS_PRIME_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo CTRL_X_DIERECOVERY_K_INIT_X_X_X_X_PRIME_P1;
+        }
+    }
+    FlowItem CTRL_X_DIERECOVERY_K_INIT_X_X_X_X_PINMAP_ARR_PRIME_P1 CTRL_X_DIERECOVERY_K_INIT_X_X_X_X_PINMAP_ARR_PRIME_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo CTRL_X_DIERECOVERY_K_INIT_X_X_X_X_PINMAP_SCN_PRIME_P1;
+        }
+    }
+    FlowItem CTRL_X_DIERECOVERY_K_INIT_X_X_X_X_PINMAP_ATOM_PRIME_P1 CTRL_X_DIERECOVERY_K_INIT_X_X_X_X_PINMAP_ATOM_PRIME_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo CTRL_X_DIERECOVERY_K_INIT_X_X_X_X_PRIME_VMINFORWARDING_P1;
+        }
+    }
+    FlowItem CTRL_X_DIERECOVERY_K_INIT_X_X_X_X_PINMAP_SCN_PRIME_P1 CTRL_X_DIERECOVERY_K_INIT_X_X_X_X_PINMAP_SCN_PRIME_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo CTRL_X_DIERECOVERY_K_INIT_X_X_X_X_PINMAP_CCR_PRIME_P1;
+        }
+    }
+    FlowItem CTRL_X_DIERECOVERY_K_INIT_X_X_X_X_PINMAP_CCR_PRIME_P1 CTRL_X_DIERECOVERY_K_INIT_X_X_X_X_PINMAP_CCR_PRIME_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo CTRL_X_DIERECOVERY_K_INIT_X_X_X_X_PINMAP_CPLIST_PRIME_P1;
+        }
+    }
+    FlowItem CTRL_X_DIERECOVERY_K_INIT_X_X_X_X_PINMAP_CPLIST_PRIME_P1 CTRL_X_DIERECOVERY_K_INIT_X_X_X_X_PINMAP_CPLIST_PRIME_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo CTRL_X_DIERECOVERY_K_INIT_X_X_X_X_PINMAP_ATOM_PRIME_P1;
+        }
+    }
+    FlowItem CTRL_X_DIERECOVERY_K_INIT_X_X_X_X_PRIME_P1 CTRL_X_DIERECOVERY_K_INIT_X_X_X_X_PRIME_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo CTRL_X_DIERECOVERY_K_INIT_X_X_X_X_PINMAP_ARR_PRIME_P1;
+        }
+    }
+    FlowItem CTRL_X_DIERECOVERY_K_INIT_X_X_X_X_PRIME_VMINFORWARDING_P1 CTRL_X_DIERECOVERY_K_INIT_X_X_X_X_PRIME_VMINFORWARDING_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            Return 1;
+        }
+    }
+}
+
+
+
+Flow TPI_BASE_INIT
+{
+    FlowItem CTRL_X_X_K_INIT_X_X_X_X_SITELOAD_P1 CTRL_X_X_K_INIT_X_X_X_X_SITELOAD_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -2;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo CTRL_UF_X_K_INIT_X_X_X_X_PATCACHEENABLE_P1;
+        }
+    }
+    FlowItem CTRL_BMFC_X_K_INIT_X_X_X_X_CLEARDUTDATA_P1 CTRL_BMFC_X_K_INIT_X_X_X_X_CLEARDUTDATA_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -2;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            Return 1;
+        }
+    }
+    FlowItem CTRL_BRITA_X_K_INIT_X_X_X_X_ENABLE_P1 CTRL_BRITA_X_K_INIT_X_X_X_X_ENABLE_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -2;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo CTRL_SCREEN_X_K_INIT_X_X_X_X_CHECKTOS_P1;
+        }
+    }
+    FlowItem CTRL_GLX_X_K_INIT_X_X_X_X_BASEPGMRULE_P1 CTRL_GLX_X_K_INIT_X_X_X_X_BASEPGMRULE_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -2;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo CTRL_BRITA_X_K_INIT_X_X_X_X_ENABLE_P1;
+        }
+    }
+    FlowItem CTRL_SCREEN_X_K_INIT_X_X_X_X_CHECKTOS_P1 CTRL_SCREEN_X_K_INIT_X_X_X_X_CHECKTOS_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -2;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo CTRL_X_X_K_INIT_X_X_X_X_FORCE_D1C_D1D_SAMPLING_P1;
+        }
+        Result 2
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+    }
+    FlowItem CTRL_UF_X_K_INIT_X_X_X_X_PATCACHEENABLE_P1 CTRL_UF_X_K_INIT_X_X_X_X_PATCACHEENABLE_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -2;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo CTRL_X_X_K_INIT_X_X_X_X_PREINIT_P1;
+        }
+    }
+    FlowItem CTRL_X_X_K_INIT_X_X_X_X_BASEPYLICENSE_P1 CTRL_X_X_K_INIT_X_X_X_X_BASEPYLICENSE_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -2;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo CTRL_XIU_X_K_INIT_X_X_X_X_TDR_P1;
+        }
+    }
+    FlowItem CTRL_X_X_K_INIT_X_X_X_X_FORCE_D1C_D1D_SAMPLING_P1 CTRL_X_X_K_INIT_X_X_X_X_FORCE_D1C_D1D_SAMPLING_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -2;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo CTRL_X_X_K_INIT_X_X_X_X_SET_D1C_D1D_SAMPLING_P1;
+        }
+        Result 2
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+    }
+    FlowItem CTRL_X_X_K_INIT_X_X_X_X_INIT_P1 CTRL_X_X_K_INIT_X_X_X_X_INIT_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -2;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo CTRL_X_X_INIT_X_X_X_X_DIERECOVERY_VMINFWD_SETUP;
+        }
+    }
+    FlowItem CTRL_X_X_K_INIT_X_X_X_X_INITPRIME_P1 CTRL_X_X_K_INIT_X_X_X_X_INITPRIME_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -2;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo CTRL_X_X_K_INIT_X_X_X_X_BASEPYLICENSE_P1;
+        }
+    }
+    FlowItem CTRL_X_X_K_INIT_X_X_X_X_PREINIT_P1 CTRL_X_X_K_INIT_X_X_X_X_PREINIT_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -2;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo TPIE_PgmRules_P1;
+        }
+    }
+    FlowItem CTRL_X_X_K_INIT_X_X_X_X_SET_D1C_D1D_SAMPLING_P1 CTRL_X_X_K_INIT_X_X_X_X_SET_D1C_D1D_SAMPLING_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -2;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo CTRL_BMFC_X_K_INIT_X_X_X_X_CLEARDUTDATA_P1;
+        }
+        Result 2
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+    }
+    FlowItem CTRL_XIU_X_K_INIT_X_X_X_X_TDR_P1 CTRL_XIU_X_K_INIT_X_X_X_X_TDR_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -2;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo CTRL_GLX_X_K_INIT_X_X_X_X_BASEPGMRULE_P1;
+        }
+    }
+    FlowItem TPIE_PgmRules_P1 TPIE_PgmRules_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -2;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo CTRL_X_X_K_INIT_X_X_X_X_INIT_P1;
+        }
+    }
+    FlowItem CTRL_X_X_INIT_X_X_X_X_DIERECOVERY_VMINFWD_SETUP CTRL_X_X_INIT_X_X_X_X_DIERECOVERY_VMINFWD_SETUP
+    {
+        Result -1
+        {
+            Property PassFail = "Fail";
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo DTS_X_DTSBASE_K_INIT_X_X_X_X_P1;
+        }
+    }
+    FlowItem DTS_X_DTSBASE_K_INIT_X_X_X_X_P1 DTS_X_DTSBASE_K_INIT_X_X_X_X_P1
+    {
+        Result -1
+        {
+            Property PassFail = "Fail";
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo PATMOD_X_PATTERNMODBASE_K_INIT_X_X_X_X_P1;
+        }
+    }
+    FlowItem PATMOD_X_PATTERNMODBASE_K_INIT_X_X_X_X_P1 PATMOD_X_PATTERNMODBASE_K_INIT_X_X_X_X_P1
+    {
+        Result -1
+        {
+            Property PassFail = "Fail";
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo CTRL_X_X_K_INIT_X_X_X_X_INITPRIME_P1;
+        }
+    }
+}
+
+DUTFlow TPI_BASE_LOTENDFLOW
+{
+    DUTFlowItem CTRL_X_X_K_LOTENDFLOW_X_X_X_X_ENDLOT_P1 CTRL_X_X_K_LOTENDFLOW_X_X_X_X_ENDLOT_P1
+    {
+        Result -3
+        {
+            Property PassFail = "Fail";
+			IncrementCounters TPI_BASE::n94900029_fail_CTRL_X_X_K_LOTENDFLOW_X_X_X_X_ENDLOT_n3;
+            SetBin SoftBins.b94900029_fail_TPI_BASE_CTRL_X_X_K_LOTENDFLOW_X_X_X_X_ENDLOT_n3;
+            Return 0;
+        }
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            GoTo CTRL_X_X_K_LOTENDFLOW_X_X_X_X_PRIMELOTEND_P1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            GoTo CTRL_X_X_K_LOTENDFLOW_X_X_X_X_PRIMELOTEND_P1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo CTRL_X_X_K_LOTENDFLOW_X_X_X_X_PRIMELOTEND_P1;
+        }
+    }
+    DUTFlowItem CTRL_X_X_K_LOTENDFLOW_X_X_X_X_ITUFFENDHMI_P1 CTRL_X_X_K_LOTENDFLOW_X_X_X_X_ITUFFENDHMI_P1
+    {
+        Result -3
+        {
+            Property PassFail = "Fail";
+			IncrementCounters TPI_BASE::n94900000_fail_CTRL_X_X_K_LOTENDFLOW_X_X_X_X_ITUFFENDHMI_n3;
+            SetBin SoftBins.b94900000_fail_TPI_BASE_CTRL_X_X_K_LOTENDFLOW_X_X_X_X_ITUFFENDHMI_n3;
+            Return 0;
+        }
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return 1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return 1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            Return 1;
+        }
+    }
+    DUTFlowItem CTRL_X_X_K_LOTENDFLOW_X_X_X_X_PRIMELOTEND_P1 CTRL_X_X_K_LOTENDFLOW_X_X_X_X_PRIMELOTEND_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            GoTo CTRL_X_X_K_LOTENDFLOW_X_X_X_X_ITUFFENDHMI_P1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            GoTo CTRL_X_X_K_LOTENDFLOW_X_X_X_X_ITUFFENDHMI_P1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+			IncrementCounters TPI_BASE::n94900045_fail_CTRL_X_X_K_LOTENDFLOW_X_X_X_X_PRIMELOTEND_0;
+            SetBin SoftBins.b94900045_fail_TPI_BASE_CTRL_X_X_K_LOTENDFLOW_X_X_X_X_PRIMELOTEND_0;
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo CTRL_X_X_K_LOTENDFLOW_X_X_X_X_ITUFFENDHMI_P1;
+        }
+    }
+}
+
+DUTFlow TPI_BASE_LOTSTARTFLOW
+{
+    DUTFlowItem CTRL_X_X_K_LOTSTARTFLOW_X_X_X_X_SET_WAFERID_P1 CTRL_X_X_K_LOTSTARTFLOW_X_X_X_X_SET_WAFERID_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -2;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+			IncrementCounters TPI_BASE::n94900003_fail_CTRL_X_X_K_LOTSTARTFLOW_X_X_X_X_SET_WAFERID_0;
+            SetBin SoftBins.b94900003_fail_TPI_BASE_CTRL_X_X_K_LOTSTARTFLOW_X_X_X_X_SET_WAFERID_0;
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo CTRL_X_X_K_LOTSTARTFLOW_X_X_X_X_ITUFFSTARTHMI_P1;
+        }
+    }
+    DUTFlowItem CTRL_X_X_K_LOTSTARTFLOW_X_X_X_X_ITUFFSTARTHMI_P1 CTRL_X_X_K_LOTSTARTFLOW_X_X_X_X_ITUFFSTARTHMI_P1
+    {
+        Result -3
+        {
+            Property PassFail = "Fail";
+			IncrementCounters TPI_BASE::n94900034_fail_CTRL_X_X_K_LOTSTARTFLOW_X_X_X_X_ITUFFSTARTHMI_n3;
+            SetBin SoftBins.b94900034_fail_TPI_BASE_CTRL_X_X_K_LOTSTARTFLOW_X_X_X_X_ITUFFSTARTHMI_n3;
+            Return 0;
+        }
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -2;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+			IncrementCounters TPI_BASE::n94900002_fail_CTRL_X_X_K_LOTSTARTFLOW_X_X_X_X_ITUFFSTARTHMI_0;
+            SetBin SoftBins.b94900002_fail_TPI_BASE_CTRL_X_X_K_LOTSTARTFLOW_X_X_X_X_ITUFFSTARTHMI_0;
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo CTRL_X_X_K_LOTSTARTFLOW_X_X_X_X_PRIMELOTSTART_P1;
+        }
+    }
+    DUTFlowItem CTRL_X_X_K_LOTSTARTFLOW_X_X_X_X_PRIMELOTSTART_P1 CTRL_X_X_K_LOTSTARTFLOW_X_X_X_X_PRIMELOTSTART_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -2;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+			IncrementCounters TPI_BASE::n94900042_fail_CTRL_X_X_K_LOTSTARTFLOW_X_X_X_X_PRIMELOTSTART_0;
+            SetBin SoftBins.b94900042_fail_TPI_BASE_CTRL_X_X_K_LOTSTARTFLOW_X_X_X_X_PRIMELOTSTART_0;
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo CTRL_X_X_K_LOTSTARTFLOW_X_X_X_X_STARTLOT_P1;
+        }
+        Result 2
+        {
+            Property PassFail = "Fail";
+			IncrementCounters TPI_BASE::n94900043_fail_CTRL_X_X_K_LOTSTARTFLOW_X_X_X_X_PRIMELOTSTART_2;
+            SetBin SoftBins.b94900043_fail_TPI_BASE_CTRL_X_X_K_LOTSTARTFLOW_X_X_X_X_PRIMELOTSTART_2;
+            Return 0;
+        }
+    }
+    DUTFlowItem CTRL_X_X_K_LOTSTARTFLOW_X_X_X_X_STARTLOT_P1 CTRL_X_X_K_LOTSTARTFLOW_X_X_X_X_STARTLOT_P1
+    {
+        Result -3
+        {
+            Property PassFail = "Fail";
+			IncrementCounters TPI_BASE::n94900033_fail_CTRL_X_X_K_LOTSTARTFLOW_X_X_X_X_STARTLOT_n3;
+            SetBin SoftBins.b94900033_fail_TPI_BASE_CTRL_X_X_K_LOTSTARTFLOW_X_X_X_X_STARTLOT_n3;
+            Return 0;
+        }
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -2;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+			IncrementCounters TPI_BASE::n94900011_fail_CTRL_X_X_K_LOTSTARTFLOW_X_X_X_X_STARTLOT_0;
+            SetBin SoftBins.b94900011_fail_TPI_BASE_CTRL_X_X_K_LOTSTARTFLOW_X_X_X_X_STARTLOT_0;
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            Return 1;
+        }
+    }
+}
+
+DUTFlow TPI_BASE_MAIN
+{
+    DUTFlowItem CTRL_X_X_E_MAIN_X_X_X_X_DUMMYTPIEPLACEHOLDER_P1 CTRL_X_X_E_MAIN_X_X_X_X_DUMMYTPIEPLACEHOLDER_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -2;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Pass";
+            Return 1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            Return 1;
+        }
+        Result 2
+        {
+            Property PassFail = "Pass";
+            Return 1;
+        }
+    }
+}
+
+DUTFlow TPI_BASE_START
+{
+    DUTFlowItem CTRL_X_X_K_START_X_X_X_X_ENABLEFLOWTRACE_P1 CTRL_X_X_K_START_X_X_X_X_ENABLEFLOWTRACE_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -2;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+			IncrementCounters TPI_BASE::n94131300_fail_CTRL_X_X_K_START_X_X_X_X_ENABLEFLOWTRACE_0;
+            SetBin SoftBins.b94131300_fail_TPI_BASE_CTRL_X_X_K_START_X_X_X_X_ENABLEFLOWTRACE_0;
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo CTRL_SCREEN_X_K_START_X_X_X_X_DIEPOS_CALC_P3;
+        }
+    }
+    DUTFlowItem CTRL_BMFC_X_K_START_X_X_X_X_CLEARDUTDATA_P1 CTRL_BMFC_X_K_START_X_X_X_X_CLEARDUTDATA_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -2;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+			IncrementCounters TPI_BASE::n90680267_fail_CTRL_BMFC_X_K_START_X_X_X_X_CLEARDUTDATA_0;
+            SetBin SoftBins.b90680267_fail_TPI_BASE_CTRL_BMFC_X_K_START_X_X_X_X_CLEARDUTDATA_0;
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            Return 1;
+        }
+    }
+    DUTFlowItem CTRL_SCREEN_X_K_START_X_X_X_X_DIEPOS_CALC_P3 CTRL_SCREEN_X_K_START_X_X_X_X_DIEPOS_CALC_P3
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -2;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+			IncrementCounters TPI_BASE::n94450057_fail_CTRL_SCREEN_X_K_START_X_X_X_X_DIEPOS_CALC_0;
+            SetBin SoftBins.b94450057_fail_TPI_BASE_CTRL_SCREEN_X_K_START_X_X_X_X_DIEPOS_CALC_0;
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo CTRL_X_X_K_START_X_X_X_X_DIEPOS_CALC_DATALOG_P1;
+        }
+        Result 2
+        {
+            Property PassFail = "Pass";
+            GoTo CTRL_X_X_K_START_X_X_X_X_DIEPOS_CALC_DATALOG_P1;
+        }
+        Result 3
+        {
+            Property PassFail = "Pass";
+            GoTo CTRL_X_X_K_START_X_X_X_X_DIEPOS_CALC_DATALOG_P1;
+        }
+        Result 4
+        {
+            Property PassFail = "Fail";
+			IncrementCounters TPI_BASE::n94020090_fail_CTRL_SCREEN_X_K_START_X_X_X_X_DIEPOS_CALC_4;
+            SetBin SoftBins.b94020090_fail_TPI_BASE_CTRL_SCREEN_X_K_START_X_X_X_X_DIEPOS_CALC_4;
+            Return 0;
+        }
+    }
+    DUTFlowItem CTRL_X_X_E_START_X_X_X_X_MEMUSE_P1 CTRL_X_X_E_START_X_X_X_X_MEMUSE_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -2;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+			IncrementCounters TPI_BASE::n69986998_fail_CTRL_X_X_E_START_X_X_X_X_MEMUSE_0;
+            GoTo CTRL_BMFC_X_K_START_X_X_X_X_CLEARDUTDATA_P1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo CTRL_BMFC_X_K_START_X_X_X_X_CLEARDUTDATA_P1;
+        }
+    }
+    DUTFlowItem CTRL_X_X_K_START_X_X_X_X_DIEPOS_CALC_DATALOG_P1 CTRL_X_X_K_START_X_X_X_X_DIEPOS_CALC_DATALOG_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -2;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+			IncrementCounters TPI_BASE::n94460059_fail_CTRL_X_X_K_START_X_X_X_X_DIEPOS_CALC_DATALOG_0;
+            SetBin SoftBins.b94460059_fail_TPI_BASE_CTRL_X_X_K_START_X_X_X_X_DIEPOS_CALC_DATALOG_0;
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo CTRL_X_X_K_START_X_X_X_X_SIGFILECHK_P2;
+        }
+        Result 2
+        {
+            Property PassFail = "Fail";
+			IncrementCounters TPI_BASE::n94460009_fail_CTRL_X_X_K_START_X_X_X_X_DIEPOS_CALC_DATALOG_2;
+            SetBin SoftBins.b94460009_fail_TPI_BASE_CTRL_X_X_K_START_X_X_X_X_DIEPOS_CALC_DATALOG_2;
+            Return 0;
+        }
+    }
+    DUTFlowItem CTRL_X_X_K_START_X_X_X_X_SIGFILECHK_P2 CTRL_X_X_K_START_X_X_X_X_SIGFILECHK_P2
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -2;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+			IncrementCounters TPI_BASE::n69101000_fail_CTRL_X_X_K_START_X_X_X_X_SIGFILECHK_0;
+            SetBin SoftBins.b69101000_fail_TPI_BASE_CTRL_X_X_K_START_X_X_X_X_SIGFILECHK_0;
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo CTRL_X_X_E_START_X_X_X_X_MEMUSE_P1;
+        }
+        Result 2
+        {
+            Property PassFail = "Pass";
+            GoTo CTRL_X_X_E_START_X_X_X_X_MEMUSE_P1;
+        }
+        Result 3
+        {
+            Property PassFail = "Pass";
+            GoTo CTRL_X_X_E_START_X_X_X_X_MEMUSE_P1;
+        }
+    }
+}
+
+DUTFlow TPI_BASE_TESTPLANENDFLOW
+{
+    DUTFlowItem CTRL_BRITA_X_E_TESTPLANENDFLOW_X_X_X_X_LOG_P1 CTRL_BRITA_X_E_TESTPLANENDFLOW_X_X_X_X_LOG_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            GoTo CTRL_X_X_E_TESTPLANENDFLOW_X_X_X_X_ALARM_PWRDWNSAFETY_P1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            GoTo CTRL_X_X_E_TESTPLANENDFLOW_X_X_X_X_ALARM_PWRDWNSAFETY_P1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+			IncrementCounters TPI_BASE::n94900200_fail_CTRL_BRITA_X_E_TESTPLANENDFLOW_X_X_X_X_LOG_0;
+            GoTo CTRL_X_X_E_TESTPLANENDFLOW_X_X_X_X_ALARM_PWRDWNSAFETY_P1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo CTRL_X_X_E_TESTPLANENDFLOW_X_X_X_X_ALARM_PWRDWNSAFETY_P1;
+        }
+    }
+    DUTFlowItem CTRL_BKGND_X_K_TESTPLANENDFLOW_X_X_X_X_PRIMEDEVICEEND_P1 CTRL_BKGND_X_K_TESTPLANENDFLOW_X_X_X_X_PRIMEDEVICEEND_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            GoTo CTRL_BKGND_X_K_TESTPLANENDFLOW_X_X_X_X_STOPTIMENOBIN_P1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            GoTo CTRL_BKGND_X_K_TESTPLANENDFLOW_X_X_X_X_STOPTIMENOBIN_P1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+			IncrementCounters TPI_BASE::n53900046_fail_CTRL_BKGND_X_K_TESTPLANENDFLOW_X_X_X_X_PRIMEDEVICEEND_0;
+            SetBin SoftBins.b53900046_fail_TPI_BASE_CTRL_BKGND_X_K_TESTPLANENDFLOW_X_X_X_X_PRIMEDEVICEEND_SHARED_BIN;
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo CTRL_BKGND_X_K_TESTPLANENDFLOW_X_X_X_X_STOPTIMENOBIN_P1;
+        }
+    }
+    DUTFlowItem CTRL_BKGND_X_K_TESTPLANENDFLOW_X_X_X_X_STOPTIMENOBIN_P1 CTRL_BKGND_X_K_TESTPLANENDFLOW_X_X_X_X_STOPTIMENOBIN_P1
+    {
+        Result -3
+        {
+            Property PassFail = "Fail";
+			IncrementCounters TPI_BASE::n94900230_fail_CTRL_BKGND_X_K_TESTPLANENDFLOW_X_X_X_X_STOPTIMENOBIN_n3;
+            SetBin SoftBins.b94900230_fail_TPI_BASE_CTRL_BKGND_X_K_TESTPLANENDFLOW_X_X_X_X_STOPTIMENOBIN_n3;
+            Return 0;
+        }
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            GoTo CTRL_X_X_K_TESTPLANENDFLOW_X_X_X_X_HMITESTPLANEND_P1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            GoTo CTRL_X_X_K_TESTPLANENDFLOW_X_X_X_X_HMITESTPLANEND_P1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+			IncrementCounters TPI_BASE::n69900231_fail_CTRL_BKGND_X_K_TESTPLANENDFLOW_X_X_X_X_STOPTIMENOBIN_0;
+            SetBin SoftBins.b69900231_fail_TPI_BASE_CTRL_BKGND_X_K_TESTPLANENDFLOW_X_X_X_X_STOPTIMENOBIN_0;
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo CTRL_X_X_K_TESTPLANENDFLOW_X_X_X_X_HMITESTPLANEND_P1;
+        }
+        Result 2
+        {
+            Property PassFail = "Pass";
+            GoTo CTRL_X_X_K_TESTPLANENDFLOW_X_X_X_X_HMITESTPLANEND_P1;
+        }
+        Result 3
+        {
+            Property PassFail = "Pass";
+            GoTo CTRL_X_X_K_TESTPLANENDFLOW_X_X_X_X_HMITESTPLANEND_P1;
+        }
+        Result 4
+        {
+            Property PassFail = "Pass";
+            GoTo CTRL_X_X_K_TESTPLANENDFLOW_X_X_X_X_HMITESTPLANEND_P1;
+        }
+        Result 5
+        {
+            Property PassFail = "Pass";
+            GoTo CTRL_X_X_K_TESTPLANENDFLOW_X_X_X_X_HMITESTPLANEND_P1;
+        }
+    }
+    DUTFlowItem CTRL_BMFC_X_K_TESTPLANENDFLOW_X_X_X_X_SETDUTFINALDATA_P1 CTRL_BMFC_X_K_TESTPLANENDFLOW_X_X_X_X_SETDUTFINALDATA_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            GoTo CTRL_X_X_K_TESTPLANENDFLOW_X_X_X_X_FLOWTRACESTOP_P1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            GoTo CTRL_X_X_K_TESTPLANENDFLOW_X_X_X_X_FLOWTRACESTOP_P1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+			IncrementCounters TPI_BASE::n90660068_fail_CTRL_BMFC_X_K_TESTPLANENDFLOW_X_X_X_X_SETDUTFINALDATA_0;
+            SetBin SoftBins.b90660068_fail_TPI_BASE_CTRL_BMFC_X_K_TESTPLANENDFLOW_X_X_X_X_SETDUTFINALDATA_0;
+            GoTo CTRL_X_X_K_TESTPLANENDFLOW_X_X_X_X_FLOWTRACESTOP_P1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo CTRL_X_X_K_TESTPLANENDFLOW_X_X_X_X_FLOWTRACESTOP_P1;
+        }
+    }
+    DUTFlowItem CTRL_X_X_E_TESTPLANENDFLOW_X_X_X_X_ALARM_PWRDWNSAFETY_P1 CTRL_X_X_E_TESTPLANENDFLOW_X_X_X_X_ALARM_PWRDWNSAFETY_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            GoTo CTRL_BMFC_X_K_TESTPLANENDFLOW_X_X_X_X_SETDUTFINALDATA_P1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            GoTo CTRL_BMFC_X_K_TESTPLANENDFLOW_X_X_X_X_SETDUTFINALDATA_P1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+			IncrementCounters TPI_BASE::n94440210_fail_CTRL_X_X_E_TESTPLANENDFLOW_X_X_X_X_ALARM_PWRDWNSAFETY_0;
+            GoTo CTRL_BMFC_X_K_TESTPLANENDFLOW_X_X_X_X_SETDUTFINALDATA_P1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo CTRL_BMFC_X_K_TESTPLANENDFLOW_X_X_X_X_SETDUTFINALDATA_P1;
+        }
+        Result 2
+        {
+            Property PassFail = "Fail";
+			IncrementCounters TPI_BASE::n94440211_fail_CTRL_X_X_E_TESTPLANENDFLOW_X_X_X_X_ALARM_PWRDWNSAFETY_2;
+            GoTo CTRL_BMFC_X_K_TESTPLANENDFLOW_X_X_X_X_SETDUTFINALDATA_P1;
+        }
+    }
+    DUTFlowItem CTRL_X_X_K_TESTPLANENDFLOW_X_X_X_X_FLOWTRACESTOP_P1 CTRL_X_X_K_TESTPLANENDFLOW_X_X_X_X_FLOWTRACESTOP_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            GoTo BadDieDFF;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            GoTo BadDieDFF;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+			IncrementCounters TPI_BASE::n94141400_fail_CTRL_X_X_K_TESTPLANENDFLOW_X_X_X_X_FLOWTRACESTOP_0;
+            SetBin SoftBins.b94141400_fail_TPI_BASE_CTRL_X_X_K_TESTPLANENDFLOW_X_X_X_X_FLOWTRACESTOP_0;
+            GoTo BadDieDFF;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo BadDieDFF;
+        }
+    }
+    DUTFlowItem CTRL_X_X_K_TESTPLANENDFLOW_X_X_X_X_HMITESTPLANEND_P1 CTRL_X_X_K_TESTPLANENDFLOW_X_X_X_X_HMITESTPLANEND_P1
+    {
+        Result -3
+        {
+            Property PassFail = "Fail";
+			IncrementCounters TPI_BASE::n94010046_fail_CTRL_X_X_K_TESTPLANENDFLOW_X_X_X_X_HMITESTPLANEND_n3;
+            SetBin SoftBins.b94010046_fail_TPI_BASE_CTRL_X_X_K_TESTPLANENDFLOW_X_X_X_X_HMITESTPLANEND_n3;
+            Return 0;
+        }
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return 1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return 1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+			IncrementCounters TPI_BASE::n94030047_fail_CTRL_X_X_K_TESTPLANENDFLOW_X_X_X_X_HMITESTPLANEND_0;
+            SetBin SoftBins.b94030047_fail_TPI_BASE_CTRL_X_X_K_TESTPLANENDFLOW_X_X_X_X_HMITESTPLANEND_0;
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            Return 1;
+        }
+    }
+    DUTFlowItem BadDieDFF BadDieDFF
+    {
+        Result -1
+        {
+            Property PassFail = "Fail";
+            GoTo CTRL_BKGND_X_K_TESTPLANENDFLOW_X_X_X_X_PRIMEDEVICEEND_P1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo CTRL_BKGND_X_K_TESTPLANENDFLOW_X_X_X_X_PRIMEDEVICEEND_P1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo CTRL_BKGND_X_K_TESTPLANENDFLOW_X_X_X_X_PRIMEDEVICEEND_P1;
+        }
+    }
+}
+
+DUTFlow TPI_BASE_TESTPLANSTARTFLOW
+{
+    DUTFlowItem CTRL_X_X_K_TESTPLANSTARTFLOW_X_X_X_X_HMISTARTTEST_P1 CTRL_X_X_K_TESTPLANSTARTFLOW_X_X_X_X_HMISTARTTEST_P1
+    {
+        Result -3
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -2;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo CTRL_X_X_K_TESTPLANSTARTFLOW_X_X_X_X_PRIMEDEVICESTART_P1;
+        }
+    }
+    DUTFlowItem CTRL_BKGND_X_K_TESTPLANSTARTFLOW_X_X_X_X_STARTTIMEON_P1 CTRL_BKGND_X_K_TESTPLANSTARTFLOW_X_X_X_X_STARTTIMEON_P1
+    {
+        Result -3
+        {
+            Property PassFail = "Fail";
+			IncrementCounters TPI_BASE::n94900303_fail_CTRL_BKGND_X_K_TESTPLANSTARTFLOW_X_X_X_X_STARTTIMEON_n3;
+            SetBin SoftBins.b94900303_fail_TPI_BASE_CTRL_BKGND_X_K_TESTPLANSTARTFLOW_X_X_X_X_STARTTIMEON_n3;
+            Return 0;
+        }
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -2;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+			IncrementCounters TPI_BASE::n94901301_fail_CTRL_BKGND_X_K_TESTPLANSTARTFLOW_X_X_X_X_STARTTIMEON_0;
+            SetBin SoftBins.b94901301_fail_TPI_BASE_CTRL_BKGND_X_K_TESTPLANSTARTFLOW_X_X_X_X_STARTTIMEON_0;
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo CTRL_X_X_K_TESTPLANSTARTFLOW_X_X_X_X_LOGHVQKTOKEN_P1;
+        }
+        Result 2
+        {
+            Property PassFail = "Pass";
+            GoTo CTRL_X_X_K_TESTPLANSTARTFLOW_X_X_X_X_LOGHVQKTOKEN_P1;
+        }
+        Result 3
+        {
+            Property PassFail = "Pass";
+            GoTo CTRL_X_X_K_TESTPLANSTARTFLOW_X_X_X_X_LOGHVQKTOKEN_P1;
+        }
+        Result 4
+        {
+            Property PassFail = "Pass";
+            GoTo CTRL_X_X_K_TESTPLANSTARTFLOW_X_X_X_X_LOGHVQKTOKEN_P1;
+        }
+        Result 5
+        {
+            Property PassFail = "Pass";
+            GoTo CTRL_X_X_K_TESTPLANSTARTFLOW_X_X_X_X_LOGHVQKTOKEN_P1;
+        }
+    }
+    DUTFlowItem CTRL_X_X_K_TESTPLANSTARTFLOW_X_X_X_X_LOGHVQKTOKEN_P1 CTRL_X_X_K_TESTPLANSTARTFLOW_X_X_X_X_LOGHVQKTOKEN_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -2;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+			IncrementCounters TPI_BASE::n94900300_fail_CTRL_X_X_K_TESTPLANSTARTFLOW_X_X_X_X_LOGHVQKTOKEN_0;
+            SetBin SoftBins.b94900300_fail_TPI_BASE_CTRL_X_X_K_TESTPLANSTARTFLOW_X_X_X_X_LOGHVQKTOKEN_0;
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            Return 1;
+        }
+    }
+    DUTFlowItem CTRL_X_X_K_TESTPLANSTARTFLOW_X_X_X_X_PRIMEDEVICESTART_P1 CTRL_X_X_K_TESTPLANSTARTFLOW_X_X_X_X_PRIMEDEVICESTART_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -2;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+			IncrementCounters TPI_BASE::n94900044_fail_CTRL_X_X_K_TESTPLANSTARTFLOW_X_X_X_X_PRIMEDEVICESTART_0;
+            SetBin SoftBins.b94900044_fail_TPI_BASE_CTRL_X_X_K_TESTPLANSTARTFLOW_X_X_X_X_PRIMEDEVICESTART_0;
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo CTRL_BKGND_X_K_TESTPLANSTARTFLOW_X_X_X_X_STARTTIMEON_P1;
+        }
+    }
+}

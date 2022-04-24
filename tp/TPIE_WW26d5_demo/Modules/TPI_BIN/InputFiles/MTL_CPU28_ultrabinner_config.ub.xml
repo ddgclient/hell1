@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Binner xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="GEN_UltraBinner_tt.xsd">
+  <ib_hierarchy>08,88,26,90,98,99,10,15,30,80,53,35,19,31,28,52,23,33,60,62,65,20,22,81,82,41,42,85,86,12,44,45,61,63,21,24,66,43,27,64,39,32,25,11,13,09,51,16,34,54,18,14,17,38,97,36,37,40,46,47,48,49,50,55,56,57,58,59,67,68,70,71,72,73,74,75,76,77,78,79,83,84,87,89,91,92,93,94,95,96,69,29,07</ib_hierarchy>
+  <!-- Required, digits between 07-99, total 93 inputs, can't make unique of all inputs string -->
+  <sdt_subflow_list>
+	<bintrace_name>BINTRACESDTSTART</bintrace_name>
+	<bintrace_name>BINTRACESDTBEGIN</bintrace_name>
+	<bintrace_name>BINTRACESDTSTRESS</bintrace_name>
+	<bintrace_name>BINTRACESDTEND</bintrace_name>
+	<bintrace_name>BINTRACESDTFAILFLOW</bintrace_name>
+</sdt_subflow_list>
+  <good_die_gsds_config>
+    <!-- GOODDIE_VARS_AND_MAPPING -->
+    <!-- GSDS value should be defaulted to 'INITIAL' in code -->
+    <!-- GSDS is not accessible by python script -->
+	<structure name="CoreConfig">G.U.S.CoreSelect</structure>
+	<structure name="AtomConfig">G.U.S.AtomSelect</structure>
+	<structure name="SliceConfig">G.U.S.SliceSelect</structure>
+	<structure name="VminRepair">G.U.S.VminRepair</structure>	
+	<structure name="DefectRepair">G.U.S.DefectRepair</structure>	
+</good_die_gsds_config>
+  <good_die_bin_assignment>
+	<!-- Full Config GTFULL Configurations Good Die Binning -->
+    <fbin value="101" LineID_value="1001">
+		<good_die_configs>
+			<config name="CoreConfig">2</config>
+			<config name="AtomConfig">8</config>
+			<config name="SliceConfig">4</config>
+			<config name="VminRepair">0</config>
+			<config name="DefectRepair">0</config>
+		</good_die_configs>
+	</fbin>
+	<fbin value="198" LineID_value="1001">
+		<good_die_configs>
+			<config name="CoreConfig">2</config>
+			<config name="AtomConfig">8</config>
+			<config name="SliceConfig">4</config>
+			<config name="VminRepair">1</config>
+			<config name="DefectRepair">0</config>
+		</good_die_configs>
+	</fbin>
+	<fbin value="201" LineID_value="1002">
+		<good_die_configs>
+			<config name="CoreConfig">2</config>
+			<config name="AtomConfig">8</config>
+			<config name="SliceConfig">4</config>
+			<config name="VminRepair">N/A</config>
+			<config name="DefectRepair">1</config>
+		</good_die_configs>
+	</fbin>
+	<!-- Full Config GTFULL  Configurations Bad Die Binning -->
+	<fbin value="302" LineID_value="1003">
+		<good_die_configs>
+			<config name="CoreConfig">2</config>
+			<config name="AtomConfig">6</config>
+			<config name="SliceConfig">4</config>
+			<config name="VminRepair">N/A</config>
+			<config name="DefectRepair">N/A</config>
+		</good_die_configs>
+	</fbin>
+	<fbin value="303" LineID_value="1003">
+		<good_die_configs>
+			<config name="CoreConfig">2</config>
+			<config name="AtomConfig">4</config>
+			<config name="SliceConfig">4</config>
+			<config name="VminRepair">N/A</config>
+			<config name="DefectRepair">N/A</config>
+		</good_die_configs>
+	</fbin>
+	<fbin value="304" LineID_value="1003">
+		<good_die_configs>
+			<config name="CoreConfig">2</config>
+			<config name="AtomConfig">2</config>
+			<config name="SliceConfig">4</config>
+			<config name="VminRepair">N/A</config>
+			<config name="DefectRepair">N/A</config>
+		</good_die_configs>
+	</fbin>
+	<fbin value="305" LineID_value="1003">
+		<good_die_configs>
+			<config name="CoreConfig">2</config>
+			<config name="AtomConfig">0</config>
+			<config name="SliceConfig">N/A</config>
+			<config name="VminRepair">N/A</config>
+			<config name="DefectRepair">N/A</config>
+		</good_die_configs>
+	</fbin>
+	<fbin value="311" LineID_value="1003">
+		<good_die_configs>
+			<config name="CoreConfig">1</config>
+			<config name="AtomConfig">8</config>
+			<config name="SliceConfig">4</config>
+			<config name="VminRepair">N/A</config>
+			<config name="DefectRepair">N/A</config>
+		</good_die_configs>
+	</fbin>
+	<fbin value="312" LineID_value="1003">
+		<good_die_configs>
+			<config name="CoreConfig">1</config>
+			<config name="AtomConfig">6</config>
+			<config name="SliceConfig">4</config>
+			<config name="VminRepair">N/A</config>
+			<config name="DefectRepair">N/A</config>
+		</good_die_configs>
+	</fbin>
+	<fbin value="313" LineID_value="1003">
+		<good_die_configs>
+			<config name="CoreConfig">1</config>
+			<config name="AtomConfig">4</config>
+			<config name="SliceConfig">4</config>
+			<config name="VminRepair">N/A</config>
+			<config name="DefectRepair">N/A</config>
+		</good_die_configs>
+	</fbin>
+	<fbin value="314" LineID_value="1003">
+		<good_die_configs>
+			<config name="CoreConfig">1</config>
+			<config name="AtomConfig">2</config>
+			<config name="SliceConfig">4</config>
+			<config name="VminRepair">N/A</config>
+			<config name="DefectRepair">N/A</config>
+		</good_die_configs>
+	</fbin>	
+	<fbin value="315" LineID_value="1003">
+		<good_die_configs>
+			<config name="CoreConfig">1</config>
+			<config name="AtomConfig">0</config>
+			<config name="SliceConfig">2</config>
+			<config name="VminRepair">N/A</config>
+			<config name="DefectRepair">N/A</config>
+		</good_die_configs>
+	</fbin>
+	<fbin value="601" LineID_value="1006">
+		<good_die_configs>
+			<config name="CoreConfig">N/A</config>
+			<config name="AtomConfig">N/A</config>
+			<config name="SliceConfig">N/A</config>
+			<config name="VminRepair">N/A</config>
+			<config name="DefectRepair">N/A</config>
+		</good_die_configs>
+	</fbin>
+  </good_die_bin_assignment>
+  <exclude>
+    <!-- optional information, used for bad die binning decisions. -->
+    <ibins>
+      <!-- two digit hardbin, 7-99 -->
+      <!-- <ibin>12</ibin> -->
+    </ibins>
+    <dbins>
+      <!-- 8 digit bin, Start with bin 9xxxxxxx 90HBHBSB, only 1 port per dbin-->
+      <!-- <dbin>90080802</dbin> -->
+      <!-- <dbin port="2">90656503</dbin> -->
+    </dbins>
+    <instances>
+    </instances>
+  </exclude>
+</Binner>

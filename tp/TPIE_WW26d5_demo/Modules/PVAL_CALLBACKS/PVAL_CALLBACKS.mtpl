@@ -1,0 +1,2011 @@
+Version 1.0;
+
+ProgramStyle = Modular;
+
+TestPlan PVAL_CALLBACKS;
+
+Import PVAL_CALLBACKS.usrv;
+
+Import OASIS_UserFunc_tt.xml;
+Import OASIS_Auxiliary_tt.xml;
+Import PrimePauseTestMethod.xml;
+Import PrimeFlowControlStartTestMethod.xml;
+Import DieRecoveryBase.xml;
+Import SocRecovery.xml;
+Import RunCallback.xml;
+Import VminForwardingBase.xml;
+Import AuxiliaryTC.xml;
+Import PrimeFunctionalTestMethod.xml;
+
+Test RunCallback Expression_SimpleAddition_P0
+{
+    Callback = "EvaluateExpression";
+    Parameters = "--expression ToInt32([G.U.S.CALLBACKS_TOKEN1]) + 4 --result G.U.I.ExpressionResult --storagetype gsds --datatype integer";
+    LogLevel = "PRIME_DEBUG";
+	ResultPort = "[G.U.I.ExpressionResult]==60?0:1"; # just to make sure we can exit port 0
+	PreInstance = "WriteSharedStorage(--token G.U.S.CALLBACKS_TOKEN1 --value 56)";
+	PostInstance = "PrintToItuff(--body_type strgval --body_data G.U.I.ExpressionResult --tname_suf _Result)";
+}
+
+
+Test RunCallback Reset_GSDS_TOKEN1_P1
+{
+    Callback = "WriteSharedStorage";
+    Parameters = "--token G.U.S.CALLBACKS_TOKEN1 --value 0011";
+    LogLevel = "PRIME_DEBUG";
+}
+
+Test RunCallback ExecPatConfig_P1
+{
+    Callback = "ExecutePatConfig";
+    Parameters = "PVAL_CALLBACKS_SAMPLE0:0b0011,PVAL_CALLBACKS_SAMPLE1:0d4,PVAL_CALLBACKS_SAMPLE2:0xF,PVAL_CALLBACKS_SAMPLE3:0b100'r";
+    LogLevel = "PRIME_DEBUG";
+}
+
+Test RunCallback ExecutePatConfigSetPoint_P1
+{
+    Callback = "ExecutePatConfigSetPoint";
+    Parameters = "PVAL_CALLBACKS:SAMPLE3:DISABLE";
+    LogLevel = "PRIME_DEBUG";
+}
+
+Test RunCallback BitVectorPatConfigSetPoint_MissingSetpoint_FNeg1
+{
+    Callback = "BitVectorPatConfigSetPoint";
+    Parameters = "--bitvector 0011 --setpoint PVAL_CALLBACKS:SAMPLE%INDEX%:%VALUE% --value_map 0:ENABLE,1:DISABLE";
+    LogLevel = "PRIME_DEBUG";
+}
+
+Test RunCallback BitVectorPatConfigSetPoint_P1
+{
+    Callback = "BitVectorPatConfigSetPoint";
+    Parameters = "--bitvector G.U.S.CALLBACKS_TOKEN1 --setpoint PVAL_CALLBACKS:SAMPLE%INDEX%:%VALUE% --msb_first --value_map 0:ENABLE,1:DISABLE";
+    LogLevel = "PRIME_DEBUG";
+}
+
+Test RunCallback Callbacks_VoltageConverter_Simple_P1
+{
+    BypassPort = 1;
+	Callback = "VoltageConverter";
+    Parameters = "--railconfigurations powerswitch0 powerswitch1";
+    LogLevel = "PRIME_DEBUG";
+}
+
+Test RunCallback Callbacks_Sleep_P1
+{
+    Callback = "Sleep";
+    Parameters = "10";
+    LogLevel = "PRIME_DEBUG";
+}
+
+Test RunCallback Callbacks_ExecuteInstance_P1
+{
+    Callback = "ExecuteInstance";
+    Parameters = "--test PVAL_CALLBACKS::Callbacks_FuncTestForLevelsApply_P1 --save_exit_port G.U.I.CallbackExitPort";
+    LogLevel = "PRIME_DEBUG";
+	ResultPort = "[G.U.I.CallbackExitPort]==1?1:0";
+    PostInstance = "PrintSharedStorage(--token G.U.I.CallbackExitPort)";
+}
+
+Test iCAuxiliaryTest Validate_ExecuteInstance_P1
+{
+    data_type = "NUMERIC";
+    expression = "G.U.I.CallbackExitPort";
+    result_port = "[R]=1|1^2";
+    debug_mode = "VERBOSE";
+}
+
+Test RunCallback Callbacks_ValidatePatternTriggerMap_P1
+{
+    Callback = "ValidatePatternTriggerMap";
+    Parameters = "VBUMP_CORE_1500mV_TriggerMap,drv_cdie_maintap_bbs_list";
+}
+
+Test RunCallback Callbacks_ApplyPatternTriggerMap_P1
+{
+    Callback = "ApplyPatternTriggerMap";
+    Parameters = "VBUMP_CORE_1500mV_TriggerMap,drv_cdie_maintap_bbs_list";
+}
+# -----------------------------------------------------------------------------
+# DFF CALLBACKS
+
+Test RunCallback Callbacks_WriteDff_P1
+{
+    Callback = "WriteDff";
+    Parameters = "--token SACSSPF1 --value 0.65|0.85";
+}
+
+Test RunCallback Callbacks_PrintDff_P1
+{
+    Callback = "PrintDff";
+    Parameters = "--tokens SACSSPF1";
+}
+
+Test RunCallback Callbacks_MirrorDff_P1
+{
+    Callback = "MirrorDff";
+    Parameters = "--tokens SACSSPF1";
+}
+
+Test iCAuxiliaryTest Validate_DffCallbacks_P1
+{
+    data_type = "STRING";
+    expression = "G.U.S.MD_SACSSPF1__";
+    result_port = "'0.65' in [R] AND '85' in [R]|1^2"; # cannot use | in expression, so thats why doing the AND
+    debug_mode = "VERBOSE";
+}
+
+Test RunCallback Callbacks_LoadVminFromDFF_P1
+{
+    Callback = "LoadVminFromDFF";
+    LogLevel = "PRIME_DEBUG";
+}
+
+Test iCAuxiliaryTest Validate_LoadVminFromDFFCallbacks_P1
+{
+    data_type = "STRING";
+    expression = "G.U.S.VminDFFSource_CLRF1";
+    result_port = "'0.65' in [R] AND '85' in [R]|1^2"; # cannot use | in expression, so thats why doing the AND
+    debug_mode = "VERBOSE";
+}
+
+Test VminForwardingBase Callbacks_SetupVminForwardingForDff_P1
+{
+    BypassPort = -1;
+    Mode = "Configure";
+    VminSinglePointMode = "False";
+    UseDffAsSource = "True";
+    UseLimitCheck = "False";
+    UseVoltagesSources = "False";
+    StoreVoltages = "True";
+    DffMappingFile = "./Modules/PVAL_CALLBACKS/InputFiles/Fake_VminDffMapping.json";
+    DffMappingSet = "dummy_dff_token";
+    DffMappingOptype = "SORT";
+}
+
+Test VminForwardingBase Callbacks_RestoreVminForwarding_P1
+{
+    BypassPort = -1;
+    Mode = "Configure";
+    VminSinglePointMode = "False";
+    UseDffAsSource = "False";
+    UseLimitCheck = "False";
+    UseVoltagesSources = "True";
+    StoreVoltages = "True";
+}
+# -----------------------------------------------------------------------------
+# DV CALLBACKS
+
+Test RunCallback Callbacks_JsonRun_P1
+{
+    Callback = "JsonRun";
+    Parameters = "./Modules/PVAL_CALLBACKS/InputFiles/DemoJsonRun.json";
+}
+
+Test RunCallback Callbacks_JsonRecorder_P1
+{
+    Callback = "JsonRecorder"; # this doesn't actually do anything...
+}
+
+Test RunCallback Callbacks_CompileUserCode_P1
+{
+    Callback = "CompileUserCode";
+    Parameters = "--file ./Modules/PVAL_CALLBACKS/InputFiles/CallbacksUserCodeSample.cs --namespace.class PVAL_CALLBACKS.DummySample --method LogTest";
+}
+
+Test RunCallback Callbacks_RunUserCode_P1
+{
+    Callback = "RunUserCode";
+    Parameters = "--file ./Modules/PVAL_CALLBACKS/InputFiles/CallbacksUserCodeSample.cs --namespace.class PVAL_CALLBACKS.DummySample --method LogTest";
+}
+# -----------------------------------------------------------------------------
+# Flow CALLBACKS
+
+Test PrimeFlowControlStartTestMethod Callbacks_DefineFlowGT_P1
+{
+    DomainName = "GT";
+    DefaultValue = 1;
+    DffTokenName = "";
+    UseDffToken = "FALSE";
+    LogLevel = "PRIME_DEBUG";
+}
+
+Test PrimePauseTestMethod Callbacks_SetFlowGT_P1
+{
+    SleepTime = 1;
+    FlowIndex = "2";
+    FlowIndexCallbackName = "SetFlow(GT)";
+    LogLevel = "PRIME_DEBUG";
+}
+
+Test PrimePauseTestMethod Callbacks_CheckFlowGT_P1
+{
+    SleepTime = 1;
+    FlowIndex = "2";
+    FlowIndexCallbackName = "CheckFlow(GT)";
+    LogLevel = "PRIME_DEBUG";
+}
+# -----------------------------------------------------------------------------
+# SOC CALLBACKS
+
+Test RunCallback Callbacks_SocRecoveryInit_P1
+{
+    Callback = "InitialiseSOCRecovery";
+    Parameters = "SocCallbackToken1 SocCallbackToken2";
+}
+
+Test RunCallback Callbacks_SocRecoverySet_P1
+{
+    Callback = "SetSOCRecoveryToken";
+    Parameters = "SocCallbackToken1=1 SocCallbackToken2=2";
+}
+
+Test SocRecovery InitSocRecovery_Dummy_P1
+{
+    RecoveryMode = "SerialMode_Init";
+    SerialModeLength = 5;
+    ValueList = "";
+    TokenNames = "SocCallbackSerialToken";
+}
+
+Test RunCallback Callbacks_SocRecoveryPrint_P1
+{
+    Callback = "PrintTokenToItuffDLCP";
+    Parameters = "SocCallbackSerialToken";
+}
+# -----------------------------------------------------------------------------
+# SMARTTC CALLBACKS
+
+Test RunCallback Callbacks_ApplyEndSequence_P1
+{
+    Callback = "ApplyEndSequence";
+    LogLevel = "PRIME_DEBUG";
+}
+
+Test RunCallback Callbacks_DisableSmartTC_P1
+{
+    Callback = "DisableSmartTC";
+    LogLevel = "PRIME_DEBUG";
+}
+
+Test RunCallback Callbacks_EnableSmartTC_P1
+{
+    Callback = "EnableSmartTC";
+    LogLevel = "PRIME_DEBUG";
+}
+
+Test RunCallback Callbacks_SetPowerUpTCName_P1
+{
+    Callback = "SetPowerUpTCName";
+    Parameters = "bf_lvl_defaultExact";
+    LogLevel = "PRIME_DEBUG";
+}
+
+Test RunCallback Callbacks_FlushAllSmartTCCategories_P1
+{
+    Callback = "FlushAllSmartTCCategories";
+    Parameters = "--configuration=PVAL_BASE --powerswitch";
+    LogLevel = "PRIME_DEBUG";
+}
+
+Test PrimeFunctionalTestMethod Callbacks_FuncTestForLevelsApply_P1
+{
+    LevelsTc = "__main__::bf_lvl_nom_lvl";
+    Patlist = "drv_cdie_maintap_bbs_list";
+    TimingsTc = "__main__::cpu_stf_timing_tclk100_sclk100_cclk100";
+    FailuresToCaptureTotal = 1;
+}
+
+Test RunCallback Callbacks_SetPinAttributes_P1
+{
+    Callback = "SetPinAttributes";
+    Parameters = "--prepause=1 --postpause=2 --settings=YY_TAP_TDO_C2S:VOX:0.6 YY_TAP_TDO_C2S:PinModeSel:Digital YY_TAP_TDO_C2S:FixedDriveState:Off YY_TAP_TDO_C2S:TermMode:TermVRef YY_TAP_TDO_C2S:TermVRef:0V";
+    LogLevel = "PRIME_DEBUG";
+}
+
+Test RunCallback Callbacks_TosTriggersCallbackSetup_TDOVox_P1
+{
+    Callback = "TosTriggersCallbackSetup";
+    Parameters = "--type=SetPinAttributes --prepause=1 --postpause=2 --settings=Vox:YY_TAP_TDO_C2S:VOX:0.6 Vox:YY_TAP_TDO_C2S:PinModeSel:Digital Vox:YY_TAP_TDO_C2S:FixedDriveState:Off Vox:YY_TAP_TDO_C2S:TermMode:TermVRef Vox:YY_TAP_TDO_C2S:TermVRef:0V";
+    LogLevel = "PRIME_DEBUG";
+}
+
+Test RunCallback Callbacks_TosTriggersCallbackExecute_TDOVox_P1
+{
+    Callback = "TosTriggersCallbackExecute";
+    Parameters = "Vox";
+    LogLevel = "PRIME_DEBUG";
+}
+
+Test RunCallback Callbacks_FlushSmartTCCategory_P1
+{
+    Callback = "FlushSmartTCCategory";
+    Parameters = "TIMING";
+    LogLevel = "PRIME_DEBUG";
+}
+# -----------------------------------------------------------------------------
+# -----------------------------------------------------------------------------
+# RECOVERY CALLBACKS
+
+Test DieRecoveryBase Callbacks_InitDieRecovery_P1
+{
+    TrackerFile = "./Modules/PVAL_CALLBACKS/InputFiles/CallbacksConfig_Tracker.json";
+    RulesFile = "./Modules/PVAL_CALLBACKS/InputFiles/CallbacksConfig_Rules.xml";
+}
+
+Test RunCallback Callbacks_LoadPinMaps_P1
+{
+    Callback = "LoadPinMapFile";
+    Parameters = "--decoder PinToSliceIndexDecoder --file ./Modules/PVAL_CALLBACKS/InputFiles/CallbacksConfig_PinMaps.json";
+}
+
+Test RunCallback Callbacks_WriteTracker_P1
+{
+    Callback = "WriteTracker";
+    Parameters = "--tracker DUMMY1 --value 00";
+    PostInstance = "Call(WriteTracker(--tracker DUMMY2 --value 10) | WriteTracker(--tracker DUMMY3 --value 01) | WriteTracker(--tracker DUMMY4 --value 11))";
+}
+
+Test RunCallback Callbacks_CopyTracker_P1
+{
+    Callback = "CopyTracker";
+    Parameters = "--tracker DUMMY4 --gsds G.U.S.TrackerDummy4";
+}
+
+Test RunCallback Callbacks_MaskIP_P1
+{
+    Callback = "MaskIP";
+    Parameters = "--tracker DUMMY4 --pinmap=DUMMY_2Bit45 --gsds G.U.S.Dummy4PinMask";
+}
+
+Test RunCallback Callbacks_DisableIP_P1
+{
+    Callback = "DisableIP";
+    Parameters = "--tracker DUMMY4 --pinmap DUMMY_2Bit45 --patlist drv_cdie_maintap_bbs_list";
+}
+
+Test RunCallback Callbacks_ConfigureIP_P1
+{
+    Callback = "ConfigureIpForRecovery";
+    Parameters = "--tracker DUMMY1 --pinmap=DUMMY_2Bit45 --patlist drv_cdie_maintap_bbs_list";
+}
+
+Test RunCallback Callbacks_RunRule_P1
+{
+    Callback = "RunRule";
+    Parameters = "--tracker DUMMY3 --rule Callbacks_TwoBitCombinations --gsds G.U.S.Dummy3RuleResult --store_value NAME";
+}
+
+Test iCAuxiliaryTest Validate_RecoveryCallbacks_P1
+{
+    data_type = "STRING";
+    expression = "G.U.S.TrackerDummy4 + 'x' + G.U.S.Dummy4PinMask + 'x' + G.U.S.Dummy3RuleResult";
+    result_port = "[R]='11xYY_TEST_PORT_OUT_C2S_04,YY_TEST_PORT_OUT_C2S_05x1C'|1^2";
+    debug_mode = "VERBOSE";
+}
+
+# -----------------------------------------------------------------------------
+# WRITEUSERVAR CALLBACKS
+Test RunCallback Callbacks_SetGsdsForWriteUserVar_P1
+{
+    Callback = "WriteSharedStorage";
+    Parameters = "--token G.L.D.TokenForWriteUserVar --value 3.14";
+    LogLevel = "PRIME_DEBUG";
+	PostInstance = "PrintToItuff(--body_type mrslt --body_data G.L.D.TokenForWriteUserVar)";
+}
+Test RunCallback Callbacks_WriteUserVarfromGsdsDoubleType_P1
+{
+    Callback = "WriteUserVar";
+    Parameters = "--uservar PVAL_CALLBACKS::CallbacksVars.SampleDouble --value G.L.D.TokenForWriteUserVar --type Double ";
+    LogLevel = "PRIME_DEBUG";
+	PostInstance = "PrintToItuff(--body_type strgval --body_data PVAL_CALLBACKS::CallbacksVars.SampleDouble --tname_suf _Pi)";
+}
+Test RunCallback Callbacks_WriteUserVarfromLiteralIntType_P1
+{
+    Callback = "WriteUserVar";
+    Parameters = "--uservar PVAL_CALLBACKS::CallbacksVars.SampleInteger --value 191 --type Integer ";
+    LogLevel = "PRIME_DEBUG";
+	PreInstance = "WriteSharedStorage(--token G.U.S.PostFixTokenA --value ItuffPostFix)";
+	PostInstance = "PrintToItuff(--body_type strgval --body_data PVAL_CALLBACKS::CallbacksVars.SampleInteger --tname_suf _,G.U.S.PostFixTokenA)";
+}
+Test RunCallback Callbacks_WriteUserVarfromUserVarStringType_P1
+{
+    Callback = "WriteUserVar";
+    Parameters = "--uservar PVAL_CALLBACKS::CallbacksVars.NewSampleString --value PVAL_CALLBACKS::CallbacksVars.SampleString --type String";
+    LogLevel = "PRIME_DEBUG";
+	PostInstance = "PrintToItuff(--body_type strgval --body_data PVAL_CALLBACKS::CallbacksVars.NewSampleString)";
+}
+Test RunCallback Callbacks_WriteUserVarfromUserVarArrayBooleanType_P1
+{
+    Callback = "WriteUserVar";
+    Parameters = "--uservar PVAL_CALLBACKS::CallbacksVars.NewSampleBooleanArray --value PVAL_CALLBACKS::CallbacksVars.SampleBooleanArray --type ArrayBoolean ";
+    LogLevel = "PRIME_DEBUG";
+	PostInstance = "PrintToItuff(--body_type strgval --body_data PVAL_CALLBACKS::CallbacksVars.NewSampleBooleanArray)";
+}
+Test RunCallback Callbacks_WriteUserVarInvalidType_FNeg1
+{
+    Callback = "WriteUserVar";
+    Parameters = "--uservar PVAL_CALLBACKS::CallbacksVars.NewSampleString --value dead --type NotARealType ";
+    LogLevel = "PRIME_DEBUG";
+	PostInstance = "PrintToItuff(--body_type strgval --body_data PVAL_CALLBACKS::CallbacksVars.NewSampleString --tname_suf _ShouldNotBe_dead)";
+}
+Test AuxiliaryTC Validate_WriteUserVarCallbacks_P1
+{
+    DataType = "String";
+    Expression = "[PVAL_CALLBACKS::CallbacksVars.NewSampleString] + 'x' + [PVAL_CALLBACKS::CallbacksVars.SampleDouble] + 'x' + [PVAL_CALLBACKS::CallbacksVars.SampleInteger]";
+    ResultPort = "[R]=='SomeValuex3.14x191'?1:2";
+    LogLevel = "PRIME_DEBUG";
+}
+# -----------------------------------------------------------------------------
+
+DUTFlow PVAL_CALLBACKS_DV
+{
+    DUTFlowItem Callbacks_JsonRecorder_P1 Callbacks_JsonRecorder_P1
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            Return -1;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            GoTo Callbacks_JsonRun_P1;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            GoTo Callbacks_JsonRun_P1;
+        }
+    }
+    DUTFlowItem Callbacks_JsonRun_P1 Callbacks_JsonRun_P1
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            Return -1;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            GoTo Callbacks_CompileUserCode_P1;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            GoTo Callbacks_CompileUserCode_P1;
+        }
+    }
+    DUTFlowItem Callbacks_CompileUserCode_P1 Callbacks_CompileUserCode_P1
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            Return -1;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            GoTo Callbacks_RunUserCode_P1;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            GoTo Callbacks_RunUserCode_P1;
+        }
+    }
+    DUTFlowItem Callbacks_RunUserCode_P1 Callbacks_RunUserCode_P1
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            Return -1;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            Return 0;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            Return 1;
+        }
+    }
+}
+
+DUTFlow PVAL_CALLBACKS_FLOWCONTROL
+{
+    DUTFlowItem Callbacks_DefineFlowGT_P1 Callbacks_DefineFlowGT_P1
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            Return -1;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            GoTo Callbacks_SetFlowGT_P1;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            GoTo Callbacks_SetFlowGT_P1;
+        }
+    }
+    DUTFlowItem Callbacks_SetFlowGT_P1 Callbacks_SetFlowGT_P1
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            Return -1;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            GoTo Callbacks_CheckFlowGT_P1;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            GoTo Callbacks_CheckFlowGT_P1;
+        }
+    }
+    DUTFlowItem Callbacks_CheckFlowGT_P1 Callbacks_CheckFlowGT_P1
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            Return -1;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            Return 0;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            Return 1;
+        }
+    }
+}
+
+DUTFlow PVAL_CALLBACKS_SOCRECOVERY
+{
+    DUTFlowItem Callbacks_SocRecoveryInit_P1 Callbacks_SocRecoveryInit_P1
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            Return -1;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            GoTo Callbacks_SocRecoverySet_P1;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            GoTo Callbacks_SocRecoverySet_P1;
+        }
+    }
+    DUTFlowItem Callbacks_SocRecoverySet_P1 Callbacks_SocRecoverySet_P1
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            Return -1;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            GoTo InitSocRecovery_Dummy_P1;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            GoTo InitSocRecovery_Dummy_P1;
+        }
+    }
+    DUTFlowItem InitSocRecovery_Dummy_P1 InitSocRecovery_Dummy_P1
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            Return -1;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            GoTo Callbacks_SocRecoveryPrint_P1;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            GoTo Callbacks_SocRecoveryPrint_P1;
+        }
+    }
+    DUTFlowItem Callbacks_SocRecoveryPrint_P1 Callbacks_SocRecoveryPrint_P1
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            Return -1;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            Return 0;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            Return 1;
+        }
+    }
+}
+
+# FLOWS
+DUTFlow PVAL_CALLBACKS_WRITEUSRVAR
+{
+    DUTFlowItem Callbacks_SetGsdsForWriteUserVar_P1 Callbacks_SetGsdsForWriteUserVar_P1
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            Return -1;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            GoTo Callbacks_WriteUserVarfromGsdsDoubleType_P1;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            GoTo Callbacks_WriteUserVarfromGsdsDoubleType_P1;
+        }
+    }
+    DUTFlowItem Callbacks_WriteUserVarfromGsdsDoubleType_P1 Callbacks_WriteUserVarfromGsdsDoubleType_P1
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            Return -1;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            GoTo Callbacks_WriteUserVarfromLiteralIntType_P1;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            GoTo Callbacks_WriteUserVarfromLiteralIntType_P1;
+        }
+    }
+    DUTFlowItem Callbacks_WriteUserVarfromLiteralIntType_P1 Callbacks_WriteUserVarfromLiteralIntType_P1
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            Return -1;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            GoTo Callbacks_WriteUserVarfromUserVarStringType_P1;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            GoTo Callbacks_WriteUserVarfromUserVarStringType_P1;
+        }
+    }
+    DUTFlowItem Callbacks_WriteUserVarfromUserVarStringType_P1 Callbacks_WriteUserVarfromUserVarStringType_P1
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            Return -1;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            GoTo Callbacks_WriteUserVarfromUserVarArrayBooleanType_P1;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            GoTo Callbacks_WriteUserVarfromUserVarArrayBooleanType_P1;
+        }
+    }
+    DUTFlowItem Callbacks_WriteUserVarfromUserVarArrayBooleanType_P1 Callbacks_WriteUserVarfromUserVarArrayBooleanType_P1
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            Return -1;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            GoTo Callbacks_WriteUserVarInvalidType_FNeg1;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            GoTo Callbacks_WriteUserVarInvalidType_FNeg1;
+        }
+    }
+    DUTFlowItem Callbacks_WriteUserVarInvalidType_FNeg1 Callbacks_WriteUserVarInvalidType_FNeg1
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            GoTo Validate_WriteUserVarCallbacks_P1;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            GoTo Validate_WriteUserVarCallbacks_P1;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            GoTo Validate_WriteUserVarCallbacks_P1;
+        }
+    }
+    DUTFlowItem Validate_WriteUserVarCallbacks_P1 Validate_WriteUserVarCallbacks_P1
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            Return -1;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            Return 0;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            Return 1;
+		}
+        Result 2
+        {
+            PassFail Pass;
+            Return 0;
+        }
+    }
+}
+
+DUTFlow PVAL_CALLBACKS_DFF
+{
+    DUTFlowItem Callbacks_WriteDff_P1 Callbacks_WriteDff_P1
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            Return -1;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            GoTo Callbacks_PrintDff_P1;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            GoTo Callbacks_PrintDff_P1;
+        }
+    }
+    DUTFlowItem Callbacks_PrintDff_P1 Callbacks_PrintDff_P1
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            Return -1;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            GoTo Callbacks_MirrorDff_P1;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            GoTo Callbacks_MirrorDff_P1;
+        }
+    }
+    DUTFlowItem Callbacks_MirrorDff_P1 Callbacks_MirrorDff_P1
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            Return -1;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            GoTo Validate_DffCallbacks_P1;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            GoTo Validate_DffCallbacks_P1;
+        }
+    }
+    DUTFlowItem Validate_DffCallbacks_P1 Validate_DffCallbacks_P1
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            Return -1;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            GoTo Callbacks_SetupVminForwardingForDff_P1;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            GoTo Callbacks_SetupVminForwardingForDff_P1;
+        }
+        Result 2
+        {
+            PassFail Pass;
+            GoTo Callbacks_SetupVminForwardingForDff_P1;
+        }
+    }
+    DUTFlowItem Callbacks_LoadVminFromDFF_P1 Callbacks_LoadVminFromDFF_P1
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            Return -1;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            GoTo Validate_LoadVminFromDFFCallbacks_P1;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            GoTo Validate_LoadVminFromDFFCallbacks_P1;
+        }
+    }
+    DUTFlowItem Validate_LoadVminFromDFFCallbacks_P1 Validate_LoadVminFromDFFCallbacks_P1
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            Return -1;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            GoTo Callbacks_RestoreVminForwarding_P1;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            GoTo Callbacks_RestoreVminForwarding_P1;
+        }
+        Result 2
+        {
+            PassFail Pass;
+            GoTo Callbacks_RestoreVminForwarding_P1;
+        }
+    }
+    DUTFlowItem Callbacks_SetupVminForwardingForDff_P1 Callbacks_SetupVminForwardingForDff_P1
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            Return -1;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            GoTo Callbacks_LoadVminFromDFF_P1;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            GoTo Callbacks_LoadVminFromDFF_P1;
+        }
+    }
+    DUTFlowItem Callbacks_RestoreVminForwarding_P1 Callbacks_RestoreVminForwarding_P1
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            Return -1;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            Return 0;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            Return 1;
+        }
+    }
+}
+
+DUTFlow PVAL_CALLBACKS_SMARTTC
+{
+    DUTFlowItem Callbacks_DisableSmartTC_P1 Callbacks_DisableSmartTC_P1
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            Return -1;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            GoTo Callbacks_ApplyEndSequence_P1;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            GoTo Callbacks_ApplyEndSequence_P1;
+        }
+    }
+    DUTFlowItem Callbacks_ApplyEndSequence_P1 Callbacks_ApplyEndSequence_P1
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            Return -1;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            GoTo Callbacks_SetPowerUpTCName_P1;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            GoTo Callbacks_SetPowerUpTCName_P1;
+        }
+    }
+    DUTFlowItem Callbacks_SetPowerUpTCName_P1 Callbacks_SetPowerUpTCName_P1
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            Return -1;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            GoTo Callbacks_EnableSmartTC_P1;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            GoTo Callbacks_EnableSmartTC_P1;
+        }
+    }
+    DUTFlowItem Callbacks_EnableSmartTC_P1 Callbacks_EnableSmartTC_P1
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            Return -1;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            GoTo Callbacks_FlushAllSmartTCCategories_P1;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            GoTo Callbacks_FlushAllSmartTCCategories_P1;
+        }
+    }
+    DUTFlowItem Callbacks_FlushAllSmartTCCategories_P1 Callbacks_FlushAllSmartTCCategories_P1
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            Return -1;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            GoTo Callbacks_FuncTestForLevelsApply_P1;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            GoTo Callbacks_FuncTestForLevelsApply_P1;
+        }
+    }
+    DUTFlowItem Callbacks_FuncTestForLevelsApply_P1 Callbacks_FuncTestForLevelsApply_P1
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            Return -1;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            GoTo Callbacks_SetPinAttributes_P1;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            GoTo Callbacks_SetPinAttributes_P1;
+        }
+    }
+    DUTFlowItem Callbacks_SetPinAttributes_P1 Callbacks_SetPinAttributes_P1
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            Return -1;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            GoTo Callbacks_TosTriggersCallbackSetup_TDOVox_P1;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            GoTo Callbacks_TosTriggersCallbackSetup_TDOVox_P1;
+        }
+    }
+    DUTFlowItem Callbacks_TosTriggersCallbackSetup_TDOVox_P1 Callbacks_TosTriggersCallbackSetup_TDOVox_P1
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            Return -1;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            GoTo Callbacks_TosTriggersCallbackExecute_TDOVox_P1;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            GoTo Callbacks_TosTriggersCallbackExecute_TDOVox_P1;
+        }
+    }
+    DUTFlowItem Callbacks_TosTriggersCallbackExecute_TDOVox_P1 Callbacks_TosTriggersCallbackExecute_TDOVox_P1
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            Return -1;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            GoTo Callbacks_FlushSmartTCCategory_P1;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            GoTo Callbacks_FlushSmartTCCategory_P1;
+        }
+    }
+    DUTFlowItem Callbacks_FlushSmartTCCategory_P1 Callbacks_FlushSmartTCCategory_P1
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            Return -1;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            Return 0;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            Return 1;
+        }
+    }
+}
+
+DUTFlow PVAL_CALLBACKS_DIERECOVERY
+{
+    DUTFlowItem Callbacks_InitDieRecovery_P1 Callbacks_InitDieRecovery_P1
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            Return -1;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            Return 0;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            GoTo Callbacks_LoadPinMaps_P1;
+        }
+    }
+    DUTFlowItem Callbacks_LoadPinMaps_P1 Callbacks_LoadPinMaps_P1
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            Return -1;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            Return 0;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            GoTo Callbacks_WriteTracker_P1;
+        }
+    }
+    DUTFlowItem Callbacks_WriteTracker_P1 Callbacks_WriteTracker_P1
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            Return -1;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            Return 0;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            GoTo Callbacks_CopyTracker_P1;
+        }
+    }
+    DUTFlowItem Callbacks_CopyTracker_P1 Callbacks_CopyTracker_P1
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            Return -1;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            Return 0;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            GoTo Callbacks_MaskIP_P1;
+        }
+    }
+    DUTFlowItem Callbacks_MaskIP_P1 Callbacks_MaskIP_P1
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            Return -1;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            Return 0;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            GoTo Callbacks_DisableIP_P1;
+        }
+    }
+    DUTFlowItem Callbacks_DisableIP_P1 Callbacks_DisableIP_P1
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            Return -1;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            Return 0;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            GoTo Callbacks_ConfigureIP_P1;
+        }
+    }
+    DUTFlowItem Callbacks_ConfigureIP_P1 Callbacks_ConfigureIP_P1
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            Return -1;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            Return 0;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            GoTo Callbacks_RunRule_P1;
+        }
+    }
+    DUTFlowItem Callbacks_RunRule_P1 Callbacks_RunRule_P1
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            Return -1;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            Return 0;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            GoTo Validate_RecoveryCallbacks_P1;
+        }
+    }
+    DUTFlowItem Validate_RecoveryCallbacks_P1 Validate_RecoveryCallbacks_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            Return 1;
+        }
+        Result 2
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+    }
+}
+
+DUTFlow PVAL_CALLBACKS_PATCONFIG
+{
+    DUTFlowItem Reset_GSDS_TOKEN1_P1 Reset_GSDS_TOKEN1_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo ExecPatConfig_P1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo ExecPatConfig_P1;
+        }
+    }
+    DUTFlowItem ExecPatConfig_P1 ExecPatConfig_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo ExecutePatConfigSetPoint_P1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo ExecutePatConfigSetPoint_P1;
+        }
+    }
+    DUTFlowItem ExecutePatConfigSetPoint_P1 ExecutePatConfigSetPoint_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo BitVectorPatConfigSetPoint_MissingSetpoint_FNeg1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo BitVectorPatConfigSetPoint_MissingSetpoint_FNeg1;
+        }
+    }
+    DUTFlowItem BitVectorPatConfigSetPoint_MissingSetpoint_FNeg1 BitVectorPatConfigSetPoint_MissingSetpoint_FNeg1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            GoTo BitVectorPatConfigSetPoint_P1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo BitVectorPatConfigSetPoint_P1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo BitVectorPatConfigSetPoint_P1;
+        }
+    }
+    DUTFlowItem BitVectorPatConfigSetPoint_P1 BitVectorPatConfigSetPoint_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            Return 1;
+        }
+    }
+}
+
+DUTFlow PVAL_CALLBACKS_MAIN
+{
+    DUTFlowItem Expression_SimpleAddition_P0 Expression_SimpleAddition_P0
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            Return -1;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            GoTo Callbacks_ExecuteInstance_P1;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            GoTo Callbacks_ExecuteInstance_P1;
+        }
+    }
+    DUTFlowItem Callbacks_ExecuteInstance_P1 Callbacks_ExecuteInstance_P1
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            Return -1;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            GoTo Validate_ExecuteInstance_P1;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            GoTo Validate_ExecuteInstance_P1;
+        }
+    }
+    DUTFlowItem Validate_ExecuteInstance_P1 Validate_ExecuteInstance_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo Callbacks_VoltageConverter_Simple_P1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo Callbacks_VoltageConverter_Simple_P1;
+        }
+        Result 2
+        {
+            Property PassFail = "Pass";
+            GoTo Callbacks_VoltageConverter_Simple_P1;
+        }
+    }
+    DUTFlowItem PVAL_CALLBACKS_PATCONFIG PVAL_CALLBACKS_PATCONFIG
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo PVAL_CALLBACKS_DIERECOVERY;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo PVAL_CALLBACKS_DIERECOVERY;
+        }
+    }
+    DUTFlowItem PVAL_CALLBACKS_DIERECOVERY PVAL_CALLBACKS_DIERECOVERY
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            Return -1;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            GoTo PVAL_CALLBACKS_DV;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            GoTo PVAL_CALLBACKS_DV;
+        }
+    }
+    DUTFlowItem Callbacks_VoltageConverter_Simple_P1 Callbacks_VoltageConverter_Simple_P1
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            Return -1;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            GoTo Callbacks_Sleep_P1;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            GoTo Callbacks_Sleep_P1;
+        }
+    }
+    DUTFlowItem Callbacks_Sleep_P1 Callbacks_Sleep_P1
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            Return -1;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            GoTo Callbacks_ValidatePatternTriggerMap_P1;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            GoTo Callbacks_ValidatePatternTriggerMap_P1;
+        }
+    }
+    DUTFlowItem PVAL_CALLBACKS_SMARTTC PVAL_CALLBACKS_SMARTTC
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            Return -1;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            GoTo PVAL_CALLBACKS_PATCONFIG;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            GoTo PVAL_CALLBACKS_PATCONFIG;
+        }
+    }
+    DUTFlowItem PVAL_CALLBACKS_DV PVAL_CALLBACKS_DV
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            Return -1;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            GoTo PVAL_CALLBACKS_FLOWCONTROL;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            GoTo PVAL_CALLBACKS_FLOWCONTROL;
+        }
+    }
+    DUTFlowItem PVAL_CALLBACKS_FLOWCONTROL PVAL_CALLBACKS_FLOWCONTROL
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            Return -1;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            GoTo PVAL_CALLBACKS_SOCRECOVERY;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            GoTo PVAL_CALLBACKS_SOCRECOVERY;
+        }
+    }
+    DUTFlowItem PVAL_CALLBACKS_SOCRECOVERY PVAL_CALLBACKS_SOCRECOVERY
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            Return -1;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            GoTo PVAL_CALLBACKS_DFF;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            GoTo PVAL_CALLBACKS_DFF;
+        }
+    }
+    DUTFlowItem Callbacks_ValidatePatternTriggerMap_P1 Callbacks_ValidatePatternTriggerMap_P1
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            GoTo Callbacks_ApplyPatternTriggerMap_P1;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            GoTo Callbacks_ApplyPatternTriggerMap_P1;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            GoTo Callbacks_ApplyPatternTriggerMap_P1;
+        }
+    }
+    DUTFlowItem Callbacks_ApplyPatternTriggerMap_P1 Callbacks_ApplyPatternTriggerMap_P1
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            GoTo PVAL_CALLBACKS_SMARTTC;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            GoTo PVAL_CALLBACKS_SMARTTC;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            GoTo PVAL_CALLBACKS_SMARTTC;
+        }
+    }
+    DUTFlowItem PVAL_CALLBACKS_DFF PVAL_CALLBACKS_DFF
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            Return -1;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            GoTo PVAL_CALLBACKS_WRITEUSRVAR;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            GoTo PVAL_CALLBACKS_WRITEUSRVAR;
+        }
+    }
+    DUTFlowItem PVAL_CALLBACKS_WRITEUSRVAR PVAL_CALLBACKS_WRITEUSRVAR
+    {
+        Result -2
+        {
+            PassFail Fail;
+            Return -2;
+        }
+        Result -1
+        {
+            PassFail Fail;
+            Return -1;
+        }
+        Result 0
+        {
+            PassFail Fail;
+            Return 0;
+        }
+        Result 1
+        {
+            PassFail Pass;
+            Return 1;
+        }
+    }
+}

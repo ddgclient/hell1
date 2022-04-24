@@ -1,0 +1,15 @@
+START_SCREEN:DieLocationCalculation
+# result = sqrt( ((SCVars.WAFERY * 8.267 - 139.144)^2) + ((135.155 - SCVars.WAFERX * 8.657)^2) )
+# if result < 50  			=> port 1 & CENTER
+# if 50 <= result < 100 	=> port 2 & RING
+# if result >=100 			=> port 3 & EDGE
+# need to print
+# 2_tname_DIE_LOCATION\n2_strgalt_asc_%s\n
+#RunOn: TestName   : DataType : ParamType  : Param1                                                                                                            : Operation : ParamType : Param2   : TmpStore : OnTrue     : OnFalse
+EXEC  : Test1      : DOUBLE   : EXPRESSION : sqrt( ((SCVars.S.SC_WAFERY * 8.267 - 139.144)^2) + ((135.155 - SCVars.S.SC_WAFERX * 8.657)^2) )       : <         : LITERAL   : 50.0     :    -     : TestCenter : Test2 
+EXEC  : Test2      : DOUBLE   : EXPRESSION : sqrt( ((SCVars.S.SC_WAFERY * 8.267 - 139.144)^2) + ((135.155 - SCVars.S.SC_WAFERX * 8.657)^2) )       : <         : LITERAL   : 100.0    :    -     : TestRing   : TestEdge
+EXEC  : TestCenter : STRING   : GSDS       : U.S.DiePositionLocation                                                                                           : SET       : LITERAL   : "CENTER" :    -     : 1          :  4
+EXEC  : TestRing   : STRING   : GSDS       : U.S.DiePositionLocation                                                                                           : SET       : LITERAL   : "RING"   :    -     : 2          :  4
+EXEC  : TestEdge   : STRING   : GSDS       : U.S.DiePositionLocation                                                                                           : SET       : LITERAL   : "EDGE"   :    -     : 3          :  4
+
+END_SCREEN   

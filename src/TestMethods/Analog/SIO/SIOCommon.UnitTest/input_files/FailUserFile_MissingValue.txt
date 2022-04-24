@@ -1,0 +1,1 @@
+LOCAL_OPTIONS_SETUP           		REGDEF

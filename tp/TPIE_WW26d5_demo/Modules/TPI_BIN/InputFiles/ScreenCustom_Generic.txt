@@ -1,0 +1,7 @@
+#DEFINE : SETPOINT : DATA_TYPE : VARIABLE : VARIABLE_TYPE : VALUE : CONDITION
+define:   ALL        :  STRING    : DUMMY     : LITERAL       : ""    : *
+define:   ALL        :  INTEGER     : BIN_TOS_HARD        :    LITERAL       :  -1                              :       *
+define:   ALL        :  INTEGER     : BIN_TOS_SOFT        :    LITERAL       :  -1                              :       *
+define:   ALL        :  INTEGER     : BIN_BMFC_DATA       :    LITERAL       :  -1                              :       *
+define:   ALL        :  INTEGER     : BIN_BMFC_FUNCTIONAL :    LITERAL       :  -1                              :       *
+define:   ALL        :  INTEGER     : BIN_BMFC_INTERFACE  :    LITERAL       :  -1                              :       *  

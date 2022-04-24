@@ -1,0 +1,240 @@
+##############################################################################################################################################
+### HDMT Location Set Standard   		  											###   
+### Owner: Quek, Joo Chin                 												###
+### Class Platform: HDMT                  												###
+### Sort Platform: CMT                    												###
+###                                       												###
+### Change Description	                  												###  
+### Revision 1: Standard (3/23/2016)	  												### 
+### Revision 2: Add in CH_BI_HVM (8/4/2016)	  	  										### 
+### Revision 3: Add in CH_ORM_HVM (10/18/2016)	  											### 
+### 		  : Add in CH_ORM_RV 		  	  	    									###
+### 	      : Add in CH_BI_RV 	        											###
+### 		  :	Add in QH_SQA_HVM, QH_SQA_RV   											###
+###			  :	Add in CC_EXT1_HVM, CC_EXT1_RV 										###
+### Revision 4: Add in CC_CSO_HVM, CC_CSO_RV (1/11/2017)										### 
+### Revision 5: Enabling SDX location (5/31/2017)											### 
+### Revision 6: Pairing with which socket file (8/3/2017)										### 
+### Revision 7: Add engineering fusing location 9993 (10/24/2017)									### 
+### 	      : Replace 129844 with 129869 as SDS Corr Location (11/16/2017)								### 
+### Revision 8: Add HOP Wafer Sort location 7180 (3/6/2018)										###
+### 	      : Remove FUSE_HVM from ALL_CLASS_HVM (3/6/2018)										### 
+### 	      : Remove FUSE_ENG from ALL_CLASS_ENG (3/6/2018)										###
+### 	      : Add ALL_HOP_HVM and ALL_HOP (3/6/2018)						    					### 
+### 	      : Add FUSE and ALL_HOP into ALL (3/6/2018)										### 	
+### Revision 9: Add HOP Wafer Sort location 7609/7610/7611 into ALL_HOP(3/29/2018)	 						###			
+###	          : Add HOP Wafer Sort location 7609/7610/7611 ALL_HOP_ENG (3/29/2018)      						###
+###	          : Add ALL_HOP_HVM into ALL_SORT_HVM (3/29/2018)      									###
+###	          : Add ALL_HOP_ENG into ALL_SORT_ENG (3/29/2018)        								###
+### Revision 10: Add BI stressed test locations 6731-6735 into BI_ST_HVM(6/28/2018)     						###			
+###	           : Add QA Hot Q&R test locations 6156/6159/6169 into QH_HVM(6/28/2018)    						###
+###	           : Add Fused unit class testing locations 6203/6204 into FH_ENG/FC_ENG(6/28/2018)      				###
+### Revision 11: Remove 6089 unused location (7/25/2018)		    	        						###
+### Revision 12: Add in RC Room RV 5165 location (10/23/2018)		    	        						###
+### 	       : Add in ALL_SDS_RV/ALL_SDT_RV location set (10/23/2018)		    	        					###
+### Revision 13: Add 5980 into QH_RV(4/9/2019) 												###	
+###            : Add FH_ENG/FC_ENG into CHOT/CCOLD/ALL_CLASS_ENG/RV/ALL_CLASS_RV (4/9/2019)						###
+### Revision 14: SDM Support (5/13/2020)		    	        									###
+##############################################################################################################################################
+
+
+#########################################################
+#           Class HDMT Testing Location Set             #
+#########################################################
+
+
+#Raw Class HVM Testing#
+RCHOT = 6163,6167
+RCCOLD = 6164
+RCROOM = 6165,6166
+
+#Raw Class Reject Validation Testing#
+RCRVHOT = 5163
+RCRVCOLD = 5164
+RCRVROOM = 5166,5167,5165
+
+#PBIC Class Hot HVM Testing#
+CH_UPS1_HVM = 6262
+CH_UPS2_HVM = 6267
+CH_BI_HVM = 6262,6263
+CH_ORM_HVM = 6269,6270
+CH_HVM = 6262,6263,6264,6265,6266,6267,6268,6269,6270
+
+#PBIC Class Hot Reject Validation Testing#
+CH_UPS1_RV = 5262
+CH_UPS2_RV = 5267
+CH_BI_RV = 5262,5263
+CH_ORM_RV = 5269,5270
+CH_RV = 5262,5263,5264,5265,5266,5267,5268,5269,5270
+
+#PBIC Class Hot Engineering Testing#
+FH_ENG = 6203
+
+#QA Hot HVM Testing#
+QH_SQA_HVM = 6260
+QH_HVM = 6208,6242,6245,6257,6260,6156,6159,6169
+
+#QA Hot Reject Validation Testing#
+QH_SQA_RV = 5260
+QH_RV = 5208,5242,5245,5257,5260,5980
+
+#FC Class Cold HVM Testing#
+CC_EXT1_HVM = 6214
+CC_CSO_HVM = 6215,6216,6217
+CC_HVM = 6212,6213,6214,6215,6216,6217
+
+#FC Class Cold Reject Validation Testing#
+CC_EXT1_RV = 5214
+CC_CSO_RV = 5215,5216,5217
+CC_RV = 5212,5213,5214,5215,5216,5217
+
+#FC Class Cold Engineering Testing#
+FC_ENG = 6204
+
+#QA Cold HVM Testing#
+QC_HVM = 6207,6243,6258
+
+#QA Cold Reject Validation Testing#
+QC_RV = 5207,5243,5254,5258
+
+#QA Room HVM Testing#
+QR_HVM = 6244,6259
+
+#QA Room Reject Validation Testing#
+QR_RV = 5244,5255,5259
+
+#Standalone HDMT Offline HVM Fusing#
+FUSE_HVM = 6197
+
+#Standalone HDMT Offline Engineering Fusing#
+FUSE_ENG = 9993
+
+#Standalone HDMT Burn In HVM Testing#
+BI_HVM = 6632
+
+#ADPM# 
+ADPM = 5207,5208,6207,6208
+
+#DEMIX# 
+DEMIX = 6289,6299
+
+
+##Specialized Location Set##
+BI_ST_HVM = 6731,6732,6733,6734,6735
+
+
+
+#########################################################
+#            Sort CMT Testing Location Set              #
+#########################################################
+
+#Sort Cold HVM Testing#
+SORTCOLDHVM = 6051
+
+#Sort Cold Correlation Testing#
+SORTCOLDCORR = 6029,6140
+
+#Sort Cold QRE Testing#
+SORTCOLDQRE = 6196,6198
+
+#Sort Cold Engineering Testing#
+SORTCOLDENG = 6160,9050,9051
+
+#Sort Hot HVM Testing#
+SORTHOTHVM = 6751
+
+#Sort Hot Correlation Testing#
+SORTHOTCORR = 6739,6740
+
+
+#########################################################
+#            SDS Testing Location Set              #
+#########################################################
+
+ALL_SDS = 132110,132310,132311,132312,132313,132314,132315,132316,132317,132318,132320,132321,129869
+ALL_SDS_HVM = 132110
+ALL_SDS_ENG = 132310,132311,132312,132313,132314,132315,132316,132317,132318,132320,132321,129869
+ALL_SDS_RV = 132310,132311,132312,132313,132314,132315,132316,132317,132318,132320,132321,129869
+
+#########################################################
+#            SDT Testing Location Set              #
+#########################################################
+
+ALL_SDT = 132150,132350,132351,132352,132353,132354,132355,132356,132357,132358,132360,132361,119372
+ALL_SDT_HVM = 132150
+ALL_SDT_ENG = 132350,132351,132352,132353,132354,132355,132356,132357,132358,132360,132361,119372
+ALL_SDT_RV = 132350,132351,132352,132353,132354,132355,132356,132357,132358,132360,132361,119372
+
+#############################################################################################
+#            HDMT on Prober (HOP) Wafer Sort Testing Location Set              #
+#############################################################################################
+ALL_HOP = 7180,7609,7610,7611
+ALL_HOP_HVM = 7180
+ALL_HOP_ENG = 7609,7610,7611
+
+#########################################################
+#            SDM Testing Location Set              #
+#########################################################
+
+ALL_SDM = 119325,132322,132323,132324,132325,132326,132327,132328,132329,132330,132331,132332
+ALL_SDM_HVM = 119325
+ALL_SDM_ENG = 132322,132323,132324,132325,132326,132327,132328,132329,132330,132331,132332
+
+#########################################################
+#      			Combo Section			#
+#########################################################
+
+###################
+#      CLASS	  #
+###################
+
+#By HVM/RV#
+RC_HVM = RCHOT + RCCOLD + RCROOM
+RC_RV = RCRVHOT + RCRVCOLD + RCRVROOM
+
+#By Testing Condition + Temperature#
+CHOT = CH_HVM + BI_HVM + CH_RV + FH_ENG
+QHOT = QH_HVM + QH_RV
+CCOLD = CC_HVM + CC_RV + FC_ENG
+QCOLD = QC_HVM + QC_RV
+QROOM = QR_HVM + QR_RV
+
+#By Testing Condition#
+RC = RC_HVM + RC_RV
+CLASS = CHOT + CCOLD
+QA = QHOT + QCOLD + QROOM
+FUSE = FUSE_HVM + FUSE_ENG
+
+#By Temperature#
+HOT  = RCHOT + RCRVHOT + CHOT + QHOT
+COLD = RCCOLD + RCRVCOLD + CCOLD + QCOLD
+ROOM = RCROOM + RCRVROOM + QROOM + DEMIX
+
+#By Platform#
+ALL_CLASS_HVM = RC_HVM + CH_HVM + BI_HVM + QH_HVM + CC_HVM + QC_HVM + DEMIX + QR_HVM 
+ALL_CLASS_ENG =  RC_RV + CH_RV + FH_ENG + QH_RV + CC_RV + FC_ENG + QC_RV + QR_RV 
+ALL_CLASS = ALL_CLASS_HVM + ALL_CLASS_ENG
+
+
+#By Reject Validation#
+RV= RC_RV + CH_RV + FH_ENG + QH_RV + CC_RV + FC_ENG + QC_RV + QR_RV
+ALL_CLASS_RV = RC_RV + CH_RV + FH_ENG + CC_RV + FC_ENG
+ALL_QA_RV = QH_RV + QC_RV + QR_RV 
+
+
+
+###################
+#      SORT	      #
+###################
+
+#By Temperature#
+COLDSORT = SORTCOLDHVM + SORTCOLDCORR +  SORTCOLDQRE + SORTCOLDENG
+HOTSORT = SORTHOTHVM + SORTHOTCORR
+
+#By Platform#
+ALL_SORT_HVM =  SORTCOLDHVM + SORTHOTHVM + SORTCOLDCORR + SORTHOTCORR + ALL_SDS_HVM + ALL_HOP_HVM + ALL_SDM_HVM
+ALL_SORT_ENG = SORTCOLDQRE + SORTCOLDENG + ALL_SDS_ENG + ALL_HOP_ENG + ALL_SDM_ENG
+ALL_SORT = ALL_SORT_HVM + ALL_SORT_ENG
+
+ALL = ALL_CLASS + FUSE + ALL_SORT + ALL_SDT + ALL_HOP
+

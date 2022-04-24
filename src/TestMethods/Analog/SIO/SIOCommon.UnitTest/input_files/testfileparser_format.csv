@@ -1,0 +1,8 @@
+# Test comment
+Port,LANE,oa_phy_pmc_phy_pwr_stable___tap_obs_cfg__1
+
+pcie,-,oa_phy_pmc_phy_pwr_stable___tap_obs_cfg__1:0-0:dec:3:0
+pcie,-,overridePort!overrideLane!oa_phy_pmc_phy_pwr_stable___tap_obs_cfg__1:0-0:dec:3:0 # test !
+pcie,-,oa_phy_pmc_phy_pwr_stable___tap_obs_cfg__1 # test name only
+pcie,-,oa_phy_pmc_phy_pwr_stable___tap_obs_cfg__1:0-3:dec:3:5:0 # test range
+

@@ -1,0 +1,11 @@
+Version 1.0;
+
+UserVars CallbacksVars
+{
+	String SampleString = "SomeValue";
+	Integer SampleInteger = -999;
+	Double SampleDouble = -999;
+	String NewSampleString = "-999";
+	Array<Boolean> SampleBooleanArray = [ true, true, false, false ];
+	Array<Boolean> NewSampleBooleanArray = [];
+}

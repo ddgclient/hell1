@@ -1,0 +1,70 @@
+# Module Revision: rbrar - 04/01/21 12:40:28 AM
+
+Version 1.0;
+
+ProgramStyle = Modular;
+
+TestPlan TPI_POWER_SEQ;
+
+
+
+
+Import OASIS_PowerDown_tt.xml;
+
+
+
+
+#Test Counter Definition
+Counters
+{
+	n88990001_fail_CTRL_X_PWRDWN_K_START_X_X_X_X_PWRUP_STEP_2,
+	n90900007_fail_CTRL_X_PWRDWN_K_START_X_X_X_X_PWRUP_STEP_0,
+	n98010001_fail_FAIL_SYSTEM_SOFTWARE,
+	n99010001_fail_FAIL_DPS_ALARM
+} # End of Test Counter Definition
+
+Test iCPowerDownTest CTRL_X_PWRDWN_K_START_X_X_X_X_PWRUP_STEP_P1
+{
+	alarm_mode = "ENABLED";
+	ignore_alarm = "NONE";
+	level = "BASE::power_up_lvl_nom_lvl";
+}
+
+DUTFlow TPI_POWER_SEQ_START
+{
+	DUTFlowItem CTRL_X_PWRDWN_K_START_X_X_X_X_PWRUP_STEP CTRL_X_PWRDWN_K_START_X_X_X_X_PWRUP_STEP_P1
+	{
+		Result -2
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+			Return -2;
+		}		
+		Result -1
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+			Return -1;
+		}		
+		Result 0
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_POWER_SEQ::n90900007_fail_CTRL_X_PWRDWN_K_START_X_X_X_X_PWRUP_STEP_0;
+			SetBin SoftBins.b90900007_fail_TPI_POWER_SEQ_CTRL_X_PWRDWN_K_START_X_X_X_X_PWRUP_STEP_0;
+			Return 0;
+		}		
+		Result 1
+		{
+			Property PassFail = "Pass";
+			Return 1;
+		}		
+		Result 2
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_POWER_SEQ::n88990001_fail_CTRL_X_PWRDWN_K_START_X_X_X_X_PWRUP_STEP_2;
+			SetBin SoftBins.b88990001_fail_TPI_POWER_SEQ_CTRL_X_PWRDWN_K_START_X_X_X_X_PWRUP_STEP_2;
+			Return 0;
+		}		
+	}	
+	
+}

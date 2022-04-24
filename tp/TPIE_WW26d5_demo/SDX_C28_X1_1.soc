@@ -1,0 +1,196 @@
+Version 1.0;
+
+SocketDef
+{
+	PinDescription PinDefinitions.pin;
+	DUT 1
+	{
+		Resource DPin
+		{
+			XX_CORE_DLVR_VIEWANA_0     04.054;   #xx_core_dlvr_viewana[1:0]
+			XX_CORE_DLVR_VIEWANA_1     04.042;   #xx_core_dlvr_viewana[1:0]
+			XX_CORE_DLVR_VIEWDIG_0     04.034;   #xx_core_dlvr_viewdig[1:0]
+			XX_CORE_DLVR_VIEWDIG_1     04.020;   #xx_core_dlvr_viewdig[1:0]
+			XX_CORE_VIEW_LYA_0     04.002;   #xx_core_view_lya[1:0]
+			XX_CORE_VIEW_LYA_1     04.006;   #xx_core_view_lya[1:0]
+			XX_CORE_VIEWDIGANA_0     04.044;   #xx_core_viewdigana[1:0]
+			XX_CORE_VIEWDIGANA_1     04.050;   #xx_core_viewdigana[1:0]
+			XX_EDM_CORE     04.030;   #xx_edm_core
+			XX_EDM_GND     04.028;   #xx_edm_gnd
+			YY_A0_DEBUG_EN_CORE_S2C     04.014;   #yy_a0_debug_en_core_s2c
+			YY_CDIE_BREAKPOINT_S2C     04.036;   #yy_cdie_breakpoint_s2c
+			YY_CDIE_COLD_BOOT_TRIGGER_S2C     04.026;   #yy_cdie_cold_boot_trigger_s2c
+			YY_CDIE_EPD_ON_S2C     04.040;   #yy_cdie_epd_on_s2c
+			YY_CDIE_TESTMODE_S2C     04.004;   #yy_cdie_testmode_s2c
+			YY_CDIE_VNNAON_POWERGOOD_RST_B_S2C     04.022;   #yy_cdie_vnnaon_powergood_rst_b_s2c
+			YY_CROCLK_S2C_dpin     02.048;   #yy_croclk_s2c
+			YY_MBPIN_PROBE_S2C_0     04.010;   #yy_mbpin_probe_s2c[2:0]
+			YY_MBPIN_PROBE_S2C_1     04.046;   #yy_mbpin_probe_s2c[2:0]
+			YY_MBPIN_PROBE_S2C_2     04.018;   #yy_mbpin_probe_s2c[2:0]
+			YY_MBPOUT_PROBE_C2S     04.038;   #yy_mbpout_probe_c2s
+			YY_RESERVED_IN_S2C [U] 00.000;   #yy_reserved_in_s2c
+			YY_TAP_TCK_S2C_dpin     04.032;   #yy_tap_tck_s2c
+			YY_TAP_TDI_S2C     04.000;   #yy_tap_tdi_s2c
+			YY_TAP_TDO_C2S     04.024;   #yy_tap_tdo_c2s
+			YY_TAP_TMS_S2C     04.008;   #yy_tap_tms_s2c
+			YY_TAP_TRST_B_S2C     04.016;   #yy_tap_trst_b_s2c
+			YY_TEST_CLK_IN_S2C_dpin     04.060;   #yy_test_clk_in_s2c
+			YY_TEST_CLK_OUT_C2S     03.076;   #yy_test_clk_out_c2s | STF_OUT_CLK (domainless)
+			YY_TEST_PORT_IN_S2C_00     01.076;   #yy_test_port_in_s2c[41:0] | STF_IN
+			YY_TEST_PORT_IN_S2C_01     02.096;   #yy_test_port_in_s2c[41:0] | STF_IN
+			YY_TEST_PORT_IN_S2C_02     02.072;   #yy_test_port_in_s2c[41:0] | STF_IN
+			YY_TEST_PORT_IN_S2C_03     02.044;   #yy_test_port_in_s2c[41:0] | STF_IN
+			YY_TEST_PORT_IN_S2C_04     03.072;   #yy_test_port_in_s2c[41:0] | STF_IN
+			YY_TEST_PORT_IN_S2C_05     01.084;   #yy_test_port_in_s2c[41:0] | STF_IN
+			YY_TEST_PORT_IN_S2C_06     02.104;   #yy_test_port_in_s2c[41:0] | STF_IN
+			YY_TEST_PORT_IN_S2C_07     02.068;   #yy_test_port_in_s2c[41:0] | STF_IN
+			YY_TEST_PORT_IN_S2C_08     01.104;   #yy_test_port_in_s2c[41:0] | STF_IN
+			YY_TEST_PORT_IN_S2C_09     03.088;   #yy_test_port_in_s2c[41:0] | STF_IN
+			YY_TEST_PORT_IN_S2C_10     03.000;   #yy_test_port_in_s2c[41:0] | STF_IN
+			YY_TEST_PORT_IN_S2C_11     03.036;   #yy_test_port_in_s2c[41:0] | STF_IN
+			YY_TEST_PORT_IN_S2C_12     03.024;   #yy_test_port_in_s2c[41:0] | STF_IN
+			YY_TEST_PORT_IN_S2C_13     02.052;   #yy_test_port_in_s2c[41:0] | STF_IN
+			YY_TEST_PORT_IN_S2C_14     03.020;   #yy_test_port_in_s2c[41:0] | STF_IN
+			YY_TEST_PORT_IN_S2C_15     03.016;   #yy_test_port_in_s2c[41:0] | STF_IN
+			YY_TEST_PORT_IN_S2C_16     03.096;   #yy_test_port_in_s2c[41:0] | STF_IN
+			YY_TEST_PORT_IN_S2C_17     03.100;   #yy_test_port_in_s2c[41:0] | STF_IN
+			YY_TEST_PORT_IN_S2C_18     02.024;   #yy_test_port_in_s2c[41:0] | STF_IN
+			YY_TEST_PORT_IN_S2C_19     02.080;   #yy_test_port_in_s2c[41:0] | STF_IN
+			YY_TEST_PORT_IN_S2C_20     03.048;   #yy_test_port_in_s2c[41:0] | STF_IN
+			YY_TEST_PORT_IN_S2C_21     02.092;   #yy_test_port_in_s2c[41:0] | STF_IN
+			YY_TEST_PORT_IN_S2C_22     01.048;   #yy_test_port_in_s2c[41:0] | STF_IN
+			YY_TEST_PORT_IN_S2C_23     02.108;   #yy_test_port_in_s2c[41:0] | STF_IN
+			YY_TEST_PORT_IN_S2C_24     01.024;   #yy_test_port_in_s2c[41:0] | STF_IN
+			YY_TEST_PORT_IN_S2C_25     02.000;   #yy_test_port_in_s2c[41:0] | STF_IN
+			YY_TEST_PORT_IN_S2C_26     01.032;   #yy_test_port_in_s2c[41:0] | STF_IN
+			YY_TEST_PORT_IN_S2C_27     03.068;   #yy_test_port_in_s2c[41:0] | STF_IN
+			YY_TEST_PORT_IN_S2C_28     02.028;   #yy_test_port_in_s2c[41:0] | STF_IN
+			YY_TEST_PORT_IN_S2C_29     02.004;   #yy_test_port_in_s2c[41:0] | STF_IN
+			YY_TEST_PORT_IN_S2C_30     02.064;   #yy_test_port_in_s2c[41:0] | STF_IN
+			YY_TEST_PORT_IN_S2C_31     01.064;   #yy_test_port_in_s2c[41:0] | STF_IN
+			YY_TEST_PORT_IN_S2C_32     01.000;   #yy_test_port_in_s2c[41:0] | STF_IN
+			YY_TEST_PORT_IN_S2C_33     02.056;   #yy_test_port_in_s2c[41:0] | STF_IN
+			YY_TEST_PORT_IN_S2C_34     01.056;   #yy_test_port_in_s2c[41:0] | STF_IN
+			YY_TEST_PORT_IN_S2C_35     01.004;   #yy_test_port_in_s2c[41:0] | STF_IN
+			YY_TEST_PORT_IN_S2C_36     01.016;   #yy_test_port_in_s2c[41:0] | STF_IN
+			YY_TEST_PORT_IN_S2C_37     03.004;   #yy_test_port_in_s2c[41:0] | STF_IN
+			YY_TEST_PORT_IN_S2C_38     02.016;   #yy_test_port_in_s2c[41:0] | STF_IN
+			YY_TEST_PORT_IN_S2C_39     01.008;   #yy_test_port_in_s2c[41:0] | STF_IN
+			YY_TEST_PORT_IN_S2C_40     01.052;   #yy_test_port_in_s2c[41:0] | STF_IN
+			YY_TEST_PORT_IN_S2C_41     01.044;   #yy_test_port_in_s2c[41:0] | STF_IN
+			YY_TEST_PORT_OUT_C2S_00     01.096;   #yy_test_port_out_c2s[41:0] | STF_OUT
+			YY_TEST_PORT_OUT_C2S_01     01.080;   #yy_test_port_out_c2s[41:0] | STF_OUT
+			YY_TEST_PORT_OUT_C2S_02     01.068;   #yy_test_port_out_c2s[41:0] | STF_OUT
+			YY_TEST_PORT_OUT_C2S_03     02.060;   #yy_test_port_out_c2s[41:0] | STF_OUT
+			YY_TEST_PORT_OUT_C2S_04     01.072;   #yy_test_port_out_c2s[41:0] | STF_OUT
+			YY_TEST_PORT_OUT_C2S_05     01.092;   #yy_test_port_out_c2s[41:0] | STF_OUT
+			YY_TEST_PORT_OUT_C2S_06     02.036;   #yy_test_port_out_c2s[41:0] | STF_OUT
+			YY_TEST_PORT_OUT_C2S_07     03.060;   #yy_test_port_out_c2s[41:0] | STF_OUT
+			YY_TEST_PORT_OUT_C2S_08     04.056;   #yy_test_port_out_c2s[41:0] | STF_OUT
+			YY_TEST_PORT_OUT_C2S_09     03.084;   #yy_test_port_out_c2s[41:0] | STF_OUT
+			YY_TEST_PORT_OUT_C2S_10     03.080;   #yy_test_port_out_c2s[41:0] | STF_OUT
+			YY_TEST_PORT_OUT_C2S_11     01.100;   #yy_test_port_out_c2s[41:0] | STF_OUT
+			YY_TEST_PORT_OUT_C2S_12     03.044;   #yy_test_port_out_c2s[41:0] | STF_OUT
+			YY_TEST_PORT_OUT_C2S_13     03.008;   #yy_test_port_out_c2s[41:0] | STF_OUT
+			YY_TEST_PORT_OUT_C2S_14     02.076;   #yy_test_port_out_c2s[41:0] | STF_OUT
+			YY_TEST_PORT_OUT_C2S_15     03.108;   #yy_test_port_out_c2s[41:0] | STF_OUT
+			YY_TEST_PORT_OUT_C2S_16     02.008;   #yy_test_port_out_c2s[41:0] | STF_OUT
+			YY_TEST_PORT_OUT_C2S_17     04.064;   #yy_test_port_out_c2s[41:0] | STF_OUT
+			YY_TEST_PORT_OUT_C2S_18     03.056;   #yy_test_port_out_c2s[41:0] | STF_OUT
+			YY_TEST_PORT_OUT_C2S_19     03.040;   #yy_test_port_out_c2s[41:0] | STF_OUT
+			YY_TEST_PORT_OUT_C2S_20     03.052;   #yy_test_port_out_c2s[41:0] | STF_OUT
+			YY_TEST_PORT_OUT_C2S_21     01.088;   #yy_test_port_out_c2s[41:0] | STF_OUT
+			YY_TEST_PORT_OUT_C2S_22     03.012;   #yy_test_port_out_c2s[41:0] | STF_OUT
+			YY_TEST_PORT_OUT_C2S_23     03.104;   #yy_test_port_out_c2s[41:0] | STF_OUT
+			YY_TEST_PORT_OUT_C2S_24     03.064;   #yy_test_port_out_c2s[41:0] | STF_OUT
+			YY_TEST_PORT_OUT_C2S_25     01.040;   #yy_test_port_out_c2s[41:0] | STF_OUT
+			YY_TEST_PORT_OUT_C2S_26     03.028;   #yy_test_port_out_c2s[41:0] | STF_OUT
+			YY_TEST_PORT_OUT_C2S_27     02.084;   #yy_test_port_out_c2s[41:0] | STF_OUT
+			YY_TEST_PORT_OUT_C2S_28     03.032;   #yy_test_port_out_c2s[41:0] | STF_OUT
+			YY_TEST_PORT_OUT_C2S_29     02.032;   #yy_test_port_out_c2s[41:0] | STF_OUT
+			YY_TEST_PORT_OUT_C2S_30     02.020;   #yy_test_port_out_c2s[41:0] | STF_OUT
+			YY_TEST_PORT_OUT_C2S_31     02.012;   #yy_test_port_out_c2s[41:0] | STF_OUT
+			YY_TEST_PORT_OUT_C2S_32     03.092;   #yy_test_port_out_c2s[41:0] | STF_OUT
+			YY_TEST_PORT_OUT_C2S_33     01.108;   #yy_test_port_out_c2s[41:0] | STF_OUT
+			YY_TEST_PORT_OUT_C2S_34     01.036;   #yy_test_port_out_c2s[41:0] | STF_OUT
+			YY_TEST_PORT_OUT_C2S_35     02.040;   #yy_test_port_out_c2s[41:0] | STF_OUT
+			YY_TEST_PORT_OUT_C2S_36     02.088;   #yy_test_port_out_c2s[41:0] | STF_OUT
+			YY_TEST_PORT_OUT_C2S_37     01.060;   #yy_test_port_out_c2s[41:0] | STF_OUT
+			YY_TEST_PORT_OUT_C2S_38     02.100;   #yy_test_port_out_c2s[41:0] | STF_OUT
+			YY_TEST_PORT_OUT_C2S_39     01.028;   #yy_test_port_out_c2s[41:0] | STF_OUT
+			YY_TEST_PORT_OUT_C2S_40     01.020;   #yy_test_port_out_c2s[41:0] | STF_OUT
+			YY_TEST_PORT_OUT_C2S_41     01.012;   #yy_test_port_out_c2s[41:0] | STF_OUT
+		}		
+		Resource EnabledClock
+		{
+			YY_TAP_TCK_S2C_ec     04.032;   #yy_tap_tck_s2c | TCLK_ec
+			YY_TEST_CLK_IN_S2C_ec     04.060;   #yy_test_clk_in_s2c | STF_IN_CLK_ec
+		}		
+		Resource GPIO
+		{
+			IO_RELAY_00     1000.0;   
+			IO_RELAY_01     1000.1;   
+			IO_RELAY_02     1000.2;   
+			IO_RELAY_03     1000.3;   
+			IO_RELAY_04     1000.4;   
+			IO_RELAY_05     1000.5;   
+			IO_RELAY_06     1000.6;   
+			IO_RELAY_07     1000.7;   
+			IO_RELAY_08     1000.8;   
+			IO_RELAY_09     1000.9;   
+			IO_RELAY_10 [U] 00.000;   
+			IO_RELAY_11 [U] 00.000;   
+			IO_RELAY_12 [U] 00.000;   
+			IO_RELAY_13 [U] 00.000;   
+			IO_RELAY_14 [U] 00.000;   
+			IO_RELAY_15 [U] 00.000;   
+			IO_RELAY_16 [U] 00.000;   
+			IO_RELAY_17 [U] 00.000;   
+			IO_RELAY_18 [U] 00.000;   
+			IO_RELAY_19 [U] 00.000;   
+		}		
+		Resource HC
+		{
+			HC1_VCCCORE0     00.[34:35];   
+			HC2_VCCCORE1     00.[30:31];   
+			HC3_VCCATOM0     00.[26:27];   
+			HC3_VCCCORE2 [U] 00.000;   
+			HC4_VCCATOM1     00.[28:29];   
+			HC4_VCCCORE3 [U] 00.000;   
+			HC5_VCCCORE4 [U] 00.000;   
+			HC5_VCCR     00.33;   
+			HC6_VCCCORE5 [U] 00.000;   
+			HC6_VCCIA     00.32;   
+		}		
+		Resource HighPurityClock
+		{
+			YY_CROCLK_S2C_hpc     02.048;   #yy_croclk_s2c | CHIPLET_CLOCK_hpc
+		}		
+		Resource HV
+		{
+			HV1_VNNAON     05.01;   
+		}		
+		Resource LC
+		{
+			LC1_V1P8A     00.25;   
+			LC2_VCCVINFGT0     00.18;   
+			LC3_VCCVINFGT1     00.22;   
+			LC4_VCCFPGM0     00.20;   
+			LC5_VCCFPGM1     00.16;   
+			LC6_EXTBGREF     00.23;   
+			LC7_VCCIASENSECEP     00.24;   
+		}		
+		Resource PowerSum
+		{
+			TDYN_09     1001.300;   
+		}		
+		Resource TDAU
+		{
+			TDIODE_CORE     1001.0;   
+		}		
+		Resource UeiClientPort0
+		{
+			UEISLAVE_100     1001.100;   
+		}		
+	}	
+}

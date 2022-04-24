@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>AtomDecoder PinMap</title>
+</head>
+<body>
+
+    <h1 id="atomdecoder-pinmap">AtomDecoder PinMap</h1>
+<h3 id="rev-0">Rev 0</h3>
+<h2 id="section"></h2>
+<h2 id="contents">Contents</h2>
+<ol>
+<li><a href="#configuration">Configuration</a></li>
+<li><a href="#plist-result-decoder">PList Result Decoder</a></li>
+<li><a href="#plist-masking">PList Masking</a></li>
+</ol>
+<h2 id="configuration">Configuration</h2>
+<p>AtomDecoder PinMap fields.</p>
+<ul>
+<li><u>Name</u> - name of the pinmap. This is the name that will be used for the VMin Templates “PinMap” parameter. It must be unique.</li>
+<li><u>Module</u> - index of atom module. The atom module will be used in generating patmod names.</li>
+<li><u>Pin</u> - name of pin. This should be the name of the pin on which the results are output for the configured Atom module.</li>
+<li><u>Size</u> – number of bits returned by this PinMap. This should match the number of cores in an Atom module and the tracker size associated with this pinmap (the RecoveryTracking parameter of the VMin template).</li>
+<li><u>Content</u> - content type pinmap is configured for. Valid values: 'ARRAY', 'FUNC'</li>
+<li><u>PatternModify</u> - unrequired. This is required by all PinMaps but AtomDecoder does not use the field and be set to null.</li>
+<li><u>PatternModifyUniq</u> - unrequired. This is added to the patmod names if defined.</li>
+<li><u>Reverse</u> - unrequired. This reverses the core number to tracker index mapping. Default: false.</li>
+</ul>
+<h2 id="plist-result-decoder">PList Result Decoder</h2>
+<p>This pinmap determines pass/fail status by decoding the labels associated with failing vectors. It decodes the failing core dependent on which content is configured.</p>
+<ul>
+<li><u>Array</u> - Label must match regex '.<em>CORE\d.</em>'</li>
+<li><u>Func</u> - Label must match regex '.<em>C\d.</em>'<br />
+If the label does not match the regex then AtomDecoder will mark all cores as failing.<br />
+It will ignore the failing vector if it is not for the configured pin.<br />
+It returns a BitArray with the indices associated with the failing cores set to 'true' indicating a failure.</li>
+</ul>
+<h2 id="plist-masking">PList Masking</h2>
+<p>This pinmap will apply a patmod for every bit defined in the tracker, either a 'mask' or a 'restore' patmod. These patmods must be defined in the TP and must be named &quot;atom_&lt;array|func&gt;_m&lt;module&gt;_c&lt;core&gt;_mask&quot; and &quot;atom_&lt;array|func&gt;_m&lt;module&gt;_c&lt;core&gt;_restore&quot;.<br />
+For example, these eight patmods must all be defined for an AtomDecoder configured for array content, module one, and four cores.</p>
+<ul>
+<li>atom_array_m1_c0_mask</li>
+<li>atom_array_m1_c1_mask</li>
+<li>atom_array_m1_c2_mask</li>
+<li>atom_array_m1_c3_mask</li>
+<li>atom_array_m1_c0_restore</li>
+<li>atom_array_m1_c1_restore</li>
+<li>atom_array_m1_c2_restore</li>
+<li>atom_array_m1_c3_restore</li>
+</ul>
+<p>If PatternModifyUniq was defined for the pinmap then it is added to the patmod name. For example, if we added PatternModifyUniq = 'dragon' to our previous AtomDecoder then the patmods would become the following.</p>
+<ul>
+<li>atom_array_dragon_m1_c0_mask</li>
+<li>atom_array_dragon_m1_c1_mask</li>
+<li>atom_array_dragon_m1_c2_mask</li>
+<li>atom_array_dragon_m1_c3_mask</li>
+<li>atom_array_dragon_m1_c0_restore</li>
+<li>atom_array_dragon_m1_c1_restore</li>
+<li>atom_array_dragon_m1_c2_restore</li>
+<li>atom_array_dragon_m1_c3_restore</li>
+<li></li>
+</ul>
+<p>If all cores in the module are failing then it will return the configured pin instead of applying patmods.</p>
+
+
+</body>
+</html>

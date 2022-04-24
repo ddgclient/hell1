@@ -1,0 +1,3 @@
+Pin,IP,Sequence,Subsequence,Field,Size,ExpectedData,PerBit,ItuffToken,PinFinderFormat
+DDR1_DQ50,V0,training,subseq1,val1,6,0,1,Token1,Pin$bit$
+DDR1_DQ50,V0,training,subseq2,val2,3,1,1,Token1,Pin$bit$

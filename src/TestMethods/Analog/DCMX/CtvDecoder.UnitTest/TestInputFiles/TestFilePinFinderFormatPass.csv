@@ -1,0 +1,3 @@
+Pin,IP,Sequence,Subsequence,Field,Size,PerBit,ExpectedData,ItuffToken,PinFinderFormat,ExitPort
+DDR1_DQ50,V0,training,lane_never_pass,C1,54,1,1,<TssidRename>_Token1,{TX|RX}_MDFI_<TssidRename>_<Field>_DQ[$bit$],2
+DDR1_DQ50,V0,training,lane_never_pass,C2,54,1,1,<TssidRename>_Token1,{TX|RX}_MDFI_<TssidRename>_<Field>_DQ[$bit$],2

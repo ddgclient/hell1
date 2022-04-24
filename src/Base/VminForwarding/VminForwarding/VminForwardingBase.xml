@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TestLibraryInterfaces xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:schemaLocation="http://vtsm.intel.com/2009/TestLibraryInterfaces file:///C:/Intel/hdmt/hdmtOS_3.4.4.5_Release/TOSRelease/bin/release/TestLibraryInterfaces.xsd" xmlns="http://vtsm.intel.com/2009/TestLibraryInterfaces">
+  <TestLibrary name="PrimeTestInstance">
+    <TestClass name="VminForwardingBase" MetaData="dll=VminForwardingBase"  />
+    <Imports>
+      <FileName>TestMethodBase.xml</FileName>
+      <FileName>VminForwardingBaseCommonParams.xml</FileName>
+    </Imports>
+    <PublicBases>
+      <BaseName>TestMethodBase</BaseName>
+    </PublicBases>
+    <Parameters>
+      <Parameter name="Mode" descriptions="Instance Mode. Configure is run once in init to setup the global VminForwarding structures. ClearDutData should be run once per dut (after dff download) to initialize/clear per-dut data. DumpTables can be run at any time to write out all internal VminForwarding information.">
+        <Type>
+          <Tester>String</Tester>
+          <TestProgram>String</TestProgram>
+        </Type>
+        <Choices>
+          <Choice>Configure</Choice>
+          <Choice>DumpTables</Choice>
+        </Choices>
+        <Default>Configure</Default>
+        <Optional />
+      </Parameter>
+		<Parameter name="VminSinglePointMode" descriptions="If True, VminTC will only run a single point test.">
+			<Type>
+				<Tester>String</Tester>
+				<TestProgram>String</TestProgram>
+			</Type>
+			<Choices>
+				<Choice>True</Choice>
+				<Choice>False</Choice>
+			</Choices>
+			<Default>False</Default>
+			<Optional />
+		</Parameter>
+		<Parameter name="SearchGuardbandEnable" descriptions="If True, VminTC SearchGuardband parameter will be enabled.">
+			<Type>
+				<Tester>String</Tester>
+				<TestProgram>String</TestProgram>
+			</Type>
+			<Choices>
+				<Choice>True</Choice>
+				<Choice>False</Choice>
+			</Choices>
+			<Default>False</Default>
+			<Optional />
+		</Parameter>
+		<Parameter name="UseDffAsSource" descriptions="If True, DFF values will be downloaded into SharedStorage and used as inputs when calculating the VMin start locations.">
+			<Type>
+				<Tester>String</Tester>
+				<TestProgram>String</TestProgram>
+			</Type>
+			<Choices>
+				<Choice>True</Choice>
+				<Choice>False</Choice>
+			</Choices>
+			<Default>False</Default>
+			<Optional />
+		</Parameter>
+		<Parameter name="UseLimitCheck" descriptions="Usage of limit/check values to check if the input voltage is greater than the limit voltage at StoreVoltages method. If the comparison is true, the store operation for all the corners of the handler is not executed.">
+			<Type>
+				<Tester>String</Tester>
+				<TestProgram>String</TestProgram>
+			</Type>
+			<Choices>
+				<Choice>True</Choice>
+				<Choice>False</Choice>
+			</Choices>
+			<Default>False</Default>
+			<Optional />
+		</Parameter>
+		<Parameter name="UseVoltagesSources" descriptions="Usage of the corner's voltage values as sources at GetSourceVoltages method.">
+			<Type>
+				<Tester>String</Tester>
+				<TestProgram>String</TestProgram>
+			</Type>
+			<Choices>
+				<Choice>True</Choice>
+				<Choice>False</Choice>
+			</Choices>
+			<Default>True</Default>
+			<Optional />
+		</Parameter>
+		<Parameter name="StoreVoltages" descriptions="If the input voltages should be stored at StoreVoltages method.">
+			<Type>
+				<Tester>String</Tester>
+				<TestProgram>String</TestProgram>
+			</Type>
+			<Choices>
+				<Choice>True</Choice>
+				<Choice>False</Choice>
+			</Choices>
+			<Default>True</Default>
+			<Optional />
+		</Parameter>
+
+		<Parameter name="DffMappingFile" descriptions="The configuration file which holds the DFF to GSDS mapping for VminForwarding data.">
+			<Type>
+				<Tester>String</Tester>
+				<TestProgram>String</TestProgram>
+			</Type>
+			<Optional />
+		</Parameter>
+		<Parameter name="DffMappingSet" descriptions="The DFF mapping set within the DffMappingFile to use to map DFF to GSDS for VminForwarding data.">
+			<Type>
+				<Tester>String</Tester>
+				<TestProgram>String</TestProgram>
+			</Type>
+			<Optional />
+		</Parameter>
+		<Parameter name="DffMappingOptype" descriptions="The location to read the DFF data from for VminForwarding (usually PBIC_DAB).">
+			<Type>
+				<Tester>String</Tester>
+				<TestProgram>String</TestProgram>
+			</Type>
+			<Optional />
+		</Parameter>
+
+	</Parameters>
+    <ExitPorts>
+      <ExitPort>
+        <PortNumber>1</PortNumber>
+        <PortType>Pass</PortType>
+        <PortDescriptions>Pass!</PortDescriptions>
+      </ExitPort>
+      <ExitPort>
+        <PortNumber>0</PortNumber>
+        <PortType>Fail</PortType>
+        <PortDescriptions>Fail!</PortDescriptions>
+      </ExitPort>
+      <ExitPort>
+        <PortNumber>-1</PortNumber>
+        <PortType>Error</PortType>
+        <PortDescriptions>PORT FAIL FOR SW ERROR CONDITION</PortDescriptions>
+      </ExitPort>
+      <ExitPort>
+        <PortNumber>-2</PortNumber>
+        <PortType>Fail</PortType>
+        <PortDescriptions>PORT FAIL FOR HW ALARM CONDITION</PortDescriptions>
+      </ExitPort>
+    </ExitPorts>
+  </TestLibrary>
+</TestLibraryInterfaces>

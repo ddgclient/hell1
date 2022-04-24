@@ -1,0 +1,54 @@
+{
+	"HSR_HRY_config": 
+	{
+	  "ReverseCtvCaptureData": false,
+	  "CtvToHryMapping": [
+		{
+		   "Ctv_Data": "0",
+		   "Hry_Data": "0"
+		},
+		{
+		   "Ctv_Data": "1",
+		   "Hry_Data": "1"
+		}
+	  ],
+	  "Criterias": [
+		{
+		   "Hry_Index": "0",
+		   "Pin": "P001",
+		   "Ctv_Index_Range": "2",
+		   "Condition": "P002,0-1,00|P002,3,1",
+		   "Hry_Output_On_Condition_Fail": "8",
+		   "Bypass_Global": "HSR.HRY_Global_1"
+		},
+		{
+		   "Hry_Index": "1",
+		   "Pin": "P001",
+		   "Ctv_Index_Range": "6",
+		   "Condition": "P002,4-5,00|P002,7,1",
+		   "Hry_Output_On_Condition_Fail": "8",
+		   "Bypass_Global": "HSR.HRY_Global_1"
+		}
+	 ],
+	  "Algorithms": [
+		{
+		   "Index": "0",
+		   "Name": "SCAN",
+		   "Pat_Modify_Label": "",
+		   "Ctv_Size": "36"
+		},
+		{
+		   "Index": "1",
+		   "Name": "PMOVI",
+		   "Pat_Modify_Label": "",
+		   "Ctv_Size": "36"
+		},
+		{
+		   "Index": "2",
+		   "Name": "March-C",
+		   "Pat_Modify_Label": "",
+		   "Ctv_Size": "36"
+		}
+	 ]
+	}
+}

@@ -1,0 +1,894 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConfigSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="SGRT1R_CORE0" xsi:noNamespaceSchemaLocation="GEN_VFDM_tt.xsd">
+	<RepairGlobalSection data_source="G.U.S.SGRT1R" NumberOfChars="608" ValidChars="01X"/>
+	<FuseSection>
+		<NoRepairValue name="DefaultState0">
+			<RG default_char="X"/>
+			<VFD default_char="0" valid_char="none"/>
+		</NoRepairValue>
+		<NoRepairValue name="DefaultState1">
+			<RG default_char="X"/>
+			<VFD default_char="1" valid_char="none"/>
+		</NoRepairValue>
+
+		<FuseIP FuseModule="SGRT1R" OptimizeFuseDescriptor="false" Algorithm="EVG_AR_G21V01">
+		<Gen21Ver01PortID bit_length="8" disable="0" fuse_pull_group_num="00000000" iosf_sb_endpoint_num="00001" number_base="hex" reserved1="000" reserved2="00" share="0" type="0">A9</Gen21Ver01PortID>
+
+			<FuseDescriptor MinNumBits="88" Offset="0">
+				<Address number_base="hex" bit_length="16">0446</Address>
+
+				<Repair rid="0" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="0-0" valid_char="none"/>
+					<VFDescriptor bits="0-0" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE0_FUSE_FEC_pkt0_VALID" /> !-->
+				</Repair>
+
+				<Repair rid="1" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="10-1" valid_char="none"/>
+					<VFDescriptor bits="10-1" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE0_FUSE_FEC_pkt0_FAST_ADDRESS" /> !-->
+				</Repair>
+
+				<Repair rid="2" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="14-11" valid_char="none"/>
+					<VFDescriptor bits="14-11" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE0_FUSE_FEC_pkt0_BANK_SEL" /> !-->
+				</Repair>
+
+				<Repair rid="3" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="20-15" valid_char="none"/>
+					<VFDescriptor bits="20-15" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE0_FUSE_FEC_pkt0_ARRAY_INDEX" /> !-->
+				</Repair>
+
+				<Repair rid="VOID0" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="VOID" valid_char="none"/>
+					<VFDescriptor bits="21-21" valid_pos="none"/>
+					<!-- <Name name="unused" /> !-->
+				</Repair>
+
+				<Repair rid="4" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="21-21" valid_char="none"/>
+					<VFDescriptor bits="22-22" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE0_FUSE_FEC_pkt1_VALID" /> !-->
+				</Repair>
+
+				<Repair rid="5" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="31-22" valid_char="none"/>
+					<VFDescriptor bits="32-23" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE0_FUSE_FEC_pkt1_FAST_ADDRESS" /> !-->
+				</Repair>
+
+				<Repair rid="6" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="35-32" valid_char="none"/>
+					<VFDescriptor bits="36-33" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE0_FUSE_FEC_pkt1_BANK_SEL" /> !-->
+				</Repair>
+
+				<Repair rid="7" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="41-36" valid_char="none"/>
+					<VFDescriptor bits="42-37" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE0_FUSE_FEC_pkt1_ARRAY_INDEX" /> !-->
+				</Repair>
+
+				<Repair rid="VOID1" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="VOID" valid_char="none"/>
+					<VFDescriptor bits="43-43" valid_pos="none"/>
+					<!-- <Name name="unused" /> !-->
+				</Repair>
+
+				<Repair rid="8" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="42-42" valid_char="none"/>
+					<VFDescriptor bits="44-44" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE0_FUSE_MEC_pkt0_VALID" /> !-->
+				</Repair>
+
+				<Repair rid="9" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="52-43" valid_char="none"/>
+					<VFDescriptor bits="54-45" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE0_FUSE_MEC_pkt0_FAST_ADDRESS" /> !-->
+				</Repair>
+
+				<Repair rid="10" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="56-53" valid_char="none"/>
+					<VFDescriptor bits="58-55" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE0_FUSE_MEC_pkt0_BANK_SEL" /> !-->
+				</Repair>
+
+				<Repair rid="11" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="62-57" valid_char="none"/>
+					<VFDescriptor bits="64-59" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE0_FUSE_MEC_pkt0_ARRAY_INDEX" /> !-->
+				</Repair>
+
+				<Repair rid="VOID2" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="VOID" valid_char="none"/>
+					<VFDescriptor bits="65-65" valid_pos="none"/>
+					<!-- <Name name="unused" /> !-->
+				</Repair>
+
+				<Repair rid="12" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="63-63" valid_char="none"/>
+					<VFDescriptor bits="66-66" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE0_FUSE_MEC_pkt1_VALID" /> !-->
+				</Repair>
+
+				<Repair rid="13" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="73-64" valid_char="none"/>
+					<VFDescriptor bits="76-67" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE0_FUSE_MEC_pkt1_FAST_ADDRESS" /> !-->
+				</Repair>
+
+				<Repair rid="14" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="77-74" valid_char="none"/>
+					<VFDescriptor bits="80-77" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE0_FUSE_MEC_pkt1_BANK_SEL" /> !-->
+				</Repair>
+
+				<Repair rid="15" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="83-78" valid_char="none"/>
+					<VFDescriptor bits="86-81" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE0_FUSE_MEC_pkt1_ARRAY_INDEX" /> !-->
+				</Repair>
+
+				<Repair rid="VOID3" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="VOID" valid_char="none"/>
+					<VFDescriptor bits="87-87" valid_pos="none"/>
+					<!-- <Name name="unused" /> !-->
+				</Repair>
+
+			</FuseDescriptor>
+
+			<FuseDescriptor MinNumBits="88" Offset="0">
+				<Address number_base="hex" bit_length="16">0451</Address>
+
+				<Repair rid="16" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="84-84" valid_char="none"/>
+					<VFDescriptor bits="0-0" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE1_FUSE_FEC_pkt0_VALID" /> !-->
+				</Repair>
+
+				<Repair rid="17" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="94-85" valid_char="none"/>
+					<VFDescriptor bits="10-1" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE1_FUSE_FEC_pkt0_FAST_ADDRESS" /> !-->
+				</Repair>
+
+				<Repair rid="18" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="98-95" valid_char="none"/>
+					<VFDescriptor bits="14-11" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE1_FUSE_FEC_pkt0_BANK_SEL" /> !-->
+				</Repair>
+
+				<Repair rid="19" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="104-99" valid_char="none"/>
+					<VFDescriptor bits="20-15" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE1_FUSE_FEC_pkt0_ARRAY_INDEX" /> !-->
+				</Repair>
+
+				<Repair rid="VOID4" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="VOID" valid_char="none"/>
+					<VFDescriptor bits="21-21" valid_pos="none"/>
+					<!-- <Name name="unused" /> !-->
+				</Repair>
+
+				<Repair rid="20" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="105-105" valid_char="none"/>
+					<VFDescriptor bits="22-22" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE1_FUSE_FEC_pkt1_VALID" /> !-->
+				</Repair>
+
+				<Repair rid="21" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="115-106" valid_char="none"/>
+					<VFDescriptor bits="32-23" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE1_FUSE_FEC_pkt1_FAST_ADDRESS" /> !-->
+				</Repair>
+
+				<Repair rid="22" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="119-116" valid_char="none"/>
+					<VFDescriptor bits="36-33" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE1_FUSE_FEC_pkt1_BANK_SEL" /> !-->
+				</Repair>
+
+				<Repair rid="23" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="125-120" valid_char="none"/>
+					<VFDescriptor bits="42-37" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE1_FUSE_FEC_pkt1_ARRAY_INDEX" /> !-->
+				</Repair>
+
+				<Repair rid="VOID5" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="VOID" valid_char="none"/>
+					<VFDescriptor bits="43-43" valid_pos="none"/>
+					<!-- <Name name="unused" /> !-->
+				</Repair>
+
+				<Repair rid="24" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="126-126" valid_char="none"/>
+					<VFDescriptor bits="44-44" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE1_FUSE_MEC_pkt0_VALID" /> !-->
+				</Repair>
+
+				<Repair rid="25" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="136-127" valid_char="none"/>
+					<VFDescriptor bits="54-45" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE1_FUSE_MEC_pkt0_FAST_ADDRESS" /> !-->
+				</Repair>
+
+				<Repair rid="26" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="140-137" valid_char="none"/>
+					<VFDescriptor bits="58-55" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE1_FUSE_MEC_pkt0_BANK_SEL" /> !-->
+				</Repair>
+
+				<Repair rid="27" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="146-141" valid_char="none"/>
+					<VFDescriptor bits="64-59" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE1_FUSE_MEC_pkt0_ARRAY_INDEX" /> !-->
+				</Repair>
+
+				<Repair rid="VOID6" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="VOID" valid_char="none"/>
+					<VFDescriptor bits="65-65" valid_pos="none"/>
+					<!-- <Name name="unused" /> !-->
+				</Repair>
+
+				<Repair rid="28" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="147-147" valid_char="none"/>
+					<VFDescriptor bits="66-66" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE1_FUSE_MEC_pkt1_VALID" /> !-->
+				</Repair>
+
+				<Repair rid="29" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="157-148" valid_char="none"/>
+					<VFDescriptor bits="76-67" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE1_FUSE_MEC_pkt1_FAST_ADDRESS" /> !-->
+				</Repair>
+
+				<Repair rid="30" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="161-158" valid_char="none"/>
+					<VFDescriptor bits="80-77" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE1_FUSE_MEC_pkt1_BANK_SEL" /> !-->
+				</Repair>
+
+				<Repair rid="31" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="167-162" valid_char="none"/>
+					<VFDescriptor bits="86-81" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE1_FUSE_MEC_pkt1_ARRAY_INDEX" /> !-->
+				</Repair>
+
+				<Repair rid="VOID7" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="VOID" valid_char="none"/>
+					<VFDescriptor bits="87-87" valid_pos="none"/>
+					<!-- <Name name="unused" /> !-->
+				</Repair>
+
+			</FuseDescriptor>
+
+			<FuseDescriptor MinNumBits="88" Offset="0">
+				<Address number_base="hex" bit_length="16">045c</Address>
+
+				<Repair rid="32" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="168-168" valid_char="none"/>
+					<VFDescriptor bits="0-0" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE2_FUSE_FEC_pkt0_VALID" /> !-->
+				</Repair>
+
+				<Repair rid="33" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="178-169" valid_char="none"/>
+					<VFDescriptor bits="10-1" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE2_FUSE_FEC_pkt0_FAST_ADDRESS" /> !-->
+				</Repair>
+
+				<Repair rid="34" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="182-179" valid_char="none"/>
+					<VFDescriptor bits="14-11" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE2_FUSE_FEC_pkt0_BANK_SEL" /> !-->
+				</Repair>
+
+				<Repair rid="35" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="188-183" valid_char="none"/>
+					<VFDescriptor bits="20-15" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE2_FUSE_FEC_pkt0_ARRAY_INDEX" /> !-->
+				</Repair>
+
+				<Repair rid="VOID8" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="VOID" valid_char="none"/>
+					<VFDescriptor bits="21-21" valid_pos="none"/>
+					<!-- <Name name="unused" /> !-->
+				</Repair>
+
+				<Repair rid="36" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="189-189" valid_char="none"/>
+					<VFDescriptor bits="22-22" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE2_FUSE_FEC_pkt1_VALID" /> !-->
+				</Repair>
+
+				<Repair rid="37" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="199-190" valid_char="none"/>
+					<VFDescriptor bits="32-23" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE2_FUSE_FEC_pkt1_FAST_ADDRESS" /> !-->
+				</Repair>
+
+				<Repair rid="38" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="203-200" valid_char="none"/>
+					<VFDescriptor bits="36-33" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE2_FUSE_FEC_pkt1_BANK_SEL" /> !-->
+				</Repair>
+
+				<Repair rid="39" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="209-204" valid_char="none"/>
+					<VFDescriptor bits="42-37" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE2_FUSE_FEC_pkt1_ARRAY_INDEX" /> !-->
+				</Repair>
+
+				<Repair rid="VOID9" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="VOID" valid_char="none"/>
+					<VFDescriptor bits="43-43" valid_pos="none"/>
+					<!-- <Name name="unused" /> !-->
+				</Repair>
+
+				<Repair rid="40" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="210-210" valid_char="none"/>
+					<VFDescriptor bits="44-44" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE2_FUSE_MEC_pkt0_VALID" /> !-->
+				</Repair>
+
+				<Repair rid="41" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="220-211" valid_char="none"/>
+					<VFDescriptor bits="54-45" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE2_FUSE_MEC_pkt0_FAST_ADDRESS" /> !-->
+				</Repair>
+
+				<Repair rid="42" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="224-221" valid_char="none"/>
+					<VFDescriptor bits="58-55" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE2_FUSE_MEC_pkt0_BANK_SEL" /> !-->
+				</Repair>
+
+				<Repair rid="43" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="230-225" valid_char="none"/>
+					<VFDescriptor bits="64-59" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE2_FUSE_MEC_pkt0_ARRAY_INDEX" /> !-->
+				</Repair>
+
+				<Repair rid="VOID10" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="VOID" valid_char="none"/>
+					<VFDescriptor bits="65-65" valid_pos="none"/>
+					<!-- <Name name="unused" /> !-->
+				</Repair>
+
+				<Repair rid="44" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="231-231" valid_char="none"/>
+					<VFDescriptor bits="66-66" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE2_FUSE_MEC_pkt1_VALID" /> !-->
+				</Repair>
+
+				<Repair rid="45" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="241-232" valid_char="none"/>
+					<VFDescriptor bits="76-67" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE2_FUSE_MEC_pkt1_FAST_ADDRESS" /> !-->
+				</Repair>
+
+				<Repair rid="46" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="245-242" valid_char="none"/>
+					<VFDescriptor bits="80-77" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE2_FUSE_MEC_pkt1_BANK_SEL" /> !-->
+				</Repair>
+
+				<Repair rid="47" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="251-246" valid_char="none"/>
+					<VFDescriptor bits="86-81" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE2_FUSE_MEC_pkt1_ARRAY_INDEX" /> !-->
+				</Repair>
+
+				<Repair rid="VOID11" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="VOID" valid_char="none"/>
+					<VFDescriptor bits="87-87" valid_pos="none"/>
+					<!-- <Name name="unused" /> !-->
+				</Repair>
+
+			</FuseDescriptor>
+
+			<FuseDescriptor MinNumBits="88" Offset="0">
+				<Address number_base="hex" bit_length="16">0467</Address>
+
+				<Repair rid="48" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="252-252" valid_char="none"/>
+					<VFDescriptor bits="0-0" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE3_FUSE_FEC_pkt0_VALID" /> !-->
+				</Repair>
+
+				<Repair rid="49" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="262-253" valid_char="none"/>
+					<VFDescriptor bits="10-1" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE3_FUSE_FEC_pkt0_FAST_ADDRESS" /> !-->
+				</Repair>
+
+				<Repair rid="50" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="266-263" valid_char="none"/>
+					<VFDescriptor bits="14-11" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE3_FUSE_FEC_pkt0_BANK_SEL" /> !-->
+				</Repair>
+
+				<Repair rid="51" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="272-267" valid_char="none"/>
+					<VFDescriptor bits="20-15" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE3_FUSE_FEC_pkt0_ARRAY_INDEX" /> !-->
+				</Repair>
+
+				<Repair rid="VOID12" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="VOID" valid_char="none"/>
+					<VFDescriptor bits="21-21" valid_pos="none"/>
+					<!-- <Name name="unused" /> !-->
+				</Repair>
+
+				<Repair rid="52" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="273-273" valid_char="none"/>
+					<VFDescriptor bits="22-22" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE3_FUSE_FEC_pkt1_VALID" /> !-->
+				</Repair>
+
+				<Repair rid="53" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="283-274" valid_char="none"/>
+					<VFDescriptor bits="32-23" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE3_FUSE_FEC_pkt1_FAST_ADDRESS" /> !-->
+				</Repair>
+
+				<Repair rid="54" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="287-284" valid_char="none"/>
+					<VFDescriptor bits="36-33" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE3_FUSE_FEC_pkt1_BANK_SEL" /> !-->
+				</Repair>
+
+				<Repair rid="55" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="293-288" valid_char="none"/>
+					<VFDescriptor bits="42-37" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE3_FUSE_FEC_pkt1_ARRAY_INDEX" /> !-->
+				</Repair>
+
+				<Repair rid="VOID13" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="VOID" valid_char="none"/>
+					<VFDescriptor bits="43-43" valid_pos="none"/>
+					<!-- <Name name="unused" /> !-->
+				</Repair>
+
+				<Repair rid="56" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="294-294" valid_char="none"/>
+					<VFDescriptor bits="44-44" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE3_FUSE_MEC_pkt0_VALID" /> !-->
+				</Repair>
+
+				<Repair rid="57" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="304-295" valid_char="none"/>
+					<VFDescriptor bits="54-45" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE3_FUSE_MEC_pkt0_FAST_ADDRESS" /> !-->
+				</Repair>
+
+				<Repair rid="58" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="308-305" valid_char="none"/>
+					<VFDescriptor bits="58-55" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE3_FUSE_MEC_pkt0_BANK_SEL" /> !-->
+				</Repair>
+
+				<Repair rid="59" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="314-309" valid_char="none"/>
+					<VFDescriptor bits="64-59" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE3_FUSE_MEC_pkt0_ARRAY_INDEX" /> !-->
+				</Repair>
+
+				<Repair rid="VOID14" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="VOID" valid_char="none"/>
+					<VFDescriptor bits="65-65" valid_pos="none"/>
+					<!-- <Name name="unused" /> !-->
+				</Repair>
+
+				<Repair rid="60" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="315-315" valid_char="none"/>
+					<VFDescriptor bits="66-66" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE3_FUSE_MEC_pkt1_VALID" /> !-->
+				</Repair>
+
+				<Repair rid="61" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="325-316" valid_char="none"/>
+					<VFDescriptor bits="76-67" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE3_FUSE_MEC_pkt1_FAST_ADDRESS" /> !-->
+				</Repair>
+
+				<Repair rid="62" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="329-326" valid_char="none"/>
+					<VFDescriptor bits="80-77" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE3_FUSE_MEC_pkt1_BANK_SEL" /> !-->
+				</Repair>
+
+				<Repair rid="63" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="335-330" valid_char="none"/>
+					<VFDescriptor bits="86-81" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_CORE3_FUSE_MEC_pkt1_ARRAY_INDEX" /> !-->
+				</Repair>
+
+				<Repair rid="VOID15" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="VOID" valid_char="none"/>
+					<VFDescriptor bits="87-87" valid_pos="none"/>
+					<!-- <Name name="unused" /> !-->
+				</Repair>
+
+			</FuseDescriptor>
+
+			<FuseDescriptor MinNumBits="488" Offset="0" MinNumBitsBeyondMaxProvidedDescriptorSize="488">
+				<Address number_base="hex" bit_length="16">0472</Address>
+
+				<Repair rid="64" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="336-336" valid_char="none"/>
+					<VFDescriptor bits="0-0" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_BUS_FUSE_ROW0_VALID" /> !-->
+				</Repair>
+
+				<Repair rid="65" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="346-337" valid_char="none"/>
+					<VFDescriptor bits="10-1" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_BUS_FUSE_ROW0_FAST_ADDRESS" /> !-->
+				</Repair>
+
+				<Repair rid="66" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="350-347" valid_char="none"/>
+					<VFDescriptor bits="14-11" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_BUS_FUSE_ROW0_BANK_SEL" /> !-->
+				</Repair>
+
+				<Repair rid="67" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="356-351" valid_char="none"/>
+					<VFDescriptor bits="20-15" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_BUS_FUSE_ROW0_ARRAY_INDEX" /> !-->
+				</Repair>
+
+				<Repair rid="VOID16" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="VOID" valid_char="none"/>
+					<VFDescriptor bits="21-21" valid_pos="none"/>
+					<!-- <Name name="unused" /> !-->
+				</Repair>
+
+				<Repair rid="68" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="357-357" valid_char="none"/>
+					<VFDescriptor bits="22-22" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_BUS_FUSE_ROW1_VALID" /> !-->
+				</Repair>
+
+				<Repair rid="69" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="367-358" valid_char="none"/>
+					<VFDescriptor bits="32-23" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_BUS_FUSE_ROW1_FAST_ADDRESS" /> !-->
+				</Repair>
+
+				<Repair rid="70" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="371-368" valid_char="none"/>
+					<VFDescriptor bits="36-33" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_BUS_FUSE_ROW1_BANK_SEL" /> !-->
+				</Repair>
+
+				<Repair rid="71" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="377-372" valid_char="none"/>
+					<VFDescriptor bits="42-37" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_RFREDN_ROW_BUS_FUSE_ROW1_ARRAY_INDEX" /> !-->
+				</Repair>
+
+				<Repair rid="VOID17" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="VOID" valid_char="none"/>
+					<VFDescriptor bits="43-43" valid_pos="none"/>
+					<!-- <Name name="unused" /> !-->
+				</Repair>
+
+				<Repair rid="72" NoRepairValue="DefaultState1">
+					<RepairGlobal bits="384-378" valid_char="none"/>
+					<VFDescriptor bits="50-44" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_L2_DATREDN_COL_FUSE_QWORD0" /> !-->
+				</Repair>
+
+				<Repair rid="73" NoRepairValue="DefaultState1">
+					<RepairGlobal bits="391-385" valid_char="none"/>
+					<VFDescriptor bits="57-51" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_L2_DATREDN_COL_FUSE_QWORD1" /> !-->
+				</Repair>
+
+				<Repair rid="74" NoRepairValue="DefaultState1">
+					<RepairGlobal bits="398-392" valid_char="none"/>
+					<VFDescriptor bits="64-58" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_L2_DATREDN_COL_FUSE_QWORD2" /> !-->
+				</Repair>
+
+				<Repair rid="75" NoRepairValue="DefaultState1">
+					<RepairGlobal bits="405-399" valid_char="none"/>
+					<VFDescriptor bits="71-65" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_L2_DATREDN_COL_FUSE_QWORD3" /> !-->
+				</Repair>
+
+				<Repair rid="76" NoRepairValue="DefaultState1">
+					<RepairGlobal bits="412-406" valid_char="none"/>
+					<VFDescriptor bits="78-72" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_L2_DATREDN_COL_FUSE_QWORD4" /> !-->
+				</Repair>
+
+				<Repair rid="77" NoRepairValue="DefaultState1">
+					<RepairGlobal bits="419-413" valid_char="none"/>
+					<VFDescriptor bits="85-79" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_L2_DATREDN_COL_FUSE_QWORD5" /> !-->
+				</Repair>
+
+				<Repair rid="78" NoRepairValue="DefaultState1">
+					<RepairGlobal bits="426-420" valid_char="none"/>
+					<VFDescriptor bits="92-86" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_L2_DATREDN_COL_FUSE_QWORD6" /> !-->
+				</Repair>
+
+				<Repair rid="79" NoRepairValue="DefaultState1">
+					<RepairGlobal bits="433-427" valid_char="none"/>
+					<VFDescriptor bits="99-93" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_L2_DATREDN_COL_FUSE_QWORD7" /> !-->
+				</Repair>
+
+				<Repair rid="VOID18" NoRepairValue="DefaultState1">
+					<RepairGlobal bits="VOID" valid_char="none"/>
+					<VFDescriptor bits="155-100" valid_pos="none"/>
+					<!-- <Name name="unused" /> !-->
+				</Repair>
+
+				<Repair rid="80" NoRepairValue="DefaultState1">
+					<RepairGlobal bits="439-434" valid_char="none"/>
+					<VFDescriptor bits="161-156" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_L2_TAGSTATEREDN_COL_FUSE_BANK0" /> !-->
+				</Repair>
+
+				<Repair rid="81" NoRepairValue="DefaultState1">
+					<RepairGlobal bits="445-440" valid_char="none"/>
+					<VFDescriptor bits="167-162" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_L2_TAGSTATEREDN_COL_FUSE_BANK1" /> !-->
+				</Repair>
+
+				<Repair rid="VOID19" NoRepairValue="DefaultState1">
+					<RepairGlobal bits="VOID" valid_char="none"/>
+					<VFDescriptor bits="179-168" valid_pos="none"/>
+					<!-- <Name name="unused" /> !-->
+				</Repair>
+
+				<Repair rid="82" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="453-446" valid_char="none"/>
+					<VFDescriptor bits="187-180" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_L2_DATREDN_ROW_FUSE_ROW0" /> !-->
+				</Repair>
+
+				<Repair rid="83" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="461-454" valid_char="none"/>
+					<VFDescriptor bits="195-188" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_L2_DATREDN_ROW_FUSE_ROW1" /> !-->
+				</Repair>
+
+				<Repair rid="84" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="469-462" valid_char="none"/>
+					<VFDescriptor bits="203-196" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_L2_DATREDN_ROW_FUSE_ROW2" /> !-->
+				</Repair>
+
+				<Repair rid="85" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="477-470" valid_char="none"/>
+					<VFDescriptor bits="211-204" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_L2_DATREDN_ROW_FUSE_ROW3" /> !-->
+				</Repair>
+
+				<Repair rid="86" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="485-478" valid_char="none"/>
+					<VFDescriptor bits="219-212" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_L2_DATREDN_ROW_FUSE_ROW4" /> !-->
+				</Repair>
+
+				<Repair rid="87" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="493-486" valid_char="none"/>
+					<VFDescriptor bits="227-220" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_L2_DATREDN_ROW_FUSE_ROW5" /> !-->
+				</Repair>
+
+				<Repair rid="88" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="501-494" valid_char="none"/>
+					<VFDescriptor bits="235-228" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_L2_DATREDN_ROW_FUSE_ROW6" /> !-->
+				</Repair>
+
+				<Repair rid="89" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="509-502" valid_char="none"/>
+					<VFDescriptor bits="243-236" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_L2_DATREDN_ROW_FUSE_ROW7" /> !-->
+				</Repair>
+
+				<Repair rid="90" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="517-510" valid_char="none"/>
+					<VFDescriptor bits="251-244" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_L2_DATREDN_ROW_FUSE_ROW8" /> !-->
+				</Repair>
+
+				<Repair rid="91" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="525-518" valid_char="none"/>
+					<VFDescriptor bits="259-252" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_L2_DATREDN_ROW_FUSE_ROW9" /> !-->
+				</Repair>
+
+				<Repair rid="92" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="533-526" valid_char="none"/>
+					<VFDescriptor bits="267-260" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_L2_DATREDN_ROW_FUSE_ROW10" /> !-->
+				</Repair>
+
+				<Repair rid="93" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="541-534" valid_char="none"/>
+					<VFDescriptor bits="275-268" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_L2_DATREDN_ROW_FUSE_ROW11" /> !-->
+				</Repair>
+
+				<Repair rid="94" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="549-542" valid_char="none"/>
+					<VFDescriptor bits="283-276" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_L2_DATREDN_ROW_FUSE_ROW12" /> !-->
+				</Repair>
+
+				<Repair rid="95" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="557-550" valid_char="none"/>
+					<VFDescriptor bits="291-284" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_L2_DATREDN_ROW_FUSE_ROW13" /> !-->
+				</Repair>
+
+				<Repair rid="96" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="565-558" valid_char="none"/>
+					<VFDescriptor bits="299-292" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_L2_DATREDN_ROW_FUSE_ROW14" /> !-->
+				</Repair>
+
+				<Repair rid="97" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="573-566" valid_char="none"/>
+					<VFDescriptor bits="307-300" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_L2_DATREDN_ROW_FUSE_ROW15" /> !-->
+				</Repair>
+
+				<Repair rid="VOID20" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="VOID" valid_char="none"/>
+					<VFDescriptor bits="435-308" valid_pos="none"/>
+					<!-- <Name name="unused" /> !-->
+				</Repair>
+
+				<Repair rid="98" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="574-574" valid_char="none"/>
+					<VFDescriptor bits="436-436" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_L2_DATREDN_ROW_FUSE_ROW0_EN" /> !-->
+				</Repair>
+
+				<Repair rid="99" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="575-575" valid_char="none"/>
+					<VFDescriptor bits="437-437" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_L2_DATREDN_ROW_FUSE_ROW1_EN" /> !-->
+				</Repair>
+
+				<Repair rid="100" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="576-576" valid_char="none"/>
+					<VFDescriptor bits="438-438" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_L2_DATREDN_ROW_FUSE_ROW2_EN" /> !-->
+				</Repair>
+
+				<Repair rid="101" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="577-577" valid_char="none"/>
+					<VFDescriptor bits="439-439" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_L2_DATREDN_ROW_FUSE_ROW3_EN" /> !-->
+				</Repair>
+
+				<Repair rid="102" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="578-578" valid_char="none"/>
+					<VFDescriptor bits="440-440" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_L2_DATREDN_ROW_FUSE_ROW4_EN" /> !-->
+				</Repair>
+
+				<Repair rid="103" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="579-579" valid_char="none"/>
+					<VFDescriptor bits="441-441" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_L2_DATREDN_ROW_FUSE_ROW5_EN" /> !-->
+				</Repair>
+
+				<Repair rid="104" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="580-580" valid_char="none"/>
+					<VFDescriptor bits="442-442" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_L2_DATREDN_ROW_FUSE_ROW6_EN" /> !-->
+				</Repair>
+
+				<Repair rid="105" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="581-581" valid_char="none"/>
+					<VFDescriptor bits="443-443" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_L2_DATREDN_ROW_FUSE_ROW7_EN" /> !-->
+				</Repair>
+
+				<Repair rid="106" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="582-582" valid_char="none"/>
+					<VFDescriptor bits="444-444" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_L2_DATREDN_ROW_FUSE_ROW8_EN" /> !-->
+				</Repair>
+
+				<Repair rid="107" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="583-583" valid_char="none"/>
+					<VFDescriptor bits="445-445" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_L2_DATREDN_ROW_FUSE_ROW9_EN" /> !-->
+				</Repair>
+
+				<Repair rid="108" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="584-584" valid_char="none"/>
+					<VFDescriptor bits="446-446" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_L2_DATREDN_ROW_FUSE_ROW10_EN" /> !-->
+				</Repair>
+
+
+				<Repair rid="109" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="585-585" valid_char="none"/>
+					<VFDescriptor bits="447-447" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_L2_DATREDN_ROW_FUSE_ROW11_EN" /> !-->
+				</Repair>
+
+				<Repair rid="110" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="586-586" valid_char="none"/>
+					<VFDescriptor bits="448-448" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_L2_DATREDN_ROW_FUSE_ROW12_EN" /> !-->
+				</Repair>
+
+				<Repair rid="111" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="587-587" valid_char="none"/>
+					<VFDescriptor bits="449-449" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_L2_DATREDN_ROW_FUSE_ROW13_EN" /> !-->
+				</Repair>
+
+				<Repair rid="112" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="588-588" valid_char="none"/>
+					<VFDescriptor bits="450-450" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_L2_DATREDN_ROW_FUSE_ROW14_EN" /> !-->
+				</Repair>
+
+				<Repair rid="113" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="589-589" valid_char="none"/>
+					<VFDescriptor bits="451-451" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_L2_DATREDN_ROW_FUSE_ROW15_EN" /> !-->
+				</Repair>
+
+				<Repair rid="VOID21" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="VOID" valid_char="none"/>
+					<VFDescriptor bits="467-452" valid_pos="none"/>
+					<!-- <Name name="unused" /> !-->
+				</Repair>
+
+				<Repair rid="114" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="597-590" valid_char="none"/>
+					<VFDescriptor bits="475-468" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_L2_C6REDN_ROW_FUSE_ROW0" /> !-->
+				</Repair>
+
+				<Repair rid="115" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="605-598" valid_char="none"/>
+					<VFDescriptor bits="483-476" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_L2_C6REDN_ROW_FUSE_ROW1" /> !-->
+				</Repair>
+
+				<Repair rid="116" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="606-606" valid_char="none"/>
+					<VFDescriptor bits="484-484" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_L2_C6REDN_ROW_FUSE_ROW0_EN" /> !-->
+				</Repair>
+
+				<Repair rid="117" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="607-607" valid_char="none"/>
+					<VFDescriptor bits="485-485" valid_pos="none"/>
+					<!-- <Name name="cpu9_fuse_FB_PMA_L2_C6REDN_ROW_FUSE_ROW1_EN" /> !-->
+				</Repair>
+
+				<Repair rid="VOID22" NoRepairValue="DefaultState0">
+					<RepairGlobal bits="VOID" valid_char="none"/>
+					<VFDescriptor bits="487-486" valid_pos="none"/>
+					<!-- <Name name="unused" /> !-->
+				</Repair>
+
+			</FuseDescriptor>
+		</FuseIP>
+	</FuseSection>
+
+	<DFFSection data_source="G.U.S.DFFCHECK_SGRT1R">
+		<RID number_base="hex" bit_length="16">0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40|41|42|43|44|45|46|47|48|49|50|51|52|53|54|55|56|57|58|59|60|61|62|63|64|65|66|67|68|69|70|71|72|73|74|75|76|77|78|79|80|81|82|83|84|85|86|87|88|89|90|91|92|93|94|95|96|97|98|99|100|101|102|103|104|105|106|107|108|109|110|111|112|113|114|115|116|117</RID>
+	</DFFSection>
+</ConfigSet>

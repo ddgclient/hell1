@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>DDG Prime AnalogFuncCaptureCtv</title>
+</head>
+<body>
+
+    <h1 id="ddg-prime-analogfunccapturectv">DDG Prime AnalogFuncCaptureCtv</h1>
+<h3 id="rev-0">Rev 0</h3>
+<h2 id="introduction">Introduction</h2>
+<p>This TestMethod is an <strong>PrimeFuncCaptureCtvTestMethod</strong> Extention that post processes the CTVs based on the input csv specified in <strong>ConfigurationFile</strong> parameter.</p>
+<h2 id="methodology">Methodology</h2>
+<ol>
+<li>Setup the <strong>ConfigurationFile</strong> as csv.  More info on the csv file below.</li>
+<li>Captured CTV bits are split based on the input csv <strong>Field</strong> parameter and coverted to integer.</li>
+<li>The split CTVs can be printed in ituff.</li>
+<li>The split CTVs can be stored in the SharedStorage as integer.</li>
+<li>Math operations and kills can be performed on the split CTVs.</li>
+</ol>
+<h2 id="errors-and-exceptions">Errors and Exceptions</h2>
+<ul>
+<li>Throws Exception
+<ul>
+<li>if the number of CTVs bits  don't match the <strong>Size</strong> parameter in the input csv.</li>
+<li>if the input csv column name are not supported.</li>
+<li>if both <strong>ExpectedData</strong> parameter and <strong>Limit</strong> parameters are defined</li>
+<li>if <strong>FailPort</strong> parameter is blank in the input csv</li>
+<li>if <strong>FailPort</strong> parameter is greater than <strong>6</strong>  in the input csv</li>
+</ul>
+</li>
+</ul>
+<h2 id="parameters">Parameters</h2>
+<h3 id="template-parameters">Template parameters</h3>
+<h4 id="configurationfile">ConfigurationFile</h4>
+<ul>
+<li>input csv based on which the CTVs are decoded.</li>
+<li>More info</li>
+</ul>
+<h4 id="ctvcapturepins">CtvCapturePins</h4>
+<ul>
+<li>Comma-separated list of pins to capture CTV data.</li>
+</ul>
+<h4 id="kill">Kill</h4>
+<ul>
+<li>Enables/disables the kills provided in the input csv</li>
+</ul>
+<h4 id="csvdelimiter-optional">CsvDelimiter (Optional)</h4>
+<ul>
+<li>Default delimiter is <strong>&quot;,&quot;</strong></li>
+<li>Used to define the separator used in input csv.</li>
+<li><span style='color:red'> Needs to be used while including math equation like max(3,4)  in the <strong>Equation</strong> parameter in the input csv else the equation would be considered as extra column in the input csv.</span></li>
+</ul>
+<h4 id="pinrename">PinRename</h4>
+<ul>
+<li>renames in the CtvCapturePins within the input csv for ituff/console printing and SharedStorage names</li>
+</ul>
+<h4 id="levelstc">LevelsTc</h4>
+<ul>
+<li>Levels test condition.</li>
+</ul>
+<h4 id="patlist">Patlist</h4>
+<ul>
+<li>Plist name. Important: This test class process CTV data only. No fail data.</li>
+</ul>
+<h4 id="timingstc">TimingsTc</h4>
+<ul>
+<li>Timings test condition.</li>
+</ul>
+<h3 id="input-csv-parameterscolumn-names">Input csv parameters/column names</h3>
+<ul>
+<li>Pin <span style='color:red'>(required)</span>
+<ul>
+<li>CTV pin to capture</li>
+</ul>
+</li>
+<li>IP</li>
+<li>Sequence</li>
+<li>Subsequence</li>
+<li>Field <span style='color:red'>(required)</span>
+<ul>
+<li>Register name of the split CTV.</li>
+<li>Integer datatype</li>
+</ul>
+</li>
+<li>Size<span style='color:red'>(required)</span>
+<ul>
+<li>bit length of the split CTV</li>
+</ul>
+</li>
+<li>PerBit</li>
+<li>LowLimit</li>
+<li>HighLimit</li>
+<li>ExpectedData</li>
+<li>Equation</li>
+<li>ItuffToken
+<ul>
+<li>Groups the registers to be printed in ituff</li>
+<li>uses <strong>&quot;|&quot;</strong> as the delimiter</li>
+</ul>
+</li>
+<li>Base
+<ul>
+<li>Supports Base 2,4,8,16 for ituff printing</li>
+</ul>
+</li>
+<li>SharedStorageToken
+<ul>
+<li>Stores values in the SharedStorage</li>
+</ul>
+</li>
+</ul>
+<h2 id="ports">Ports</h2>
+<ul>
+<li>All fail ports are user definied using <strong>FailPort</strong> parameter in the input csv.</li>
+<li>if <strong>FailPort</strong> is defined to be  greater than 6, it would be routed to Port0</li>
+</ul>
+<pre><code>[Returns(1, PortType.Pass, &quot;Passed.&quot;)]
+[Returns(0, PortType.Fail, &quot;Failed Port0&quot;)]
+[Returns(2, PortType.Fail, &quot;Failed Port2&quot;)]
+[Returns(3, PortType.Fail, &quot;Failed Port3&quot;)]
+[Returns(4, PortType.Fail, &quot;Failed Port4&quot;)]
+[Returns(5, PortType.Fail, &quot;Failed Port5&quot;)]
+[Returns(6, PortType.Fail, &quot;Failed Port6&quot;)]
+</code></pre>
+<h2 id="mtpl-example">mtpl Example</h2>
+<pre><code>Test AnalogFuncCaptureCtv DTS_X_DTSTRIM_E_BEGIN_X_DTSTEMP_X_X_X_1
+{
+	ConfigurationFile = &quot;./Modules/PTH_DTS/InputFiles/PTH_DTS_TEMPRead.csv&quot;;
+	CtvCapturePins = &quot;IP_CPU::TDO&quot;;
+	Kill = &quot;DISABLED&quot;;
+	LevelsTc = &quot;PTH_DTS::DDR_univ_lvl_TS_lvl_SHARED_454FAB810542456F96BE44A40A6D7FC8241A5624609BCC08C80456A065CF045E&quot;;
+	Patlist = &quot;dts_temp2_fc_plist&quot;;
+	PinRename = &quot;IP_CPU::TDO&quot;;
+	TimingsTc = &quot;IP_CPU_BASE::cpu_func_sdr_univ_sta_univ_univ_b100_t100_d100&quot;;
+}
+</code></pre>
+<h2 id="input-csv-example">Input csv Example</h2>
+<h3 id="simple-decode">Simple decode</h3>
+<p><img src="images/simple_decode.jpg" alt="Simple decode" /></p>
+<h3 id="decode-with-math-functions-and-delimiter-to-support-it">Decode with Math functions and &quot;;&quot; delimiter to support it</h3>
+<h4 id="csv-format">CSV format</h4>
+<p><img src="images/math_sharedStorage_decode.jpg" alt="Simple decode" /></p>
+<h4 id="txt-format">TXT format</h4>
+<p><img src="images/math_sharedStorage_decode_txt.jpg" alt="Simple decode" /></p>
+<h2 id="ituff-printing">Ituff printing</h2>
+<p><img src="images/Ituff_info.jpg" alt="ituff print" /></p>
+
+
+</body>
+</html>

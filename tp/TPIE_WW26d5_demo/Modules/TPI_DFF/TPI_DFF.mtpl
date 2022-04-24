@@ -1,0 +1,288 @@
+# Module Revision: milesyou - 05/19/21 02:49:33 PM
+
+Version 1.0;
+
+ProgramStyle = Modular;
+
+TestPlan TPI_DFF;
+
+Import TPI_DFF.usrv;
+
+
+
+Import OASIS_Screen_tt.xml;
+Import PrimeDffEndOfFlowValidationTestMethod.xml;
+Import PrimeDffReadTestMethod.xml;
+Import OASIS_Auxiliary_tt.xml;
+
+
+
+
+#Test Counter Definition
+Counters
+{
+	n53900001_fail_DFFX_X_CALC_K_START_X_X_X_X_GETUBEDFF_SORT_0,
+	n53900002_fail_DFFX_X_CALC_K_START_X_X_X_X_GETUBEDFF_SORT_2,
+	n53900005_fail_DFFX_X_X_K_START_X_X_X_X_SETDFFGSDS_FRV_0,
+	n53900006_fail_DFFX_X_X_K_START_X_X_X_X_INITBADDIEDFFFLAG_0,
+	n53900007_fail_DFFX_X_X_K_FINAL_X_X_X_X_SETBADDIEDFFFLAG_0,
+	n53900008_fail_DFFX_X_X_K_FINAL_X_X_X_X_SETBADDIEDFFFLAG_2,
+	n53900009_fail_DFFX_X_X_K_START_X_X_X_X_INITBADDIEDFFFLAG_2,
+	n53900012_fail_DFFX_X_X_K_START_X_X_X_X_SETDFFGSDS_TPREV_0,
+	n53900013_fail_DFFX_X_X_K_START_X_X_X_X_SETDFFGSDS_TPREV_2,
+	n53900014_fail_DFFX_X_X_K_START_X_X_X_X_SETDFFGSDS_FRV_2,
+	n53900017_fail_DFFX_X_CALC_K_FINAL_X_X_X_X_VALIDATE_0,
+	n53900018_fail_DFFX_X_CALC_K_FINAL_X_X_X_X_VALIDATE_2,
+	n53900044_fail_DFFX_X_CALC_K_FINAL_X_X_X_X_SET_SORTBIN_0,
+	n53900046_fail_DFFX_X_CALC_K_FINAL_X_X_X_X_SET_SORTBIN_2,
+	n98010001_fail_FAIL_SYSTEM_SOFTWARE,
+	n99010001_fail_FAIL_DPS_ALARM
+} # End of Test Counter Definition
+
+Test iCScreenTest DFFX_X_CALC_K_FINAL_X_X_X_X_SET_SORTBIN_P1
+{
+	screen_custom_file = "./Modules/TPI_DFF/InputFiles/ScreenCustom_DFF.txt";
+	screen_custom_setpoint = "ALL";
+	screen_test_set = "SetBinDFF";
+	screen_tests_file = "./Modules/TPI_DFF/InputFiles/ScreenTest_DFF.txt";
+}
+Test PrimeDffEndOfFlowValidationTestMethod DFFX_X_CALC_K_FINAL_X_X_X_X_VALIDATE_P1
+{
+}
+Test PrimeDffReadTestMethod DFFX_X_CALC_K_START_X_X_X_X_GETUBEDFF_SORT_P1
+{
+	EnabledModules = "NONKILL";
+	LogIndividualTokens = "ENABLED";
+}
+Test iCAuxiliaryTest DFFX_X_X_K_FINAL_X_X_X_X_SETBADDIEDFFFLAG_P1
+{
+	data_type = "STRING";
+	expression = "1";
+	result_var = "G.U.S.BADDIEDFFFLAG";
+}
+Test iCAuxiliaryTest DFFX_X_X_K_START_X_X_X_X_INITBADDIEDFFFLAG_P1
+{
+	data_type = "STRING";
+	expression = "0";
+	result_var = "G.U.S.BADDIEDFFFLAG";
+}
+Test iCAuxiliaryTest DFFX_X_X_K_START_X_X_X_X_SETDFFGSDS_TPREV_P1
+{
+	data_type = "STRING";
+	expression = "SCVars.S.TP_PROGRAM_NAME";
+	result_var = "D.WFR.CURRENT.TPREV";
+}
+
+DUTFlow TPI_DFF_FINAL
+{
+	DUTFlowItem DFFX_X_CALC_K_FINAL_X_X_X_X_SET_SORTBIN_P1 DFFX_X_CALC_K_FINAL_X_X_X_X_SET_SORTBIN_P1
+	{
+		Result -2
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+			Return -2;
+		}		
+		Result -1
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+			Return -1;
+		}		
+		Result 0
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_DFF::n53900044_fail_DFFX_X_CALC_K_FINAL_X_X_X_X_SET_SORTBIN_0;
+			SetBin SoftBins.b53900044_fail_TPI_DFF_DFFX_X_CALC_K_FINAL_X_X_X_X_SET_SORTBIN_0;
+			Return 0;
+		}		
+		Result 1
+		{
+			Property PassFail = "Pass";
+			GoTo DFFX_X_X_K_FINAL_X_X_X_X_SETBADDIEDFFFLAG_P1;
+		}		
+		Result 2
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_DFF::n53900046_fail_DFFX_X_CALC_K_FINAL_X_X_X_X_SET_SORTBIN_2;
+			SetBin SoftBins.b53900046_fail_TPI_BASE_CTRL_BKGND_X_K_TESTPLANENDFLOW_X_X_X_X_PRIMEDEVICEEND_SHARED_BIN;
+			Return 0;
+		}		
+	}	
+	
+	DUTFlowItem DFFX_X_CALC_K_FINAL_X_X_X_X_VALIDATE_P1 DFFX_X_CALC_K_FINAL_X_X_X_X_VALIDATE_P1
+	{
+		Result -2
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+			Return -2;
+		}		
+		Result -1
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+			Return -1;
+		}		
+		Result 0
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_DFF::n53900017_fail_DFFX_X_CALC_K_FINAL_X_X_X_X_VALIDATE_0;
+			SetBin SoftBins.b53900017_fail_TPI_DFF_DFFX_X_CALC_K_FINAL_X_X_X_X_VALIDATE_0;
+			Return 0;
+		}		
+		Result 1
+		{
+			Property PassFail = "Pass";
+			Return 2;
+		}		
+		Result 2
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_DFF::n53900018_fail_DFFX_X_CALC_K_FINAL_X_X_X_X_VALIDATE_2;
+			SetBin SoftBins.b53900018_fail_TPI_DFF_DFFX_X_CALC_K_FINAL_X_X_X_X_VALIDATE_2;
+			Return 0;
+		}		
+	}	
+	DUTFlowItem DFFX_X_X_K_FINAL_X_X_X_X_SETBADDIEDFFFLAG_P1 DFFX_X_X_K_FINAL_X_X_X_X_SETBADDIEDFFFLAG_P1
+	{
+		Result -2
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+			Return -2;
+		}		
+		Result -1
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+			Return -1;
+		}		
+		Result 0
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_DFF::n53900007_fail_DFFX_X_X_K_FINAL_X_X_X_X_SETBADDIEDFFFLAG_0;
+			SetBin SoftBins.b53900007_fail_TPI_DFF_DFFX_X_X_K_FINAL_X_X_X_X_SETBADDIEDFFFLAG_0;
+			Return 0;
+		}		
+		Result 1
+		{
+			Property PassFail = "Pass";
+			GoTo DFFX_X_CALC_K_FINAL_X_X_X_X_VALIDATE_P1;
+		}		
+		Result 2
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_DFF::n53900008_fail_DFFX_X_X_K_FINAL_X_X_X_X_SETBADDIEDFFFLAG_2;
+			SetBin SoftBins.b53900008_fail_TPI_DFF_DFFX_X_X_K_FINAL_X_X_X_X_SETBADDIEDFFFLAG_2;
+			Return 0;
+		}		
+	}	
+}
+
+DUTFlow TPI_DFF_START
+{
+	DUTFlowItem DFFX_X_CALC_K_START_X_X_X_X_GETUBEDFF_SORT_P1 DFFX_X_CALC_K_START_X_X_X_X_GETUBEDFF_SORT_P1
+	{
+		Result -2
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+			Return -2;
+		}		
+		Result -1
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+			Return -1;
+		}		
+		Result 0
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_DFF::n53900001_fail_DFFX_X_CALC_K_START_X_X_X_X_GETUBEDFF_SORT_0;
+			SetBin SoftBins.b53900001_fail_TPI_DFF_DFFX_X_CALC_K_START_X_X_X_X_GETUBEDFF_SORT_0;
+			Return 0;
+		}		
+		Result 1
+		{
+			Property PassFail = "Pass";
+			GoTo DFFX_X_X_K_START_X_X_X_X_INITBADDIEDFFFLAG_P1;
+		}		
+		Result 2
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_DFF::n53900002_fail_DFFX_X_CALC_K_START_X_X_X_X_GETUBEDFF_SORT_2;
+			SetBin SoftBins.b53900002_fail_TPI_DFF_DFFX_X_CALC_K_START_X_X_X_X_GETUBEDFF_SORT_2;
+			Return 0;
+		}		
+	}	
+	
+	DUTFlowItem DFFX_X_X_K_START_X_X_X_X_INITBADDIEDFFFLAG_P1 DFFX_X_X_K_START_X_X_X_X_INITBADDIEDFFFLAG_P1
+	{
+		Result -2
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+			Return -2;
+		}		
+		Result -1
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+			Return -1;
+		}		
+		Result 0
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_DFF::n53900006_fail_DFFX_X_X_K_START_X_X_X_X_INITBADDIEDFFFLAG_0;
+			SetBin SoftBins.b53900006_fail_TPI_DFF_DFFX_X_X_K_START_X_X_X_X_INITBADDIEDFFFLAG_0;
+			Return 0;
+		}		
+		Result 1
+		{
+			Property PassFail = "Pass";
+			GoTo DFFX_X_X_K_START_X_X_X_X_SETDFFGSDS_TPREV_P1;
+		}		
+		Result 2
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_DFF::n53900009_fail_DFFX_X_X_K_START_X_X_X_X_INITBADDIEDFFFLAG_2;
+			SetBin SoftBins.b53900009_fail_TPI_DFF_DFFX_X_X_K_START_X_X_X_X_INITBADDIEDFFFLAG_2;
+			Return 0;
+		}		
+	}	
+	DUTFlowItem DFFX_X_X_K_START_X_X_X_X_SETDFFGSDS_TPREV_P1 DFFX_X_X_K_START_X_X_X_X_SETDFFGSDS_TPREV_P1
+	{
+		Result -2
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+			Return -2;
+		}		
+		Result -1
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+			Return -1;
+		}		
+		Result 0
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_DFF::n53900012_fail_DFFX_X_X_K_START_X_X_X_X_SETDFFGSDS_TPREV_0;
+			SetBin SoftBins.b53900012_fail_TPI_DFF_DFFX_X_X_K_START_X_X_X_X_SETDFFGSDS_TPREV_0;
+			Return 0;
+		}		
+		Result 1
+		{
+			Property PassFail = "Pass";
+			Return 1;
+		}		
+		Result 2
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_DFF::n53900013_fail_DFFX_X_X_K_START_X_X_X_X_SETDFFGSDS_TPREV_2;
+			SetBin SoftBins.b53900013_fail_TPI_DFF_DFFX_X_X_K_START_X_X_X_X_SETDFFGSDS_TPREV_2;
+			Return 0;
+		}		
+	}	
+}

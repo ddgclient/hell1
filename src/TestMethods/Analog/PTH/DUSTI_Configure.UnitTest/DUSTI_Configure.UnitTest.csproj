@@ -1,0 +1,48 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<RootNamespace>$(AssemblyName)</RootNamespace>
+		<TargetName>$(AssemblyName)</TargetName>
+                <TargetProjectUnderTestName>$(SolutionName)</TargetProjectUnderTestName>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+		<ConfigurationGroup>Debug</ConfigurationGroup>
+		<DebugType>full</DebugType>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+		<ConfigurationGroup>Release</ConfigurationGroup>
+		<DebugType>pdbonly</DebugType>
+	</PropertyGroup>
+	<PropertyGroup>
+		<AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+	</PropertyGroup>
+	<Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
+	<ItemGroup>
+		<ProjectReference Include="..\DUSTI_Configure\DUSTI_Configure.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+	  <None Update="TestInput\DUSTI_XML_FORCE_ERRORS.xml">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="TestInput\DUSTI_XML_FORCE_FLOW_Mode1.xml">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="TestInput\DUSTI_XML_FORCE_FLOW_Mode3.xml">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="TestInput\DUSTI_XML_FOR_UNIT_TEST.xml">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="TestInput\DUSTI_XML_FOR_UNIT_TEST_HEXES.xml">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="TestInput\DUSTI_XML_FOR_UNIT_TEST_Mode1.xml">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="TestInput\DUSTI_XML_FOR_UNIT_TEST_Mode3.xml">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="TestInput\DUSTI_XML_FOR_UNIT_TEST_NoHex.xml">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+</Project>

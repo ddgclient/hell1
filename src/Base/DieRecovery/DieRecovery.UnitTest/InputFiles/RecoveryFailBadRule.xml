@@ -1,0 +1,19 @@
+﻿<?xml version= "1.0" encoding= "utf-8"?>
+<recovery>
+
+	<defeaturing_rules>
+		<!-- Used for  Die Recovery to look for a matching combination for an specific SliceTracking  -->
+		<!-- Index size is 8-bits (7-0) as MSB>LSB, TGL42 is 4Core so top 4 bits are set to "1" = DISABLED  -->
+		<rules name = "CoreDefeaturingVector"    index= "0-7" >
+			<rule mode = "ValidCombinations"  name = "4C" size = "4"  type= "FullyFeatured">
+				<bitvector  value = "00001111"/>
+			</rule>
+			<rule mode = "InvalidRule"  name = "2C" size = "2"  type= "Recovery">
+				<bitvector  value = "00111111"/>
+				<bitvector  value = "11001111"/>
+			</rule>
+		</rules>
+	</defeaturing_rules>
+
+
+</recovery>

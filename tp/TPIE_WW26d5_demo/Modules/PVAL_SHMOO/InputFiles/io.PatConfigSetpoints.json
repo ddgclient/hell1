@@ -1,0 +1,62 @@
+{
+	"Module": "SIO",
+	"Groups": [
+		{
+			"Name": "TXEQ",
+			"Default": "TXEQ0",
+			"SetPoints": [
+				{
+					"Name": "TXEQ0",
+					"Configurations": [
+						{
+							"Name": "main_cursor",
+							"Data": "0100"
+						},
+						{
+							"Name": "pre_cursor",
+							"Data": "0111"
+						},
+						{
+							"Name": "post_cursor",
+							"Data": "1111"
+						}
+					]
+				},
+				{
+					"Name": "TXEQ1",
+					"Configurations": [
+						{
+							"Name": "main_cursor",
+							"Data": "0000"
+						},
+						{
+							"Name": "pre_cursor",
+							"Data": "0001"
+						},
+						{
+							"Name": "post_cursor",
+							"Data": "0011"
+						}
+					]
+				},
+				{
+					"Name": "TXEQ2",
+					"Configurations": [
+						{
+							"Name": "main_cursor",
+							"Data": "0010"
+						},
+						{
+							"Name": "pre_cursor",
+							"Data": "1000"
+						},
+						{
+							"Name": "post_cursor",
+							"Data": "1011"
+						}
+					]
+				}
+			]
+		}
+	]
+}

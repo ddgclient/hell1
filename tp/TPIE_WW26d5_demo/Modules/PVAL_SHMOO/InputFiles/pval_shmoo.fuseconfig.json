@@ -1,0 +1,31 @@
+{
+  "Configurations": [
+    {
+      "Name": "FIVRRAIL1_CFG",
+      "ConfigurationElement": [
+        {
+          "Ratio": 1,
+          "PatternsRegEx": [
+            ".*_CDU_CDIE_TAP_IDCODE"
+          ],
+          "Register": "PVAL_SHMOO_VDAC",
+          "FuseGroup": "FIVRRAIL1_CFG"
+        }
+      ]
+    },
+    {
+      "Name": "FIVRRAIL2_CFG",
+      "ConfigurationElement": [
+        {
+          "Ratio": 1,
+          "PatternsRegEx": [
+            ".*_CDU_CDIE_TAP_IDCODE"
+          ],
+          "Register": "PVAL_SHMOO_VDAC",
+          "FuseGroup": "FIVRRAIL2_CFG"
+        }
+      ]
+    }
+  ]
+}
+

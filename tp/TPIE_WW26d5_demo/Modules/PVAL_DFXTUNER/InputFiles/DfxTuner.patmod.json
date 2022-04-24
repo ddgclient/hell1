@@ -1,0 +1,18 @@
+{
+	"Configurations": [
+		{
+			"Name": "DfxTuneLooopSize",
+			"ConfigurationElement": [
+				{
+					"Type": "INSTRUCTION",
+					"Domain": ["CPU_TAP_ALL", "CPU_FAB_ALL"],
+					"StartAddress": "LOOP_INIT_LABEL",
+					"StartAddressOffset": 0,
+					"EndAddress": "LOOP_INIT_LABEL",
+					"EndAddressOffset": 0,
+					"PatternsRegEx": [".*_dfxtune_.*"]
+				}
+			]
+		}
+	]
+}

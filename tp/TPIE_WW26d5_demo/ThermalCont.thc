@@ -1,0 +1,111 @@
+Version 1.0;
+ThermalControl ThermalControl_TDYN_09
+{
+    HC1_VCCCORE0
+    {
+        PowerScale=factor;
+    }
+	HC2_VCCCORE1
+    {
+        PowerScale=factor;
+    }
+    HC3_VCCATOM0
+    {
+        PowerScale=factor;
+    }
+    HC4_VCCATOM1
+    {
+        PowerScale=factor;
+    }
+	HC5_VCCR
+    {
+        PowerScale=factor;
+    }
+	HC6_VCCIA
+    {
+        PowerScale=factor;
+    }
+	HV1_VNNAON
+    {
+        PowerScale=factor;
+    }
+	LC1_V1P8A
+    {
+        PowerScale=factor;
+    }
+	LC2_VCCVINFGT0
+    {
+        PowerScale=factor;
+    }
+	LC3_VCCVINFGT1
+    {
+        PowerScale=factor;
+    }	
+	LC4_VCCFPGM0
+    {
+        PowerScale=factor;
+    }
+	LC5_VCCFPGM1
+    {
+        PowerScale=factor;
+    }
+	LC6_EXTBGREF
+    {
+        PowerScale=factor;
+    }
+	LC7_VCCIASENSECEP
+    {
+        PowerScale=factor;
+    }	
+    TDYN_09 
+   {
+       SumScale = factor;
+   }
+}
+
+
+ThermalMeasure ThermalBlock_All_TDAU_Channel
+{
+      TDIODE_CORE
+  {
+        MeasurementMode     = "SingleCurrentSCOCalMode";
+        #SCOCalMethod      	= SCOCAL_Method_CPU28;   
+        IdealityFactor      = Ideality_CPU28;       
+        ForceCurrentFirst   = IC1_CPU28;
+        ForceCurrentSecond  = IC3_CPU28;
+        ForceCurrentThird  = IC2_CPU28;
+        BaseLeakageCompensation = BaseLeakage_CPU28;
+        Slope           = D_Slope_CPU28;
+        TemperatureOffset   = Offset_CPU28;
+  }
+}
+ThermalMeasure ThermalBlock_TDAU_SOT
+{
+    TDIODE_CORE
+    {
+		RunScoCal			= True;
+    }
+}
+ThermalMeasure ThermalBlock_TDAU_EOT
+{
+    TDIODE_CORE
+    {
+		RunScoCal			= False;
+    }
+}
+ThermalMeasure ThermalMeasure_TDAU_ALL
+{
+    TDIODE_CORE
+  {
+        MeasurementMode     = "SingleCurrentSCOCalMode";
+        #SCOCalMethod      	= SCOCAL_Method_CPU28;   
+        IdealityFactor      = Ideality_CPU28;       
+        ForceCurrentFirst   = IC1_CPU28;
+        ForceCurrentSecond  = IC3_CPU28;
+        ForceCurrentThird  = IC2_CPU28;
+        BaseLeakageCompensation = BaseLeakage_CPU28;
+        Slope           = D_Slope_CPU28;
+        TemperatureOffset   = Offset_CPU28;
+        RunScoCal = True;
+  }
+}

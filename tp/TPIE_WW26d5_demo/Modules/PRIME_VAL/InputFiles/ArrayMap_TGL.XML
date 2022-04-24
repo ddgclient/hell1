@@ -1,0 +1,1089 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 	Find the latest ArrayMap_ICL.XML file at: https://ssvn.pdx.intel.com/mdo/array/cnx/Documents / L2P / TGL						-->
+<!-- 	Tool installation package located at: RRLH WG share point / L2P Standard Methodology / L2P tool suit / ArrayMap XML / Tool_install / <rev>		-->
+<!--	https://sharepoint.ger.ith.intel.com/sites/MDO_DCD/Array_Memory/Redundancy%20WG/Forms/AllItems.aspx							-->
+
+<arraymap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="GEN_ArrayMap.xsd">
+	<xmlversion>														<!-- ArrayMap XML file Revision History -->
+		<!-- Version number	Date:  Modified by:   Comment:													-->
+		<version rev="01"> 	18ww29   ajrojasa     LLC DAT First Version generated from DE feedback and ICL ArrayMap reference.			</version>
+		<version rev="02"> 	18ww36   ajrojasa     MLC DAT First Version based on ICL ArrayMap reference.						</version>
+		<version rev="03"> 	18ww38   ajrojasa     MLC DAT ArrayMap address matched to LDAT address map, in prep for T-file dump.			</version>
+		<version rev="04"> 	18ww42   ajrojasa     MLC DAT L2P updated based on latest feedback from Michael Aizman.					</version>
+		<version rev="05"> 	18ww47   pkaveri      LLC DAT LYA info incorporated.									</version> 
+		<version rev="06"> 	18ww48   ajrojrasa    Add corerfall array to be used with LSAraster							</version>
+		<version rev="07">	19ww08	 mlvladim     Added BSVs for Tfile datalogging for the direct map arrays					</version>
+		<version rev="08">	19ww10	 mlvladim     Added L2R IO mapping										</version>
+		<version rev="09">	19ww14	 ajrojasa     Add BIT_to_bitperchnk according to new IO map from Siva/Andres					</version>
+		<version rev="10">	19ww15	 ajrojasa     Add mselS for proper Row repair enabling of the MLC data array					</version>
+		<version rev="11">	19ww15	 mlvladim     Changed fuse size to 25 for CORE RF repair 							</version>
+	</xmlversion>
+	<fuse_description name="LLC_FUSE_GROUP">										<!-- Updated for Tiger Lake -->
+		<fuse_size value="19" />											<!-- This is fuse repair binary string size.  From "REPAIR" DFF -->
+		<fuse_groups value="150" />											<!-- Total number of fuse groups (fuse_groups_per_die) -->
+		<fuse_default value="0" />
+		<fuse_multicore_select bsv_name="slice"/>									<!-- BSV variable name to be used for core selection in all arrays ! -->
+		<bsv_to_fuse array_code="LDC" >											<!-- COL LLC DATA -->
+			<map name="slice"	size="3" />
+			<array_code		size="3" value="1" />
+			<map name="half"	size="1" />
+			<map name="quarter"	size="2" />
+			<unused			size="2" />
+			<map name="iofuse"	size="8"  compare="false" />					
+		</bsv_to_fuse>
+		<bsv_to_fuse array_code="LDR" repair_condition="RowSpare == 0">							<!-- ROW LLC DATA RowSpare==0 is used by iCRepair to check to see if we are trying to repair a redundant element with another-->
+			<map name="slice"	size="3" />
+			<array_code		size="3" value="2" />
+			<map name="half"	size="1" />
+			<map name="quarter"	size="2" />
+			<spare			size="2" />
+			<map name="wordline"	size="8" />
+		</bsv_to_fuse>
+		<bsv_to_fuse array_code="LTR" repair_condition="RowSpare == 0">							<!-- ROW LLC TAG RowSpare==0 is used by iCRepair to check to see if we are trying to repair a redundant element with another-->
+			<map name="slice"	size="3" />
+			<array_code		size="3" value="3" />
+			<map name="half"	size="1" />
+			<unused			size="2" />
+			<spare			size="2" />
+			<map name="wordline"	size="8" />
+		</bsv_to_fuse>	
+		<bsv_to_fuse array_code="LCR" repair_condition="RowSpare == 0">							<!-- ROW LLC CV/LRU/STA RowSpare==0 is used by iCRepair to check to see if we are trying to repair a redundant element with another-->
+			<map name="slice"	size="3" />
+			<array_code		size="3" value="4" />
+			<map name="half"	size="1" />
+			<unused			size="1" />
+			<map name="fuse_val"	size="11" />
+		</bsv_to_fuse>	
+	</fuse_description>
+	<fuse_description name="MLC_FUSE_GROUP">
+	<!-- Using ICXR as reference -->
+		<fuse_size value="18" />											<!-- This is fuse repair binary string size.  From "REPAIR" DFF -->
+		<fuse_groups value="150" />											<!-- Total number of fuse groups (fuse_groups_per_die) -->
+		<fuse_default value="0" />
+		<fuse_multicore_select bsv_name="coreid"/>									<!-- BSV variable name to be used for core selection in all arrays ! -->
+		<bsv_to_fuse array_code="MDC" >											<!-- COL MLC DATA and C6S -->
+			<map name="coreid"	size="3" />
+			<array_code		size="2" value="1" />
+			<map name="iohalfCL"	size="1" />
+			<map name="chunk"	size="1" />
+			<unused			size="3" />
+			<map name="iofuse"	size="8" compare="false" />
+		</bsv_to_fuse>
+		<bsv_to_fuse array_code="MDR" repair_condition="RowSpare == 0">							<!-- ROW MLC DATA and C6S -->
+			<map name="coreid"	size="3" />
+			<array_code		size="2" value="2" />
+			<map name="msels"	size="2" />
+			<map name="msel"	size="1" />
+			<spare			size="2" />
+			<map name="wordline"	size="8" />
+		</bsv_to_fuse>
+		<bsv_to_fuse array_code="MTR" >											<!-- ROW MLC TAG -->
+			<map name="coreid"	size="3" />
+			<array_code		size="2" value="3" />
+			<map name="wordline"	size="8" />
+			<map name="Arrayhalf"	size="1" />
+			<unused			size="4" />
+		</bsv_to_fuse>
+	</fuse_description>
+	<fuse_description name="CRF_FUSE_GROUP">
+		<fuse_size value="25" />											<!-- This is fuse repair binary string size.  From "REPAIR" DFF -->
+		<fuse_groups value="150" />											<!-- Total number of fuse groups (fuse_groups_per_die) -->
+		<fuse_default value="0" />
+		<fuse_multicore_select bsv_name="slice"/>									<!-- BSV variable name to be used for core selection in all arrays ! -->
+		<bsv_to_fuse array_code="CRF" repair_condition="RowSpare &lt; 1">											<!-- ROW MLC TAG -->
+			<map name="slice"	size="3" />
+			<array_code		size="2" value="1" />
+			<spare			size="1" />
+			<map name="selector"	size="4" />		
+			<map name="fixedway"	size="6" />		
+			<map name="fixedset"	size="9" />
+		</bsv_to_fuse>
+	</fuse_description>
+	<fuse_description name="SNR_FUSE_GROUP">
+		<fuse_size value="16" />											<!-- This is fuse repair binary string size.  From "REPAIR" DFF -->
+		<fuse_groups value="150" />											<!-- Total number of fuse groups (fuse_groups_per_die)  AR: Check fuse_groups  - 150 is  default value and multiple  of  6 -->
+		<fuse_default value="0" />
+		<fuse_multicore_select bsv_name="slice"/>									<!-- BSV variable name to be used for core selection in all arrays AR: Check bsv_name  done  changed to slice --> 
+		<bsv_to_fuse array_code="SNR" >											<!-- CBOPAIR0123_RAM, SBOIDP_RAM and GIP_RAM ROW -->
+			<map name="slice"	size="1" />
+			<array_code		size="2" value="1" />
+			<spare			size="2" />
+			<map name="array_id"	size="3" />		
+			<map name="x_addr"	size="8" />
+		</bsv_to_fuse>
+	</fuse_description>
+	<fuse_description name="REPCRF_FUSE_GROUP">										<!-- CORE RF fuse group definiton -->
+		<fuse_size value="25" />
+		<fuse_groups value="48" />											<!-- Total number of fuse groups by design is = 80 (2 spare elements x 40 cores) TODO: Sync with JP, number must be multiple of 6--> 
+		<fuse_default value="0" />											<!-- This will add zeros in the $WAY and $SET values which are coming from the CTV database with a lower bit count than what fuse repair binary string needs--> 
+		<fuse_multicore_select bsv_name="slice"/>
+		<bsv_to_fuse array_code="CRF" repair_condition="RowSpare &lt; 1">						<!-- CORE RF ROW -->
+			<map name="slice" 	size="3" />
+			<array_code 		size="2" value="1" />
+			<spare 			size="1" />									<!-- 1 bit because they are only 2 spares per slice. Possible values: spare0 or spare1 -->
+            		<map name="selector"    size="4" />
+			<map name="fixedway" 	size="6" />
+			<map name="fixedset" 	size="9" />
+		</bsv_to_fuse>
+	</fuse_description>
+	<array label="llcdat"     fuse_description="LLC_FUSE_GROUP">								<!-- TGL LLC Dat array -->
+		<arrayname description="Tiger Lake Client LLC Data array" />
+		<array_vars>
+			<max_set value="2047" />										<!-- Chunk is no longer part of the Set -->
+			<min_set value="0"/>
+			<max_way value="11" />											<!-- 12 Ways range 0-11 -->
+			<min_way value="0" />
+			<max_bit value="1063" />											<!-- 1064 = 2 halves per (256 data + 10 Ecc) Note: 2 unused + 4 red not mapped -->
+			<min_bit value="0"/>											<!-- Cache Line = 512 Data + 20 ECC = 532 bits Note: 544 bits total (8Red + 4Unused) -->
+			<max_block value="191" />										<!-- 192 per SSI = 2 llcdatahalf x 8 quadhalf x 12 ways  -->
+			<min_block value="0"/>
+			<max_row value="511" />											<!--  -->
+			<min_row value="0"/>
+			<max_column value="271" /> 										<!--  -->
+			<min_column value="0"/>
+		</array_vars>
+		<global>
+			<hash name="BIT_to_bitremap" defaultvalue="0" defaultkey="-1">					<!-- Map Logical address to Repair order.  Source:  ICL LLC_Data_IO_L2P.xlsx -->
+				<item key="0" value="272" />	<item key="1" value="273" />	<item key="2" value="274" />	<item key="3" value="275" />	<item key="4" value="276" />	<item key="5" value="277" />	<item key="6" value="278" />	<item key="7" value="279" />	<item key="8" value="280" />	<item key="9" value="281" />	<item key="10" value="282" />	<item key="11" value="283" />	<item key="12" value="284" />	<item key="13" value="285" />	<item key="14" value="286" />	<item key="15" value="287" />	<item key="16" value="288" />	<item key="17" value="289" />	<item key="18" value="290" />	<item key="19" value="291" />	<item key="20" value="292" />	<item key="21" value="293" />	<item key="22" value="294" />	<item key="23" value="295" />	<item key="24" value="296" />	<item key="25" value="297" />	<item key="26" value="298" />	<item key="27" value="299" />	<item key="28" value="300" />	<item key="29" value="301" />	<item key="30" value="302" />	<item key="31" value="303" />	<item key="32" value="0" />	<item key="33" value="1" />	<item key="34" value="2" />	<item key="35" value="3" />	<item key="36" value="4" />	<item key="37" value="5" />	<item key="38" value="6" />	<item key="39" value="7" />	<item key="40" value="8" />	<item key="41" value="9" />	<item key="42" value="10" />	<item key="43" value="11" />	<item key="44" value="12" />	<item key="45" value="13" />	<item key="46" value="14" />	<item key="47" value="15" />	<item key="48" value="16" />	<item key="49" value="17" />	<item key="50" value="18" />	<item key="51" value="19" />	<item key="52" value="20" />	<item key="53" value="21" />	<item key="54" value="22" />	<item key="55" value="23" />	<item key="56" value="24" />	<item key="57" value="25" />	<item key="58" value="26" />	<item key="59" value="27" />	<item key="60" value="28" />	<item key="61" value="29" />	<item key="62" value="30" />	<item key="63" value="31" />	<item key="64" value="304" />	<item key="65" value="305" />	<item key="66" value="306" />	<item key="67" value="307" />	<item key="68" value="308" />	<item key="69" value="309" />	<item key="70" value="310" />	<item key="71" value="311" />	<item key="72" value="312" />	<item key="73" value="313" />	<item key="74" value="314" />	<item key="75" value="315" />	<item key="76" value="316" />	<item key="77" value="317" />	<item key="78" value="318" />	<item key="79" value="319" />	<item key="80" value="320" />	<item key="81" value="321" />	<item key="82" value="322" />	<item key="83" value="323" />	<item key="84" value="324" />	<item key="85" value="325" />	<item key="86" value="326" />	<item key="87" value="327" />	<item key="88" value="328" />	<item key="89" value="329" />	<item key="90" value="330" />	<item key="91" value="331" />	<item key="92" value="332" />	<item key="93" value="333" />	<item key="94" value="334" />	<item key="95" value="335" />	<item key="96" value="32" />	<item key="97" value="33" />	<item key="98" value="34" />	<item key="99" value="35" />	<item key="100" value="36" />	<item key="101" value="37" />	<item key="102" value="38" />	<item key="103" value="39" />	<item key="104" value="40" />	<item key="105" value="41" />	<item key="106" value="42" />	<item key="107" value="43" />	<item key="108" value="44" />	<item key="109" value="45" />	<item key="110" value="46" />	<item key="111" value="47" />	<item key="112" value="48" />	<item key="113" value="49" />	<item key="114" value="50" />	<item key="115" value="51" />	<item key="116" value="52" />	<item key="117" value="53" />	<item key="118" value="54" />	<item key="119" value="55" />	<item key="120" value="56" />	<item key="121" value="57" />	<item key="122" value="58" />	<item key="123" value="59" />	<item key="124" value="60" />	<item key="125" value="61" />	<item key="126" value="62" />	<item key="127" value="63" />	<item key="128" value="336" />	<item key="129" value="337" />	<item key="130" value="338" />	<item key="131" value="340" />	<item key="132" value="341" />	<item key="133" value="342" />	<item key="134" value="343" />	<item key="135" value="344" />
+				<item key="136" value="345" />	<item key="137" value="346" />	<item key="138" value="347" />	<item key="139" value="348" />	<item key="140" value="349" />	<item key="141" value="350" />	<item key="142" value="351" />	<item key="143" value="352" />	<item key="144" value="353" />	<item key="145" value="354" />	<item key="146" value="355" />	<item key="147" value="356" />	<item key="148" value="357" />	<item key="149" value="358" />	<item key="150" value="359" />	<item key="151" value="360" />	<item key="152" value="361" />	<item key="153" value="362" />	<item key="154" value="363" />	<item key="155" value="364" />	<item key="156" value="365" />	<item key="157" value="366" />	<item key="158" value="367" />	<item key="159" value="368" />	<item key="160" value="64" />	<item key="161" value="65" />	<item key="162" value="66" />	<item key="163" value="68" />	<item key="164" value="69" />	<item key="165" value="70" />	<item key="166" value="71" />	<item key="167" value="72" />	<item key="168" value="73" />	<item key="169" value="74" />	<item key="170" value="75" />	<item key="171" value="76" />	<item key="172" value="77" />	<item key="173" value="78" />	<item key="174" value="79" />	<item key="175" value="80" />	<item key="176" value="81" />	<item key="177" value="82" />	<item key="178" value="83" />	<item key="179" value="84" />	<item key="180" value="85" />	<item key="181" value="86" />	<item key="182" value="87" />	<item key="183" value="88" />	<item key="184" value="89" />	<item key="185" value="90" />	<item key="186" value="91" />	<item key="187" value="92" />	<item key="188" value="93" />	<item key="189" value="94" />	<item key="190" value="95" />	<item key="191" value="96" />	<item key="192" value="369" />	<item key="193" value="370" />	<item key="194" value="371" />	<item key="195" value="372" />	<item key="196" value="373" />	<item key="197" value="374" />	<item key="198" value="375" />	<item key="199" value="376" />	<item key="200" value="377" />	<item key="201" value="378" />	<item key="202" value="379" />	<item key="203" value="380" />	<item key="204" value="381" />	<item key="205" value="382" />	<item key="206" value="383" />	<item key="207" value="384" />	<item key="208" value="385" />	<item key="209" value="386" />	<item key="210" value="387" />	<item key="211" value="388" />	<item key="212" value="389" />	<item key="213" value="390" />	<item key="214" value="391" />	<item key="215" value="392" />	<item key="216" value="393" />	<item key="217" value="394" />	<item key="218" value="395" />	<item key="219" value="396" />	<item key="220" value="397" />	<item key="221" value="398" />	<item key="222" value="399" />	<item key="223" value="400" />	<item key="224" value="97" />	<item key="225" value="98" />	<item key="226" value="99" />	<item key="227" value="100" />	<item key="228" value="101" />	<item key="229" value="102" />	<item key="230" value="103" />	<item key="231" value="104" />	<item key="232" value="105" />	<item key="233" value="106" />	<item key="234" value="107" />	<item key="235" value="108" />	<item key="236" value="109" />	<item key="237" value="110" />	<item key="238" value="111" />	<item key="239" value="112" />	<item key="240" value="113" />	<item key="241" value="114" />	<item key="242" value="115" />	<item key="243" value="116" />	<item key="244" value="117" />	<item key="245" value="118" />	<item key="246" value="119" />	<item key="247" value="120" />	<item key="248" value="121" />	<item key="249" value="122" />	<item key="250" value="123" />	<item key="251" value="124" />	<item key="252" value="125" />	<item key="253" value="126" />	<item key="254" value="127" />	<item key="255" value="128" />	<item key="256" value="413" />	<item key="257" value="414" />	<item key="258" value="415" />	<item key="259" value="416" />	<item key="260" value="417" />	<item key="261" value="418" />	<item key="262" value="419" />	<item key="263" value="420" />	<item key="264" value="421" />	<item key="265" value="422" />	<item key="266" value="423" />	<item key="267" value="424" />	<item key="268" value="425" />	<item key="269" value="426" />	<item key="270" value="427" />	<item key="271" value="428" />
+				<item key="272" value="429" />	<item key="273" value="430" />	<item key="274" value="431" />	<item key="275" value="432" />	<item key="276" value="433" />	<item key="277" value="434" />	<item key="278" value="435" />	<item key="279" value="436" />	<item key="280" value="437" />	<item key="281" value="438" />	<item key="282" value="439" />	<item key="283" value="440" />	<item key="284" value="441" />	<item key="285" value="442" />	<item key="286" value="443" />	<item key="287" value="444" />	<item key="288" value="141" />	<item key="289" value="142" />	<item key="290" value="143" />	<item key="291" value="144" />	<item key="292" value="145" />	<item key="293" value="146" />	<item key="294" value="147" />	<item key="295" value="148" />	<item key="296" value="149" />	<item key="297" value="150" />	<item key="298" value="151" />	<item key="299" value="152" />	<item key="300" value="153" />	<item key="301" value="154" />	<item key="302" value="155" />	<item key="303" value="156" />	<item key="304" value="157" />	<item key="305" value="158" />	<item key="306" value="159" />	<item key="307" value="160" />	<item key="308" value="161" />	<item key="309" value="162" />	<item key="310" value="163" />	<item key="311" value="164" />	<item key="312" value="165" />	<item key="313" value="166" />	<item key="314" value="167" />	<item key="315" value="168" />	<item key="316" value="169" />	<item key="317" value="170" />	<item key="318" value="171" />	<item key="319" value="172" />	<item key="320" value="445" />	<item key="321" value="446" />	<item key="322" value="447" />	<item key="323" value="448" />	<item key="324" value="449" />	<item key="325" value="450" />	<item key="326" value="451" />	<item key="327" value="452" />	<item key="328" value="453" />	<item key="329" value="454" />	<item key="330" value="455" />	<item key="331" value="456" />	<item key="332" value="457" />	<item key="333" value="458" />	<item key="334" value="459" />	<item key="335" value="460" />	<item key="336" value="461" />	<item key="337" value="462" />	<item key="338" value="463" />	<item key="339" value="464" />	<item key="340" value="465" />	<item key="341" value="466" />	<item key="342" value="467" />	<item key="343" value="468" />	<item key="344" value="469" />	<item key="345" value="470" />	<item key="346" value="471" />	<item key="347" value="472" />	<item key="348" value="473" />	<item key="349" value="476" />	<item key="350" value="477" />	<item key="351" value="478" />	<item key="352" value="173" />	<item key="353" value="174" />	<item key="354" value="175" />	<item key="355" value="176" />	<item key="356" value="177" />	<item key="357" value="178" />	<item key="358" value="179" />	<item key="359" value="180" />	<item key="360" value="181" />	<item key="361" value="182" />	<item key="362" value="183" />	<item key="363" value="184" />	<item key="364" value="185" />	<item key="365" value="186" />	<item key="366" value="187" />	<item key="367" value="188" />	<item key="368" value="189" />	<item key="369" value="190" />	<item key="370" value="191" />	<item key="371" value="192" />	<item key="372" value="193" />	<item key="373" value="194" />	<item key="374" value="195" />	<item key="375" value="196" />	<item key="376" value="197" />	<item key="377" value="198" />	<item key="378" value="199" />	<item key="379" value="200" />	<item key="380" value="201" />	<item key="381" value="204" />	<item key="382" value="205" />	<item key="383" value="206" />	<item key="384" value="479" />	<item key="385" value="480" />	<item key="386" value="481" />	<item key="387" value="482" />	<item key="388" value="483" />	<item key="389" value="484" />	<item key="390" value="485" />	<item key="391" value="486" />	<item key="392" value="487" />	<item key="393" value="488" />	<item key="394" value="489" />	<item key="395" value="490" />	<item key="396" value="491" />	<item key="397" value="492" />	<item key="398" value="493" />	<item key="399" value="494" />	<item key="400" value="495" />	<item key="401" value="496" />	<item key="402" value="497" />	<item key="403" value="498" />	<item key="404" value="499" />	<item key="405" value="500" />	<item key="406" value="501" />	<item key="407" value="502" />
+				<item key="408" value="503" />	<item key="409" value="504" />	<item key="410" value="505" />	<item key="411" value="506" />	<item key="412" value="507" />	<item key="413" value="508" />	<item key="414" value="509" />	<item key="415" value="510" />	<item key="416" value="207" />	<item key="417" value="208" />	<item key="418" value="209" />	<item key="419" value="210" />	<item key="420" value="211" />	<item key="421" value="212" />	<item key="422" value="213" />	<item key="423" value="214" />	<item key="424" value="215" />	<item key="425" value="216" />	<item key="426" value="217" />	<item key="427" value="218" />	<item key="428" value="219" />	<item key="429" value="220" />	<item key="430" value="221" />	<item key="431" value="222" />	<item key="432" value="223" />	<item key="433" value="224" />	<item key="434" value="225" />	<item key="435" value="226" />	<item key="436" value="227" />	<item key="437" value="228" />	<item key="438" value="229" />	<item key="439" value="230" />	<item key="440" value="231" />	<item key="441" value="232" />	<item key="442" value="233" />	<item key="443" value="234" />	<item key="444" value="235" />	<item key="445" value="236" />	<item key="446" value="237" />	<item key="447" value="238" />	<item key="448" value="511" />	<item key="449" value="512" />	<item key="450" value="513" />	<item key="451" value="514" />	<item key="452" value="515" />	<item key="453" value="516" />	<item key="454" value="517" />	<item key="455" value="518" />	<item key="456" value="519" />	<item key="457" value="520" />	<item key="458" value="521" />	<item key="459" value="522" />	<item key="460" value="523" />	<item key="461" value="524" />	<item key="462" value="525" />	<item key="463" value="526" />	<item key="464" value="527" />	<item key="465" value="528" />	<item key="466" value="529" />	<item key="467" value="530" />	<item key="468" value="531" />	<item key="469" value="532" />	<item key="470" value="533" />	<item key="471" value="534" />	<item key="472" value="535" />	<item key="473" value="536" />	<item key="474" value="537" />	<item key="475" value="538" />	<item key="476" value="539" />	<item key="477" value="540" />	<item key="478" value="541" />	<item key="479" value="542" />	<item key="480" value="239" />	<item key="481" value="240" />	<item key="482" value="241" />	<item key="483" value="242" />	<item key="484" value="243" />	<item key="485" value="244" />	<item key="486" value="245" />	<item key="487" value="246" />	<item key="488" value="247" />	<item key="489" value="248" />	<item key="490" value="249" />	<item key="491" value="250" />	<item key="492" value="251" />	<item key="493" value="252" />	<item key="494" value="253" />	<item key="495" value="254" />	<item key="496" value="255" />	<item key="497" value="256" />	<item key="498" value="257" />	<item key="499" value="258" />	<item key="500" value="259" />	<item key="501" value="260" />	<item key="502" value="261" />	<item key="503" value="262" />	<item key="504" value="263" />	<item key="505" value="264" />	<item key="506" value="265" />	<item key="507" value="266" />	<item key="508" value="267" />	<item key="509" value="268" />	<item key="510" value="269" />	<item key="511" value="270" />	<item key="512" value="401" />	<item key="513" value="402" />	<item key="514" value="403" />	<item key="515" value="404" />	<item key="516" value="405" />	<item key="517" value="408" />	<item key="518" value="409" />	<item key="519" value="410" />	<item key="520" value="411" />	<item key="521" value="412" />	<item key="522" value="129" />	<item key="523" value="130" />	<item key="524" value="131" />	<item key="525" value="132" />	<item key="526" value="133" />	<item key="527" value="136" />	<item key="528" value="137" />	<item key="529" value="138" />	<item key="530" value="139" />	<item key="531" value="140" />	<item key="532" value="67" />	<item key="533" value="134" />	<item key="534" value="135" />	<item key="535" value="202" />	<item key="536" value="203" />	<item key="537" value="271" />	<item key="538" value="339" />	<item key="539" value="406" />	<item key="540" value="407" />	<item key="541" value="474" />	<item key="542" value="475" />	<item key="543" value="543" />
+			</hash>
+			<hash name="bitperchnk_to_lyaorder" defaultvalue="0" defaultkey="-1">
+				<item key="0" value="0" />	<item key="1" value="1" />	<item key="2" value="2" />	<item key="3" value="3" />	<item key="4" value="4" />	<item key="5" value="5" />	<item key="6" value="6" />	<item key="7" value="7" />	<item key="8" value="8" />	<item key="9" value="9" />	<item key="10" value="10" />	<item key="11" value="11" />	<item key="12" value="12" />	<item key="13" value="13" />	<item key="14" value="14" />	<item key="15" value="15" />	<item key="16" value="16" />	<item key="17" value="17" />	<item key="18" value="18" />	<item key="19" value="19" />	<item key="20" value="20" />	<item key="21" value="21" />	<item key="22" value="22" />	<item key="23" value="23" />	<item key="24" value="24" />	<item key="25" value="25" />	<item key="26" value="26" />	<item key="27" value="27" />	<item key="28" value="28" />	<item key="29" value="29" />	<item key="30" value="30" />	<item key="31" value="31" />	<item key="32" value="32" />	<item key="33" value="33" />	<item key="34" value="34" />	<item key="35" value="35" />	<item key="36" value="36" />	<item key="37" value="37" />	<item key="38" value="38" />	<item key="39" value="39" />	<item key="40" value="40" />	<item key="41" value="41" />	<item key="42" value="42" />	<item key="43" value="43" />	<item key="44" value="44" />	<item key="45" value="45" />	<item key="46" value="46" />	<item key="47" value="47" />	<item key="48" value="48" />	<item key="49" value="49" />	<item key="50" value="50" />	<item key="51" value="51" />	<item key="52" value="52" />	<item key="53" value="53" />	<item key="54" value="54" />	<item key="55" value="55" />	<item key="56" value="56" />	<item key="57" value="57" />	<item key="58" value="58" />	<item key="59" value="59" />	<item key="60" value="60" />	<item key="61" value="61" />	<item key="62" value="62" />	<item key="63" value="63" />	<item key="64" value="64" />	<item key="65" value="65" />	<item key="66" value="66" />	<item key="67" value="268" />	<item key="68" value="67" />	<item key="69" value="68" />	<item key="70" value="69" />	<item key="71" value="70" />	<item key="72" value="71" />	<item key="73" value="72" />	<item key="74" value="73" />	<item key="75" value="74" />	<item key="76" value="75" />	<item key="77" value="76" />	<item key="78" value="77" />	<item key="79" value="78" />	<item key="80" value="79" />	<item key="81" value="80" />	<item key="82" value="81" />	<item key="83" value="82" />	<item key="84" value="83" />	<item key="85" value="84" />	<item key="86" value="85" />	<item key="87" value="86" />	<item key="88" value="87" />	<item key="89" value="88" />	<item key="90" value="89" />	<item key="91" value="90" />	<item key="92" value="91" />	<item key="93" value="92" />	<item key="94" value="93" />	<item key="95" value="94" />	<item key="96" value="95" />	<item key="97" value="96" />	<item key="98" value="97" />	<item key="99" value="98" />	<item key="100" value="99" />	<item key="101" value="100" />	<item key="102" value="101" />	<item key="103" value="102" />	<item key="104" value="103" />	<item key="105" value="104" />	<item key="106" value="105" />	<item key="107" value="106" />	<item key="108" value="107" />	<item key="109" value="108" />	<item key="110" value="109" />	<item key="111" value="110" />	<item key="112" value="111" />	<item key="113" value="112" />	<item key="114" value="113" />	<item key="115" value="114" />	<item key="116" value="115" />	<item key="117" value="116" />	<item key="118" value="117" />	<item key="119" value="118" />	<item key="120" value="119" />	<item key="121" value="120" />	<item key="122" value="121" />	<item key="123" value="122" />	<item key="124" value="123" />	<item key="125" value="124" />	<item key="126" value="125" />	<item key="127" value="126" />	<item key="128" value="127" />	<item key="129" value="256" />	<item key="130" value="257" />	<item key="131" value="258" />	<item key="132" value="259" />	<item key="133" value="260" />	<item key="134" value="269" />	<item key="135" value="266" />
+				<item key="136" value="261" />	<item key="137" value="262" />	<item key="138" value="263" />	<item key="139" value="264" />	<item key="140" value="265" />	<item key="141" value="128" />	<item key="142" value="129" />	<item key="143" value="130" />	<item key="144" value="131" />	<item key="145" value="132" />	<item key="146" value="133" />	<item key="147" value="134" />	<item key="148" value="135" />	<item key="149" value="136" />	<item key="150" value="137" />	<item key="151" value="138" />	<item key="152" value="139" />	<item key="153" value="140" />	<item key="154" value="141" />	<item key="155" value="142" />	<item key="156" value="143" />	<item key="157" value="144" />	<item key="158" value="145" />	<item key="159" value="146" />	<item key="160" value="147" />	<item key="161" value="148" />	<item key="162" value="149" />	<item key="163" value="150" />	<item key="164" value="151" />	<item key="165" value="152" />	<item key="166" value="153" />	<item key="167" value="154" />	<item key="168" value="155" />	<item key="169" value="156" />	<item key="170" value="157" />	<item key="171" value="158" />	<item key="172" value="159" />	<item key="173" value="160" />	<item key="174" value="161" />	<item key="175" value="162" />	<item key="176" value="163" />	<item key="177" value="164" />	<item key="178" value="165" />	<item key="179" value="166" />	<item key="180" value="167" />	<item key="181" value="168" />	<item key="182" value="169" />	<item key="183" value="170" />	<item key="184" value="171" />	<item key="185" value="172" />	<item key="186" value="173" />	<item key="187" value="174" />	<item key="188" value="175" />	<item key="189" value="176" />	<item key="190" value="177" />	<item key="191" value="178" />	<item key="192" value="179" />	<item key="193" value="180" />	<item key="194" value="181" />	<item key="195" value="182" />	<item key="196" value="183" />	<item key="197" value="184" />	<item key="198" value="185" />	<item key="199" value="186" />	<item key="200" value="187" />	<item key="201" value="188" />	<item key="202" value="270" />	<item key="203" value="267" />	<item key="204" value="189" />	<item key="205" value="190" />	<item key="206" value="191" />	<item key="207" value="192" />	<item key="208" value="193" />	<item key="209" value="194" />	<item key="210" value="195" />	<item key="211" value="196" />	<item key="212" value="197" />	<item key="213" value="198" />	<item key="214" value="199" />	<item key="215" value="200" />	<item key="216" value="201" />	<item key="217" value="202" />	<item key="218" value="203" />	<item key="219" value="204" />	<item key="220" value="205" />	<item key="221" value="206" />	<item key="222" value="207" />	<item key="223" value="208" />	<item key="224" value="209" />	<item key="225" value="210" />	<item key="226" value="211" />	<item key="227" value="212" />	<item key="228" value="213" />	<item key="229" value="214" />	<item key="230" value="215" />	<item key="231" value="216" />	<item key="232" value="217" />	<item key="233" value="218" />	<item key="234" value="219" />	<item key="235" value="220" />	<item key="236" value="221" />	<item key="237" value="222" />	<item key="238" value="223" />	<item key="239" value="224" />	<item key="240" value="225" />	<item key="241" value="226" />	<item key="242" value="227" />	<item key="243" value="228" />	<item key="244" value="229" />	<item key="245" value="230" />	<item key="246" value="231" />	<item key="247" value="232" />	<item key="248" value="233" />	<item key="249" value="234" />	<item key="250" value="235" />	<item key="251" value="236" />	<item key="252" value="237" />	<item key="253" value="238" />	<item key="254" value="239" />	<item key="255" value="240" />	<item key="256" value="241" />	<item key="257" value="242" />	<item key="258" value="243" />	<item key="259" value="244" />	<item key="260" value="245" />	<item key="261" value="246" />	<item key="262" value="247" />	<item key="263" value="248" />	<item key="264" value="249" />	<item key="265" value="250" />	<item key="266" value="251" />	<item key="267" value="252" />	<item key="268" value="253" />	<item key="269" value="254" />	<item key="270" value="255" />	<item key="271" value="271" />
+			</hash>
+			<hash name="subarymap" defaultvalue=" " defaultkey="-1" type="string"> 					<!--sch_rtlmod hash table to map subary to RTL path -->
+				<item key= "0"  value= "0_7" />
+				<item key= "1"  value= "8_15" />
+			</hash>
+			<hash name="subaryLH" defaultvalue=" " defaultkey="-1" type="string"> 					<!--sch_rtlmod hash table to map subary to SCH path -->
+				<item key= "0"  value= "L" />
+				<item key= "1"  value= "H" />
+			</hash>
+			<hash name="datramRL" defaultvalue=" " defaultkey="-1" type="string"> 					<!--sch_rtlmod hash table to map subary to SCH path -->
+				<item key= "0"  value= "R" />
+				<item key= "1"  value= "L" />
+			</hash>
+			<hash name="ARY128X4map" defaultvalue=" " defaultkey="-1" type="string"> 				<!--sch_rtlmod hash table to map subary to SCH path -->
+				<item key= "0"  value= "DN" />
+				<item key= "1"  value= "UP" />
+			</hash>
+		</global>
+		<get_layout>
+			<logical_address>											<!-- Reserved words:  set, way, bit, ssi -->
+				<bsv name="inputbit">	bit			 		</bsv>				<!-- Input Bit, only used for Modify layout purposes -->
+				<bsv name="slice" lya="true">	ssi			 	</bsv>				<!-- SSI = slice -->
+				<bsv name="pair">	and_(shiftright(ssi,1), 1); 		</bsv>				<!-- SSI[1] pair -->
+				<bsv name="subary"> 	and_(shiftright(set,10), 1);		</bsv>				<!-- SET[10]  Subary -->
+				<bsv name="wordline">	and_(shiftright(set,2), 255);		</bsv>				<!-- SET[9:2] Wordline -->
+				<bsv name="colsel">	and_(set,3);				</bsv>				<!-- SET[1:0] Column selection -->
+				<bsv name="bank">	way					</bsv>				<!-- WAY[4:0] Bank -->
+				<bsv name="half" lya="true"> 	div(bit,532); 			</bsv>				<!-- half is determined by sdat.dword pattern selection -->  <!-- Q: Where half  came from? -->  
+				<var name="bitperhalf"> mod(bit,532);				</var>  	
+				<var name="bitremap">
+					if(BIT_to_bitremap_value(bitperhalf)!=-1)
+						BIT_to_bitremap_value(bitperhalf);
+					else
+						0;
+				</var>
+				<bsv name="chunk"> 	div(bitremap,272);			</bsv>
+				<var name="bitperchnk">	mod(bitremap,272);			</var>
+				<var name="iophy">	bitperchnk				</var>				<!-- According to DE RepairOrder is equal to IOPHY -->
+				<bsv name="quadhalf">	div(iophy,34);				</bsv>				<!-- 0..7 -->
+				<bsv name="ioperHQ">	mod(iophy,34);				</bsv>				<!-- 0..33 -->
+				<bsv name="quarter" lya="true">	div(bitperchnk,68);		</bsv>				<!-- Repair information: 0..3 -->
+				<bsv name="iofuse">	mod(bitperchnk,68);			</bsv>				<!-- Repair information: 0..67 -->
+				<bsv name="ColSpare">	0					</bsv>
+				<bsv name="RowSpare">	0					</bsv>
+				<!-- LYA selection -->
+				<var name="lyaorder">	
+					if(bitperchnk_to_lyaorder_value(bitperchnk)!=-1)
+						bitperchnk_to_lyaorder_value(bitperchnk);
+					else
+						0;
+				</var>
+				<bsv name="LYAData" lya="true">	(266*chunk)+ lyaorder;		</bsv>				
+				<var name="wordline50">	and_(wordline,63);			</var>				<!-- wordline[5:0]  -->
+				<var name="wordline76">	and_(shiftright(wordline,6), 3);	</var>				<!-- wordline[7:6]  -->
+				<bsv name="banksel" lya="true">	and_(bank,15);			</bsv>				<!-- bank[3:0] ba  -->
+				<var name="bank4">	and_(shiftright(bank,4), 1);		</var>				<!-- bank[4]  -->
+				<bsv name="txaddr" lya="true">	or_(shiftleft(wordline50,2), colsel); </bsv>
+				<bsv name="tyaddr" lya="true">	or_(shiftleft(bank4,3),shiftleft(subary,2), wordline76); 	</bsv>	
+			</logical_address>
+			<darray_address>											<!-- Reserved words:  block, row, column, ssi -->
+				<bsv name="slice">	ssi			 		</bsv>				<!-- SSI = slice -->
+				<bsv name="pair">	and_(shiftright(ssi,1), 1); 		</bsv>				<!-- SSI[1] pair -->
+				<bsv name="half">	div(block,96);				</bsv>				<!-- 0..1  half -->
+				<var name="blockphalf">	mod(block,96);				</var>				<!-- 0..95 D-array blocks per each half  -->
+				<bsv name="quadhalf">	div(blockphalf,12);			</bsv>				<!-- 0..7  quadhalf -->
+				<bsv name="bank">	mod(blockphalf,12);			</bsv>				<!-- 0..11 D-array blocks per each quadhalf  -->
+				<bsv name="subary">	and_(shiftright(row,8), 1);		</bsv>				<!-- R[8] indicates the subarray -->
+				<var name="wordlinex">	and_(row,255);				</var>				<!-- R[7:0] = wordlinex. It is similar to wordline! -->
+				<bsv name="wordline">	abs(255*(1-subary)-wordlinex);		</bsv>				<!-- Wordline is opposite to ROW increasing order at subary 0 -->
+				<var name="colselx">	and_(column, 3);			</var>				<!-- C[1:0] -->
+				<bsv name="colsel">	3 - colselx;				</bsv>
+				<bsv name="chunk">	and_(shiftright(column,2), 1);		</bsv>				<!-- C[2]-->
+				<bsv name="ioperHQ">	shiftright(column,3);			</bsv>				<!-- 0..37 for $half 0 and 0..30 for $half 1 -->
+				<!-- LYA selection -->
+				<var name="bitperchnk"> 34 * quadhalf + ioperHQ;		 </var>
+				<var name="lyaorder">	
+					if(bitperchnk_to_lyaorder_value(bitperchnk)!=-1)
+						bitperchnk_to_lyaorder_value(bitperchnk);
+					else
+						0;
+				</var>
+				<bsv name="LYAData">	(266*chunk)+ lyaorder;			</bsv>				
+				<var name="wordline50">	and_(wordline,63);			</var>				<!-- wordline[5:0]  -->
+				<var name="wordline76">	and_(shiftright(wordline,6), 3);	</var>				<!-- wordline[7:6]  -->
+				<bsv name="banksel">	and_(bank,15);				</bsv>				<!-- bank[3:0] banksel  -->
+				<var name="bank4">	and_(shiftright(bank,4), 1);		</var>				<!-- bank[4]  -->
+				<bsv name="txaddr">	or_(shiftleft(wordline50,2), colsel); 	</bsv>
+				<bsv name="tyaddr">	or_(shiftleft(bank4,3),shiftleft(subary,2), wordline76); </bsv>
+			</darray_address>
+		</get_layout>
+		<mod_layout>
+			<fuse_definition array_code="LDC">									<!-- LLC DATA COL -->
+				<var name="colshiftactive">
+					(iofuse &gt;= iofuse_fuse)and(iofuse!=67); 						<!-- Col shifting only happens if actual col is equal or more than fuse value -->
+				</var>
+				<bsv name="iofuse">
+					colshiftactive ? iofuse+1:iofuse;							<!-- Perform Column shift -->
+				</bsv>
+
+				<var name="bitperhalf"> mod(inputbit,532);			</var>  			<!-- COPIED from GET LAYOUT -->
+				<var name="bitremap">										<!-- COPIED from GET LAYOUT -->
+					if(BIT_to_bitremap_value(bitperhalf)!=-1)						<!-- COPIED from GET LAYOUT -->
+						BIT_to_bitremap_value(bitperhalf);						<!-- COPIED from GET LAYOUT -->
+					else											<!-- COPIED from GET LAYOUT -->
+						0;										<!-- COPIED from GET LAYOUT -->
+				</var>												<!-- COPIED from GET LAYOUT -->
+				<bsv name="chunk"> 	div(bitremap,272);			</bsv>				<!-- COPIED from GET LAYOUT -->
+				<var name="bitperchnk">	mod(bitremap,272);			</var>				<!-- COPIED from GET LAYOUT -->
+				<var name="iophy">	bitperchnk				</var>				<!-- COPIED from GET LAYOUT -->
+				<bsv name="quadhalf">	div(iophy,34);				</bsv>				<!-- COPIED from GET LAYOUT -->
+				<bsv name="ioperHQ">	mod(iophy,34);				</bsv>				<!-- COPIED from GET LAYOUT -->
+			</fuse_definition>
+			<fuse_definition array_code="LDR">									<!-- LLC DATA ROW -->
+				<bsv name="RowSpare">	spare_fuse + 1;				</bsv>				<!-- Indicates that the Row Spare is being targeted by current fuse -->
+			</fuse_definition>
+		</mod_layout>
+		<sch_rtlmod>													<!-- PENDING VERIFICATION -->
+			<!-- Required for RTL -->
+				<var name="ssi0">	and_(slice,1);				</var>				<!-- SSI[0] intermediate variable used for $ldhalf calculation -->
+				<var name="ldhalf">	abs(1*(ssi0) - half);			</var>				<!-- ldhalf is inverted to half only when ssi0 = 1 -->
+				<var name="quadrant"> 	and_(shiftright(quadhalf,1),3); 	</var>				<!-- 0..3 -->
+				<var name="quadhalf0">	and_(quadhalf,1);			</var>				<!-- 0..1 -->
+				<var name="ldhalfoff">	ldhalf + 1				</var>
+				<var name="io68">	or_(shiftleft(quadhalf0,1), ioperHQ); 	</var>
+			<!-- Required for SCH -->
+				<var name="set0">	and_(colsel,1);				</var>				<!-- S[0] -->
+				<var name="ary22">	and_(shiftright(colsel,1), 1);		</var>				<!-- S[1] Ary2x2 selection -->
+				<var name="set2">	and_(wordline,1);			</var>				<!-- S[2] -->
+				<var name="cell">	or_(shiftleft(set0,1), set2); 		</var>				<!-- Cell select 2x2 S[0]:S[2] -->
+				<var name="datram">	div(ioperHQ,17) 			</var>				<!-- DatRam selection. L[1], R[0] -->
+				<var name="ioperDR">	mod(ioperHQ,17) 			</var>				<!-- 0..16 -->
+				<var name="COL256X4io">	or_(shiftleft(ioperDR,1),chunk) 	</var>				<!-- Used for COL256X4 io setup -->
+				<var name="ways8">	and_(shiftright(bank,2), 1);		</var>				<!-- bank[2] -->
+				<var name="ways4">	and_(shiftright(bank,1), 1);		</var>				<!-- bank[1] -->
+				<var name="waysbnk">	and_(bank, 1);	 			</var>				<!-- bank[0] -->
+				<var name="wordline7">	and_(shiftright(wordline,7),1);		</var>
+				<var name="wordline64">	and_(shiftright(wordline,4),7);		</var>
+				<var name="wordline3">	and_(shiftright(wordline,3),1);		</var>
+				<var name="wordline21">	and_(shiftright(wordline,1),3);		</var>
+			<rtl_path>	<!-- llcdatap<0-1><0-1>wrapper/llcdatap<0-1><0-1>/llc2ldhalf/llc1ldhalf<1-2>/datbnk_quadrant<0-3>/datbnk_quad_half<0-1>/datbnk_way<0-7>/lldatbnk/lldatary_way_<0_7|8_15>/ARRAY[259:0][3:0][67:0] -->
+				'RTL: llcdatap' +
+							pair_str			+ 
+							half_str			+ 'wrapper/llcdatap' +
+							pair_str			+ 
+							half_str			+ '/llc2ldhalf/llc1ldhalf' +
+							ldhalfoff_str			+ '/datbnk_quadrant' +
+							quadrant_str			+ '/datbnk_quad_half' +
+							quadhalf0_str			+ '/datbnk_way' +
+							bank_str			+ '/lldatbnk/lldatary_way_' +
+							subarymap_value(subary)		+ '/ARRAY[' +
+							wordline_str			+ '][' +
+							colsel_str			+ '][' +
+							io68_str			+ ']';
+			</rtl_path>
+			<sch_path>	<!-- icl42upkg/ICL42UTOP/SOC/PAR_CCF/LLCDATAP0H0WRAPPER.LLCDATAP0H0/LLC2ldhalf/ILLC1ldhalf_B1/ILLCquadhalf[0]/ILLC8WAYS[0]/ILLCDATA4WAYS[1]
+									/ILLCDATABANK[0]/SUBARYL/DATRAMR/COL256X4[6]/ARY128X4DN/IARY16X4[1]/IARY8X4[0]/IARY2X4[1]/IARY2X2C0/N0[1] -->
+				'       SCH: LLCDATAP'					+
+							pair_str			+ 'H' +
+							half_str			+ 'WRAPPER.LLCDATAP' +
+							pair_str			+ 'H' +
+							half_str			+ '/LLC2ldhalf/ILLC1ldhalf_B' +
+							ldhalfoff_str			+ '/ILLCquadhalf[' +
+							quadhalf_str			+ ']/ILLC8WAYS[' +
+							ways8_str			+ ']/ILLCDATA4WAYS[' +
+							ways4_str			+ ']/ILLCDATABANK[' +
+							waysbnk_str			+ ']/SUBARY' +
+							subaryLH_value(subary)		+ '/DATRAM' +
+							datramRL_value(datram)		+ '/COL256X4[' +
+							COL256X4io_str			+ ']/ARY128X4' +
+							ARY128X4map_value(wordline7)	+ '/IARY16X4[' +
+							wordline64_str			+ ']/IARY8X4[' +
+							wordline3_str			+ ']/IARY2X4[' +
+							wordline21_str			+ ']/IARY2X2C' +
+							ary22_str			+ '/N0[' +
+							cell_str			+ ']';
+			</sch_path>
+		</sch_rtlmod>
+		<addressmap>
+			<darray_address>
+				<set>	or_(shiftleft(subary,10), shiftleft(wordline,2), colsel);	</set>
+				<way> 	bank							</way>
+				<var name="iophy">	34*quadhalf + ioperHQ;			</var>
+				<var name="bitremap">	272*chunk + iophy;			</var>
+				<var name="bitperhalf">	BIT_to_bitremap_key(bitremap);		</var>
+				<bit>			532*half + bitperhalf;			</bit>
+				<ssi>			slice					</ssi>
+			</darray_address>
+			<logical_address>
+				<var name="blockphalf">	12 * quadhalf + bank;			</var>
+				<block> 		96 * half + blockphalf;			</block>
+				<var name="wordlinex">	abs(255*(1-subary)-wordline);		</var>
+				<row>
+					if (RowSpare &gt;= 1)
+						-(RowSpare + 4 * subary);							<!-- Redundant rows are reported as:  -8-7-6-5 (subary 1) and -4-3-2-1 (subary 0) -->
+					else
+						or_(shiftleft(subary,8), wordlinex);
+				</row>
+				<var name="colselx">	3 - colsel;				</var>
+				<column>  or_(shiftleft(ioperHQ,3), shiftleft(chunk,2), colselx);</column>
+				<ssi>			slice					</ssi>
+			</logical_address>
+		</addressmap>
+	</array>
+	<array label="llc_tag"    fuse_description="LLC_FUSE_GROUP">								<!-- TGL LLC Tag array -->
+		<arrayname description="Tiger Lake Client LLC Tag array" />
+		<array_vars>
+			<max_set value="4095" />										<!-- 1111111111 (4096 = 2^12) --> <!-- Depends on Arraymap xls --> 
+			<min_set value="0"/>
+			<max_way value="23" />											<!-- 24 Ways range 0-23 -->
+			<min_way value="0" />
+			<max_bit value="57" />											<!-- Reading both halves of the cache line at once, and each half has 29 bits -->
+			<min_bit value="0"/>
+			<max_block value="31" />										<!-- This is the total number of Darrays - Not used for TGL LLC Tag because we have not L2P requirements - Dummy value only -->
+			<min_block value="0"/>
+			<max_row value="511" />											<!-- *Not used, for L2P only - H:Rows -->
+			<min_row value="0"/>
+			<max_column value="239" /> 										<!-- *Not used, for L2P only - V:Columns -->
+			<min_column value="0"/>
+		</array_vars>
+		<global>													<!-- This will be used for SCHM path conversion.  Will need this eventually -->
+			<hash name="TAGIO_L2R" defaultvalue="0" defaultkey="-1">
+				<item key="0" value="0" />	<item key="1" value="1" />	<item key="2" value="2" />	<item key="3" value="3" />	<item key="4" value="4" />	<item key="5" value="5" />	<item key="6" value="6" />	<item key="7" value="7" />	<item key="8" value="8" />	<item key="9" value="9" />	<item key="10" value="10" />	<item key="11" value="11" />	<item key="12" value="12" />	<item key="13" value="13" />	<item key="14" value="14" />	<item key="15" value="15" />	<item key="16" value="16" />	<item key="17" value="17" />	<item key="18" value="18" />	<item key="19" value="19" />	<item key="20" value="20" />	<item key="21" value="21" />	<item key="22" value="26" />	<item key="23" value="27" />	<item key="24" value="28" />	<item key="25" value="29" />	<item key="26" value="30" />	<item key="27" value="31" />	<item key="28" value="32" />												
+			</hash>
+			<hash name="topbotmap" defaultvalue=" " defaultkey="-1" type="string">
+				<item key= "1"  value= "TOP" />
+				<item key= "0"  value= "BOTTOM" />
+			</hash>
+			<hash name="subarymap" defaultvalue=" " defaultkey="-1" type="string">
+				<item key= "0"  value= "W01" />
+				<item key= "1"  value= "W23" />
+			</hash>
+			<hash name="ARY128X4map" defaultvalue=" " defaultkey="-1" type="string"> 				<!--sch_rtlmod hash table to map subary to SCH path -->
+				<item key= "0"  value= "DN" />
+				<item key= "1"  value= "UP" />
+			</hash>
+		</global>
+		<get_layout>
+			<logical_address>											<!-- Reserved words:  set, way, bit, ssi -->
+				<bsv name="slice"> 	ssi 								</bsv>				<!-- Comes from test instance -->
+				<bsv name="RowSpare">	0								</bsv>
+				<bsv name="pair"> 	and_(shiftright(ssi,1), 1); 		</bsv>				<!-- ssi bit 1 & 1 -->
+				<bsv name="topbot">	and_(ssi, 1);						</bsv>				<!-- ssi bit 0 & 1 -->
+				<var name="way4">	and_(shiftright(set,11), 1);		</var>				<!-- Take the last bit of the set and select way 4 bit -->
+				<var name="set1098">	and_(shiftright(set,8), 7);		</var>				<!-- Take set bits 8,9 and 10 -->
+				<bsv name="subarray">	and_(shiftright(set,10), 1);	</bsv>				<!-- Takes the 10th bit of the set bits for subarray  -->			
+				<bsv name="wordline">	and_(shiftright(set,2), 255);	</bsv>				<!-- S[9:2] Wordline -->
+				<bsv name="colsel">	and_(set,3);						</bsv>				<!-- S[1:0] Column selection -->
+				<var name="way30"> 	and_(way, 15);						</var>				<!-- Variable created from way bits 3:0 Note: We can never hit max value for these bits because pattern will never supply a value beyond 1000 -->
+				<bsv name="bankSel">	or_(shiftleft(way4,4),way30);	</bsv>				<!-- Or way bits together to create bank BSV, which is way bits [4:0] -->
+				<bsv name="half"> 	div(bit,29); 						</bsv>				<!-- half is determined by sdat.dword pattern selection -->
+				<bsv name="dataio"> 	mod(bit,29);					</bsv>				<!-- IO bit -->
+				<bsv name="dword"> 	half								</bsv>				<!-- LLC Tag doesn't have DWORDs - fixed to 0-->
+				<bsv name="bank"> 	bankSel								</bsv>				<!-- Bank is Set[11]:way30 combined -->
+				<bsv name="fast_address"> 	and_(set,2047);				</bsv>				<!-- Fast address bits are Set[10:0] -->
+				<var name="tagiol2r">
+					if(TAGIO_L2R_value(dataio)!=-1)
+						TAGIO_L2R_value(dataio);
+					else
+						0;
+				</var>
+				<bsv name="fail_io"> 	tagiol2r						</bsv>				<!-- BSV for failing IO (PENDING confirmation with L2R)-->
+			</logical_address>
+		</get_layout>
+		<mod_layout>
+			<fuse_definition array_code="LTR">									<!-- LLC TAG ROW -->
+				<bsv name="wordline">	256 + spare_fuse;				</bsv>				<!-- Wordline is updated to point to 256 + spare bit.  Spare range 0-31 -->
+			</fuse_definition>
+		</mod_layout>
+	</array>
+	<array label="llc_cv"     fuse_description="LLC_FUSE_GROUP">								<!-- TGL LLC CV  STA array -->
+		<arrayname description="Tiger Lake Client LLC CV STA array" />
+		<array_vars>
+			<max_set value="4095" />										<!-- 1111111111 (4096 = 2^12) --> <!-- Depends on Arraymap xls --> 
+			<min_set value="0"/>
+			<max_way value="23" />											<!-- 24 Ways range 0-23 -->
+			<min_way value="0" />
+			<max_bit value="69" />											<!-- Reading both halves of the cache line at once, and each half has 28 bits -->
+			<min_bit value="0"/>
+			<max_block value="31" />										<!-- This is the total number of Darrays - Not used for TGL LLC Tag because we have not L2P requirements - Dummy value only -->
+			<min_block value="0"/>
+			<max_row value="511" />											<!-- *Not used, for L2P only - H:Rows -->
+			<min_row value="0"/>
+			<max_column value="239" /> 										<!-- *Not used, for L2P only - V:Columns -->
+			<min_column value="0"/>
+		</array_vars>
+		<global>
+			<hash name="CVIO_L2R" defaultvalue="0" defaultkey="-1">
+				<item key="0" value="15" />	<item key="1" value="16" />	<item key="2" value="17" />	<item key="3" value="18" />	<item key="4" value="19" />	<item key="5" value="20" />	<item key="6" value="21" />	<item key="7" value="22" />	<item key="8" value="23" />	<item key="9" value="26" />				
+			</hash>
+		</global>
+		<get_layout>
+			<logical_address>											<!-- Reserved words:  set, way, bit, ssi -->
+				<bsv name="slice"> 	ssi 					</bsv>				<!-- Comes from test instance -->
+				<bsv name="RowSpare">    0   </bsv>
+				<bsv name="pair"> 	and_(shiftright(ssi,1), 1); 		</bsv>				<!-- ssi bit 1 & 1 -->
+				<bsv name="topbot">	and_(ssi, 1);				</bsv>				<!-- ssi bit 0 & 1 -->
+				<var name="cls_way">	way					</var>				<!-- Take the last bit of the set and select way 4 bit -->
+				<var name="way4">	and_(shiftright(way,5),1);		</var>				<!-- Way bit 4 -->
+				<bsv name="fuse_val">	set					</bsv>				<!-- Take the last bit of the set  -->
+				<bsv name="half"> 	div(bit,10); 				</bsv>				<!-- half is determined by sdat.dword pattern selection --> <!-- NOTE:  Confirm the  28 value -->
+				<bsv name="dataio"> 	mod(bit,10)				</bsv>				<!-- NOTE:  Confirm the  28 value (PENDING confirmation with L2R)-->
+				<bsv name="dword"> 	div(bit,10);				</bsv>				<!-- DWORD is determined from IO div by 32 -->
+				<bsv name="bank"> 	and_(way,15);				</bsv>				<!-- Bank select is way bits 4:0 -->
+				<bsv name="fast_address"> or_(shiftleft(way4,11),set);		</bsv>				<!-- Fast address comes from SET and way bit 4 combined way[4]:set[10:0] -->
+				<var name="cviol2r">
+				if(CVIO_L2R_value(dataio)!=-1)
+						CVIO_L2R_value(dataio);
+					else
+						0;
+				</var>
+				<bsv name="fail_io"> 	cviol2r;					</bsv>				<!-- Temporary BSV for failing IO (PENDING confirmation with L2R)-->						
+			</logical_address>		
+		</get_layout>
+		<mod_layout>
+			<fuse_definition array_code="LCR">									<!-- LLC TAG ROW -->
+				<bsv name="RowSpare">	RowSpare + 1;				</bsv>				<!-- Wordline is updated to point to 256 + spare bit.  Spare range 0-31 -->
+			</fuse_definition>
+		</mod_layout>
+	</array>
+	<array label="llc_sta"    fuse_description="LLC_FUSE_GROUP">								<!-- TGL LLC CV  STA array -->
+		<arrayname description="Tiger Lake Client LLC CV STA array" />
+		<array_vars>
+			<max_set value="4095" />										<!-- 1111111111 (4096 = 2^12) --> <!-- Depends on Arraymap xls --> 
+			<min_set value="0"/>
+			<max_way value="23" />											<!-- 24 Ways range 0-23 -->
+			<min_way value="0" />
+			<max_bit value="15" />											<!-- Reading both halves of the cache line at once, and each half has 28 bits -->
+			<min_bit value="0"/>
+			<max_block value="31" />										<!-- This is the total number of Darrays - Not used for TGL LLC Tag because we have not L2P requirements - Dummy value only -->
+			<min_block value="0"/>
+			<max_row value="511" />											<!-- *Not used, for L2P only - H:Rows -->
+			<min_row value="0"/>
+			<max_column value="239" /> 										<!-- *Not used, for L2P only - V:Columns -->
+			<min_column value="0"/>
+		</array_vars>
+		<global>
+			<hash name="STAIO_L2R" defaultvalue="0" defaultkey="-1">
+				<item key="0" value="0" />	<item key="1" value="1" />	<item key="2" value="3" />	<item key="3" value="30" />	<item key="4" value="31" />	<item key="5" value="32" />	<item key="6" value="33" />	<item key="7" value="34" />
+			</hash>
+		</global>		
+		<get_layout>
+			<logical_address>											<!-- Reserved words:  set, way, bit, ssi -->
+				<bsv name="slice"> 	ssi 					</bsv>				<!-- Comes from test instance -->
+				<bsv name="RowSpare">    0   </bsv>
+				<bsv name="pair"> 	and_(shiftright(ssi,1), 1); 		</bsv>				<!-- ssi bit 1 & 1 -->
+				<bsv name="topbot">	and_(ssi, 1);				</bsv>				<!-- ssi bit 0 & 1 -->
+				<var name="cls_way">	way					</var>				<!-- Take the last bit of the set and select way 4 bit -->
+				<var name="way4">	and_(shiftright(way,5),1);		</var>				<!-- Way bit 4 -->
+				<bsv name="fuse_val">	set					</bsv>				<!-- Take the last bit of the set  -->
+				<bsv name="half"> 	div(bit,8); 				</bsv>				<!-- half is determined by sdat.dword pattern selection --> <!-- NOTE:  Confirm the  28 value -->
+				<bsv name="dataio"> 	mod(bit,8)			</bsv>				<!-- NOTE:  Confirm the  28 value (PENDING confirmation with L2R)-->
+				<bsv name="dword"> 	div(bit,8);				</bsv>				<!-- DWORD is determined from IO div by 32 -->
+				<bsv name="bank"> 	and_(way,15);				</bsv>				<!-- Bank select is way bits 4:0 -->
+				<bsv name="fast_address"> or_(shiftleft(way4,11),set);		</bsv>				<!-- Fast address comes from SET and way bit 4 combined way[4]:set[10:0] -->
+				<var name="staiol2r">
+				if(STAIO_L2R_value(dataio)!=-1)
+						STAIO_L2R_value(dataio);
+					else
+						0;
+				</var>				
+				<bsv name="fail_io"> 	staiol2r;					</bsv>				<!-- Temporary BSV for failing IO (PENDING confirmation with L2R)-->
+			</logical_address>		
+		</get_layout>
+		<mod_layout>
+			<fuse_definition array_code="LCR">									<!-- LLC TAG ROW -->
+				<bsv name="RowSpare">	RowSpare + 1;				</bsv>				<!-- Wordline is updated to point to 256 + spare bit.  Spare range 0-31 -->
+			</fuse_definition>
+		</mod_layout>
+	</array>	
+	<array label="llc_lru"    fuse_description="LLC_FUSE_GROUP">								<!-- TGL LLC LRU array -->
+		<arrayname description="Tiger Lake Client LLC LRU array" />
+		<array_vars>
+			<max_set value="4095" />										<!-- 1111111111 (4096 = 2^12) --> <!-- Depends on Arraymap xls --> 
+			<min_set value="0"/>
+			<max_way value="23" />											<!-- 24 Ways range 0-23 -->
+			<min_way value="0" />
+			<max_bit value="95" />											<!-- Reading both halves of the cache line at once, and each half has 28 bits -->
+			<min_bit value="0"/>
+			<max_block value="31" />										<!-- This is the total number of Darrays - Not used for TGL LLC Tag because we have not L2P requirements - Dummy value only -->
+			<min_block value="0"/>
+			<max_row value="511" />											<!-- *Not used, for L2P only - H:Rows -->
+			<min_row value="0"/>
+			<max_column value="239" /> 										<!-- *Not used, for L2P only - V:Columns -->
+			<min_column value="0"/>
+		</array_vars>
+		<get_layout>
+			<logical_address>											<!-- Reserved words:  set, way, bit, ssi -->
+				<bsv name="slice">	ssi 					</bsv>				<!-- Comes from test instance -->
+				<bsv name="RowSpare">	0					</bsv>
+				<bsv name="pair">	and_(shiftright(ssi,1), 1); 		</bsv>				<!-- ssi bit 1 & 1 -->
+				<bsv name="topbot">	and_(ssi, 1);				</bsv>				<!-- ssi bit 0 & 1 -->
+				<var name="cls_way">	way					</var>				<!-- Take the last bit of the set and select way 4 bit -->
+				<var name="way4">	and_(shiftright(way,5),1);		</var>				<!-- Way bit 4 -->
+				<bsv name="fuse_val">	set					</bsv>				<!-- Take the last bit of the set  -->
+				<bsv name="half">	div(bit,48); 				</bsv>				<!-- half is determined by sdat.dword pattern selection --> <!-- NOTE:  Confirm the  28 value -->
+				<bsv name="dataio">	mod(bit,48);				</bsv>				<!-- NOTE:  Confirm the  28 value -->
+				<bsv name="dword"> 	div(bit,32);				</bsv>				<!-- DWORD is determined from IO mod 32 (PENDING confirmation with L2R)-->
+				<bsv name="bank"> 	and_(way,15);				</bsv>				<!-- Bank select is way bits 4:0 -->
+				<bsv name="fast_address"> or_(shiftleft(way4,12),set);		</bsv>				<!-- Fast address comes from SET and way bit 4 combined way[4]:set[10:0] -->
+				<bsv name="fail_io"> 	dataio;					</bsv>				<!-- Temporary BSV for failing IO (PENDING confirmation with L2R)-->				
+			</logical_address>
+		</get_layout>
+		<mod_layout>
+			<fuse_definition array_code="LCR">									<!-- LLC TAG ROW -->
+				<bsv name="RowSpare">	RowSpare + 1;				</bsv>				<!-- Wordline is updated to point to 256 + spare bit.  Spare range 0-31 -->
+			</fuse_definition>		
+		</mod_layout>
+	</array>
+	<array label="mlc_dat"    fuse_description="MLC_FUSE_GROUP">								<!-- TGL MLC Dat array -->
+		<arrayname description="Tiger Lake Client MLC Data array" />
+		<array_vars>
+			<max_set value="4095"/>											<!-- (1024 = 2^10), Note: it corresponds to max Fast Address -->
+			<min_set value="0"/>
+			<max_way value="15"/>											<!-- Note it corresponds to LDAT max BANK -->
+			<min_way value="0"/>
+			<max_bit value="267"/>											<!-- 268 = 256 data + 10 ecc + 2 redund -->
+			<min_bit value="0"/>
+			<max_block value="31"/>											<!-- 32 mldatarycl = 16 Darray per slice only need for L2P -->
+			<min_block value="0"/>
+			<max_row value="511"/>											<!-- H:Rows -->
+			<min_row value="0"/>
+			<max_column value="267"/> 										<!-- V:Columns -->
+			<min_column value="0"/>
+		</array_vars>
+		<global>
+			<hash name="BIT_to_IOPHY" defaultvalue="0" defaultkey="-1">						<!-- New map from Design after ICL L2P findings.  REV04 -->
+				<item key="0" value="2" />	<item key="1" value="4" />	<item key="2" value="6" />	<item key="3" value="8" />	<item key="4" value="10" />	<item key="5" value="12" />	<item key="6" value="14" />	<item key="7" value="16" />	<item key="8" value="18" />	<item key="9" value="20" />	<item key="10" value="22" />	<item key="11" value="24" />	<item key="12" value="26" />	<item key="13" value="28" />	<item key="14" value="30" />	<item key="15" value="32" />	<item key="16" value="34" />	<item key="17" value="36" />	<item key="18" value="38" />	<item key="19" value="40" />	<item key="20" value="42" />	<item key="21" value="44" />	<item key="22" value="46" />	<item key="23" value="48" />	<item key="24" value="50" />	<item key="25" value="52" />	<item key="26" value="54" />	<item key="27" value="56" />	<item key="28" value="58" />	<item key="29" value="60" />	<item key="30" value="62" />	<item key="31" value="64" />	<item key="32" value="66" />	<item key="33" value="68" />	<item key="34" value="70" />	<item key="35" value="72" />	<item key="36" value="74" />	<item key="37" value="76" />	<item key="38" value="78" />	<item key="39" value="80" />	<item key="40" value="82" />	<item key="41" value="84" />	<item key="42" value="86" />	<item key="43" value="88" />	<item key="44" value="90" />	<item key="45" value="92" />	<item key="46" value="94" />	<item key="47" value="96" />	<item key="48" value="98" />	<item key="49" value="100" />	<item key="50" value="102" />	<item key="51" value="104" />	<item key="52" value="106" />	<item key="53" value="108" />	<item key="54" value="110" />	<item key="55" value="112" />	<item key="56" value="114" />	<item key="57" value="116" />	<item key="58" value="118" />	<item key="59" value="120" />	<item key="60" value="122" />	<item key="61" value="124" />	<item key="62" value="126" />	<item key="63" value="128" />	<item key="64" value="140" />	<item key="65" value="142" />	<item key="66" value="144" />
+				<item key="67" value="146" />	<item key="68" value="148" />	<item key="69" value="150" />	<item key="70" value="152" />	<item key="71" value="154" />	<item key="72" value="156" />	<item key="73" value="158" />	<item key="74" value="160" />	<item key="75" value="162" />	<item key="76" value="164" />	<item key="77" value="166" />	<item key="78" value="168" />	<item key="79" value="170" />	<item key="80" value="172" />	<item key="81" value="174" />	<item key="82" value="176" />	<item key="83" value="178" />	<item key="84" value="180" />	<item key="85" value="182" />	<item key="86" value="184" />	<item key="87" value="186" />	<item key="88" value="188" />	<item key="89" value="190" />	<item key="90" value="192" />	<item key="91" value="194" />	<item key="92" value="196" />	<item key="93" value="198" />	<item key="94" value="200" />	<item key="95" value="202" />	<item key="96" value="204" />	<item key="97" value="206" />	<item key="98" value="208" />	<item key="99" value="210" />	<item key="100" value="212" />	<item key="101" value="214" />	<item key="102" value="216" />	<item key="103" value="218" />	<item key="104" value="220" />	<item key="105" value="222" />	<item key="106" value="224" />	<item key="107" value="226" />	<item key="108" value="228" />	<item key="109" value="230" />	<item key="110" value="232" />	<item key="111" value="234" />	<item key="112" value="236" />	<item key="113" value="238" />	<item key="114" value="240" />	<item key="115" value="242" />	<item key="116" value="244" />	<item key="117" value="246" />	<item key="118" value="248" />	<item key="119" value="250" />	<item key="120" value="252" />	<item key="121" value="254" />	<item key="122" value="256" />	<item key="123" value="258" />	<item key="124" value="260" />	<item key="125" value="262" />	<item key="126" value="264" />	<item key="127" value="266" />	<item key="128" value="3" />	<item key="129" value="5" />	<item key="130" value="7" />	<item key="131" value="9" />	<item key="132" value="11" />	<item key="133" value="13" />
+				<item key="134" value="15" />	<item key="135" value="17" />	<item key="136" value="19" />	<item key="137" value="21" />	<item key="138" value="23" />	<item key="139" value="25" />	<item key="140" value="27" />	<item key="141" value="29" />	<item key="142" value="31" />	<item key="143" value="33" />	<item key="144" value="35" />	<item key="145" value="37" />	<item key="146" value="39" />	<item key="147" value="41" />	<item key="148" value="43" />	<item key="149" value="45" />	<item key="150" value="47" />	<item key="151" value="49" />	<item key="152" value="51" />	<item key="153" value="53" />	<item key="154" value="55" />	<item key="155" value="57" />	<item key="156" value="59" />	<item key="157" value="61" />	<item key="158" value="63" />	<item key="159" value="65" />	<item key="160" value="67" />	<item key="161" value="69" />	<item key="162" value="71" />	<item key="163" value="73" />	<item key="164" value="75" />	<item key="165" value="77" />	<item key="166" value="79" />	<item key="167" value="81" />	<item key="168" value="83" />	<item key="169" value="85" />	<item key="170" value="87" />	<item key="171" value="89" />	<item key="172" value="91" />	<item key="173" value="93" />	<item key="174" value="95" />	<item key="175" value="97" />	<item key="176" value="99" />	<item key="177" value="101" />	<item key="178" value="103" />	<item key="179" value="105" />	<item key="180" value="107" />	<item key="181" value="109" />	<item key="182" value="111" />	<item key="183" value="113" />	<item key="184" value="115" />	<item key="185" value="117" />	<item key="186" value="119" />	<item key="187" value="121" />	<item key="188" value="123" />	<item key="189" value="125" />	<item key="190" value="127" />	<item key="191" value="129" />	<item key="192" value="141" />	<item key="193" value="143" />	<item key="194" value="145" />	<item key="195" value="147" />	<item key="196" value="149" />	<item key="197" value="151" />	<item key="198" value="153" />	<item key="199" value="155" />	<item key="200" value="157" />
+				<item key="201" value="159" />	<item key="202" value="161" />	<item key="203" value="163" />	<item key="204" value="165" />	<item key="205" value="167" />	<item key="206" value="169" />	<item key="207" value="171" />	<item key="208" value="173" />	<item key="209" value="175" />	<item key="210" value="177" />	<item key="211" value="179" />	<item key="212" value="181" />	<item key="213" value="183" />	<item key="214" value="185" />	<item key="215" value="187" />	<item key="216" value="189" />	<item key="217" value="191" />	<item key="218" value="193" />	<item key="219" value="195" />	<item key="220" value="197" />	<item key="221" value="199" />	<item key="222" value="201" />	<item key="223" value="203" />	<item key="224" value="205" />	<item key="225" value="207" />	<item key="226" value="209" />	<item key="227" value="211" />	<item key="228" value="213" />	<item key="229" value="215" />	<item key="230" value="217" />	<item key="231" value="219" />	<item key="232" value="221" />	<item key="233" value="223" />	<item key="234" value="225" />	<item key="235" value="227" />	<item key="236" value="229" />	<item key="237" value="231" />	<item key="238" value="233" />	<item key="239" value="235" />	<item key="240" value="237" />	<item key="241" value="239" />	<item key="242" value="241" />	<item key="243" value="243" />	<item key="244" value="245" />	<item key="245" value="247" />	<item key="246" value="249" />	<item key="247" value="251" />	<item key="248" value="253" />	<item key="249" value="255" />	<item key="250" value="257" />	<item key="251" value="259" />	<item key="252" value="261" />	<item key="253" value="263" />	<item key="254" value="265" />	<item key="255" value="267" />	<item key="256" value="130" />	<item key="257" value="132" />	<item key="258" value="134" />	<item key="259" value="136" />	<item key="260" value="138" />	<item key="261" value="131" />	<item key="262" value="133" />	<item key="263" value="135" />	<item key="264" value="137" />	<item key="265" value="139" />	<item key="266" value="0" />	<item key="267" value="1" />
+			</hash>
+			<hash name="IO_DATA_RTL_MAP" defaultvalue="0" defaultkey="-1">						<!-- New map from Design after ICL L2P findings.  REV04 -->		
+				<item key="0" value="0" />	<item key="1" value="34" />	<item key="2" value="1" />	<item key="3" value="35" />	<item key="4" value="2" />	<item key="5" value="36" />	<item key="6" value="3" />	<item key="7" value="37" />	<item key="8" value="4" />	<item key="9" value="38" />	<item key="10" value="5" />	<item key="11" value="39" />	<item key="12" value="6" />	<item key="13" value="40" />	<item key="14" value="7" />	<item key="15" value="41" />	<item key="16" value="8" />	<item key="17" value="42" />	<item key="18" value="9" />	<item key="19" value="43" />	<item key="20" value="10" />	<item key="21" value="44" />	<item key="22" value="11" />	<item key="23" value="45" />	<item key="24" value="12" />	<item key="25" value="46" />	<item key="26" value="13" />	<item key="27" value="47" />	<item key="28" value="14" />	<item key="29" value="48" />	<item key="30" value="15" />	<item key="31" value="49" />	<item key="32" value="16" />	<item key="33" value="50" />	<item key="34" value="17" />	<item key="35" value="51" />	<item key="36" value="18" />	<item key="37" value="52" />	<item key="38" value="19" />	<item key="39" value="53" />	<item key="40" value="20" />	<item key="41" value="54" />	<item key="42" value="21" />	<item key="43" value="55" />	<item key="44" value="22" />	<item key="45" value="56" />	<item key="46" value="23" />	<item key="47" value="57" />	<item key="48" value="24" />	<item key="49" value="58" />	<item key="50" value="25" />	<item key="51" value="59" />	<item key="52" value="26" />	<item key="53" value="60" />	<item key="54" value="27" />	<item key="55" value="61" />	<item key="56" value="28" />	<item key="57" value="62" />	<item key="58" value="29" />	<item key="59" value="63" />	<item key="60" value="30" />	<item key="61" value="64" />	<item key="62" value="31" />	<item key="63" value="65" />	<item key="64" value="32" />	<item key="65" value="66" />	<item key="66" value="33" />
+			</hash>		
+			<hash name="BIT_to_RepOrder" defaultvalue="0" defaultkey="-1">						<!-- Map Logical address to Repair order.  Source:  ICL LLC_Data_IO_L2P.xlsx -->
+				<item key="0" value="1" />	<item key="1" value="2" />	<item key="2" value="3" />	<item key="3" value="4" />	<item key="4" value="5" />	<item key="5" value="6" />	<item key="6" value="7" />	<item key="7" value="8" />	<item key="8" value="9" />	<item key="9" value="10" />	<item key="10" value="11" />	<item key="11" value="12" />	<item key="12" value="13" />	<item key="13" value="14" />	<item key="14" value="15" />	<item key="15" value="16" />	<item key="16" value="17" />	<item key="17" value="18" />	<item key="18" value="19" />	<item key="19" value="20" />	<item key="20" value="21" />	<item key="21" value="22" />	<item key="22" value="23" />	<item key="23" value="24" />	<item key="24" value="25" />	<item key="25" value="26" />	<item key="26" value="27" />	<item key="27" value="28" />	<item key="28" value="29" />	<item key="29" value="30" />	<item key="30" value="31" />	<item key="31" value="32" />	<item key="32" value="33" />	<item key="33" value="34" />	<item key="34" value="35" />	<item key="35" value="36" />	<item key="36" value="37" />	<item key="37" value="38" />	<item key="38" value="39" />	<item key="39" value="40" />	<item key="40" value="41" />	<item key="41" value="42" />	<item key="42" value="43" />	<item key="43" value="44" />	<item key="44" value="45" />	<item key="45" value="46" />	<item key="46" value="47" />	<item key="47" value="48" />	<item key="48" value="49" />	<item key="49" value="50" />	<item key="50" value="51" />	<item key="51" value="52" />	<item key="52" value="53" />	<item key="53" value="54" />	<item key="54" value="55" />	<item key="55" value="56" />	<item key="56" value="57" />	<item key="57" value="58" />	<item key="58" value="59" />	<item key="59" value="60" />	<item key="60" value="61" />	<item key="61" value="62" />	<item key="62" value="63" />	<item key="63" value="64" />	<item key="64" value="70" />	<item key="65" value="71" />	<item key="66" value="72" />
+				<item key="67" value="73" />	<item key="68" value="74" />	<item key="69" value="75" />	<item key="70" value="76" />	<item key="71" value="77" />	<item key="72" value="78" />	<item key="73" value="79" />	<item key="74" value="80" />	<item key="75" value="81" />	<item key="76" value="82" />	<item key="77" value="83" />	<item key="78" value="84" />	<item key="79" value="85" />	<item key="80" value="86" />	<item key="81" value="87" />	<item key="82" value="88" />	<item key="83" value="89" />	<item key="84" value="90" />	<item key="85" value="91" />	<item key="86" value="92" />	<item key="87" value="93" />	<item key="88" value="94" />	<item key="89" value="95" />	<item key="90" value="96" />	<item key="91" value="97" />	<item key="92" value="98" />	<item key="93" value="99" />	<item key="94" value="100" />	<item key="95" value="101" />	<item key="96" value="102" />	<item key="97" value="103" />	<item key="98" value="104" />	<item key="99" value="105" />	<item key="100" value="106" />	<item key="101" value="107" />	<item key="102" value="108" />	<item key="103" value="109" />	<item key="104" value="110" />	<item key="105" value="111" />	<item key="106" value="112" />	<item key="107" value="113" />	<item key="108" value="114" />	<item key="109" value="115" />	<item key="110" value="116" />	<item key="111" value="117" />	<item key="112" value="118" />	<item key="113" value="119" />	<item key="114" value="120" />	<item key="115" value="121" />	<item key="116" value="122" />	<item key="117" value="123" />	<item key="118" value="124" />	<item key="119" value="125" />	<item key="120" value="126" />	<item key="121" value="127" />	<item key="122" value="128" />	<item key="123" value="129" />	<item key="124" value="130" />	<item key="125" value="131" />	<item key="126" value="132" />	<item key="127" value="133" />	<item key="128" value="135" />	<item key="129" value="136" />	<item key="130" value="137" />	<item key="131" value="138" />	<item key="132" value="139" />	<item key="133" value="140" />
+				<item key="134" value="141" />	<item key="135" value="142" />	<item key="136" value="143" />	<item key="137" value="144" />	<item key="138" value="145" />	<item key="139" value="146" />	<item key="140" value="147" />	<item key="141" value="148" />	<item key="142" value="149" />	<item key="143" value="150" />	<item key="144" value="151" />	<item key="145" value="152" />	<item key="146" value="153" />	<item key="147" value="154" />	<item key="148" value="155" />	<item key="149" value="156" />	<item key="150" value="157" />	<item key="151" value="158" />	<item key="152" value="159" />	<item key="153" value="160" />	<item key="154" value="161" />	<item key="155" value="162" />	<item key="156" value="163" />	<item key="157" value="164" />	<item key="158" value="165" />	<item key="159" value="166" />	<item key="160" value="167" />	<item key="161" value="168" />	<item key="162" value="169" />	<item key="163" value="170" />	<item key="164" value="171" />	<item key="165" value="172" />	<item key="166" value="173" />	<item key="167" value="174" />	<item key="168" value="175" />	<item key="169" value="176" />	<item key="170" value="177" />	<item key="171" value="178" />	<item key="172" value="179" />	<item key="173" value="180" />	<item key="174" value="181" />	<item key="175" value="182" />	<item key="176" value="183" />	<item key="177" value="184" />	<item key="178" value="185" />	<item key="179" value="186" />	<item key="180" value="187" />	<item key="181" value="188" />	<item key="182" value="189" />	<item key="183" value="190" />	<item key="184" value="191" />	<item key="185" value="192" />	<item key="186" value="193" />	<item key="187" value="194" />	<item key="188" value="195" />	<item key="189" value="196" />	<item key="190" value="197" />	<item key="191" value="198" />	<item key="192" value="204" />	<item key="193" value="205" />	<item key="194" value="206" />	<item key="195" value="207" />	<item key="196" value="208" />	<item key="197" value="209" />	<item key="198" value="210" />	<item key="199" value="211" />	<item key="200" value="212" />
+				<item key="201" value="213" />	<item key="202" value="214" />	<item key="203" value="215" />	<item key="204" value="216" />	<item key="205" value="217" />	<item key="206" value="218" />	<item key="207" value="219" />	<item key="208" value="220" />	<item key="209" value="221" />	<item key="210" value="222" />	<item key="211" value="223" />	<item key="212" value="224" />	<item key="213" value="225" />	<item key="214" value="226" />	<item key="215" value="227" />	<item key="216" value="228" />	<item key="217" value="229" />	<item key="218" value="230" />	<item key="219" value="231" />	<item key="220" value="232" />	<item key="221" value="233" />	<item key="222" value="234" />	<item key="223" value="235" />	<item key="224" value="236" />	<item key="225" value="237" />	<item key="226" value="238" />	<item key="227" value="239" />	<item key="228" value="240" />	<item key="229" value="241" />	<item key="230" value="242" />	<item key="231" value="243" />	<item key="232" value="244" />	<item key="233" value="245" />	<item key="234" value="246" />	<item key="235" value="247" />	<item key="236" value="248" />	<item key="237" value="249" />	<item key="238" value="250" />	<item key="239" value="251" />	<item key="240" value="252" />	<item key="241" value="253" />	<item key="242" value="254" />	<item key="243" value="255" />	<item key="244" value="256" />	<item key="245" value="257" />	<item key="246" value="258" />	<item key="247" value="259" />	<item key="248" value="260" />	<item key="249" value="261" />	<item key="250" value="262" />	<item key="251" value="263" />	<item key="252" value="264" />	<item key="253" value="265" />	<item key="254" value="266" />	<item key="255" value="267" />	<item key="256" value="65" />	<item key="257" value="66" />	<item key="258" value="67" />	<item key="259" value="68" />	<item key="260" value="69" />	<item key="261" value="199" />	<item key="262" value="200" />	<item key="263" value="201" />	<item key="264" value="202" />	<item key="265" value="203" />	<item key="266" value="0" />	<item key="267" value="134" />
+			</hash>
+			<hash name="bankmap" defaultvalue=" " defaultkey="-1" type="string">
+				<item key= "1"  value= "R" />
+				<item key= "0"  value= "L" />
+			</hash>
+			<hash name="arrayhalfmap" defaultvalue=" " defaultkey="-1" type="string">
+				<item key= "0"  value= "7" />									<!-- Bank 0 -->
+				<item key= "1"  value= "7not" />								<!-- Bank 1 -->
+			</hash>
+			<hash name="arytopbot" defaultvalue=" " defaultkey="-1" type="string">
+				<item key= "0"  value= "TOP" />
+				<item key= "1"  value= "BOT" />
+			</hash>
+			<hash name="ARY128X4map" defaultvalue=" " defaultkey="-1" type="string"> 				<!--sch_rtlmod hash table to map subary to SCH path -->
+				<item key= "0"  value= "DN" />
+				<item key= "1"  value= "UP" />
+			</hash>
+		</global>
+		<get_layout>
+			<logical_address>											<!-- Reserved words:  set, way, bit, ssi -->
+				<bsv name="coreid"> 	ssi;			 		</bsv>				<!-- SSI -->
+				<bsv name="msels">	and_(shiftright(set,10), 3);		</bsv>				<!-- S[11:10] used for servers and WLC/TGL -->
+				<bsv name="msel">	and_(shiftright(set,9), 1);		</bsv>				<!-- S[9]   -->
+				<bsv name="wordline">	and_(shiftright(set,1), 255);		</bsv>				<!-- S[8:1] -->
+				<bsv name="banksel">	and_(set,1);				</bsv>				<!-- S[0]   -->
+				<var name="fastaddress90"> or_(shiftleft(wordline,1),banksel);	</var>				<!-- wordline combined with banksel = wordline:banksel -->
+		<!--		<var name="set109">	-->
+				<bsv name="arrayway"> 	and_(shiftright(way,2), 3);		</bsv>				<!-- W[3:2] -->
+				<bsv name="chunk"> 	and_(shiftright(way,1), 1);		</bsv>				<!-- W[1]   -->
+				<bsv name="slice"> 	and_(way,1);				</bsv>				<!-- W[0]   -->
+				<var name="iophy">
+					if(BIT_to_IOPHY_value(bit)!=-1)
+						BIT_to_IOPHY_value(bit);
+					else
+						0;
+				</var>
+				<bsv name="quad">	div(iophy,67);				</bsv>				<!-- 0..3 -->
+				<bsv name="iodata">	mod(iophy,67);				</bsv>				<!-- 0..66 -->
+				<var name="repairorder">		
+					if(BIT_to_RepOrder_value(bit)!=-1)		
+						BIT_to_RepOrder_value(bit);		
+					else		
+						0;		
+				</var>		
+				<bsv name="iohalfCL">	div(repairorder,134);			</bsv>				<!-- 0..1 -->
+				<bsv name="iofuse">	mod(repairorder,134);			</bsv>				<!-- 0..133 -->
+				<bsv name="RowSpare">	0					</bsv>
+				<bsv name="dword"> 	div(bit,32);				</bsv>				<!-- DWORD is determined from IO div 32 -->
+				<bsv name="bank"> 	way					</bsv>				<!-- Bank select is way bits 4:0 -->
+				<bsv name="fast_address"> set					</bsv>				<!-- Fast address comes from SET and way bit 4 combined way[4]:set[10:0] -->
+				<bsv name="fail_io"> 	mod(bit,32);				</bsv>				<!-- BSV for failing IO -->	
+			</logical_address>
+			<darray_address>		<!-- Optional for TGL.  Here the reference from ICL.   Reserved words:  block, row, column, ssi -->
+				<!-- D-array Block Decode -->		
+				<bsv name="coreid">	ssi					</bsv>				<!-- SSI    -->
+				<bsv name="slice">	and_(shiftright(block,4),1);		</bsv>				<!-- D[4]   -->
+				<bsv name="msel">	and_(shiftright(block,3),1);		</bsv>				<!-- D[3]   -->
+				<bsv name="chunk">	and_(shiftright(block,2),1);		</bsv>				<!-- D[2]   -->
+				<bsv name="quad">	and_(block,3);				</bsv>				<!-- D[1:0] -->
+				<!-- D-array Row (H) Decode -->
+				<bsv name="banksel">	and_(shiftright(row,8), 1);		</bsv>				<!-- R[8] indicates the bank -->
+				<var name="wordlinex">	and_(row,255);				</var>				<!-- R[7:0] = wordlinex. It is similar to wordline! -->
+				<bsv name="wordline">	abs(255*(1-bank)-wordlinex);		</bsv>				<!-- Wordline is opposite to ROW increasing order at bank 0 -->
+				<!-- D-array Col (V) Decode -->
+				<var name="arraywayx">	and_(column, 3);			</var>				<!-- C[1:0] -->
+				<bsv name="arrayway">	3 - arraywayx;				</bsv>
+				<bsv name="iodata">	shiftright(column,2);			</bsv>				<!-- 0..66 -->
+			</darray_address>
+		</get_layout>
+		<mod_layout>
+			<fuse_definition array_code="MDC">									<!-- TBD -->
+				<var name="colshiftactive">
+					(iofuse &lt;= iofuse_fuse)and(iofuse!=0); 						<!-- Col shifting only happens if actual col is equal or more than fuse value -->
+				</var>
+				<bsv name="iofuse">
+					colshiftactive ? iofuse-1:iofuse;							<!-- Perform Column shift -->
+				</bsv>
+			</fuse_definition>
+			<fuse_definition array_code="MDR">									<!-- TBD -->
+				<bsv name="RowSpare">	spare_fuse + 1;				</bsv>				<!-- Indicates that the Row Spare is being targeted by current fuse -->
+			</fuse_definition>
+		</mod_layout>
+		<sch_rtlmod>			<!-- Optional for TGL.  Here the reference from ICL. -->
+			<!-- Required for RTL -->
+				<var name="Cselect">	or_(shiftleft(chunk,2),quad) 		</var>
+				<var name="iodatartl">										<!-- REV04 -->
+					if(IO_DATA_RTL_MAP_value(iodata)!=-1)
+						IO_DATA_RTL_MAP_value(iodata);
+					else
+						0;
+				</var>
+			<!-- Required for SCH -->
+				<var name="iodatax">	66 - iodata				</var>
+				<var name="iarytb">	div(iodatax,34)				</var>				<!-- 1 for bot and 0 for top -->
+				<var name="iohalfx">	mod(iodatax,34)				</var>				<!-- Bottom to top: 0 to 33 for top and 0 to 32 for bot -->
+				<var name="iohalf">	abs(32+1*(1-iarytb)  -  iohalfx);	</var>
+				<var name="wordline7">	and_(shiftright(wordline,7),1);		</var>
+				<var name="wordline64">	and_(shiftright(wordline,4),7);		</var>
+				<var name="wordline3">	and_(shiftright(wordline,3),1);		</var>
+				<var name="wordline21">	and_(shiftright(wordline,1),3);		</var>
+				<var name="cell1">	and_(arrayway,1);			</var>				<!-- arrayway [0] -->
+				<var name="ary22">	and_(shiftright(arrayway,1), 1);	</var>				<!-- arrayway [1] Ary2x2 selection -->
+				<var name="cell0">	and_(wordline,1);			</var>				<!-- Wordline [0] -->
+				<var name="cell">	or_(shiftleft(cell1,1), cell0); 	</var>				<!-- Cell select 2x2 W[1] -->
+			<rtl_path>	<!-- meu/mlc/mlcc/mlcdatad/mldatarycl%S%M%%C%m/mldatarym/%$bank_str%[$wordline][way=$arrayway][$iodata] -->
+				'RTL: meu/mlc/mlcc/mlcdatad/mldatarycl'			+
+							slice_str			+
+							msel_str			+
+							Cselect_str			+ 'm/mldatarym/ARRAYBit' +
+							arrayhalfmap_value(bank)	+ '[' +
+							wordline_str			+ '][' +
+							arrayway_str			+ '][' +
+							iodatartl_str			+ ']';
+			</rtl_path>
+			<sch_path>	<!-- icl42upkg/ICL42UTOP/SOC/PAR_CORE3/SNLCORECLNT_WRAP.SNLCORECLNT/MLCCLNTWRP/MLCCLNT/MLDATARYCL000M/
+						IBANKL/IARYBOT/IARY256X4[0]/ARY128X4DN/IARY16X4[0]/IARY8X4[0]/IARY2X4[0]/IARY2X2C1/N0[3] -->
+				'       SCH: PAR_CORE'					+
+							coreid_str			+ '/SNLCORECLNT_WRAP.SNLCORECLNT/MLCCLNTWRP/MLCCLNT/MLDATARYCL' +
+							coreid_str			+
+							msel_str			+
+							Cselect_str			+ 'M/IBANK' +
+							bankmap_value(bank)		+ '/IARY' +
+							arytopbot_value(iarytb)		+ '/IARY256X4[' +
+							iohalf_str			+ ']/ARY128X4' +
+							ARY128X4map_value(wordline7)	+ '/IARY16X4[' +
+							wordline64_str			+ ']/IARY8X4[' +
+							wordline3_str			+ ']/IARY2X4[' +
+							wordline21_str			+ ']/IARY2X2C' +
+							ary22_str			+ '/N0[' +
+							cell_str			+ ']';
+			</sch_path>
+		</sch_rtlmod>
+		<addressmap>			<!-- Optional for TGL.  Here the reference from ICL. -->
+			<darray_address>
+				<set>
+					or_(shiftleft(msels,10), shiftleft(msel,9), shiftleft(wordline,1), bank);
+				</set>
+				<way>
+					or_(shiftleft(arrayway,2), shiftleft(chunk,1), slice);
+				</way>
+				<var name="iophy">	67 * quad + iodata;			</var>
+				<bit>
+					BIT_to_IOPHY_key(iophy);
+				</bit>
+				<ssi>	coreid;							</ssi>
+			</darray_address>
+			<logical_address>
+				<block>
+					or_(shiftleft(slice,4), shiftleft(msel,3), shiftleft(chunk,2), quad);
+				</block>
+				<var name="wordlinex">	abs(255*(1-bank)-wordline);		</var>
+				<row>
+					or_(shiftleft(bank,8), wordlinex);
+				</row>
+				<var name="arraywayx">	3 - arrayway;				</var>
+				<column>
+					or_(shiftleft(iodata,2),arraywayx)
+				</column>
+				<ssi>	coreid;							</ssi>
+			</logical_address>
+		</addressmap>
+	</array>
+	<array label="mlc_c6s"    fuse_description="MLC_FUSE_GROUP">								<!-- TGL MLC C6S array -->
+		<arrayname description="Tiger Lake Client MLC Data array" />
+		<array_vars>
+			<max_set value="1023"/>											<!-- (1024 = 2^10), Note: it corresponds to max Fast Address -->
+			<min_set value="0"/>
+			<max_way value="1"/>											<!-- Note it corresponds to LDAT max BANK -->
+			<min_way value="0"/>
+			<max_bit value="267"/>											<!-- 268 = 256 data + 10 ecc + 2 redund -->
+			<min_bit value="0"/>
+			<max_block value="3"/>											<!-- 4 Darray total(mlc c6s only on slice0) only need for L2P -->
+			<min_block value="0"/>
+			<max_row value="511"/>											<!-- H:Rows -->
+			<min_row value="0"/>
+			<max_column value="267"/> 										<!-- V:Columns -->
+			<min_column value="0"/>
+		</array_vars>
+		<global>
+			<hash name="BIT_to_IOPHY" defaultvalue="0" defaultkey="-1">						<!-- New map from Design after ICL L2P findings.  REV04 -->
+				<item key="0" value="2" />	<item key="1" value="4" />	<item key="2" value="6" />	<item key="3" value="8" />	<item key="4" value="10" />	<item key="5" value="12" />	<item key="6" value="14" />	<item key="7" value="16" />	<item key="8" value="18" />	<item key="9" value="20" />	<item key="10" value="22" />	<item key="11" value="24" />	<item key="12" value="26" />	<item key="13" value="28" />	<item key="14" value="30" />	<item key="15" value="32" />	<item key="16" value="34" />	<item key="17" value="36" />	<item key="18" value="38" />	<item key="19" value="40" />	<item key="20" value="42" />	<item key="21" value="44" />	<item key="22" value="46" />	<item key="23" value="48" />	<item key="24" value="50" />	<item key="25" value="52" />	<item key="26" value="54" />	<item key="27" value="56" />	<item key="28" value="58" />	<item key="29" value="60" />	<item key="30" value="62" />	<item key="31" value="64" />	<item key="32" value="66" />	<item key="33" value="68" />	<item key="34" value="70" />	<item key="35" value="72" />	<item key="36" value="74" />	<item key="37" value="76" />	<item key="38" value="78" />	<item key="39" value="80" />	<item key="40" value="82" />	<item key="41" value="84" />	<item key="42" value="86" />	<item key="43" value="88" />	<item key="44" value="90" />	<item key="45" value="92" />	<item key="46" value="94" />	<item key="47" value="96" />	<item key="48" value="98" />	<item key="49" value="100" />	<item key="50" value="102" />	<item key="51" value="104" />	<item key="52" value="106" />	<item key="53" value="108" />	<item key="54" value="110" />	<item key="55" value="112" />	<item key="56" value="114" />	<item key="57" value="116" />	<item key="58" value="118" />	<item key="59" value="120" />	<item key="60" value="122" />	<item key="61" value="124" />	<item key="62" value="126" />	<item key="63" value="128" />	<item key="64" value="140" />	<item key="65" value="142" />	<item key="66" value="144" />
+				<item key="67" value="146" />	<item key="68" value="148" />	<item key="69" value="150" />	<item key="70" value="152" />	<item key="71" value="154" />	<item key="72" value="156" />	<item key="73" value="158" />	<item key="74" value="160" />	<item key="75" value="162" />	<item key="76" value="164" />	<item key="77" value="166" />	<item key="78" value="168" />	<item key="79" value="170" />	<item key="80" value="172" />	<item key="81" value="174" />	<item key="82" value="176" />	<item key="83" value="178" />	<item key="84" value="180" />	<item key="85" value="182" />	<item key="86" value="184" />	<item key="87" value="186" />	<item key="88" value="188" />	<item key="89" value="190" />	<item key="90" value="192" />	<item key="91" value="194" />	<item key="92" value="196" />	<item key="93" value="198" />	<item key="94" value="200" />	<item key="95" value="202" />	<item key="96" value="204" />	<item key="97" value="206" />	<item key="98" value="208" />	<item key="99" value="210" />	<item key="100" value="212" />	<item key="101" value="214" />	<item key="102" value="216" />	<item key="103" value="218" />	<item key="104" value="220" />	<item key="105" value="222" />	<item key="106" value="224" />	<item key="107" value="226" />	<item key="108" value="228" />	<item key="109" value="230" />	<item key="110" value="232" />	<item key="111" value="234" />	<item key="112" value="236" />	<item key="113" value="238" />	<item key="114" value="240" />	<item key="115" value="242" />	<item key="116" value="244" />	<item key="117" value="246" />	<item key="118" value="248" />	<item key="119" value="250" />	<item key="120" value="252" />	<item key="121" value="254" />	<item key="122" value="256" />	<item key="123" value="258" />	<item key="124" value="260" />	<item key="125" value="262" />	<item key="126" value="264" />	<item key="127" value="266" />	<item key="128" value="3" />	<item key="129" value="5" />	<item key="130" value="7" />	<item key="131" value="9" />	<item key="132" value="11" />	<item key="133" value="13" />
+				<item key="134" value="15" />	<item key="135" value="17" />	<item key="136" value="19" />	<item key="137" value="21" />	<item key="138" value="23" />	<item key="139" value="25" />	<item key="140" value="27" />	<item key="141" value="29" />	<item key="142" value="31" />	<item key="143" value="33" />	<item key="144" value="35" />	<item key="145" value="37" />	<item key="146" value="39" />	<item key="147" value="41" />	<item key="148" value="43" />	<item key="149" value="45" />	<item key="150" value="47" />	<item key="151" value="49" />	<item key="152" value="51" />	<item key="153" value="53" />	<item key="154" value="55" />	<item key="155" value="57" />	<item key="156" value="59" />	<item key="157" value="61" />	<item key="158" value="63" />	<item key="159" value="65" />	<item key="160" value="67" />	<item key="161" value="69" />	<item key="162" value="71" />	<item key="163" value="73" />	<item key="164" value="75" />	<item key="165" value="77" />	<item key="166" value="79" />	<item key="167" value="81" />	<item key="168" value="83" />	<item key="169" value="85" />	<item key="170" value="87" />	<item key="171" value="89" />	<item key="172" value="91" />	<item key="173" value="93" />	<item key="174" value="95" />	<item key="175" value="97" />	<item key="176" value="99" />	<item key="177" value="101" />	<item key="178" value="103" />	<item key="179" value="105" />	<item key="180" value="107" />	<item key="181" value="109" />	<item key="182" value="111" />	<item key="183" value="113" />	<item key="184" value="115" />	<item key="185" value="117" />	<item key="186" value="119" />	<item key="187" value="121" />	<item key="188" value="123" />	<item key="189" value="125" />	<item key="190" value="127" />	<item key="191" value="129" />	<item key="192" value="141" />	<item key="193" value="143" />	<item key="194" value="145" />	<item key="195" value="147" />	<item key="196" value="149" />	<item key="197" value="151" />	<item key="198" value="153" />	<item key="199" value="155" />	<item key="200" value="157" />
+				<item key="201" value="159" />	<item key="202" value="161" />	<item key="203" value="163" />	<item key="204" value="165" />	<item key="205" value="167" />	<item key="206" value="169" />	<item key="207" value="171" />	<item key="208" value="173" />	<item key="209" value="175" />	<item key="210" value="177" />	<item key="211" value="179" />	<item key="212" value="181" />	<item key="213" value="183" />	<item key="214" value="185" />	<item key="215" value="187" />	<item key="216" value="189" />	<item key="217" value="191" />	<item key="218" value="193" />	<item key="219" value="195" />	<item key="220" value="197" />	<item key="221" value="199" />	<item key="222" value="201" />	<item key="223" value="203" />	<item key="224" value="205" />	<item key="225" value="207" />	<item key="226" value="209" />	<item key="227" value="211" />	<item key="228" value="213" />	<item key="229" value="215" />	<item key="230" value="217" />	<item key="231" value="219" />	<item key="232" value="221" />	<item key="233" value="223" />	<item key="234" value="225" />	<item key="235" value="227" />	<item key="236" value="229" />	<item key="237" value="231" />	<item key="238" value="233" />	<item key="239" value="235" />	<item key="240" value="237" />	<item key="241" value="239" />	<item key="242" value="241" />	<item key="243" value="243" />	<item key="244" value="245" />	<item key="245" value="247" />	<item key="246" value="249" />	<item key="247" value="251" />	<item key="248" value="253" />	<item key="249" value="255" />	<item key="250" value="257" />	<item key="251" value="259" />	<item key="252" value="261" />	<item key="253" value="263" />	<item key="254" value="265" />	<item key="255" value="267" />	<item key="256" value="130" />	<item key="257" value="132" />	<item key="258" value="134" />	<item key="259" value="136" />	<item key="260" value="138" />	<item key="261" value="131" />	<item key="262" value="133" />	<item key="263" value="135" />	<item key="264" value="137" />	<item key="265" value="139" />	<item key="266" value="0" />	<item key="267" value="1" />
+			</hash>
+			<hash name="IO_DATA_RTL_MAP" defaultvalue="0" defaultkey="-1">						<!-- New map from Design after ICL L2P findings.  REV04 -->		
+				<item key="0" value="0" />	<item key="1" value="34" />	<item key="2" value="1" />	<item key="3" value="35" />	<item key="4" value="2" />	<item key="5" value="36" />	<item key="6" value="3" />	<item key="7" value="37" />	<item key="8" value="4" />	<item key="9" value="38" />	<item key="10" value="5" />	<item key="11" value="39" />	<item key="12" value="6" />	<item key="13" value="40" />	<item key="14" value="7" />	<item key="15" value="41" />	<item key="16" value="8" />	<item key="17" value="42" />	<item key="18" value="9" />	<item key="19" value="43" />	<item key="20" value="10" />	<item key="21" value="44" />	<item key="22" value="11" />	<item key="23" value="45" />	<item key="24" value="12" />	<item key="25" value="46" />	<item key="26" value="13" />	<item key="27" value="47" />	<item key="28" value="14" />	<item key="29" value="48" />	<item key="30" value="15" />	<item key="31" value="49" />	<item key="32" value="16" />	<item key="33" value="50" />	<item key="34" value="17" />	<item key="35" value="51" />	<item key="36" value="18" />	<item key="37" value="52" />	<item key="38" value="19" />	<item key="39" value="53" />	<item key="40" value="20" />	<item key="41" value="54" />	<item key="42" value="21" />	<item key="43" value="55" />	<item key="44" value="22" />	<item key="45" value="56" />	<item key="46" value="23" />	<item key="47" value="57" />	<item key="48" value="24" />	<item key="49" value="58" />	<item key="50" value="25" />	<item key="51" value="59" />	<item key="52" value="26" />	<item key="53" value="60" />	<item key="54" value="27" />	<item key="55" value="61" />	<item key="56" value="28" />	<item key="57" value="62" />	<item key="58" value="29" />	<item key="59" value="63" />	<item key="60" value="30" />	<item key="61" value="64" />	<item key="62" value="31" />	<item key="63" value="65" />	<item key="64" value="32" />	<item key="65" value="66" />	<item key="66" value="33" />
+			</hash>		
+			<hash name="BIT_to_RepOrder" defaultvalue="0" defaultkey="-1">						<!-- Map Logical address to Repair order.  Source:  ICL LLC_Data_IO_L2P.xlsx -->
+				<item key="0" value="1" />	<item key="1" value="2" />	<item key="2" value="3" />	<item key="3" value="4" />	<item key="4" value="5" />	<item key="5" value="6" />	<item key="6" value="7" />	<item key="7" value="8" />	<item key="8" value="9" />	<item key="9" value="10" />	<item key="10" value="11" />	<item key="11" value="12" />	<item key="12" value="13" />	<item key="13" value="14" />	<item key="14" value="15" />	<item key="15" value="16" />	<item key="16" value="17" />	<item key="17" value="18" />	<item key="18" value="19" />	<item key="19" value="20" />	<item key="20" value="21" />	<item key="21" value="22" />	<item key="22" value="23" />	<item key="23" value="24" />	<item key="24" value="25" />	<item key="25" value="26" />	<item key="26" value="27" />	<item key="27" value="28" />	<item key="28" value="29" />	<item key="29" value="30" />	<item key="30" value="31" />	<item key="31" value="32" />	<item key="32" value="33" />	<item key="33" value="34" />	<item key="34" value="35" />	<item key="35" value="36" />	<item key="36" value="37" />	<item key="37" value="38" />	<item key="38" value="39" />	<item key="39" value="40" />	<item key="40" value="41" />	<item key="41" value="42" />	<item key="42" value="43" />	<item key="43" value="44" />	<item key="44" value="45" />	<item key="45" value="46" />	<item key="46" value="47" />	<item key="47" value="48" />	<item key="48" value="49" />	<item key="49" value="50" />	<item key="50" value="51" />	<item key="51" value="52" />	<item key="52" value="53" />	<item key="53" value="54" />	<item key="54" value="55" />	<item key="55" value="56" />	<item key="56" value="57" />	<item key="57" value="58" />	<item key="58" value="59" />	<item key="59" value="60" />	<item key="60" value="61" />	<item key="61" value="62" />	<item key="62" value="63" />	<item key="63" value="64" />	<item key="64" value="70" />	<item key="65" value="71" />	<item key="66" value="72" />
+				<item key="67" value="73" />	<item key="68" value="74" />	<item key="69" value="75" />	<item key="70" value="76" />	<item key="71" value="77" />	<item key="72" value="78" />	<item key="73" value="79" />	<item key="74" value="80" />	<item key="75" value="81" />	<item key="76" value="82" />	<item key="77" value="83" />	<item key="78" value="84" />	<item key="79" value="85" />	<item key="80" value="86" />	<item key="81" value="87" />	<item key="82" value="88" />	<item key="83" value="89" />	<item key="84" value="90" />	<item key="85" value="91" />	<item key="86" value="92" />	<item key="87" value="93" />	<item key="88" value="94" />	<item key="89" value="95" />	<item key="90" value="96" />	<item key="91" value="97" />	<item key="92" value="98" />	<item key="93" value="99" />	<item key="94" value="100" />	<item key="95" value="101" />	<item key="96" value="102" />	<item key="97" value="103" />	<item key="98" value="104" />	<item key="99" value="105" />	<item key="100" value="106" />	<item key="101" value="107" />	<item key="102" value="108" />	<item key="103" value="109" />	<item key="104" value="110" />	<item key="105" value="111" />	<item key="106" value="112" />	<item key="107" value="113" />	<item key="108" value="114" />	<item key="109" value="115" />	<item key="110" value="116" />	<item key="111" value="117" />	<item key="112" value="118" />	<item key="113" value="119" />	<item key="114" value="120" />	<item key="115" value="121" />	<item key="116" value="122" />	<item key="117" value="123" />	<item key="118" value="124" />	<item key="119" value="125" />	<item key="120" value="126" />	<item key="121" value="127" />	<item key="122" value="128" />	<item key="123" value="129" />	<item key="124" value="130" />	<item key="125" value="131" />	<item key="126" value="132" />	<item key="127" value="133" />	<item key="128" value="135" />	<item key="129" value="136" />	<item key="130" value="137" />	<item key="131" value="138" />	<item key="132" value="139" />	<item key="133" value="140" />
+				<item key="134" value="141" />	<item key="135" value="142" />	<item key="136" value="143" />	<item key="137" value="144" />	<item key="138" value="145" />	<item key="139" value="146" />	<item key="140" value="147" />	<item key="141" value="148" />	<item key="142" value="149" />	<item key="143" value="150" />	<item key="144" value="151" />	<item key="145" value="152" />	<item key="146" value="153" />	<item key="147" value="154" />	<item key="148" value="155" />	<item key="149" value="156" />	<item key="150" value="157" />	<item key="151" value="158" />	<item key="152" value="159" />	<item key="153" value="160" />	<item key="154" value="161" />	<item key="155" value="162" />	<item key="156" value="163" />	<item key="157" value="164" />	<item key="158" value="165" />	<item key="159" value="166" />	<item key="160" value="167" />	<item key="161" value="168" />	<item key="162" value="169" />	<item key="163" value="170" />	<item key="164" value="171" />	<item key="165" value="172" />	<item key="166" value="173" />	<item key="167" value="174" />	<item key="168" value="175" />	<item key="169" value="176" />	<item key="170" value="177" />	<item key="171" value="178" />	<item key="172" value="179" />	<item key="173" value="180" />	<item key="174" value="181" />	<item key="175" value="182" />	<item key="176" value="183" />	<item key="177" value="184" />	<item key="178" value="185" />	<item key="179" value="186" />	<item key="180" value="187" />	<item key="181" value="188" />	<item key="182" value="189" />	<item key="183" value="190" />	<item key="184" value="191" />	<item key="185" value="192" />	<item key="186" value="193" />	<item key="187" value="194" />	<item key="188" value="195" />	<item key="189" value="196" />	<item key="190" value="197" />	<item key="191" value="198" />	<item key="192" value="204" />	<item key="193" value="205" />	<item key="194" value="206" />	<item key="195" value="207" />	<item key="196" value="208" />	<item key="197" value="209" />	<item key="198" value="210" />	<item key="199" value="211" />	<item key="200" value="212" />
+				<item key="201" value="213" />	<item key="202" value="214" />	<item key="203" value="215" />	<item key="204" value="216" />	<item key="205" value="217" />	<item key="206" value="218" />	<item key="207" value="219" />	<item key="208" value="220" />	<item key="209" value="221" />	<item key="210" value="222" />	<item key="211" value="223" />	<item key="212" value="224" />	<item key="213" value="225" />	<item key="214" value="226" />	<item key="215" value="227" />	<item key="216" value="228" />	<item key="217" value="229" />	<item key="218" value="230" />	<item key="219" value="231" />	<item key="220" value="232" />	<item key="221" value="233" />	<item key="222" value="234" />	<item key="223" value="235" />	<item key="224" value="236" />	<item key="225" value="237" />	<item key="226" value="238" />	<item key="227" value="239" />	<item key="228" value="240" />	<item key="229" value="241" />	<item key="230" value="242" />	<item key="231" value="243" />	<item key="232" value="244" />	<item key="233" value="245" />	<item key="234" value="246" />	<item key="235" value="247" />	<item key="236" value="248" />	<item key="237" value="249" />	<item key="238" value="250" />	<item key="239" value="251" />	<item key="240" value="252" />	<item key="241" value="253" />	<item key="242" value="254" />	<item key="243" value="255" />	<item key="244" value="256" />	<item key="245" value="257" />	<item key="246" value="258" />	<item key="247" value="259" />	<item key="248" value="260" />	<item key="249" value="261" />	<item key="250" value="262" />	<item key="251" value="263" />	<item key="252" value="264" />	<item key="253" value="265" />	<item key="254" value="266" />	<item key="255" value="267" />	<item key="256" value="65" />	<item key="257" value="66" />	<item key="258" value="67" />	<item key="259" value="68" />	<item key="260" value="69" />	<item key="261" value="199" />	<item key="262" value="200" />	<item key="263" value="201" />	<item key="264" value="202" />	<item key="265" value="203" />	<item key="266" value="0" />	<item key="267" value="134" />
+			</hash>
+			<hash name="bankmap" defaultvalue=" " defaultkey="-1" type="string">
+				<item key= "1"  value= "R" />
+				<item key= "0"  value= "L" />
+			</hash>
+			<hash name="arrayhalfmap" defaultvalue=" " defaultkey="-1" type="string">
+				<item key= "0"  value= "7" />									<!-- Bank 0 -->
+				<item key= "1"  value= "7not" />								<!-- Bank 1 -->
+			</hash>
+			<hash name="arytopbot" defaultvalue=" " defaultkey="-1" type="string">
+				<item key= "0"  value= "TOP" />
+				<item key= "1"  value= "BOT" />
+			</hash>
+			<hash name="ARY128X4map" defaultvalue=" " defaultkey="-1" type="string"> 				<!--sch_rtlmod hash table to map subary to SCH path -->
+				<item key= "0"  value= "DN" />
+				<item key= "1"  value= "UP" />
+			</hash>
+		</global>
+		<get_layout>
+			<logical_address>											<!-- Reserved words:  set, way, bit, ssi -->
+				<bsv name="coreid"> 	ssi;			 		</bsv>				<!-- SSI -->
+				<bsv name="arrayway">	and_(shiftright(set,9), 1);		</bsv>				<!-- S[9]   -->
+				<bsv name="wordline">	and_(shiftright(set,1), 255);		</bsv>				<!-- S[8:1] -->
+				<bsv name="Arrayhalf">	and_(set,1);				</bsv>				<!-- S[0]   -->			
+				<bsv name="msels"> 	0					</bsv>
+				<bsv name="msel"> 	0					</bsv>				<!-- W[2]   -->
+				<bsv name="chunk"> 	and_(way,1);				</bsv>				<!-- W[0]   -->
+				<var name="iophy">
+					if(BIT_to_IOPHY_value(bit)!=-1)
+						BIT_to_IOPHY_value(bit);
+					else
+						0;
+				</var>
+				<bsv name="quad">	div(iophy,67);				</bsv>				<!-- 0..3 -->
+				<bsv name="iodata">	mod(iophy,67);				</bsv>				<!-- 0..66 -->
+				<var name="repairorder">		
+					if(BIT_to_RepOrder_value(bit)!=-1)		
+						BIT_to_RepOrder_value(bit);		
+					else
+						0;
+				</var>
+				<bsv name="iohalfCL">	div(repairorder,134);			</bsv>				<!-- 0..1 -->
+				<bsv name="iofuse">	mod(repairorder,134);			</bsv>				<!-- 0..133 -->
+				<bsv name="RowSpare">	0					</bsv>
+				<bsv name="dword"> 	div(bit,32);				</bsv>				<!-- BSV for DWORD L2R mapping, Need to confirm with design it's PDAT Fast Y-->
+				<bsv name="bank"> 	chunk*2;				</bsv>				<!-- BSV for BANK for L2R mapping, Need to confirm with design it's SDAT Bank Select -->
+				<bsv name="fast_address"> 	set				</bsv>				<!-- BSV for Fast Address for L2R mapping, Need to confirm with design that this is PDAT FASTX -->
+				<bsv name="fail_io"> 	mod(bit,32);				</bsv>				<!-- BSV for failing IO -->
+			</logical_address>
+		</get_layout>		
+		<mod_layout>
+			<fuse_definition array_code="MDC">									<!-- TBD -->
+				<var name="colshiftactive">
+					(iofuse &lt;= iofuse_fuse)and(iofuse!=0); 						<!-- Col shifting only happens if actual col is equal or more than fuse value -->
+				</var>
+				<bsv name="iofuse">
+					colshiftactive ? iofuse-1:iofuse;							<!-- Perform Column shift -->
+				</bsv>
+			</fuse_definition>
+			<fuse_definition array_code="MDR">									<!-- TBD -->
+				<bsv name="RowSpare">	spare_fuse + 1;				</bsv>				<!-- Indicates that the Row Spare is being targeted by current fuse -->
+			</fuse_definition>
+		</mod_layout>
+	</array>
+	<array label="mlc_tag"    fuse_description="MLC_FUSE_GROUP">								<!-- TGL MLC Tag array -->
+		<arrayname description="Tiger Lake Client MLC Tag array" />
+		<array_vars>
+			<max_set value="4095"/>											<!-- (1024 = 2^10) Note: it corresponds to max Fast Address --> 
+			<min_set value="0"/>
+			<max_way value="7"/>											<!-- 8 Ways range 0-7 -->
+			<min_way value="0"/>
+			<max_bit value="91"/>											<!-- Reading both halves of the cache line at once, and each half has 46 bits -->
+			<min_bit value="0"/>
+			<max_block value="3"/>											<!-- This is the total number of Darrays - Dummy value only -->
+			<min_block value="0"/>
+			<max_row value="511"/>											<!-- *Not used, for L2P only - H:Rows -->
+			<min_row value="0"/>
+			<max_column value="183"/> 										<!-- *Not used, for L2P only - V:Columns -->
+			<min_column value="0"/>
+		</array_vars>
+		<get_layout>
+			<logical_address>											<!-- Reserved words:  set, way, bit, ssi -->
+				<bsv name="coreid">	ssi 					</bsv>				<!-- SSI -->
+		<!--		<bsv name="msels">	and_(shiftright(set,10), 3);		</bsv>				 S[11:10] used for servers ONLY -->
+				<bsv name="msel">	and_(shiftright(set,9), 1);		</bsv>				<!-- S[9]   -->
+				<bsv name="wordline">	and_(shiftright(set,1), 255);		</bsv>				<!-- S[8:1] -->
+				<bsv name="Arrayhalf">	and_(set,1);				</bsv>				<!-- S[0]   -->
+				<bsv name="chunk">	and_(shiftright(way,2), 1);		</bsv>				<!-- W[2]   -->
+				<bsv name="Bank1">	and_(shiftright(way,1), 1);		</bsv>				<!-- W[1]   -->
+				<bsv name="slice">	and_(way,1);				</bsv>				<!-- W[0]   -->
+				<bsv name="dataio">	mod(bit,46);				</bsv>				<!-- NOTE:  Need to to know how the pattern setup is so we can  -->
+				<bsv name="RowSpare">	0					</bsv>
+				<bsv name="dword"> 	div(dataio,32);				</bsv>				<!-- Temporary BSV for DWORD L2R mapping, Need to confirm with design it's PDAT Fast Y-->
+				<bsv name="bank"> 	way					</bsv>				<!-- Temporary BSV for BANK for L2R mapping, Need to confirm with design it's SDAT Bank Select -->
+				<bsv name="fast_address"> 	set				</bsv>				<!-- Temporary BSV for Fast Address for L2R mapping, Need to confirm with design that this is PDAT FASTX -->
+				<bsv name="fail_io"> 	mod(bit,32);				</bsv>				<!-- Temporary BSV for failing IO -->
+			</logical_address>		
+		</get_layout>
+		<mod_layout>
+			<fuse_definition array_code="MTR">									<!-- MLC Tag Row repair -->
+				<bsv name="RowSpare">	RowSpare + 1;					</bsv>			<!-- Wordline is updated to point to 256 + spare bit.  Spare range 0-31 -->
+			</fuse_definition>		
+		</mod_layout>		
+	</array>
+	<array label="corerf"     fuse_description="CRF_FUSE_GROUP">								<!-- TGL LLC LRU array -->
+		<arrayname description="Tiger Lake Client CRF array" />
+		<array_vars>
+			<max_set value="4095" />
+			<min_set value="0"/>
+			<max_way value="4095" />
+			<min_way value="0" />
+			<max_bit value="31" />
+			<min_bit value="0"/>
+			<max_block value="99" />										<!-- (TRY AND REMOVE) *Not used, for L2P only - V:Columns -->
+			<min_block value="0"/>											<!-- *Not used, for L2P only - V:Columns -->
+			<max_row value="99" />											<!-- *Not used, for L2P only - V:Columns -->
+			<min_row value="0"/>											<!-- *Not used, for L2P only - V:Columns -->
+			<max_column value="99" /> 										<!-- *Not used, for L2P only - V:Columns -->
+			<min_column value="0"/>
+		</array_vars>
+		<get_layout>
+			<logical_address>				
+				<!-- LDAT address, requried for T-file -->
+				<bsv name="slice">	ssi					</bsv>
+				<bsv name="ld_dword">	and_(way,15)				</bsv>
+				<bsv name="ld_bank">	and_(shiftright(way,4),15)		</bsv>
+				<bsv name="ld_fastAdr">	set					</bsv>
+				<bsv name="ld_io">	bit					</bsv>
+				<bsv name="selector">	and_((shiftright(way,8)),15)		</bsv>				<!-- Use ArrayMap_WAY[11:8] to indicate the array selector -->
+				<bsv name="RowSpare">	0					</bsv>
+				<var name="fixedset81">	and_(ld_fastAdr,255)			</var> 				<!-- ArrayMap_SET[7:0] --> 
+				<var name="fixedset0">	and_(shiftright(ld_fastAdr,8),1)	</var> 				<!-- ArrayMap_SET[8] --> 
+				<var name="fixedset20">	and_(shiftright(ld_fastAdr,8),7)	</var> 				<!-- ArrayMap_SET[10:8] -->  
+				<var name="fixedset73">	and_(ld_fastAdr,31)			</var> 				<!-- ArrayMap_SET[4:0] --> 
+				<var name="fixedset8">	and_(shiftright(ld_fastAdr,11),1)	</var> 				<!-- ArrayMap_SET[11] --> 
+				<var name="fixedset1_8">and_(shiftright(ld_fastAdr,8),1)	</var> 				<!-- ArrayMap_SET[8] --> 
+				<var name="fixedset1_0">and_(shiftright(ld_fastAdr,7),1)	</var> 				<!-- ArrayMap_SET[7] -->
+				<var name="fixedset71">	and_(ld_fastAdr,127)			</var> 				<!-- ArrayMap_SET[6:0] --> 
+				<bsv name="fixedset">
+					if (or_((selector==1),(selector==6)))							<!-- type A: DCU dcl1bankd(1), BPU bpbimodalm(6), MLC mlstlruarym & mlstlruaryserm(15)-->
+						and_(ld_fastAdr,511);						 		<!-- ArrayMap_SET[8:0] -->
+					else if (or_((selector==2),(selector==11)))						<!-- type B: Ifdatabank(2),Ifmemd(11) (TGL) -->
+						and_(ld_fastAdr,63);								<!-- ArrayMap_SET[5:0], Fixed_set[5:0] = FastAddr[5:0] --> 
+					else if (selector==3)									<!-- type C: Bpglobalm -->
+						or_(shiftleft(fixedset81,1), fixedset0);					<!-- Fixed_set[8:1] = FastAddr[7:0], Fixed_set[0] = FastAddr[8] -->
+					else if (selector==0)									<!-- type D:  -->
+						or_(shiftleft(fixedset8,8),shiftleft(fixedset73,3), fixedset20);		<!-- Fixed_set[8] = FastAddr[11], Fixed_set[7:3] = FastAddr[4:0], Fixed_set[2:0] = FastAddr[10:8] --> 
+					else if (or_((selector==5),(selector==7)))						<!-- type E:  -->
+						and_(ld_fastAdr,255);								<!-- ArrayMap_SET[7:0], Fixed_set[7:0] = FastAddr[7:0] --> 
+					else if (or_((selector==8),(selector==12)))						<!-- type F:  -->
+						and_(ld_fastAdr,127);								<!-- ArrayMap_SET[6:0], Fixed_set[6:0] = FastAddr[6:0] --> 
+					else if (selector==9)									<!-- type G:  -->
+						and_(ld_fastAdr,31);								<!-- Fixed_set[4:0] = FastAddr[4:0] -->
+					else if (or_((selector==13),(selector==14)))						<!-- type H:  -->
+						and_(ld_fastAdr,127);								<!-- Fixed_set[6:0] = FastAddr[6:0]  -->
+					else if (selector==15)									<!-- type I:  -->
+						or_(shiftleft(fixedset1_8,8),shiftleft(fixedset71,1), fixedset1_0);		<!-- Fixed_set[8] = FastAddr[8], Fixed_set[7:1] = FastAddr[6:0], Fixed_set[0] = FastAddr[7] -->
+					else
+						0;
+				</bsv>
+				<bsv name="fixedway">
+					if (or_((selector==1),(selector==6)))							<!-- type A -->
+						and_(shiftright(ld_fastAdr,11),1);				 		<!-- Dummy value : ArrayMap_SET[11] -->
+					else if (or_((selector==2),(selector==11)))						<!-- type B -->
+						and_(shiftright(ld_fastAdr,8),7);						<!-- ArrayMap_SET[10:8] Fixed_way[2:0] = FastAddr[10:8] -->
+					else if (selector==3)									<!-- type C -->
+						and_(shiftright(ld_fastAdr,11),1);						<!-- Dummy value : ArrayMap_SET[11] -->
+					else if (selector==0)									<!-- type D:  -->
+						and_(shiftright(ld_fastAdr,11),1);						<!-- Dummy value : ArrayMap_SET[11] -->
+					else if (or_((selector==5),(selector==7)))						<!-- type E:  -->
+						and_(shiftright(ld_fastAdr,11),1);						<!-- Dummy value : ArrayMap_SET[11] -->
+					else if (or_((selector==8),(selector==12)))						<!-- type F:  -->
+						and_(shiftright(ld_fastAdr,11),1);						<!-- Dummy value : ArrayMap_SET[11] -->
+					else if (selector==9)									<!-- type G:  -->
+						and_(shiftright(ld_fastAdr,8),15);						<!-- ArrayMap_SET[10:8] Fixed_way[3:0] = FastAddr[11:8] -->
+					else if (or_((selector==13),(selector==14)))						<!-- type H:  -->
+						and_(shiftright(ld_fastAdr,8),7);						<!-- ArrayMap_SET[10:8] Fixed_way[2:0] = FastAddr[10:8] -->
+					else if (selector==15)									<!-- type I:  -->
+						and_(shiftright(ld_fastAdr,11),1);						<!-- Dummy value : ArrayMap_SET[11] -->
+					else
+						0;
+				</bsv>
+			</logical_address>
+		</get_layout>
+		<mod_layout>
+			<fuse_definition array_code="CRF">									<!-- LLC TAG ROW -->
+				<bsv name="RowSpare">	1 + spare_fuse;				</bsv>				<!-- Wordline is updated to point to 256 + spare bit.  Spare range 0-31 -->
+			</fuse_definition>		
+		</mod_layout>		
+	</array> 
+	<array label="ccfrf"      fuse_description="SNR_FUSE_GROUP">								<!-- TGL CBOPAIR0/1/2/3_RAM, SBOIDP_RAM and GIP_RAM arrays -->
+		<arrayname description="Tiger Lake Client SNR array" />
+		<array_vars>
+			<max_set value="2047" />
+			<min_set value="0"/>
+			<max_way value="4095" />
+			<min_way value="0" />
+			<max_bit value="31" />
+			<min_bit value="0"/>
+			<max_block value="99" />										<!-- (TRY AND REMOVE) *Not used, for L2P only - V:Columns -->
+			<min_block value="0"/>											<!-- *Not used, for L2P only - V:Columns -->
+			<max_row value="99" />											<!-- *Not used, for L2P only - V:Columns -->
+			<min_row value="0"/>											<!-- *Not used, for L2P only - V:Columns -->
+			<max_column value="99" /> 										<!-- *Not used, for L2P only - V:Columns -->
+			<min_column value="0"/>
+		</array_vars>
+		<get_layout>													<!-- AR: Check Logical Address Section --> 
+			<logical_address>
+				<bsv name="slice"> 	ssi					</bsv>
+				<bsv name="y_addr">	and_(shiftright(set,8),15);		</bsv>
+				<bsv name="x_addr">	and_(set,255);				</bsv>
+				<bsv name="array_id"> 	and_(shiftright(way,8),7);		</bsv>	
+				<bsv name="bank">	and_(shiftright(way,4),15);		</bsv>
+				<bsv name="dword">	and_(way,15);				</bsv>
+				<bsv name="RowSpare">	0					</bsv>
+			</logical_address>
+		</get_layout>
+		<mod_layout>
+			<fuse_definition array_code="SNR">									<!-- CBOPAIR0/1/2/3_RAM, SBOIDP_RAM and GIP_RAM ROW -->
+				<bsv name="RowSpare">	RowSpare + 1;		</bsv>						<!-- Wordline is updated to point to 256 + spare bit.  Spare range 0-31 -->
+			</fuse_definition>
+		</mod_layout>
+	</array>
+	<array label="corerfall"  fuse_description="REPCRF_FUSE_GROUP">								<!-- Generic Array for all CRF arrays (FROM ALE) -->
+		<arrayname description="Icelake Server SP CRF array" />
+		<array_vars>
+			<max_set value="4095" />										<!-- ArrayMap_Set matched to FastAddress[11:0] -->
+			<min_set value="0"/>
+			<max_way value="4095" />										<!-- ArrayMap_Way matched to sel[3:0]:bank[3:0]:dword[3:0] -->
+			<min_way value="0" />
+			<max_bit value="31" />											<!-- Each bit of the LDAT IO is reported individually -->
+			<min_bit value="0"/>
+			<max_block value="999" />										<!-- Use Dummy number -->
+			<min_block value="0" />	
+			<max_row value="999" />											<!-- Use Dummy number -->
+			<min_row value="0"/>
+			<max_column value="999" />										<!-- Use Dummy number -->
+			<min_column value="0"/>
+		</array_vars>
+		<get_layout>
+			<logical_address>
+				<!-- LDAT address, requried for T-file -->
+				<bsv name="slice">	ssi					</bsv>
+				<bsv name="ld_dword">	and_(way,15)				</bsv>
+				<bsv name="ld_bank">	and_(shiftright(way,4),15)		</bsv>
+				<bsv name="ld_fastAdr">	set					</bsv>
+				<bsv name="ld_io">	bit					</bsv>
+				<bsv name="selector">	and_((shiftright(way,8)),15)		</bsv>				<!-- Use ArrayMap_WAY[11:8] to indicate the array selector -->
+				<bsv name="RowSpare">	0					</bsv>
+				<var name="fixedset81">	and_(ld_fastAdr,255)			</var> 				<!-- ArrayMap_SET[7:0] --> 
+				<var name="fixedset0">	and_(shiftright(ld_fastAdr,8),1)	</var> 				<!-- ArrayMap_SET[8] --> 
+				<var name="fixedset20">	and_(shiftright(ld_fastAdr,8),7)	</var> 				<!-- ArrayMap_SET[10:8] --> 
+				<var name="fixedset73">	and_(ld_fastAdr,31)			</var> 				<!-- ArrayMap_SET[4:0] --> 
+				<var name="fixedset8">	and_(shiftright(ld_fastAdr,11),1)	</var> 				<!-- ArrayMap_SET[11] --> 
+				<bsv name="fixedset">
+					if (or_((selector==1),(selector==6),(selector==15)))					<!-- type A: DCU dcl1bankd(1), BPU bpbimodalm(6), MLC mlstlruarym & mlstlruaryserm(15)-->
+						and_(ld_fastAdr,511);						 		<!-- ArrayMap_SET[8:0] -->
+					else if (or_((selector==2),(selector==11)))						<!-- type B: Ifdatabank(2),Ifmemd(11) (TGL) -->
+						and_(ld_fastAdr,63);								<!-- ArrayMap_SET[5:0], Fixed_set[5:0] = FastAddr[5:0] --> 
+					else if (selector==3)									<!-- type C: Bpglobalm -->
+						or_(shiftleft(fixedset81,1), fixedset0);					<!-- Fixed_set[8:1] = FastAddr[7:0], Fixed_set[0] = FastAddr[8] -->
+					else if (selector==0)									<!-- type D: IEU -->
+						or_(shiftleft(fixedset8,8), shiftleft(fixedset73,3), fixedset20);		<!-- fixed_set[7:3] = FastAddr[4:0],  Fixed_set[2:0] = FastAddr[10:8], Fixed_set[8] = FastAddr[11] -->
+					else if (or_((selector==5),(selector==7)))						<!-- type E: bptargettrgm(5), bpindirectm(7) -->
+						and_(ld_fastAdr,255);								<!-- fixed_set[7:0] = FastAddr[7:0] -->
+					else if (or_((selector==8),(selector==12)))						<!-- type F: BPU (Bptbiqm)(8), IQ (iqmrnpred)(12) -->
+						and_(ld_fastAdr,127);								<!-- fixed_set[6:0] = FastAddr[6:0] -->
+					else if (selector==9)									<!-- type G: dsbimmdatad(9) (TGL) -->
+						and_(ld_fastAdr,31);								<!-- ArrayMap_SET[4:0], Fixed_set[4:0] = FastAddr[4:0] --> 
+					else if (or_((selector==13),(selector==14)))						<!-- type H: PMH pmsnddatad(13), pmsndtagd(14) (TGL) -->
+						and_(ld_fastAdr,127);								<!-- ArrayMap_SET[6:0], Fixed_set[6:0] = FastAddr[6:0] --> 
+					else
+						0;
+				</bsv>
+				<bsv name="fixedway">
+					if (or_((selector==1),(selector==6),(selector==15)))					<!-- type A -->
+						and_(shiftright(ld_fastAdr,11),1);				 		<!-- Dummy value : ArrayMap_SET[11] -->
+					else if (or_((selector==2),(selector==11)))						<!-- type B -->
+						and_(shiftright(ld_fastAdr,8),7);						<!-- ArrayMap_SET[10:8] Fixed_way[2:0] = FastAddr[10:8] -->
+					else if (selector==3)									<!-- type C -->
+						and_(shiftright(ld_fastAdr,11),1);						<!-- Dummy value : ArrayMap_SET[11] -->
+					else if (selector==0)									<!-- type D -->
+						and_(shiftright(ld_fastAdr,7),1);						<!-- Dummy value : ArrayMap_SET[7] -->
+					else if (or_((selector==5),(selector==7)))						<!-- type E -->
+						and_(shiftright(ld_fastAdr,11),1);						<!-- Dummy value : ArrayMap_SET[11] -->
+					else if (or_((selector==8),(selector==12)))						<!-- type F -->
+						and_(shiftright(ld_fastAdr,11),1);						<!-- Dummy value : ArrayMap_SET[11] -->
+					else if (selector==9)									<!-- type G -->
+						and_(shiftright(ld_fastAdr,8),7);						<!-- ArrayMap_SET[10:8] Fixed_way[2:0] = FastAddr[10:8] -->
+					else if (or_((selector==13),(selector==14)))						<!-- type H:  -->
+						and_(shiftright(ld_fastAdr,8),7);						<!-- ArrayMap_SET[10:8] Fixed_way[2:0] = FastAddr[10:8] -->
+					else
+						0;
+				</bsv>
+			</logical_address>
+		</get_layout>
+		<mod_layout>
+			<fuse_definition array_code="CRF">
+				<bsv name="RowSpare">	1 + spare_fuse				</bsv>
+			</fuse_definition>
+		</mod_layout>
+	</array>  
+  </arraymap>

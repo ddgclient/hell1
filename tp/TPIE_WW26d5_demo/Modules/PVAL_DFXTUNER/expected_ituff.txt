@@ -1,0 +1,16 @@
+2_tname_PVAL_DFXTUNER::TuneSTF100_Drive::PVAL_DFXTUNER::STF100.STF003_drv_offset
+2_strgval_5.000ns
+2_tname_PVAL_DFXTUNER::TuneSTF100_Drive::PVAL_DFXTUNER::STF100.STF002_drv_offset
+2_strgval_5.800ns
+2_tname_PVAL_DFXTUNER::TuneSTF100_Drive::PVAL_DFXTUNER::STF100.STF001_drv_offset
+2_strgval_5.100ns
+2_tname_PVAL_DFXTUNER::TuneSTF100_Drive::PVAL_DFXTUNER::STF100.STF000_drv_offset
+2_strgval_6.100ns
+2_tname_PVAL_DFXTUNER::TuneSTF100_Compare::PVAL_DFXTUNER::STF100.STF003_stb_offset
+2_strgval_1.900ns
+2_tname_PVAL_DFXTUNER::TuneSTF100_Compare::PVAL_DFXTUNER::STF100.STF002_stb_offset
+2_strgval_2.800ns
+2_tname_PVAL_DFXTUNER::TuneSTF100_Compare::PVAL_DFXTUNER::STF100.STF001_stb_offset
+2_strgval_1.700ns
+2_tname_PVAL_DFXTUNER::TuneSTF100_Compare::PVAL_DFXTUNER::STF100.STF000_stb_offset
+2_strgval_2.000ns

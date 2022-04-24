@@ -1,0 +1,197 @@
+#====================================================================================================
+GLOBAL_SETUP    		PATMODIFY_TEST  SIO_DP_LPBK1::REUAFELB_X_PMOD_E_END_X_X_X_X_GLOBAL
+#====================================================================================================
+
+#====================================================================================================
+RESET_PMOD				MODIFY_TOKEN	    SET_RXODELAYSEL!SET_SWING
+RESET_PMOD				MODIFY_VALUE		2!2
+#====================================================================================================
+SET_PMOD_1620			MODIFY_TOKEN	    SET_FSSCALAR
+SET_PMOD_1620			MODIFY_VALUE		1
+#====================================================================================================
+SET_PMOD_2700			MODIFY_TOKEN	    SET_FSSCALAR
+SET_PMOD_2700			MODIFY_VALUE		1
+#====================================================================================================
+SET_PMOD_5400			MODIFY_TOKEN	    SET_FSSCALAR
+SET_PMOD_5400			MODIFY_VALUE		2
+#====================================================================================================
+SET_PMOD_8100			MODIFY_TOKEN	    SET_FSSCALAR
+SET_PMOD_8100			MODIFY_VALUE		1
+#====================================================================================================
+
+#====================================================================================================
+################################### ANELB CALCODE Setup ####################################
+#====================================================================================================
+
+DP_CALCODE_CAPTURE_ANELB_8p1G          	SEQ_FILE	      	Modules\SIO_DP_LPBK1\InputFiles\sequence_decoded_CMEM_DDI_ANELB_FullSpf.csv
+DP_CALCODE_CAPTURE_ANELB_8p1G          	FORMAT_FILE	      	Modules\SIO_DP_LPBK1\InputFiles\format_decoded_CMEM_DDI_ANELB_FullSpf.csv
+DP_CALCODE_CAPTURE_ANELB_8p1G          	SEQ_ID		      	class_edc_g3
+DP_CALCODE_CAPTURE_ANELB_8p1G           TESTTYPE			CAPTURE
+DP_CALCODE_CAPTURE_ANELB_8p1G           REGDEF 			    DP
+ 
+DP_CALCODE_CAPTURE_ANELB_5p4G          	SEQ_FILE	      	Modules\SIO_DP_LPBK1\InputFiles\sequence_decoded_CMEM_DDI_ANELB_FullSpf.csv
+DP_CALCODE_CAPTURE_ANELB_5p4G          	FORMAT_FILE	      	Modules\SIO_DP_LPBK1\InputFiles\format_decoded_CMEM_DDI_ANELB_FullSpf.csv
+DP_CALCODE_CAPTURE_ANELB_5p4G          	SEQ_ID		      	class_edc_g3
+DP_CALCODE_CAPTURE_ANELB_5p4G           TESTTYPE			CAPTURE
+DP_CALCODE_CAPTURE_ANELB_5p4G           REGDEF 			    DP
+
+DP_CALCODE_CAPTURE_ANELB_2p7G          	SEQ_FILE	      	Modules\SIO_DP_LPBK1\InputFiles\sequence_decoded_CMEM_DDI_ANELB_FullSpf.csv
+DP_CALCODE_CAPTURE_ANELB_2p7G          	FORMAT_FILE	      	Modules\SIO_DP_LPBK1\InputFiles\format_decoded_CMEM_DDI_ANELB_FullSpf.csv
+DP_CALCODE_CAPTURE_ANELB_2p7G          	SEQ_ID		      	class_edc_g3
+DP_CALCODE_CAPTURE_ANELB_2p7G           TESTTYPE			CAPTURE
+DP_CALCODE_CAPTURE_ANELB_2p7G           REGDEF 			    DP
+
+DP_CALCODE_CAPTURE_ANELB_1p62G         	SEQ_FILE	      	Modules\SIO_DP_LPBK1\InputFiles\sequence_decoded_CMEM_DDI_ANELB_FullSpf.csv
+DP_CALCODE_CAPTURE_ANELB_1p62G         	FORMAT_FILE	      	Modules\SIO_DP_LPBK1\InputFiles\format_decoded_CMEM_DDI_ANELB_FullSpf.csv
+DP_CALCODE_CAPTURE_ANELB_1p62G         	SEQ_ID		      	class_edc_g3
+DP_CALCODE_CAPTURE_ANELB_1p62G          TESTTYPE			CAPTURE
+DP_CALCODE_CAPTURE_ANELB_1p62G          REGDEF 			    DP
+
+DP_CALCODE_CAPTURE_ANELB_8p1G_TUNING   	SEQ_FILE	      	Modules\SIO_DP_LPBK1\InputFiles\sequence_decoded_CMEM_DDI_ANELB_TUNING_FullSpf.csv
+DP_CALCODE_CAPTURE_ANELB_8p1G_TUNING   	FORMAT_FILE	      	Modules\SIO_DP_LPBK1\InputFiles\format_decoded_CMEM_DDI_ANELB_TUNING_FullSpf.csv
+DP_CALCODE_CAPTURE_ANELB_8p1G_TUNING   	SEQ_ID		      	class_edc_g3
+DP_CALCODE_CAPTURE_ANELB_8p1G_TUNING    TESTTYPE			CAPTURE
+DP_CALCODE_CAPTURE_ANELB_8p1G_TUNING    REGDEF 			    DP
+
+#====================================================================================================
+################################### DNELB CALCODE Setup ####################################
+#====================================================================================================
+
+DP_CALCODE_CAPTURE_DNELB_8p1G          	SEQ_FILE	      	Modules\SIO_DP_LPBK1\InputFiles\sequence_decoded_CMEM_DDI_DNELB_FullSpf.csv
+DP_CALCODE_CAPTURE_DNELB_8p1G          	FORMAT_FILE	      	Modules\SIO_DP_LPBK1\InputFiles\format_decoded_CMEM_DDI_DNELB_FullSpf.csv
+DP_CALCODE_CAPTURE_DNELB_8p1G          	SEQ_ID		      	class_edc_g3
+DP_CALCODE_CAPTURE_DNELB_8p1G           TESTTYPE			CAPTURE
+DP_CALCODE_CAPTURE_DNELB_8p1G           REGDEF 			    DP
+ 
+DP_CALCODE_CAPTURE_DNELB_5p4G          	SEQ_FILE	      	Modules\SIO_DP_LPBK1\InputFiles\sequence_decoded_CMEM_DDI_DNELB_FullSpf.csv
+DP_CALCODE_CAPTURE_DNELB_5p4G          	FORMAT_FILE	      	Modules\SIO_DP_LPBK1\InputFiles\format_decoded_CMEM_DDI_DNELB_FullSpf.csv
+DP_CALCODE_CAPTURE_DNELB_5p4G          	SEQ_ID		      	class_edc_g3
+DP_CALCODE_CAPTURE_DNELB_5p4G           TESTTYPE			CAPTURE
+DP_CALCODE_CAPTURE_DNELB_5p4G           REGDEF 			    DP
+
+DP_CALCODE_CAPTURE_DNELB_2p7G          	SEQ_FILE	      	Modules\SIO_DP_LPBK1\InputFiles\sequence_decoded_CMEM_DDI_DNELB_FullSpf.csv
+DP_CALCODE_CAPTURE_DNELB_2p7G          	FORMAT_FILE	      	Modules\SIO_DP_LPBK1\InputFiles\format_decoded_CMEM_DDI_DNELB_FullSpf.csv
+DP_CALCODE_CAPTURE_DNELB_2p7G          	SEQ_ID		      	class_edc_g3
+DP_CALCODE_CAPTURE_DNELB_2p7G           TESTTYPE			CAPTURE
+DP_CALCODE_CAPTURE_DNELB_2p7G           REGDEF 			    DP
+
+DP_CALCODE_CAPTURE_DNELB_1p62G        	SEQ_FILE	      	Modules\SIO_DP_LPBK1\InputFiles\sequence_decoded_CMEM_DDI_DNELB_FullSpf.csv
+DP_CALCODE_CAPTURE_DNELB_1p62G         	FORMAT_FILE	      	Modules\SIO_DP_LPBK1\InputFiles\format_decoded_CMEM_DDI_DNELB_FullSpf.csv
+DP_CALCODE_CAPTURE_DNELB_1p62G         	SEQ_ID		      	class_edc_g3
+DP_CALCODE_CAPTURE_DNELB_1p62G          TESTTYPE			CAPTURE
+DP_CALCODE_CAPTURE_DNELB_1p62G          REGDEF 			    DP
+
+
+#====================================================================================================
+################################### 1620 FUNC REPORT ####################################
+#====================================================================================================
+DP_LPBK_1620_FUNC					EXECUTE_TEST		SIO_DP_LPBK1::DP_X_ANELB_K_END_X_X_X_1620_FUNC
+DP_LPBK_1620_FUNC					DLOG_NAME   		SIO_DP_LPBK1::DP_X_ANELB_K_END_X_X_X_1620_FUNC_svtt
+DP_LPBK_1620_FUNC					XKEY				SET_RXODELAYSEL
+DP_LPBK_1620_FUNC					XVALUE				0!1!2!3!7!11!15
+DP_LPBK_1620_FUNC					YKEY				SET_SWING
+DP_LPBK_1620_FUNC					YVALUE				1!2!3!5!6!8!11
+DP_LPBK_1620_FUNC					ZKEY				SET_FSSCALAR
+DP_LPBK_1620_FUNC					ZVALUE				1!2
+DP_LPBK_1620_FUNC					WKEY				SET_RTERM_SCALAR
+DP_LPBK_1620_FUNC					WVALUE				1!2!3
+DP_LPBK_1620_FUNC					NUMOFTESTRUN		1
+DP_LPBK_1620_FUNC					TESTTYPE			GONOGO
+
+#====================================================================================================
+################################### 1620 SHMOO REPORT ####################################
+#====================================================================================================
+DP_LPBK_1620_SHMOO					EXECUTE_TEST		SIO_DP_LPBK1::DP_X_ANELB_K_END_X_X_X_1620_SHMOO
+DP_LPBK_1620_SHMOO					DLOG_NAME   		SIO_DP_LPBK1::DP_X_ANELB_K_END_X_X_X_1620_SHMOO_svtt
+DP_LPBK_1620_SHMOO					XKEY				SET_RXODELAYSEL
+DP_LPBK_1620_SHMOO					XVALUE				0!1!2!3!7!11!15
+DP_LPBK_1620_SHMOO					YKEY				SET_SWING
+DP_LPBK_1620_SHMOO					YVALUE				1!2!3!8!11
+DP_LPBK_1620_SHMOO					NUMOFTESTRUN		1
+DP_LPBK_1620_SHMOO					TESTTYPE			GONOGO
+
+
+#====================================================================================================
+################################### 2700 FUNC REPORT ####################################
+#====================================================================================================
+DP_LPBK_2700_FUNC					EXECUTE_TEST		SIO_DP_LPBK1::DP_X_ANELB_K_END_X_X_X_2700_FUNC
+DP_LPBK_2700_FUNC					DLOG_NAME   		SIO_DP_LPBK1::DP_X_ANELB_K_END_X_X_X_2700_FUNC_svtt
+DP_LPBK_2700_FUNC					XKEY				SET_RXODELAYSEL
+DP_LPBK_2700_FUNC					XVALUE				0!1!2!3!7!11!15
+DP_LPBK_2700_FUNC					YKEY				SET_SWING
+DP_LPBK_2700_FUNC					YVALUE				1!2!3!5!6!8!11
+DP_LPBK_2700_FUNC					ZKEY				SET_FSSCALAR
+DP_LPBK_2700_FUNC					ZVALUE				1!2
+DP_LPBK_2700_FUNC					WKEY				SET_RTERM_SCALAR
+DP_LPBK_2700_FUNC					WVALUE				1!2!3
+DP_LPBK_2700_FUNC					NUMOFTESTRUN		1
+DP_LPBK_2700_FUNC					TESTTYPE			GONOGO
+
+#====================================================================================================
+################################### 2700 SHMOO REPORT ####################################
+#====================================================================================================
+DP_LPBK_2700_SHMOO					EXECUTE_TEST		SIO_DP_LPBK1::DP_X_ANELB_K_END_X_X_X_2700_SHMOO
+DP_LPBK_2700_SHMOO					DLOG_NAME   		SIO_DP_LPBK1::DP_X_ANELB_K_END_X_X_X_2700_SHMOO_svtt
+DP_LPBK_2700_SHMOO					XKEY				SET_RXODELAYSEL
+DP_LPBK_2700_SHMOO					XVALUE				0!1!2!3!7!11!15
+DP_LPBK_2700_SHMOO					YKEY				SET_SWING
+DP_LPBK_2700_SHMOO					YVALUE				1!2!3!8!11
+DP_LPBK_2700_SHMOO					NUMOFTESTRUN		1
+DP_LPBK_2700_SHMOO					TESTTYPE			GONOGO
+
+#====================================================================================================
+################################### 5400 FUNC REPORT ####################################
+#====================================================================================================
+DP_LPBK_5400_FUNC					EXECUTE_TEST		SIO_DP_LPBK1::DP_X_ANELB_K_END_X_X_X_5400_FUNC
+DP_LPBK_5400_FUNC					DLOG_NAME   		SIO_DP_LPBK1::DP_X_ANELB_K_END_X_X_X_5400_FUNC_svtt
+DP_LPBK_5400_FUNC					XKEY				SET_RXODELAYSEL
+DP_LPBK_5400_FUNC					XVALUE				0!1!2!3!7!11!15
+DP_LPBK_5400_FUNC					YKEY				SET_SWING
+DP_LPBK_5400_FUNC					YVALUE				1!2!3!5!6!8!11
+DP_LPBK_5400_FUNC					ZKEY				SET_FSSCALAR
+DP_LPBK_5400_FUNC					ZVALUE				1!2
+DP_LPBK_5400_FUNC					WKEY				SET_RTERM_SCALAR
+DP_LPBK_5400_FUNC					WVALUE				1!2!3
+DP_LPBK_5400_FUNC					NUMOFTESTRUN		1
+DP_LPBK_5400_FUNC					TESTTYPE			GONOGO
+
+#====================================================================================================
+################################### 5400 SHMOO REPORT ####################################
+#====================================================================================================
+DP_LPBK_5400_SHMOO					EXECUTE_TEST		SIO_DP_LPBK1::DP_X_ANELB_K_END_X_X_X_5400_SHMOO
+DP_LPBK_5400_SHMOO					DLOG_NAME   		SIO_DP_LPBK1::DP_X_ANELB_K_END_X_X_X_5400_SHMOO_svtt
+DP_LPBK_5400_SHMOO					XKEY				SET_RXODELAYSEL
+DP_LPBK_5400_SHMOO					XVALUE				0!1!2!3!7!11!15
+DP_LPBK_5400_SHMOO					YKEY				SET_SWING
+DP_LPBK_5400_SHMOO					YVALUE				1!2!3!8!11
+DP_LPBK_5400_SHMOO					NUMOFTESTRUN		1
+DP_LPBK_5400_SHMOO					TESTTYPE			GONOGO
+
+#====================================================================================================
+################################### 8100 FUNC REPORT ####################################
+#====================================================================================================
+DP_LPBK_8100_FUNC					EXECUTE_TEST		SIO_DP_LPBK1::DP_X_ANELB_K_END_X_X_X_8100_FUNC
+DP_LPBK_8100_FUNC					DLOG_NAME   		SIO_DP_LPBK1::DP_X_ANELB_K_END_X_X_X_8100_FUNC_svtt
+DP_LPBK_8100_FUNC					XKEY				SET_RXODELAYSEL
+DP_LPBK_8100_FUNC					XVALUE				1!3
+DP_LPBK_8100_FUNC					YKEY				SET_SWING
+DP_LPBK_8100_FUNC					YVALUE				3!8
+#DP_LPBK_8100_FUNC					ZKEY				SET_FSSCALAR
+#DP_LPBK_8100_FUNC					ZVALUE				1!2
+#DP_LPBK_8100_FUNC					WKEY				SET_RTERM_SCALAR
+#DP_LPBK_8100_FUNC					WVALUE				1!2!3
+DP_LPBK_8100_FUNC					NUMOFTESTRUN		1
+DP_LPBK_8100_FUNC					TESTTYPE			GONOGO
+
+#====================================================================================================
+################################### 8100 SHMOO REPORT ####################################
+#====================================================================================================
+DP_LPBK_8100_SHMOO					EXECUTE_TEST		SIO_DP_LPBK1::DP_X_ANELB_K_END_X_X_X_8100_SHMOO
+DP_LPBK_8100_SHMOO					DLOG_NAME   		SIO_DP_LPBK1::DP_X_ANELB_K_END_X_X_X_8100_SHMOO_svtt
+DP_LPBK_8100_SHMOO					XKEY				SET_RXODELAYSEL
+DP_LPBK_8100_SHMOO					XVALUE				0!1!2!3
+DP_LPBK_8100_SHMOO					YKEY				SET_SWING
+DP_LPBK_8100_SHMOO					YVALUE				2!3!6!8!10!11
+DP_LPBK_8100_SHMOO					NUMOFTESTRUN		1
+DP_LPBK_8100_SHMOO					TESTTYPE			GONOGO
+

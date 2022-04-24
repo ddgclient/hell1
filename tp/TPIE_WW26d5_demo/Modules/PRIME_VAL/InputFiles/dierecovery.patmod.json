@@ -1,0 +1,404 @@
+{
+  "Configurations": [
+    {
+      "Name": "atom_array_m0_c0_restore",
+      "ConfigurationElement": [
+	    {
+	      "Type": "PINDATA",
+	      "IsChannelLink": false,
+	      "Pin": "YY_TEST_PORT_OUT_C2S_10",
+	      "StartAddress": "CPU_FAB_ALL_CORE0_FAIL_[0-9]_[0-9]_0",  		
+	      "StartAddressOffset": 0,
+	      "EndAddress": "^",    
+	      "EndAddressOffset": 0,
+		"PatternsRegEx":[ 
+			"d0015952.*"
+			],
+		"Data": "L"
+	    },
+	    {
+	      "Type": "PINDATA",
+	      "IsChannelLink": false,
+	      "Pin": "YY_TEST_PORT_OUT_C2S_10",
+	      "StartAddress": "CPU_FAB_ALL_CORE0_FAIL_[0-9]_[0-9]_1",  		
+	      "StartAddressOffset": 0,
+	      "EndAddress": "^",    
+	      "EndAddressOffset": 0,
+		"PatternsRegEx":[ 
+			"d0015953.*"
+			],
+		"Data": "H"
+	    }
+	  ]
+    },
+    {
+      "Name": "atom_array_m0_c1_restore",
+      "ConfigurationElement": [
+	    {
+	      "Type": "PINDATA",
+	      "IsChannelLink": false,
+	      "Pin": "YY_TEST_PORT_OUT_C2S_10",
+	      "StartAddress": "CPU_FAB_ALL_CORE1_FAIL_[0-9]_[0-9]_0",
+	      "StartAddressOffset": 0,
+	      "EndAddress": "^",
+	      "EndAddressOffset": 0,
+		"PatternsRegEx":[ 
+			"d0015952.*"
+			],
+		"Data": "L"
+	    },
+	    {
+	      "Type": "PINDATA",
+	      "IsChannelLink": false,
+	      "Pin": "YY_TEST_PORT_OUT_C2S_10",
+	      "StartAddress": "CPU_FAB_ALL_CORE1_FAIL_[0-9]_[0-9]_1",
+	      "StartAddressOffset": 0,
+	      "EndAddress": "^",
+	      "EndAddressOffset": 0,
+		"PatternsRegEx":[ 
+			"d0015953.*"
+			],
+		"Data": "H"
+	    }
+      ]
+    },
+    {
+      "Name": "atom_array_m0_c2_restore",
+      "ConfigurationElement": [
+	    {
+	      "Type": "PINDATA",
+	      "IsChannelLink": false,
+	      "Pin": "YY_TEST_PORT_OUT_C2S_10",
+	      "StartAddress": "CPU_FAB_ALL_CORE2_FAIL_[0-9]_[0-9]_0",
+	      "StartAddressOffset": 0,
+	      "EndAddress": "^",
+	      "EndAddressOffset": 0,
+		"PatternsRegEx":[ 
+			"d0015952.*"
+			],
+		"Data": "L"
+	    },
+	    {
+	      "Type": "PINDATA",
+	      "IsChannelLink": false,
+	      "Pin": "YY_TEST_PORT_OUT_C2S_10",
+	      "StartAddress": "CPU_FAB_ALL_CORE2_FAIL_[0-9]_[0-9]_1",
+	      "StartAddressOffset": 0,
+	      "EndAddress": "^",
+	      "EndAddressOffset": 0,
+		"PatternsRegEx":[ 
+			"d0015953.*"
+			],
+		"Data": "H"
+	    }
+      ]
+    },
+    {
+      "Name": "atom_array_m0_c3_restore",
+      "ConfigurationElement": [
+	    {
+	      "Type": "PINDATA",
+	      "IsChannelLink": false,
+	      "Pin": "YY_TEST_PORT_OUT_C2S_10",
+	      "StartAddress": "CPU_FAB_ALL_CORE3_FAIL_[0-9]_[0-9]_0",
+	      "StartAddressOffset": 0,
+	      "EndAddress": "^",
+	      "EndAddressOffset": 0,
+		"PatternsRegEx":[ 
+			"d0015952.*"
+			],
+		"Data": "L"
+	    },
+	    {
+	      "Type": "PINDATA",
+	      "IsChannelLink": false,
+	      "Pin": "YY_TEST_PORT_OUT_C2S_10",
+	      "StartAddress": "CPU_FAB_ALL_CORE3_FAIL_[0-9]_[0-9]_1",
+	      "StartAddressOffset": 0,
+	      "EndAddress": "^",
+	      "EndAddressOffset": 0,
+		"PatternsRegEx":[ 
+			"d0015953.*"
+			],
+		"Data": "H"
+	    }
+      ]
+    },
+    {
+      "Name": "atom_array_m1_c0_restore",
+      "ConfigurationElement": [
+	    {
+	      "Type": "PINDATA",
+	      "IsChannelLink": false,
+	      "Pin": "YY_TEST_PORT_OUT_C2S_11",
+	      "StartAddress": "CPU_FAB_ALL_CORE0_FAIL_[0-9]_[0-9]_0",
+	      "StartAddressOffset": 0,
+	      "EndAddress": "^",
+	      "EndAddressOffset": 0,
+		"PatternsRegEx":[ 
+			"d0015952.*"
+			],
+		"Data": "L"
+	    },
+	    {
+	      "Type": "PINDATA",
+	      "IsChannelLink": false,
+	      "Pin": "YY_TEST_PORT_OUT_C2S_11",
+	      "StartAddress": "CPU_FAB_ALL_CORE0_FAIL_[0-9]_[0-9]_1",
+	      "StartAddressOffset": 0,
+	      "EndAddress": "^",
+	      "EndAddressOffset": 0,
+		"PatternsRegEx":[ 
+			"d0015953.*"
+			],
+		"Data": "H"
+	    }
+      ]
+    },
+    {
+      "Name": "atom_array_m1_c1_restore",
+      "ConfigurationElement": [
+	    {
+	      "Type": "PINDATA",
+	      "IsChannelLink": false,
+	      "Pin": "YY_TEST_PORT_OUT_C2S_11",
+	      "StartAddress": "CPU_FAB_ALL_CORE1_FAIL_[0-9]_[0-9]_0",
+	      "StartAddressOffset": 0,
+	      "EndAddress": "^",
+	      "EndAddressOffset": 0,
+		"PatternsRegEx":[ 
+			"d0015952.*"
+			],
+		"Data": "L"
+	    },
+	    {
+	      "Type": "PINDATA",
+	      "IsChannelLink": false,
+	      "Pin": "YY_TEST_PORT_OUT_C2S_11",
+	      "StartAddress": "CPU_FAB_ALL_CORE1_FAIL_[0-9]_[0-9]_1",
+	      "StartAddressOffset": 0,
+	      "EndAddress": "^",
+	      "EndAddressOffset": 0,
+		"PatternsRegEx":[ 
+			"d0015953.*"
+			],
+		"Data": "H"
+	    }
+      ]
+    },
+    {
+      "Name": "atom_array_m1_c2_restore",
+      "ConfigurationElement": [
+	    {
+	      "Type": "PINDATA",
+	      "IsChannelLink": false,
+	      "Pin": "YY_TEST_PORT_OUT_C2S_11",
+	      "StartAddress": "CPU_FAB_ALL_CORE2_FAIL_[0-9]_[0-9]_0",
+	      "StartAddressOffset": 0,
+	      "EndAddress": "^",
+	      "EndAddressOffset": 0,
+		"PatternsRegEx":[ 
+			"d0015952.*"
+			],
+		"Data": "L"
+	    },
+	    {
+	      "Type": "PINDATA",
+	      "IsChannelLink": false,
+	      "Pin": "YY_TEST_PORT_OUT_C2S_11",
+	      "StartAddress": "CPU_FAB_ALL_CORE2_FAIL_[0-9]_[0-9]_1",
+	      "StartAddressOffset": 0,
+	      "EndAddress": "^",
+	      "EndAddressOffset": 0,
+		"PatternsRegEx":[ 
+			"d0015953.*"
+			],
+		"Data": "H"
+	    }
+      ]
+    },
+    {
+      "Name": "atom_array_m1_c3_restore",
+      "ConfigurationElement": [
+	    {
+	      "Type": "PINDATA",
+	      "IsChannelLink": false,
+	      "Pin": "YY_TEST_PORT_OUT_C2S_11",
+	      "StartAddress": "CPU_FAB_ALL_CORE3_FAIL_[0-9]_[0-9]_0",
+	      "StartAddressOffset": 0,
+	      "EndAddress": "^",
+	      "EndAddressOffset": 0,
+		"PatternsRegEx":[ 
+			"d0015952.*"
+			],
+		"Data": "L"
+	    },
+	    {
+	      "Type": "PINDATA",
+	      "IsChannelLink": false,
+	      "Pin": "YY_TEST_PORT_OUT_C2S_11",
+	      "StartAddress": "CPU_FAB_ALL_CORE3_FAIL_[0-9]_[0-9]_1",
+	      "StartAddressOffset": 0,
+	      "EndAddress": "^",
+	      "EndAddressOffset": 0,
+		"PatternsRegEx":[ 
+			"d0015953.*"
+			],
+		"Data": "H"
+	    }
+      ]
+    },
+    {
+      "Name": "atom_array_m0_c0_mask",
+      "ConfigurationElement": [
+	    {
+	      "Type": "PINDATA",
+	      "IsChannelLink": false,
+	      "Pin": "YY_TEST_PORT_OUT_C2S_10",
+	      "StartAddress": "CPU_FAB_ALL_CORE0_FAIL_[0-9]_[0-9]_[0-9]",
+	      "StartAddressOffset": 0,
+	      "EndAddress": "^",
+	      "EndAddressOffset": 0,
+		"PatternsRegEx":[ 
+			"d0015952.*",
+			"d0015953.*"
+			],
+		"Data": "X"
+	    }
+      ]
+    },
+    {
+      "Name": "atom_array_m0_c1_mask",
+      "ConfigurationElement": [
+	    {
+	      "Type": "PINDATA",
+	      "IsChannelLink": false,
+	      "Pin": "YY_TEST_PORT_OUT_C2S_10",
+	      "StartAddress": "CPU_FAB_ALL_CORE1_FAIL_[0-9]_[0-9]_[0-9]",
+	      "StartAddressOffset": 0,
+	      "EndAddress": "^",
+	      "EndAddressOffset": 0,
+		"PatternsRegEx":[ 
+			"d0015952.*",
+			"d0015953.*"
+			],
+		"Data": "X"
+	    }
+      ]
+    },
+    {
+      "Name": "atom_array_m0_c2_mask",
+      "ConfigurationElement": [
+	    {
+	      "Type": "PINDATA",
+	      "IsChannelLink": false,
+	      "Pin": "YY_TEST_PORT_OUT_C2S_10",
+	      "StartAddress": "CPU_FAB_ALL_CORE2_FAIL_[0-9]_[0-9]_[0-9]",
+	      "StartAddressOffset": 0,
+	      "EndAddress": "^",
+	      "EndAddressOffset": 0,
+		"PatternsRegEx":[ 
+			"d0015952.*",
+			"d0015953.*"
+			],
+		"Data": "X"
+	    }
+      ]
+    },
+    {
+      "Name": "atom_array_m0_c3_mask",
+      "ConfigurationElement": [
+	    {
+	      "Type": "PINDATA",
+	      "IsChannelLink": false,
+	      "Pin": "YY_TEST_PORT_OUT_C2S_10",
+	      "StartAddress": "CPU_FAB_ALL_CORE3_FAIL_[0-9]_[0-9]_[0-9]",
+	      "StartAddressOffset": 0,
+	      "EndAddress": "^",
+	      "EndAddressOffset": 0,
+		"PatternsRegEx":[ 
+			"d0015952.*",
+			"d0015953.*"
+			],
+		"Data": "X"
+	    }
+      ]
+    },
+    {
+      "Name": "atom_array_m1_c0_mask",
+      "ConfigurationElement": [
+	    {
+	      "Type": "PINDATA",
+	      "IsChannelLink": false,
+	      "Pin": "YY_TEST_PORT_OUT_C2S_11",
+	      "StartAddress": "CPU_FAB_ALL_CORE0_FAIL_[0-9]_[0-9]_[0-9]",
+	      "StartAddressOffset": 0,
+	      "EndAddress": "^",
+	      "EndAddressOffset": 0,
+		"PatternsRegEx":[ 
+			"d0015952.*",
+			"d0015953.*"
+			],
+		"Data": "X"
+	    }
+      ]
+    },
+    {
+      "Name": "atom_array_m1_c1_mask",
+      "ConfigurationElement": [
+	    {
+	      "Type": "PINDATA",
+	      "IsChannelLink": false,
+	      "Pin": "YY_TEST_PORT_OUT_C2S_11",
+	      "StartAddress": "CPU_FAB_ALL_CORE1_FAIL_[0-9]_[0-9]_[0-9]",
+	      "StartAddressOffset": 0,
+	      "EndAddress": "^",
+	      "EndAddressOffset": 0,
+		"PatternsRegEx":[ 
+			"d0015952.*",
+			"d0015953.*"
+			],
+		"Data": "X"
+	    }
+      ]
+    },
+    {
+      "Name": "atom_array_m1_c2_mask",
+      "ConfigurationElement": [
+	    {
+	      "Type": "PINDATA",
+	      "IsChannelLink": false,
+	      "Pin": "YY_TEST_PORT_OUT_C2S_11",
+	      "StartAddress": "CPU_FAB_ALL_CORE2_FAIL_[0-9]_[0-9]_[0-9]",
+	      "StartAddressOffset": 0,
+	      "EndAddress": "^",
+	      "EndAddressOffset": 0,
+		"PatternsRegEx":[ 
+			"d0015952.*",
+			"d0015953.*"
+			],
+		"Data": "X"
+	    }
+      ]
+    },
+    {
+      "Name": "atom_array_m1_c3_mask",
+      "ConfigurationElement": [
+	    {
+	      "Type": "PINDATA",
+	      "IsChannelLink": false,
+	      "Pin": "YY_TEST_PORT_OUT_C2S_11",
+	      "StartAddress": "CPU_FAB_ALL_CORE3_FAIL_[0-9]_[0-9]_[0-9]",
+	      "StartAddressOffset": 0,
+	      "EndAddress": "^",
+	      "EndAddressOffset": 0,
+		"PatternsRegEx":[ 
+			"d0015952.*",
+			"d0015953.*"
+			],
+		"Data": "X"
+	    }
+      ]
+    }	
+  ]
+}

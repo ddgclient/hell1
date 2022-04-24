@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>DDG Prime FlowControlCallbacks</title>
+</head>
+<body>
+
+    <h1 id="ddg-prime-flowcontrolcallbacks">DDG Prime FlowControlCallbacks</h1>
+<h3 id="rev-0">Rev 0</h3>
+<hr />
+<h2 id="enabling-the-callbacks">Enabling the Callbacks</h2>
+<p>Add an instance of CallbacksManager in your INIT flow. No parameters are necessary.</p>
+<h2 id="using-callbacks">Using callbacks</h2>
+<p>Callbacks can be executed from SingleRecoveryCallbackName parameter from FlowIndexCommonParam.xml.</p>
+<pre><code class="language-Xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;TestLibraryInterfaces xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xsi:schemaLocation=&quot;http://vtsm.intel.com/2009/TestLibraryInterfaces file:///C:/Intel/hdmt/hdmtOS_3.4.4.5_Release/TOSRelease/bin/release/TestLibraryInterfaces.xsd&quot; xmlns=&quot;http://vtsm.intel.com/2009/TestLibraryInterfaces&quot;&gt;
+  &lt;TestLibrary name=&quot;PrimeTestInstance&quot;&gt;
+    &lt;TestClass name=&quot;PrimePauseTestMethodCommonParams&quot; /&gt;
+    &lt;Imports&gt;
+    &lt;FileName&gt;FlowIndexCommonParam.xml&lt;/FileName&gt;
+    &lt;/Imports&gt;
+    &lt;PublicBases /&gt;
+    &lt;Parameters /&gt;
+    &lt;ExitPorts /&gt;
+  &lt;/TestLibrary&gt;
+&lt;/TestLibraryInterfaces&gt;
+</code></pre>
+<p><a href="https://dev.azure.com/mit-us/PRIME/_wiki/wikis/PRIME.wiki/3019/Calling-Prime-C-Sharp-Code-from-EVG-UF">Prime WIKI - Calling Cs from Evg</a></p>
+<p><a href="https://dev.azure.com/mit-us/PRIME/_wiki/wikis/PRIME.wiki/3020/Common-Parameters">Prime WIKI - Common Parameters</a></p>
+<h4 id="setflow">SetFlow</h4>
+<p>Sets active flow for the entered domain using FlowIndex parameter. <br></p>
+<p>Example:</p>
+<pre><code class="language-Perl">Test PrimePauseTestMethod Pause_IO_c1_r1_P0
+{
+	SleepTime = 10;
+	FlowIndex = &quot;1&quot;;
+	ExitPort = 0;
+	SingleRecoveryCallbackName = &quot;SetFlow(GT)&quot;;
+	LogLevel = &quot;PRIME_DEBUG&quot;;
+}
+</code></pre>
+<h4 id="checkflow">CheckFlow</h4>
+<p>Checks that FlowInstance FlowIndex is matching active flow while running in SinglePointTest mode. <br>
+If flow is not matching, the instance will exit Port 0 skipping execution.<br></p>
+<p>Example:</p>
+<pre><code class="language-Perl">Test PrimePauseTestMethod Pause_IO_c1_r1_P0
+{
+	SleepTime = 10;
+	FlowIndex = &quot;1&quot;;
+	ExitPort = 0;
+	SingleRecoveryCallbackName = &quot;CheckFlow(CPU)&quot;;
+	LogLevel = &quot;PRIME_DEBUG&quot;;
+}
+</code></pre>
+
+
+</body>
+</html>

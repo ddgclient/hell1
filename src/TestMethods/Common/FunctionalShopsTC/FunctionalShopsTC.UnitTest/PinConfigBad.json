@@ -1,0 +1,14 @@
+{
+	"VOX_LL": 0.2,
+	"Resolution":  0.1,
+	"PinConfigs": [
+		{
+		  "PinName": "TDI",
+		  "VOX": 0.6,
+		},
+		{
+			"PinName": "TDO",
+			"VOX": 0.1
+		}
+	],
+}

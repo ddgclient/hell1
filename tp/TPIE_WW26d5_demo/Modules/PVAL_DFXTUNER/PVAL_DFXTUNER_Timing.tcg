@@ -1,0 +1,81 @@
+Version 1.0;
+
+SpecificationSet cpu_stf_timing_PerPin_PARAMS (tclk100_sclk100_cclk100)
+{
+	Time p_mtd_per = 10nS;
+	Integer p_tap_domain_div = 1;
+	Integer p_tap_domain_mul = 1;
+	Time p_tclk_ec_global_skew = 0nS;
+	Time p_tclk_ec_tfall_offset = 0nS;
+	Integer p_tclk_ec_ratio = 1;
+	Double p_tap_in_drv_mul = 2;
+	Time p_tap_in_drv_offset = 0nS;
+	Time p_tap_in_stb_offset = 0nS;
+	Double p_tap_out_drv_mul = 0;
+	Time p_tap_out_drv_offset = 0nS;
+	Time p_tap_out_stb_offset = 0nS;
+	Double p_misc_tap_drv_mul = 0;
+	Time p_misc_tap_drv_offset = 0nS;
+	Double p_misc_tap_stb_mul = 0.5;
+	Time p_misc_tap_stb_offset = 0nS;
+	Time p_cclk_per = 10nS;
+	Time p_cclk_hpc_enable = 0nS;
+	Integer p_fab_domain_div = 1;
+	Integer p_fab_domain_mul = 1;
+	Time p_sclk_ec_global_skew = 0nS;
+	Time p_sclk_ec_tfall_offset = 0nS;
+	Integer p_sclk_ec_ratio = 1;
+	Double p_stf_in_drv_mul = 0;
+	Time p_stf_in_drv_offset = 0nS;
+	Double p_stf_in_stb_mul = 1;
+	Time p_stf_in_stb_offset = 0nS;
+	Double p_stf_out_drv_mul = 0;
+	Time p_stf_out_drv_offset = 0nS;
+	Time p_stf_out_stb_offset = 0nS;
+	Double p_tap_in_stb_mul = 2.25;
+	Double p_tap_out_stb_mul = 2.25;
+	Double p_stf_out_stb_mul = 2;
+	Time c_tap_domain_ratio = p_tap_domain_mul/p_tap_domain_div;
+	Time c_tclk_ec_per = p_mtd_per;
+	Time c_tclk_ec_per_resolved = p_mtd_per * c_tap_domain_ratio;
+	Time c_tclk_ec_tfall = p_tclk_ec_global_skew + p_tclk_ec_tfall_offset;
+	Time c_tclk_ec_trise = (c_tclk_ec_per_resolved * 0.5) + c_tclk_ec_tfall;
+	Time c_tap_in_drv = c_tclk_ec_tfall + (c_tclk_ec_per_resolved * 0.5 * p_tap_in_drv_mul) + p_tap_in_drv_offset;
+	Time c_tap_in_stb = p_tclk_ec_global_skew + (c_tclk_ec_per_resolved * 0.5 * p_tap_in_stb_mul) + p_tap_in_stb_offset;
+	Time c_tap_out_drv = p_tclk_ec_global_skew + (c_tclk_ec_per_resolved * 0.5 * p_tap_out_drv_mul) + p_tap_out_drv_offset;
+	Time c_tap_out_stb = c_tclk_ec_tfall + (c_tclk_ec_per_resolved * 0.5 * p_tap_out_stb_mul) + p_tap_out_stb_offset;
+	Time c_misc_tap_drv = c_tclk_ec_tfall + (c_tclk_ec_per_resolved * 0.5 * p_misc_tap_drv_mul) + p_misc_tap_drv_offset;
+	Time c_misc_tap_stb = c_tclk_ec_tfall + (c_tclk_ec_per_resolved * 0.5 * p_misc_tap_stb_mul) + p_misc_tap_stb_offset;
+	Time c_fab_domain_ratio = p_fab_domain_mul/p_fab_domain_div;
+	Time c_sclk_ec_per = p_mtd_per;
+	Time c_sclk_ec_per_resolved = p_mtd_per * c_fab_domain_ratio;
+	Time c_sclk_ec_tfall = p_sclk_ec_global_skew + p_sclk_ec_tfall_offset;
+	Time c_sclk_ec_trise = (c_sclk_ec_per_resolved * 0.5) + c_sclk_ec_tfall;
+	Time c_stf_in_drv = c_sclk_ec_tfall + (c_sclk_ec_per_resolved * 0.5 * p_stf_in_drv_mul) + p_stf_in_drv_offset;
+	Time c_stf_in_stb = p_sclk_ec_global_skew + (c_sclk_ec_per_resolved * 0.5 * p_stf_in_stb_mul) + p_stf_in_stb_offset;
+	Time c_stf_out_drv = p_sclk_ec_global_skew + (c_sclk_ec_per_resolved * 0.5 * p_stf_out_drv_mul) + p_stf_out_drv_offset;
+	Time c_stf_out_stb = c_sclk_ec_tfall + (c_sclk_ec_per_resolved * 0.5 * p_stf_out_stb_mul) + p_stf_out_stb_offset;
+
+    Time c_STF000_in_drv = c_stf_in_drv + PVAL_DFXTUNER::STF100.STF000_drv_offset;
+    Time c_STF001_in_drv = c_stf_in_drv + PVAL_DFXTUNER::STF100.STF001_drv_offset;
+    Time c_STF002_in_drv = c_stf_in_drv + PVAL_DFXTUNER::STF100.STF002_drv_offset;
+    Time c_STF003_in_drv = c_stf_in_drv + PVAL_DFXTUNER::STF100.STF003_drv_offset;
+	
+    Time c_STF000_out_stb = c_stf_out_stb + PVAL_DFXTUNER::STF100.STF000_stb_offset;
+    Time c_STF001_out_stb = c_stf_out_stb + PVAL_DFXTUNER::STF100.STF001_stb_offset;
+    Time c_STF002_out_stb = c_stf_out_stb + PVAL_DFXTUNER::STF100.STF002_stb_offset;
+    Time c_STF003_out_stb = c_stf_out_stb + PVAL_DFXTUNER::STF100.STF003_stb_offset;
+}
+
+TestConditionGroup cpu_stf_timing_PerPin_TCG
+{
+	SpecificationSet = cpu_stf_timing_PerPin_PARAMS;
+	Timing = cpu_stf_timing_PerPin;
+}
+
+TestCondition cpu_stf_timing_tclk100_sclk100_cclk100_PerPin
+{
+	TestConditionGroup  = cpu_stf_timing_PerPin_TCG;
+	Selector = tclk100_sclk100_cclk100;
+}
+

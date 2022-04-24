@@ -1,0 +1,215 @@
+# Module Revision: chenjona - 06/16/21 11:15:41 AM
+
+Version 1.0;
+
+ProgramStyle = Modular;
+
+TestPlan TPI_RECOVERY_C28;
+
+
+
+
+Import OASIS_UserFunc_tt.xml;
+Import DieRecoveryBase.xml;
+Import VminForwardingBase.xml;
+Import OASIS_Screen_tt.xml;
+
+
+
+
+#Test Counter Definition
+Counters
+{
+	n26949322_fail_CTRL_X_SCREEN_K_POSTHVQK_X_X_X_X_COPY_SKU_GSDS_2,
+	n90000001_fail_CTRL_X_DIERECOVERY_K_BEGIN_X_X_X_X_SLICETOTRACKER_0,
+	n90020003_fail_CTRL_X_DIERECOVERY_K_BEGIN_X_X_X_X_SLICETOTRACKER_2,
+	n90030004_fail_CTRL_X_DIERECOVERY_K_BEGIN_X_X_X_X_CORETOTRACKER_0,
+	n90040006_fail_CTRL_X_DIERECOVERY_K_BEGIN_X_X_X_X_CORETOTRACKER_2,
+	n90050008_fail_CTRL_X_DIERECOVERY_K_END_X_X_X_X_TRACKERTOCORE_0,
+	n90070009_fail_CTRL_X_DIERECOVERY_K_END_X_X_X_X_TRACKERTOCORE_2,
+	n90080010_fail_CTRL_X_DIERECOVERY_K_END_X_X_X_X_TRACKERTOSLICE_0,
+	n90090011_fail_CTRL_X_DIERECOVERY_K_END_X_X_X_X_TRACKERTOSLICE_2,
+	n90100012_fail_CTRL_X_DIERECOVERY_K_PREHVQK_X_X_X_X_TRACKERTOCORE_0,
+	n90110013_fail_CTRL_X_DIERECOVERY_K_PREHVQK_X_X_X_X_TRACKERTOCORE_2,
+	n90120014_fail_CTRL_X_DIERECOVERY_K_PREHVQK_X_X_X_X_TRACKERTOSLICE_0,
+	n90160015_fail_CTRL_X_DIERECOVERY_K_PREHVQK_X_X_X_X_TRACKERTOSLICE_2,
+	n90180016_fail_CTRL_X_DIERECOVERY_K_POSTHVQK_X_X_X_X_TRACKERTOCORE_0,
+	n90190017_fail_CTRL_X_DIERECOVERY_K_POSTHVQK_X_X_X_X_TRACKERTOCORE_2,
+	n90200019_fail_CTRL_X_DIERECOVERY_K_POSTHVQK_X_X_X_X_TRACKERTOSLICE_0,
+	n90210021_fail_CTRL_X_DIERECOVERY_K_POSTHVQK_X_X_X_X_TRACKERTOSLICE_2,
+	n90869320_fail_CTRL_X_SCREEN_K_POSTHVQK_X_X_X_X_COPY_SKU_GSDS_0,
+	n94030005_fail_CTRL_X_DIERECOVERY_K_BEGIN_X_X_X_X_TRACKERCLEAR_0,
+	n94060066_fail_CTRL_X_DIERECOVERY_K_BEGIN_X_X_X_X_VMINFORWARDINGCLEAR_0,
+	n98010001_fail_FAIL_SYSTEM_SOFTWARE,
+	n99010001_fail_FAIL_DPS_ALARM
+} # End of Test Counter Definition
+
+Test iCUserFuncTest CTRL_X_DIERECOVERY_K_BEGIN_X_X_X_X_CORETOTRACKER_P1
+{
+	function_name = "CPD_DEBUG!ExecPrimeCsCallback";
+	function_parameter = "G.U.S.Dummy=WriteTracker(--tracker=CORE5,CORE4,CORE3,CORE2,CORE1,CORE0,ATOM_M1,ATOM_M0 --gsds=G.U.S.CORE)";
+	preinstance = "CPD_DEBUG!SetGSDS UNT,CORE^Str[11110000000000/0/0]";
+}
+Test iCUserFuncTest CTRL_X_DIERECOVERY_K_BEGIN_X_X_X_X_SLICETOTRACKER_P1
+{
+	function_name = "CPD_DEBUG!ExecPrimeCsCallback";
+	function_parameter = "G.U.S.Dummy=WriteTracker(--tracker=SLICE5,SLICE4,SLICE3,SLICE2,SLICE1,SLICE0,ATOMSLICE_M1,ATOMSLICE_M0 --gsds=G.U.S.SLICE)";
+	preinstance = "CPD_DEBUG!SetGSDS UNT,SLICE^Str[11110000/0/0]";
+}
+Test iCUserFuncTest CTRL_X_DIERECOVERY_K_PREHVQK_X_X_X_X_TRACKERTOCORE_P1
+{
+	function_name = "CPD_DEBUG!ExecPrimeCsCallback";
+	function_parameter = "G.U.S.Dummy=CopyTracker(--tracker=CORE5,CORE4,CORE3,CORE2,CORE1,CORE0,ATOM_M1,ATOM_M0 --gsds=G.U.S.CORE_PRE)";
+	postinstance = "CPD_DEBUG!PrintToItuff -tname_suf 'CORE_PRE_SKU' -body_type strgval -body_data G.U.S.CORE_PRE";
+}
+Test iCUserFuncTest CTRL_X_DIERECOVERY_K_PREHVQK_X_X_X_X_TRACKERTOSLICE_P1
+{
+	function_name = "CPD_DEBUG!ExecPrimeCsCallback";
+	function_parameter = "G.U.S.Dummy=CopyTracker(--tracker=SLICE5,SLICE4,SLICE3,SLICE2,SLICE1,SLICE0,ATOMSLICE_M1,ATOMSLICE_M0 --gsds=G.U.S.SLICE_PRE)";
+	postinstance = "CPD_DEBUG!PrintToItuff -tname_suf 'SLICE_PRE_SKU' -body_type strgval -body_data G.U.S.SLICE_PRE";
+}
+
+DUTFlow TPI_RECOVERY_C28_BEGIN
+{
+	DUTFlowItem CTRL_X_DIERECOVERY_K_BEGIN_X_X_X_X_CORETOTRACKER_P1 CTRL_X_DIERECOVERY_K_BEGIN_X_X_X_X_CORETOTRACKER_P1
+	{
+		Result -2
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+			Return -2;
+		}		
+		Result -1
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+			Return -1;
+		}		
+		Result 0
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_RECOVERY_C28::n90030004_fail_CTRL_X_DIERECOVERY_K_BEGIN_X_X_X_X_CORETOTRACKER_0;
+			SetBin SoftBins.b90030004_fail_TPI_RECOVERY_C28_CTRL_X_DIERECOVERY_K_BEGIN_X_X_X_X_CORETOTRACKER_0;
+			Return 0;
+		}		
+		Result 1
+		{
+			Property PassFail = "Pass";
+			GoTo CTRL_X_DIERECOVERY_K_BEGIN_X_X_X_X_SLICETOTRACKER_P1;
+		}		
+		Result 2
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_RECOVERY_C28::n90040006_fail_CTRL_X_DIERECOVERY_K_BEGIN_X_X_X_X_CORETOTRACKER_2;
+			SetBin SoftBins.b90040006_fail_TPI_RECOVERY_C28_CTRL_X_DIERECOVERY_K_BEGIN_X_X_X_X_CORETOTRACKER_2;
+			Return 0;
+		}		
+	}	
+	DUTFlowItem CTRL_X_DIERECOVERY_K_BEGIN_X_X_X_X_SLICETOTRACKER_P1 CTRL_X_DIERECOVERY_K_BEGIN_X_X_X_X_SLICETOTRACKER_P1
+	{
+		Result -2
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+			Return -2;
+		}		
+		Result -1
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+			Return -1;
+		}		
+		Result 0
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_RECOVERY_C28::n90000001_fail_CTRL_X_DIERECOVERY_K_BEGIN_X_X_X_X_SLICETOTRACKER_0;
+			SetBin SoftBins.b90000001_fail_TPI_RECOVERY_C28_CTRL_X_DIERECOVERY_K_BEGIN_X_X_X_X_SLICETOTRACKER_0;
+			Return 0;
+		}		
+		Result 1
+		{
+			Property PassFail = "Pass";
+			Return 1;
+		}		
+		Result 2
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_RECOVERY_C28::n90020003_fail_CTRL_X_DIERECOVERY_K_BEGIN_X_X_X_X_SLICETOTRACKER_2;
+			SetBin SoftBins.b90020003_fail_TPI_RECOVERY_C28_CTRL_X_DIERECOVERY_K_BEGIN_X_X_X_X_SLICETOTRACKER_2;
+			Return 0;
+		}		
+	}	
+}
+
+DUTFlow TPI_RECOVERY_C28_PREHVQK
+{
+	DUTFlowItem CTRL_X_DIERECOVERY_K_PREHVQK_X_X_X_X_TRACKERTOCORE_P1 CTRL_X_DIERECOVERY_K_PREHVQK_X_X_X_X_TRACKERTOCORE_P1
+	{
+		Result -2
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+			Return -2;
+		}		
+		Result -1
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+			Return -1;
+		}		
+		Result 0
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_RECOVERY_C28::n90100012_fail_CTRL_X_DIERECOVERY_K_PREHVQK_X_X_X_X_TRACKERTOCORE_0;
+			SetBin SoftBins.b90100012_fail_TPI_RECOVERY_C28_CTRL_X_DIERECOVERY_K_PREHVQK_X_X_X_X_TRACKERTOCORE_0;
+			Return 0;
+		}		
+		Result 1
+		{
+			Property PassFail = "Pass";
+			GoTo CTRL_X_DIERECOVERY_K_PREHVQK_X_X_X_X_TRACKERTOSLICE_P1;
+		}		
+		Result 2
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_RECOVERY_C28::n90110013_fail_CTRL_X_DIERECOVERY_K_PREHVQK_X_X_X_X_TRACKERTOCORE_2;
+			SetBin SoftBins.b90110013_fail_TPI_RECOVERY_C28_CTRL_X_DIERECOVERY_K_PREHVQK_X_X_X_X_TRACKERTOCORE_2;
+			Return 0;
+		}		
+	}	
+	
+	DUTFlowItem CTRL_X_DIERECOVERY_K_PREHVQK_X_X_X_X_TRACKERTOSLICE_P1 CTRL_X_DIERECOVERY_K_PREHVQK_X_X_X_X_TRACKERTOSLICE_P1
+	{
+		Result -2
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+			Return -2;
+		}		
+		Result -1
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+			Return -1;
+		}		
+		Result 0
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_RECOVERY_C28::n90120014_fail_CTRL_X_DIERECOVERY_K_PREHVQK_X_X_X_X_TRACKERTOSLICE_0;
+			SetBin SoftBins.b90120014_fail_TPI_RECOVERY_C28_CTRL_X_DIERECOVERY_K_PREHVQK_X_X_X_X_TRACKERTOSLICE_0;
+			Return 0;
+		}		
+		Result 1
+		{
+			Property PassFail = "Pass";
+			Return 1;
+		}		
+		Result 2
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_RECOVERY_C28::n90160015_fail_CTRL_X_DIERECOVERY_K_PREHVQK_X_X_X_X_TRACKERTOSLICE_2;
+			SetBin SoftBins.b90160015_fail_TPI_RECOVERY_C28_CTRL_X_DIERECOVERY_K_PREHVQK_X_X_X_X_TRACKERTOSLICE_2;
+			Return 0;
+		}		
+	}	
+}

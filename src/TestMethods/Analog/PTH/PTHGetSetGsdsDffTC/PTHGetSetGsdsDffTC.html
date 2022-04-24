@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>DDG Prime PTHGetSetGsdsDffTC</title>
+</head>
+<body>
+
+    <h1 id="ddg-prime-pthgetsetgsdsdfftc">DDG Prime PTHGetSetGsdsDffTC</h1>
+<h3 id="rev-0">Rev 0</h3>
+<h2 id="introduction">Introduction</h2>
+<p>This TestMethod is used set/get GSDS or DFF.</p>
+<h2 id="methodology">Methodology</h2>
+<ol>
+<li>Setup the <strong>ConfigurationFile</strong> as JSON.  More info on the JSON property parameters below.</li>
+<li>Each GSDS2DFF or DFF2GSDS is considered as an object and requires the property parameters.</li>
+</ol>
+<h2 id="errors-and-exceptions">Errors and Exceptions</h2>
+<ul>
+<li>Throws Exception
+<ul>
+<li>if both <strong>GSDS2DFF</strong> and <strong>DFF2GSDS</strong> are set to true.</li>
+<li>if <strong>Delimiter</strong> is required but not specified</li>
+<li>if <strong>Delimiter</strong> is greater  1. Allows only 1 delimiter</li>
+<li>if <strong>GSDSScopeType, DFF, DFFOpType</strong> parameters have more than 1 value.</li>
+<li>if <strong>GSDS</strong> already exits while converting <strong>DFF</strong> to <strong>GSDS</strong> to avoid overwriting of the GSDS</li>
+<li>if <strong>GSDSScopeType</strong> does not follow the required format - <strong>scope.type</strong>
+<ul>
+<li>scope = U for unit/dut, L for lot</li>
+<li>type = S for string, D for double, or I for integer.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="parameters">Parameters</h2>
+<h3 id="template-parameters">Template parameters</h3>
+<h4 id="optype">OPType</h4>
+<ul>
+<li>To choose the type of operation. This enables the use of single json file for both GSDS2DFF and DFF2GSDS. Two options of enum datatype.
+<ul>
+<li>DFF2GSDS (default)
+<ul>
+<li>converts all the operations in json with &quot;DFF2GSDS&quot;: true</li>
+</ul>
+</li>
+<li>GSDS2DFF
+<ul>
+<li>converts all the operations in json with &quot;GSDS2DFF&quot;: true</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="configurationfile">ConfigurationFile</h4>
+<ul>
+<li>Input JSON based on which the DFF or GSDS are decoded.</li>
+</ul>
+<h3 id="json-property-parameters">JSON property parameters</h3>
+<ul>
+<li><strong>GSDSList</strong>
+<ul>
+<li><strong>DFF2GSDS</strong> mode - list of GSDS tokens to get the values from DFF</li>
+<li><strong>GSDS2DFF</strong> mode - list of GSDS tokens to be copied over to DFF</li>
+</ul>
+</li>
+<li><strong>GSDSScopeType</strong> - format of GSDS scope and type</li>
+<li><strong>DFF</strong> - Name of the DFF to be to set or value to get</li>
+<li><strong>DFFOpType</strong>
+<ul>
+<li>Location from which DFF value is to be set/get.</li>
+<li>eg: SORT, PBIC_DAB</li>
+</ul>
+</li>
+<li><strong>GSDS2DFF</strong> - bool parameter to enable conversion of GSDS to DFF, defaults to false.</li>
+<li><strong>DFF2GSDS</strong> - bool parameter to enable conversion of DFF to GSDS, defaults to false.</li>
+<li><strong>Delimiter</strong> - single string value</li>
+<li><strong>PrintDFF</strong> - bool parameter to enable conversion of GSDS to DFF, defaults to false.</li>
+<li><strong>GSDS2DFFAllowedList</strong> - list of static values allowed to be in the <strong>GSDSList</strong> in <strong>GSDS2DFF</strong> mode</li>
+<li><strong>SearchReplace</strong> - Dictionary of Search/Replace pairs. Should be valid C# Regular expressions. Can be used for simple data/format changes. In DFF2GSDS mode will be run on the DFF data after being read. In GSDS2DFF mode will be run after the GSDS is concatenated together.</li>
+</ul>
+<h2 id="ports">Ports</h2>
+<pre><code>[Returns(1, PortType.Pass, &quot;Pass!&quot;)]
+[Returns(0, PortType.Fail, &quot;Fail!&quot;)]
+[Returns(2, PortType.Fail, &quot;Failed to Convert DFF to GSDS!&quot;)]
+[Returns(3, PortType.Fail, &quot;Failed to Convert GSDS to DFF!&quot;)]
+[Returns(4, PortType.Fail, &quot;No valid operation. Check OPType!&quot;)]
+</code></pre>
+<h2 id="mtpl-example">mtpl Example</h2>
+<pre><code>Test PTHGetSetGsdsDffTC PTHGetSetGsdsDff_tst
+{
+	ConfigurationFile = &quot;./Modules/PTH_DTS/InputFiles/PTHGetSetDffGsds.json&quot;;
+	LogLevel = &quot;DISABLED&quot;;
+}
+</code></pre>
+<h2 id="input-json-example">Input JSON Example</h2>
+<h3 id="single-dff-to-gsds">Single DFF to GSDS</h3>
+<p><img src="images/single_DFF2GSDS.jpg" alt="Single DFF2GSDS" /></p>
+<h4 id="ituff-print">Ituff print</h4>
+<pre><code>0_tname_IP_CPU::PTH_DTS::PTHGetSetGsdsDff_DFF2GSDS_PREDTS
+0_strgval_-10
+</code></pre>
+<h3 id="multiple-dff-to-gsds">Multiple DFF to GSDS</h3>
+<p><img src="images/multiple_DFF2GSDS.jpg" alt="Multiple DFF2GSDS" /></p>
+<h4 id="ituff-print-1">Ituff print</h4>
+<pre><code>0_tname_IP_CPU::PTH_DTS::PTHGetSetGsdsDff_DFF2GSDS_TSDT0
+0_strgval_446|446|445|451|449|450|451|451|450|447|445|445|449|449|449|451|453|449|450|449|449|449|445|445|445|445|451|452|453|454|453|454|454|446|447|445
+</code></pre>
+<h3 id="single-gsds-to-dff">Single GSDS to DFF</h3>
+<p><img src="images/single_GSDS2DFF.jpg" alt="Single GSDS2DFF" /></p>
+<h4 id="ituff-print-2">Ituff print</h4>
+<pre><code>0_tname_IP_CPU::PTH_DTS::PTHGetSetGsdsDff_GSDS2DFF_PRETS
+0_strgval_99.8|dummy|1|1001|0x8
+</code></pre>
+<h3 id="multiple-gsds-to-dff">Multiple GSDS to DFF</h3>
+<p><img src="images/multiple_GSDS2DFF.jpg" alt="Multiple GSDS2DFF" /></p>
+<h4 id="ituff-print-3">Ituff print</h4>
+<pre><code>0_tname_IP_CPU::PTH_DTS::PTHGetSetGsdsDff_GSDS2DFF_TCSL0
+0_strgval_2183|2249|2271|2271|2205|2271|2183|2205|2205|2271|2318|2295|2205|2226|2226|2183|2205|2249|2295|2295|2295|2295|2318|2318|2342|2342|2342|2318|2318|2318|2318|2342|2318|2183|2162|2205
+</code></pre>
+<h3 id="simple-dff-to-gsds-with-searchreplace">Simple DFF to GSDS with Search/Replace</h3>
+<p>The full G.U.S.token format can be used within the &quot;GSDSList&quot; field instead of specifying &quot;GSDSScopeType&quot;.<br />
+The &quot;DFF&quot; field can be optype:token format instead of specifying the &quot;DFFOpType&quot; field.</p>
+<pre><code class="language-json">{
+    &quot;GSDSList&quot;: [&quot;G.U.S.VminCF5CR_Test&quot;],
+    &quot;DFF&quot; : &quot;SORT:CF5CR&quot;,
+    &quot;DFF2GSDS&quot; : true,
+    &quot;SearchReplace&quot;: { &quot;v&quot;: &quot;,&quot; }
+}
+</code></pre>
+<p>If SORT.CF5CR is &quot;1.0v1.1|-8.888v-8.888|0.77v0.8&quot;, then G.U.S.VminCF5CR_Test will be written to &quot;1.0,1.1|-8.888,-8.888|0.77,0.8&quot;.</p>
+
+
+</body>
+</html>

@@ -1,0 +1,217 @@
+Version 1.0;
+
+ProgramStyle = Modular;
+
+TestPlan PVAL_SHMOO;
+
+
+Import OASIS_UserFunc_tt.xml;
+Import PrimeShmooTestMethod.xml;
+Import DDGShmooTC.xml;
+Import InterleavePatModShmoo.xml;
+
+Test DDGShmooTC Shmoo_SpecSetxSpecSet_ShmooHUB_F0
+{
+    LevelsTc = "__main__::bf_lvl_nom_lvl";
+    Patlist = "drv_cdie_maintap_bbs_list";
+    TimingsTc = "__main__::cpu_stf_timing_tclk100_sclk100_cclk100";
+    XAxisParam = "p_mtd_per";
+    XAxisRange = "8e-9:1e-9:4";
+    XAxisDatalogPrefix = "Nano";
+    YAxisParam = "p_vccr_spec";
+    YAxisRange = "0.75:0.05:5";
+    IfeObject = "";
+	DataLogType = "SHMOO_HUB";
+    LogLevel = "PRIME_DEBUG";
+}
+
+Test DDGShmooTC Shmoo_SpecSetxSpecSet_ECADS_F0
+{
+    LevelsTc = "__main__::bf_lvl_nom_lvl";
+    Patlist = "drv_cdie_maintap_bbs_list";
+    TimingsTc = "__main__::cpu_stf_timing_tclk100_sclk100_cclk100";
+    XAxisParam = "p_mtd_per";
+    XAxisRange = "8e-9:1e-9:4";
+    XAxisDatalogPrefix = "Nano";
+    YAxisParam = "p_vccr_spec";
+    YAxisRange = "0.75:0.05:5";
+    IfeObject = "";
+	DataLogType = "ECADS";
+    LogLevel = "PRIME_DEBUG";
+}
+
+Test DDGShmooTC Shmoo_PatConfigSetPointxFIVR_ECADS_F0
+{
+    LevelsTc = "__main__::bf_lvl_nom_lvl";
+    Patlist = "drv_cdie_maintap_bbs_list";
+    TimingsTc = "__main__::cpu_stf_timing_tclk100_sclk100_cclk100";
+	XAxisType = "PatConfigSetPoint";
+    XAxisParam = "PVAL_SHMOO:shmoo_freq";
+    XAxisRange = "400MHz,500MHz,600MHz,800MHz";
+	YAxisType = "FIVR";
+    YAxisParam = "FIVRRAIL1";
+    YAxisRange = "0.75:0.05:5";
+	VoltageConverter = "--fivrcondition=NOM";
+    IfeObject = "";
+	DataLogType = "ECADS";
+    LogLevel = "PRIME_DEBUG";
+}
+
+Test DDGShmooTC Shmoo_PatConfig1D_F0
+{
+    LevelsTc = "__main__::bf_lvl_nom_lvl";
+    Patlist = "drv_cdie_maintap_bbs_list";
+    TimingsTc = "__main__::cpu_stf_timing_tclk100_sclk100_cclk100";
+	XAxisType = "PatConfig";
+    XAxisParam = "PVAL_SHMOO_FREQ";
+    XAxisRange = "0100,0110,0111,1000,1100,1101,1111";
+	YAxisType = "None";
+	YAxisParamType = "None";
+	DataLogType = "SHMOO_HUB";
+    LogLevel = "PRIME_DEBUG";
+}
+
+Test InterleavePatModShmoo Shmoo_TXEQShmoo_P1
+{
+    LevelsTc = "__main__::bf_lvl_nom_lvl";
+    Patlist = "drv_cdie_maintap_bbs_list";
+    TimingsTc = "__main__::cpu_stf_timing_tclk100_sclk100_cclk100";
+    XAxisParam = "p_mtd_per";
+    XAxisRange = "8e-9:1e-9:4";
+    YAxisParam = "p_vccr_spec";
+    YAxisRange = "0.75:0.05:5";
+    IfeObject = "";
+	LogLevel = "PRIME_DEBUG";
+	ConfigList = "SIO:TXEQ";
+	ConfigSetPoints = "TXEQ0,TXEQ1,TXEQ2";
+}
+
+
+DUTFlow PVAL_SHMOO_MAIN
+{
+    DUTFlowItem Shmoo_SpecSetxSpecSet_ShmooHUB_F0 Shmoo_SpecSetxSpecSet_ShmooHUB_F0
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo Shmoo_SpecSetxSpecSet_ECADS_F0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo Shmoo_SpecSetxSpecSet_ECADS_F0;
+        }
+    }
+    DUTFlowItem Shmoo_SpecSetxSpecSet_ECADS_F0 Shmoo_SpecSetxSpecSet_ECADS_F0
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo Shmoo_PatConfigSetPointxFIVR_ECADS_F0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo Shmoo_PatConfigSetPointxFIVR_ECADS_F0;
+        }
+    }
+    DUTFlowItem Shmoo_PatConfigSetPointxFIVR_ECADS_F0 Shmoo_PatConfigSetPointxFIVR_ECADS_F0
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo Shmoo_PatConfig1D_F0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo Shmoo_PatConfig1D_F0;
+        }
+    }
+    DUTFlowItem Shmoo_PatConfig1D_F0 Shmoo_PatConfig1D_F0
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo Shmoo_TXEQShmoo_P1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo Shmoo_TXEQShmoo_P1;
+        }
+    }
+    DUTFlowItem Shmoo_TXEQShmoo_P1 Shmoo_TXEQShmoo_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            Return 1;
+        }
+    }
+}

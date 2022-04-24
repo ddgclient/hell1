@@ -1,0 +1,14 @@
+[
+	{
+		"Name":"DUMMY_2Bit01", "PatternModify":"PVAL_CALLBACKS_DIERECOVERY", "Size":2,
+		"PinToSliceIndexMap":{"YY_TEST_PORT_OUT_C2S_00":[0], "YY_TEST_PORT_OUT_C2S_01":[1]}
+	},
+	{
+		"Name":"DUMMY_2Bit23", "PatternModify":"PVAL_CALLBACKS_DIERECOVERY", "Size":2,
+		"PinToSliceIndexMap":{"YY_TEST_PORT_OUT_C2S_02":[0], "YY_TEST_PORT_OUT_C2S_03":[1]}
+	},
+	{
+		"Name":"DUMMY_2Bit45", "PatternModify":"PVAL_CALLBACKS_DIERECOVERY", "Size":2,
+		"PinToSliceIndexMap":{"YY_TEST_PORT_OUT_C2S_04":[0], "YY_TEST_PORT_OUT_C2S_05":[1]}
+	}
+]

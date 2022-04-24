@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BinMatrix xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="GEN_BinMatrixFlowControl_tt.xsd">
+  <BinMatrixName>MTL_CPU_SDS_FM</BinMatrixName>
+  <BinMatrixRevision>0</BinMatrixRevision>
+  <AttributeValueTable>
+    <Attribute name="default_domain" order="tightest-to-loosest">1,2,3,4,5,6,7,8,9,10,11,12,13,14,15</Attribute>
+  </AttributeValueTable>
+  <BOMGroupTable>
+    <BOMGroup name="MTL_CPU28_SDS">
+      <!--
+<BOMList>
+  <BOM>XX8PNFCV_A</BOM>
+</BOMList>
+-->
+      <Flow index="1" bin="1001">
+        <Attribute name="default_domain">1</Attribute>
+      </Flow>
+      <Flow index="2" bin="1002">
+        <Attribute name="default_domain">2</Attribute>
+      </Flow>
+      <Flow index="3" bin="1003">
+        <Attribute name="default_domain">3</Attribute>
+      </Flow>
+      <Flow index="4" bin="1004">
+        <Attribute name="default_domain">4</Attribute>
+      </Flow>
+      <Flow index="5" bin="1005">
+        <Attribute name="default_domain">5</Attribute>
+      </Flow>
+      <Flow index="6" bin="1006">
+        <Attribute name="default_domain">6</Attribute>
+      </Flow>
+    </BOMGroup>
+    <BOMGroup name="MTL_CPU68_SDS">
+      <!--
+<BOMList>
+  <BOM>XX8PPFCV_A</BOM>
+</BOMList>
+-->
+      <Flow index="1" bin="1001">
+        <Attribute name="default_domain">1</Attribute>
+      </Flow>
+      <Flow index="2" bin="1002">
+        <Attribute name="default_domain">2</Attribute>
+      </Flow>
+      <Flow index="3" bin="1003">
+        <Attribute name="default_domain">3</Attribute>
+      </Flow>
+      <Flow index="4" bin="1004">
+        <Attribute name="default_domain">4</Attribute>
+      </Flow>
+      <Flow index="5" bin="1005">
+        <Attribute name="default_domain">5</Attribute>
+      </Flow>
+      <Flow index="6" bin="1006">
+        <Attribute name="default_domain">6</Attribute>
+      </Flow>
+    </BOMGroup>
+  </BOMGroupTable>
+</BinMatrix>

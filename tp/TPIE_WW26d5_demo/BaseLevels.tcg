@@ -1,0 +1,1094 @@
+Version 1.0;
+
+SpecificationSet bf_lvl_PARAMS (defaultExact,max_lvl,min_lvl,nom_lvl,SICC_1000mV,SICC_1050mV,SICC_1100mV,SICC_1150mV,SICC_1200mV,SICC_600mV,SICC_650mV,SICC_700mV,SICC_750mV,SICC_800mV,SICC_850mV,SICC_900mV,SICC_950mV)
+{
+	Double p_tap_testmode_vih_mul = 1;
+	Double p_tap_testmode_vih_offset = 0;
+	Double p_tap_vih_mul = 1;
+	Double p_tap_vih_offset = 0;
+	Double p_tap_vil_mul = 0;
+	Double p_tap_vil_offset = 0;
+	Double p_tap_vox_mul = 0.5;
+	Double p_tap_vox_offset = 0;
+	Double p_tap_vterm_mul = 0.5;
+	Double p_tap_vterm_offset = 0;
+	Double p_tap_misc_vih_mul = 1;
+	Double p_tap_misc_vih_offset = 0;
+	Double p_tap_misc_vil_mul = 0;
+	Double p_tap_misc_vil_offset = 0;
+	Double p_tap_misc_vox_mul = 0.5;
+	Double p_tap_misc_vox_offset = 0;
+	Double p_tap_viewana_vih_mul = 1;
+	Double p_tap_viewana_vih_offset = 0;
+	Double p_tap_viewana_vil_mul = 0;
+	Double p_tap_viewana_vil_offset = 0;
+	Double p_tap_viewana_vox_mul = 0.5;
+	Double p_tap_viewana_vox_offset = 0;
+	Double p_tap_lya_vih_mul = 1;
+	Double p_tap_lya_vih_offset = 0;
+	Double p_tap_lya_vil_mul = 0;
+	Double p_tap_lya_vil_offset = 0;
+	Double p_tap_lya_vox_mul = 0.5;
+	Double p_tap_lya_vox_offset = 0;
+	Double p_fab_vih_mul = 1;
+	Double p_fab_vih_offset = 0;
+	Double p_fab_vil_mul = 0;
+	Double p_fab_vil_offset = 0;
+	Double p_fab_vox_mul = 0.5;
+	Double p_fab_vox_offset = 0;
+	Double p_fab_vterm_mul = 0.5;
+	Double p_fab_vterm_offset = 0;
+	Double p_gpio_vref_mul = 0.5;
+	Double p_gpio_vref_offset = 0;
+	Double p_gpio2_vref_mul = 0.5;
+	Double p_gpio2_vref_offset = 0;
+	Voltage p_vcccore0_spec = 0.9V,1.2V,0.5V,0.9V,1V,1.05V,1.1V,1.15V,1.2V,0.6V,0.65V,0.7V,0.75V,0.8V,0.85V,0.9V,0.95V;
+	Voltage p_vcccore1_spec = 0.9V,1.2V,0.5V,0.9V,1V,1.05V,1.1V,1.15V,1.2V,0.6V,0.65V,0.7V,0.75V,0.8V,0.85V,0.9V,0.95V;
+	Voltage p_vccatom0_spec = 0.9V,1.2V,0.5V,0.9V,1V,1.05V,1.1V,1.15V,1.2V,0.6V,0.65V,0.7V,0.75V,0.8V,0.85V,0.9V,0.95V;
+	Voltage p_vccatom1_spec = 0.9V,1.2V,0.5V,0.9V,1V,1.05V,1.1V,1.15V,1.2V,0.6V,0.65V,0.7V,0.75V,0.8V,0.85V,0.9V,0.95V;
+	Voltage p_vccr_spec = 0.9V,1.2V,0.5V,0.9V,1V,1.05V,1.1V,1.15V,1.2V,0.6V,0.65V,0.7V,0.75V,0.8V,0.85V,0.9V,0.95V;
+	Voltage p_vccia_spec = 1.6V;
+	Voltage p_vnnaon_spec = 0.77V,0.825V,0.675V,0.77V,1V,1.05V,1.1V,1.15V,1.2V,0.6V,0.65V,0.7V,0.75V,0.8V,0.85V,0.9V,0.95V;
+	Voltage p_v1p8a_spec = 1.8V,1.89V,1.67V,1.8V,1.8V,1.8V,1.8V,1.8V,1.8V,1.8V,1.8V,1.8V,1.8V,1.8V,1.8V,1.8V,1.8V;
+	Voltage p_vccfpgm0_spec = 0V;
+	Voltage p_vccfpgm1_spec = 0V;
+	Voltage p_extbgref_spec = 0V;
+	Voltage p_vcciasensecep_spec = 0V;
+	Voltage c_vnnaon_prog = p_vnnaon_spec;
+	Voltage c_tap_testmode_vih_prog = c_vnnaon_prog * p_tap_testmode_vih_mul + p_tap_testmode_vih_offset;
+	Voltage c_tap_vil_prog = c_vnnaon_prog * p_tap_vil_mul + p_tap_vil_offset;
+	Voltage c_tap_vih_prog = c_vnnaon_prog * p_tap_vih_mul + p_tap_vih_offset;
+	Voltage c_tap_vox_prog = c_vnnaon_prog * p_tap_vox_mul + p_tap_vox_offset;
+	Voltage c_tap_vterm_prog = c_vnnaon_prog * p_tap_vterm_mul + p_tap_vterm_offset;
+	Voltage c_tap_misc_vil_prog = c_vnnaon_prog * p_tap_misc_vil_mul + p_tap_misc_vil_offset;
+	Voltage c_tap_misc_vih_prog = c_vnnaon_prog * p_tap_misc_vih_mul + p_tap_misc_vih_offset;
+	Voltage c_tap_misc_vox_prog = c_vnnaon_prog * p_tap_misc_vox_mul + p_tap_misc_vox_offset;
+	Voltage c_v1p8a_prog = p_v1p8a_spec;
+	Voltage c_tap_viewana_vil_prog = c_v1p8a_prog * p_tap_viewana_vil_mul + p_tap_viewana_vil_offset;
+	Voltage c_tap_viewana_vih_prog = c_v1p8a_prog * p_tap_viewana_vih_mul + p_tap_viewana_vih_offset;
+	Voltage c_tap_viewana_vox_prog = c_v1p8a_prog * p_tap_viewana_vox_mul + p_tap_viewana_vox_offset;
+	Voltage c_tap_lya_vil_prog = c_v1p8a_prog * p_tap_lya_vil_mul + p_tap_lya_vil_offset;
+	Voltage c_tap_lya_vih_prog = c_v1p8a_prog * p_tap_lya_vih_mul + p_tap_lya_vih_offset;
+	Voltage c_tap_lya_vox_prog = c_v1p8a_prog * p_tap_lya_vox_mul + p_tap_lya_vox_offset;
+	Voltage c_fab_vil_prog = c_vnnaon_prog  *p_fab_vil_mul + p_fab_vil_offset;
+	Voltage c_fab_vih_prog = c_vnnaon_prog * p_fab_vih_mul + p_fab_vih_offset;
+	Voltage c_fab_vox_prog = c_vnnaon_prog * p_fab_vox_mul + p_fab_vox_offset;
+	Voltage c_fab_vterm_prog = c_vnnaon_prog * p_fab_vterm_mul + p_fab_vterm_offset;
+	Voltage c_gpio_vref_prog = c_vnnaon_prog * p_gpio_vref_mul - p_gpio_vref_offset;
+	Voltage c_gpio2_vref_prog = c_v1p8a_prog * p_gpio2_vref_mul - p_gpio2_vref_offset;
+	Voltage c_vcccore0_prog = p_vcccore0_spec;
+	Voltage c_vcccore1_prog = p_vcccore1_spec;
+	Voltage c_vccatom0_prog = p_vccatom0_spec;
+	Voltage c_vccatom1_prog = p_vccatom1_spec;
+	Voltage c_vccr_prog = p_vccr_spec;
+	Voltage c_vccia_prog = p_vccia_spec;
+	Voltage c_vccfpgm0_prog = p_vccfpgm0_spec;
+	Voltage c_vccfpgm1_prog = p_vccfpgm1_spec;
+	Voltage c_extbgref_prog = p_extbgref_spec;
+	Voltage c_vcciasensecep_prog = p_vcciasensecep_spec;
+	Current c_vcccore0_clamp_hi = u_vcccore0_clamp_hi;
+	Current c_vcccore1_clamp_hi = u_vcccore1_clamp_hi;
+	Current c_vccatom0_clamp_hi = u_vccatom0_clamp_hi;
+	Current c_vccatom1_clamp_hi = u_vccatom1_clamp_hi;
+	Current c_vccr_clamp_hi = u_vccr_clamp_hi;
+	Current c_vccia_clamp_hi = u_vccia_clamp_hi;
+	Current c_vnnaon_clamp_hi = u_vnnaon_clamp_hi;
+	Current c_v1p8a_clamp_hi = u_v1p8a_clamp_hi;
+	Current c_vccfpgm0_clamp_hi = u_vccfpgm0_clamp_hi;
+	Current c_vccfpgm1_clamp_hi = u_vccfpgm1_clamp_hi;
+	Current c_extbgref_clamp_hi = u_extbgref_clamp_hi;
+	Current c_vcciasensecep_clamp_hi = u_vcciasensecep_clamp_hi;
+	Current c_vcccore0_clamp_low = u_vcccore0_clamp_low;
+	Current c_vcccore1_clamp_low = u_vcccore1_clamp_low;
+	Current c_vccatom0_clamp_low = u_vccatom0_clamp_low;
+	Current c_vccatom1_clamp_low = u_vccatom1_clamp_low;
+	Current c_vccr_clamp_low = u_vccr_clamp_low;
+	Current c_vccia_clamp_low = u_vccia_clamp_low;
+	Current c_vnnaon_clamp_low = u_vnnaon_clamp_low;
+	Current c_v1p8a_clamp_low = u_v1p8a_clamp_low;
+	Current c_vccfpgm0_clamp_low = u_vccfpgm0_clamp_low;
+	Current c_vccfpgm1_clamp_low = u_vccfpgm1_clamp_low;
+	Current c_extbgref_clamp_low = u_extbgref_clamp_low;
+	Current c_vcciasensecep_clamp_low = u_vcciasensecep_clamp_low;
+}
+
+SpecificationSet cpu_clk_univ_x_x_pkg_lvl_PARAMS (max_lvl,min_lvl,nom_lvl)
+{
+	Double p_tap_testmode_vih_mul = 1;
+	Double p_tap_testmode_vih_offset = 0;
+	Double p_tap_vih_mul = 1;
+	Double p_tap_vih_offset = 0;
+	Double p_tap_vil_mul = 0;
+	Double p_tap_vil_offset = 0;
+	Double p_tap_vox_mul = 0.5;
+	Double p_tap_vox_offset = 0;
+	Double p_tap_vterm_mul = 0.5;
+	Double p_tap_vterm_offset = 0;
+	Double p_tap_misc_vih_mul = 1;
+	Double p_tap_misc_vih_offset = 0;
+	Double p_tap_misc_vil_mul = 0;
+	Double p_tap_misc_vil_offset = 0;
+	Double p_tap_misc_vox_mul = 0.5;
+	Double p_tap_misc_vox_offset = 0;
+	Double p_tap_viewana_vih_mul = 1;
+	Double p_tap_viewana_vih_offset = 0;
+	Double p_tap_viewana_vil_mul = 0;
+	Double p_tap_viewana_vil_offset = 0;
+	Double p_tap_viewana_vox_mul = 0.5;
+	Double p_tap_viewana_vox_offset = 0;
+	Double p_tap_lya_vih_mul = 1;
+	Double p_tap_lya_vih_offset = 0;
+	Double p_tap_lya_vil_mul = 0;
+	Double p_tap_lya_vil_offset = 0;
+	Double p_tap_lya_vox_mul = 0.5;
+	Double p_tap_lya_vox_offset = 0;
+	Double p_fab_vih_mul = 1;
+	Double p_fab_vih_offset = 0;
+	Double p_fab_vil_mul = 0;
+	Double p_fab_vil_offset = 0;
+	Double p_fab_vox_mul = 0.5;
+	Double p_fab_vox_offset = 0;
+	Double p_fab_vterm_mul = 0.5;
+	Double p_fab_vterm_offset = 0;
+	Double p_gpio_vref_mul = 0.5;
+	Double p_gpio_vref_offset = 0;
+	Double p_gpio2_vref_mul = 0.5;
+	Double p_gpio2_vref_offset = 0;
+	Voltage p_vcccore0_spec = 1.2V,0.5V,0.9V;
+	Voltage p_vcccore1_spec = 1.2V,0.5V,0.9V;
+	Voltage p_vccatom0_spec = 1.2V,0.5V,0.9V;
+	Voltage p_vccatom1_spec = 1.2V,0.5V,0.9V;
+	Voltage p_vccr_spec = 1.2V,0.5V,0.9V;
+	Voltage p_vccia_spec = 1.6V;
+	Voltage p_vnnaon_spec = 0.825V,0.675V,0.77V;
+	Voltage p_v1p8a_spec = 1.89V,1.67V,1.8V;
+	Voltage p_vccfpgm0_spec = 0V;
+	Voltage p_vccfpgm1_spec = 0V;
+	Voltage p_extbgref_spec = 0V;
+	Voltage p_vcciasensecep_spec = 0V;
+	Voltage c_vnnaon_prog = p_vnnaon_spec;
+	Voltage c_tap_testmode_vih_prog = c_vnnaon_prog * p_tap_testmode_vih_mul + p_tap_testmode_vih_offset;
+	Voltage c_tap_vil_prog = c_vnnaon_prog * p_tap_vil_mul + p_tap_vil_offset;
+	Voltage c_tap_vih_prog = c_vnnaon_prog * p_tap_vih_mul + p_tap_vih_offset;
+	Voltage c_tap_vox_prog = c_vnnaon_prog * p_tap_vox_mul + p_tap_vox_offset;
+	Voltage c_tap_vterm_prog = c_vnnaon_prog * p_tap_vterm_mul + p_tap_vterm_offset;
+	Voltage c_tap_misc_vil_prog = c_vnnaon_prog * p_tap_misc_vil_mul + p_tap_misc_vil_offset;
+	Voltage c_tap_misc_vih_prog = c_vnnaon_prog * p_tap_misc_vih_mul + p_tap_misc_vih_offset;
+	Voltage c_tap_misc_vox_prog = c_vnnaon_prog * p_tap_misc_vox_mul + p_tap_misc_vox_offset;
+	Voltage c_v1p8a_prog = p_v1p8a_spec;
+	Voltage c_tap_viewana_vil_prog = c_v1p8a_prog * p_tap_viewana_vil_mul + p_tap_viewana_vil_offset;
+	Voltage c_tap_viewana_vih_prog = c_v1p8a_prog * p_tap_viewana_vih_mul + p_tap_viewana_vih_offset;
+	Voltage c_tap_viewana_vox_prog = c_v1p8a_prog * p_tap_viewana_vox_mul + p_tap_viewana_vox_offset;
+	Voltage c_tap_lya_vil_prog = c_v1p8a_prog * p_tap_lya_vil_mul + p_tap_lya_vil_offset;
+	Voltage c_tap_lya_vih_prog = c_v1p8a_prog * p_tap_lya_vih_mul + p_tap_lya_vih_offset;
+	Voltage c_tap_lya_vox_prog = c_v1p8a_prog * p_tap_lya_vox_mul + p_tap_lya_vox_offset;
+	Voltage c_fab_vil_prog = c_vnnaon_prog  *p_fab_vil_mul + p_fab_vil_offset;
+	Voltage c_fab_vih_prog = c_vnnaon_prog * p_fab_vih_mul + p_fab_vih_offset;
+	Voltage c_fab_vox_prog = c_vnnaon_prog * p_fab_vox_mul + p_fab_vox_offset;
+	Voltage c_fab_vterm_prog = c_vnnaon_prog * p_fab_vterm_mul + p_fab_vterm_offset;
+	Voltage c_gpio_vref_prog = c_vnnaon_prog * p_gpio_vref_mul - p_gpio_vref_offset;
+	Voltage c_gpio2_vref_prog = c_v1p8a_prog * p_gpio2_vref_mul - p_gpio2_vref_offset;
+	Voltage c_vcccore0_prog = p_vcccore0_spec;
+	Voltage c_vcccore1_prog = p_vcccore1_spec;
+	Voltage c_vccatom0_prog = p_vccatom0_spec;
+	Voltage c_vccatom1_prog = p_vccatom1_spec;
+	Voltage c_vccr_prog = p_vccr_spec;
+	Voltage c_vccia_prog = p_vccia_spec;
+	Voltage c_vccfpgm0_prog = p_vccfpgm0_spec;
+	Voltage c_vccfpgm1_prog = p_vccfpgm1_spec;
+	Voltage c_extbgref_prog = p_extbgref_spec;
+	Voltage c_vcciasensecep_prog = p_vcciasensecep_spec;
+	Current c_vcccore0_clamp_hi = u_vcccore0_clamp_hi;
+	Current c_vcccore1_clamp_hi = u_vcccore1_clamp_hi;
+	Current c_vccatom0_clamp_hi = u_vccatom0_clamp_hi;
+	Current c_vccatom1_clamp_hi = u_vccatom1_clamp_hi;
+	Current c_vccr_clamp_hi = u_vccr_clamp_hi;
+	Current c_vccia_clamp_hi = u_vccia_clamp_hi;
+	Current c_vnnaon_clamp_hi = u_vnnaon_clamp_hi;
+	Current c_v1p8a_clamp_hi = u_v1p8a_clamp_hi;
+	Current c_vccfpgm0_clamp_hi = u_vccfpgm0_clamp_hi;
+	Current c_vccfpgm1_clamp_hi = u_vccfpgm1_clamp_hi;
+	Current c_extbgref_clamp_hi = u_extbgref_clamp_hi;
+	Current c_vcciasensecep_clamp_hi = u_vcciasensecep_clamp_hi;
+	Current c_vcccore0_clamp_low = u_vcccore0_clamp_low;
+	Current c_vcccore1_clamp_low = u_vcccore1_clamp_low;
+	Current c_vccatom0_clamp_low = u_vccatom0_clamp_low;
+	Current c_vccatom1_clamp_low = u_vccatom1_clamp_low;
+	Current c_vccr_clamp_low = u_vccr_clamp_low;
+	Current c_vccia_clamp_low = u_vccia_clamp_low;
+	Current c_vnnaon_clamp_low = u_vnnaon_clamp_low;
+	Current c_v1p8a_clamp_low = u_v1p8a_clamp_low;
+	Current c_vccfpgm0_clamp_low = u_vccfpgm0_clamp_low;
+	Current c_vccfpgm1_clamp_low = u_vccfpgm1_clamp_low;
+	Current c_extbgref_clamp_low = u_extbgref_clamp_low;
+	Current c_vcciasensecep_clamp_low = u_vcciasensecep_clamp_low;
+}
+
+SpecificationSet cpu_pth_24A_x_x_ipcpu_lvl_PARAMS (defaultExact,max_lvl,min_lvl,nom_lvl)
+{
+}
+
+SpecificationSet cpu_pth_500mA_x_x_ipcpu_lvl_PARAMS (defaultExact,max_lvl,min_lvl,nom_lvl)
+{
+}
+
+SpecificationSet dps_on_0V_lvl_PARAMS (cat0)
+{
+	Current c_vcccore0_clamp_hi = u_vcccore0_clamp_hi;
+	Current c_vcccore1_clamp_hi = u_vcccore1_clamp_hi;
+	Current c_vccatom0_clamp_hi = u_vccatom0_clamp_hi;
+	Current c_vccatom1_clamp_hi = u_vccatom1_clamp_hi;
+	Current c_vccr_clamp_hi = u_vccr_clamp_hi;
+	Current c_vccia_clamp_hi = u_vccia_clamp_hi;
+	Current c_vnnaon_clamp_hi = u_vnnaon_clamp_hi;
+	Current c_v1p8a_clamp_hi = u_v1p8a_clamp_hi;
+	Current c_vccfpgm0_clamp_hi = u_vccfpgm0_clamp_hi;
+	Current c_vccfpgm1_clamp_hi = u_vccfpgm1_clamp_hi;
+	Current c_extbgref_clamp_hi = u_extbgref_clamp_hi;
+	Current c_vcciasensecep_clamp_hi = u_vcciasensecep_clamp_hi;
+	Current c_vcccore0_clamp_low = u_vcccore0_clamp_low;
+	Current c_vcccore1_clamp_low = u_vcccore1_clamp_low;
+	Current c_vccatom0_clamp_low = u_vccatom0_clamp_low;
+	Current c_vccatom1_clamp_low = u_vccatom1_clamp_low;
+	Current c_vccr_clamp_low = u_vccr_clamp_low;
+	Current c_vccia_clamp_low = u_vccia_clamp_low;
+	Current c_vnnaon_clamp_low = u_vnnaon_clamp_low;
+	Current c_v1p8a_clamp_low = u_v1p8a_clamp_low;
+	Current c_vccfpgm0_clamp_low = u_vccfpgm0_clamp_low;
+	Current c_vccfpgm1_clamp_low = u_vccfpgm1_clamp_low;
+	Current c_extbgref_clamp_low = u_extbgref_clamp_low;
+	Current c_vcciasensecep_clamp_low = u_vcciasensecep_clamp_low;
+}
+
+SpecificationSet eza_lvl_PARAMS (cat0)
+{
+}
+
+SpecificationSet power_up_lvl_PARAMS (nom_lvl)
+{
+	Double p_tap_testmode_vih_mul = 1;
+	Double p_tap_testmode_vih_offset = 0;
+	Double p_tap_vih_mul = 1;
+	Double p_tap_vih_offset = 0;
+	Double p_tap_vil_mul = 0;
+	Double p_tap_vil_offset = 0;
+	Double p_tap_vox_mul = 0.5;
+	Double p_tap_vox_offset = 0;
+	Double p_tap_vterm_mul = 0.5;
+	Double p_tap_vterm_offset = 0;
+	Double p_tap_misc_vih_mul = 1;
+	Double p_tap_misc_vih_offset = 0;
+	Double p_tap_misc_vil_mul = 0;
+	Double p_tap_misc_vil_offset = 0;
+	Double p_tap_misc_vox_mul = 0.5;
+	Double p_tap_misc_vox_offset = 0;
+	Double p_tap_viewana_vih_mul = 1;
+	Double p_tap_viewana_vih_offset = 0;
+	Double p_tap_viewana_vil_mul = 0;
+	Double p_tap_viewana_vil_offset = 0;
+	Double p_tap_viewana_vox_mul = 0.5;
+	Double p_tap_viewana_vox_offset = 0;
+	Double p_tap_lya_vih_mul = 1;
+	Double p_tap_lya_vih_offset = 0;
+	Double p_tap_lya_vil_mul = 0;
+	Double p_tap_lya_vil_offset = 0;
+	Double p_tap_lya_vox_mul = 0.5;
+	Double p_tap_lya_vox_offset = 0;
+	Double p_fab_vih_mul = 1;
+	Double p_fab_vih_offset = 0;
+	Double p_fab_vil_mul = 0;
+	Double p_fab_vil_offset = 0;
+	Double p_fab_vox_mul = 0.5;
+	Double p_fab_vox_offset = 0;
+	Double p_fab_vterm_mul = 0.5;
+	Double p_fab_vterm_offset = 0;
+	Double p_gpio_vref_mul = 0.5;
+	Double p_gpio_vref_offset = 0;
+	Double p_gpio2_vref_mul = 0.5;
+	Double p_gpio2_vref_offset = 0;
+	Voltage p_vcccore0_spec = 0.9V;
+	Voltage p_vcccore1_spec = 0.9V;
+	Voltage p_vccatom0_spec = 0.9V;
+	Voltage p_vccatom1_spec = 0.9V;
+	Voltage p_vccr_spec = 0.9V;
+	Voltage p_vccia_spec = 1.6V;
+	Voltage p_vnnaon_spec = 0.77V;
+	Voltage p_v1p8a_spec = 1.8V;
+	Voltage p_vccfpgm0_spec = 0V;
+	Voltage p_vccfpgm1_spec = 0V;
+	Voltage p_extbgref_spec = 0V;
+	Voltage p_vcciasensecep_spec = 0V;
+	Voltage c_vnnaon_prog = p_vnnaon_spec;
+	Voltage c_tap_testmode_vih_prog = c_vnnaon_prog * p_tap_testmode_vih_mul + p_tap_testmode_vih_offset;
+	Voltage c_tap_vil_prog = c_vnnaon_prog * p_tap_vil_mul + p_tap_vil_offset;
+	Voltage c_tap_vih_prog = c_vnnaon_prog * p_tap_vih_mul + p_tap_vih_offset;
+	Voltage c_tap_vox_prog = c_vnnaon_prog * p_tap_vox_mul + p_tap_vox_offset;
+	Voltage c_tap_vterm_prog = c_vnnaon_prog * p_tap_vterm_mul + p_tap_vterm_offset;
+	Voltage c_tap_misc_vil_prog = c_vnnaon_prog * p_tap_misc_vil_mul + p_tap_misc_vil_offset;
+	Voltage c_tap_misc_vih_prog = c_vnnaon_prog * p_tap_misc_vih_mul + p_tap_misc_vih_offset;
+	Voltage c_tap_misc_vox_prog = c_vnnaon_prog * p_tap_misc_vox_mul + p_tap_misc_vox_offset;
+	Voltage c_v1p8a_prog = p_v1p8a_spec;
+	Voltage c_tap_viewana_vil_prog = c_v1p8a_prog * p_tap_viewana_vil_mul + p_tap_viewana_vil_offset;
+	Voltage c_tap_viewana_vih_prog = c_v1p8a_prog * p_tap_viewana_vih_mul + p_tap_viewana_vih_offset;
+	Voltage c_tap_viewana_vox_prog = c_v1p8a_prog * p_tap_viewana_vox_mul + p_tap_viewana_vox_offset;
+	Voltage c_tap_lya_vil_prog = c_v1p8a_prog * p_tap_lya_vil_mul + p_tap_lya_vil_offset;
+	Voltage c_tap_lya_vih_prog = c_v1p8a_prog * p_tap_lya_vih_mul + p_tap_lya_vih_offset;
+	Voltage c_tap_lya_vox_prog = c_v1p8a_prog * p_tap_lya_vox_mul + p_tap_lya_vox_offset;
+	Voltage c_fab_vil_prog = c_vnnaon_prog  *p_fab_vil_mul + p_fab_vil_offset;
+	Voltage c_fab_vih_prog = c_vnnaon_prog * p_fab_vih_mul + p_fab_vih_offset;
+	Voltage c_fab_vox_prog = c_vnnaon_prog * p_fab_vox_mul + p_fab_vox_offset;
+	Voltage c_fab_vterm_prog = c_vnnaon_prog * p_fab_vterm_mul + p_fab_vterm_offset;
+	Voltage c_gpio_vref_prog = c_vnnaon_prog * p_gpio_vref_mul - p_gpio_vref_offset;
+	Voltage c_gpio2_vref_prog = c_v1p8a_prog * p_gpio2_vref_mul - p_gpio2_vref_offset;
+	Voltage c_vcccore0_prog = p_vcccore0_spec;
+	Voltage c_vcccore1_prog = p_vcccore1_spec;
+	Voltage c_vccatom0_prog = p_vccatom0_spec;
+	Voltage c_vccatom1_prog = p_vccatom1_spec;
+	Voltage c_vccr_prog = p_vccr_spec;
+	Voltage c_vccia_prog = p_vccia_spec;
+	Voltage c_vccfpgm0_prog = p_vccfpgm0_spec;
+	Voltage c_vccfpgm1_prog = p_vccfpgm1_spec;
+	Voltage c_extbgref_prog = p_extbgref_spec;
+	Voltage c_vcciasensecep_prog = p_vcciasensecep_spec;
+	Current c_vcccore0_clamp_hi = u_vcccore0_clamp_hi;
+	Current c_vcccore1_clamp_hi = u_vcccore1_clamp_hi;
+	Current c_vccatom0_clamp_hi = u_vccatom0_clamp_hi;
+	Current c_vccatom1_clamp_hi = u_vccatom1_clamp_hi;
+	Current c_vccr_clamp_hi = u_vccr_clamp_hi;
+	Current c_vccia_clamp_hi = u_vccia_clamp_hi;
+	Current c_vnnaon_clamp_hi = u_vnnaon_clamp_hi;
+	Current c_v1p8a_clamp_hi = u_v1p8a_clamp_hi;
+	Current c_vccfpgm0_clamp_hi = u_vccfpgm0_clamp_hi;
+	Current c_vccfpgm1_clamp_hi = u_vccfpgm1_clamp_hi;
+	Current c_extbgref_clamp_hi = u_extbgref_clamp_hi;
+	Current c_vcciasensecep_clamp_hi = u_vcciasensecep_clamp_hi;
+	Current c_vcccore0_clamp_low = u_vcccore0_clamp_low;
+	Current c_vcccore1_clamp_low = u_vcccore1_clamp_low;
+	Current c_vccatom0_clamp_low = u_vccatom0_clamp_low;
+	Current c_vccatom1_clamp_low = u_vccatom1_clamp_low;
+	Current c_vccr_clamp_low = u_vccr_clamp_low;
+	Current c_vccia_clamp_low = u_vccia_clamp_low;
+	Current c_vnnaon_clamp_low = u_vnnaon_clamp_low;
+	Current c_v1p8a_clamp_low = u_v1p8a_clamp_low;
+	Current c_vccfpgm0_clamp_low = u_vccfpgm0_clamp_low;
+	Current c_vccfpgm1_clamp_low = u_vccfpgm1_clamp_low;
+	Current c_extbgref_clamp_low = u_extbgref_clamp_low;
+	Current c_vcciasensecep_clamp_low = u_vcciasensecep_clamp_low;
+}
+
+SpecificationSet pwrdn_lvl_PARAMS (cat0)
+{
+}
+
+SpecificationSet shops_dc_lvl_PARAMS (cat0)
+{
+}
+
+SpecificationSet VBUMP_ATOM_lvl_VBUMP (force_1000mV,force_1100mV,force_1200mV,force_1300mV,force_1400mV,force_1450mV,force_1500mV,force_1550mV,force_1600mV,force_700mV,force_800mV,force_850mV,force_950mV,force_nom)
+{
+	Voltage p_vbump_val = 1000mV,1100mV,1200mV,1300mV,1400mV,1450mV,1500mV,1550mV,1600mV,700mV,800mV,850mV,950mV,0.9V;
+}
+
+SpecificationSet VBUMP_CORE_lvl_VBUMP (force_1000mV,force_1100mV,force_1200mV,force_1300mV,force_1400mV,force_1450mV,force_1500mV,force_1550mV,force_1600mV,force_700mV,force_800mV,force_850mV,force_950mV,force_nom)
+{
+	Voltage p_vbump_val = 1000mV,1100mV,1200mV,1300mV,1400mV,1450mV,1500mV,1550mV,1600mV,700mV,800mV,850mV,950mV,0.9V;
+}
+
+SpecificationSet VBUMP_RING_lvl_VBUMP (force_1000mV,force_1100mV,force_1200mV,force_1300mV,force_1400mV,force_1450mV,force_1500mV,force_1550mV,force_1600mV,force_700mV,force_800mV,force_850mV,force_950mV,force_nom)
+{
+	Voltage p_vbump_val = 1000mV,1100mV,1200mV,1300mV,1400mV,1450mV,1500mV,1550mV,1600mV,700mV,800mV,850mV,950mV,0.9V;
+}
+
+SpecificationSet VBUMP_VNNAON_lvl_VBUMP (force_1000mV,force_1100mV,force_1200mV,force_1300mV,force_1400mV,force_1450mV,force_1500mV,force_1550mV,force_1600mV,force_700mV,force_800mV,force_850mV,force_950mV,force_nom)
+{
+	Voltage p_vbump_val_0p77 = 1000mV,1100mV,1200mV,1300mV,1400mV,1450mV,1500mV,1550mV,1600mV,700mV,800mV,850mV,950mV,0.77V;
+}
+
+SpecificationSet vcc_cont_hc_surge_lvl_PARAMS (cat0)
+{
+}
+
+SpecificationSet vcc_cont_hv_surge_lvl_PARAMS (cat0)
+{
+}
+
+SpecificationSet vcc_cont_lc_surge_lvl_PARAMS (cat0)
+{
+}
+
+SpecificationSet vcc_cont_lvl_PARAMS (cat0)
+{
+}
+
+TestConditionGroup simple_hddps_measure_lvl_TCG
+{
+	SpecificationSet = cpu_pth_24A_x_x_ipcpu_lvl_PARAMS;
+	Level = __main__::simple_hddps_measure_lvl;
+	
+}
+TestConditionGroup bf_lvl_TCG
+{
+	SpecificationSet = bf_lvl_PARAMS;
+	Level = __main__::bf_lvl;
+	
+}
+TestConditionGroup cpu_clk_univ_x_x_pkg_lvl_TCG
+{
+	SpecificationSet = cpu_clk_univ_x_x_pkg_lvl_PARAMS;
+	Level = __main__::cpu_clk_univ_x_x_pkg_lvl;
+	
+}
+TestConditionGroup cpu_pth_24A_x_x_ipcpu_lvl_TCG
+{
+	SpecificationSet = cpu_pth_24A_x_x_ipcpu_lvl_PARAMS;
+	Level = __main__::cpu_pth_24A_x_x_ipcpu_lvl;
+	
+}
+TestConditionGroup cpu_pth_500mA_x_x_ipcpu_lvl_TCG
+{
+	SpecificationSet = cpu_pth_500mA_x_x_ipcpu_lvl_PARAMS;
+	Level = __main__::cpu_pth_500mA_x_x_ipcpu_lvl;
+	
+}
+TestConditionGroup dps_on_0V_lvl_TCG
+{
+	SpecificationSet = dps_on_0V_lvl_PARAMS;
+	Level = __main__::dps_on_0V_lvl;
+	
+}
+TestConditionGroup eza_lvl_TCG
+{
+	SpecificationSet = eza_lvl_PARAMS;
+	Level = __main__::eza_lvl;
+	
+}
+TestConditionGroup power_up_lvl_TCG
+{
+	SpecificationSet = power_up_lvl_PARAMS;
+	Level = __main__::power_up_lvl;
+	
+}
+TestConditionGroup pwrdn_lvl_TCG
+{
+	SpecificationSet = pwrdn_lvl_PARAMS;
+	Level = __main__::pwrdn_lvl;
+	
+}
+TestConditionGroup shops_dc_lvl_TCG
+{
+	SpecificationSet = shops_dc_lvl_PARAMS;
+	Level = __main__::shops_dc_lvl;
+	
+}
+TestConditionGroup VBUMP_ATOM_lvl_TCG
+{
+	SpecificationSet = VBUMP_ATOM_lvl_VBUMP;
+	Level = __main__::VBUMP_ATOM_lvl;
+	
+}
+TestConditionGroup VBUMP_CORE_lvl_TCG
+{
+	SpecificationSet = VBUMP_CORE_lvl_VBUMP;
+	Level = __main__::VBUMP_CORE_lvl;
+	
+}
+TestConditionGroup VBUMP_RING_lvl_TCG
+{
+	SpecificationSet = VBUMP_RING_lvl_VBUMP;
+	Level = __main__::VBUMP_RING_lvl;
+	
+}
+TestConditionGroup VBUMP_VNNAON_lvl_TCG
+{
+	SpecificationSet = VBUMP_VNNAON_lvl_VBUMP;
+	Level = __main__::VBUMP_VNNAON_lvl;
+	
+}
+TestConditionGroup vcc_cont_hc_surge_lvl_TCG
+{
+	SpecificationSet = vcc_cont_hc_surge_lvl_PARAMS;
+	Level = __main__::vcc_cont_hc_surge_lvl;
+	
+}
+TestConditionGroup vcc_cont_hv_surge_lvl_TCG
+{
+	SpecificationSet = vcc_cont_hv_surge_lvl_PARAMS;
+	Level = __main__::vcc_cont_hv_surge_lvl;
+	
+}
+TestConditionGroup vcc_cont_lc_surge_lvl_TCG
+{
+	SpecificationSet = vcc_cont_lc_surge_lvl_PARAMS;
+	Level = __main__::vcc_cont_lc_surge_lvl;
+	
+}
+TestConditionGroup vcc_cont_lvl_TCG
+{
+	SpecificationSet = vcc_cont_lvl_PARAMS;
+	Level = __main__::vcc_cont_lvl;
+	
+}
+
+TestCondition bf_lvl_defaultExact
+{
+	TestConditionGroup  = bf_lvl_TCG;
+	Selector = defaultExact;
+}
+
+TestCondition bf_lvl_max_lvl
+{
+	TestConditionGroup  = bf_lvl_TCG;
+	Selector = max_lvl;
+}
+
+TestCondition bf_lvl_min_lvl
+{
+	TestConditionGroup  = bf_lvl_TCG;
+	Selector = min_lvl;
+}
+
+TestCondition bf_lvl_nom_lvl
+{
+	TestConditionGroup  = bf_lvl_TCG;
+	Selector = nom_lvl;
+}
+
+TestCondition bf_lvl_SICC_1000mV
+{
+	TestConditionGroup  = bf_lvl_TCG;
+	Selector = SICC_1000mV;
+}
+
+TestCondition bf_lvl_SICC_1050mV
+{
+	TestConditionGroup  = bf_lvl_TCG;
+	Selector = SICC_1050mV;
+}
+
+TestCondition bf_lvl_SICC_1100mV
+{
+	TestConditionGroup  = bf_lvl_TCG;
+	Selector = SICC_1100mV;
+}
+
+TestCondition bf_lvl_SICC_1150mV
+{
+	TestConditionGroup  = bf_lvl_TCG;
+	Selector = SICC_1150mV;
+}
+
+TestCondition bf_lvl_SICC_1200mV
+{
+	TestConditionGroup  = bf_lvl_TCG;
+	Selector = SICC_1200mV;
+}
+
+TestCondition bf_lvl_SICC_600mV
+{
+	TestConditionGroup  = bf_lvl_TCG;
+	Selector = SICC_600mV;
+}
+
+TestCondition bf_lvl_SICC_650mV
+{
+	TestConditionGroup  = bf_lvl_TCG;
+	Selector = SICC_650mV;
+}
+
+TestCondition bf_lvl_SICC_700mV
+{
+	TestConditionGroup  = bf_lvl_TCG;
+	Selector = SICC_700mV;
+}
+
+TestCondition bf_lvl_SICC_750mV
+{
+	TestConditionGroup  = bf_lvl_TCG;
+	Selector = SICC_750mV;
+}
+
+TestCondition bf_lvl_SICC_800mV
+{
+	TestConditionGroup  = bf_lvl_TCG;
+	Selector = SICC_800mV;
+}
+
+TestCondition bf_lvl_SICC_850mV
+{
+	TestConditionGroup  = bf_lvl_TCG;
+	Selector = SICC_850mV;
+}
+
+TestCondition bf_lvl_SICC_900mV
+{
+	TestConditionGroup  = bf_lvl_TCG;
+	Selector = SICC_900mV;
+}
+
+TestCondition bf_lvl_SICC_950mV
+{
+	TestConditionGroup  = bf_lvl_TCG;
+	Selector = SICC_950mV;
+}
+
+TestCondition cpu_clk_univ_x_x_pkg_lvl_max_lvl
+{
+	TestConditionGroup  = cpu_clk_univ_x_x_pkg_lvl_TCG;
+	Selector = max_lvl;
+}
+
+TestCondition cpu_clk_univ_x_x_pkg_lvl_min_lvl
+{
+	TestConditionGroup  = cpu_clk_univ_x_x_pkg_lvl_TCG;
+	Selector = min_lvl;
+}
+
+TestCondition cpu_clk_univ_x_x_pkg_lvl_nom_lvl
+{
+	TestConditionGroup  = cpu_clk_univ_x_x_pkg_lvl_TCG;
+	Selector = nom_lvl;
+}
+
+
+TestCondition simple_hddps_measure_lvl_defaultExact
+{
+	TestConditionGroup  = simple_hddps_measure_lvl_TCG;
+	Selector = defaultExact;
+}
+TestCondition cpu_pth_24A_x_x_ipcpu_lvl_defaultExact
+{
+	TestConditionGroup  = cpu_pth_24A_x_x_ipcpu_lvl_TCG;
+	Selector = defaultExact;
+}
+
+TestCondition cpu_pth_24A_x_x_ipcpu_lvl_max_lvl
+{
+	TestConditionGroup  = cpu_pth_24A_x_x_ipcpu_lvl_TCG;
+	Selector = max_lvl;
+}
+
+TestCondition cpu_pth_24A_x_x_ipcpu_lvl_min_lvl
+{
+	TestConditionGroup  = cpu_pth_24A_x_x_ipcpu_lvl_TCG;
+	Selector = min_lvl;
+}
+
+TestCondition cpu_pth_24A_x_x_ipcpu_lvl_nom_lvl
+{
+	TestConditionGroup  = cpu_pth_24A_x_x_ipcpu_lvl_TCG;
+	Selector = nom_lvl;
+}
+
+TestCondition cpu_pth_500mA_x_x_ipcpu_lvl_defaultExact
+{
+	TestConditionGroup  = cpu_pth_500mA_x_x_ipcpu_lvl_TCG;
+	Selector = defaultExact;
+}
+
+TestCondition cpu_pth_500mA_x_x_ipcpu_lvl_max_lvl
+{
+	TestConditionGroup  = cpu_pth_500mA_x_x_ipcpu_lvl_TCG;
+	Selector = max_lvl;
+}
+
+TestCondition cpu_pth_500mA_x_x_ipcpu_lvl_min_lvl
+{
+	TestConditionGroup  = cpu_pth_500mA_x_x_ipcpu_lvl_TCG;
+	Selector = min_lvl;
+}
+
+TestCondition cpu_pth_500mA_x_x_ipcpu_lvl_nom_lvl
+{
+	TestConditionGroup  = cpu_pth_500mA_x_x_ipcpu_lvl_TCG;
+	Selector = nom_lvl;
+}
+
+TestCondition dps_on_0V_lvl_cat0
+{
+	TestConditionGroup  = dps_on_0V_lvl_TCG;
+	Selector = cat0;
+}
+
+TestCondition eza_lvl_cat0
+{
+	TestConditionGroup  = eza_lvl_TCG;
+	Selector = cat0;
+}
+
+TestCondition power_up_lvl_nom_lvl
+{
+	TestConditionGroup  = power_up_lvl_TCG;
+	Selector = nom_lvl;
+}
+
+TestCondition pwrdn_lvl_cat0
+{
+	TestConditionGroup  = pwrdn_lvl_TCG;
+	Selector = cat0;
+}
+
+TestCondition shops_dc_lvl_cat0
+{
+	TestConditionGroup  = shops_dc_lvl_TCG;
+	Selector = cat0;
+}
+
+TestCondition VBUMP_ATOM_lvl_force_1000mV
+{
+	TestConditionGroup  = VBUMP_ATOM_lvl_TCG;
+	Selector = force_1000mV;
+}
+
+TestCondition VBUMP_ATOM_lvl_force_1100mV
+{
+	TestConditionGroup  = VBUMP_ATOM_lvl_TCG;
+	Selector = force_1100mV;
+}
+
+TestCondition VBUMP_ATOM_lvl_force_1200mV
+{
+	TestConditionGroup  = VBUMP_ATOM_lvl_TCG;
+	Selector = force_1200mV;
+}
+
+TestCondition VBUMP_ATOM_lvl_force_1300mV
+{
+	TestConditionGroup  = VBUMP_ATOM_lvl_TCG;
+	Selector = force_1300mV;
+}
+
+TestCondition VBUMP_ATOM_lvl_force_1400mV
+{
+	TestConditionGroup  = VBUMP_ATOM_lvl_TCG;
+	Selector = force_1400mV;
+}
+
+TestCondition VBUMP_ATOM_lvl_force_1450mV
+{
+	TestConditionGroup  = VBUMP_ATOM_lvl_TCG;
+	Selector = force_1450mV;
+}
+
+TestCondition VBUMP_ATOM_lvl_force_1500mV
+{
+	TestConditionGroup  = VBUMP_ATOM_lvl_TCG;
+	Selector = force_1500mV;
+}
+
+TestCondition VBUMP_ATOM_lvl_force_1550mV
+{
+	TestConditionGroup  = VBUMP_ATOM_lvl_TCG;
+	Selector = force_1550mV;
+}
+
+TestCondition VBUMP_ATOM_lvl_force_1600mV
+{
+	TestConditionGroup  = VBUMP_ATOM_lvl_TCG;
+	Selector = force_1600mV;
+}
+
+TestCondition VBUMP_ATOM_lvl_force_700mV
+{
+	TestConditionGroup  = VBUMP_ATOM_lvl_TCG;
+	Selector = force_700mV;
+}
+
+TestCondition VBUMP_ATOM_lvl_force_800mV
+{
+	TestConditionGroup  = VBUMP_ATOM_lvl_TCG;
+	Selector = force_800mV;
+}
+
+TestCondition VBUMP_ATOM_lvl_force_850mV
+{
+	TestConditionGroup  = VBUMP_ATOM_lvl_TCG;
+	Selector = force_850mV;
+}
+
+TestCondition VBUMP_ATOM_lvl_force_950mV
+{
+	TestConditionGroup  = VBUMP_ATOM_lvl_TCG;
+	Selector = force_950mV;
+}
+
+TestCondition VBUMP_ATOM_lvl_force_nom
+{
+	TestConditionGroup  = VBUMP_ATOM_lvl_TCG;
+	Selector = force_nom;
+}
+
+TestCondition VBUMP_CORE_lvl_force_1000mV
+{
+	TestConditionGroup  = VBUMP_CORE_lvl_TCG;
+	Selector = force_1000mV;
+}
+
+TestCondition VBUMP_CORE_lvl_force_1100mV
+{
+	TestConditionGroup  = VBUMP_CORE_lvl_TCG;
+	Selector = force_1100mV;
+}
+
+TestCondition VBUMP_CORE_lvl_force_1200mV
+{
+	TestConditionGroup  = VBUMP_CORE_lvl_TCG;
+	Selector = force_1200mV;
+}
+
+TestCondition VBUMP_CORE_lvl_force_1300mV
+{
+	TestConditionGroup  = VBUMP_CORE_lvl_TCG;
+	Selector = force_1300mV;
+}
+
+TestCondition VBUMP_CORE_lvl_force_1400mV
+{
+	TestConditionGroup  = VBUMP_CORE_lvl_TCG;
+	Selector = force_1400mV;
+}
+
+TestCondition VBUMP_CORE_lvl_force_1450mV
+{
+	TestConditionGroup  = VBUMP_CORE_lvl_TCG;
+	Selector = force_1450mV;
+}
+
+TestCondition VBUMP_CORE_lvl_force_1500mV
+{
+	TestConditionGroup  = VBUMP_CORE_lvl_TCG;
+	Selector = force_1500mV;
+}
+
+TestCondition VBUMP_CORE_lvl_force_1550mV
+{
+	TestConditionGroup  = VBUMP_CORE_lvl_TCG;
+	Selector = force_1550mV;
+}
+
+TestCondition VBUMP_CORE_lvl_force_1600mV
+{
+	TestConditionGroup  = VBUMP_CORE_lvl_TCG;
+	Selector = force_1600mV;
+}
+
+TestCondition VBUMP_CORE_lvl_force_700mV
+{
+	TestConditionGroup  = VBUMP_CORE_lvl_TCG;
+	Selector = force_700mV;
+}
+
+TestCondition VBUMP_CORE_lvl_force_800mV
+{
+	TestConditionGroup  = VBUMP_CORE_lvl_TCG;
+	Selector = force_800mV;
+}
+
+TestCondition VBUMP_CORE_lvl_force_850mV
+{
+	TestConditionGroup  = VBUMP_CORE_lvl_TCG;
+	Selector = force_850mV;
+}
+
+TestCondition VBUMP_CORE_lvl_force_950mV
+{
+	TestConditionGroup  = VBUMP_CORE_lvl_TCG;
+	Selector = force_950mV;
+}
+
+TestCondition VBUMP_CORE_lvl_force_nom
+{
+	TestConditionGroup  = VBUMP_CORE_lvl_TCG;
+	Selector = force_nom;
+}
+
+TestCondition VBUMP_RING_lvl_force_1000mV
+{
+	TestConditionGroup  = VBUMP_RING_lvl_TCG;
+	Selector = force_1000mV;
+}
+
+TestCondition VBUMP_RING_lvl_force_1100mV
+{
+	TestConditionGroup  = VBUMP_RING_lvl_TCG;
+	Selector = force_1100mV;
+}
+
+TestCondition VBUMP_RING_lvl_force_1200mV
+{
+	TestConditionGroup  = VBUMP_RING_lvl_TCG;
+	Selector = force_1200mV;
+}
+
+TestCondition VBUMP_RING_lvl_force_1300mV
+{
+	TestConditionGroup  = VBUMP_RING_lvl_TCG;
+	Selector = force_1300mV;
+}
+
+TestCondition VBUMP_RING_lvl_force_1400mV
+{
+	TestConditionGroup  = VBUMP_RING_lvl_TCG;
+	Selector = force_1400mV;
+}
+
+TestCondition VBUMP_RING_lvl_force_1450mV
+{
+	TestConditionGroup  = VBUMP_RING_lvl_TCG;
+	Selector = force_1450mV;
+}
+
+TestCondition VBUMP_RING_lvl_force_1500mV
+{
+	TestConditionGroup  = VBUMP_RING_lvl_TCG;
+	Selector = force_1500mV;
+}
+
+TestCondition VBUMP_RING_lvl_force_1550mV
+{
+	TestConditionGroup  = VBUMP_RING_lvl_TCG;
+	Selector = force_1550mV;
+}
+
+TestCondition VBUMP_RING_lvl_force_1600mV
+{
+	TestConditionGroup  = VBUMP_RING_lvl_TCG;
+	Selector = force_1600mV;
+}
+
+TestCondition VBUMP_RING_lvl_force_700mV
+{
+	TestConditionGroup  = VBUMP_RING_lvl_TCG;
+	Selector = force_700mV;
+}
+
+TestCondition VBUMP_RING_lvl_force_800mV
+{
+	TestConditionGroup  = VBUMP_RING_lvl_TCG;
+	Selector = force_800mV;
+}
+
+TestCondition VBUMP_RING_lvl_force_850mV
+{
+	TestConditionGroup  = VBUMP_RING_lvl_TCG;
+	Selector = force_850mV;
+}
+
+TestCondition VBUMP_RING_lvl_force_950mV
+{
+	TestConditionGroup  = VBUMP_RING_lvl_TCG;
+	Selector = force_950mV;
+}
+
+TestCondition VBUMP_RING_lvl_force_nom
+{
+	TestConditionGroup  = VBUMP_RING_lvl_TCG;
+	Selector = force_nom;
+}
+
+TestCondition VBUMP_VNNAON_lvl_force_1000mV
+{
+	TestConditionGroup  = VBUMP_VNNAON_lvl_TCG;
+	Selector = force_1000mV;
+}
+
+TestCondition VBUMP_VNNAON_lvl_force_1100mV
+{
+	TestConditionGroup  = VBUMP_VNNAON_lvl_TCG;
+	Selector = force_1100mV;
+}
+
+TestCondition VBUMP_VNNAON_lvl_force_1200mV
+{
+	TestConditionGroup  = VBUMP_VNNAON_lvl_TCG;
+	Selector = force_1200mV;
+}
+
+TestCondition VBUMP_VNNAON_lvl_force_1300mV
+{
+	TestConditionGroup  = VBUMP_VNNAON_lvl_TCG;
+	Selector = force_1300mV;
+}
+
+TestCondition VBUMP_VNNAON_lvl_force_1400mV
+{
+	TestConditionGroup  = VBUMP_VNNAON_lvl_TCG;
+	Selector = force_1400mV;
+}
+
+TestCondition VBUMP_VNNAON_lvl_force_1450mV
+{
+	TestConditionGroup  = VBUMP_VNNAON_lvl_TCG;
+	Selector = force_1450mV;
+}
+
+TestCondition VBUMP_VNNAON_lvl_force_1500mV
+{
+	TestConditionGroup  = VBUMP_VNNAON_lvl_TCG;
+	Selector = force_1500mV;
+}
+
+TestCondition VBUMP_VNNAON_lvl_force_1550mV
+{
+	TestConditionGroup  = VBUMP_VNNAON_lvl_TCG;
+	Selector = force_1550mV;
+}
+
+TestCondition VBUMP_VNNAON_lvl_force_1600mV
+{
+	TestConditionGroup  = VBUMP_VNNAON_lvl_TCG;
+	Selector = force_1600mV;
+}
+
+TestCondition VBUMP_VNNAON_lvl_force_700mV
+{
+	TestConditionGroup  = VBUMP_VNNAON_lvl_TCG;
+	Selector = force_700mV;
+}
+
+TestCondition VBUMP_VNNAON_lvl_force_800mV
+{
+	TestConditionGroup  = VBUMP_VNNAON_lvl_TCG;
+	Selector = force_800mV;
+}
+
+TestCondition VBUMP_VNNAON_lvl_force_850mV
+{
+	TestConditionGroup  = VBUMP_VNNAON_lvl_TCG;
+	Selector = force_850mV;
+}
+
+TestCondition VBUMP_VNNAON_lvl_force_950mV
+{
+	TestConditionGroup  = VBUMP_VNNAON_lvl_TCG;
+	Selector = force_950mV;
+}
+
+TestCondition VBUMP_VNNAON_lvl_force_nom
+{
+	TestConditionGroup  = VBUMP_VNNAON_lvl_TCG;
+	Selector = force_nom;
+}
+
+TestCondition vcc_cont_hc_surge_lvl_cat0
+{
+	TestConditionGroup  = vcc_cont_hc_surge_lvl_TCG;
+	Selector = cat0;
+}
+
+TestCondition vcc_cont_hv_surge_lvl_cat0
+{
+	TestConditionGroup  = vcc_cont_hv_surge_lvl_TCG;
+	Selector = cat0;
+}
+
+TestCondition vcc_cont_lc_surge_lvl_cat0
+{
+	TestConditionGroup  = vcc_cont_lc_surge_lvl_TCG;
+	Selector = cat0;
+}
+
+TestCondition vcc_cont_lvl_cat0
+{
+	TestConditionGroup  = vcc_cont_lvl_TCG;
+	Selector = cat0;
+}

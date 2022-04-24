@@ -1,0 +1,9 @@
+#########################################################
+#VF_INIT_ALL:  Virtual Fuses [QDF:Q8XN]
+#########################################################
+
+#Fuse Configuration: cdie28_mtlc_a0_21ww22b (0 - Snapshot)
+#Line Item: L1826649/Q8XN
+config: VF_INIT_ALL: CPU: : CPU_FuseRevision: n: *: LITERAL: 00000000000000000000000000000000
+
+

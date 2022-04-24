@@ -1,0 +1,75 @@
+[
+{
+    "Name": "CCR_map",
+    "Size": 4,
+    "Description": "drv_cdie_maintap_bbs_list HC1_VCCCORE0,HC2_VCCCORE1,HC3_VCCATOM0,HC4_VCCATOM1",
+    "MaskConfigurations": [
+        {
+            "Comment": "CORE",
+            "PatternNames": ["g0019809W4480630A_8j_VC28xCA066_Rm000000xxx0v_nxxx080808xxxxxxxxxxx_sC28A6PxxBTC002J052_x01_A01_CDU_CDIE_TAP_IDCODE"],
+            "TargetPositions": [0,1],
+            "Options":
+            {
+                "Mask": "stf_out"
+            }
+        },
+        {
+            "Comment": "ATOM",
+            "PatternNames": ["g0019815W4480630A_92_VC28xCA066_Rm000000xxx0v_nxxx080808xxxxxxxxxxx_sC28A6PxxBTC002J052_x07_A07_CDU_CDIE_TAP_TAPLINKCFG_DR_OVRSHIFT"],
+            "TargetPositions": [2,3],
+            "Options":
+            {
+                "Mask": "stf_out"
+            }
+        }
+    ],
+    "Entries": [
+        {
+            "Comment": "Failing reset",
+            "FailFilters": {
+                "Burst": 0,
+                "PatternName": "g0066765W3719690A_6I_VC28xCA078_Rr0e0000xxxPP_nxxx040404xxxxxxxxxxx_sC28A6PxxBTC013J052_x20_longreset_cpu_lr_none",
+                "PatternOccurrence": 1,
+                "TargetPositions": [0,1,2,3]
+            }
+        },
+        {
+            "Comment": "Failing CORE",
+            "FailFilters": {
+                "Burst": 0,
+                "PatternName": "g0019809W4480630A_8j_VC28xCA066_Rm000000xxx0v_nxxx080808xxxxxxxxxxx_sC28A6PxxBTC002J052_x01_A01_CDU_CDIE_TAP_IDCODE",
+                "PatternOccurrence": 1,
+                "TargetPositions": [0,1],
+				"FailingPins": ["YY_TEST_PORT_OUT_C2S_00","YY_TEST_PORT_OUT_C2S_01"]
+            },
+            "StartPattern": {
+				"PatternName": "g0019809W4480630A_8j_VC28xCA066_Rm000000xxx0v_nxxx080808xxxxxxxxxxx_sC28A6PxxBTC002J052_x01_A01_CDU_CDIE_TAP_IDCODE",
+                "PatternOccurrence": 1
+            }
+        },
+        {
+            "Comment": "Failing ATOM",
+            "FailFilters": {
+                "PatternName": "g0019815W4480630A_92_VC28xCA066_Rm000000xxx0v_nxxx080808xxxxxxxxxxx_sC28A6PxxBTC002J052_x07_A07_CDU_CDIE_TAP_TAPLINKCFG_DR_OVRSHIFT",
+                "PatternOccurrence": 1,
+                "TargetPositions": [2,3],
+				"FailingPins": ["YY_TEST_PORT_OUT_C2S_10","YY_TEST_PORT_OUT_C2S_11"]
+            },
+            "StartPattern": {
+				"PatternName": "g0019815W4480630A_92_VC28xCA066_Rm000000xxx0v_nxxx080808xxxxxxxxxxx_sC28A6PxxBTC002J052_x07_A07_CDU_CDIE_TAP_TAPLINKCFG_DR_OVRSHIFT",
+                "PatternOccurrence": 1
+            },
+            "PlistElementOptions": [
+                {
+                    "Patlist": "drv_cdie_maintap_bbs_list",
+                    "Index": [1],
+                    "Options": 
+                    {
+                        "Mask": "stf_out"
+                    }
+                }
+            ]
+        }
+    ]
+}
+]

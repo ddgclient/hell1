@@ -1,0 +1,27 @@
+Version 5.0;
+# Plist ID : a3fa3bdcfb8a5f90a446e5eacf002413550e893a
+# pcar_file: /p/pde/tvpv/mtl/run_logs/vcf/vrevauto/lwhitehe/Rundir_vcf_005394A_mtlJF_cencen_rel_auto_vrevauto_modeauto_vectypeauto_None/pcar3/array_pbist_hry_atom.pcar
+
+GlobalPList array_pbist_hry_atom_list [Flatten] {
+   
+   GlobalPList array_pbist_hry_atom_direct_list [Flatten] {
+      
+      GlobalPList array_pbist_hry_atom_direct_ssa_list [Flatten] {
+         
+         GlobalPList array_pbist_hry_atom_direct_ssa_l2_c6s_list [Flatten] {
+            Pat d0014483W4596704A_Ea_VC28xCA055_Xm020s00xxx0a_dxxx080808xxxxxxxxxxx_sC28A6XxxATC001J052_x00_l2_c6s_pmovi_x_s_hry;
+         }  # End of array_pbist_hry_atom_direct_ssa_l2_c6s_list
+         
+         GlobalPList array_pbist_hry_atom_direct_ssa_l2_data_list [Flatten] {
+            Pat d0014487W4596705A_LV_VC28xCA055_Xm020s00xxx0a_dxxx080808xxxxxxxxxxx_sC28A6XxxATC001J052_x00_l2_data_pmovi_x_s_hry;
+         }  # End of array_pbist_hry_atom_direct_ssa_l2_data_list
+         
+         GlobalPList array_pbist_hry_atom_direct_ssa_l2_tsp_list [Flatten] {
+            Pat d0014484W4596707A_LV_VC28xCA055_Xm020s00xxx0a_dxxx080808xxxxxxxxxxx_sC28A6XxxATC001J052_x00_l2_tsp_pmovi_x_s_hry;
+         }  # End of array_pbist_hry_atom_direct_ssa_l2_tsp_list
+
+      }  # End of array_pbist_hry_atom_direct_ssa_list
+
+   }  # End of array_pbist_hry_atom_direct_list
+   
+}  # End of array_pbist_hry_atom_list

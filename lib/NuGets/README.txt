@@ -1,0 +1,1 @@
+Please do not delete this folder. It is required for NuGets restore while opening your solution.

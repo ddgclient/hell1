@@ -1,0 +1,101 @@
+{
+    "Module": "PVAL_CALLBACKS",
+    "Groups": [
+        {
+            "Name": "SAMPLE0", 
+            "Default": "DONTUSE", 
+            "SetPoints": [
+                {
+                    "Name": "DONTUSE",
+                    "Configurations": [
+                        {
+                            "Name": "PVAL_CALLBACKS_SAMPLE0",
+                            "Data": "1111"
+                        }
+                    ] 
+                }, 
+                {
+                    "Name": "DISABLE",
+                    "Configurations": [
+                        {
+                            "Name": "PVAL_CALLBACKS_SAMPLE0",
+                            "Data": "0000"
+                        }
+                    ] 
+                }
+            ]
+        },
+        {
+            "Name": "SAMPLE1", 
+            "Default": "DONTUSE", 
+            "SetPoints": [
+                {
+                    "Name": "DONTUSE",
+                    "Configurations": [
+                        {
+                            "Name": "PVAL_CALLBACKS_SAMPLE1",
+                            "Data": "1111"
+                        }
+                    ] 
+                }, 
+                {
+                    "Name": "DISABLE",
+                    "Configurations": [
+                        {
+                            "Name": "PVAL_CALLBACKS_SAMPLE1",
+                            "Data": "0000"
+                        }
+                    ] 
+                }
+            ]
+        },
+        {
+            "Name": "SAMPLE2", 
+            "Default": "DONTUSE", 
+            "SetPoints": [
+                {
+                    "Name": "ENABLE",
+                    "Configurations": [
+                        {
+                            "Name": "PVAL_CALLBACKS_SAMPLE2",
+                            "Data": "1111"
+                        }
+                    ] 
+                }, 
+                {
+                    "Name": "DONTUSE",
+                    "Configurations": [
+                        {
+                            "Name": "PVAL_CALLBACKS_SAMPLE2",
+                            "Data": "0000"
+                        }
+                    ] 
+                }
+            ]
+        },
+        {
+            "Name": "SAMPLE3", 
+            "Default": "DONTUSE", 
+            "SetPoints": [
+                {
+                    "Name": "ENABLE",
+                    "Configurations": [
+                        {
+                            "Name": "PVAL_CALLBACKS_SAMPLE3",
+                            "Data": "1111"
+                        }
+                    ] 
+                }, 
+                {
+                    "Name": "DONTUSE",
+                    "Configurations": [
+                        {
+                            "Name": "PVAL_CALLBACKS_SAMPLE3",
+                            "Data": "0000"
+                        }
+                    ] 
+                }
+            ]
+        }
+    ]
+}

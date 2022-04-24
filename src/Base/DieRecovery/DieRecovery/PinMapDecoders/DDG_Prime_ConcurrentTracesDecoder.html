@@ -1,0 +1,336 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>ConcurrentTracesDecoder PinMap</title>
+</head>
+<body>
+
+    <h1 id="concurrenttracesdecoder-pinmap">ConcurrentTracesDecoder PinMap</h1>
+<h3 id="rev-1-10282021-fmurillo">Rev 1 10/28/2021 (fmurillo)</h3>
+<h2 id="contents">Contents</h2>
+<ol>
+<li><a href="#configuration">Configuration</a></li>
+<li><a href="#applyplistsettings">ApplyPlistSettings</a></li>
+<li><a href="#maskplistfromtracker">MaskPlistFromTracker</a></li>
+<li><a href="#getfailtrackerfromplistresults">GetFailTrackerFromPlistResults</a></li>
+<li><a href="#restore">Restore</a></li>
+</ol>
+<h2 id="configuration">Configuration</h2>
+<p>ConcurrentTraces PinMap fields.</p>
+<ul>
+<li><b>Name</b> - name of the pinmap. This is the name that will be used for the Vmin Templates “PinMap” parameter. It must be unique.</li>
+<li><b>Size</b> – number of bits returned by this PinMap. This should match the number of  targets and the tracker size associated with this pinmap (refer to VminTC doccumentation).</li>
+<li><b>Description</b> – optional field for user comments.</li>
+<li><b>MaskConfigurations</b> – sets initial plist masking based on incoming/initial mask bits. Intended for disabled IPs and/or cores at the beginning of the search or when a target fails at the upper search limit.
+<ul>
+<li><u>Comment</u> - optional parameter to introduce comments.</li>
+<li><u>TargePositions</u> - list of mask bits positions associated to the masked/disabled IP/Core.</li>
+<li><u>PatternNames</u> - list of pattern name regular expressions for plist elements (patterns) where MaskPins or DisableCapture will be applied.</li>
+<li><u>Options</u> - dictionary with PListElement options to be set for 'masked' patterns. E.g. Mask, DisableCompare, DisableCapture, etc.</li>
+</ul>
+</li>
+<li><b>Entries</b> - provides decode information and start pattern info for each plist entry.
+<ul>
+<li><u>Comment</u> - optional parameter to introduce comments.</li>
+<li><u>FailFilters</u> - matching cycle fail data. All filters need to match fail data. If there is no match decoder will error out.
+<ul>
+<li><i>Burst</i> - burst number.</li>
+<li><i>PatternName</i> - full pattern name (no regex support).</li>
+<li><i>PatternOccurrence</i> - pattern occurrence within current burst.</li>
+<li><i>FailingPins</i> - list of list of failing patterns. Each list is associated to each TargetPosition. FailingPins and TargetPositions size must be equal.</li>
+<li><i>TargetPositions</i> - list of target positions associated to the current fail. FailingPins and TargetPositions size must be equal.</li>
+</ul>
+</li>
+<li><u>StartPattern</u> - optional - pointer to start pattern information and entry pre-plist.
+<ul>
+<li><i>Burst</i> - burst number.</li>
+<li><i>PatternName</i> - full pattern name (no regex support).</li>
+<li><i>PatternOccurrence</i> - pattern occurrence within current burst.</li>
+<li><i>PreBurstPList</i> - optional - replace current pre-plist with this value. Original value can be restored using Restore method.</li>
+</ul>
+</li>
+<li><u>PreBurstPList</u> - optional - pointer to preburst plist information.
+<ul>
+<li><i>Patlist</i> - optional - indicates specific patlist name where PreBurstPList should be applied. Needed for complex nested plist setups.</li>
+<li><i>PreBurstPList</i> - replace current pre-plist with this value. Original value will be restored using Restore method.</li>
+</ul>
+</li>
+<li><u>PlistElementOptions</u> - optional - enables masking and disable capture for individual pattern occurrences in the plist.
+<ul>
+<li><i>Patlist</i> - optional - local plist where pattern is located. In a nested Plist structure this is the last level sub-plist.</li>
+<li><i>Index</i> - list of pattern positions within current plist. It does not include PreBurstPList but will include individual sub-plist at the same level.</li>
+<li><i>Options</i> - dictionary with PListElement options to be set for 'masked' patterns. E.g. Mask, DisableCompare, DisableCapture, etc.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="example">Example</h3>
+<pre><code class="language-Json">[
+{
+    &quot;Name&quot;: &quot;CCR_map&quot;,
+    &quot;Size&quot;: 3,
+    &quot;Description&quot;: &quot;IP_CPU::ccr_poc5af1_keep_ww36p4 CCF,GT,SA&quot;,
+    &quot;MaskConfigurations&quot;: [
+        {
+            &quot;Comment&quot;: &quot;CCF&quot;,
+            &quot;PatternNames&quot;: [&quot;g.{38}05_&quot;],
+            &quot;TargetPositions&quot;: [0],
+            &quot;Options&quot;:
+            {
+                &quot;Mask&quot;: &quot;IP_CPU::all_leg&quot;
+            }
+        },
+        {
+            &quot;Comment&quot;: &quot;GT&quot;,
+            &quot;PatternNames&quot;: [&quot;g.{38}(0z_)&quot;, &quot;g.{38}(08_)&quot;],
+            &quot;TargetPositions&quot;: [1],
+            &quot;Options&quot;:
+            {
+                &quot;Mask&quot;: &quot;IP_CPU::all_leg&quot;
+            }
+        },
+        {
+            &quot;Comment&quot;: &quot;SA&quot;,
+            &quot;PatternNames&quot;: [&quot;g.{38}ae_&quot;],
+            &quot;TargetPositions&quot;: [2],
+            &quot;Options&quot;:
+            {
+                &quot;Mask&quot;: &quot;IP_CPU::all_leg&quot;
+            }
+        }
+    ],
+    &quot;Entries&quot;: [
+        {
+            &quot;Comment&quot;: &quot;Failing reset&quot;,
+            &quot;FailFilters&quot;: {
+                &quot;Burst&quot;: 0,
+                &quot;PatternName&quot;: &quot;tgl_pre_F9999991G_040816xxx10040x66xxalb_Tbax2j_0g20_Mgt_0_vrevTB2C_ccrddr_hvm_hdmt2_QXJ_cf3rv_0_ccrddr&quot;,
+                &quot;PatternOccurrence&quot;: 1,
+                &quot;TargetPositions&quot;: [0,1,2]
+            },
+            &quot;StartPattern&quot;: {
+                &quot;Burst&quot;: 0,
+                &quot;PatternName&quot;: &quot;g2390745F0801504I_6I_VTB046T_Ccnm0m1h0005_a080816xx00044xbx1xxxalb_TB2CdhTQ000J3rv_LJP0A42x0nxx0000_poc5af1_p00_llc_cv_matsp_x_1&quot;,
+                &quot;PatternOccurrence&quot;: 1,
+                &quot;PreBurstPList&quot;: &quot;IP_CPU::ccr_poc5af1_pbist_ccf_visa_disabled&quot;
+            },
+            &quot;PreBurstPList&quot;: {
+                &quot;Patlist&quot;: &quot;ccr_poc5af1_keep_ww36p4_1&quot;,
+                &quot;PreBurstPList&quot;: &quot;IP_CPU::ccr_poc5af1_pbist_ccf_visa_disabled&quot;
+            }
+        },
+        {
+            &quot;Comment&quot;: &quot;Failing CCF&quot;,
+            &quot;FailFilters&quot;: {
+                &quot;Burst&quot;: 0,
+                &quot;PatternName&quot;: &quot;g2390745F0801504I_IO_VTB046T_Ccnm0m1h0005_a080816xx00044xbx1xxxalb_TB2CdhTQ000J3rv_LJP0A42x0nxx0000_poc5af1_c00_llc_cv_matsp_x_1&quot;,
+                &quot;PatternOccurrence&quot;: 1,
+                &quot;TargetPositions&quot;: [0]
+            },
+            &quot;StartPattern&quot;: {
+                &quot;Burst&quot;: 0,
+                &quot;PatternName&quot;: &quot;g2390745F0801504I_6I_VTB046T_Ccnm0m1h0005_a080816xx00044xbx1xxxalb_TB2CdhTQ000J3rv_LJP0A42x0nxx0000_poc5af1_p00_llc_cv_matsp_x_1&quot;,
+                &quot;PatternOccurrence&quot;: 1,
+            },
+            &quot;PreBurstPList&quot;: {
+                &quot;Patlist&quot;: &quot;ccr_poc5af1_keep_ww36p4_1&quot;,
+                &quot;PreBurstPList&quot;: &quot;IP_CPU::ccr_poc5af1_pbist_ccf_visa_disabled&quot;
+            }
+        },
+        {
+            &quot;Comment&quot;: &quot;Failing GT&quot;,
+            &quot;FailFilters&quot;: {
+                &quot;Burst&quot;: 0,
+                &quot;PatternName&quot;: &quot;g1962330F1421793I_Na_VTB049T_Gjnm0g20000z_a040816xx00066xax1xxxalb_TB2CdhTQ000J3rv_LJxbA42x0nxx0001_GT_PAR_tk3_ca1tf_mIn_ph15RO_poc5af1_p0&quot;,
+                &quot;PatternOccurrence&quot;: 1,
+                &quot;TargetPositions&quot;: [1]
+            },
+            &quot;StartPattern&quot;: {
+                &quot;Burst&quot;: 0,
+                &quot;PatternName&quot;: &quot;g2390745F0801504I_6I_VTB046T_Ccnm0m1h0005_a080816xx00044xbx1xxxalb_TB2CdhTQ000J3rv_LJP0A42x0nxx0000_poc5af1_p00_llc_cv_matsp_x_1&quot;,
+                &quot;PatternOccurrence&quot;: 1,
+            },
+            &quot;PreBurstPList&quot;: {
+                &quot;Patlist&quot;: &quot;ccr_poc5af1_keep_ww36p4_1&quot;,
+                &quot;PreBurstPList&quot;: &quot;IP_CPU::ccr_poc5af1_pbist_ccf_visa_disabled&quot;
+            }
+        },
+        {
+            &quot;Comment&quot;: &quot;Failing GT&quot;,
+            &quot;FailFilters&quot;: {
+                &quot;Burst&quot;: 0,
+                &quot;PatternName&quot;: &quot;g1951882F1421793I_JX_VTB049T_Gjnm0g20000z_a040816xx00066xax1xxxalb_TB2CdhTQ000J3rv_LJxbA42x0nxx0091_GT_PAR_tk3_ca1tf_mIn_ph15RO_poc5af1_c5&quot;,
+                &quot;PatternOccurrence&quot;: 1,
+                &quot;TargetPositions&quot;: [1]
+            },
+            &quot;StartPattern&quot;: {
+                &quot;Burst&quot;: 0,
+                &quot;PatternName&quot;: &quot;d1618676F0850637I_6I_VTB046T_Gjna0g2000AA_a040816xx00066xax1xxxalb_TB2CdhTQ000J3rv_LJx2A42x0nxx0000_core_ccf_disable&quot;,
+                &quot;PatternOccurrence&quot;: 1,
+            },
+            &quot;PreBurstPList&quot;: {
+                &quot;Patlist&quot;: &quot;ccr_poc5af1_keep_ww36p4_1&quot;,
+                &quot;PreBurstPList&quot;: &quot;IP_CPU::ccr_poc5af1_pbist_ccf_visa_disabled&quot;
+            },
+            &quot;PlistElementOptions&quot;: [
+                {
+                    &quot;Patlist&quot;: &quot;IP_CPU::ccr_poc5af1_keep_ww36p4_1&quot;,
+                    &quot;Index&quot;: [6],
+                    &quot;Options&quot;: 
+                    {
+                        &quot;Mask&quot;: &quot;IP_CPU::all_leg&quot;
+                    }
+                },
+                {
+                    &quot;Patlist&quot;: &quot;IP_CPU::ccr_poc5af1_keep_ww36p4_1&quot;,
+                    &quot;Index&quot;: [4],
+                    &quot;Options&quot;: 
+                    {
+                        &quot;Mask&quot;: &quot;IP_CPU::all_leg&quot;
+                    }
+                }
+            ]
+        },
+        {
+            &quot;Comment&quot;: &quot;Failing GT&quot;,
+            &quot;FailFilters&quot;: {
+                &quot;Burst&quot;: 0,
+                &quot;PatternName&quot;: &quot;g1962330F1421793I_Nq_VTB049T_Gjnm0g20000z_a040816xx00066xax1xxxalb_TB2CdhTQ000J3rv_LJxbA42x0nxx0001_GT_PAR_tk3_ca1tf_mIn_ph15RO_poc5af1_c2&quot;,
+                &quot;PatternOccurrence&quot;: 1,
+                &quot;TargetPositions&quot;: [1]
+            },
+            &quot;StartPattern&quot;: {
+                &quot;Burst&quot;: 0,
+                &quot;PatternName&quot;: &quot;d1618676F0850637I_6I_VTB046T_Gjna0g2000AA_a040816xx00066xax1xxxalb_TB2CdhTQ000J3rv_LJx2A42x0nxx0000_core_ccf_disable&quot;,
+                &quot;PatternOccurrence&quot;: 1,
+            },
+            &quot;PreBurstPList&quot;: {
+                &quot;Patlist&quot;: &quot;ccr_poc5af1_keep_ww36p4_1&quot;,
+                &quot;PreBurstPList&quot;: &quot;IP_CPU::ccr_poc5af1_pbist_ccf_visa_disabled&quot;
+            },
+            &quot;PlistElementOptions&quot;: [
+                {
+                    &quot;Index&quot;: [4,6],
+                    &quot;Options&quot;: 
+                    {
+                        &quot;Mask&quot;: &quot;IP_CPU::all_leg&quot;
+                    }
+                }
+            ]
+        },
+        {
+            &quot;Comment&quot;: &quot;Failing MBIST&quot;,
+            &quot;FailFilters&quot;: {
+                &quot;Burst&quot;: 1,
+                &quot;PatternName&quot;: &quot;d1486772F0000795I_GV_XTB044T_Cknc3s1q00ae_a040811xx0b1222xx1xabald_TB2CdhTQ000J3rv_LJx0A42x0nxx0000_concurrent_A090000000000000g40000000000&quot;,
+                &quot;PatternOccurrence&quot;: 1,
+                &quot;TargetPositions&quot;: [2]
+            },
+            &quot;StartPattern&quot;: {
+                &quot;Burst&quot;: 1,
+                &quot;PatternName&quot;: &quot;g1054416F0801867I_6I_VTB044T_Ccnm0m1h0005_a080816xx00044xbx1xxxalb_TB2CdhTQ000J3rv_LJP0A42x0nxx0000_poc5af1_p00_llc_sta_galwrc_x_s&quot;,
+                &quot;PatternOccurrence&quot;: 1,
+            },
+            &quot;PreBurstPList&quot;: {
+                &quot;Patlist&quot;: &quot;ccr_poc5af1_keep_ww36p4_2&quot;,
+                &quot;PreBurstPList&quot;: &quot;IP_CPU::ccr_poc5af1_pbist_ccf&quot;
+            }
+        },
+        {
+            &quot;Comment&quot;: &quot;Failing MBIST&quot;,
+            &quot;FailFilters&quot;: {
+                &quot;Burst&quot;: 1,
+                &quot;PatternName&quot;: &quot;d1491371F0002018I_K8_XTB044T_Cknc3s1q00ae_a040811xx0b1222xx1xabald_TB2CdhTQ000J3rv_LJx0A42x0nxx0000_concurrent_A1n000000000v1vv3000000000c0&quot;,
+                &quot;PatternOccurrence&quot;: 1,
+                &quot;TargetPositions&quot;: [2]
+            },
+            &quot;StartPattern&quot;: {
+                &quot;Burst&quot;: 1,
+                &quot;PatternName&quot;: &quot;g1054416F0801867I_6I_VTB044T_Ccnm0m1h0005_a080816xx00044xbx1xxxalb_TB2CdhTQ000J3rv_LJP0A42x0nxx0000_poc5af1_p00_llc_sta_galwrc_x_s&quot;,
+                &quot;PatternOccurrence&quot;: 1,
+            },
+            &quot;PreBurstPList&quot;: {
+                &quot;Patlist&quot;: &quot;ccr_poc5af1_keep_ww36p4_2&quot;,
+                &quot;PreBurstPList&quot;: &quot;IP_CPU::ccr_poc5af1_pbist_ccf&quot;
+            }
+        },
+        {
+            &quot;Comment&quot;: &quot;Failing MBIST&quot;,
+            &quot;FailFilters&quot;: {
+                &quot;Burst&quot;: 1,
+                &quot;PatternName&quot;: &quot;d1491374F0002017I_K0_XTB044T_Cknc3s1q00ae_a040811xx0b1222xx1xabald_TB2CdhTQ000J3rv_LJx0A42x0nxx0000_concurrent_A0C000000000v1vvj400000000c0&quot;,
+                &quot;PatternOccurrence&quot;: 1,
+                &quot;TargetPositions&quot;: [2]
+            },
+            &quot;StartPattern&quot;: {
+                &quot;Burst&quot;: 1,
+                &quot;PatternName&quot;: &quot;g1054416F0801867I_6I_VTB044T_Ccnm0m1h0005_a080816xx00044xbx1xxxalb_TB2CdhTQ000J3rv_LJP0A42x0nxx0000_poc5af1_p00_llc_sta_galwrc_x_s&quot;,
+                &quot;PatternOccurrence&quot;: 1,
+            },
+            &quot;PreBurstPList&quot;: {
+                &quot;Patlist&quot;: &quot;ccr_poc5af1_keep_ww36p4_2&quot;,
+                &quot;PreBurstPList&quot;: &quot;IP_CPU::ccr_poc5af1_pbist_ccf&quot;
+            }
+        },
+        {
+            &quot;Comment&quot;: &quot;Failing MBIST&quot;,
+            &quot;FailFilters&quot;: {
+                &quot;Burst&quot;: 1,
+                &quot;PatternName&quot;: &quot;d1486773F0000798I_GV_XTB044T_Cknc3s1q00ae_a040811xx0b1222xx1xabald_TB2CdhTQ000J3rv_LJx0A42x0nxx0000_concurrent_A0a0000000000000g40000000000&quot;,
+                &quot;PatternOccurrence&quot;: 1,
+                &quot;TargetPositions&quot;: [2]
+            },
+            &quot;StartPattern&quot;: {
+                &quot;Burst&quot;: 1,
+                &quot;PatternName&quot;: &quot;g1054416F0801867I_6I_VTB044T_Ccnm0m1h0005_a080816xx00044xbx1xxxalb_TB2CdhTQ000J3rv_LJP0A42x0nxx0000_poc5af1_p00_llc_sta_galwrc_x_s&quot;,
+                &quot;PatternOccurrence&quot;: 1,
+            },
+            &quot;PreBurstPList&quot;: {
+                &quot;Patlist&quot;: &quot;ccr_poc5af1_keep_ww36p4_2&quot;,
+                &quot;PreBurstPList&quot;: &quot;IP_CPU::ccr_poc5af1_pbist_ccf&quot;
+            }
+        }
+    ]
+}
+]
+</code></pre>
+<h2 id="applyplistsettings">ApplyPlistSettings</h2>
+<p>This method is expected be called before each search point execution. Its primary function of to mask/disable IPS that are incoming bad/disabled or reached the upper search limit and failed.</p>
+<ul>
+<li>1: Stores original PrePList option for Restore.</li>
+<li>2: Find all MaskConfigurations settings where TargetPositions are set to 1 in the initial mask.</li>
+<li>3: Reads and stores current PlistElementOptions for restore.</li>
+<li>3: Applies PlistElementOptions if it is different than last applied value and updates cache storage.</li>
+</ul>
+<h2 id="maskplistfromtracker">MaskPlistFromTracker</h2>
+<p>This method is expected be called before each search point execution. Utilizes last failing pattern insformation to set up your plist for next search point.</p>
+<ul>
+<li>1: Checks if there is a last failing pattern. If there is not, it will default to the very first burst and pattern in the plist sequence.</li>
+<li>2: Pulls and iterates through all plist cycle fail data. Matching failing data and FailFilters</li>
+<li>3: Looks for first matching entry</li>
+<li>4: Looks for first matching entry</li>
+<li>5: Reads and stores current PlistElementOptions for restore.</li>
+<li>6: Applies PlistElementOptions if it is different than last applied value and updates cache storage.</li>
+<li>7: Sets StartPattern using input file configuration. If no StartPattern is specified it will use last failing pattern as default.</li>
+<li>8: If there are entries wite FailFilters without PatternNames it will return FailingPins as as Plist wide pin masking option..</li>
+</ul>
+<h2 id="getfailtrackerfromplistresults">GetFailTrackerFromPlistResults</h2>
+<p>This method is expected to be called after plist execution and decodes failing data returning a bit vector indicating failing voltage targets.</p>
+<ul>
+<li>1: Pulls and iterates through all plist cycle fail data.</li>
+<li>2: Matches each fail cycle data against FailFilters: Burst, PatternName, PatternOccurence.</li>
+<li>3: Process optional FailFilters: FailingPins</li>
+<li>4: If there is a matching entry TargetPositions will be marked as as bad (1).</li>
+<li>5: If there was no matching entry ALL TargetPositions will be marked as as bad (1).</li>
+</ul>
+<h2 id="restore">Restore</h2>
+<p>This method restores PList to its original condition when the PlistTree was created.</p>
+<ul>
+<li>1: Decoder keeps track of all PlistOptions and PListElementOptions for restore.</li>
+<li>2: Restore PreBurstPList to the DefaultPreBurstPList.</li>
+</ul>
+
+
+</body>
+</html>

@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>DDG Prime PatConfig Test Class</title>
+</head>
+<body>
+
+    <h1 id="ddg-prime-patconfig-test-class">DDG Prime PatConfig Test Class</h1>
+<h2 id="methodology">Methodology</h2>
+<p>PatConfigTC is another PatConfig option to apply PatConfig using dynamic Tag or Dynamic data using our built-in NCalc Expression evaluator.</p>
+<h2 id="test-instance-parameters">Test Instance Parameters</h2>
+<table>
+<thead>
+<tr>
+<th><strong>Parameter Name</strong></th>
+<th><strong>Required?</strong></th>
+<th><strong>Type</strong></th>
+<th><strong>Values</strong></th>
+<th><strong>Comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>InputFile</td>
+<td>Yes</td>
+<td>String</td>
+<td></td>
+<td>.json Input File.</td>
+</tr>
+<tr>
+<td>PlistRegEx</td>
+<td>No</td>
+<td>String</td>
+<td></td>
+<td>Optional plist regular expression.</td>
+</tr>
+<tr>
+<td>Tags</td>
+<td>Yes</td>
+<td>String</td>
+<td></td>
+<td>List of PatConfig tags to apply. Values can be Literal or Dynamically assigned tokens.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="otpl-sample">OTPL Sample:</h2>
+<pre><code class="language-Perl">Test PatConfigTC InstanceName
+{
+	InputFile = &quot;SomeFile.json&quot;;	
+	PlistRegEx = &quot;.*MyPRECATPlist.*&quot;;
+	Tags = &quot;Tag1,[G.U.S.SharedStorageToken],[Collection.Uservar]&quot;;
+}
+</code></pre>
+<h2 id="json-input-file">JSON Input File:</h2>
+<p>Input file consist of a list of Tags with the corresponding PatConfig and data values.</p>
+<h3 id="parameters">Parameters:</h3>
+<ul>
+<li><strong>Tag</strong>: Tag name to be used as filter to select PatConfigs to be applied.</li>
+<li><strong>PatConfig</strong>: PatConfig as in your ALEPH_FILE. This parameter does not support expression evaluation.</li>
+<li><strong>Data</strong>: Data to be applied. Expecting string value and it supports Expression evaluator for dynamic tokens using SharedSotrage, Uservar or DFF (including functions for binary conversion functions, reverse and padding).</li>
+</ul>
+<pre><code class="language-JSON">[
+    {
+        &quot;Tag&quot;: &quot;Tag1&quot;,
+        &quot;PatConfig&quot;: &quot;conf1&quot;,
+        &quot;Data&quot;: &quot;GetPatSymbolString('0d11',8)&quot;
+    },
+    {
+        &quot;Tag&quot;: &quot;Tag2&quot;,
+        &quot;PatConfig&quot;: &quot;conf2&quot;,
+        &quot;Data&quot;: &quot;Reverse(GetPatSymbolString('0xC', 4))&quot;
+    },
+    {
+        &quot;Tag&quot;: &quot;Tag3&quot;,
+        &quot;PatConfig&quot;: &quot;conf3&quot;,
+        &quot;Data&quot;: &quot;'01100'&quot;
+    },
+    {
+        &quot;Tag&quot;: &quot;Tag4&quot;,
+        &quot;PatConfig&quot;: &quot;conf3&quot;,
+        &quot;Data&quot;: &quot;'01100'&quot;
+    },
+    {
+        &quot;Tag&quot;: &quot;Tag5&quot;,
+        &quot;PatConfig&quot;: &quot;conf3&quot;,
+        &quot;Data&quot;: &quot;GetPatSymbolString('0b01011111', 8)&quot;
+    }    
+]
+</code></pre>
+<h3 id="expression-engine">Expression Engine:</h3>
+<p>This test method supports Ncalc as expression engine. <a href="https://github.com/ncalc/ncalc">https://github.com/ncalc/ncalc</a>
+It is able to evaluate simple mathematical expression using SharedStorage, Uservar and/or DFF tokens.
+All tokens must be specified using '[]'. Value will be evaluated in the following order:</p>
+<ul>
+<li><strong>SharedStorage</strong>: Should be of the form G.context.type.Token where context is L for Lot, U for DUT/Unit or I for IP, and type is S for string, D for double or I for integer.</li>
+<li><strong>UserVar</strong>: String, Double and Integer. Always using full collection.name format with the full IP/Module scoping on the collection.</li>
+<li><strong>DFF</strong>: Using token name. It will be read from the current optype and die id.</li>
+</ul>
+<h5 id="supported-functions">Supported functions:</h5>
+<p><a href="https://github.com/ncalc/ncalc/wiki/Functions">https://github.com/ncalc/ncalc/wiki/Functions</a></p>
+<h5 id="key-additional-functions">Key Additional functions:</h5>
+<ul>
+<li><strong>GetPatSymbolString</strong>:
+<ul>
+<li>Hex: GetPatSymbolString('0xC', 4)</li>
+<li>Binary1: GetPatSymbolString('0b0100', 4)</li>
+<li>Binary2: GetPatSymbolString('1111', 4)</li>
+<li>Decimal: GetPatSymbolString('0d8', 4)</li>
+<li>Strobes: GetPatSymbolString('LHLH', 4)</li>
+<li>Strobes: GetPatSymbolString('LHLH', 4)</li>
+<li>Reverse: Reverse(GetPatSymbolString('0b0100', 4))</li>
+</ul>
+</li>
+</ul>
+<h2 id="exit-ports">Exit Ports</h2>
+<p>The CallbacksRegistrar test method supports the following exit ports:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Exit Port</strong></th>
+<th><strong>Condition</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>-2</strong></td>
+<td><em><strong>Alarm</strong></em></td>
+<td>Any alarm condition</td>
+</tr>
+<tr>
+<td><strong>-1</strong></td>
+<td><em><strong>Error</strong></em></td>
+<td>Any software condition error</td>
+</tr>
+<tr>
+<td><strong>0</strong></td>
+<td><em><strong>Fail</strong></em></td>
+<td>Failing condition</td>
+</tr>
+<tr>
+<td><strong>1</strong></td>
+<td><em><strong>Pass</strong></em></td>
+<td>Passed</td>
+</tr>
+</tbody>
+</table>
+<h2 id="version-tracking">Version tracking</h2>
+<table>
+<thead>
+<tr>
+<th><strong>Date</strong></th>
+<th><strong>Version</strong></th>
+<th><strong>Author</strong></th>
+<th><strong>Comments</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>April 19, 2022</td>
+<td>1.0.0</td>
+<td>fmurillo</td>
+<td>Initial doc</td>
+</tr>
+</tbody>
+</table>
+
+
+</body>
+</html>

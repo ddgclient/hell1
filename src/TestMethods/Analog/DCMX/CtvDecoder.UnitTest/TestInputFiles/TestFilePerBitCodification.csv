@@ -1,0 +1,2 @@
+Pin,IP,Sequence,Subsequence,Field,Size,ExpectedData,PerBit,Codification,ItuffToken,PinFinderFormat
+DDR1_DQ50,V0,training,subseq1,val1,6,0,1,Gray,<TssidRename>_Token1,Pin$bit$

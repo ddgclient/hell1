@@ -1,0 +1,152 @@
+<root>
+	<Name>
+		<Module1 name="Scrum">DRV</Module1>
+		<Module2 name="SubContent_PhysicalIP">TAP,RESET,STF,SIUP,DFT</Module2>
+		<Module3 name="User">CXX,C28,C68,C8F,GXX,GMD,GLG,GXL</Module3>
+		<Instance1 name="Category">CTRL,TAP,RESET,STF,SIUP,DFT</Instance1>
+		<Instance2 name="Partition">X,CL,CD,FC</Instance2>
+		<Instance3 name="TestType">MEASURE,SB,VMIN,HVQK,PATMOD,SCREEN,AUX,FUSECONFIG,UF,SAMPLE,SHMOO,FUNC,HRY,PWRDWN,SEARCH,CTVCAPTURE</Instance3>
+		<Instance4 name="Status">K,E,X</Instance4>
+		<Instance5 name="Position">INIT,SDTSTART,SDTBEGIN,SDTSTRESS,SDTEND,SDTNCS,FAILFLOW</Instance5>
+		<Instance6 name="Ratio_DFTinterface">X,TITO,SITO,TISO,SISO,TAP,STF,MCI</Instance6>
+		<Instance7 name="Domain">X,EU,BASE,INF,HBM,MDFI,IO</Instance7>
+		<Instance8 name="Corner">X,VMIN,VNOM,VMAX</Instance8>
+		<Instance9 name="Frequency">X,LFM,HFM,TFM</Instance9>
+		<Instance10 name="User"></Instance10>
+	</Name>
+	<Name>
+		<Module1 name="Scrum">FUN</Module1>
+		<Module2 name="SubContent_PhysicalIP">GT,DE,SOC,CORE,CCF,ATOM</Module2>
+		<Module3 name="User">CXX,C28,C68,C8F,GXX,GMD,GLG,GXL</Module3>
+		<Instance1 name="Category">CTRL,L3SBFT,FUNC,DRNG,SBFT</Instance1>
+		<Instance2 name="Partition">X,DOA,RANDOMIZER,MISR,OBS,MEDIA,RENDER,RENDERMEDIA,GT,DE,NC,FUSE,BABY,CONTROLLER,CORE,CCF,ATOM,NONCCF</Instance2>
+		<Instance3 name="TestType">MEASURE,SB,VMIN,HVQK,PATMOD,SCREEN,AUX,FUSECONFIG,UF,SAMPLE,SHMOO,FUNC,HRY,PWRDWN,SEARCH,CTVCAPTURE,EIDSB,GFXAGG</Instance3>
+		<Instance4 name="Status">K,E</Instance4>
+		<Instance5 name="Position">INIT,SDTSTART,SDTBEGIN,SDTSTRESS,SDTEND,SDTNCS</Instance5>
+		<Instance6 name="Ratio_DFTinterface">X,TITO,SITO,TISO,SISO,DIDO,DITO,TAP,STF,MCI</Instance6>
+	<Instance7 name="Domain">X,EU,BASE,INF,HBM,MDFI,IO,VCCR,VCORE,VATOM,VNNAON</Instance7>
+		<Instance8 name="Corner">X,VMIN,VNOM,VMAX,F1</Instance8>
+		<Instance9 name="Frequency">X,LFM,HFM,TFM,0800</Instance9>
+		<Instance10 name="User"></Instance10>
+	</Name>
+	<Name>
+		<Module1 name="Scrum">SCN</Module1>
+		<Module2 name="SubContent_PhysicalIP">GT,DE,SOC,CORE,CCF,ATOM</Module2>
+		<Module3 name="User">CXX,C28,C68,C8F,GXX,GMD,GLG,GXL</Module3>
+		<Instance1 name="Category">CTRL,CHAIN,ATPG,TATPG,DIAG,DPORT,CA1TF,CA2TF,TRANS</Instance1>
+		<Instance2 name="Partition">X,LE,RO,RAMONLY,NORAM,SEC,CGP,SSEC,DOA,RANDOMIZER,MISR,OBS,FUSE,ALL,FEID,PATTERN,SKU,DFTRING,DIAG,CORE,CCF,ATOM,NONCCF</Instance2>
+		<Instance3 name="TestType">MEASURE,SB,VMIN,HVQK,PATMOD,SCREEN,AUX,FUSECONFIG,UF,SAMPLE,SHMOO,FUNC,HRY,PWRDWN,SEARCH,CTVCAPTURE,GFXSB,GFXAGG,PACMON,SPOFI</Instance3>
+		<Instance4 name="Status">K,E</Instance4>
+		<Instance5 name="Position">INIT,SDTSTART,SDTBEGIN,SDTSTRESS,SDTEND,SDTNCS</Instance5>
+		<Instance6 name="Ratio_DFTinterface">X,TITO,SITO,TISO,SISO,DIDO,DITO,TAP,STF,MCI</Instance6>
+	<Instance7 name="Domain">X,EU,BASE,INF,HBM,MDFI,IO,VCCR,VCORE,VATOM,VNNAON</Instance7>
+		<Instance8 name="Corner">X,VMIN,VNOM,VMAX,F1</Instance8>
+		<Instance9 name="Frequency">X,LFM,HFM,TFM,0800</Instance9>
+		<Instance10 name="User"></Instance10>
+	</Name>
+	<Name>
+		<Module1 name="Scrum">ARR</Module1>
+		<Module2 name="SubContent_PhysicalIP">GT,DE,SOC,COMMON,CORE,CCF,ATOM</Module2>
+		<Module3 name="User">CXX,C28,C68,C8F,GXX,GMD,GLG,GXL</Module3>
+		<Instance1 name="Category">CTRL,LSA,SSA,RAM,ROM,CAM,ALL,DFT,RESET</Instance1>
+		<Instance2 name="Partition">X,ALL,L3,MEDIA,RENDER,AUDI,CMI,FAB,FUSE,GCSE,GMIA,GPIO,IOP,M0D0,M0D1,M1D0,M1D1,MISC,NPK,PCIE,PSF0,PSF1,PUNI,SG,CORE,CCF,ATOM,NONCCF</Instance2>
+		<Instance3 name="TestType">MEASURE,SB,VMIN,HVQK,PATMOD,SCREEN,AUX,FUSECONFIG,UF,SAMPLE,SHMOO,FUNC,HRY,PWRDWN,SEARCH,CTVCAPTURE,RASTER,REPAIR,LYATM,VFDM,BLS,GFXSB,GFXAGG,PACRE,CAPPKTS,PACMON,PACMIN,PAUSE,RETENTION</Instance3>
+		<Instance4 name="Status">K,E</Instance4>
+		<Instance5 name="Position">INIT,SDTSTART,SDTBEGIN,SDTSTRESS,SDTEND,SDTNCS</Instance5>
+		<Instance6 name="Ratio_DFTinterface">X,TITO,SITO,TISO,SISO,DIDO,DITO,TAP,STF,MCI,080808</Instance6>
+		<Instance7 name="Domain">X,EU,BASE,INF,HBM,MDFI,IO,VCCR,VCORE,VATOM,VNNAON</Instance7>
+		<Instance8 name="Corner">X,VMIN,VNOM,VMAX,LV,BLS,F1</Instance8>
+		<Instance9 name="Frequency">X,LFM,HFM,TFM,LF,0800,0400</Instance9>
+		<Instance10 name="User"></Instance10>
+	</Name>
+	<Name>
+		<Module1 name="Scrum">TPI</Module1>
+		<Module2 name="SubContent_PhysicalIP">ADTL,BASE,BIN,DFF,EDM,FUSE,GFX,HVQK,IDV,POWER,RECOVERY,SIU,VCC,VIPR,DIODE,SOAK</Module2>
+		<Module3 name="User">BIN26,CONFIG,AGG,ISSTRESS,ADAPTIVE,PRD,STATIC,SDT,COM,SEQ,CXX,C28,C68,C8F,GXX,GMD,GLG,GXL</Module3>
+		<Instance1 name="Category">CTRL,DIAG,DFFX,EDM,FUSE,IDV,PGT,CONT,SURGE,VIPR,SIUP,PTH</Instance1>
+		<Instance2 name="Partition">X,BMFC,BRITA,DIEREC,GLX,SCREEN,XIU,BKGND,BINTRACE,UB,UF,ULT,INITIAL,BIN26,GT,DE,FULL,LITE,DDQ,DC,YIELDMON,HIGHRES,DFTRING,CTRL,DEBUG,READ,WRITE,HC1,HC2,HC3,HC4,HC5,HC6,HV1,LC1,LC2,LC3,LC4,LC5,LC6,LC7,DIODE</Instance2>
+		<Instance3 name="TestType">MEASURE,SB,VMIN,HVQK,PATMOD,SCREEN,AUX,FUSECONFIG,UF,SAMPLE,SHMOO,FUNC,HRY,PWRDWN,SEARCH,CTVCAPTURE,X,CALC,DC,RAP,WRITE,READ,GFXAGG,FUNC,XIU,LC,HC,HCDPS,LCDPS,HVDPS,EZA,BABYSTEPRAM,BABYSTEPTAP,MANUAL,STREAM,BABYSTEP,CANARY,PWRUP,DIERECOVERY,VCCCORE0,VCCCORE1,VCCATOM0,VCCATOM1,VCCR,VCCIA,VCCVINFGT0,VCCVINFGT1,VCCFPGM0,VCCFPGM1,EXTBGREF,VCCIASENSECEP,VNNAON,V1P8A,SOAK,TCI,FUSEBURN,FUSEREAD</Instance3>
+		<Instance4 name="Status">K,E</Instance4>
+		<Instance5 name="Position">INIT,MAIN,ALARM,TESTPLANSTARTFLOW,TESTPLANENDFLOW,LOTENDFLOW,LOTSTARTFLOW,SDTSTART,SDTBEGIN,SDTSTRESS,SDTEND,SDTFINAL,DUTCHANGEFLOW,SDTNCS</Instance5>
+		<Instance6 name="Ratio_DFTinterface">X,TITO,SITO,TISO,SISO,DIDO,DITO,TAP,STF,MCI</Instance6>
+		<Instance7 name="Domain">X,EU,BASE,INF,HBM,MDFI,IO</Instance7>
+		<Instance8 name="Corner">X,VMIN,VNOM,VMAX,5UA</Instance8>
+		<Instance9 name="Frequency">X,LFM,HFM,TFM</Instance9>
+		<Instance10 name="User"></Instance10>
+	</Name>
+	<Name>
+		<Module1 name="Scrum">MIO</Module1>
+		<Module2 name="SubContent_PhysicalIP">DDRBASE,DDR5DC,DDR5AC,LP5DC,LP5AC</Module2>
+		<Module3 name="User">CXX,C28,C68,C8F,GXX,GMD,GLG,GXL</Module3>
+		<Instance1 name="Category">CTRL,CCCMM,CPGC,MM,DCC,CADBNELB,CPGCANELB,DDR,RCOMP,ODT,SENSEAMP,VIX,VOX,CPGCINIT</Instance1>
+		<Instance2 name="Partition">X,DDR,DDR4,LP4,LP4X</Instance2>
+		<Instance3 name="TestType">MEASURE,SB,VMIN,HVQK,PATMOD,SCREEN,AUX,FUSECONFIG,UF,SAMPLE,SHMOO,FUNC,HRY,PWRDWN,SEARCH,CTVCAPTURE,CMEM,AMEAS,EDS,IPO</Instance3>
+		<Instance4 name="Status">K,E</Instance4>
+		<Instance5 name="Position">INIT,SDTSTART,SDTBEGIN,SDTSTRESS,SDTEND,SDTNCS</Instance5>
+		<Instance6 name="Ratio_DFTinterface">X,TITO,SITO,TISO,SISO,DIDO,DITO,TAP,STF,MCI</Instance6>
+		<Instance7 name="Domain">X,EU,BASE,INF,HBM,MDFI,IO</Instance7>
+		<Instance8 name="Corner">X,VMIN,VNOM,VMAX</Instance8>
+		<Instance9 name="Frequency">X,LFM,HFM,TFM,2133,3200,3733,4267,5400,6400</Instance9>
+		<Instance10 name="User"></Instance10>
+	</Name>
+	<Name>
+		<Module1 name="Scrum">SIO</Module1>
+		<Module2 name="SubContent_PhysicalIP">BSCAN,DP,INIT,INIT,LKG,PCIE,VIXVOX</Module2>
+		<Module3 name="User">CXX,C28,C68,C8F,GXX,GMD,GLG,GXL</Module3>
+		<Instance1 name="Category">CTRL,LKGLO,LKGHI,BSCANCHAIN,DP,PCIE,BSCANVIXVOX,BSCAN</Instance1>
+		<Instance2 name="Partition">X,</Instance2>
+		<Instance3 name="TestType">MEASURE,SB,VMIN,HVQK,PATMOD,SCREEN,AUX,FUSECONFIG,UF,SAMPLE,SHMOO,FUNC,HRY,PWRDWN,SEARCH,CTVCAPTURE,DCLKG,AMEAS,CMEM,PYLICENSE,VIXVOX,DCCURVE</Instance3>
+		<Instance4 name="Status">K,E</Instance4>
+		<Instance5 name="Position">INIT,SDTSTART,SDTBEGIN,SDTSTRESS,SDTEND,SDTNCS</Instance5>
+		<Instance6 name="Ratio_DFTinterface">X,TITO,SITO,TISO,SISO,DIDO,DITO,TAP,STF,MCI</Instance6>
+		<Instance7 name="Domain">X,EU,BASE,INF,HBM,MDFI,IO</Instance7>
+		<Instance8 name="Corner">X,VMIN,VNOM,VMAX</Instance8>
+		<Instance9 name="Frequency">X,LFM,HFM,TFM</Instance9>
+		<Instance10 name="User"></Instance10>
+	</Name>
+	<Name>
+		<Module1 name="Scrum">CLK</Module1>
+		<Module2 name="SubContent_PhysicalIP">ADPLL,DLCPLL,FLL,LJPLL</Module2>
+		<Module3 name="User">ALL,BASE,CXX,C28,C68,C8F,GXX,GMD,GLG,GXL</Module3>
+		<Instance1 name="Category">CTRL,AD,CLK,DLC,FLL,LJ</Instance1>
+		<Instance2 name="Partition">X,ALL,DE,CMI133</Instance2>
+		<Instance3 name="TestType">MEASURE,SB,VMIN,HVQK,PATMOD,SCREEN,AUX,FUSECONFIG,UF,SAMPLE,SHMOO,FUNC,HRY,PWRDWN,SEARCH,CTVCAPTURE,100XLOCK,10XLOCK,50XLOCK,CLKCOMP,CMEM,CONFIGREAD,DCOAMP,FUSECHECK,FVCURVE,GLXPRESS,IREFCAL,LDOMEAS,LDOTUNING,LDOVSEL,LOCK,LOCKBATH,LVRSWEEP,PATMOD,PYEXEC,PYINIT,PYLICENSE,RESETCHECK,SCREEN,SEARCH,SHMOO,SHMOOSAMPLE,SPECALIB,STATUSREAD,TAPDIAG,TDCTRIM,TIGHTLOOP,TRIMCHECK,UNCASCADE,VCCIOBIN,VCOTUNING,VIDWK,VIEWPIN,VIEWPINLOCKTIME</Instance3>
+		<Instance4 name="Status">K,E</Instance4>
+		<Instance5 name="Position">INIT,SDTSTART,SDTBEGIN,SDTSTRESS,SDTEND,SDTNCS</Instance5>
+		<Instance6 name="Ratio_DFTinterface">X,TITO,SITO,TISO,SISO,DIDO,DITO,TAP,STF,MCI</Instance6>
+		<Instance7 name="Domain">X,EU,BASE,INF,HBM,MDFI,IO</Instance7>
+		<Instance8 name="Corner">X,VMIN,VNOM,VMAX</Instance8>
+		<Instance9 name="Frequency">X,LFM,HFM,TFM</Instance9>
+		<Instance10 name="User"></Instance10>
+	</Name>
+	<Name>
+		<Module1 name="Scrum">PTH</Module1>
+		<Module2 name="SubContent_PhysicalIP">POWER,FIVR,DTS,DIODE,LDO,THRSOAK,DUSTI</Module2>
+		<Module3 name="User">OPS,TRIM,CXX,C28,C68,C8F,GXX,GMD,GLG,GXL,XXX</Module3>
+		<Instance1 name="Category">PTH,CTRL,DTS,FIVR,POWER,DIODE,TD</Instance1>
+		<Instance2 name="Partition">X,DIODE</Instance2>
+		<Instance3 name="TestType">MEASURE,SB,VMIN,HVQK,PATMOD,SCREEN,AUX,FUSECONFIG,UF,SAMPLE,SHMOO,FUNC,HRY,PWRDWN,SEARCH,CTVCAPTURE,CMEM,TDAU,ANAMEAS,FORK,SDRW,FH,IPO,PAUSE,APPLYTC,PARDATA,UEISTREAM,CS,SOAK</Instance3>
+		<Instance4 name="Status">K,E</Instance4>
+		<Instance5 name="Position">INIT,SDTSTART,SDTBEGIN,SDTSTRESS,SDTEND,SDTFINAL,TESTPLANSTARTFLOW,TESTPLANENDFLOW,SDTNCS,LOTSTARTFLOW,LOTENDFLOW</Instance5>
+		<Instance6 name="Ratio_DFTinterface">X,TITO,SITO,TISO,SISO,DIDO,DITO,TAP,STF,MCI</Instance6>
+		<Instance7 name="Domain">X,EU,BASE,INF,HBM,MDFI,IO</Instance7>
+		<Instance8 name="Corner">X,VMIN,VNOM,VMAX</Instance8>
+		<Instance9 name="Frequency">X,LFM,HFM,TFM</Instance9>
+		<Instance10 name="User"></Instance10>
+	</Name>
+		<Name>
+		<Module1 name="Scrum">FUS</Module1>
+		<Module2 name="SubContent_PhysicalIP">ADTL,BASE,BIN,DFF,EDM,FUSE,GFX,HVQK,IDV,POWER,RECOVERY,SIU,VCC,VIPR,FUSEVLD</Module2>
+		<Module3 name="User">BIN26,CONFIG,AGG,ISSTRESS,ADAPTIVE,PRD,STATIC,COM,SEQ,CXX,C28,C68,C8F,GXX,GMD,GLG,GXL,SDT</Module3>
+		<Instance1 name="Category">CTRL,DIAG,DFFX,EDM,FUSE,IDV,PGT,CONT,SURGE,VIPR,SIUP</Instance1>
+		<Instance2 name="Partition">X,BMFC,BRITA,DIEREC,GLX,SCREEN,XIU,BKGND,BINTRACE,UB,UF,ULT,INITIAL,BIN26,GT,DE,FULL,LITE,DDQ,DC,YIELDMON,HIGHRES,DFTRING,CTRL,DEBUG,READ,WRITE,HC1,HC2,HC3,HC4,HC5,HC6,HV1,LC1,LC2,LC3,LC4,LC5,LC6,LC7</Instance2>
+		<Instance3 name="TestType">MEASURE,SB,VMIN,HVQK,PATMOD,SCREEN,AUX,FUSECONFIG,UF,SAMPLE,SHMOO,FUNC,HRY,PWRDWN,SEARCH,CTVCAPTURE,X,CALC,DC,RAP,WRITE,READ,GFXAGG,XIU,LC,HC,HCDPS,LCDPS,HVDPS,PWRUP,EZA,BABYSTEPRAM,BABYSTEPTAP,MANUAL,STREAM,BABYSTEP,CANARY,DIERECOVERY,VCCCORE0,VCCCORE1,VCCATOM0,VCCATOM1,VCCR,VCCIA,VCCVINFGT0,VCCVINFGT1,VCCFPGM0,VCCFPGM1,EXTBGREF,VCCIASENSECEP,VNNAON,V1P8A,FUSEBURN,FUSEREAD</Instance3>
+		<Instance4 name="Status">K,E</Instance4>
+		<Instance5 name="Position">INIT,MAIN,START,BEGIN,PREHVQK,POSTHVQK,STRESS,END,FINAL,ALARM,TESTPLANSTARTFLOW,TESTPLANENDFLOW,LOTENDFLOW,LOTSTARTFLOW,DUTCHANGEFLOW,NCS</Instance5>
+		<Instance6 name="Ratio_DFTinterface">X,TITO,SITO,TISO,SISO,DIDO,DITO,TAP,STF,MCI</Instance6>
+		<Instance7 name="Domain">X,EU,BASE,INF,HBM,MDFI,IO</Instance7>
+		<Instance8 name="Corner">X,VMIN,VNOM,VMAX,5UA</Instance8>
+		<Instance9 name="Frequency">X,LFM,HFM,TFM</Instance9>
+		<Instance10 name="User"></Instance10>
+	</Name>
+</root>

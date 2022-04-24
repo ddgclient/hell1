@@ -1,0 +1,21 @@
+ {
+    "Configurations": [
+       {
+            "Name": "PVAL_SHMOO_FREQ",
+            "ConfigurationElement": [
+                {
+                    "Pin": "YY_TAP_TDI_S2C", 
+                    "Type": "PINDATA",
+                    "StartAddress": "300", 
+                    "StartAddressOffset": 0, 
+                    "EndAddress": "300", 
+                    "EndAddressOffset": 3, 
+                    "IsChannelLink": false, 
+                    "PatternsRegEx": [
+                        ".*_longreset_cpu_lr_none"
+                    ]
+                }
+            ]
+        }
+    ]
+}

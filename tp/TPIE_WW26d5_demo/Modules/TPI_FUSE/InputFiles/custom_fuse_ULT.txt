@@ -1,0 +1,23 @@
+################################################################################
+#   Filename: custom_fuse_prog.txt
+#-------------------------------------------------------------------------------
+#    Purpose: Fuse Prog custom file
+#-------------------------------------------------------------------------------
+# Created by: Gary Wozniak
+#       Date: 31-mar-2021 Rev0
+###############################################################################
+
+#############################################################################
+#DEFINE:	SETPOINT:         DATA_TYPE:      VARIABLE:              VARIABLE_TYPE:     VALUE:			CONDITION
+#############################################################################
+define:		BURN :		STRING:		intro_method_val_prod:	LITERAL:	"PROD"				: *
+define:     BURN :     	STRING:     intro_method_val_eng:   LITERAL:	"ENG"                          	: *
+define:     BURN :     	STRING:     intro_method_val_sd:  	LITERAL:	"SD"                          	: *
+define:		BURN :  	STRING:     intro_method_glb:     	GLOBAL:		SCVars.SC_INTRO_METHOD      	: *
+define:     BURN :     	STRING:     operation_glb:     	GLOBAL:		SCVars.SC_LOCN	       		: *
+define:     BURN :     	STRING:     operation_val_prod:	LITERAL:	"132110"                        : *
+define:		BURN :		STRING:		custom_UFGL_Fuse_ULT_Encode_String:	GLOBAL	: FUSEUFGL.UFGL_Fuse_ULT_Encode_String:	*
+define:     BURN :     	STRING:     force_stress:     	GLOBAL:		EDCVars.HVQK_Force_Stress	: *
+define:     BURN :     	STRING:     force_stress_enable:	LITERAL:	"1"                         	: *
+
+define : ALL     : STRING : NULL       : LITERAL       :   ""  :   *

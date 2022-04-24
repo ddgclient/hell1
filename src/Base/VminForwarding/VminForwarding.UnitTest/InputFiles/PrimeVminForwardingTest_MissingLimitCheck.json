@@ -1,0 +1,158 @@
+{
+  "powerDomains": [
+    {
+      "name": "CR",
+      "instances": "CR0,CR1,CR2,CR3,CR4,CR5,CR6,CR7",
+      "corners": [
+        {
+          "name": "F6",
+          "frequencySource": {
+            "type": "BinMatrix",
+            "value": "CR_F6_FREQ"
+          },
+          "voltageSources": {
+            "cornersWithLinearAdjustment": [
+              [ "CR@F4", "CR@F5" ]
+            ]
+          },
+          "exportStorageVariable": {
+            "voltageVariablePrefix": "CURRENT_FAST_VMIN_VCCC_",
+            "frequencyVariablePrefix": "CURRENT_FAST_VMINFREQUENCY_"
+          }
+        },
+        {
+          "name": "F5",
+          "FrequencySource": {
+            "type": "BinMatrix",
+            "value": "CR_F5_FREQ"
+          },
+          "voltageSources": {
+            "sharedStorageLimitCheck":"VminDFF_CRF5",
+            "cornersWithLinearAdjustment": [
+              [ "CR@F3", "CR@F4" ]
+            ]
+          },
+          "exportStorageVariable": {
+            "voltageVariablePrefix": "CURRENT_FAST_VMIN_VCCC_",
+            "frequencyVariablePrefix": "CURRENT_FAST_VMINFREQUENCY_"
+          }
+        },
+        {
+          "name": "F4",
+          "FrequencySource": {
+            "type": "BinMatrix",
+            "value": "CR_F4_FREQ"
+          },
+          "voltageSources": {
+            "sharedStorageLimitCheck":"VminDFF_CRF4",
+            "cornersWithLinearAdjustment": [
+              [ "CR@F2", "CR@F3" ]
+            ]
+          },
+          "exportStorageVariable": {
+            "voltageVariablePrefix": "CURRENT_FAST_VMIN_VCCC_",
+            "frequencyVariablePrefix": "CURRENT_FAST_VMINFREQUENCY_"
+          }
+        },
+        {
+          "name": "F3",
+          "FrequencySource": {
+            "type": "BinMatrix",
+            "value": "CR_F3_FREQ"
+          },
+          "voltageSources": {
+            "sharedStorageLimitCheck":"VminDFF_CRF3",
+            "cornersWithLinearAdjustment": [
+              [ "CR@F1", "CR@F2" ]
+            ]
+          },
+          "exportStorageVariable": {
+            "voltageVariablePrefix": "CURRENT_FAST_VMIN_VCCC_",
+            "frequencyVariablePrefix": "CURRENT_FAST_VMINFREQUENCY_"
+          }
+        },
+        {
+          "name": "F2",
+          "FrequencySource": {
+            "type": "BinMatrix",
+            "value": "CR_F2_FREQ"
+          },
+          "voltageSources": {
+            "sharedStorageLimitCheck":"VminDFF_CRF2",
+            "corner": [ "CR@F1" ]
+          },
+          "exportStorageVariable": {
+            "voltageVariablePrefix": "CURRENT_FAST_VMIN_VCCC_",
+            "frequencyVariablePrefix": "CURRENT_FAST_VMINFREQUENCY_"
+          }
+        },
+        {
+          "name": "F1",
+          "FrequencySource": {
+            "type": "BinMatrix",
+            "value": "CR_F1_FREQ"
+          },
+          "voltageSources":{
+            "sharedStorageLimitCheck":"VminDFF_CRF1"
+          },
+          "exportStorageVariable": {
+            "voltageVariablePrefix": "CURRENT_FAST_VMIN_VCCC_",
+            "frequencyVariablePrefix": "CURRENT_FAST_VMINFREQUENCY_"
+          }
+        }
+      ]
+    },
+    {
+      "name": "CLR",
+      "instances": "CLR",
+      "corners": [
+        {
+          "name": "F5",
+          "FrequencySource": {
+            "type": "BinMatrix",
+            "value": "CLR_F5_FREQ"
+          },
+          "voltageSources": {
+            "sharedStorageLimitCheck":"VminDFF_CLRF5",
+            "cornersWithLinearAdjustment": [
+              [ "CLR@F1", "CLR@F3" ]
+            ]
+          },
+          "exportStorageVariable": {
+            "voltageVariablePrefix": "CURRENT_FAST_VMIN_VCCC_",
+            "frequencyVariablePrefix": "CURRENT_FAST_VMINFREQUENCY_"
+          }
+        },
+        {
+          "name": "F3",
+          "FrequencySource": {
+            "type": "BinMatrix",
+            "value": "CLR_F3_FREQ"
+          },
+          "voltageSources": {
+            "sharedStorageLimitCheck":"VminDFF_CLRF3",
+            "corner": [ "CLR@F1" ]
+          },
+          "exportStorageVariable": {
+            "voltageVariablePrefix": "CURRENT_FAST_VMIN_VCCC_",
+            "frequencyVariablePrefix": "CURRENT_FAST_VMINFREQUENCY_"
+          }
+        },
+        {
+          "name": "F1",
+          "FrequencySource": {
+            "type": "BinMatrix",
+            "value": "CLR_F1_FREQ"
+          },
+          "voltageSources":{
+            "sharedStorageLimitCheck":"VminDFF_CLRF1"
+          },
+          "exportStorageVariable": {
+            "voltageVariablePrefix": "CURRENT_FAST_VMIN_VCCC_",
+            "frequencyVariablePrefix": "CURRENT_FAST_VMINFREQUENCY_"
+          }
+        }
+      ]
+    }
+  ]
+}

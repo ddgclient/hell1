@@ -1,0 +1,21 @@
+{
+  "Version": 1.0,
+  "RecoveryToken": [ "IPU2" ],
+  "ValidOptions": [ "123" ],
+  "RecoveryPriority": [ 1 ],
+  "ErrorValue": "9",
+  "FailValue": "1",
+  "PassValue": "0",
+  "DesignIps": {
+    "IPU2": {
+      "Type": "Partial",
+      "Required": [ "LEHP_BP37_WBP0_MEM1" ],
+      "RecoveryOptions": {
+        "2": [ "LEHP_BP37_WBP0_MEM2" ],
+        "3": [ "LEHP_BP37_WBP0_MEM3", "LEHP_BP37_WBP0_MEM4" ]
+      }
+    }
+  }
+}
+
+

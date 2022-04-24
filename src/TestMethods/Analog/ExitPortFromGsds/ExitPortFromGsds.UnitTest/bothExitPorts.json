@@ -1,0 +1,11 @@
+﻿{
+ "ExitPorts": {
+ 	 "Babysteps" : 1,
+     "ShortMV" : 2, 
+     "LongMV" : 3, 
+     "HVM" : 4,
+     "RejectVal" : 5
+ },
+ "UserVarName" : "CLK_LJPLL_ALL.ENGR_DATA",
+ "GsdsName" : "Johnny.McHotSauce"
+}

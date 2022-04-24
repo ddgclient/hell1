@@ -1,0 +1,5 @@
+Pin;IP;Sequence;Subsequence;Field;Size;PerBit;LowLimit;HighLimit;ExpectedData;Equation;ItuffToken;FailPort;Base;SharedStorageToken
+YY_TAP_TDO_C2S;DTS;DTSCODE;raw0;AON;9;0;-;-;-;-;TH_CPU28_SDS_DTSCODE0;2;;
+YY_TAP_TDO_C2S;DTS;DTSCODE;raw0;SOCS0;9;0;-;-;-;-;TH_CPU28_SDS_DTSCODE0;2;;
+YY_TAP_TDO_C2S;DTS;DTSCODE;raw0;SOCS1;9;0;-;-;-;-;TH_CPU28_SDS_DTSCODE0;2;;
+YY_TAP_TDO_C2S;DTS;DTSCODE;raw0;SOCS2;9;0;-;-;-;-;TH_CPU28_SDS_DTSCODE0;2;;

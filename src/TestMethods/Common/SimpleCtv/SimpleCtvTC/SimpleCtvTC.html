@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>DDG Prime SimpleCtv Test Class</title>
+</head>
+<body>
+
+    <h1 id="ddg-prime-simplectv-test-class">DDG Prime SimpleCtv Test Class</h1>
+<h4 id="latest-3252021-fmurillo">Latest: 3/25/2021 (fmurillo)</h4>
+<h1 id="introduction">Introduction</h1>
+<p>SimpleCtv is a basic test class to grab CTV data from one or more pins and set kill limits.</p>
+<h1 id="methodology">Methodology</h1>
+<p>Tester capture data is usually LSB-MSB, so the template gives the use the ability to reformat the bits indexes.
+Each capture register is converted to an integer value and compared against per-register high and low limits.
+User is also able to select what registers to print to datalog.</p>
+<h1 id="parameters">Parameters</h1>
+<h2 id="patlist">Patlist</h2>
+<p>Plist name. Important: This test class process CTV data only. No fail data.</p>
+<h2 id="levelstc">LevelsTc</h2>
+<p>Levels test condition.</p>
+<h2 id="timingstc">TimingsTc</h2>
+<p>Timings test condition.</p>
+<h2 id="ctvcapturepins">CtvCapturePins</h2>
+<p>Comma-separated list of pins to capture CTV data. If more than one pin is being used, all data is going be concatenated one vector at the time.<br>
+<img src="images/simplectv_indexes.png" alt="Indexes" /></p>
+<h2 id="registers">Registers</h2>
+<p>Command-line parameter. Define any number of register using bits ranges or list of indexes.<br>
+Registers = &quot;--registers reg1:11-0 reg2:12,13,14&quot;</p>
+<h2 id="print">Print</h2>
+<p>Command-line parameter(optional). List registers to print to ituff. <br>
+Print = &quot;--registers reg1 reg2&quot;</p>
+<h2 id="limits">Limits</h2>
+<p>Command-line parameter(optional). List high and low limits for each register.<br>
+Limits = &quot;--high reg2:10 --low reg1:856&quot;</p>
+<h1 id="ports">Ports</h1>
+<p>[Returns(1, PortType.Pass, &quot;Passed.&quot;)]<br>
+[Returns(0, PortType.Fail, &quot;Failed plist execution..&quot;)]<br>
+[Returns(2, PortType.Fail, &quot;Failed high limit.&quot;)]<br>
+[Returns(3, PortType.Fail, &quot;Failed low limit.&quot;)]<br>
+[Returns(4, PortType.Fail, &quot;Failed high and low limits.&quot;)]<br></p>
+
+
+</body>
+</html>

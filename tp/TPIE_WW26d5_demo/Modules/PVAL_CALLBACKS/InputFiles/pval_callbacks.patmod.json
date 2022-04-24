@@ -1,0 +1,89 @@
+ {
+    "Configurations": [
+       {
+            "Name": "PVAL_CALLBACKS_SAMPLE0",
+            "ConfigurationElement": [
+                {
+                    "Pin": "YY_TAP_TDI_S2C", 
+                    "Type": "PINDATA",
+                    "StartAddress": "300", 
+                    "StartAddressOffset": 0, 
+                    "EndAddress": "300", 
+                    "EndAddressOffset": 3, 
+                    "IsChannelLink": false, 
+                    "PatternsRegEx": [
+                        ".*_longreset_cpu_lr_none"
+                    ]
+                }
+            ]
+        },
+       {
+            "Name": "PVAL_CALLBACKS_SAMPLE1",
+            "ConfigurationElement": [
+                {
+                    "Pin": "YY_TAP_TDI_S2C", 
+                    "Type": "PINDATA",
+                    "StartAddress": "300", 
+                    "StartAddressOffset": 4, 
+                    "EndAddress": "300", 
+                    "EndAddressOffset": 7, 
+                    "IsChannelLink": false, 
+                    "PatternsRegEx": [
+                        ".*_longreset_cpu_lr_none"
+                    ]
+                }
+            ]
+        },
+       {
+            "Name": "PVAL_CALLBACKS_SAMPLE2",
+            "ConfigurationElement": [
+                {
+                    "Pin": "YY_TAP_TDI_S2C", 
+                    "Type": "PINDATA",
+                    "StartAddress": "300", 
+                    "StartAddressOffset": 8, 
+                    "EndAddress": "300", 
+                    "EndAddressOffset": 11, 
+                    "IsChannelLink": false, 
+                    "PatternsRegEx": [
+                        ".*_longreset_cpu_lr_none"
+                    ]
+                }
+            ]
+        },
+       {
+            "Name": "PVAL_CALLBACKS_SAMPLE3",
+            "ConfigurationElement": [
+                {
+                    "Pin": "YY_TAP_TDI_S2C", 
+                    "Type": "PINDATA",
+                    "StartAddress": "300", 
+                    "StartAddressOffset": 12, 
+                    "EndAddress": "300", 
+                    "EndAddressOffset": 15, 
+                    "IsChannelLink": false, 
+                    "PatternsRegEx": [
+                        ".*_longreset_cpu_lr_none"
+                    ]
+                }
+            ]
+        },
+       {
+            "Name": "PVAL_CALLBACKS_DIERECOVERY",
+            "ConfigurationElement": [
+                {
+                    "Pin": "YY_TAP_TDI_S2C", 
+                    "Type": "PINDATA",
+                    "StartAddress": "300", 
+                    "StartAddressOffset": 12, 
+                    "EndAddress": "300", 
+                    "EndAddressOffset": 13, 
+                    "IsChannelLink": false, 
+                    "PatternsRegEx": [
+                        ".*_longreset_cpu_lr_none"
+                    ]
+                }
+            ]
+        }
+    ]
+}

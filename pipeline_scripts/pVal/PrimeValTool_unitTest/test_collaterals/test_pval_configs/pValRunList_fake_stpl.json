@@ -1,0 +1,33 @@
+{
+  "pValRunList": [
+    {
+      "LogArea": ".\\test_collaterals\\fakeTP\\logs",
+      "TOSVersion": "TOS3900",
+      "TestPlan": [
+        {
+          "TestPlanName": "FakeTestPlan",
+          "TplFile": ".\\test_collaterals\\fakeTP\\BaseTestPlan.tpl",
+          "StplFile": ".\\test_collaterals\\DoesNotExist\\SubTestPlan.stpl",
+          "PlistFile": ".\\test_collaterals\\fakeTP\\PLIST_ALL.xml",
+          "SocFile": ".\\test_collaterals\\fakeTP\\SocketFile.soc",
+          "QuickSimFile": ".\\test_collaterals\\fakeTP\\QuickSim.xml",
+          "EnvFiles": {
+            "Release": ".\\test_collaterals\\fakeTP\\EnvironmentFile.env"
+          },
+          "ItuffTokensToIgnore": [
+            "|CoreTag|TDAU_CH_CORE|Thermal|",
+            "|Time:",
+            "2_mrslt_",
+            "3_lbeg",
+            "7_dsrcprg_HDMTG2",
+            "4_tsattrs_tplpath",
+            "4_tsattrs_stplpath",
+            "4_tsattrs_socpath",
+            "4_tsattrs_envpath",
+            "2_strgval_NWI"
+          ]
+        }
+      ]
+    }
+  ]
+}

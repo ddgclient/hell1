@@ -1,0 +1,9 @@
+Pin;IP;Sequence;Subsequence;Field;Size;Base;StorageToken;Equation;ItuffToken
+DDR1_DQ50;V0;training;subseq1;val1;6;-;I:DUT.CtvDecoder_<Path>;-;<TssidRename>_Token1
+DDR1_DQ50;V0;training;subseq1;val2;3;-;-;this + I:DUT.CtvDecoder_DDR1_DQ50.V0.training.subseq1.val1 + Cos(0);<TssidRename>_Token1
+DDR1_DQ50;V0;training;subseq1;val3;5;-;-;Max(val2, this);<TssidRename>_Token1
+DDR1_DQ50;V0;training;subseq1;val4;0;-;-;Min(val3, 10);<TssidRename>_Token1
+DDR1_DQ50;V0;training;subseq1;val5;0;-;-;Max(Pow(I:DUT.CtvDecoder_DDR1_DQ50.V0.training.subseq1.val1, 2) - val2, Min(val1, val4));<TssidRename>_Token1
+DDR1_DQ50;V0;training;subseq1;val6;4;16;S:DUT.CtvDecoder_<Path>;-;<TssidRename>_Token1
+DDR1_DQ50;V0;training;subseq1;val7;4;8;S:DUT.CtvDecoder_<Path>;-;<TssidRename>_Token1
+DDR1_DQ50;V0;training;subseq1;val8;4;2;S:DUT.CtvDecoder_<Path>;-;<TssidRename>_Token1

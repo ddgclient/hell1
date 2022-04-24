@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Manually created this file to force XAxisParamType and YAxisParamType values -->
+<TestLibraryInterfaces xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:schemaLocation="http://vtsm.intel.com/2009/TestLibraryInterfaces file:///C:/Intel/hdmt/hdmtOS_3.9.0.1_Release/TOSRelease/bin/release/TestLibraryInterfaces.xsd" xmlns="http://vtsm.intel.com/2009/TestLibraryInterfaces">
+  <TestLibrary name="PrimeTestInstance">
+    <TestClass name="DDGShmooTC" MetaData="dll=DDGShmooTC" />
+    <Imports>
+      <FileName>TestMethodBase.xml</FileName>
+      <FileName>DDGShmooTCCommonParams.xml</FileName>
+    </Imports>
+    <PublicBases>
+      <BaseName>PrimeShmooTestMethod</BaseName>
+    </PublicBases>
+    <Parameters>
+      <Parameter name="XAxisType" descriptions="Gets or sets the XAxisType parameter.">
+        <Type>
+          <Tester>String</Tester>
+          <TestProgram>String</TestProgram>
+        </Type>
+        <Choices>
+          <Choice>None</Choice>
+          <Choice>UserVarTiming</Choice>
+          <Choice>UserVarLevels</Choice>
+          <Choice>SpecSetVariable</Choice>
+          <Choice>FIVR</Choice>
+          <Choice>PatConfig</Choice>
+          <Choice>PatConfigSetPoint</Choice>
+        </Choices>
+        <Default>SpecSetVariable</Default>
+        <Optional />
+      </Parameter>
+      <Parameter name="YAxisType" descriptions="Gets or sets the YAxisType parameter.">
+        <Type>
+          <Tester>String</Tester>
+          <TestProgram>String</TestProgram>
+        </Type>
+        <Choices>
+          <Choice>None</Choice>
+          <Choice>UserVarTiming</Choice>
+          <Choice>UserVarLevels</Choice>
+          <Choice>SpecSetVariable</Choice>
+          <Choice>FIVR</Choice>
+          <Choice>PatConfig</Choice>
+          <Choice>PatConfigSetPoint</Choice>
+        </Choices>
+        <Default>SpecSetVariable</Default>
+        <Optional />
+      </Parameter>
+      <Parameter name="VoltageConverter" descriptions="Gets or sets a list of voltage overrides.">
+        <Type>
+          <Tester>String</Tester>
+          <TestProgram>String</TestProgram>
+        </Type>
+        <Default />
+        <Optional />
+      </Parameter>
+      <Parameter name="DataLogType" descriptions="Gets or sets the Ituff Formatting to use.">
+        <Type>
+          <Tester>String</Tester>
+          <TestProgram>String</TestProgram>
+        </Type>
+        <Choices>
+          <Choice>SHMOO_HUB</Choice>
+          <Choice>ECADS</Choice>
+        </Choices>
+        <Default>SHMOO_HUB</Default>
+        <Optional />
+      </Parameter>
+      <Parameter name="PrePointExecMode" descriptions="Gets or sets the PrePointExec Mode.">
+        <Type>
+          <Tester>String</Tester>
+          <TestProgram>String</TestProgram>
+        </Type>
+        <Choices>
+          <Choice>Never</Choice>
+          <Choice>OnXChange</Choice>
+          <Choice>OnYChange</Choice>
+          <Choice>OnAnyChange</Choice>
+        </Choices>
+        <Default>Never</Default>
+        <Optional />
+      </Parameter>
+      <Parameter name="PrePointExecTest" descriptions="Gets or sets the test to run when PrePointExec mode is enabled.">
+        <Type>
+          <Tester>String</Tester>
+          <TestProgram>String</TestProgram>
+        </Type>
+        <Default />
+        <Optional />
+      </Parameter>
+      <Parameter name="Patlist" descriptions="Gets or sets Patlist to execute.">
+        <Type>
+          <Tester>String</Tester>
+          <TestProgram>Plist</TestProgram>
+        </Type>
+        <AlwaysRequired />
+      </Parameter>
+      <Parameter name="TimingsTc" descriptions="Gets or sets TimingsTc for plist execution.">
+        <Type>
+          <Tester>String</Tester>
+          <TestProgram>TimingCondition</TestProgram>
+        </Type>
+        <AlwaysRequired />
+      </Parameter>
+      <Parameter name="LevelsTc" descriptions="Gets or sets LevelsTc to plist execution.">
+        <Type>
+          <Tester>String</Tester>
+          <TestProgram>LevelsCondition</TestProgram>
+        </Type>
+        <AlwaysRequired />
+      </Parameter>
+      <Parameter name="PrePlist" descriptions="Gets or sets the PrePlist callback to plist execution.">
+        <Type>
+          <Tester>String</Tester>
+          <TestProgram>String</TestProgram>
+        </Type>
+        <Default />
+        <Optional />
+      </Parameter>
+      <Parameter name="MaskPins" descriptions="Gets or sets comma separated pins for mask.">
+        <Type>
+          <Tester>String</Tester>
+          <TestProgram>String</TestProgram>
+        </Type>
+        <Default />
+        <Optional />
+      </Parameter>
+      <Parameter name="XAxisParam" descriptions="Gets or sets the XAxisParameter. Empty by default.">
+        <Type>
+          <Tester>String</Tester>
+          <TestProgram>String</TestProgram>
+        </Type>
+        <Default />
+        <Optional />
+      </Parameter>
+      <Parameter name="XAxisParamType" descriptions="Use XAxisType. Set this to UserDefined or None if XAxisType is also None.">
+        <Type>
+          <Tester>String</Tester>
+          <TestProgram>String</TestProgram>
+        </Type>
+        <Choices>
+          <Choice>None</Choice>
+          <Choice>UserDefined</Choice>
+        </Choices>
+        <Default>UserDefined</Default>
+        <Optional />
+      </Parameter>
+      <Parameter name="XAxisDatalogPrefix" descriptions="Gets or sets the unit prefix for scaling the X axis. (Base, Milli, Micro, Nano).">
+        <Type>
+          <Tester>String</Tester>
+          <TestProgram>String</TestProgram>
+        </Type>
+        <Choices>
+          <Choice>Base</Choice>
+          <Choice>Milli</Choice>
+          <Choice>Micro</Choice>
+          <Choice>Nano</Choice>
+        </Choices>
+        <Default>Base</Default>
+        <Optional />
+      </Parameter>
+      <Parameter name="XAxisDatalogName" descriptions="Gets or sets the name used during datalog prints for X axis. Uses XAxisParam by default.">
+        <Type>
+          <Tester>String</Tester>
+          <TestProgram>String</TestProgram>
+        </Type>
+        <Default />
+        <Optional />
+      </Parameter>
+      <Parameter name="XAxisRange" descriptions="Gets or sets the XAxisRange. Default format: &quot;Start: Resolution: NumberOfPoints&quot;.">
+        <Type>
+          <Tester>String</Tester>
+          <TestProgram>String</TestProgram>
+        </Type>
+        <Default />
+        <Optional />
+      </Parameter>
+      <Parameter name="YAxisParam" descriptions="Gets or sets the YAxisParameter. Empty by default.">
+        <Type>
+          <Tester>String</Tester>
+          <TestProgram>String</TestProgram>
+        </Type>
+        <Default />
+        <Optional />
+      </Parameter>
+      <Parameter name="YAxisParamType" descriptions="Use YAxisType. Set this to UserDefined or None if YAxisType is also None.">
+        <Type>
+          <Tester>String</Tester>
+          <TestProgram>String</TestProgram>
+        </Type>
+        <Choices>
+          <Choice>None</Choice>
+          <Choice>UserDefined</Choice>
+        </Choices>
+        <Default>UserDefined</Default>
+        <Optional />
+      </Parameter>
+      <Parameter name="YAxisRange" descriptions="Gets or sets the YAxisRange. Default format: &quot;Start: Resolution: NumberOfPoints&quot;.">
+        <Type>
+          <Tester>String</Tester>
+          <TestProgram>String</TestProgram>
+        </Type>
+        <Default />
+        <Optional />
+      </Parameter>
+      <Parameter name="YAxisDatalogPrefix" descriptions="Gets or sets the unit prefix for scaling the Y axis. (Base, Milli, Micro, Nano).">
+        <Type>
+          <Tester>String</Tester>
+          <TestProgram>String</TestProgram>
+        </Type>
+        <Choices>
+          <Choice>Base</Choice>
+          <Choice>Milli</Choice>
+          <Choice>Micro</Choice>
+          <Choice>Nano</Choice>
+        </Choices>
+        <Default>Base</Default>
+        <Optional />
+      </Parameter>
+      <Parameter name="YAxisDatalogName" descriptions="Gets or sets the name used during datalog prints for Y Axis. Uses YAxisParam by default.">
+        <Type>
+          <Tester>String</Tester>
+          <TestProgram>String</TestProgram>
+        </Type>
+        <Default />
+        <Optional />
+      </Parameter>
+      <Parameter name="RegionalKillLimits" descriptions="Gets or sets the RegionalKillLimits. Format is: &quot;XMin, XMax, YMin, YMax&quot;.">
+        <Type>
+          <Tester>String</Tester>
+          <TestProgram>String</TestProgram>
+        </Type>
+        <Default />
+        <Optional />
+      </Parameter>
+      <Parameter name="PrintFormat" descriptions="Gets or sets the print format for shmoo ituffs.">
+        <Type>
+          <Tester>String</Tester>
+          <TestProgram>String</TestProgram>
+        </Type>
+        <Choices>
+          <Choice>ShmooHub</Choice>
+          <Choice>ECADS</Choice>
+          <Choice>ARIES</Choice>
+        </Choices>
+        <Default>ShmooHub</Default>
+        <Optional />
+      </Parameter>
+      <Parameter name="PowerDownBetweenPoints" descriptions="Gets or sets power_down_between_point. This will trigger EndSequence before ApplyTestCondition in PrePointExecute.">
+        <Type>
+          <Tester>String</Tester>
+          <TestProgram>String</TestProgram>
+        </Type>
+        <Choices>
+          <Choice>ENABLED</Choice>
+          <Choice>DISABLED</Choice>
+        </Choices>
+        <Default>DISABLED</Default>
+        <Optional />
+      </Parameter>
+      <Parameter name="PlotMode" descriptions="Gets or sets PlotMode.">
+        <Type>
+          <Tester>String</Tester>
+          <TestProgram>String</TestProgram>
+        </Type>
+        <Choices>
+          <Choice>NORMAL</Choice>
+        </Choices>
+        <Default>NORMAL</Default>
+        <Optional />
+      </Parameter>
+      <Parameter name="IfeObject" descriptions="Gets or sets ExtendedFunctions.">
+        <Type>
+          <Tester>String</Tester>
+          <TestProgram>String</TestProgram>
+        </Type>
+        <Default />
+        <Optional />
+      </Parameter>
+    </Parameters>
+    <ExitPorts>
+      <ExitPort>
+        <PortNumber>3</PortNumber>
+        <PortType>Pass</PortType>
+        <PortDescriptions>PASS PORT</PortDescriptions>
+      </ExitPort>
+      <ExitPort>
+        <PortNumber>2</PortNumber>
+        <PortType>Fail</PortType>
+        <PortDescriptions>FAIL PORT</PortDescriptions>
+      </ExitPort>
+      <ExitPort>
+        <PortNumber>1</PortNumber>
+        <PortType>Pass</PortType>
+        <PortDescriptions>PASS PORT</PortDescriptions>
+      </ExitPort>
+      <ExitPort>
+        <PortNumber>0</PortNumber>
+        <PortType>Fail</PortType>
+        <PortDescriptions>FAIL PORT</PortDescriptions>
+      </ExitPort>
+      <ExitPort>
+        <PortNumber>-1</PortNumber>
+        <PortType>Error</PortType>
+        <PortDescriptions>PORT FAIL FOR SW ERROR CONDITION</PortDescriptions>
+      </ExitPort>
+      <ExitPort>
+        <PortNumber>-2</PortNumber>
+        <PortType>Fail</PortType>
+        <PortDescriptions>PORT FAIL FOR HW ALARM CONDITION</PortDescriptions>
+      </ExitPort>
+    </ExitPorts>
+  </TestLibrary>
+</TestLibraryInterfaces>

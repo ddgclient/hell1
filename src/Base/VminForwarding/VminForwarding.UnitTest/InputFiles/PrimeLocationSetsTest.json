@@ -1,0 +1,18 @@
+{
+  "set":[
+    {
+      "name":"RCH_HVM",
+      "value":["6163:CLASSHOT", "6167:CLASSHOT"]
+    },
+    {
+      "name":"RCC_HVM",
+      "value":["6163:CLASSCOLD", "6167:CLASSCOLD"]
+    }
+  ],
+  "class":[
+    {
+      "name":"RC_HVM",
+      "value":["RCH_HVM", "RCC_HVM"]
+    }
+  ]
+}

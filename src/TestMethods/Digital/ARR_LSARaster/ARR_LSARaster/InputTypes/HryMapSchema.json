@@ -1,0 +1,195 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://example.com/example.json",
+    "type": "object",
+    "title": "The root schema",
+    "description": "The root schema comprises the entire JSON document.",
+    "required": [
+        "HSR_HRY_config"
+    ],
+    "properties": {
+        "HSR_HRY_config": {
+            "$id": "#/properties/HSR_HRY_config",
+            "type": "object",
+            "title": "The HSR_HRY_config schema",
+            "description": "An explanation about the purpose of this instance.",
+            "required": [
+                "ReverseCtvCaptureData",
+                "CtvToHryMapping",
+                "Criterias",
+                "Algorithms"
+            ],
+            "properties": {
+                "ReverseCtvCaptureData": {
+                    "$id": "#/properties/HSR_HRY_config/properties/ReverseCtvCaptureData",
+                    "type": "boolean",
+                    "title": "The ReverseCtvCaptureData schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": false
+                },
+                "CtvToHryMapping": {
+                    "$id": "#/properties/HSR_HRY_config/properties/CtvToHryMapping",
+                    "type": "array",
+                    "title": "The CtvToHryMapping schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "additionalItems": true,
+                    "items": {
+                        "$id": "#/properties/HSR_HRY_config/properties/CtvToHryMapping/items",
+                        "anyOf": [
+                            {
+                                "$id": "#/properties/HSR_HRY_config/properties/CtvToHryMapping/items/anyOf/0",
+                                "type": "object",
+                                "title": "The first anyOf schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": {},
+                                "required": [
+                                    "Ctv_Data",
+                                    "Hry_Data"
+                                ],
+                                "properties": {
+                                    "Ctv_Data": {
+                                        "$id": "#/properties/HSR_HRY_config/properties/CtvToHryMapping/items/anyOf/0/properties/Ctv_Data",
+                                        "type": "string",
+                                        "title": "The Ctv_Data schema",
+                                        "description": "An explanation about the purpose of this instance.",
+                                        "default": ""
+                                    },
+                                    "Hry_Data": {
+                                        "$id": "#/properties/HSR_HRY_config/properties/CtvToHryMapping/items/anyOf/0/properties/Hry_Data",
+                                        "type": "string",
+                                        "title": "The Hry_Data schema",
+                                        "description": "An explanation about the purpose of this instance.",
+                                        "default": ""
+                                    }
+                                },
+                                "additionalProperties": true
+                            }
+                        ]
+                    }
+                },
+                "Criterias": {
+                    "$id": "#/properties/HSR_HRY_config/properties/Criterias",
+                    "type": "array",
+                    "title": "The Criterias schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "additionalItems": true,
+                    "items": {
+                        "$id": "#/properties/HSR_HRY_config/properties/Criterias/items",
+                        "anyOf": [
+                            {
+                                "$id": "#/properties/HSR_HRY_config/properties/Criterias/items/anyOf/0",
+                                "type": "object",
+                                "title": "The first anyOf schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "required": [
+                                    "Hry_Index",
+                                    "Pin",
+                                    "Ctv_Index_Range",
+                                    "Condition",
+                                    "Hry_Output_On_Condition_Fail",
+                                    "Bypass_Global"
+                                ],
+                                "properties": {
+                                    "Hry_Index": {
+                                        "$id": "#/properties/HSR_HRY_config/properties/Criterias/items/anyOf/0/properties/Hry_Index",
+                                        "type": "string",
+                                        "title": "The Hry_Index schema",
+                                        "description": "An explanation about the purpose of this instance.",
+                                    },
+                                    "Pin": {
+                                        "$id": "#/properties/HSR_HRY_config/properties/Criterias/items/anyOf/0/properties/Pin",
+                                        "type": "string",
+                                        "title": "The Pin schema",
+                                        "description": "An explanation about the purpose of this instance.",
+                                    },
+                                    "Ctv_Index_Range": {
+                                        "$id": "#/properties/HSR_HRY_config/properties/Criterias/items/anyOf/0/properties/Ctv_Index_Range",
+                                        "type": "string",
+                                        "title": "The Ctv_Index_Range schema",
+                                        "description": "An explanation about the purpose of this instance.",
+                                    },
+                                    "Condition": {
+                                        "$id": "#/properties/HSR_HRY_config/properties/Criterias/items/anyOf/0/properties/Condition",
+                                        "type": "string",
+                                        "title": "The Condition schema",
+                                        "description": "An explanation about the purpose of this instance.",
+                                    },
+                                    "Hry_Output_On_Condition_Fail": {
+                                        "$id": "#/properties/HSR_HRY_config/properties/Criterias/items/anyOf/0/properties/Hry_Output_On_Condition_Fail",
+                                        "type": "string",
+                                        "title": "The Hry_Output_On_Condition_Fail schema",
+                                        "description": "An explanation about the purpose of this instance.",
+                                    },
+                                    "Bypass_Global": {
+                                        "$id": "#/properties/HSR_HRY_config/properties/Criterias/items/anyOf/0/properties/Bypass_Global",
+                                        "type": "string",
+                                        "title": "The Bypass_Global schema",
+                                        "description": "An explanation about the purpose of this instance.",
+                                    }
+                                },
+                                "additionalProperties": true
+                            }
+                        ]
+                    }
+                },
+                "Algorithms": {
+                    "$id": "#/properties/HSR_HRY_config/properties/Algorithms",
+                    "type": "array",
+                    "title": "The Algorithms schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "additionalItems": true,
+                    "items": {
+                        "$id": "#/properties/HSR_HRY_config/properties/Algorithms/items",
+                        "anyOf": [
+                            {
+                                "$id": "#/properties/HSR_HRY_config/properties/Algorithms/items/anyOf/0",
+                                "type": "object",
+                                "title": "The first anyOf schema",
+                                "description": "An explanation about the purpose of this instance.",
+                                "required": [
+                                    "Index",
+                                    "Name",
+                                    "Pat_Modify_Label",
+                                    "Ctv_Size"
+                                ],
+                                "properties": {
+                                    "Index": {
+                                        "$id": "#/properties/HSR_HRY_config/properties/Algorithms/items/anyOf/0/properties/Index",
+                                        "type": "string",
+                                        "title": "The Index schema",
+                                        "description": "An explanation about the purpose of this instance.",
+										"default": ""
+                                    },
+                                    "Name": {
+                                        "$id": "#/properties/HSR_HRY_config/properties/Algorithms/items/anyOf/0/properties/Name",
+                                        "type": "string",
+                                        "title": "The Name schema",
+                                        "description": "An explanation about the purpose of this instance.",
+										"default": ""
+                                    },
+                                    "Pat_Modify_Label": {
+                                        "$id": "#/properties/HSR_HRY_config/properties/Algorithms/items/anyOf/0/properties/Pat_Modify_Label",
+                                        "type": "string",
+                                        "title": "The Pat_Modify_Label schema",
+                                        "description": "An explanation about the purpose of this instance.",
+										"default": ""
+                                    },
+                                    "Ctv_Size": {
+                                        "$id": "#/properties/HSR_HRY_config/properties/Algorithms/items/anyOf/0/properties/Ctv_Size",
+                                        "type": "string",
+                                        "title": "The Ctv_Size schema",
+                                        "description": "An explanation about the purpose of this instance.",
+										"default": ""
+                                    }
+                                },
+                                "additionalProperties": true
+                            }
+                        ]
+                    }
+                }
+            },
+            "additionalProperties": true
+        }
+    },
+    "additionalProperties": true
+}

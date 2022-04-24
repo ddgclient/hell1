@@ -1,0 +1,141 @@
+Version 1.0;
+
+ProgramStyle = Modular;
+
+TestPlan PVAL_DFXTUNER;
+
+Import PVAL_DFXTUNER.usrv;
+Import PVAL_DFXTUNER_Timing.tim;
+Import PVAL_DFXTUNER_Timing.tcg;
+
+Import OASIS_UserFunc_tt.xml;
+Import DfxTimingTuner.xml;
+Import OASIS_Screen_tt.xml;
+
+
+Test iCScreenTest FLOW_X_SCREEN_K_BEGIN_X_X_X_X_RESETUSERVARS_P1
+{
+    screen_custom_file = "./Modules/PVAL_DFXTUNER/InputFiles/ScreenTestCustom_Empty.txt";
+    screen_custom_setpoint = "ALL";
+    screen_test_set = "ResetDfxTuningUserVars";
+    screen_tests_file = "./Modules/PVAL_DFXTUNER/InputFiles/ScreenTest_ResetUserVars.txt";
+}
+
+Test DfxTimingTuner TuneSTF100_Drive_P1
+{
+    Patlist = "dfx_stf100_tune_drv_list";
+    LevelsTc = "__main__::bf_lvl_nom_lvl";
+    TimingsTc = "PVAL_DFXTUNER::cpu_stf_timing_tclk100_sclk100_cclk100_PerPin";
+	
+	ConfigFile = "./Modules/PVAL_DFXTUNER/InputFiles/DfxTunerConfigMciFake.xml";
+	ConfigSet = "SampleDriveMode";
+	
+	SearchStart = "0";
+	SearchResolution = "100ps";
+	SearchEnd = "10ns";
+	
+	UpdateTC = "Current";
+    LogLevel = "PRIME_DEBUG";
+}
+
+Test DfxTimingTuner TuneSTF100_Compare_P1
+{
+    Patlist = "dfx_stf100_tune_stb_list";
+    LevelsTc = "__main__::bf_lvl_nom_lvl";
+    TimingsTc = "PVAL_DFXTUNER::cpu_stf_timing_tclk100_sclk100_cclk100_PerPin";
+	
+	ConfigFile = "./Modules/PVAL_DFXTUNER/InputFiles/DfxTunerConfigMciFake.xml";
+	ConfigSet = "SampleCompareMode";
+	
+	SearchStart = "0";
+	SearchResolution = "100ps";
+	SearchEnd = "4ns";
+	
+	UpdateTC = "All";
+    LogLevel = "PRIME_DEBUG";
+}
+
+
+DUTFlow PVAL_DFXTUNER_MAIN
+{
+    DUTFlowItem FLOW_X_SCREEN_K_BEGIN_X_X_X_X_RESETUSERVARS_P1 FLOW_X_SCREEN_K_BEGIN_X_X_X_X_RESETUSERVARS_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo TuneSTF100_Drive_P1;
+        }
+        Result 2
+        {
+            Property PassFail = "Pass";
+            Return 0;
+        }
+    }
+    DUTFlowItem TuneSTF100_Drive_P1 TuneSTF100_Drive_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo TuneSTF100_Compare_P1;
+        }
+    }
+    DUTFlowItem TuneSTF100_Compare_P1 TuneSTF100_Compare_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            Return 1;
+        }
+    }
+}

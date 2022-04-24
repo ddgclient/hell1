@@ -1,0 +1,21 @@
+# Field position legend
+# [1],[2],[3],[4],[5],[6],[7],[8],[9],[10],[11],[12],[13]
+#
+# 1 : Package
+# 2 : Sample Type
+# 3 : Processor Family 
+# 4 : Market Segment 
+# 5 : Cache Size
+# 6 : DLCP category
+# 7 : Unused
+# 8 : Revision
+# 9 : Stepping
+# 10: Eng ID
+# 11: Unused  
+# 12: Unused
+# 13: Location sets
+
+bypass_global = "-1",   Template,   TPI_BASE::DFFX_X_X_K_TESTPLANENDFLOW_X_X_X_X_CHECKBADDIEDFFFLAG_P1 : *,*,*,*,*,*,*,*,*,*,*,*,ALL
+bypass_global = "1",   Template,   TPI_BASE::DFFX_X_X_K_TESTPLANENDFLOW_X_X_X_X_CHECKBADDIEDFFFLAG_P1 : *,*,*,*,*,*,*,*,*,*,*,*,ALL_SDT
+
+

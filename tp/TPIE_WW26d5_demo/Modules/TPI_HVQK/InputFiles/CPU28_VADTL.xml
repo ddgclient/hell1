@@ -1,0 +1,13 @@
+<vadtl_setup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="GEN_VADTL_tt.xsd">
+    <MBIT name="HVQK_MBIT"/>
+    <domain name="PVF" threshold = "0.25" datalog_mode="EXTENDED">
+        <shift name="CACHE_GT_LSA">
+            <pre>G.U.D.VMIN_GT_CACHE_LSA_PRE</pre>
+            <post>G.U.D.VMIN_GT_CACHE_LSA_POST</post>
+        </shift>
+		<shift name="SCAN_GT_CA2TF">
+            <pre>G.U.D.VMIN_GT_SCAN_CA2TF_PRE</pre>
+            <post>G.U.D.VMIN_GT_SCAN_CA2TF_POST</post>
+        </shift>
+    </domain>
+</vadtl_setup>

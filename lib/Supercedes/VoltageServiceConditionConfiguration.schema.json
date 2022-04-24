@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "array",
+  "minItems": 1,
+  "uniqueItems": true,
+  "items": {
+    "$ref": "#/definitions/Conditions"
+  },
+  "additionalProperties": false,
+  "definitions": {
+    "Conditions": {
+      "type": "object",
+      "required": ["name", "domains"],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/NonEmptyString"
+        },
+        "domains": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/ConditionConfiguration"
+          }
+        }
+      }
+    },
+    "ConditionConfiguration": {
+      "type": "object",
+      "required": ["name", "voltage"],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/NonEmptyString"
+        },
+        "voltage": {
+          "$ref": "#/definitions/VoltageSource"
+        },
+        "guard_band": {
+          "$ref": "#/definitions/VoltageSource"
+        }
+      }
+    },
+    "VoltageSource": {
+      "type": "object",
+      "required": ["type", "value"],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["Literal", "SharedStorage"]
+        },
+        "value": {
+          "$ref": "#/definitions/NonEmptyString"
+        }
+      }
+    },
+    "NonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

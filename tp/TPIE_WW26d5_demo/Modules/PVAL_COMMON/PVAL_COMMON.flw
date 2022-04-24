@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HDMTFlowItemCoor>
+  <FlowItem name="PVAL_COMMON::PVAL_COMMON_CAPTURE_PACKETS_SUBFLOW.DDGCapturePackets_AllZero_P2" X="745" Y="302" />
+  <FlowItem name="PVAL_COMMON::PVAL_COMMON_CAPTURE_PACKETS_SUBFLOW.DDGCapturePackets_AmbleFail_P2" X="529" Y="305" />
+  <FlowItem name="PVAL_COMMON::PVAL_COMMON_CAPTURE_PACKETS_SUBFLOW.DDGCapturePackets_LengthMismatch_P0" X="956" Y="299" />
+  <FlowItem name="PVAL_COMMON::PVAL_COMMON_CAPTURE_PACKETS_SUBFLOW.DDGCapturePackets_MultiPin_P1" X="103" Y="313" />
+  <FlowItem name="PVAL_COMMON::PVAL_COMMON_CAPTURE_PACKETS_SUBFLOW.DDGCapturePackets_NonAmbleFail_P1" X="302" Y="315" />
+  <FlowItem name="PVAL_COMMON::PVAL_COMMON_CAPTURE_PACKETS_SUBFLOW.Validate_CapturePacketsGsds_P1" X="1149" Y="298" />
+</HDMTFlowItemCoor>

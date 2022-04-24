@@ -1,0 +1,109 @@
+{
+  "Setup": {
+    "PatModConfigSets": {
+      "LSA_RASTER_PAT_MODIFY_SET_CORE": [  
+        {
+          "PatTarget": "MaxDefectsCount",
+          "Pin": "TDI",
+          "Label": "Defect_count*",
+          "Domain": "LEG",
+          "Offset": 2,
+          "Length": 1
+        },
+        {
+          "PatTarget": "Multiport",
+          "Pin": "TDI",
+          "Label": "MPMAP_*",
+          "Domain": "LEG",
+          "Offset": 0,
+          "Length": 4
+        },
+        {
+          "PatTarget": "Bank",
+          "Pin": "TDI",
+          "Label": "BANKSEL.+|T_B_M.+",
+          "Domain": "LEG",
+          "Offset": 0,
+          "Length": 4
+        },
+        {
+          "PatTarget": "Dword",
+          "Pin": "TDI",
+          "Label": "DWORD.+|S_B_M.+",
+          "Domain": "LEG",
+          "Offset": 0,
+          "Length": 4
+        },
+        {
+          "PatTarget": "IOMask",
+          "Pin": "TDI",
+          "Label": "XCare_*",
+          "Domain": "LEG",
+          "Offset": 0,
+          "Length": 32
+        }
+      ]
+    },
+    "CaptureConfigSets": {
+      "LSA_RASTER_CAPTURE_DECODING_SET_CORE": { 
+        "Length": 82,
+        "DecodingElements": { 
+          "FailAddress": {
+            "Start": 30,
+            "End": 41
+          },
+          "Dword": {
+            "Start": 42,
+            "End": 45
+          },
+          "Bank": {
+            "Start": 46,
+            "End": 49
+          },
+          "FailIO": {
+            "Start": 50,
+            "End": 81
+          }
+        }
+      }
+    },
+    "SlicePinMapping": {
+      "4_CORES": { 
+        "MulticorePatternEnabled": false,
+        "Configurations": {
+          "ArrayNameRegex": "[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_([a-zA-Z0-9]+_[a-zA-Z0-9]+_?[a-zA-Z0-9]*)_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+",
+          "IsRasterModeSupported": true,
+          "IsGetDwordFromFailIoIndex": false,
+          "PreScreenLabelRegex": "_MBD_([0-9]+)_([0-9]+)_([0-9]+)",
+          "LabelRegExTokens": [
+            "MULTIPORT",
+            "BANK",
+            "DWORD"
+          ]
+        },
+        "PinMappings": [ 
+          {
+            "SliceId": "0",
+            "PinName": "NOAB_00",
+            "HryName": "C0"
+          },
+          {
+            "SliceId": "1",
+            "PinName": "NOAB_01",
+            "HryName": "C1"
+          },
+          {
+            "SliceId": "2",
+            "PinName": "NOAB_02",
+            "HryName": "C2"
+          },
+          {
+            "SliceId": "3",
+            "PinName": "NOAB_03",
+            "HryName": "C3"
+          }
+        ]
+      }
+    }
+  }
+}

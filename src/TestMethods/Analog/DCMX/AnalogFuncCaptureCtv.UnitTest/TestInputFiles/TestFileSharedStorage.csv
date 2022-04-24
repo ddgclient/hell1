@@ -1,0 +1,6 @@
+Pin;IP;Sequence;Subsequence;Field;Size;SharedStorageToken;Equation;ItuffToken
+DDR1_DQ50;V0;training;subseq1;val1;6;I.AnalogFuncCaptureCtv;-;Token1
+DDR1_DQ50;V0;training;subseq1;val2;3;-;this + I.AnalogFuncCaptureCtv_DDR1_DQ50.V0.training.subseq1.val1 + Cos(0);Token1
+DDR1_DQ50;V0;training;subseq1;val3;5;-;Max(val2, this);Token1
+DDR1_DQ50;V0;training;subseq1;val4;0;-;Min(val3, 10);Token1
+DDR1_DQ50;V0;training;subseq1;val5;0;-;Max(Pow(I.AnalogFuncCaptureCtv_DDR1_DQ50.V0.training.subseq1.val1, 2) - val2, Min(val1, val4));Token1

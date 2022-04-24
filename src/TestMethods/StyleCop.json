@@ -1,0 +1,10 @@
+﻿{
+  "$schema": "https://raw.githubusercontent.com/DotNetAnalyzers/StyleCopAnalyzers/master/StyleCop.Analyzers/StyleCop.Analyzers/Settings/stylecop.schema.json",
+  "settings": {
+    "documentationRules": {
+      "companyName": "Intel Corporation",
+      "copyrightText": "///////////////////////////////////////////////////////////////////////////////////////////////////////////////\nINTEL CONFIDENTIAL\nCopyright (2019) (2022) {companyName}\n\nThe source code contained or described herein and all documents related to the source code (\"Material\") are\nowned by {companyName} or its suppliers or licensors. Title to the Material remains with {companyName}\nor its suppliers and licensors. The Material contains trade secrets and proprietary and confidential\ninformation of {companyName} or its suppliers and licensors. The Material is protected by worldwide copyright\nand trade secret laws and treaty provisions. No part of the Material may be used, copied, reproduced, modified,\npublished, uploaded, posted, transmitted, distributed, or disclosed in any way without {companyName}'s prior express\nwritten permission.\n\nNo license under any patent, copyright, trade secret or other intellectual property right is granted to or\nconferred upon you by disclosure or delivery of the Materials, either expressly, by implication, inducement,\nestoppel or otherwise. Any license under such intellectual property rights must be express and approved by\nIntel in writing.\n///////////////////////////////////////////////////////////////////////////////////////////////////////////////",
+      "xmlHeader": false
+    }
+  }
+}

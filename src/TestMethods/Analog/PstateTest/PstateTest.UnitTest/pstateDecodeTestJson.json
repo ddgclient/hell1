@@ -1,0 +1,51 @@
+﻿{
+	"Domains" : 
+	{
+		"SA": 
+		{
+			"instances" :
+			{
+				"VPU" :
+					{
+						"maxF" : "1150",
+						"minF" : "1050",
+						"incF" : "50",
+						"maxV" : "1.2",
+						"minV" : "0.5",
+						"freqGB" : "0.0",
+						"freqPoints" : "1050,1100,1150",
+					},
+				"NoC" :
+					{
+						"maxF" : "2000",
+						"minF" : "1800",
+						"incF" : "100",
+						"maxV" : "1.2",
+						"minV" : "0.5",
+						"freqGB" : "0.0",
+						"freqPoints" : "1800,1900,2000",
+					},
+			},
+			"corners" : {
+				"F1" : 
+					{
+						"gsds" : "FAKEGSDSF1",
+						"freq" : "",
+						"ratio": "",
+					},
+				"F2" : 
+					{
+						"gsds" : "FAKEGSDSF2",
+						"freq" : "",
+						"ratio": "",
+					},
+				"F3" : 
+					{
+						"gsds" : "FAKEGSDSF3",
+						"freq" : "",
+						"ratio": "",
+					},
+			},
+		},	
+	},
+}

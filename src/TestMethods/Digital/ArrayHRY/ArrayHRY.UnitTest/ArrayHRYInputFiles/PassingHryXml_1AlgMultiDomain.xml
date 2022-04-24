@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HSR_HRY_config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="GEN_HSR_HRY.xsd">
+
+	<ReverseCtvCaptureData>N</ReverseCtvCaptureData>
+
+	<CtvToHryMapping>
+		<Map ctv_data="0" hry_data="0" />
+		<Map ctv_data="1" hry_data="1" />
+	</CtvToHryMapping>
+
+	<Criterias>
+		<Criteria hry_index="0"  pin="P001" ctv_index_range="0"     condition="P002,0-1,00"    hry_output_on_condition_fail="8" bypass_global="HSR.HRY_Global_1" />
+		<Criteria hry_index="1"  pin="P001" ctv_index_range="1"     condition="P002,2-3,00"    hry_output_on_condition_fail="8" bypass_global="HSR.HRY_Global_2" />
+	</Criterias>
+
+	<Algorithms>
+		<Algorithm index="0" name=""  ctv_size="4" /> <!-- 2 captures on P001, 4 captures on P002 ... size is ignored because 1 algorithm and Reverse=N-->
+	</Algorithms>
+
+</HSR_HRY_config>

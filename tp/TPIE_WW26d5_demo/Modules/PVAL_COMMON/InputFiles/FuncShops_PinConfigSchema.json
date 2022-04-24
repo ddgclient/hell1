@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "http://example.com/example.json",
+  "type": "object",
+  "additionalProperties": false,
+  "maxProperties": 4,
+  "required": [ "VOX_LL", "VOX_UL", "Resolution", "PinConfigs" ],
+  "properties": {
+    "VOX_LL": {
+      "description": "VOX lower limit",
+      "type": "number"
+    },
+    "VOX_UL": {
+      "description": "VOX upper limit",
+      "type": "number"
+    },
+    "Resolution": {
+      "description": "Search Resolution",
+      "type": "number"
+    },
+    "PinConfigs": {
+      "type": "array",
+      "description": "List of Pin configurations",
+      "uniqueItems": true,
+      "minItems": 1,
+      "title": "PinConfigs schema",
+      "description": "Individual Pin configurations",
+      "items": {
+        "required": [ "PinName", "VOX" ],
+        "additionalProperties": false,
+        "maxProperties": 2,
+        "properties": {
+          "PinName": {
+            "description": "Pin name",
+            "type": "string"
+          },
+          "VOX": {
+            "description": "Pin VOX value",
+            "type": "number"
+          }
+        }
+      }
+
+    }
+  }
+}

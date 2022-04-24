@@ -1,0 +1,86 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace>$(AssemblyName)</RootNamespace>
+    <TargetName>$(AssemblyName)</TargetName>
+    <TargetProjectUnderTestName>$(TargetName.Replace('.UnitTest', ''))</TargetProjectUnderTestName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <ConfigurationGroup>Debug</ConfigurationGroup>
+    <DebugType>full</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <ConfigurationGroup>Release</ConfigurationGroup>
+    <DebugType>pdbonly</DebugType>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
+  <ItemGroup>
+    <None Remove="TestInputFiles\TestFileBase2SharedStorage.csv" />
+    <None Remove="TestInputFiles\TestFileBaseLimits.csv" />
+    <None Remove="TestInputFiles\TestFileCodification.csv" />
+    <None Remove="TestInputFiles\TestFileCodificationFail.csv" />
+    <None Remove="TestInputFiles\TestFileCodificationReverse.csv" />
+    <None Remove="TestInputFiles\TestFileEmpty.csv" />
+    <None Remove="TestInputFiles\TestFileEquationExpectedData.csv" />
+    <None Remove="TestInputFiles\TestFileEquationLimits.csv" />
+    <None Remove="TestInputFiles\TestFileFailPrintWithoutToken.csv" />
+    <None Remove="TestInputFiles\TestFileGenericPass.csv" />
+    <None Remove="TestInputFiles\TestFileHighLimits.csv" />
+    <None Remove="TestInputFiles\TestFileItuffDescriptorFail.csv" />
+    <None Remove="TestInputFiles\TestFileLowLimits.csv" />
+    <None Remove="TestInputFiles\TestFileMultipleTssidMsunitCheck.csv" />
+    <None Remove="TestInputFiles\TestFileOffsetField.csv" />
+    <None Remove="TestInputFiles\TestFileOnesComplement.csv" />
+    <None Remove="TestInputFiles\TestFilePerBit.csv" />
+    <None Remove="TestInputFiles\TestFilePerBitCodification.csv" />
+    <None Remove="TestInputFiles\TestFilePinFinderFormatFail.csv" />
+    <None Remove="TestInputFiles\TestFilePinFinderFormatPass.csv" />
+    <None Remove="TestInputFiles\TestFileSharedStorageFail.csv" />
+    <None Remove="TestInputFiles\TestFileSharedStoragePassAllDataTypes.csv" />
+    <None Remove="TestInputFiles\TestFileStringData.csv" />
+    <None Remove="TestInputFiles\TestFileStringDataFail.csv" />
+    <None Remove="TestInputFiles\TestFileTssidMsunitCheck.csv" />
+    <None Remove="TestInputFiles\TestFileTwosComplement.csv" />
+  </ItemGroup>
+  <ItemGroup>
+	<EmbeddedResource Include="TestInputFiles\TestFileCodificationReverse.csv" />
+	<EmbeddedResource Include="TestInputFiles\TestFileCodificationFail.csv" />
+	<EmbeddedResource Include="TestInputFiles\TestFileStringDataFail.csv" />
+	<EmbeddedResource Include="TestInputFiles\TestFileStringData.csv" />
+	<EmbeddedResource Include="TestInputFiles\TestFileItuffDescriptorFail.csv" />
+	<EmbeddedResource Include="TestInputFiles\TestFileFailPrintWithoutToken.csv" />
+	<EmbeddedResource Include="TestInputFiles\TestFileMultipleTssidMsunitCheck.csv" />
+	<EmbeddedResource Include="TestInputFiles\TestFileTssidMsunitCheck.csv" />
+	<EmbeddedResource Include="TestInputFiles\TestFileSharedStoragePassAllDataTypes.csv" />
+	<EmbeddedResource Include="TestInputFiles\TestFileTwosComplement.csv" />
+	<EmbeddedResource Include="TestInputFiles\TestFileOnesComplement.csv" />
+	<EmbeddedResource Include="TestInputFiles\TestFilePinFinderFormatFail.csv" />
+	<EmbeddedResource Include="TestInputFiles\TestFilePinFinderFormatPass.csv" />
+	<EmbeddedResource Include="TestInputFiles\TestFileHighLimits.csv" />
+	<EmbeddedResource Include="TestInputFiles\TestFileLowLimits.csv" />
+	<EmbeddedResource Include="TestInputFiles\TestFileBaseLimits.csv" />
+	<EmbeddedResource Include="TestInputFiles\TestFileBaseExpectedData.csv" />
+	<EmbeddedResource Include="TestInputFiles\TestFileEmpty.csv" />
+	<EmbeddedResource Include="TestInputFiles\TestFileBase2SharedStorage.csv" />
+	<EmbeddedResource Include="TestInputFiles\TestFilePerBitCodification.csv" />
+    <EmbeddedResource Include="TestInputFiles\TestFilePerBit.csv" />
+    <EmbeddedResource Include="TestInputFiles\TestFileOffsetField.csv" />
+    <EmbeddedResource Include="TestInputFiles\TestFileFieldParametersPrint.csv" />
+	<EmbeddedResource Include="TestInputFiles\TestFileSameFieldName.csv" />
+	<EmbeddedResource Include="TestInputFiles\TestFileSharedStorageFail.csv" />
+    <EmbeddedResource Include="TestInputFiles\TestFileSharedStoragePass.csv" />
+    <EmbeddedResource Include="TestInputFiles\TestFileCodification.csv" />
+    <EmbeddedResource Include="TestInputFiles\TestFileEquationLimits.csv" />
+    <EmbeddedResource Include="TestInputFiles\TestFileEquationExpectedData.csv" />
+    <EmbeddedResource Include="TestInputFiles\TestFileGenericPass.csv" />
+    <EmbeddedResource Include="TestInputFiles\TestFileExitPort.csv" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CtvDecoder\CtvDecoder.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Prime.TestMethods.Functional.Release" Version="$(PrimeVersion)" />
+  </ItemGroup>
+</Project>

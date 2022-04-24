@@ -1,0 +1,744 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BinMatrix xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="GEN_BinMatrixXml_tt.xsd" name="TGL42_CLASS_FM_13R">
+  <BinMatrixRevision>0</BinMatrixRevision>
+  <ProductFamily>TIGER LAKE</ProductFamily>
+  <SupportedProduct>
+    <Product name="Tiger Lake Client Core Product" ProductID="132" />
+  </SupportedProduct>
+  <BOMGroupTable>
+    <BOMGroup name="CLASS_TGLU42">
+      <BOMList>
+        <BOM>H64VXLAV_B</BOM>
+        <BOM>H64VXLAVAB</BOM>
+        <BOM>H64VXLBV_B</BOM>
+        <BOM>H64VXLBVAB</BOM>
+        <BOM>H64VXLBVBB</BOM>
+        <BOM>H64VXLBVCB</BOM>
+        <BOM>H64VXLCV_B</BOM>
+        <BOM>H64VXLCVAB</BOM>
+        <BOM>H64VXLCVBB</BOM>
+        <BOM>H64VXLCVCB</BOM>
+        <BOM>H64VXLDV_B</BOM>
+        <BOM>H64VXLDVAB</BOM>
+        <BOM>H64VXLFV_B</BOM>
+        <BOM>H64VXLFVAB</BOM>
+        <BOM>H64VXLFVBB</BOM>
+        <BOM>H64VXLFVCB</BOM>
+        <BOM>H64VXLGV_B</BOM>
+        <BOM>H64VXLGVAB</BOM>
+        <BOM>H64VXLHV_B</BOM>
+        <BOM>H64VXLHVAB</BOM>
+        <BOM>H64VXLKV_B</BOM>
+        <BOM>H64VXLKVAB</BOM>
+        <BOM>H64VXLKVBB</BOM>
+        <BOM>H64VXLKVCB</BOM>
+        <BOM>H64VXLLV_B</BOM>
+        <BOM>H64VXLLVAB</BOM>
+        <BOM>H64VXLMV_B</BOM>
+        <BOM>H64VXLMVAB</BOM>
+        <BOM>H64VXLMVBB</BOM>
+        <BOM>H64VXLMVCB</BOM>
+        <BOM>H64VXLNV_B</BOM>
+        <BOM>H64VXLNVAB</BOM>
+        <BOM>H64VXLNVBB</BOM>
+        <BOM>H64VXLNVCB</BOM>
+        <BOM>H64VXLQV_B</BOM>
+        <BOM>H64VXLQVAB</BOM>
+        <BOM>H64VXLQVBB</BOM>
+        <BOM>H64VXLQVCB</BOM>
+        <BOM>H64VXLSV_B</BOM>
+        <BOM>H64VXLSVAB</BOM>
+        <BOM>H64VXLUV_B</BOM>
+        <BOM>H64VXLUVAB</BOM>
+        <BOM>H64VXLVV_B</BOM>
+        <BOM>H64VXLVVAB</BOM>
+        <BOM>H64VXLXV_B</BOM>
+        <BOM>H64VXLXVAB</BOM>
+        <BOM>H68VXLBVBB</BOM>
+        <BOM>H68VXLBVCB</BOM>
+        <BOM>H68VXLCVBB</BOM>
+        <BOM>H68VXLCVCB</BOM>
+        <BOM>H68VXLFVBB</BOM>
+        <BOM>H68VXLFVCB</BOM>
+        <BOM>H68VXLKVBB</BOM>
+        <BOM>H68VXLKVCB</BOM>
+        <BOM>H68VXLMVBB</BOM>
+        <BOM>H68VXLMVCB</BOM>
+        <BOM>H68VXLNVBB</BOM>
+        <BOM>H68VXLNVCB</BOM>
+        <BOM>H68VXLQVBB</BOM>
+        <BOM>H68VXLQVCB</BOM>
+      </BOMList>
+      <ActiveFlowList>
+        <Flow index="1" bin="1501" binName="p1501">
+          <Attribute name="AVX_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.4</Attribute>
+          <Attribute name="BOMGroupName">CLASS_TGLU42</Attribute>
+          <Attribute name="Cache" dataType="String" unit="MB" multiplier="1000000">2</Attribute>
+          <Attribute name="CLR_F1_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.4</Attribute>
+          <Attribute name="CLR_F2_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.8</Attribute>
+          <Attribute name="CLR_F3_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">1.8</Attribute>
+          <Attribute name="CLR_F4_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">3</Attribute>
+          <Attribute name="CLR_F5_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">3.6</Attribute>
+          <Attribute name="CLR_F6_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4</Attribute>
+          <Attribute name="CORE_SELECT" dataType="String">4</Attribute>
+          <Attribute name="CR_F1_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.4</Attribute>
+          <Attribute name="CR_F2_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">1.2</Attribute>
+          <Attribute name="CR_F3_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">2.2</Attribute>
+          <Attribute name="CR_F4_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">3.4</Attribute>
+          <Attribute name="CR_F5_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4.2</Attribute>
+          <Attribute name="CR_F6_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">5</Attribute>
+          <Attribute name="CR_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.35</Attribute>
+          <Attribute name="CR_LFM_VMIN_RAIN_KILL" dataType="Float/Exponential" unit="V" multiplier="1">0.8</Attribute>
+          <Attribute name="CR_LOW_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">0.4</Attribute>
+          <Attribute name="CR_SEARCH_RESOLUTION" dataType="Float/Exponential" unit="V" multiplier="1">0.01</Attribute>
+          <Attribute name="CRF_F1_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.4</Attribute>
+          <Attribute name="CRF_F2_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">1.2</Attribute>
+          <Attribute name="CRF_F3_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">2.2</Attribute>
+          <Attribute name="CRF_F4_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">3.4</Attribute>
+          <Attribute name="CRF_F5_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4.2</Attribute>
+          <Attribute name="CRF_F6_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">5.05</Attribute>
+          <Attribute name="CRF_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.4</Attribute>
+          <Attribute name="CRF_LOW_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">0.4</Attribute>
+          <Attribute name="CRF_SEARCH_RESOLUTION" dataType="Float/Exponential" unit="V" multiplier="1">0.01</Attribute>
+          <Attribute name="CRX2_F1_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.4</Attribute>
+          <Attribute name="CRX2_F2_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">1.2</Attribute>
+          <Attribute name="CRX2_F3_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">2.2</Attribute>
+          <Attribute name="CRX2_F4_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">3.4</Attribute>
+          <Attribute name="CRX2_F5_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4.2</Attribute>
+          <Attribute name="CRX2_F6_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4.9</Attribute>
+          <Attribute name="CRX2_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.4</Attribute>
+          <Attribute name="CRX2_LOW_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">0.4</Attribute>
+          <Attribute name="CRX2_SEARCH_RESOLUTION" dataType="Float/Exponential" unit="V" multiplier="1">0.01</Attribute>
+          <Attribute name="CRX3_F1_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.4</Attribute>
+          <Attribute name="CRX3_F2_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">1.2</Attribute>
+          <Attribute name="CRX3_F3_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">2.2</Attribute>
+          <Attribute name="CRX3_F4_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">3.4</Attribute>
+          <Attribute name="CRX3_F5_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4.2</Attribute>
+          <Attribute name="CRX3_F6_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4.8</Attribute>
+          <Attribute name="CRX3_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.4</Attribute>
+          <Attribute name="CRX3_LOW_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">0.4</Attribute>
+          <Attribute name="CRX3_SEARCH_RESOLUTION" dataType="Float/Exponential" unit="V" multiplier="1">0.01</Attribute>
+          <Attribute name="Die" dataType="String">4+2</Attribute>
+          <Attribute name="FlowIndex">1</Attribute>
+          <Attribute name="FUNCTIONAL_CORE" dataType="Float/Exponential">4</Attribute>
+          <Attribute name="GRAPHICS_FUNC_CORES" dataType="Float/Exponential">3</Attribute>
+          <Attribute name="GT_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.2</Attribute>
+          <Attribute name="GT_LFM_VMIN_RAIN_KILL" dataType="Float/Exponential" unit="V" multiplier="1">0.8</Attribute>
+          <Attribute name="GT_LOW_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">0.4</Attribute>
+          <Attribute name="GT_SEARCH_RESOLUTION" dataType="Float/Exponential" unit="V" multiplier="1">0.01</Attribute>
+          <Attribute name="GTS_F1_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.3</Attribute>
+          <Attribute name="GTS_F2_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.6</Attribute>
+          <Attribute name="GTS_F3_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.9</Attribute>
+          <Attribute name="GTS_F4_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">1.1</Attribute>
+          <Attribute name="GTS_F5_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">1.35</Attribute>
+          <Attribute name="GTSM_F5_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">1.1</Attribute>
+          <Attribute name="olb_bin" dataType="Integer" unit="" multiplier="">1</Attribute>
+          <Attribute name="olb_bin_type" dataType="String">B</Attribute>
+          <Attribute name="RING_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.2</Attribute>
+          <Attribute name="SA_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.2</Attribute>
+          <Attribute name="SA_LFM_VMIN_RAIN_KILL" dataType="Float/Exponential" unit="V" multiplier="1">0.8</Attribute>
+          <Attribute name="SA_LOW_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">0.45</Attribute>
+          <Attribute name="SA_SEARCH_RESOLUTION" dataType="Float/Exponential" unit="V" multiplier="1">0.01</Attribute>
+          <Attribute name="SACD_F1_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">312</Attribute>
+          <Attribute name="SACD_F2_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">562</Attribute>
+          <Attribute name="SACD_F4_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">662</Attribute>
+          <Attribute name="SACD_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.2</Attribute>
+          <Attribute name="SACD_LOW_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">0.45</Attribute>
+          <Attribute name="SACD_SEARCH_RESOLUTION" dataType="Float/Exponential" unit="V" multiplier="1">0.01</Attribute>
+          <Attribute name="SAF_F1_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">533</Attribute>
+          <Attribute name="SAF_F5_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">800</Attribute>
+          <Attribute name="SAIS_F1_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">200</Attribute>
+          <Attribute name="SAIS_F5_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">533</Attribute>
+          <Attribute name="SAPS_F1_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">200</Attribute>
+          <Attribute name="SAPS_F3_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">400</Attribute>
+          <Attribute name="SAPS_F5_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">1000</Attribute>
+          <Attribute name="SAQ_F1_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">1100</Attribute>
+          <Attribute name="SAQ_F4_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">2200</Attribute>
+          <Attribute name="SAQ_F6_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">2700</Attribute>
+        </Flow>
+        <Flow index="2" bin="1502" binName="p1502">
+          <Attribute name="AVX_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.4</Attribute>
+          <Attribute name="BOMGroupName">CLASS_TGLU42</Attribute>
+          <Attribute name="Cache" dataType="String" unit="MB" multiplier="1000000">2</Attribute>
+          <Attribute name="CLR_F1_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.4</Attribute>
+          <Attribute name="CLR_F2_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.8</Attribute>
+          <Attribute name="CLR_F3_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">1.8</Attribute>
+          <Attribute name="CLR_F4_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">3</Attribute>
+          <Attribute name="CLR_F5_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">3.6</Attribute>
+          <Attribute name="CLR_F6_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4</Attribute>
+          <Attribute name="CORE_SELECT" dataType="String">4</Attribute>
+          <Attribute name="CR_F1_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.4</Attribute>
+          <Attribute name="CR_F2_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">1.2</Attribute>
+          <Attribute name="CR_F3_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">2.2</Attribute>
+          <Attribute name="CR_F4_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">3.4</Attribute>
+          <Attribute name="CR_F5_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4.2</Attribute>
+          <Attribute name="CR_F6_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4.8</Attribute>
+          <Attribute name="CR_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.35</Attribute>
+          <Attribute name="CR_LFM_VMIN_RAIN_KILL" dataType="Float/Exponential" unit="V" multiplier="1">0.8</Attribute>
+          <Attribute name="CR_LOW_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">0.4</Attribute>
+          <Attribute name="CR_SEARCH_RESOLUTION" dataType="Float/Exponential" unit="V" multiplier="1">0.01</Attribute>
+          <Attribute name="CRF_F1_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.4</Attribute>
+          <Attribute name="CRF_F2_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">1.2</Attribute>
+          <Attribute name="CRF_F3_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">2.2</Attribute>
+          <Attribute name="CRF_F4_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">3.4</Attribute>
+          <Attribute name="CRF_F5_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4.2</Attribute>
+          <Attribute name="CRF_F6_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4.85</Attribute>
+          <Attribute name="CRF_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.4</Attribute>
+          <Attribute name="CRF_LOW_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">0.4</Attribute>
+          <Attribute name="CRF_SEARCH_RESOLUTION" dataType="Float/Exponential" unit="V" multiplier="1">0.01</Attribute>
+          <Attribute name="CRX2_F1_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.4</Attribute>
+          <Attribute name="CRX2_F2_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">1.2</Attribute>
+          <Attribute name="CRX2_F3_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">2.2</Attribute>
+          <Attribute name="CRX2_F4_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">3.4</Attribute>
+          <Attribute name="CRX2_F5_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4.2</Attribute>
+          <Attribute name="CRX2_F6_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4.7</Attribute>
+          <Attribute name="CRX2_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.4</Attribute>
+          <Attribute name="CRX2_LOW_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">0.4</Attribute>
+          <Attribute name="CRX2_SEARCH_RESOLUTION" dataType="Float/Exponential" unit="V" multiplier="1">0.01</Attribute>
+          <Attribute name="CRX3_F1_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.4</Attribute>
+          <Attribute name="CRX3_F2_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">1.2</Attribute>
+          <Attribute name="CRX3_F3_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">2.2</Attribute>
+          <Attribute name="CRX3_F4_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">3.4</Attribute>
+          <Attribute name="CRX3_F5_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4.2</Attribute>
+          <Attribute name="CRX3_F6_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4.6</Attribute>
+          <Attribute name="CRX3_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.4</Attribute>
+          <Attribute name="CRX3_LOW_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">0.4</Attribute>
+          <Attribute name="CRX3_SEARCH_RESOLUTION" dataType="Float/Exponential" unit="V" multiplier="1">0.01</Attribute>
+          <Attribute name="Die" dataType="String">4+2</Attribute>
+          <Attribute name="FlowIndex">2</Attribute>
+          <Attribute name="FUNCTIONAL_CORE" dataType="Float/Exponential">4</Attribute>
+          <Attribute name="GRAPHICS_FUNC_CORES" dataType="Float/Exponential">3</Attribute>
+          <Attribute name="GT_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.2</Attribute>
+          <Attribute name="GT_LFM_VMIN_RAIN_KILL" dataType="Float/Exponential" unit="V" multiplier="1">0.8</Attribute>
+          <Attribute name="GT_LOW_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">0.4</Attribute>
+          <Attribute name="GT_SEARCH_RESOLUTION" dataType="Float/Exponential" unit="V" multiplier="1">0.01</Attribute>
+          <Attribute name="GTS_F1_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.3</Attribute>
+          <Attribute name="GTS_F2_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.6</Attribute>
+          <Attribute name="GTS_F3_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.9</Attribute>
+          <Attribute name="GTS_F4_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">1.1</Attribute>
+          <Attribute name="GTS_F5_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">1.35</Attribute>
+          <Attribute name="GTSM_F5_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">1.1</Attribute>
+          <Attribute name="olb_bin" dataType="Integer" unit="" multiplier="">2</Attribute>
+          <Attribute name="olb_bin_type" dataType="String">B</Attribute>
+          <Attribute name="RING_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.2</Attribute>
+          <Attribute name="SA_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.2</Attribute>
+          <Attribute name="SA_LFM_VMIN_RAIN_KILL" dataType="Float/Exponential" unit="V" multiplier="1">0.8</Attribute>
+          <Attribute name="SA_LOW_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">0.45</Attribute>
+          <Attribute name="SA_SEARCH_RESOLUTION" dataType="Float/Exponential" unit="V" multiplier="1">0.01</Attribute>
+          <Attribute name="SACD_F1_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">312</Attribute>
+          <Attribute name="SACD_F2_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">562</Attribute>
+          <Attribute name="SACD_F4_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">662</Attribute>
+          <Attribute name="SACD_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.2</Attribute>
+          <Attribute name="SACD_LOW_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">0.45</Attribute>
+          <Attribute name="SACD_SEARCH_RESOLUTION" dataType="Float/Exponential" unit="V" multiplier="1">0.01</Attribute>
+          <Attribute name="SAF_F1_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">533</Attribute>
+          <Attribute name="SAF_F5_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">800</Attribute>
+          <Attribute name="SAIS_F1_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">200</Attribute>
+          <Attribute name="SAIS_F5_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">533</Attribute>
+          <Attribute name="SAPS_F1_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">200</Attribute>
+          <Attribute name="SAPS_F3_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">400</Attribute>
+          <Attribute name="SAPS_F5_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">1000</Attribute>
+          <Attribute name="SAQ_F1_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">1100</Attribute>
+          <Attribute name="SAQ_F4_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">2200</Attribute>
+          <Attribute name="SAQ_F6_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">2700</Attribute>
+        </Flow>
+        <Flow index="3" bin="1503" binName="p1503">
+          <Attribute name="AVX_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.4</Attribute>
+          <Attribute name="BOMGroupName">CLASS_TGLU42</Attribute>
+          <Attribute name="Cache" dataType="String" unit="MB" multiplier="1000000">2</Attribute>
+          <Attribute name="CLR_F1_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.4</Attribute>
+          <Attribute name="CLR_F2_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.8</Attribute>
+          <Attribute name="CLR_F3_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">1.8</Attribute>
+          <Attribute name="CLR_F4_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">3</Attribute>
+          <Attribute name="CLR_F5_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">3.6</Attribute>
+          <Attribute name="CLR_F6_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4</Attribute>
+          <Attribute name="CORE_SELECT" dataType="String">4</Attribute>
+          <Attribute name="CR_F1_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.4</Attribute>
+          <Attribute name="CR_F2_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">1.2</Attribute>
+          <Attribute name="CR_F3_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">2.2</Attribute>
+          <Attribute name="CR_F4_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">3.4</Attribute>
+          <Attribute name="CR_F5_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4.2</Attribute>
+          <Attribute name="CR_F6_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4.7</Attribute>
+          <Attribute name="CR_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.35</Attribute>
+          <Attribute name="CR_LFM_VMIN_RAIN_KILL" dataType="Float/Exponential" unit="V" multiplier="1">0.8</Attribute>
+          <Attribute name="CR_LOW_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">0.4</Attribute>
+          <Attribute name="CR_SEARCH_RESOLUTION" dataType="Float/Exponential" unit="V" multiplier="1">0.01</Attribute>
+          <Attribute name="CRF_F1_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.4</Attribute>
+          <Attribute name="CRF_F2_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">1.2</Attribute>
+          <Attribute name="CRF_F3_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">2.2</Attribute>
+          <Attribute name="CRF_F4_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">3.4</Attribute>
+          <Attribute name="CRF_F5_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4.2</Attribute>
+          <Attribute name="CRF_F6_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4.7</Attribute>
+          <Attribute name="CRF_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.4</Attribute>
+          <Attribute name="CRF_LOW_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">0.4</Attribute>
+          <Attribute name="CRF_SEARCH_RESOLUTION" dataType="Float/Exponential" unit="V" multiplier="1">0.01</Attribute>
+          <Attribute name="CRX2_F1_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.4</Attribute>
+          <Attribute name="CRX2_F2_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">1.2</Attribute>
+          <Attribute name="CRX2_F3_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">2.2</Attribute>
+          <Attribute name="CRX2_F4_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">3.4</Attribute>
+          <Attribute name="CRX2_F5_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4.2</Attribute>
+          <Attribute name="CRX2_F6_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4.6</Attribute>
+          <Attribute name="CRX2_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.4</Attribute>
+          <Attribute name="CRX2_LOW_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">0.4</Attribute>
+          <Attribute name="CRX2_SEARCH_RESOLUTION" dataType="Float/Exponential" unit="V" multiplier="1">0.01</Attribute>
+          <Attribute name="CRX3_F1_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.4</Attribute>
+          <Attribute name="CRX3_F2_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">1.2</Attribute>
+          <Attribute name="CRX3_F3_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">2.2</Attribute>
+          <Attribute name="CRX3_F4_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">3.4</Attribute>
+          <Attribute name="CRX3_F5_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4.2</Attribute>
+          <Attribute name="CRX3_F6_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4.5</Attribute>
+          <Attribute name="CRX3_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.4</Attribute>
+          <Attribute name="CRX3_LOW_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">0.4</Attribute>
+          <Attribute name="CRX3_SEARCH_RESOLUTION" dataType="Float/Exponential" unit="V" multiplier="1">0.01</Attribute>
+          <Attribute name="Die" dataType="String">4+2</Attribute>
+          <Attribute name="FlowIndex">3</Attribute>
+          <Attribute name="FUNCTIONAL_CORE" dataType="Float/Exponential">4</Attribute>
+          <Attribute name="GRAPHICS_FUNC_CORES" dataType="Float/Exponential">3</Attribute>
+          <Attribute name="GT_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.2</Attribute>
+          <Attribute name="GT_LFM_VMIN_RAIN_KILL" dataType="Float/Exponential" unit="V" multiplier="1">0.8</Attribute>
+          <Attribute name="GT_LOW_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">0.4</Attribute>
+          <Attribute name="GT_SEARCH_RESOLUTION" dataType="Float/Exponential" unit="V" multiplier="1">0.01</Attribute>
+          <Attribute name="GTS_F1_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.3</Attribute>
+          <Attribute name="GTS_F2_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.6</Attribute>
+          <Attribute name="GTS_F3_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.9</Attribute>
+          <Attribute name="GTS_F4_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">1.1</Attribute>
+          <Attribute name="GTS_F5_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">1.3</Attribute>
+          <Attribute name="GTSM_F5_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">1.1</Attribute>
+          <Attribute name="olb_bin" dataType="Integer" unit="" multiplier="">3</Attribute>
+          <Attribute name="olb_bin_type" dataType="String">B</Attribute>
+          <Attribute name="RING_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.2</Attribute>
+          <Attribute name="SA_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.2</Attribute>
+          <Attribute name="SA_LFM_VMIN_RAIN_KILL" dataType="Float/Exponential" unit="V" multiplier="1">0.8</Attribute>
+          <Attribute name="SA_LOW_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">0.45</Attribute>
+          <Attribute name="SA_SEARCH_RESOLUTION" dataType="Float/Exponential" unit="V" multiplier="1">0.01</Attribute>
+          <Attribute name="SACD_F1_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">312</Attribute>
+          <Attribute name="SACD_F2_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">562</Attribute>
+          <Attribute name="SACD_F4_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">662</Attribute>
+          <Attribute name="SACD_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.2</Attribute>
+          <Attribute name="SACD_LOW_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">0.45</Attribute>
+          <Attribute name="SACD_SEARCH_RESOLUTION" dataType="Float/Exponential" unit="V" multiplier="1">0.01</Attribute>
+          <Attribute name="SAF_F1_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">533</Attribute>
+          <Attribute name="SAF_F5_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">800</Attribute>
+          <Attribute name="SAIS_F1_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">200</Attribute>
+          <Attribute name="SAIS_F5_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">533</Attribute>
+          <Attribute name="SAPS_F1_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">200</Attribute>
+          <Attribute name="SAPS_F3_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">400</Attribute>
+          <Attribute name="SAPS_F5_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">1000</Attribute>
+          <Attribute name="SAQ_F1_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">1100</Attribute>
+          <Attribute name="SAQ_F4_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">2200</Attribute>
+          <Attribute name="SAQ_F6_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">2700</Attribute>
+        </Flow>
+        <Flow index="4" bin="1504" binName="p1504">
+          <Attribute name="AVX_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.4</Attribute>
+          <Attribute name="BOMGroupName">CLASS_TGLU42</Attribute>
+          <Attribute name="Cache" dataType="String" unit="MB" multiplier="1000000">2</Attribute>
+          <Attribute name="CLR_F1_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.4</Attribute>
+          <Attribute name="CLR_F2_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.8</Attribute>
+          <Attribute name="CLR_F3_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">1.8</Attribute>
+          <Attribute name="CLR_F4_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">3</Attribute>
+          <Attribute name="CLR_F5_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">3.6</Attribute>
+          <Attribute name="CLR_F6_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4</Attribute>
+          <Attribute name="CORE_SELECT" dataType="String">2</Attribute>
+          <Attribute name="CR_F1_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.4</Attribute>
+          <Attribute name="CR_F2_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">1.2</Attribute>
+          <Attribute name="CR_F3_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">2.2</Attribute>
+          <Attribute name="CR_F4_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">3.4</Attribute>
+          <Attribute name="CR_F5_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4.2</Attribute>
+          <Attribute name="CR_F6_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4.4</Attribute>
+          <Attribute name="CR_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.35</Attribute>
+          <Attribute name="CR_LFM_VMIN_RAIN_KILL" dataType="Float/Exponential" unit="V" multiplier="1">0.8</Attribute>
+          <Attribute name="CR_LOW_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">0.4</Attribute>
+          <Attribute name="CR_SEARCH_RESOLUTION" dataType="Float/Exponential" unit="V" multiplier="1">0.01</Attribute>
+          <Attribute name="CRF_F1_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.4</Attribute>
+          <Attribute name="CRF_F2_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">1.2</Attribute>
+          <Attribute name="CRF_F3_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">2.2</Attribute>
+          <Attribute name="CRF_F4_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">3.4</Attribute>
+          <Attribute name="CRF_F5_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4.2</Attribute>
+          <Attribute name="CRF_F6_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4.4</Attribute>
+          <Attribute name="CRF_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.4</Attribute>
+          <Attribute name="CRF_LOW_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">0.4</Attribute>
+          <Attribute name="CRF_SEARCH_RESOLUTION" dataType="Float/Exponential" unit="V" multiplier="1">0.01</Attribute>
+          <Attribute name="CRX2_F1_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.4</Attribute>
+          <Attribute name="CRX2_F2_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">1.2</Attribute>
+          <Attribute name="CRX2_F3_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">2.2</Attribute>
+          <Attribute name="CRX2_F4_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">3.4</Attribute>
+          <Attribute name="CRX2_F5_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4.2</Attribute>
+          <Attribute name="CRX2_F6_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4.3</Attribute>
+          <Attribute name="CRX2_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.4</Attribute>
+          <Attribute name="CRX2_LOW_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">0.4</Attribute>
+          <Attribute name="CRX2_SEARCH_RESOLUTION" dataType="Float/Exponential" unit="V" multiplier="1">0.01</Attribute>
+          <Attribute name="CRX3_F1_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.4</Attribute>
+          <Attribute name="CRX3_F2_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">1.2</Attribute>
+          <Attribute name="CRX3_F3_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">2.2</Attribute>
+          <Attribute name="CRX3_F4_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">3.4</Attribute>
+          <Attribute name="CRX3_F5_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4.2</Attribute>
+          <Attribute name="CRX3_F6_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4.3</Attribute>
+          <Attribute name="CRX3_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.4</Attribute>
+          <Attribute name="CRX3_LOW_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">0.4</Attribute>
+          <Attribute name="CRX3_SEARCH_RESOLUTION" dataType="Float/Exponential" unit="V" multiplier="1">0.01</Attribute>
+          <Attribute name="Die" dataType="String">4+2</Attribute>
+          <Attribute name="FlowIndex">4</Attribute>
+          <Attribute name="FUNCTIONAL_CORE" dataType="Float/Exponential">4</Attribute>
+          <Attribute name="GRAPHICS_FUNC_CORES" dataType="Float/Exponential">3</Attribute>
+          <Attribute name="GT_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.2</Attribute>
+          <Attribute name="GT_LFM_VMIN_RAIN_KILL" dataType="Float/Exponential" unit="V" multiplier="1">0.8</Attribute>
+          <Attribute name="GT_LOW_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">0.4</Attribute>
+          <Attribute name="GT_SEARCH_RESOLUTION" dataType="Float/Exponential" unit="V" multiplier="1">0.01</Attribute>
+          <Attribute name="GTS_F1_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.3</Attribute>
+          <Attribute name="GTS_F2_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.6</Attribute>
+          <Attribute name="GTS_F3_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.9</Attribute>
+          <Attribute name="GTS_F4_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">1.1</Attribute>
+          <Attribute name="GTS_F5_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">1.3</Attribute>
+          <Attribute name="GTSM_F5_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">1.1</Attribute>
+          <Attribute name="olb_bin" dataType="Integer" unit="" multiplier="">4</Attribute>
+          <Attribute name="olb_bin_type" dataType="String">B</Attribute>
+          <Attribute name="RING_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.2</Attribute>
+          <Attribute name="SA_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.2</Attribute>
+          <Attribute name="SA_LFM_VMIN_RAIN_KILL" dataType="Float/Exponential" unit="V" multiplier="1">0.8</Attribute>
+          <Attribute name="SA_LOW_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">0.45</Attribute>
+          <Attribute name="SA_SEARCH_RESOLUTION" dataType="Float/Exponential" unit="V" multiplier="1">0.01</Attribute>
+          <Attribute name="SACD_F1_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">312</Attribute>
+          <Attribute name="SACD_F2_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">562</Attribute>
+          <Attribute name="SACD_F4_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">662</Attribute>
+          <Attribute name="SACD_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.2</Attribute>
+          <Attribute name="SACD_LOW_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">0.45</Attribute>
+          <Attribute name="SACD_SEARCH_RESOLUTION" dataType="Float/Exponential" unit="V" multiplier="1">0.01</Attribute>
+          <Attribute name="SAF_F1_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">533</Attribute>
+          <Attribute name="SAF_F5_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">800</Attribute>
+          <Attribute name="SAIS_F1_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">200</Attribute>
+          <Attribute name="SAIS_F5_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">533</Attribute>
+          <Attribute name="SAPS_F1_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">200</Attribute>
+          <Attribute name="SAPS_F3_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">400</Attribute>
+          <Attribute name="SAPS_F5_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">1000</Attribute>
+          <Attribute name="SAQ_F1_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">1100</Attribute>
+          <Attribute name="SAQ_F4_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">2200</Attribute>
+          <Attribute name="SAQ_F6_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">2700</Attribute>
+        </Flow>
+      </ActiveFlowList>
+    </BOMGroup>
+    <BOMGroup name="CLASS_TGLY42">
+      <BOMList>
+        <BOM>H64WXLAV_B</BOM>
+        <BOM>H64WXLAVAB</BOM>
+        <BOM>H64WXLBV_B</BOM>
+        <BOM>H64WXLBVAB</BOM>
+        <BOM>H64WXLBVBB</BOM>
+        <BOM>H64WXLBVCB</BOM>
+        <BOM>H64WXLCV_B</BOM>
+        <BOM>H64WXLCVAB</BOM>
+        <BOM>H64WXLCVBB</BOM>
+        <BOM>H64WXLCVCB</BOM>
+        <BOM>H64WXLDV_B</BOM>
+        <BOM>H64WXLDVAB</BOM>
+        <BOM>H64WXLFV_B</BOM>
+        <BOM>H64WXLFVAB</BOM>
+        <BOM>H64WXLFVBB</BOM>
+        <BOM>H64WXLFVCB</BOM>
+        <BOM>H64WXLGV_B</BOM>
+        <BOM>H64WXLGVAB</BOM>
+        <BOM>H64WXLHV_B</BOM>
+        <BOM>H64WXLHVAB</BOM>
+        <BOM>H64WXLKV_B</BOM>
+        <BOM>H64WXLKVAB</BOM>
+        <BOM>H64WXLKVBB</BOM>
+        <BOM>H64WXLKVCB</BOM>
+        <BOM>H64WXLLV_B</BOM>
+        <BOM>H64WXLLVAB</BOM>
+        <BOM>H64WXLMV_B</BOM>
+        <BOM>H64WXLMVAB</BOM>
+        <BOM>H64WXLMVBB</BOM>
+        <BOM>H64WXLMVCB</BOM>
+        <BOM>H64WXLNV_B</BOM>
+        <BOM>H64WXLNVAB</BOM>
+        <BOM>H64WXLNVBB</BOM>
+        <BOM>H64WXLNVCB</BOM>
+        <BOM>H64WXLQV_B</BOM>
+        <BOM>H64WXLQVAB</BOM>
+        <BOM>H64WXLQVBB</BOM>
+        <BOM>H64WXLQVCB</BOM>
+        <BOM>H64WXLSV_B</BOM>
+        <BOM>H64WXLSVAB</BOM>
+        <BOM>H64WXLUV_B</BOM>
+        <BOM>H64WXLUVAB</BOM>
+        <BOM>H64WXLVV_B</BOM>
+        <BOM>H64WXLVVAB</BOM>
+        <BOM>H64WXLXV_B</BOM>
+        <BOM>H64WXLXVAB</BOM>
+        <BOM>H68WXLBVBB</BOM>
+        <BOM>H68WXLBVCB</BOM>
+        <BOM>H68WXLCVBB</BOM>
+        <BOM>H68WXLCVCB</BOM>
+        <BOM>H68WXLFVBB</BOM>
+        <BOM>H68WXLFVCB</BOM>
+        <BOM>H68WXLKVBB</BOM>
+        <BOM>H68WXLKVCB</BOM>
+        <BOM>H68WXLMVBB</BOM>
+        <BOM>H68WXLMVCB</BOM>
+        <BOM>H68WXLNVBB</BOM>
+        <BOM>H68WXLNVCB</BOM>
+        <BOM>H68WXLQVBB</BOM>
+        <BOM>H68WXLQVCB</BOM>
+      </BOMList>
+      <ActiveFlowList>
+        <Flow index="1" bin="1701" binName="p1701">
+          <Attribute name="AVX_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.4</Attribute>
+          <Attribute name="BOMGroupName">CLASS_TGLY42</Attribute>
+          <Attribute name="Cache" dataType="String" unit="MB" multiplier="1000000">2</Attribute>
+          <Attribute name="CLR_F1_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.4</Attribute>
+          <Attribute name="CLR_F2_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.8</Attribute>
+          <Attribute name="CLR_F3_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">1.8</Attribute>
+          <Attribute name="CLR_F4_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">3</Attribute>
+          <Attribute name="CLR_F5_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">3.6</Attribute>
+          <Attribute name="CLR_F6_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4</Attribute>
+          <Attribute name="CORE_SELECT" dataType="String">4</Attribute>
+          <Attribute name="CR_F1_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.4</Attribute>
+          <Attribute name="CR_F2_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">1.2</Attribute>
+          <Attribute name="CR_F3_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">2.2</Attribute>
+          <Attribute name="CR_F4_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">3.4</Attribute>
+          <Attribute name="CR_F5_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4</Attribute>
+          <Attribute name="CR_F6_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4.6</Attribute>
+          <Attribute name="CR_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.35</Attribute>
+          <Attribute name="CR_LFM_VMIN_RAIN_KILL" dataType="Float/Exponential" unit="V" multiplier="1">0.8</Attribute>
+          <Attribute name="CR_LOW_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">0.4</Attribute>
+          <Attribute name="CR_SEARCH_RESOLUTION" dataType="Float/Exponential" unit="V" multiplier="1">0.01</Attribute>
+          <Attribute name="CRF_F1_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.4</Attribute>
+          <Attribute name="CRF_F2_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">1.2</Attribute>
+          <Attribute name="CRF_F3_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">2.2</Attribute>
+          <Attribute name="CRF_F4_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">3.4</Attribute>
+          <Attribute name="CRF_F5_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4</Attribute>
+          <Attribute name="CRF_F6_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4.6</Attribute>
+          <Attribute name="CRF_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.35</Attribute>
+          <Attribute name="CRF_LOW_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">0.4</Attribute>
+          <Attribute name="CRF_SEARCH_RESOLUTION" dataType="Float/Exponential" unit="V" multiplier="1">0.01</Attribute>
+          <Attribute name="CRX2_F1_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.4</Attribute>
+          <Attribute name="CRX2_F2_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">1.2</Attribute>
+          <Attribute name="CRX2_F3_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">2.2</Attribute>
+          <Attribute name="CRX2_F4_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">3.4</Attribute>
+          <Attribute name="CRX2_F5_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4</Attribute>
+          <Attribute name="CRX2_F6_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4.5</Attribute>
+          <Attribute name="CRX2_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.4</Attribute>
+          <Attribute name="CRX2_LOW_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">0.4</Attribute>
+          <Attribute name="CRX2_SEARCH_RESOLUTION" dataType="Float/Exponential" unit="V" multiplier="1">0.01</Attribute>
+          <Attribute name="CRX3_F1_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.4</Attribute>
+          <Attribute name="CRX3_F2_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">1.2</Attribute>
+          <Attribute name="CRX3_F3_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">2.2</Attribute>
+          <Attribute name="CRX3_F4_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">3.4</Attribute>
+          <Attribute name="CRX3_F5_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4</Attribute>
+          <Attribute name="CRX3_F6_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4.4</Attribute>
+          <Attribute name="CRX3_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.4</Attribute>
+          <Attribute name="CRX3_LOW_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">0.4</Attribute>
+          <Attribute name="CRX3_SEARCH_RESOLUTION" dataType="Float/Exponential" unit="V" multiplier="1">0.01</Attribute>
+          <Attribute name="Die" dataType="String">4+2</Attribute>
+          <Attribute name="FlowIndex">1</Attribute>
+          <Attribute name="FUNCTIONAL_CORE" dataType="Float/Exponential">4</Attribute>
+          <Attribute name="GRAPHICS_FUNC_CORES" dataType="Float/Exponential">3</Attribute>
+          <Attribute name="GT_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.2</Attribute>
+          <Attribute name="GT_LFM_VMIN_RAIN_KILL" dataType="Float/Exponential" unit="V" multiplier="1">0.8</Attribute>
+          <Attribute name="GT_LOW_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">0.4</Attribute>
+          <Attribute name="GT_SEARCH_RESOLUTION" dataType="Float/Exponential" unit="V" multiplier="1">0.01</Attribute>
+          <Attribute name="GTS_F1_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.3</Attribute>
+          <Attribute name="GTS_F2_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.5</Attribute>
+          <Attribute name="GTS_F3_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.8</Attribute>
+          <Attribute name="GTS_F4_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.9</Attribute>
+          <Attribute name="GTS_F5_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">1.1</Attribute>
+          <Attribute name="GTSM_F5_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.9</Attribute>
+          <Attribute name="olb_bin" dataType="Integer" unit="" multiplier="">1</Attribute>
+          <Attribute name="olb_bin_type" dataType="String">B</Attribute>
+          <Attribute name="RING_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.2</Attribute>
+          <Attribute name="SA_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.2</Attribute>
+          <Attribute name="SA_LFM_VMIN_RAIN_KILL" dataType="Float/Exponential" unit="V" multiplier="1">0.8</Attribute>
+          <Attribute name="SA_LOW_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">0.45</Attribute>
+          <Attribute name="SA_SEARCH_RESOLUTION" dataType="Float/Exponential" unit="V" multiplier="1">0.01</Attribute>
+          <Attribute name="SACD_F1_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">312</Attribute>
+          <Attribute name="SACD_F2_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">562</Attribute>
+          <Attribute name="SACD_F4_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">662</Attribute>
+          <Attribute name="SACD_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.2</Attribute>
+          <Attribute name="SACD_LOW_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">0.45</Attribute>
+          <Attribute name="SACD_SEARCH_RESOLUTION" dataType="Float/Exponential" unit="V" multiplier="1">0.01</Attribute>
+          <Attribute name="SAF_F1_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">533</Attribute>
+          <Attribute name="SAF_F5_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">800</Attribute>
+          <Attribute name="SAIS_F1_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">200</Attribute>
+          <Attribute name="SAIS_F5_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">533</Attribute>
+          <Attribute name="SAPS_F1_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">200</Attribute>
+          <Attribute name="SAPS_F3_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">400</Attribute>
+          <Attribute name="SAPS_F5_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">800</Attribute>
+          <Attribute name="SAQ_F1_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">1100</Attribute>
+          <Attribute name="SAQ_F4_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">1600</Attribute>
+          <Attribute name="SAQ_F6_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">2200</Attribute>
+        </Flow>
+        <Flow index="2" bin="1702" binName="p1702">
+          <Attribute name="AVX_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.4</Attribute>
+          <Attribute name="BOMGroupName">CLASS_TGLY42</Attribute>
+          <Attribute name="Cache" dataType="String" unit="MB" multiplier="1000000">2</Attribute>
+          <Attribute name="CLR_F1_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.4</Attribute>
+          <Attribute name="CLR_F2_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.8</Attribute>
+          <Attribute name="CLR_F3_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">1.8</Attribute>
+          <Attribute name="CLR_F4_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">3</Attribute>
+          <Attribute name="CLR_F5_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">3.6</Attribute>
+          <Attribute name="CLR_F6_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">3.8</Attribute>
+          <Attribute name="CORE_SELECT" dataType="String">4</Attribute>
+          <Attribute name="CR_F1_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.4</Attribute>
+          <Attribute name="CR_F2_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">1.2</Attribute>
+          <Attribute name="CR_F3_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">2.2</Attribute>
+          <Attribute name="CR_F4_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">3.4</Attribute>
+          <Attribute name="CR_F5_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4</Attribute>
+          <Attribute name="CR_F6_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4.4</Attribute>
+          <Attribute name="CR_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.35</Attribute>
+          <Attribute name="CR_LFM_VMIN_RAIN_KILL" dataType="Float/Exponential" unit="V" multiplier="1">0.8</Attribute>
+          <Attribute name="CR_LOW_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">0.4</Attribute>
+          <Attribute name="CR_SEARCH_RESOLUTION" dataType="Float/Exponential" unit="V" multiplier="1">0.01</Attribute>
+          <Attribute name="CRF_F1_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.4</Attribute>
+          <Attribute name="CRF_F2_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">1.2</Attribute>
+          <Attribute name="CRF_F3_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">2.2</Attribute>
+          <Attribute name="CRF_F4_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">3.4</Attribute>
+          <Attribute name="CRF_F5_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4</Attribute>
+          <Attribute name="CRF_F6_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4.4</Attribute>
+          <Attribute name="CRF_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.35</Attribute>
+          <Attribute name="CRF_LOW_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">0.4</Attribute>
+          <Attribute name="CRF_SEARCH_RESOLUTION" dataType="Float/Exponential" unit="V" multiplier="1">0.01</Attribute>
+          <Attribute name="CRX2_F1_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.4</Attribute>
+          <Attribute name="CRX2_F2_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">1.2</Attribute>
+          <Attribute name="CRX2_F3_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">2.2</Attribute>
+          <Attribute name="CRX2_F4_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">3.4</Attribute>
+          <Attribute name="CRX2_F5_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4</Attribute>
+          <Attribute name="CRX2_F6_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4.3</Attribute>
+          <Attribute name="CRX2_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.4</Attribute>
+          <Attribute name="CRX2_LOW_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">0.4</Attribute>
+          <Attribute name="CRX2_SEARCH_RESOLUTION" dataType="Float/Exponential" unit="V" multiplier="1">0.01</Attribute>
+          <Attribute name="CRX3_F1_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.4</Attribute>
+          <Attribute name="CRX3_F2_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">1.2</Attribute>
+          <Attribute name="CRX3_F3_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">2.2</Attribute>
+          <Attribute name="CRX3_F4_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">3.4</Attribute>
+          <Attribute name="CRX3_F5_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4</Attribute>
+          <Attribute name="CRX3_F6_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4.2</Attribute>
+          <Attribute name="CRX3_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.4</Attribute>
+          <Attribute name="CRX3_LOW_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">0.4</Attribute>
+          <Attribute name="CRX3_SEARCH_RESOLUTION" dataType="Float/Exponential" unit="V" multiplier="1">0.01</Attribute>
+          <Attribute name="Die" dataType="String">4+2</Attribute>
+          <Attribute name="FlowIndex">2</Attribute>
+          <Attribute name="FUNCTIONAL_CORE" dataType="Float/Exponential">4</Attribute>
+          <Attribute name="GRAPHICS_FUNC_CORES" dataType="Float/Exponential">3</Attribute>
+          <Attribute name="GT_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.2</Attribute>
+          <Attribute name="GT_LFM_VMIN_RAIN_KILL" dataType="Float/Exponential" unit="V" multiplier="1">0.8</Attribute>
+          <Attribute name="GT_LOW_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">0.4</Attribute>
+          <Attribute name="GT_SEARCH_RESOLUTION" dataType="Float/Exponential" unit="V" multiplier="1">0.01</Attribute>
+          <Attribute name="GTS_F1_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.3</Attribute>
+          <Attribute name="GTS_F2_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.5</Attribute>
+          <Attribute name="GTS_F3_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.8</Attribute>
+          <Attribute name="GTS_F4_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.9</Attribute>
+          <Attribute name="GTS_F5_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">1.1</Attribute>
+          <Attribute name="GTSM_F5_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.9</Attribute>
+          <Attribute name="olb_bin" dataType="Integer" unit="" multiplier="">2</Attribute>
+          <Attribute name="olb_bin_type" dataType="String">B</Attribute>
+          <Attribute name="RING_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.2</Attribute>
+          <Attribute name="SA_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.2</Attribute>
+          <Attribute name="SA_LFM_VMIN_RAIN_KILL" dataType="Float/Exponential" unit="V" multiplier="1">0.8</Attribute>
+          <Attribute name="SA_LOW_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">0.45</Attribute>
+          <Attribute name="SA_SEARCH_RESOLUTION" dataType="Float/Exponential" unit="V" multiplier="1">0.01</Attribute>
+          <Attribute name="SACD_F1_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">312</Attribute>
+          <Attribute name="SACD_F2_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">562</Attribute>
+          <Attribute name="SACD_F4_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">662</Attribute>
+          <Attribute name="SACD_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.2</Attribute>
+          <Attribute name="SACD_LOW_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">0.45</Attribute>
+          <Attribute name="SACD_SEARCH_RESOLUTION" dataType="Float/Exponential" unit="V" multiplier="1">0.01</Attribute>
+          <Attribute name="SAF_F1_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">533</Attribute>
+          <Attribute name="SAF_F5_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">800</Attribute>
+          <Attribute name="SAIS_F1_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">200</Attribute>
+          <Attribute name="SAIS_F5_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">533</Attribute>
+          <Attribute name="SAPS_F1_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">200</Attribute>
+          <Attribute name="SAPS_F3_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">400</Attribute>
+          <Attribute name="SAPS_F5_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">800</Attribute>
+          <Attribute name="SAQ_F1_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">1100</Attribute>
+          <Attribute name="SAQ_F4_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">1600</Attribute>
+          <Attribute name="SAQ_F6_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">2200</Attribute>
+        </Flow>
+        <Flow index="3" bin="1703" binName="p1703">
+          <Attribute name="AVX_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.4</Attribute>
+          <Attribute name="BOMGroupName">CLASS_TGLY42</Attribute>
+          <Attribute name="Cache" dataType="String" unit="MB" multiplier="1000000">2</Attribute>
+          <Attribute name="CLR_F1_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.4</Attribute>
+          <Attribute name="CLR_F2_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.8</Attribute>
+          <Attribute name="CLR_F3_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">1.8</Attribute>
+          <Attribute name="CLR_F4_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">3</Attribute>
+          <Attribute name="CLR_F5_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">3.6</Attribute>
+          <Attribute name="CLR_F6_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">3.8</Attribute>
+          <Attribute name="CORE_SELECT" dataType="String">2</Attribute>
+          <Attribute name="CR_F1_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.4</Attribute>
+          <Attribute name="CR_F2_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">1.2</Attribute>
+          <Attribute name="CR_F3_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">2.2</Attribute>
+          <Attribute name="CR_F4_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">3.4</Attribute>
+          <Attribute name="CR_F5_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4</Attribute>
+          <Attribute name="CR_F6_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4.2</Attribute>
+          <Attribute name="CR_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.35</Attribute>
+          <Attribute name="CR_LFM_VMIN_RAIN_KILL" dataType="Float/Exponential" unit="V" multiplier="1">0.8</Attribute>
+          <Attribute name="CR_LOW_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">0.4</Attribute>
+          <Attribute name="CR_SEARCH_RESOLUTION" dataType="Float/Exponential" unit="V" multiplier="1">0.01</Attribute>
+          <Attribute name="CRF_F1_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.4</Attribute>
+          <Attribute name="CRF_F2_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">1.2</Attribute>
+          <Attribute name="CRF_F3_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">2.2</Attribute>
+          <Attribute name="CRF_F4_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">3.4</Attribute>
+          <Attribute name="CRF_F5_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4</Attribute>
+          <Attribute name="CRF_F6_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4.2</Attribute>
+          <Attribute name="CRF_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.35</Attribute>
+          <Attribute name="CRF_LOW_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">0.4</Attribute>
+          <Attribute name="CRF_SEARCH_RESOLUTION" dataType="Float/Exponential" unit="V" multiplier="1">0.01</Attribute>
+          <Attribute name="CRX2_F1_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.4</Attribute>
+          <Attribute name="CRX2_F2_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">1.2</Attribute>
+          <Attribute name="CRX2_F3_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">2.2</Attribute>
+          <Attribute name="CRX2_F4_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">3.4</Attribute>
+          <Attribute name="CRX2_F5_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4</Attribute>
+          <Attribute name="CRX2_F6_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4.1</Attribute>
+          <Attribute name="CRX2_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.4</Attribute>
+          <Attribute name="CRX2_LOW_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">0.4</Attribute>
+          <Attribute name="CRX2_SEARCH_RESOLUTION" dataType="Float/Exponential" unit="V" multiplier="1">0.01</Attribute>
+          <Attribute name="CRX3_F1_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.4</Attribute>
+          <Attribute name="CRX3_F2_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">1.2</Attribute>
+          <Attribute name="CRX3_F3_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">2.2</Attribute>
+          <Attribute name="CRX3_F4_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">3.4</Attribute>
+          <Attribute name="CRX3_F5_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4</Attribute>
+          <Attribute name="CRX3_F6_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">4.1</Attribute>
+          <Attribute name="CRX3_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.4</Attribute>
+          <Attribute name="CRX3_LOW_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">0.4</Attribute>
+          <Attribute name="CRX3_SEARCH_RESOLUTION" dataType="Float/Exponential" unit="V" multiplier="1">0.01</Attribute>
+          <Attribute name="Die" dataType="String">4+2</Attribute>
+          <Attribute name="FlowIndex">3</Attribute>
+          <Attribute name="FUNCTIONAL_CORE" dataType="Float/Exponential">4</Attribute>
+          <Attribute name="GRAPHICS_FUNC_CORES" dataType="Float/Exponential">3</Attribute>
+          <Attribute name="GT_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.2</Attribute>
+          <Attribute name="GT_LFM_VMIN_RAIN_KILL" dataType="Float/Exponential" unit="V" multiplier="1">0.8</Attribute>
+          <Attribute name="GT_LOW_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">0.4</Attribute>
+          <Attribute name="GT_SEARCH_RESOLUTION" dataType="Float/Exponential" unit="V" multiplier="1">0.01</Attribute>
+          <Attribute name="GTS_F1_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.3</Attribute>
+          <Attribute name="GTS_F2_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.5</Attribute>
+          <Attribute name="GTS_F3_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.8</Attribute>
+          <Attribute name="GTS_F4_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.9</Attribute>
+          <Attribute name="GTS_F5_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">1.1</Attribute>
+          <Attribute name="GTSM_F5_FREQ" dataType="Float/Exponential" unit="GHz" multiplier="1000000000">0.9</Attribute>
+          <Attribute name="olb_bin" dataType="Integer" unit="" multiplier="">3</Attribute>
+          <Attribute name="olb_bin_type" dataType="String">B</Attribute>
+          <Attribute name="RING_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.2</Attribute>
+          <Attribute name="SA_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.2</Attribute>
+          <Attribute name="SA_LFM_VMIN_RAIN_KILL" dataType="Float/Exponential" unit="V" multiplier="1">0.8</Attribute>
+          <Attribute name="SA_LOW_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">0.45</Attribute>
+          <Attribute name="SA_SEARCH_RESOLUTION" dataType="Float/Exponential" unit="V" multiplier="1">0.01</Attribute>
+          <Attribute name="SACD_F1_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">312</Attribute>
+          <Attribute name="SACD_F2_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">562</Attribute>
+          <Attribute name="SACD_F4_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">662</Attribute>
+          <Attribute name="SACD_HIGH_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">1.2</Attribute>
+          <Attribute name="SACD_LOW_SEARCH_VALUE" dataType="Float/Exponential" unit="V" multiplier="1">0.45</Attribute>
+          <Attribute name="SACD_SEARCH_RESOLUTION" dataType="Float/Exponential" unit="V" multiplier="1">0.01</Attribute>
+          <Attribute name="SAF_F1_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">533</Attribute>
+          <Attribute name="SAF_F5_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">800</Attribute>
+          <Attribute name="SAIS_F1_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">200</Attribute>
+          <Attribute name="SAIS_F5_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">533</Attribute>
+          <Attribute name="SAPS_F1_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">200</Attribute>
+          <Attribute name="SAPS_F3_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">400</Attribute>
+          <Attribute name="SAPS_F5_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">800</Attribute>
+          <Attribute name="SAQ_F1_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">1100</Attribute>
+          <Attribute name="SAQ_F4_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">1600</Attribute>
+          <Attribute name="SAQ_F6_FREQ" dataType="Float/Exponential" unit="MHz" multiplier="1000000">2200</Attribute>
+        </Flow>
+      </ActiveFlowList>
+    </BOMGroup>
+  </BOMGroupTable>
+</BinMatrix>

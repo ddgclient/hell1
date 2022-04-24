@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HSR_HRY_config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="GEN_HSR_HRY.xsd">
+
+	<ReverseCtvCaptureData>N</ReverseCtvCaptureData>
+
+	<CtvToHryMapping>
+		<Map ctv_data="0" hry_data="0" />
+		<Map ctv_data="1" hry_data="1" />
+	</CtvToHryMapping>
+
+	<Criterias>
+		<Criteria hry_index="0"  pin="YY_TEST_PORT_OUT_C2S_00" ctv_index_range="0"     condition="YY_TAP_TDO_C2S,0-1,00"    hry_output_on_condition_fail="8" bypass_global="PVAL_DIGITAL.HRY_Global_1" />
+		<Criteria hry_index="1"  pin="YY_TEST_PORT_OUT_C2S_00" ctv_index_range="1"     condition="YY_TAP_TDO_C2S,2-3,00"    hry_output_on_condition_fail="8" bypass_global="PVAL_DIGITAL.HRY_Global_2" />
+	</Criterias>
+
+	<Algorithms>
+		<!-- 2 captures on YY_TEST_PORT_OUT_C2S_00, 4 captures on P002 ... Multi-algorithm so need per-pin ctv_size -->
+		<Algorithm index="0" name="AlgA"  ctv_size="YY_TEST_PORT_OUT_C2S_00,2|YY_TAP_TDO_C2S,4" /> <!-- specify both pins --> 
+		<Algorithm index="1" name="AlgB"  ctv_size="YY_TEST_PORT_OUT_C2S_00,2|default,4" />        <!-- specify one pin, "default" covers the others --> 
+		<Algorithm index="2" name="AlgC"  ctv_size="default,2|YY_TAP_TDO_C2S,4" />                 <!-- specify one pin, "default" covers the others --> 
+	</Algorithms>
+
+</HSR_HRY_config>

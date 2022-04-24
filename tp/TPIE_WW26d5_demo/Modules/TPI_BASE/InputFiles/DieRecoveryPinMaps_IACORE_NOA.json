@@ -1,0 +1,58 @@
+[
+	{
+		"Name":"CORE0", "PatternModify":"CORE_DISABLE0", "Size":1,
+		"PinToSliceIndexMap":{"YY_TEST_PORT_OUT_C2S_00":[0]}
+	},
+	{
+		"Name":"CORE1", "PatternModify":"CORE_DISABLE1", "Size":1,
+		"PinToSliceIndexMap":{"YY_TEST_PORT_OUT_C2S_01":[0]}
+	},
+	{
+		"Name":"CORE2", "PatternModify":"CORE_DISABLE2", "Size":1,
+		"PinToSliceIndexMap":{"YY_TEST_PORT_OUT_C2S_02":[0]}
+	},
+	{
+		"Name":"CORE3", "PatternModify":"CORE_DISABLE3", "Size":1,
+		"PinToSliceIndexMap":{"YY_TEST_PORT_OUT_C2S_03":[0]}
+	},
+	{
+		"Name":"CORE4", "PatternModify":"CORE_DISABLE4", "Size":1,
+		"PinToSliceIndexMap":{"YY_TEST_PORT_OUT_C2S_04":[0]}
+	},
+	{
+		"Name":"CORE5", "PatternModify":"CORE_DISABLE5", "Size":1,
+		"PinToSliceIndexMap":{"YY_TEST_PORT_OUT_C2S_05":[0]}
+	},
+	{
+		"Name":"SLICE0", "PatternModify":"SLICE_DISABLE0", "Size":1,
+		"PinToSliceIndexMap":{"YY_TEST_PORT_OUT_C2S_20":[0]}
+	},
+	{
+		"Name":"SLICE1", "PatternModify":"SLICE_DISABLE1", "Size":1,
+		"PinToSliceIndexMap":{"YY_TEST_PORT_OUT_C2S_21":[0]}
+	},
+	{
+		"Name":"SLICE2", "PatternModify":"SLICE_DISABLE2", "Size":1,
+		"PinToSliceIndexMap":{"YY_TEST_PORT_OUT_C2S_22":[0]}
+	},
+	{
+		"Name":"SLICE3", "PatternModify":"SLICE_DISABLE3", "Size":1,
+		"PinToSliceIndexMap":{"YY_TEST_PORT_OUT_C2S_23":[0]}
+	},
+	{
+		"Name":"SLICE4", "PatternModify":"SLICE_DISABLE4", "Size":1,
+		"PinToSliceIndexMap":{"YY_TEST_PORT_OUT_C2S_24":[0]}
+	},
+	{
+		"Name":"SLICE5", "PatternModify":"SLICE_DISABLE5", "Size":1,
+		"PinToSliceIndexMap":{"YY_TEST_PORT_OUT_C2S_25":[0]}
+	},
+	{
+		"Name":"ATOMSLICE_M0", "PatternModify":"SLICE_DISABLE6", "Size":1,
+		"PinToSliceIndexMap":{"YY_TEST_PORT_OUT_C2S_26":[0]}
+	},
+	{
+		"Name":"ATOMSLICE_M1", "PatternModify":"SLICE_DISABLE7", "Size":1,
+		"PinToSliceIndexMap":{"YY_TEST_PORT_OUT_C2S_27":[0]}
+	}
+]

@@ -1,0 +1,3 @@
+#Dummy Custom Set Point where none is needed 
+#DEFINE:   SETPOINT   :  DATA_TYPE   : VARIABLE            :  VARIABLE_TYPE   :  VALUE                           :  CONDITION
+ define:   ALL      :  STRING      : DUMMY               :    LITERAL       : ""                               :       *

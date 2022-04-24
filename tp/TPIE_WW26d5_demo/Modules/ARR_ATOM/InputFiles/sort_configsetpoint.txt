@@ -1,0 +1,7 @@
+#Fuse Configuration:LKFC_A0_04_1 (0 - Snapshot)
+#Line Item:F979164/QQG4
+#        
+config:  TNT_L2:  LKFC:		-:	  fz_corexx_FB_PMA_L2_NUMBER_WAYS_FUSE:      n:  *:  LITERAL:  10010   
+config:  TNT_L2:  LKFC: 	-:	  fz_corexx_FB_PMA_L2DAT_WL_BIAS_FUSE:       n:  *:  LITERAL:  010     
+config:  TNT_L2:  LKFC:  	-:	  fz_corexx_FB_PMA_L2TAGSTATE_WL_BIAS_FUSE:  n:  *:  LITERAL:  010     
+config:  TNT_L2:  LKFC:  	-:	  fz_corexx_FB_PMA_L2C6_WL_BIAS_FUSE:        n:  *:  LITERAL:  010     

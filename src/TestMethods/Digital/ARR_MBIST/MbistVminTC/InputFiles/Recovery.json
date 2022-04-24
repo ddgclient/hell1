@@ -1,0 +1,83 @@
+{
+  "Version": 1.0,
+  "RecoveryToken": [ "Media1", "Media2", "VPU", "VPU2", "VPU3", "VPU4", "IPU", "IPU2", "IPU3" ],
+  "ValidOptions": [],
+  "RecoveryPriority": [],
+  "ErrorValue": "9",
+  "FailValue": "1",
+  "PassValue": "0",
+  "DesignIps": {
+    "Media1": {
+      "Type": "Partial",
+      "Required": [ "LEH_BP34" ],
+      "RecoveryOptions": {
+        "2": [ "LEH_BP36" ],
+        "3": [ "LEH_BP35" ]
+      }
+    },
+    "Media2": {
+      "Type": "Partial",
+      "Required": [ "LEH_BP35" ],
+      "RecoveryOptions": {
+        "2": [ "LEH_BP34" ],
+        "3": [ "LEH_BP36" ]
+      }
+    },
+    "VPU": {
+      "Type": "Partial",
+      "Required": [],
+      "RecoveryOptions": {
+        "2": [ "LEHP_BP34", "LEHP_BP35_MEM1" ],
+        "3": [ "LEHP_BP36" ]
+      }
+    },
+    "VPU2": {
+      "Type": "Partial",
+      "Required": [],
+      "RecoveryOptions": {
+        "2": [ "LEHP_BP36" ],
+        "3": [ "LEHP_BP34", "LEHP_BP35_MEM1" ]
+      }
+    },
+    "VPU3": {
+      "Type": "Partial",
+      "Required": [ "LEHP_BP36" ],
+      "RecoveryOptions": {
+        "2": [ "LEHP_BP35_MEM1" ],
+        "3": [ "LEHP_BP34" ]
+      }
+    },
+    "VPU4": {
+      "Type": "Partial",
+      "Required": [ "LEHP_BP35_MEM2" ],
+      "RecoveryOptions": {
+        "2": [ "LEHP_BP35_MEM1" ],
+        "3": [ "LEHP_BP34" ]
+      }
+    },
+    "IPU": {
+      "Type": "Full",
+      "Required": [ "LEHP_BP36_MEM1" ],
+      "RecoveryOptions": {
+        "1": [ "LEHP_BP35" ]
+      }
+    },
+    "IPU2": {
+      "Type": "Full",
+      "Required": [ "LEHP_BP34" ],
+      "RecoveryOptions": {
+        "1": [ "LEHP_BP35" ]
+      }
+    },
+    "IPU3": {
+      "Type": "Full",
+      "Required": [ "LEHP_BP34" ],
+      "RecoveryOptions": {
+        "1": [ "LEHP_BP36" ]
+      }
+    }
+
+  }
+}
+
+

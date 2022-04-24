@@ -1,0 +1,21 @@
+[
+{
+    "Name": "CPlist_map",
+    "Size": 6,
+	"Description": "TargetPositions: CORE1,CORE0,SLICE3,SLICE2,SLICE1,SLICE0",
+    "CtvDomain": "CPU_FAB_ALL",
+    "ConcurrentPlists": [
+        {
+            "Comment": "CORE",
+            "TargetPositions": [0,1],
+            "PlistName": "arr_cdie_pbist_core_ccr_r1",
+            "FailingPins": ["YY_TEST_PORT_OUT_C2S_01","YY_TEST_PORT_OUT_C2S_00"]
+        },
+        {
+            "Comment": "CCF",
+            "TargetPositions": [2,3,4,5],
+            "PlistName": "arr_cdie_pbist_ccf_ccr_r1"
+        }
+    ]
+}
+]

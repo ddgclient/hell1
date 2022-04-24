@@ -1,0 +1,238 @@
+{
+  "Setup": {
+    "PatModConfigSets": {
+      "LSA_RASTER_PAT_MODIFY_SET_CORE": [ "MaxDefectsCount", "Multiport", "Bank", "Dword", "IOMask" ],
+      "LSA_RASTER_PAT_MODIFY_SET_CBO": [ "MaxDefectsCount", "Multiport", "Bank", "Dword", "IOMask" ],
+      "LSA_RASTER_PAT_MODIFY_SET_SA": [ "MaxDefectsCount", "Multiport", "Bank", "Dword", "IOMask" ]
+    },
+    "CaptureConfigSets": {
+      "LSA_RASTER_CAPTURE_DECODING_SET_CORE": { 
+        "Length": 82,
+        "DecodingElements": { 
+          "FailAddress": {
+            "Start": 30,
+            "End": 41
+          },
+          "Dword": {
+            "Start": 42,
+            "End": 45
+          },
+          "Bank": {
+            "Start": 46,
+            "End": 49
+          },
+          "FailIO": {
+            "Start": 50,
+            "End": 81
+          }
+        }
+      },
+      "LSA_RASTER_CAPTURE_DECODING_SET_CBO": {
+        "Length": 52,
+        "DecodingElements": {
+          "FailAddress": {
+            "Start": 0,
+            "End": 11
+          },
+          "Dword": {
+            "Start": 12,
+            "End": 15
+          },
+          "Bank": {
+            "Start": 16,
+            "End": 19
+          },
+          "FailIO": 
+          {
+            "Start": 20,
+            "End": 51
+          }
+        }
+      },
+      "LSA_RASTER_CAPTURE_DECODING_SET_SA": {
+        "Length": 52,
+        "DecodingElements": {
+          "FailAddress": {
+            "Start": 0,
+            "End": 11
+          },
+          "Dword":  {
+            "Start": 12,
+            "End": 15
+          },
+          "Bank": {
+            "Start": 16,
+            "End": 19
+          },
+          "FailIO": {
+            "Start": 20,
+            "End": 51
+          }
+        }
+      }
+    },
+    "SlicePinMapping": {
+      "4_CORES": { 
+        "MulticorePatternEnabled": false,
+        "Configurations": {
+          "ArrayNameRegex": "[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_([a-zA-Z0-9]+_[a-zA-Z0-9]+_?[a-zA-Z0-9]*)_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+",
+          "IsRasterModeSupported": true,
+          "IsGetDwordFromFailIoIndex": false,
+          "PreScreenLabelRegex": "_MBD_([0-9]+)_([0-9]+)_([0-9]+)",
+          "LabelRegExTokens": [
+            "MULTIPORT",
+            "BANK",
+            "DWORD"
+          ]
+        },
+        "PinMappings": [ 
+          {
+            "SliceId": "0",
+            "PinName": "NOAB_00",
+            "HryName": "C0"
+          },
+          {
+            "SliceId": "1",
+            "PinName": "NOAB_01",
+            "HryName": "C1"
+          },
+          {
+            "SliceId": "2",
+            "PinName": "NOAB_02",
+            "HryName": "C2"
+          },
+          {
+            "SliceId": "3",
+            "PinName": "NOAB_03",
+            "HryName": "C3"
+          }
+        ]
+      },
+      "CCF_SLICE_0": {
+        "MulticorePatternEnabled": false,
+        "Configurations": {
+          "ArrayNameRegex": "[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_([a-zA-Z0-9]+_[a-zA-Z0-9]+_?[a-zA-Z0-9]*)_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+",
+          "IsRasterModeSupported": true,
+          "IsGetDwordFromFailIoIndex": false,
+          "PreScreenLabelRegex": "_S?MBD_?X?_([0-7]+)_([0-9]+)_([0-9]+)_([0-9]+)",
+          "LabelRegExTokens": [
+            "SLICE",
+            "MULTIPORT",
+            "BANK",
+            "DWORD"
+          ]
+        },
+        "PinMappings": [
+          {
+            "SliceId": "0",
+            "PinName": "TDO",
+            "HryName": "C0"
+          }
+        ]
+      },
+      "CCF_SLICE_1": {
+        "MulticorePatternEnabled": false,
+        "Configurations": {
+          "ArrayNameRegex": "[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_([a-zA-Z0-9]+_[a-zA-Z0-9]+_?[a-zA-Z0-9]*)_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+",
+          "IsRasterModeSupported": true,
+          "IsGetDwordFromFailIoIndex": false,
+          "PreScreenLabelRegex": "_S?MBD_?X?_([0-7]+)_([0-9]+)_([0-9]+)_([0-9]+)",
+          "LabelRegExTokens": [
+            "SLICE",
+            "MULTIPORT",
+            "BANK",
+            "DWORD"
+          ]
+        },
+        "PinMappings": [
+          {
+            "SliceId": "1",
+            "PinName": "TDO",
+            "HryName": "C1"
+          }
+        ]
+      },
+      "CCF_SLICE_2": {
+        "MulticorePatternEnabled": false,
+        "Configurations": {
+          "ArrayNameRegex": "[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_([a-zA-Z0-9]+_[a-zA-Z0-9]+_?[a-zA-Z0-9]*)_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+",
+          "IsRasterModeSupported": true,
+          "IsGetDwordFromFailIoIndex": false,
+          "PreScreenLabelRegex": "_S?MBD_?X?_([0-7]+)_([0-9]+)_([0-9]+)_([0-9]+)",
+          "LabelRegExTokens": [
+            "SLICE",
+            "MULTIPORT",
+            "BANK",
+            "DWORD"
+          ]
+        },
+        "PinMappings": [
+          {
+            "SliceId": "2",
+            "PinName": "TDO",
+            "HryName": "C2"
+          }
+        ]
+      },
+      "CCF_SLICE_3": {
+        "MulticorePatternEnabled": false,
+        "Configurations": {
+          "ArrayNameRegex": "[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_([a-zA-Z0-9]+_[a-zA-Z0-9]+_?[a-zA-Z0-9]*)_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+",
+          "IsRasterModeSupported": true,
+          "IsGetDwordFromFailIoIndex": false,
+          "PreScreenLabelRegex": "_S?MBD_?X?_([0-7]+)_([0-9]+)_([0-9]+)_([0-9]+)",
+          "LabelRegExTokens": [
+            "SLICE",
+            "MULTIPORT",
+            "BANK",
+            "DWORD"
+          ]
+        },
+        "PinMappings": [
+          {
+            "SliceId": "3",
+            "PinName": "TDO",
+            "HryName": "C3"
+          }
+        ]
+      },
+      "4_SLICES_CBO": {
+        "MulticorePatternEnabled": false,
+        "Configurations": {
+          "ArrayNameRegex": "[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_([a-zA-Z0-9]+_[a-zA-Z0-9]+)_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+",
+          "IsRasterModeSupported": true,
+          "IsGetDwordFromFailIoIndex": false,
+          "PreScreenLabelRegex": "_S?MBD_?X?_([0-7]+)_([0-9]+)_([0-9]+)_([0-9]+)",
+          "LabelRegExTokens": [
+            "SLICE",
+            "MULTIPORT",
+            "BANK",
+            "DWORD"
+          ]
+        },
+        "PinMappings": [
+          {
+            "SliceId": "0",
+            "PinName": "NOAB_00",
+            "HryName": "C0"
+          },
+          {
+            "SliceId": "1",
+            "PinName": "NOAB_01",
+            "HryName": "C1"
+          },
+          {
+            "SliceId": "2",
+            "PinName": "NOAB_02",
+            "HryName": "C2"
+          },
+          {
+            "SliceId": "3",
+            "PinName": "NOAB_03",
+            "HryName": "C3"
+          }
+        ]
+      }
+    }
+  }
+} 

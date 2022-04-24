@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DfxTimingTuner>
+  <pingroup name="STFIN_Pins">
+	<pin alias="STF003">YY_TEST_PORT_IN_S2C_03</pin>
+	<pin alias="STF002">YY_TEST_PORT_IN_S2C_02</pin>
+	<pin alias="STF001">YY_TEST_PORT_IN_S2C_01</pin>
+	<pin alias="STF000">YY_TEST_PORT_IN_S2C_00</pin>
+  </pingroup>
+  <pingroup name="STFOUT_Pins">
+	<pin alias="STF003">YY_TEST_PORT_OUT_C2S_03</pin>
+	<pin alias="STF002">YY_TEST_PORT_OUT_C2S_02</pin>
+	<pin alias="STF001">YY_TEST_PORT_OUT_C2S_01</pin>
+	<pin alias="STF000">YY_TEST_PORT_OUT_C2S_00</pin>
+  </pingroup>
+  <pingroup name="SerialOut">
+    <pin>YY_TAP_TDO_C2S</pin>
+  </pingroup>
+  <set name="SampleDriveMode">
+    <search_mode>Drive</search_mode>
+    <search_pins>STFIN_Pins</search_pins>
+    <capture_pins>SerialOut</capture_pins>
+    <capture_ctvorder>STFIN_Pins</capture_ctvorder>
+    <uservar>PVAL_DFXTUNER::STF100.%ALIAS%_drv_offset</uservar>
+	<loop_size config="DfxTuneLooopSize">MOV %SIZE%, R1</loop_size>
+  </set>
+  <set name="SampleCompareMode">
+    <search_mode>Compare</search_mode>
+    <search_pins>STFOUT_Pins</search_pins>
+    <capture_pins>STFOUT_Pins</capture_pins>
+    <pingroup_for_adjust>stf_out</pingroup_for_adjust>
+    <uservar>PVAL_DFXTUNER::STF100.%ALIAS%_stb_offset</uservar>
+	<loop_size config="DfxTuneLooopSize">MOV %SIZE%, R1</loop_size>
+  </set>
+</DfxTimingTuner>

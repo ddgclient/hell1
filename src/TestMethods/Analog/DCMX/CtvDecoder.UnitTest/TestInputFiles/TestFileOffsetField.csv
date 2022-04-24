@@ -1,0 +1,6 @@
+Pin,IP,Sequence,Subsequence,Field,Size,ExpectedData,ItuffToken
+DDR1_DQ50,V0,training,subseq1,val1,4,8,<TssidRename>_Token1
+DDR1_DQ50,V0,training,subseq1,Offset1,0,-,-
+DDR1_DQ50,V0,training,subseq1,val2,4,8,<TssidRename>_Token1
+DDR1_DQ50,V0,training,subseq1,Offset2,0,-,-
+DDR1_DQ50,V0,training,subseq1,val3,4,8,<TssidRename>_Token1

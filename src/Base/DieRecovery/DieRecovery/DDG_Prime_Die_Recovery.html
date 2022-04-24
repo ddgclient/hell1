@@ -1,0 +1,822 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>DDG Die Recovery</title>
+</head>
+<body>
+
+    <h1 id="ddg-die-recovery">DDG Die Recovery</h1>
+<h3 id="rev-0">Rev 0</h3>
+<h2 id="section"></h2>
+<h2 id="contents">Contents</h2>
+<ol>
+<li><a href="#configuration">Configuration</a><br />
+1.1 <a href="#testprogram-overview">TestProgram Overview</a><br />
+1.2 <a href="#testprogram-instance-details">TestProgram Instance details</a></li>
+<li><a href="#basic-structures">Basic Structures</a><br />
+2.1 <a href="#pinmap">PinMap</a><br />
+2.2 <a href="#tracker">Tracker</a><br />
+2.3 <a href="#rules">Rules</a></li>
+<li><a href="#usages">Usages</a><br />
+3.1 <a href="#vmin-template">Vmin Template</a><br />
+3.2 <a href="#callbacks-evergreen-or-prime-templates">Callbacks (Evergreen or Prime Templates)</a><br />
+3.3 <a href="#prime-usercode">Prime UserCode</a></li>
+<li><a href="#file-formats">File Formats</a><br />
+4.1 <a href="#tracker-file">Tracker File</a><br />
+4.2 <a href="#pinmap-file">PinMap File</a><br />
+4.3 <a href="#recover-rules-file">Recovery Rules File</a></li>
+<li><a href="#custom-pinmap">Custom PinMap</a><br />
+5.1 <a href="#location">Location</a><br />
+5.2 <a href="#requirements-for-custom-pinmapdecoder">Requirements for Custom PinMapDecoder</a></li>
+</ol>
+<h2 id="configuration">Configuration</h2>
+<h3 id="testprogram-overview">TestProgram Overview</h3>
+<p><img src="images/dierecovery_tpflow1.png" alt="TestProgram Flow" /></p>
+<h3 id="testprogram-instance-details">TestProgram Instance details</h3>
+<ul>
+<li><p>INIT Flow</p>
+<ul>
+<li>DieRecoveryBase TestClass
+<ul>
+<li>Builds all the internal structures and configurations</li>
+<li>Must be run once in INIT, before the PrimeInitTestMethod instance</li>
+<li>Required Parameters
+<ul>
+<li>Mode = Configure
+<ul>
+<li>Sets the templates mode to load configuration files.</li>
+</ul>
+</li>
+<li>TrackerFile = &quot;./PrimeConfigs/DieRecoveryTrackers.json&quot;
+<ul>
+<li>Defines the trackers and initial values.</li>
+<li>See <a href="#tracker-file">TrackerFile format section</a></li>
+</ul>
+</li>
+<li>RulesFile = &quot;./whatever/Recovery.xml&quot;
+<ul>
+<li>Creates the Recovery rules which can be run on trackers.</li>
+<li>See <a href="#recovery-rules-file">Recovery Rules File</a></li>
+</ul>
+</li>
+<li>AllowDownBins = True/False (default=True)
+<ul>
+<li>When False - Each tracker can only be written once, if it is every written to a different value (ie a DownBin) the operation will fail.</li>
+<li>Meant to be used in DownStream sockets where the DFF value for the Trackers is the only valid setting.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>DieRecoveryCallbacks TestClass
+<ul>
+<li>Registers the prime callback functions so they are available
+to Evergreen or Prime test instances.</li>
+<li>No required parameters.</li>
+<li>See
+<a href="https://dev.azure.com/mit-us/PRIME/_wiki/wikis/PRIME.wiki/406/Calling-Prime-C-Sharp-Code-from-EVG-UF?anchor=%5B2%5D-call-your-new-callback-from-an-evg-uf">PrimeWiki</a>
+for more information on Prime callbacks and how to call
+them.</li>
+</ul>
+</li>
+<li>Load PinMap Configs
+<ul>
+<li>Use LoadPinMap callback to load the pin map configuration
+files.</li>
+<li>One iCUserFuncTest per PinMap type is required.</li>
+<li>See <a href="#callbacks-evergreen-or-prime-templates">Callbacks (Evergreen or Prime
+Templates)</a> and
+<a href="#pinmap-file">PinMap File</a> for details</li>
+<li>Example
+<pre><code>Test iCUserFuncTest LoadIaCoreNoaDieRecoveryPinMaps  
+{  
+    function_name = &quot;CPD_DEBUG!ExecPrimeCsCallback&quot;;  
+    function_parameter = &quot;LoadPinMapFile(--decoder PinToSliceIndexDecoder --file ./PrimeConfigs/PinMaps_IACORE_NOA.json)&quot;;  
+}  
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Begin (or Start?) Flow</p>
+<ul>
+<li>WriteTracker Callback function
+<ul>
+<li>Initialize the tracker from a GSDS Token, DFF Token, HDMT
+User Variable or a literal value.</li>
+<li>Can be anywhere in the flow, as long as the source token is
+defined.</li>
+<li>Argument is a single string, fields are space separated. See
+<a href="#callbacks-evergreen-or-prime-templates">Callback</a> section
+for more details.</li>
+<li>List of fields (Tracker is required, only one of
+Value/GsdsToken/DffToken/UserVar should be supplied)
+<ul>
+<li>--tracker – comma separated list of tracker names.</li>
+<li>--value – Literal value to write to the tracker.</li>
+<li>--gsds – Name of GSDS token to get the value from.
+<ul>
+<li>Format = G.[LU].S.Name</li>
+</ul>
+</li>
+<li>--dff – Name of the DFF Token to get the value from.
+<ul>
+<li>Format = <em>DieID</em>.<em>OperationType</em>.<em>TokenName</em></li>
+</ul>
+</li>
+<li>--uservar – Name of the HDMT User Variable to get the
+value from.
+<ul>
+<li>Format = Collection.Name</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Example Literal
+<pre><code>Test iCUserFuncTest InitTrackerLiteral  
+{  
+    function_name = &quot;CPD_DEBUG!ExecPrimeCsCallback&quot;;  
+    function_parameter = &quot;WriteTracker(--tracker MyTracker --value 0011)&quot;;  
+}  
+</code></pre>
+</li>
+<li>Example GSDS
+<pre><code>Test iCUserFuncTest InitCoreTrackerFromGsds  
+{  
+    function_name = &quot;CPD_DEBUG!ExecPrimeCsCallback&quot;;  
+    function_parameter = &quot;WriteTracker(--tracker CORE0,CORE1,CORE2,CORE3,CORE4,CORE5,CORE6,CORE7 --gsds G.U.S.DFFCHECK_SLICE)&quot;;  
+}  
+</code></pre>
+</li>
+<li>Example DFF
+<pre><code>Test iCUserFuncTest InitCoreTrackerFromDff  
+{  
+    function_name = &quot;CPD_DEBUG!ExecPrimeCsCallback&quot;;  
+    function_parameter = &quot;WriteTracker(--tracker TRACKERNAME --dff *dieid*.*optype*.*tokenname*)&quot;;  
+}  
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>End Flow</p>
+<ul>
+<li>CopyTracker Callback function
+<ul>
+<li><p>Copies the Tracker value to a GSDS Token, DFF Token, or HDMT
+User Variable.</p>
+</li>
+<li><p>Can be anywhere in the flow.</p>
+</li>
+<li><p>Argument is a single string, fields are space separated. See
+<a href="#callbacks-evergreen-or-prime-templates">Callback</a> section
+for more details.</p>
+</li>
+<li><p>List of fields (Tracker is required, at least one of
+GsdsToken/DffToken/UserVar is required (more are fine))</p>
+<ul>
+<li>--tracker – comma separated list of tracker names.</li>
+<li>--gsds – Name of GSDS token to write the value to.
+<ul>
+<li>Format = G.[LU].S.Name</li>
+</ul>
+</li>
+<li>--dff – Name of the DFF Token to write the value to.
+<ul>
+<li>Format = <em>TokenName</em> or <em>DieID</em>.<em>TokenName</em></li>
+</ul>
+</li>
+<li>--uservar – Name of the HDMT User Variable to write the
+value to.
+<ul>
+<li>Format = Collection.Name</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Example GSDS</p>
+<pre><code>Test iCUserFuncTest CopyCoreTrackerToGsds  
+{  
+    function_name = &quot;CPD_DEBUG!ExecPrimeCsCallback&quot;;  
+    function_parameter =
+&quot;G.U.S.Dummy=CopyTracker(--tracker CORE0,CORE1,CORE2,CORE3,CORE4,CORE5,CORE6,CORE7 --gsds G.U.S.DFFCHECK_SLICE)&quot;;  
+}  
+</code></pre>
+</li>
+<li><p>Example DFF</p>
+<pre><code>Test iCUserFuncTest CopyCoreTrackerToDff  
+{  
+    function_name = &quot;CPD_DEBUG!ExecPrimeCsCallback&quot;;  
+    function_parameter = &quot; CopyTracker(--tracker TRACKERNAME --dff ID1.SOMETOKEN)&quot;;  
+}  
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="basic-structures">Basic Structures</h2>
+<h3 id="section-1"></h3>
+<h3 id="pinmap">PinMap</h3>
+<ul>
+<li>similar to pin_maps in DieRecovery.xml</li>
+<li>3 functions
+<ul>
+<li>Generate tracker/bitvector from plist failures
+(IFunctionalTestForSearch object).</li>
+<li>Mask plist from tracker/bitvector.</li>
+<li>Disable IP/Core/Slice from tracker/bitvector.
+<ul>
+<li>This is the one that's new, previously it was just an
+action/sequence containing a hardcoded fuse config.</li>
+<li>Now it can be anything, but its tied to the pin map … so
+CoreDisable and SliceDisable will require different pinmaps<br />
+… this might change if it becomes too cumbersome to use.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>PinMap types are defined in C# code (called PinMapDecoders), easy
+to add more.
+<ul>
+<li>See <a href="#custom-pinmap">Custom PinMap</a> section for details.</li>
+</ul>
+</li>
+<li>Current PinMapDecoders types:
+<ul>
+<li>PinToSliceIndexDecoder - Able to map pin(s) to index(es) in a
+bitvector/tracker. Used for things that get per-core results out
+on different pin. (eg mlc/slice sbft, NOA_MAP on TGL)</li>
+<li>AnyFailSingleSliceDecoder - Maps any failure on a list of pins
+to a &quot;current&quot; index in a bitvector/tracker. Used for things
+that test one core at time (eg SCAN_CORE_CBO on TGL)</li>
+</ul>
+</li>
+<li><s>Current PinMaps Instances:</s>
+<ul>
+<li><s>CORE_NOA_MAP, SLICE_NOA_MAP - equivalent to TGL NOA_MAP
+but one writes fusecfg to IA_CORE_DISABLE_MASK while the
+other does LLC_SLICE_IA_CORE_DIS.</s></li>
+<li><s>SCAN_CORE_CBO, SCAN_SLICE_CBO - like TGL
+SCAN_CORE_CBO</s></li>
+<li><s>Also have Per-Core versions (for Vmin template, more on that
+later…)</s>
+<ul>
+<li><s>CORE0_NOA, CORE1_NOA, … , CORE7_NOA</s></li>
+<li><s>SLICE0_NOA, SLICE1_NOA, … , SLICE7_NOA</s></li>
+<li><s>CORE0_SCAN, CORE1_SCAN, …, CORE7_SCAN</s></li>
+<li><s>SLICE0_SCAN, SLICE1_SCAN, …, SLICE7_SCAN</s></li>
+</ul>
+</li>
+<li>PinMaps Instances are now loaded using the LoadPinMapFile
+callback. See <a href="#pinmap-file">PinMap File</a> for details.</li>
+</ul>
+</li>
+</ul>
+<h3 id="section-2"></h3>
+<h3 id="tracker">Tracker</h3>
+<ul>
+<li>Simple BitArray used to track status of anything. Name/size/meaning
+is all user defined.</li>
+<li>Current Tracker instances
+<ul>
+<li>SliceTracking (8 bits)</li>
+<li>Per-Core trackers (for Vmin template, more on that later)
+<ul>
+<li>CORE0, CORE1, …, CORE7 (each 1 bit)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="rules">Rules</h3>
+<ul>
+<li>Same as Evergreen &quot;defeaturing_rules&quot;, but only current support
+&quot;ValidCombinations&quot; modes (more can be added as needed)</li>
+<li>Same fields/structure Evergreen ValidCombinations
+mode/name/size/type with list of valid bitvectors.</li>
+<li>Usage/interface still being worked out with Vmin template…</li>
+</ul>
+<h2 id="usages">Usages</h2>
+<h3 id="section-3"></h3>
+<h3 id="vmin-template">Vmin Template</h3>
+<p><em>see the VminTC document for the latest, these parameters might be out-of-date and are only for examples.</em></p>
+<ul>
+<li><p>Example</p>
+<pre><code>Test VminTC TRANS_CORE_VMIN_K_CHKCRF3_0808XX_VCORE_F3_2200_PRIME_1504  
+{  
+    TestMode = &quot;MultiVmin&quot;;  
+    CornerIdentifiers = &quot;CR0@F3,CR1@F3,CR2@F3,CR3@F3&quot;;  
+    FlowNumber = &quot;4&quot;;  
+
+    VoltageTargets = &quot;CORE0,CORE1,CORE2,CORE3&quot;;  
+    StartVoltages = &quot;0.55,0.55,0.55,0.55&quot;;  
+    EndVoltageLimits = &quot;1.35V,1.35V,1.35V,1.35V&quot;;  
+    StepSize = &quot;0.01&quot;;  
+
+    ForwardingMode = &quot;Merge&quot;;  
+    FeatureSwitchSettings = &quot;fivr_mode_on,disable_cores&quot;;  
+    VoltageOverrides = &quot;GT:0.6&quot;;  
+    FivrCondition = &quot;NOM&quot;;  
+
+    LevelsTc = &quot;SCN_CORE_PRIME::IO_DDR_univ_lvl_nom_lvl_SHARED_511E5BCD2BB65B457E04277F92FBBF5C77C6395E0D1AA5DDC416894A5DF4D1E4&quot;;  
+    TimingsTc = &quot;SCN_CORE_PRIME::cpu_func_sdr_univ_sta_univ_univ_b100_t100_d100_SHARED_0F9EB791BB9B601C383F5D7133A2C4CB6763527F7EB0E7EE842D9A424872470D&quot;;  
+    Patlist = &quot;scn_core_x_vccc_f3_chkcrf3_mEn100_tk6_core_trans_classhvm_list&quot;;  
+
+    ScoreboardBaseNumber = 3059;  
+    PatternNameMap = &quot;1,2,3,4,5,6,7&quot;;  
+    ScoreboardMaxFails = 20;  
+    ScoreboardEdgeTicks = 3;  
+    LogLevel = &quot;PRIME_DEBUG&quot;;  
+
+    ### DIE_RECOVERY OPTIONS ###_  
+    RecoveryTracking = &quot;CORE0,CORE1,CORE2,CORE3&quot;;  
+    PinMap = &quot;CORE0_NOA,CORE1_NOA,CORE2_NOA,CORE3_NOA&quot;;  
+    InitialMaskBits = &quot;0000&quot;;  
+    RecoveryOptions = &quot;CoreDefeaturingVector,2&quot;;  
+}  
+</code></pre>
+</li>
+<li><p>RecoveryTracking - Comma separated Names of the DieRecovery Trackers.
+Needs to match the &quot;Name&quot; field of one of the trackers from the TrackerFile.</p>
+</li>
+<li><p>PinMap - Comma separated names of the PinMaps.
+Needs to match with the &quot;Name&quot; fied from one of the pinmap decoder files</p>
+</li>
+<li><p>InitialMaskBits - Raw bitmask Combined (OR'd) with the tracker value to set the initial
+mask for testing.</p>
+</li>
+<li><p>RecoveryOptions - This is the DieRecovery Rules to run after the search.</p>
+<ul>
+<li>Should be 2 comma separated values, the first is the Rule Name to run, and the 2nd is the minimum size allowed for a &quot;Pass&quot; result.</li>
+<li>For speedflows in TPIE use -- RecoveryOptions = &quot;CoreDefeaturingVector,{CORE_SELECT}&quot;;</li>
+</ul>
+</li>
+</ul>
+<h3 id="section-4"></h3>
+<h3 id="callbacks-evergreen-or-prime-templates">Callbacks (Evergreen or Prime Templates)</h3>
+<p>See the separate DieRecoveryCallbacks document for details on what functions are available.</p>
+<h3 id="section-5"></h3>
+<h3 id="prime-usercode">Prime UserCode</h3>
+<ul>
+<li>All the underlying code is available to any Prime UserCode by
+including the DDG.DieRecoveryBase.Release NuGet.</li>
+<li>Main Interfaces
+<ul>
+<li>using DDG;</li>
+<li>DieRecovery
+<ul>
+<li>IDieRecovery x =
+DDG.DieRecovery.Service.Get(<em>&lt;comma_separated_list_of_trackers&gt;</em>)</li>
+<li>BitArray tracker = x.GetMaskBits()</li>
+<li>x.UpdateTrackingStructure(BitArray newValue)</li>
+<li>List&lt;DefeatureRule.Rule&gt; passingRules =
+x.RunRule(string ruleName)</li>
+</ul>
+</li>
+<li>PinMap
+<ul>
+<li>IPinMap y =
+DDG.PinMap.Service.Get(<em>&lt;comma_separated_list_of_PinMaps&gt;</em>)</li>
+<li>BitArray tracker = y.DecodeFailure(IFunctionalTestForSearch
+plist, int? currentSlice = null)</li>
+<li>y.MaskPins(BitArray mask, ref IFunctionalTestForSearch
+plist)</li>
+<li>y.ApplyPatConfig(BitArray tracker, string plist)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="file-formats">File Formats</h2>
+<h3 id="tracker-file">Tracker File</h3>
+<ul>
+<li>Json input file to define the DieRecovery Trackers.
+<ul>
+<li>Fields
+<ul>
+<li>Trackers – List Type – Required -- top level field, contains the list of tracker objects.</li>
+<li>Tracker Object
+<ul>
+<li>Name – String Type – Required – Name of the Tracker.</li>
+<li>Size – Integer Type – Required – Size (number of elements) of the tracker.</li>
+<li>InitialValue – String Type – Optional – defines the initial value of the tracker, MSB first.</li>
+<li>LinkDisable - List of Strings - Optional - List of trackers that should be disabled if this tracker is disabled.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Example
+<pre><code class="language-json">{  
+    &quot;Trackers&quot;: [  
+        { &quot;Name&quot;: &quot;SliceTracking&quot;, &quot;Size&quot;: 8, &quot;InitialValue&quot;: &quot;00001111&quot; },  
+        { &quot;Name&quot;: &quot;CORE0&quot;, &quot;Size&quot;: 1, &quot;InitialValue&quot;: &quot;0&quot; },  
+        { &quot;Name&quot;: &quot;CORE1&quot;, &quot;Size&quot;: 1, &quot;InitialValue&quot;: &quot;0&quot; },  
+        { &quot;Name&quot;: &quot;CORE2&quot;, &quot;Size&quot;: 1, &quot;InitialValue&quot;: &quot;0&quot; },  
+        { &quot;Name&quot;: &quot;CORE3&quot;, &quot;Size&quot;: 1, &quot;InitialValue&quot;: &quot;0&quot; },  
+        { &quot;Name&quot;: &quot;CORE4&quot;, &quot;Size&quot;: 1, &quot;InitialValue&quot;: &quot;1&quot; },  
+        { &quot;Name&quot;: &quot;CORE5&quot;, &quot;Size&quot;: 1, &quot;InitialValue&quot;: &quot;1&quot; },  
+        { &quot;Name&quot;: &quot;CORE6&quot;, &quot;Size&quot;: 1, &quot;InitialValue&quot;: &quot;1&quot; },  
+        { &quot;Name&quot;: &quot;CORE7&quot;, &quot;Size&quot;: 1, &quot;InitialValue&quot;: &quot;1&quot; }  
+        { &quot;Name&quot;: &quot;SLICE0&quot;,  &quot;Size&quot;: 1, &quot;InitialValue&quot;: &quot;0&quot;,   &quot;LinkDisable&quot;: [ &quot;ATOM_M0&quot;, &quot;ATOM_M1&quot;, &quot;SLICE1&quot; ] },  
+        { &quot;Name&quot;: &quot;SLICE1&quot;,  &quot;Size&quot;: 1, &quot;InitialValue&quot;: &quot;0&quot;,   &quot;LinkDisable&quot;: [ &quot;ATOM_M0&quot;, &quot;ATOM_M1&quot;, &quot;SLICE0&quot; ] },  
+        { &quot;Name&quot;: &quot;ATOM_M0&quot;, &quot;Size&quot;: 4, &quot;InitialValue&quot;: &quot;0000&quot;    },  
+        { &quot;Name&quot;: &quot;ATOM_M1&quot;, &quot;Size&quot;: 4, &quot;InitialValue&quot;: &quot;0000&quot;    }  
+    ]  
+}  
+</code></pre>
+</li>
+</ul>
+<h3 id="pinmap-file">PinMap File</h3>
+<ul>
+<li><p>PinMap Instances are now created through the LoadPinMapFile callback
+function.</p>
+</li>
+<li><p>Only one Type of PinMap can be loaded with each instance of the
+callback.</p>
+</li>
+<li><p>Pinmaps of the same type can be grouped in a single file or split
+into multiple files.</p>
+</li>
+<li><p>There is no restriction on the number or ordering of the callback
+instances. Create as many as needed to load all the Pinmaps.</p>
+</li>
+<li><p>PinMaps are stored and referenced using their “Name” field so that
+must be unique.</p>
+</li>
+<li><p>Callback to load pin map files:</p>
+<ul>
+<li>LoadPinMapFile(--decoder <em>PinMapType</em> --file <em>Filename.json</em>)
+<ul>
+<li>--decoder <em>PinMapType</em> - The C# Class name of the PinMapDecoder.
+<ul>
+<li>Current PinMapTypes are PinToSliceIndexDecoder,
+AnyFailSingleSliceDecoder, AtomDecoder and ConcurrentTracesDecoder.</li>
+</ul>
+</li>
+<li>--file <em>Filename.json</em> – Name of the file containing a list of
+PinMapType objects.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>PinMap Fields</p>
+<ul>
+<li>Common fields
+<ul>
+<li><u>Name</u> – name of the pinmap. This is the name that will
+be used for the VMin Templates “PinMap” parameter. It must
+be unique.</li>
+<li><u>Size</u> – number of bits returned by this PinMap. This
+should match the tracker size associated with this pinmap
+(the RecoveryTracking parameter of the VMin template).</li>
+<li><u>PatternModify</u> – the FuseConfig or PatModify token
+used to disable the IP associated with this PinMap. Used
+when setting “disable_*” in the VMin templates
+FeatureSwitchSettings parameter. Could be empty if it
+doesn’t apply to the IP being tested.</li>
+<li><u>SharedStorageResults</u> – SharedStorage token to store last
+decoded result as string.</li>
+</ul>
+</li>
+<li>Fields for PinMapType = PinToSliceIndexDecoder
+<ul>
+<li><u>PinToSliceIndexMap</u> – Dictionary which maps pin names
+to bit locations within the associated tracker. Each pin can
+map to multiple bit locations and multiple pins can map to
+the same bit locations. (ie both PinA and PinB can set bit
+1, and PinC can set both bits 2 and 3)</li>
+<li><u>DoaPins</u> – List of pins to be ignored during pin mask.</li>
+</ul>
+</li>
+<li>Fields for PinMapType = AnyFailSingleSliceDecoder
+<ul>
+<li><u>PinList</u> (optional) – list of pins. All tracking bits
+are marked as failing if any pin in this list is failing. If
+empty, then any failing pin causes the tracker to be marked
+as failing. Used when doing per-core testing so any failure
+means that core is bad.
+<ul>
+<li>These must be pins, currently pingroups are not
+supported.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Example PinMap Config files</p>
+<ul>
+<li>PinMapType = PinToSliceIndexDecoder</li>
+</ul>
+<pre><code class="language-json">[  
+    {  
+        &quot;Name&quot;:&quot;CORE0_NOA&quot;, &quot;PatternModify&quot;:&quot;CORE_DISABLE0&quot;, &quot;Size&quot;:1,  
+        &quot;PinToSliceIndexMap&quot;:{&quot;IP_CPU::NOAB_00&quot;:[0],&quot;NOAB_00&quot;:[0],&quot;IP_CPU::NOAB_08&quot;:[0],&quot;NOAB_08&quot;:[0]}  
+    },  
+    {  
+        &quot;Name&quot;:&quot;CORE1_NOA&quot;, &quot;PatternModify&quot;:&quot;CORE_DISABLE1&quot;, &quot;Size&quot;:1,  
+        &quot;PinToSliceIndexMap&quot;:{&quot;IP_CPU::NOAB_01&quot;:[0],&quot;NOAB_01&quot;:[0],&quot;IP_CPU::NOAB_09&quot;:[0],&quot;NOAB_09&quot;:[0]}  
+    },  
+    {  
+        &quot;Name&quot;:&quot;SLICE0_NOA&quot;, &quot;PatternModify&quot;:&quot;SLICE_DISABLE0&quot;, &quot;Size&quot;:1,  
+        &quot;PinToSliceIndexMap&quot;:{&quot;IP_CPU::NOAB_00&quot;:[0],&quot;NOAB_00&quot;:[0],&quot;IP_CPU::NOAB_08&quot;:[0],&quot;NOAB_08&quot;:[0]},
+        &quot;DoaPins&quot;: [&quot;IP_CPU::TDO&quot;]
+    },  
+    {  
+        &quot;Name&quot;:&quot;SLICE1_NOA&quot;, &quot;PatternModify&quot;:&quot;SLICE_DISABLE1&quot;, &quot;Size&quot;:1,  
+        &quot;PinToSliceIndexMap&quot;: {&quot;IP_CPU::NOAB_01&quot;:[0], &quot;NOAB_01&quot;:[0], &quot;IP_CPU::NOAB_09&quot;:[0], &quot;NOAB_09&quot;:[0]},  
+        &quot;DoaPins&quot;: [&quot;IP_CPU::TDO&quot;]
+    },  
+    {  
+        &quot;Name&quot;:&quot;FAKE_EXAMPLE_MULTIBIT&quot;, &quot;PatternModify&quot;: &quot;NOT_A_REAL_PATCFG&quot;, &quot;Size&quot;: 10,  
+        &quot;PinToSliceIndexMap&quot;: {&quot;PIN_ODDCORES&quot;:[1,3,5,7,9], &quot;PIN_EVENCORES&quot;:[0,2,4,6,8]}  
+    }  
+]  
+</code></pre>
+<ul>
+<li>PinMapType = AnyFailSingleSliceDecoder</li>
+</ul>
+<pre><code class="language-json">[  
+    {  
+        &quot;Name&quot;:&quot;CORE0_SCAN&quot;, &quot;PatternModify&quot;:&quot;CORE_DISABLE0&quot;, &quot;Size&quot;:1  
+    },  
+    {  
+        &quot;Name&quot;:&quot;CORE1_SCAN&quot;, &quot;PatternModify&quot;:&quot;CORE_DISABLE1&quot;, &quot;Size&quot;:1  
+    },  
+    {  
+        &quot;Name&quot;:&quot;SLICE0_SCAN&quot;, &quot;PatternModify&quot;:&quot;SLICE_DISABLE0&quot;, &quot;Size&quot;:1  
+    },  
+    {  
+        &quot;Name&quot;:&quot;SLICE1_SCAN&quot;, &quot;PatternModify&quot;:&quot;SLICE_DISABLE1&quot;, &quot;Size&quot;:1  
+    },  
+    {  
+        &quot;Name&quot;:&quot;FAIL_ONLYIF_NOA_FAILS&quot;, &quot;PatternModify&quot;:&quot;SLICE_DISABLEALL&quot;, &quot;Size&quot;:1,  
+        “PinList”: [“NOA0”, “NOA1”, “NOA2”, “NOA3”, “NOA4”, “NOA5”, “NOA6”, “NOA7”]  
+    }  
+]  
+</code></pre>
+<ul>
+<li>PinMapType = AtomDecoder</li>
+</ul>
+<pre><code class="language-json">[  
+    {  
+        &quot;Name&quot;:&quot;ATOMARRAY_MOD0&quot;, &quot;PatternModify&quot;:&quot;NONE&quot;, &quot;Size&quot;:4,  
+        &quot;Module&quot;:0, &quot;Content&quot;:&quot;ARRAY&quot;, &quot;Pin&quot;:&quot;IP_CPU::NOA08&quot;  
+    },  
+    {  
+        &quot;Name&quot;:&quot;ATOMARRAY_MOD1&quot;, &quot;PatternModify&quot;:&quot;NONE&quot;, &quot;Size&quot;:4,  
+        &quot;Module&quot;:1, &quot;Content&quot;:&quot;ARRAY&quot;, &quot;Pin&quot;:&quot;IP_CPU::NOA09&quot;  
+    },  
+    {  
+        &quot;Name&quot;:&quot;ATOMFUNC_MOD0&quot;, &quot;PatternModify&quot;:&quot;NONE&quot;, &quot;Size&quot;:4,  
+        &quot;Module&quot;:0, &quot;Content&quot;:&quot;FUNC&quot;, &quot;Pin&quot;:&quot;IP_CPU::NOA08&quot;  
+    },  
+    {  
+        &quot;Name&quot;:&quot;ATOMFUNC_MOD1&quot;, &quot;PatternModify&quot;:&quot;NONE&quot;, &quot;Size&quot;:4,  
+        &quot;Module&quot;:1, &quot;Content&quot;:&quot;FUNC&quot;, &quot;Pin&quot;:&quot;IP_CPU::NOA09&quot;  
+    } 
+]  
+</code></pre>
+</li>
+<li><p>* other pinmap decoders can be added by users so this list might not be complete *</p>
+</li>
+</ul>
+<h3 id="recovery-rules-file">Recovery Rules File</h3>
+<ul>
+<li>Currently using Evergreen file format for recovery rules so the file
+can be shared with YBS.</li>
+<li>Currently only &quot;ValidCombinations&quot; rule is supported</li>
+<li>Example</li>
+</ul>
+<pre><code class="language-xml"> &lt;?xml version= &quot;1.0&quot; encoding= &quot;utf-8&quot;?&gt;  
+ &lt;recovery&gt;  
+   &lt;defeaturing_rules&gt;  
+     &lt;!-- Used for  Die Recovery to look for a matching combination for an specific SliceTracking  --&gt;  
+     &lt;!-- Index size is 8-bits (7-0) as MSB&gt;LSB, TGL42 is 4Core so top 4 bits are set to &quot;1&quot; = DISABLED  --&gt;  
+     &lt;rules name = &quot;CoreDefeaturingVector&quot;    index= &quot;0-7&quot; &gt;	  
+       &lt;rule mode = &quot;ValidCombinations&quot;  name = &quot;4C&quot; size = &quot;4&quot;  type= &quot;FullyFeatured&quot;&gt;  
+         &lt;bitvector  value = &quot;00001111&quot;/&gt;  
+       &lt;/rule&gt;  
+       &lt;rule mode = &quot;ValidCombinations&quot;  name = &quot;2C&quot; size = &quot;2&quot;  type= &quot;Recovery&quot;&gt;  
+         &lt;bitvector  value = &quot;00111111&quot;/&gt;  
+         &lt;bitvector  value = &quot;11001111&quot;/&gt;  
+       &lt;/rule&gt;  
+     &lt;/rules&gt;  
+   &lt;/defeaturing_rules&gt;  
+ &lt;/recovery&gt;  
+</code></pre>
+<h2 id="custom-pinmap">Custom PinMap</h2>
+<ul>
+<li>Custom PinMaps require a custom PinMapDecoder to be defined in C#
+code within the DieRecovery project.</li>
+</ul>
+<h3 id="section-6"></h3>
+<h3 id="location">Location</h3>
+<ul>
+<li>Add custom PinMapDecoder to
+UserCode\src\Base\DieRecovery\DieRecovery\PinMapDecoders\</li>
+<li>Instantiate any custom PinMaps using the LoadPinMapFile callback
+<ul>
+<li>See <a href="#pinmap-file">PinMap File</a> for details.</li>
+</ul>
+</li>
+<li>Add Unit Tests to
+UserCode\src\Base\DieRecovery\DieRecovery.UnitTest\</li>
+</ul>
+<h3 id="section-7"></h3>
+<h3 id="requirements-for-custom-pinmapdecoder">Requirements for Custom PinMapDecoder</h3>
+<h4 id="section-8"></h4>
+<h4 id="serializable">Serializable</h4>
+<ol>
+<li>Instances will be serialized when saved by Prime SharedStorage.</li>
+<li>Instances will be created by deserializing text from JSON config
+files.</li>
+<li>Requirements
+<ol>
+<li>Define a constructor that takes no arguments.</li>
+<li>Properties should all be public.
+<ol>
+<li>Properties can be tagged with the “JsonProperty” attribute
+(from Newtonsoft.Json) if desired. This attribute defines an
+alternative name for this property in the json config file.
+Without this attribute the json name is the same as the
+properties name.</li>
+</ol>
+</li>
+<li>Can use [OnDeserialized] to specify a method to be called
+after deserialization. This method can update
+non-serializable/private fields if needed. It can also be used
+when creating a new instance by deserializing to fill in
+properties that the user didn’t specify.</li>
+</ol>
+</li>
+<li>Notes
+<ol>
+<li>BitArray objects are not serializable. Extension methods in the
+DDG namespace exist to convert BitArrays to/from strings.
+<ol>
+<li>public static BitArray ToBitArray(this string data)</li>
+<li>public static string ToBinaryString(this BitArray data)</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="section-9"></h4>
+<h4 id="inherit-from-pinmapdecoderbase">Inherit from PinMapDecoderBase</h4>
+<ol>
+<li>Inherited Properties
+<ol>
+<li>public string Name
+<ol>
+<li>User-Defined name for the pin map.</li>
+<li>This is how the testprogram references this pinmap (value
+for the PinMap parameter of the Vmin Template)</li>
+</ol>
+</li>
+<li>public string IpPatternConfigure
+<ol>
+<li>User-Defined string containing information required to
+enable/disable the IP associated with the PinMap (if that is
+applicable to the pinmap).</li>
+<li>Base implementation treats this as a Prime Pattern Modify
+Configuration name, suitable for use with
+Prime.Services.PatConfigService.GetPatConfigHandle()</li>
+</ol>
+</li>
+<li>public int NumberOfTrackerElements
+<ol>
+<li>User-Defined size (number of elements that are being
+tracked) for this pinmap. Could be hard-coded or supplied
+when creating an instance depending on the pinmap needs.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="section-10"></h4>
+<h4 id="implement-ipinmapdecoder">Implement IPinMapDecoder</h4>
+<ol>
+<li>BitArray GetFailTrackerFromPlistResults(IFunctionalTest test, int?
+currentSlice = null);
+<ol>
+<li>Description
+<ol>
+<li>Called from DDG SingleVmin and MultiVmin templates to decode
+the plist failures into a tracker value. “true” in the
+tracker means that slice/core/IP failed, “false” means that
+it passed.</li>
+</ol>
+</li>
+<li>Parameters
+<ol>
+<li><p>test – The Prime IFunctionalTest object that was executed.
+This can be casted to any of its child types to access fail
+or capture memory. For Example:</p>
+<pre><code class="language-C#">    var captureFailureTest = test as ICaptureFailureTest;  
+    if (captureFailureTest == null)  
+    {  
+        throw new ArgumentException(…);  
+    }  
+</code></pre>
+</li>
+<li><p>currentSlice – For content types that execute one core/slice/ip at a
+time, this will be set to the current core/slice/ip. Most
+IPinMapDecoder classes can ignore this.</p>
+</li>
+<li><p>Returns</p>
+<ol>
+<li>A BitArray representing the pass/fail status of each tracked IP.
+‘true’ means fail, ‘false’ means pass.</li>
+<li>The size of the BitArray must match NumberOfTrackerElements.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>List&lt;string&gt; MaskPlistFromTracker(BitArray mask, ref
+IFunctionalTest plist);
+<ol>
+<li>Description
+<ol>
+<li>Despite the name, this is meant to RETURN the names of pins
+to mask for the given mask parameter. If not applicable
+return an empty list.</li>
+<li>The IFunctionalTest parameter can be modified however any
+calls to SetPinMask() will be overridden before the plist is
+executed.</li>
+</ol>
+</li>
+<li>Parameters
+<ol>
+<li>mask – BitArray object representing which core/slice/IPs
+should be masked. A ‘true’ value means mask, a ‘false’ value
+means do not mask.
+<ol>
+<li>The size of the BitArray will match
+NumberOfTrackerElements.</li>
+</ol>
+</li>
+<li>plist – IFunctionalTest representing the search test.
+<ol>
+<li>As of Prime4.00 this can be used to get the name of the
+plist/levels/timings associated with this test.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Returns
+<ol>
+<li>Names of pins in a list to mask. (List&lt;string&gt;) There
+is no restriction on the size of the returned list.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>IPatConfigHandle GetPatConfigForSliceControl(BitArray iPConfigBits,
+string patlist);
+<ol>
+<li>Description
+<ol>
+<li>Build the pattern modify required to disable the
+core/slice/ip represented in the iPConfigBits tracker.</li>
+</ol>
+</li>
+<li>Parameters
+<ol>
+<li>iPConfigBits – BitArray object representing which
+core/slice/IPs should be disabled. A ‘true’ value means
+disable, a ‘false’ value means enable.
+<ol>
+<li>The size of the BitArray will match
+NumberOfTrackerElements.</li>
+</ol>
+</li>
+<li>patlist – name of the Pattern List to use when creating the
+IPatConfigHandle object.</li>
+</ol>
+</li>
+<li>Returns
+<ol>
+<li>The IPatConfigHandle which will mask the appropriate IPs in
+the supplied pattern list.</li>
+<li><s>*** this may have to change to return a
+List&lt;IPatConfigHandle&gt; ***</s> With the addition of
+Multi-config support in Prime3.02 this will likely remain.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+
+
+</body>
+</html>

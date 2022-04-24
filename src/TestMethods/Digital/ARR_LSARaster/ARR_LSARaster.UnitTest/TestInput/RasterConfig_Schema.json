@@ -1,0 +1,58 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema",
+	"$id": "http://example.com/example.json",
+	"type": "object",
+	"required": [ "Setup" ],
+	"properties": {
+		"Setup": {
+			"$id": "#/properties/Setup",
+			"type": "object",
+			"title": "The setup schema",
+			"description": "Schema for the root object",
+			"required": [ "LdatArrays" ],
+			"properties": {
+				"LdatArrays": {
+					"type": "object",
+					"title": "Setup schema",
+					"description": "Schema for the root object",
+					"additionalProperties": { "$ref": "#/definitions/LdatArray" }
+				}	
+
+			}
+		}
+	},
+	"definitions": {
+		"LdatArray": {
+			"$id": "#/definitions/LdatArray",
+			"title": "LdatArray definition",
+			"type": "object",
+			"properties": {
+				"PlistName": { "type": "array" },
+				"PatModConfigSetName": { "type": "string" },
+				"CaptureSetName": { "type": "string" },
+				"DwordElement": {
+					"type": "array",
+					"items": { "$ref": "#/definitions/DwordElement" }
+				}
+			},
+			"required": ["PlistName", "PatModConfigSetName", "CaptureSetName", "DwordElement"]
+		},
+		"DwordElement": {
+			"type": "object",
+			"properties": {
+				"PatModifyElement": {
+					"type": "array",
+					"items": { "$ref" : "#/definitions/PatModify" }
+				}
+			}
+		},
+		"PatModify": {
+			"type": "object",
+			"properties": {
+				"PatTarget": { "type": "string"},
+				"Value": { "type": "string"}
+			},
+			"required": [ "PatTarget", "Value" ]
+		}
+	}
+}

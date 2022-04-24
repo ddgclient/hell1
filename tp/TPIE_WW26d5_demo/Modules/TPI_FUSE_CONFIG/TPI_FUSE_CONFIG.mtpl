@@ -1,0 +1,474 @@
+# Module Revision: gjwoznia - 06/16/21 01:53:22 PM
+
+Version 1.0;
+
+ProgramStyle = Modular;
+
+TestPlan TPI_FUSE_CONFIG;
+
+Import TPI_FUSE_CONFIG.usrv;
+
+
+
+Import OASIS_FuseConfigExe_tt.xml;
+Import OASIS_FuseConfigInit_tt.xml;
+Import OASIS_UserFunc_tt.xml;
+
+
+
+
+#Test Counter Definition
+Counters
+{
+	n31900022_fail_FUSE_X_FUSECONFIG_K_START_X_X_X_X_CLEAR_PERUNIT_VFDM_0,
+	n31900023_fail_FUSE_X_FUSECONFIG_K_START_X_X_X_X_CLEAR_PERUNIT_RESET_0,
+	n90900018_fail_FUSE_X_UF_K_START_X_X_X_X_SET_HCS_FDS_2,
+	n90900334_fail_FUSE_X_UF_K_START_X_X_X_X_SET_HCS_FDS_0,
+	n98010001_fail_FAIL_SYSTEM_SOFTWARE,
+	n99010001_fail_FAIL_DPS_ALARM
+} # End of Test Counter Definition
+
+Test iCFuseConfigExeTest FUSE_X_FUSECONFIG_K_INIT_X_X_X_X_FRV_DIRECT_ALL_EXE_P1
+{
+	fuse_pattern_setup_file = "~FUSE_ROOT_DIR\\pattern_setup.txt";
+	fuseconfig_setpoint = "DF_INIT_ALL, DF_INIT_ALL_DLVR, DF_INIT_ALL_PLL";
+	patlist_to_modify = "[PATTERNS:[gdx].......W..................................PP_...........................................30_longreset_cpu*]";
+}
+Test iCFuseConfigInitTest FUSE_X_FUSECONFIG_K_INIT_X_X_X_X_FRV_DIRECT_ALL_INIT_P1
+{
+	fuseconfig_setpoint_file = "~FUSE_ROOT_DIR\\df_configsetpoints.txt";
+	fusedef_file = "~FUSE_ROOT_DIR\\fusedef.txt";
+}
+Test iCFuseConfigExeTest FUSE_X_FUSECONFIG_K_INIT_X_X_X_X_FRV_VF_ALL_EXE_P1
+{
+	fuse_pattern_setup_file = "~FUSE_ROOT_DIR\\pattern_setup.txt";
+	fuseconfig_setpoint = "VF_INIT_ALL";
+	patlist_to_modify = "[PATTERNS:[gdx].......W..................................PP_...........................................30_longreset_cpu*]";
+}
+Test iCFuseConfigInitTest FUSE_X_FUSECONFIG_K_INIT_X_X_X_X_FRV_VF_ALL_INIT_P1
+{
+	fuseconfig_setpoint_file = "~FUSE_ROOT_DIR\\vf_configsetpoints.txt";
+	fusedef_file = "~FUSE_ROOT_DIR\\fusedef.txt";
+}
+Test iCFuseConfigExeTest FUSE_X_FUSECONFIG_K_INIT_X_X_X_X_FRV_VF_RESET_CONTENT_EXE_P1
+{
+	fuse_pattern_setup_file = "~FUSE_ROOT_DIR\\pattern_setup.txt";
+	fuseconfig_setpoint = "INIT_RESET_CONTENT";
+	patlist_to_modify = "[PATTERNS:[gdx].......W..................................PP_...........................................30_longreset_cpu*]";
+	bypass_global = "1";
+}
+Test iCFuseConfigInitTest FUSE_X_FUSECONFIG_K_INIT_X_X_X_X_FRV_VF_RESET_CONTENT_INIT_P1
+{
+	fuseconfig_setpoint_file = "~FUSE_ROOT_DIR\\reset_configsetpoints.txt";
+	fusedef_file = "~FUSE_ROOT_DIR\\fusedef.txt";
+	bypass_global = "1";
+}
+Test iCFuseConfigExeTest FUSE_X_FUSECONFIG_K_INIT_X_X_X_X_FRV_VF_RESET_EXE_P1
+{
+	fuse_pattern_setup_file = "~FUSE_ROOT_DIR\\pattern_setup.txt";
+	fuseconfig_setpoint = "INIT_RESET";
+	patlist_to_modify = "[PATTERNS:[gdx].......W..................................PP_...........................................30_longreset_cpu*]";
+}
+Test iCFuseConfigInitTest FUSE_X_FUSECONFIG_K_INIT_X_X_X_X_FRV_VF_RESET_INIT_P1
+{
+	fuseconfig_setpoint_file = "~FUSE_ROOT_DIR\\reset_configsetpoints.txt";
+	fusedef_file = "~FUSE_ROOT_DIR\\fusedef.txt";
+}
+Test iCFuseConfigInitTest FUSE_X_FUSECONFIG_K_INIT_X_X_X_X_VIRTUAL_FUSES_CSP_VFDM_P1
+{
+	fuse_custom_file = "~FUSE_ROOT_DIR\\array_repair_reset_custom.txt";
+	fuseconfig_setpoint_file = "~FUSE_ROOT_DIR\\array_repair_reset_configsetpoint.txt";
+	fusedef_file = "~FUSE_ROOT_DIR\\fusedef.txt";
+	bypass_global = "1";
+}
+Test iCFuseConfigExeTest FUSE_X_FUSECONFIG_K_START_X_X_X_X_CLEAR_PERUNIT_RESET_P1
+{
+	EOT_power_down = "FALSE";
+	fuse_pattern_setup_file = "~FUSE_ROOT_DIR\\pattern_setup.txt";
+	fuseconfig_setpoint = "INIT_RESET";
+	patlist_to_modify = "[PATTERNS:[gdx].......W..................................PP_...........................................30_longreset_cpu*]";
+}
+Test iCUserFuncTest FUSE_X_UF_K_INIT_X_X_X_X_SET_HCS_FDS_TEMP_P1
+{
+	function_name = "GSDS_UF!SetGSDS";
+	function_parameter = "G.L.I.CPU_HCS_SIZE=1952#G.L.I.CPU_FDS_SIZE=3712";
+	bypass_global = "1";
+}
+
+Flow DIRECT_FUSES
+{
+	FlowItem FUSE_X_FUSECONFIG_K_INIT_X_X_X_X_FRV_DIRECT_ALL_INIT_P1 FUSE_X_FUSECONFIG_K_INIT_X_X_X_X_FRV_DIRECT_ALL_INIT_P1
+	{
+		Result -2
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+			Return -1;
+		}		
+		Result -1
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+			Return -1;
+		}		
+		Result 0
+		{
+			Property PassFail = "Fail";
+			Return 0;
+		}		
+		Result 1
+		{
+			Property PassFail = "Pass";
+			GoTo FUSE_X_FUSECONFIG_K_INIT_X_X_X_X_FRV_DIRECT_ALL_EXE_P1;
+		}		
+	}	
+	
+	FlowItem FUSE_X_FUSECONFIG_K_INIT_X_X_X_X_FRV_DIRECT_ALL_EXE_P1 FUSE_X_FUSECONFIG_K_INIT_X_X_X_X_FRV_DIRECT_ALL_EXE_P1
+	{
+		Result -2
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+			Return -1;
+		}		
+		Result -1
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+			Return -1;
+		}		
+		Result 0
+		{
+			Property PassFail = "Fail";
+			Return 0;
+		}		
+		Result 1
+		{
+			Property PassFail = "Pass";
+			Return 1;
+		}		
+	}	
+}
+
+Flow RESET_FUSES
+{
+	FlowItem FUSE_X_FUSECONFIG_K_INIT_X_X_X_X_FRV_VF_RESET_INIT_P1 FUSE_X_FUSECONFIG_K_INIT_X_X_X_X_FRV_VF_RESET_INIT_P1
+	{
+		Result -2
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+			Return -1;
+		}		
+		Result -1
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+			Return -1;
+		}		
+		Result 0
+		{
+			Property PassFail = "Fail";
+			Return 0;
+		}		
+		Result 1
+		{
+			Property PassFail = "Pass";
+			GoTo FUSE_X_FUSECONFIG_K_INIT_X_X_X_X_FRV_VF_RESET_EXE_P1;
+		}		
+	}	
+	
+	FlowItem FUSE_X_FUSECONFIG_K_INIT_X_X_X_X_FRV_VF_RESET_CONTENT_EXE_P1 FUSE_X_FUSECONFIG_K_INIT_X_X_X_X_FRV_VF_RESET_CONTENT_EXE_P1
+	{
+		Result -2
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+			Return -1;
+		}		
+		Result -1
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+			Return -1;
+		}		
+		Result 0
+		{
+			Property PassFail = "Fail";
+			Return 0;
+		}		
+		Result 1
+		{
+			Property PassFail = "Pass";
+			Return 1;
+		}		
+	}	
+	FlowItem FUSE_X_FUSECONFIG_K_INIT_X_X_X_X_FRV_VF_RESET_CONTENT_INIT_P1 FUSE_X_FUSECONFIG_K_INIT_X_X_X_X_FRV_VF_RESET_CONTENT_INIT_P1
+	{
+		Result -2
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+			Return -1;
+		}		
+		Result -1
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+			Return -1;
+		}		
+		Result 0
+		{
+			Property PassFail = "Fail";
+			Return 0;
+		}		
+		Result 1
+		{
+			Property PassFail = "Pass";
+			GoTo FUSE_X_FUSECONFIG_K_INIT_X_X_X_X_FRV_VF_RESET_CONTENT_EXE_P1;
+		}		
+	}	
+	FlowItem FUSE_X_FUSECONFIG_K_INIT_X_X_X_X_FRV_VF_RESET_EXE_P1 FUSE_X_FUSECONFIG_K_INIT_X_X_X_X_FRV_VF_RESET_EXE_P1
+	{
+		Result -2
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+			Return -1;
+		}		
+		Result -1
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+			Return -1;
+		}		
+		Result 0
+		{
+			Property PassFail = "Fail";
+			Return 0;
+		}		
+		Result 1
+		{
+			Property PassFail = "Pass";
+			GoTo FUSE_X_FUSECONFIG_K_INIT_X_X_X_X_FRV_VF_RESET_CONTENT_INIT_P1;
+		}		
+	}	
+}
+
+Flow VFDM
+{
+	FlowItem FUSE_X_UF_K_INIT_X_X_X_X_SET_HCS_FDS_TEMP_P1 FUSE_X_UF_K_INIT_X_X_X_X_SET_HCS_FDS_TEMP_P1
+	{
+		Result -2
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+			Return -1;
+		}		
+		Result -1
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+			Return -1;
+		}		
+		Result 0
+		{
+			Property PassFail = "Fail";
+			Return 0;
+		}		
+		Result 1
+		{
+			Property PassFail = "Pass";
+			GoTo FUSE_X_FUSECONFIG_K_INIT_X_X_X_X_VIRTUAL_FUSES_CSP_VFDM_P1;
+		}		
+	}	
+	
+	FlowItem FUSE_X_FUSECONFIG_K_INIT_X_X_X_X_VIRTUAL_FUSES_CSP_VFDM_P1 FUSE_X_FUSECONFIG_K_INIT_X_X_X_X_VIRTUAL_FUSES_CSP_VFDM_P1
+	{
+		Result -2
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+			Return -1;
+		}		
+		Result -1
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+			Return -1;
+		}		
+		Result 0
+		{
+			Property PassFail = "Fail";
+			Return 0;
+		}		
+		Result 1
+		{
+			Property PassFail = "Pass";
+			Return 1;
+		}		
+	}	
+}
+
+Flow VIRTUAL_FUSES
+{
+	FlowItem FUSE_X_FUSECONFIG_K_INIT_X_X_X_X_FRV_VF_ALL_INIT_P1 FUSE_X_FUSECONFIG_K_INIT_X_X_X_X_FRV_VF_ALL_INIT_P1
+	{
+		Result -2
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+			Return -1;
+		}		
+		Result -1
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+			Return -1;
+		}		
+		Result 0
+		{
+			Property PassFail = "Fail";
+			Return 0;
+		}		
+		Result 1
+		{
+			Property PassFail = "Pass";
+			GoTo FUSE_X_FUSECONFIG_K_INIT_X_X_X_X_FRV_VF_ALL_EXE_P1;
+		}		
+	}	
+	
+	FlowItem FUSE_X_FUSECONFIG_K_INIT_X_X_X_X_FRV_VF_ALL_EXE_P1 FUSE_X_FUSECONFIG_K_INIT_X_X_X_X_FRV_VF_ALL_EXE_P1
+	{
+		Result -2
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+			Return -1;
+		}		
+		Result -1
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+			Return -1;
+		}		
+		Result 0
+		{
+			Property PassFail = "Fail";
+			Return 0;
+		}		
+		Result 1
+		{
+			Property PassFail = "Pass";
+			Return 1;
+		}		
+	}	
+}
+
+Flow TPI_FUSE_CONFIG_INIT
+{
+	FlowItem DIRECT_FUSES DIRECT_FUSES
+	{
+		Result -1
+		{
+			Property PassFail = "Fail";
+			Return -1;
+		}		
+		Result 0
+		{
+			Property PassFail = "Fail";
+			Return 0;
+		}		
+		Result 1
+		{
+			Property PassFail = "Pass";
+			GoTo VIRTUAL_FUSES;
+		}		
+	}	
+	
+	FlowItem RESET_FUSES RESET_FUSES
+	{
+		Result -1
+		{
+			Property PassFail = "Fail";
+			Return -1;
+		}		
+		Result 0
+		{
+			Property PassFail = "Fail";
+			Return 0;
+		}		
+		Result 1
+		{
+			Property PassFail = "Pass";
+			GoTo VFDM;
+		}		
+	}	
+	FlowItem VFDM VFDM
+	{
+		Result -1
+		{
+			Property PassFail = "Fail";
+			Return -1;
+		}		
+		Result 0
+		{
+			Property PassFail = "Fail";
+			Return 0;
+		}		
+		Result 1
+		{
+			Property PassFail = "Pass";
+			Return 1;
+		}		
+	}	
+	FlowItem VIRTUAL_FUSES VIRTUAL_FUSES
+	{
+		Result -1
+		{
+			Property PassFail = "Fail";
+			Return -1;
+		}		
+		Result 0
+		{
+			Property PassFail = "Fail";
+			Return 0;
+		}		
+		Result 1
+		{
+			Property PassFail = "Pass";
+			GoTo RESET_FUSES;
+		}		
+	}	
+}
+
+DUTFlow TPI_FUSE_CONFIG_START
+{
+	DUTFlowItem FUSE_X_FUSECONFIG_K_START_X_X_X_X_CLEAR_PERUNIT_RESET_P1 FUSE_X_FUSECONFIG_K_START_X_X_X_X_CLEAR_PERUNIT_RESET_P1
+	{
+		Result -2
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+			Return -2;
+		}		
+		Result -1
+		{
+			Property PassFail = "Fail";
+			SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+			Return -1;
+		}		
+		Result 0
+		{
+			Property PassFail = "Fail";
+			IncrementCounters TPI_FUSE_CONFIG::n31900023_fail_FUSE_X_FUSECONFIG_K_START_X_X_X_X_CLEAR_PERUNIT_RESET_0;
+			SetBin SoftBins.b31900023_fail_TPI_FUSE_CONFIG_FUSE_X_FUSECONFIG_K_START_X_X_X_X_CLEAR_PERUNIT_RESET_0;
+			Return 0;
+		}		
+		Result 1
+		{
+			Property PassFail = "Pass";
+			Return 1;
+		}		
+	}	
+}

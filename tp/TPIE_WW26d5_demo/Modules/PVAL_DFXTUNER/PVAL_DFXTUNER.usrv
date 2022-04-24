@@ -1,0 +1,19 @@
+Version 1.0;
+
+UserVars STF100
+{
+	Time RESETVAL_DRV = 2ns;
+	Time RESETVAL_STB = 2ns;
+
+	Time STF000_drv_offset = 2ns;
+	Time STF001_drv_offset = 2ns;
+	Time STF002_drv_offset = 2ns;
+	Time STF003_drv_offset = 2ns;
+	
+	Time STF000_stb_offset = 2ns;
+	Time STF001_stb_offset = 2ns;
+	Time STF002_stb_offset = 2ns;
+	Time STF003_stb_offset = 2ns;
+}
+
+

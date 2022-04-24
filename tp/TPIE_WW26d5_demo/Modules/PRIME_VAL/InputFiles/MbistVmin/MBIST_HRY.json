@@ -1,0 +1,418 @@
+{
+"Version":1.0,
+"Hry_string" : ["CBP0_BP0_WBP0_MEM1", "CBP0_BP1_WBP0_MEM1", "CBP1_BP0_WBP0_MEM1", "CBP1_BP1_WBP0_MEM1", "DMU_BP0_WBP0_MEM1", "DMU_BP0_WBP0_MEM10", "DMU_BP0_WBP0_MEM11", "DMU_BP0_WBP0_MEM12", "DMU_BP0_WBP0_MEM13", "DMU_BP0_WBP0_MEM14", "DMU_BP0_WBP0_MEM15", "DMU_BP0_WBP0_MEM16", "DMU_BP0_WBP0_MEM17", "DMU_BP0_WBP0_MEM18", "DMU_BP0_WBP0_MEM19", "DMU_BP0_WBP0_MEM2", "DMU_BP0_WBP0_MEM20", "DMU_BP0_WBP0_MEM21", "DMU_BP0_WBP0_MEM22", "DMU_BP0_WBP0_MEM23", "DMU_BP0_WBP0_MEM24", "DMU_BP0_WBP0_MEM25", "DMU_BP0_WBP0_MEM26", "DMU_BP0_WBP0_MEM27", "DMU_BP0_WBP0_MEM28", "DMU_BP0_WBP0_MEM29", "DMU_BP0_WBP0_MEM3", "DMU_BP0_WBP0_MEM30", "DMU_BP0_WBP0_MEM31", "DMU_BP0_WBP0_MEM32", "DMU_BP0_WBP0_MEM33", "DMU_BP0_WBP0_MEM34", "DMU_BP0_WBP0_MEM35", "DMU_BP0_WBP0_MEM36", "DMU_BP0_WBP0_MEM37", "DMU_BP0_WBP0_MEM38", "DMU_BP0_WBP0_MEM39", "DMU_BP0_WBP0_MEM4", "DMU_BP0_WBP0_MEM40", "DMU_BP0_WBP0_MEM41", "DMU_BP0_WBP0_MEM42", "DMU_BP0_WBP0_MEM43", "DMU_BP0_WBP0_MEM44", "DMU_BP0_WBP0_MEM45", "DMU_BP0_WBP0_MEM46", "DMU_BP0_WBP0_MEM47", "DMU_BP0_WBP0_MEM48", "DMU_BP0_WBP0_MEM49", "DMU_BP0_WBP0_MEM5", "DMU_BP0_WBP0_MEM50", "DMU_BP0_WBP0_MEM51", "DMU_BP0_WBP0_MEM52", "DMU_BP0_WBP0_MEM53", "DMU_BP0_WBP0_MEM54", "DMU_BP0_WBP0_MEM55", "DMU_BP0_WBP0_MEM56", "DMU_BP0_WBP0_MEM57", "DMU_BP0_WBP0_MEM58", "DMU_BP0_WBP0_MEM59", "DMU_BP0_WBP0_MEM6", "DMU_BP0_WBP0_MEM60", "DMU_BP0_WBP0_MEM61", "DMU_BP0_WBP0_MEM62", "DMU_BP0_WBP0_MEM63", "DMU_BP0_WBP0_MEM64", "DMU_BP0_WBP0_MEM7", "DMU_BP0_WBP0_MEM8", "DMU_BP0_WBP0_MEM9", "DMU_BP0_WBP1_MEM1", "DMU_BP0_WBP1_MEM2", "DMU_BP1_WBP0_MEM1", "DMU_BP2_WBP0_MEM1", "DMU_BP3_WBP0_MEM1", "DMU_BP3_WBP0_MEM2", "DMU_BP4_WBP0_MEM1", "DMU_BP4_WBP0_MEM2", "DMU_BP5_WBP0_MEM1", "DMU_BP5_WBP0_MEM2", "DMU_BP6_WBP0_MEM1", "DMU_BP7_WBP0_MEM1", "FUSE_BP0_WBP0_MEM1", "FUSE_BP0_WBP0_MEM2", "FUSE_BP0_WBP0_MEM3", "FUSE_BP0_WBP0_MEM4", "FUSE_BP0_WBP0_MEM5", "FUSE_BP0_WBP0_MEM6", "FUSE_BP0_WBP0_MEM7", "FUSE_BP0_WBP0_MEM8", "FUSE_BP0_WBP0_MEM9", "FUSE_BP1_WBP0_MEM1", "FUSE_BP1_WBP0_MEM2", "FUSE_BP1_WBP0_MEM3", "FUSE_BP1_WBP0_MEM4", "FUSE_BP1_WBP0_MEM5", "FUSE_BP1_WBP0_MEM6", "ODD_BP0_WBP0_MEM1", "ODD_BP0_WBP0_MEM2", "ODD_BP0_WBP0_MEM3", "ODD_BP0_WBP0_MEM4", "ODD_BP0_WBP0_MEM5", "ODD_BP0_WBP0_MEM6", "SBP_BP0_WBP0_MEM1", "SBP_BP1_WBP0_MEM1"],
+"Voltage_String" : ["vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon", "vnnaon"],
+"BISR_CHAIN" : 
+{ 
+},
+
+"Patterns" : { 
+
+ 		"g0054978W5107517A_95_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_cbp0_pbp1__a_rom_rd_x_s_hry" : 
+ 		{        
+ 				"Controllers" : 
+ 				{ 
+                      
+ 		  },
+ 				"CaptureCount" : 60                      
+ 		},
+ 		"g0055943W5107998A_Ba_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_sbp_pbp0__a_ssa_pmovi_x_s_hry" : 
+ 		{        
+ 				"Controllers" : 
+ 				{ 
+						"SBP_BP0_WBP0":
+ 				{
+ 								"TYPE" :"GOID",
+ 								"Execution" : 
+ 				[                
+ 						{
+ 								"STATUS" : [0, 1, 2, 3] ,
+ 								"ALGO_SEL" :  "43-49",
+ 								"PALGO_SEL" : "",
+ 								"Memories" :  
+									{"1": "4-42"} 
+
+					  }
+				]
+				}                      
+ 		  },
+ 				"CaptureCount" : 50                      
+ 		},
+ 		"g0053799W5105955A_E2_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_dmu_pbp0__a_ssa_pmovi_x_s_hry" : 
+ 		{        
+ 				"Controllers" : 
+ 				{ 
+						"DMU_BP0_WBP0":
+ 				{
+ 								"TYPE" :"GOID",
+ 								"Execution" : 
+ 				[                
+ 						{
+ 								"STATUS" : [0, 1, 4, 5] ,
+ 								"ALGO_SEL" :  "2504-2510",
+ 								"PALGO_SEL" : "",
+ 								"Memories" :  
+									{"1": "8-46",
+									"3": "47-85",
+									"5": "86-124",
+									"7": "125-163",
+									"9": "164-202",
+									"11": "203-241",
+									"13": "242-280",
+									"15": "281-319",
+									"2": "320-358",
+									"4": "359-397",
+									"6": "398-436",
+									"8": "437-475",
+									"10": "476-514",
+									"12": "515-553",
+									"14": "554-592",
+									"16": "593-631",
+									"17": "632-670",
+									"19": "671-709",
+									"21": "710-748",
+									"23": "749-787",
+									"25": "788-826",
+									"27": "827-865",
+									"29": "866-904",
+									"31": "905-943",
+									"33": "944-982",
+									"35": "983-1021",
+									"37": "1022-1060",
+									"39": "1061-1099",
+									"41": "1100-1138",
+									"43": "1139-1177",
+									"45": "1178-1216",
+									"47": "1217-1255",
+									"49": "1256-1294",
+									"51": "1295-1333",
+									"53": "1334-1372",
+									"55": "1373-1411",
+									"57": "1412-1450",
+									"59": "1451-1489",
+									"61": "1490-1528",
+									"63": "1529-1567",
+									"18": "1568-1606",
+									"20": "1607-1645",
+									"22": "1646-1684",
+									"24": "1685-1723",
+									"26": "1724-1762",
+									"28": "1763-1801",
+									"30": "1802-1840",
+									"32": "1841-1879",
+									"34": "1880-1918",
+									"36": "1919-1957",
+									"38": "1958-1996",
+									"40": "1997-2035",
+									"42": "2036-2074",
+									"44": "2075-2113",
+									"46": "2114-2152",
+									"48": "2153-2191",
+									"50": "2192-2230",
+									"52": "2231-2269",
+									"54": "2270-2308",
+									"56": "2309-2347",
+									"58": "2348-2386",
+									"60": "2387-2425",
+									"62": "2426-2464",
+									"64": "2465-2503"} 
+
+					  }
+				]
+				},
+						"DMU_BP0_WBP1":
+ 				{
+ 								"TYPE" :"GOID",
+ 								"Execution" : 
+ 				[                
+ 						{
+ 								"STATUS" : [2, 3, 6, 7] ,
+ 								"ALGO_SEL" :  "2655-2661",
+ 								"PALGO_SEL" : "",
+ 								"Memories" :  
+									{"1": "2511-2582",
+									"2": "2583-2654"} 
+
+					  }
+				]
+				}                      
+ 		  },
+ 				"CaptureCount" : 2662                      
+ 		},
+ 		"g0054583W5106083A_BW_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_dmu_pbp1__a_ssa_pmovi_x_s_hry" : 
+ 		{        
+ 				"Controllers" : 
+ 				{ 
+						"DMU_BP1_WBP0":
+ 				{
+ 								"TYPE" :"GOID",
+ 								"Execution" : 
+ 				[                
+ 						{
+ 								"STATUS" : [0, 1, 2, 3] ,
+ 								"ALGO_SEL" :  "43-49",
+ 								"PALGO_SEL" : "",
+ 								"Memories" :  
+									{"1": "4-42"} 
+
+					  }
+				]
+				}                      
+ 		  },
+ 				"CaptureCount" : 50                      
+ 		},
+ 		"g0053955W5106210A_Ba_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_dmu_pbp3__a_ssa_pmovi_x_s_hry" : 
+ 		{        
+ 				"Controllers" : 
+ 				{ 
+						"DMU_BP3_WBP0":
+ 				{
+ 								"TYPE" :"GOID",
+ 								"Execution" : 
+ 				[                
+ 						{
+ 								"STATUS" : [0, 1, 2, 3] ,
+ 								"ALGO_SEL" :  "82-88",
+ 								"PALGO_SEL" : "",
+ 								"Memories" :  
+									{"1": "4-42",
+									"2": "43-81"} 
+
+					  }
+				]
+				}                      
+ 		  },
+ 				"CaptureCount" : 89                      
+ 		},
+ 		"g0053977W5106334A_BZ_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_dmu_pbp5__a_ssa_pmovi_x_s_hry" : 
+ 		{        
+ 				"Controllers" : 
+ 				{ 
+						"DMU_BP5_WBP0":
+ 				{
+ 								"TYPE" :"GOID",
+ 								"Execution" : 
+ 				[                
+ 						{
+ 								"STATUS" : [0, 1, 2, 3] ,
+ 								"ALGO_SEL" :  "82-88",
+ 								"PALGO_SEL" : "",
+ 								"Memories" :  
+									{"1": "4-42",
+									"2": "43-81"} 
+
+					  }
+				]
+				}                      
+ 		  },
+ 				"CaptureCount" : 89                      
+ 		},
+ 		"g0055551W5107739A_Bf_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_cbp1_pbp0__a_ssa_pmovi_x_s_hry" : 
+ 		{        
+ 				"Controllers" : 
+ 				{ 
+						"CBP1_BP0_WBP0":
+ 				{
+ 								"TYPE" :"GOID",
+ 								"Execution" : 
+ 				[                
+ 						{
+ 								"STATUS" : [0, 1, 2, 3] ,
+ 								"ALGO_SEL" :  "43-49",
+ 								"PALGO_SEL" : "",
+ 								"Memories" :  
+									{"1": "4-42"} 
+
+					  }
+				]
+				}                      
+ 		  },
+ 				"CaptureCount" : 50                      
+ 		},
+ 		"g0054861W5107477A_Bd_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_cbp0_pbp0__a_ssa_pmovi_x_s_hry" : 
+ 		{        
+ 				"Controllers" : 
+ 				{ 
+						"CBP0_BP0_WBP0":
+ 				{
+ 								"TYPE" :"GOID",
+ 								"Execution" : 
+ 				[                
+ 						{
+ 								"STATUS" : [0, 1, 2, 3] ,
+ 								"ALGO_SEL" :  "43-49",
+ 								"PALGO_SEL" : "",
+ 								"Memories" :  
+									{"1": "4-42"} 
+
+					  }
+				]
+				}                      
+ 		  },
+ 				"CaptureCount" : 50                      
+ 		},
+ 		"g0056044W5108220A_A5_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_odd_pbp0__a_lsa_pmovi_x_s_hry" : 
+ 		{        
+ 				"Controllers" : 
+ 				{ 
+						"ODD_BP0_WBP0":
+ 				{
+ 								"TYPE" :"GOID",
+ 								"Execution" : 
+ 				[                
+ 						{
+ 								"STATUS" : [0, 1, 2, 3] ,
+ 								"ALGO_SEL" :  "544-549",
+ 								"PALGO_SEL" : "",
+ 								"Memories" :  
+									{"1": "4-93",
+									"2": "94-183",
+									"3": "184-273",
+									"4": "274-363",
+									"5": "364-453",
+									"6": "454-543"} 
+
+					  }
+				]
+				}                      
+ 		  },
+ 				"CaptureCount" : 550                      
+ 		},
+ 		"g0055016W5107030A_9j_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_fuse_pbp0__a_lsa_pmovi_x_s_hry" : 
+ 		{        
+ 				"Controllers" : 
+ 				{ 
+						"FUSE_BP0_WBP0":
+ 				{
+ 								"TYPE" :"GOID",
+ 								"Execution" : 
+ 				[                
+ 						{
+ 								"STATUS" : [0, 1, 2, 3] ,
+ 								"ALGO_SEL" :  "418-423",
+ 								"PALGO_SEL" : "",
+ 								"Memories" :  
+									{"1": "4-49",
+									"2": "50-95",
+									"3": "96-141",
+									"4": "142-187",
+									"5": "188-233",
+									"6": "234-279",
+									"7": "280-325",
+									"8": "326-371",
+									"9": "372-417"} 
+
+					  }
+				]
+				}                      
+ 		  },
+ 				"CaptureCount" : 424                      
+ 		},
+ 		"g0054368W5107131A_9r_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_fuse_pbp1__a_lsa_pmovi_x_s_hry" : 
+ 		{        
+ 				"Controllers" : 
+ 				{ 
+						"FUSE_BP1_WBP0":
+ 				{
+ 								"TYPE" :"GOID",
+ 								"Execution" : 
+ 				[                
+ 						{
+ 								"STATUS" : [0, 1, 2, 3] ,
+ 								"ALGO_SEL" :  "484-489",
+ 								"PALGO_SEL" : "",
+ 								"Memories" :  
+									{"1": "4-83",
+									"2": "84-163",
+									"3": "164-243",
+									"4": "244-323",
+									"5": "324-403",
+									"6": "404-483"} 
+
+					  }
+				]
+				}                      
+ 		  },
+ 				"CaptureCount" : 490                      
+ 		},
+ 		"g0055955W5108038A_8y_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_sbp_pbp1__a_rom_rd_x_s_hry" : 
+ 		{        
+ 				"Controllers" : 
+ 				{ 
+                      
+ 		  },
+ 				"CaptureCount" : 60                      
+ 		},
+ 		"g0054019W5106374A_8k_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_dmu_pbp2__a_rom_rd_x_s_hry" : 
+ 		{        
+ 				"Controllers" : 
+ 				{ 
+                      
+ 		  },
+ 				"CaptureCount" : 60                      
+ 		},
+ 		"g0054023W5106379A_8x_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_dmu_pbp4__a_rom_rd_x_s_hry" : 
+ 		{        
+ 				"Controllers" : 
+ 				{ 
+                      
+ 		  },
+ 				"CaptureCount" : 116                      
+ 		},
+ 		"g0054635W5106384A_8k_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_dmu_pbp6__a_rom_rd_x_s_hry" : 
+ 		{        
+ 				"Controllers" : 
+ 				{ 
+                      
+ 		  },
+ 				"CaptureCount" : 60                      
+ 		},
+ 		"g0054625W5106389A_8k_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_dmu_pbp7__a_rom_rd_x_s_hry" : 
+ 		{        
+ 				"Controllers" : 
+ 				{ 
+                      
+ 		  },
+ 				"CaptureCount" : 60                      
+ 		},
+ 		"g0055701W5107780A_9A_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_cbp1_pbp1__a_rom_rd_x_s_hry" : 
+ 		{        
+ 				"Controllers" : 
+ 				{ 
+                      
+ 		  },
+ 				"CaptureCount" : 60                      
+ 		}
+		 }, 
+		 "Plists" : 
+		 {  			
+			"arr_cdie_mbist_sort_hry_perbistportallstepspbap_rom_cbp0_all_list" : 
+					["g0054978W5107517A_95_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_cbp0_pbp1__a_rom_rd_x_s_hry"], 
+				"arr_cdie_mbist_sort_hry_perbistportallstepspbap_ssa_all_all_list" : 
+					["g0055943W5107998A_Ba_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_sbp_pbp0__a_ssa_pmovi_x_s_hry", "g0053799W5105955A_E2_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_dmu_pbp0__a_ssa_pmovi_x_s_hry", "g0054583W5106083A_BW_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_dmu_pbp1__a_ssa_pmovi_x_s_hry", "g0053955W5106210A_Ba_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_dmu_pbp3__a_ssa_pmovi_x_s_hry", "g0053977W5106334A_BZ_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_dmu_pbp5__a_ssa_pmovi_x_s_hry", "g0055551W5107739A_Bf_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_cbp1_pbp0__a_ssa_pmovi_x_s_hry", "g0054861W5107477A_Bd_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_cbp0_pbp0__a_ssa_pmovi_x_s_hry"], 
+				"arr_cdie_mbist_sort_hry_perbistportallstepspbap_lsa_odd_all_list" : 
+					["g0056044W5108220A_A5_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_odd_pbp0__a_lsa_pmovi_x_s_hry"], 
+				"arr_cdie_mbist_sort_hry_perbistportallstepspbap_ssa_cbp1_all_list" : 
+					["g0055551W5107739A_Bf_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_cbp1_pbp0__a_ssa_pmovi_x_s_hry"], 
+				"arr_cdie_mbist_sort_hry_perbistportallstepspbap_ssa_cbp0_all_list" : 
+					["g0054861W5107477A_Bd_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_cbp0_pbp0__a_ssa_pmovi_x_s_hry"], 
+				"arr_cdie_mbist_sort_hry_perbistportallstepspbap_lsa_fuse_all_list" : 
+					["g0055016W5107030A_9j_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_fuse_pbp0__a_lsa_pmovi_x_s_hry", "g0054368W5107131A_9r_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_fuse_pbp1__a_lsa_pmovi_x_s_hry"], 
+				"arr_cdie_mbist_sort_hry_perbistportallstepspbap_lsa_all_all_list" : 
+					["g0055016W5107030A_9j_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_fuse_pbp0__a_lsa_pmovi_x_s_hry", "g0054368W5107131A_9r_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_fuse_pbp1__a_lsa_pmovi_x_s_hry", "g0056044W5108220A_A5_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_odd_pbp0__a_lsa_pmovi_x_s_hry"], 
+				"arr_cdie_mbist_sort_hry_perbistportallstepspbap_ssa_sbp_all_list" : 
+					["g0055943W5107998A_Ba_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_sbp_pbp0__a_ssa_pmovi_x_s_hry"], 
+				"arr_cdie_mbist_sort_hry_perbistportallstepspbap_rom_all_all_list" : 
+					["g0055955W5108038A_8y_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_sbp_pbp1__a_rom_rd_x_s_hry", "g0054019W5106374A_8k_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_dmu_pbp2__a_rom_rd_x_s_hry", "g0054023W5106379A_8x_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_dmu_pbp4__a_rom_rd_x_s_hry", "g0054635W5106384A_8k_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_dmu_pbp6__a_rom_rd_x_s_hry", "g0054625W5106389A_8k_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_dmu_pbp7__a_rom_rd_x_s_hry", "g0055701W5107780A_9A_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_cbp1_pbp1__a_rom_rd_x_s_hry", "g0054978W5107517A_95_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_cbp0_pbp1__a_rom_rd_x_s_hry"], 
+				"arr_cdie_mbist_sort_hry_perbistportallstepspbap_all_all_all_list" : 
+					["g0055955W5108038A_8y_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_sbp_pbp1__a_rom_rd_x_s_hry", "g0054019W5106374A_8k_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_dmu_pbp2__a_rom_rd_x_s_hry", "g0054023W5106379A_8x_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_dmu_pbp4__a_rom_rd_x_s_hry", "g0054635W5106384A_8k_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_dmu_pbp6__a_rom_rd_x_s_hry", "g0054625W5106389A_8k_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_dmu_pbp7__a_rom_rd_x_s_hry", "g0055701W5107780A_9A_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_cbp1_pbp1__a_rom_rd_x_s_hry", "g0054978W5107517A_95_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_cbp0_pbp1__a_rom_rd_x_s_hry", "g0055943W5107998A_Ba_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_sbp_pbp0__a_ssa_pmovi_x_s_hry", "g0053799W5105955A_E2_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_dmu_pbp0__a_ssa_pmovi_x_s_hry", "g0054583W5106083A_BW_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_dmu_pbp1__a_ssa_pmovi_x_s_hry", "g0053955W5106210A_Ba_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_dmu_pbp3__a_ssa_pmovi_x_s_hry", "g0053977W5106334A_BZ_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_dmu_pbp5__a_ssa_pmovi_x_s_hry", "g0055551W5107739A_Bf_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_cbp1_pbp0__a_ssa_pmovi_x_s_hry", "g0054861W5107477A_Bd_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_cbp0_pbp0__a_ssa_pmovi_x_s_hry", "g0055016W5107030A_9j_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_fuse_pbp0__a_lsa_pmovi_x_s_hry", "g0054368W5107131A_9r_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_fuse_pbp1__a_lsa_pmovi_x_s_hry", "g0056044W5108220A_A5_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_odd_pbp0__a_lsa_pmovi_x_s_hry"], 
+				"arr_cdie_mbist_sort_hry_perbistportallstepspbap_rom_sbp_all_list" : 
+					["g0055955W5108038A_8y_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_sbp_pbp1__a_rom_rd_x_s_hry"], 
+				"arr_cdie_mbist_sort_hry_perbistportallstepspbap_rom_dmu_all_list" : 
+					["g0054019W5106374A_8k_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_dmu_pbp2__a_rom_rd_x_s_hry", "g0054023W5106379A_8x_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_dmu_pbp4__a_rom_rd_x_s_hry", "g0054635W5106384A_8k_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_dmu_pbp6__a_rom_rd_x_s_hry", "g0054625W5106389A_8k_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_dmu_pbp7__a_rom_rd_x_s_hry"], 
+				"arr_cdie_mbist_sort_hry_perbistportallstepspbap_ssa_dmu_all_list" : 
+					["g0053799W5105955A_E2_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_dmu_pbp0__a_ssa_pmovi_x_s_hry", "g0054583W5106083A_BW_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_dmu_pbp1__a_ssa_pmovi_x_s_hry", "g0053955W5106210A_Ba_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_dmu_pbp3__a_ssa_pmovi_x_s_hry", "g0053977W5106334A_BZ_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_dmu_pbp5__a_ssa_pmovi_x_s_hry"], 
+				"arr_cdie_mbist_sort_hry_perbistportallstepspbap_rom_cbp1_all_list" : 
+					["g0055701W5107780A_9A_VC28xCA066_Mm020p00xxx0d_dxxx080808xxxxxxxxxxx_sC28A6PxxBTC007J052_x00_mb_cbp1_pbp1__a_rom_rd_x_s_hry"]
+ 		}
+		}

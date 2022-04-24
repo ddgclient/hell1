@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>DDG Prime Callbacks Manager</title>
+</head>
+<body>
+
+    <h1 id="ddg-prime-callbacks-manager">DDG Prime Callbacks Manager</h1>
+<h3 id="rev-0">Rev 0</h3>
+<h2 id="introduction">Introduction</h2>
+<p>Prime3.00.00 introduced a new Callback mechanism where user can register and call custom code within the library.
+Methodology is documented in their wiki page:</p>
+<p><a href="https://dev.azure.com/mit-us/PRIME/_wiki/wikis/PRIME.wiki/3028/Callbacks">https://dev.azure.com/mit-us/PRIME/_wiki/wikis/PRIME.wiki/3028/Callbacks</a></p>
+<p>DDG Prime CallbacksManager is a <strong>“temporary”</strong> solution to execute multiple pre-registered callbacks using a single callback.</p>
+<h2 id="how-to-use">How to Use</h2>
+<ol>
+<li>Enable your callback parameters using the CommonParams.xml as indicated in PRIME documentation.</li>
+<li>Register CallbacksManager.Call by adding a test instance in your INIT flow.</li>
+<li>Call your favorite callbacks using Call method.</li>
+</ol>
+<h2 id="errors-and-exceptions">Errors and Exceptions</h2>
+<ol>
+<li>Throws Exception on invalid syntax.</li>
+<li>Throws Exception if callbacks were not pre-registered.</li>
+<li>Call will return <strong>pass</strong> if all callbacks run and did not return <em>fail</em> or <em>0</em>; otherwise wil return <strong>fail</strong></li>
+</ol>
+<h2 id="important">Important</h2>
+<p><em>Call will not override the assigned port. Port is assigned by test class and no callbacks.</em></p>
+<h2 id="syntax">Syntax</h2>
+<p><strong>Call(Function1(args1) | … | FunctionN(argsN))</strong></p>
+<h2 id="example">Example</h2>
+<p>PreInstance = Class(PrintToConsole(Hello World) | PrinToConsole(Hola Mundo))</p>
+<h2 id="tos-shmoo-usage">TOS Shmoo Usage</h2>
+<p>Prime callbacks can be used in the TOS Gui shmoo using the &quot;GuiCallback&quot; dimension.  The &quot;Value Template&quot; argument should be Function(args1 args2 args3) format. Use {var} to specify values to shmoo.</p>
+<p>Example:<br />
+<img src="images/tosshmoo_guicallback.bmp" alt="GuiCallbackShmooExample" /></p>
+<p>Example (saved as json):</p>
+<pre><code class="language-json">{
+  &quot;TestInstance&quot;: &quot;PVAL_FUNC::BasicFunc_CaptFirstFail_P1&quot;,
+  &quot;ExecutionModes&quot;: [
+    {
+      &quot;Type&quot;: &quot;AllPin&quot;,
+      &quot;FailureMode&quot;: 0,
+      &quot;PList&quot;: &quot;drv_cdie_maintap_bbs_list&quot;,
+      &quot;Level&quot;: &quot;bf_lvl_nom_lvl&quot;,
+      &quot;Timings&quot;: &quot;cpu_stf_timing_tclk100_sclk100_cclk100&quot;
+    }
+  ],
+  &quot;Dimensions&quot;: [
+    {
+      &quot;Type&quot;: &quot;Timings&quot;,
+      &quot;SpecSetVariable&quot;: &quot;p_mtd_per&quot;,
+      &quot;TestCondition&quot;: &quot;cpu_stf_timing_tclk100_sclk100_cclk100&quot;,
+      &quot;ParameterName&quot;: &quot;p_mtd_per&quot;,
+      &quot;Values&quot;: &quot;8ns:12ns:1ns&quot;,
+      &quot;Group&quot;: &quot;&quot;
+    },
+    {
+      &quot;Type&quot;: &quot;GuiCallback&quot;,
+      &quot;ValueTemplate&quot;: &quot;VoltageConverter(--overrides FIVRRAIL1:{v} --fivrcondition NOM)&quot;,
+      &quot;TestName&quot;: &quot;PVAL_FUNC::BasicFunc_CaptFirstFail_P1&quot;,
+      &quot;ParameterName&quot;: &quot;v&quot;,
+      &quot;Values&quot;: &quot;0.8:1.2:0.1&quot;,
+      &quot;Group&quot;: &quot;&quot;
+    }
+  ],
+  &quot;Options&quot;: []
+}
+</code></pre>
+
+
+</body>
+</html>

@@ -1,0 +1,4 @@
+﻿linux-x64.dbg/libJetBrains.Dpa.Collector.so       libjetbrains.dpa.collector.so/elf-buildid-d25f0e3e042e215c2c7bdca40d4dd371806d755b/libjetbrains.dpa.collector.so
+linux-x64.dbg/libmono-profiler-jb.so              libmono-profiler-jb.so/elf-buildid-9abc91fea26da820035744d6e35cf249dbefe523/libmono-profiler-jb.so
+linux-x64.dbg/libJetBrains.Dpa.Collector.so.debug _.debug/elf-buildid-sym-d25f0e3e042e215c2c7bdca40d4dd371806d755b/_.debug
+linux-x64.dbg/libmono-profiler-jb.so.debug        _.debug/elf-buildid-sym-9abc91fea26da820035744d6e35cf249dbefe523/_.debug

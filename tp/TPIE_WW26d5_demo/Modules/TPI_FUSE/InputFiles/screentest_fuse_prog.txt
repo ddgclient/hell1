@@ -1,0 +1,26 @@
+
+
+START_SCREEN:SETDFFULTGOOD
+#Run: Test : 	Data  : Param : Param1       				: Oper 		: Param  	: Param2        		: Tmp  : On   	  : On
+#On : Name : 	Type  : Type  :              				:      		: Type   	:               		: Store: True 	  : False
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+EXEC: Test1: 	STRING: GSDS		: U.S.DFFCHECK_ULT		:  SET  	: EXPRESSION	: FUSEUFGL.S.UFGL_Database_Lot + '_' + FUSEUFGL.S.UFGL_Database_Wafer + '_' + FUSEUFGL.S.UFGL_Database_X + '_' + FUSEUFGL.S.UFGL_Database_Y		: -    : 1	  :  2
+END_SCREEN
+
+
+START_SCREEN:SETDFFULTBAD
+###Only works for notch right. Calculation will need to change for other notch direction#####
+#Run: Test : 	Data  : Param : Param1       				: Oper 		: Param  	: Param2        		: Tmp  : On   	  : On
+#On : Name : 	Type  : Type  :              				:      		: Type   	:               		: Store: True 	  : False
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+EXEC: Test1:    STRING: GSDS		: U.S.DFFCHECK_ULT		:  SET  	: EXPRESSION	: '99999999_' + SCVars.S.SC_LOT_WAFER + '_' + SCVars.S.SC_WAFERX + '_' + SCVars.S.SC_WAFERY		: -    : 1	  :  2
+END_SCREEN
+
+START_SCREEN:PrintNonStandardToken
+##Run : Test                : Data  : Param Type  : Param1                           : Operation : Param   : Param2       : TmpStore         : OnTrue                : OnFalse
+##On  : Name                : Type  :             :                                  :           : Type    :              :                  :                       :        
+EXEC  : CheckwasNonStandard : STRING: GSDS        : U.S.WASNONSTANDARD               : ==        : LITERAL : "1"          :  -               : PrintNonStandard1      : CheckisNonStandard
+EXEC  : CheckisNonStandard  : STRING: GSDS        : U.S.ISNONSTANDARD                : ==        : LITERAL : "1"          :  -               : PrintNonStandard1      : PrintNonStandard0
+EXEC  : PrintNonStandard1   :      -: FUNCTION    : EXECUSERFUNC(TEMPLATE_UF!HvqkItuffMsg_HVQK_NONSTANDARD, mrslt 1) : -  : - : -  :  -      : 1                     : 1 
+EXEC  : PrintNonStandard0   :      -: FUNCTION    : EXECUSERFUNC(TEMPLATE_UF!HvqkItuffMsg_HVQK_NONSTANDARD, mrslt 0) : -  : - : -  :  -      : 1                     : 1 
+END_SCREEN

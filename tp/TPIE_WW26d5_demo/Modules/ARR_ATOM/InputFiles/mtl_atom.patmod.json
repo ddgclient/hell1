@@ -1,0 +1,95 @@
+{
+  "Configurations": [
+    {
+      "Name": "LSA_RASTER_PAT_MODIFY_SET_ATOM_Multiport",
+      "ConfigurationElement": [
+	    {
+	      "Type": "PINDATA",
+	      "IsChannelLink": false,
+	      "Pin": "YY_TAP_TDI_S2C",
+	      "StartAddress": "BUSY.*",
+	      "StartAddressOffset": 0,
+	      "EndAddress": "^",
+	      "EndAddressOffset": 3,
+		"PatternsRegEx": [ "d.*_ic_btb_pmovi_x_s_sof.*$" ]
+	    }		
+      ]
+    },
+    {
+      "Name": "LSA_RASTER_PAT_MODIFY_SET_ATOM_MaxDefectsCount",
+      "ConfigurationElement": [
+	    {
+	      "Type": "INSTRUCTION",
+	      "Domain": "CPU_TAP_ALL",
+	      "IsChannelLink": false,
+	      "StartAddress": "CPU_TAP_ALL_Defect_count.*", 
+	      "StartAddressOffset": 2,
+	      "EndAddress": "^",
+	      "EndAddressOffset": 2,
+		"PatternsRegEx": [ "d.*_ic_btb_pmovi_x_s_sof.*$" ]
+	    },
+	    {
+	      "Type": "INSTRUCTION",
+	      "Domain": "CPU_FAB_ALL",
+	      "IsChannelLink": false,
+	      "StartAddress": "CPU_FAB_ALL_Defect_count.*",  
+	      "StartAddressOffset": 2,
+	      "EndAddress": "^",
+	      "EndAddressOffset": 2,
+		"PatternsRegEx": [ "d.*_ic_btb_pmovi_x_s_sof.*$" ]
+	    }
+      ]
+    },
+    {
+      "Name": "LSA_RASTER_PAT_MODIFY_SET_ATOM_Bank",
+      "ConfigurationElement": [
+        {
+          "Type": "PINDATA",
+          "IsChannelLink": false,
+          "Pin": "YY_TAP_TDI_S2C",
+          "StartAddress": "BANKSEL.*", 
+          "StartAddressOffset": 0,
+          "EndAddress": "^",
+          "EndAddressOffset": 3,
+          "PatternsRegEx": [
+            "d.*_ic_btb_pmovi_x_s_sof.*$"
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "LSA_RASTER_PAT_MODIFY_SET_ATOM_Dword",
+      "ConfigurationElement": [
+        {
+          "Type": "PINDATA",
+          "IsChannelLink": false,
+          "Pin": "YY_TAP_TDI_S2C",
+          "StartAddress": "DWORD.*",  
+          "StartAddressOffset": 0,
+          "EndAddress": "^",
+          "EndAddressOffset": 3,
+          "PatternsRegEx": [
+            "d.*_ic_btb_pmovi_x_s_sof.*$"
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "LSA_RASTER_PAT_MODIFY_SET_ATOM_IOMask",
+      "ConfigurationElement": [
+        {
+          "Type": "PINDATA",
+          "IsChannelLink": false,
+          "Pin": "YY_TAP_TDI_S2C",
+          "StartAddress": "XCare_.*",
+          "StartAddressOffset": 0,
+          "EndAddress": "^",
+          "EndAddressOffset": 63,
+          "PatternsRegEx": [
+            "d.*_ic_btb_pmovi_x_s_sof.*$"
+          ]
+        }
+      ]
+    }
+  ]
+}

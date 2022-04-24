@@ -1,0 +1,11 @@
+START_SCREEN:DieRecovery_Setup 
+EXEC  : Setup   : STRING	: GLOBAL    : TPChassis.SortClass		                                                  	:  ==	: LITERAL	: "SDS"	:  -	: RecICL: RecEXS
+### SDS (ICL42) Recovery
+EXEC  : RecICL  : -			: FUNCTION  : EXECUSERFUNC(DIE_RECOVERY!ParseFile,~OASIS_TPL_DIR\\DieRecovery_ICL4Core.xml)	:  -	:  -		:  -	:  -	: 1		: 2                                                                                                                                                                    
+### HOP (EXS) Recovery
+EXEC  : RecEXS  : -			: FUNCTION  : EXECUSERFUNC(DIE_RECOVERY!ParseFile,~OASIS_TPL_DIR\\DieRecovery_EXS.xml)		:  -	:  -		:  -	:  -	: 1		: 2                                                                                                                                                                    
+END_SCREEN                                                                                                                                                                                                                                                                                                                                   
+
+START_SCREEN:DieRecovery_Clear
+EXEC  : Clear	: -         : FUNCTION   : EXECUSERFUNC(DIE_RECOVERY!ExecSequence,InitZeros)	: -	: -	: -	: -	: 1 : 2
+END_SCREEN 

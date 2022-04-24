@@ -1,0 +1,9 @@
+Version 5.0;
+
+GlobalPList dfx_stf100_tune_stb_list [PreBurstPList resetplb_xxx080808xxx_no_longreset_Mdrv_C28A6P_sort_flattap_list] [Flatten] {
+   Pat g0019809W4480630A_8j_VC28xCA066_Rm000000xxx0v_nxxx080808xxxxxxxxxxx_sC28A6PxxBTC002J052_x01_dfxtune_strobe;
+}  # End of dfx_mci_io_100_SBO_list
+
+GlobalPList dfx_stf100_tune_drv_list [PreBurstPList resetplb_xxx080808xxx_no_longreset_Mdrv_C28A6P_sort_flattap_list] [Flatten] {
+   Pat g0019809W4480630A_8j_VC28xCA066_Rm000000xxx0v_nxxx080808xxxxxxxxxxx_sC28A6PxxBTC002J052_x01_dfxtune_drive;
+}  # End of dfx_mci_ii_100_SBO_list

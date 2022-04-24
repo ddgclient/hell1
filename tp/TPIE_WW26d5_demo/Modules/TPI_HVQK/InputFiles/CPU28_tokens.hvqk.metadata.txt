@@ -1,0 +1,49 @@
+[voltage_indicators]
+[CORE]
+1.6 5
+1.5 4
+1.4 3
+1.3 2
+1.2 1
+1.1 0
+1.0 0
+0.9 0
+
+[ATOM]
+1.6 5
+1.5 4
+1.4 3
+1.3 2
+1.2 1
+1.1 0
+1.0 0
+0.9 0
+
+[CCF]
+1.6 5
+1.5 4
+1.4 3
+1.3 2
+1.2 1
+1.1 0
+1.0 0
+0.9 0
+
+[NONCCF]
+1.6 5
+1.5 4
+1.4 3
+1.3 2
+1.2 1
+1.1 0
+1.0 0
+0.9 0
+
+[hvqk_instances]
+CORE 	CACHE_ALL,SCAN_ALL 
+ATOM 	CACHE_ALL,SCAN_ATOM0,SCAN_ATOM1 
+CCF 	CACHE_ALL,SCAN_ALL 
+NONCCF 	CACHE_ALL,SCAN_ALL 
+
+
+

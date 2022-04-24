@@ -1,0 +1,21 @@
+{
+  "UpsDffMap":
+    {
+      "dummy_dff_token":
+        {
+		  "CR@F7" : "SACSSPF1",
+		  "CR@F6" : "SACSSPF1",
+		  "CR@F5" : "SACSSPF1",
+		  "CR@F4" : "SACSSPF1",
+		  "CR@F3" : "SACSSPF1",
+		  "CR@F2" : "SACSSPF1",
+		  "CR@F1" : "SACSSPF1",
+
+          "CLR@F6":"SACSSPF1",
+          "CLR@F4":"SACSSPF1",
+          "CLR@F3":"SACSSPF1",
+          "CLR@F2":"SACSSPF1",
+          "CLR@F1":"SACSSPF1"
+        }
+    }
+}

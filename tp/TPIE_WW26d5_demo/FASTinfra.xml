@@ -1,0 +1,2789 @@
+<?xml version="1.0" encoding="utf-8"?>
+<infra_setup>
+
+<dfdv_evaluation_order>IA_ARRAY_MLCDATAC6SSA:PRE,IA_ARRAY_MLCDATAC6SSA:POST,IA_ARRAY_MLCTAGLSA:PRE,IA_ARRAY_MLCTAGLSA:POST,IA_ARRAY_LSARFLSA:PRE,IA_ARRAY_LSARFLSA:POST,IA_ARRAY_ALLROM:PRE,IA_ARRAY_ALLROM:POST,IA_ARRAY_LLCDATASSA:PRE,IA_ARRAY_LLCDATASSA:POST,IA_ARRAY_LLCTAGSSA:PRE,IA_ARRAY_LLCTAGSSA:POST,IA_ARRAY_LLCSCLLSA:PRE,IA_ARRAY_LLCSCLLSA:POST,IA_ARRAY_LSARFLSA:PRE,IA_ARRAY_LSARFLSA:POST,SA_ARRAY_CCF0SSA:PRE,SA_ARRAY_CCF0SSA:POST,SA_ARRAY_CCF1SSA:PRE,SA_ARRAY_CCF1SSA:POST,SA_ARRAY_CMISSA:PRE,SA_ARRAY_CMISSA:POST,SA_ARRAY_MEESSA:PRE,SA_ARRAY_MEESSA:POST,SA_ARRAY_PUNITSSA:PRE,SA_ARRAY_PUNITSSA:POST,SA_ARRAY_OPIOSSA:PRE,SA_ARRAY_OPIOSSA:POST,SA_ARRAY_SSASSA:PRE,SA_ARRAY_SSASSA:POST,SA_ARRAY_FUSELSA:PRE,SA_ARRAY_FUSELSA:POST,SA_ARRAY_GMMLSA:PRE,SA_ARRAY_GMMLSA:POST,SA_ARRAY_IOPLSA:PRE,SA_ARRAY_IOPLSA:POST,SA_ARRAY_MCLSA:PRE,SA_ARRAY_MCLSA:POST,SA_ARRAY_MEELSA:PRE,SA_ARRAY_MEELSA:POST,SA_ARRAY_NPKLSA:PRE,SA_ARRAY_NPKLSA:POST,SA_ARRAY_OPIOLSA:PRE,SA_ARRAY_OPIOLSA:POST,SA_ARRAY_IPUDMASSA:PRE,SA_ARRAY_IPUDMASSA:POST,SA_ARRAY_IPUIDSP0SSA:PRE,SA_ARRAY_IPUIDSP0SSA:POST,SA_ARRAY_IPUIDSP1SSA:PRE,SA_ARRAY_IPUIDSP1SSA:POST,SA_ARRAY_IPUIDSP2SSA:PRE,SA_ARRAY_IPUIDSP2SSA:POST,SA_ARRAY_IPUIDSP3SSA:PRE,SA_ARRAY_IPUIDSP3SSA:POST,SA_ARRAY_IPUINPUTSLICESSA:PRE,SA_ARRAY_IPUINPUTSLICESSA:POST,SA_ARRAY_IPUINPUTSLICELIGHTSSA:PRE,SA_ARRAY_IPUINPUTSLICELIGHTSSA:POST,SA_ARRAY_IPUPSASSA:PRE,SA_ARRAY_IPUPSASSA:POST,SA_ARRAY_IPUSPCLUSTERSSA:PRE,SA_ARRAY_IPUSPCLUSTERSSA:POST,SA_ARRAY_IPUUNISSSA:PRE,SA_ARRAY_IPUUNISSSA:POST,SA_ARRAY_IPUUNPSSSA:PRE,SA_ARRAY_IPUUNPSSSA:POST,SA_ARRAY_IPUBUTTRESSLSA:PRE,SA_ARRAY_IPUBUTTRESSLSA:POST,SA_ARRAY_IPUIDSP0LSA:PRE,SA_ARRAY_IPUIDSP0LSA:POST,SA_ARRAY_IPUIDSP1LSA:PRE,SA_ARRAY_IPUIDSP1LSA:POST,SA_ARRAY_IPUIDSP2LSA:PRE,SA_ARRAY_IPUIDSP2LSA:POST,SA_ARRAY_IPUIDSP3LSA:PRE,SA_ARRAY_IPUIDSP3LSA:POST,SA_ARRAY_IPUINPUTSLICELSA:PRE,SA_ARRAY_IPUINPUTSLICELSA:POST,SA_ARRAY_IPUINPUTSLICELIGHTLSA:PRE,SA_ARRAY_IPUINPUTSLICELIGHTLSA:POST,SA_ARRAY_IPUOFSGDCLSA:PRE,SA_ARRAY_IPUOFSGDCLSA:POST,SA_ARRAY_IPUPSALSA:PRE,SA_ARRAY_IPUPSALSA:POST,GT_ARRAY_GTLSA:PRE,GT_ARRAY_GTLSA:POST,GT_ARRAY_GTSSA:PRE,GT_ARRAY_GTSSA:POST,SA_ARRAY_DELSA:PRE,SA_ARRAY_DELSA:POST,SA_ARRAY_DESSA:PRE,SA_ARRAY_DESSA:POST,IA_SCAN_CORE0EXE:PRE,IA_SCAN_CORE0EXE:POST,IA_SCAN_CORE0FIT:PRE,IA_SCAN_CORE0FIT:POST,IA_SCAN_CORE0MEU:PRE,IA_SCAN_CORE0MEU:POST,IA_SCAN_CORE0MLC:PRE,IA_SCAN_CORE0MLC:POST,IA_SCAN_CORE0MLD:PRE,IA_SCAN_CORE0MLD:POST,IA_SCAN_CORE0OOO:PRE,IA_SCAN_CORE0OOO:POST,IA_SCAN_CORE1EXE:PRE,IA_SCAN_CORE1EXE:POST,IA_SCAN_CORE1FIT:PRE,IA_SCAN_CORE1FIT:POST,IA_SCAN_CORE1MEU:PRE,IA_SCAN_CORE1MEU:POST,IA_SCAN_CORE1MLC:PRE,IA_SCAN_CORE1MLC:POST,IA_SCAN_CORE1MLD:PRE,IA_SCAN_CORE1MLD:POST,IA_SCAN_CORE1OOO:PRE,IA_SCAN_CORE1OOO:POST,IA_SCAN_CCFIDP:PRE,IA_SCAN_CCFIDP:POST,IA_SCAN_CCFCBO0:PRE,IA_SCAN_CCFCBO0:POST,IA_SCAN_CCFGBO:PRE,IA_SCAN_CCFGBO:POST,IA_SCAN_CCFCBO1:PRE,IA_SCAN_CCFCBO1:POST,SA_SCAN_CMIHUBCMI:PRE,SA_SCAN_CMIHUBCMI:POST,SA_SCAN_CMIHUBMC:PRE,SA_SCAN_CMIHUBMC:POST,SA_SCAN_CMIHUBMEE:PRE,SA_SCAN_CMIHUBMEE:POST,SA_SCAN_CMIHUBSSA:PRE,SA_SCAN_CMIHUBSSA:POST,SA_SCAN_CPIOHUBCCF:PRE,SA_SCAN_CPIOHUBCCF:POST,SA_SCAN_CPIOHUBIOP:PRE,SA_SCAN_CPIOHUBIOP:POST,SA_SCAN_CPIOHUBPUNIT:PRE,SA_SCAN_CPIOHUBPUNIT:POST,SA_SCAN_OPIOHUBDISP:PRE,SA_SCAN_OPIOHUBDISP:POST,SA_SCAN_OPIOHUBGMM:PRE,SA_SCAN_OPIOHUBGMM:POST,SA_SCAN_OPIOHUBFUSE:PRE,SA_SCAN_OPIOHUBFUSE:POST,SA_SCAN_OPIOHUBNPK:PRE,SA_SCAN_OPIOHUBNPK:POST,SA_SCAN_OPIOHUBPSF0:PRE,SA_SCAN_OPIOHUBPSF0:POST,SA_SCAN_OPIOHUBPSF1:PRE,SA_SCAN_OPIOHUBPSF1:POST,SA_SCAN_OPIOHUBOPIO:PRE,SA_SCAN_OPIOHUBOPIO:POST,SA_SCAN_BUTTRESSHUBBUTTRESS:PRE,SA_SCAN_BUTTRESSHUBBUTTRESS:POST,SA_SCAN_BUTTRESSHUBINPUTSLICEIS:PRE,SA_SCAN_BUTTRESSHUBINPUTSLICEIS:POST,SA_SCAN_BUTTRESSHUBIO:PRE,SA_SCAN_BUTTRESSHUBIO:POST,SA_SCAN_BUTTRESSHUBUNIS:PRE,SA_SCAN_BUTTRESSHUBUNIS:POST,SA_SCAN_BUTTRESSHUBSP:PRE,SA_SCAN_BUTTRESSHUBSP:POST,SA_SCAN_BUTTRESSHUBIOCHANNEL:PRE,SA_SCAN_BUTTRESSHUBIOCHANNEL:POST,SA_SCAN_UNPSHUBDMA:PRE,SA_SCAN_UNPSHUBDMA:POST,SA_SCAN_UNPSHUBIDSP0:PRE,SA_SCAN_UNPSHUBIDSP0:POST,SA_SCAN_UNPSHUBIDSP1:PRE,SA_SCAN_UNPSHUBIDSP1:POST,SA_SCAN_UNPSHUBIDSP2:PRE,SA_SCAN_UNPSHUBIDSP2:POST,SA_SCAN_UNPSHUBIDSP3:PRE,SA_SCAN_UNPSHUBIDSP3:POST,SA_SCAN_UNPSHUBINPUTSLICEPS:PRE,SA_SCAN_UNPSHUBINPUTSLICEPS:POST,SA_SCAN_UNPSHUBOFSGDC:PRE,SA_SCAN_UNPSHUBOFSGDC:POST,SA_SCAN_UNPSHUBPSA:PRE,SA_SCAN_UNPSHUBPSA:POST,SA_SCAN_UNPSHUBUNPS:PRE,SA_SCAN_UNPSHUBUNPS:POST,GT_SCAN_GTTATPG:PRE,GT_SCAN_GTTATPG:POST,GT_SCAN_GTATPG:PRE,GT_SCAN_GTATPG:POST,SA_SCAN_DETATPG:PRE,SA_SCAN_DETATPG:POST,SA_SCAN_DEATPG:PRE,SA_SCAN_DEATPG:POST,IA_FUNC_SBFTMLC:PRE,IA_FUNC_SBFTMLC:POST,GT_FUNC_L3SBFT:PRE,GT_FUNC_L3SBFT:POST
+</dfdv_evaluation_order>
+
+
+	<power_domain name="IA_ARRAY_MLCDATAC6SSA">
+		<pin>VCCC_HC</pin>
+		<lvl_select_param>vccc_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>111000</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CORE_CACHE_MLCDATAC6SSA_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_CORE_CACHE_MLCDATAC6SSA_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>112000</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CORE_CACHE_MLCDATAC6SSA_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_CORE_CACHE_MLCDATAC6SSA_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="IA_ARRAY_MLCTAGLSA">
+		<pin>VCCC_HC</pin>
+		<lvl_select_param>vccc_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>111001</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CORE_CACHE_MLCTAGLSA_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_CORE_CACHE_MLCTAGLSA_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>112001</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CORE_CACHE_MLCTAGLSA_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_CORE_CACHE_MLCTAGLSA_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="IA_ARRAY_LSARFLSA">
+		<pin>VCCC_HC</pin>
+		<lvl_select_param>vccc_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>111002</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CORE_CACHE_LSARFLSA_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_CORE_CACHE_LSARFLSA_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>112002</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CORE_CACHE_LSARFLSA_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_CORE_CACHE_LSARFLSA_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="IA_ARRAY_ALLROM">
+		<pin>VCCC_HC</pin>
+		<lvl_select_param>vccc_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>111003</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CORE_CACHE_ALLROM_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_CORE_CACHE_ALLROM_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>112003</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CORE_CACHE_ALLROM_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_CORE_CACHE_ALLROM_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="IA_ARRAY_LLCDATASSA">
+		<pin>VCCC_HC</pin>
+		<lvl_select_param>vccc_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>111004</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CCF_CACHE_LLCDATASSA_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_CCF_CACHE_LLCDATASSA_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>112004</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CCF_CACHE_LLCDATASSA_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_CCF_CACHE_LLCDATASSA_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="IA_ARRAY_LLCTAGSSA">
+		<pin>VCCC_HC</pin>
+		<lvl_select_param>vccc_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>111005</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CCF_CACHE_LLCTAGSSA_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_CCF_CACHE_LLCTAGSSA_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>112005</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CCF_CACHE_LLCTAGSSA_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_CCF_CACHE_LLCTAGSSA_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="IA_ARRAY_LLCSCLLSA">
+		<pin>VCCC_HC</pin>
+		<lvl_select_param>vccc_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>111006</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CCF_CACHE_LLCSCLLSA_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_CCF_CACHE_LLCSCLLSA_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>112006</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CCF_CACHE_LLCSCLLSA_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_CCF_CACHE_LLCSCLLSA_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="IA_ARRAY_LSARFLSA">
+		<pin>VCCC_HC</pin>
+		<lvl_select_param>vccc_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>111007</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CCF_CACHE_LSARFLSA_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_CCF_CACHE_LSARFLSA_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>112007</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CCF_CACHE_LSARFLSA_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_CCF_CACHE_LSARFLSA_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_ARRAY_CCF0SSA">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>211008</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_CCF0SSA_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_CCF0SSA_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>212008</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_CCF0SSA_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_CCF0SSA_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_ARRAY_CCF1SSA">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>211009</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_CCF1SSA_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_CCF1SSA_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>212009</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_CCF1SSA_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_CCF1SSA_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_ARRAY_CMISSA">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>211010</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_CMISSA_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_CMISSA_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>212010</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_CMISSA_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_CMISSA_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_ARRAY_MEESSA">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>211011</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_MEESSA_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_MEESSA_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>212011</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_MEESSA_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_MEESSA_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_ARRAY_PUNITSSA">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>211012</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_PUNITSSA_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_PUNITSSA_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>212012</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_PUNITSSA_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_PUNITSSA_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_ARRAY_OPIOSSA">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>211013</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_OPIOSSA_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_OPIOSSA_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>212013</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_OPIOSSA_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_OPIOSSA_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_ARRAY_SSASSA">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>211014</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_SSASSA_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_SSASSA_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>212014</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_SSASSA_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_SSASSA_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_ARRAY_FUSELSA">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>211015</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_FUSELSA_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_FUSELSA_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>212015</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_FUSELSA_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_FUSELSA_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_ARRAY_GMMLSA">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>211016</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_GMMLSA_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_GMMLSA_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>212016</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_GMMLSA_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_GMMLSA_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_ARRAY_IOPLSA">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>211017</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_IOPLSA_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_IOPLSA_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>212017</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_IOPLSA_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_IOPLSA_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_ARRAY_MCLSA">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>211018</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_MCLSA_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_MCLSA_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>212018</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_MCLSA_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_MCLSA_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_ARRAY_MEELSA">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>211019</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_MEELSA_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_MEELSA_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>212019</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_MEELSA_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_MEELSA_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_ARRAY_NPKLSA">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>211020</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_NPKLSA_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_NPKLSA_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>212020</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_NPKLSA_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_NPKLSA_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_ARRAY_OPIOLSA">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>211021</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_OPIOLSA_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_OPIOLSA_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>212021</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_OPIOLSA_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_OPIOLSA_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_ARRAY_IPUDMASSA">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>211022</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_IPUDMASSA_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_IPUDMASSA_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>212022</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_IPUDMASSA_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_IPUDMASSA_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_ARRAY_IPUIDSP0SSA">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>211023</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_IPUIDSP0SSA_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_IPUIDSP0SSA_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>212023</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_IPUIDSP0SSA_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_IPUIDSP0SSA_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_ARRAY_IPUIDSP1SSA">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>211024</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_IPUIDSP1SSA_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_IPUIDSP1SSA_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>212024</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_IPUIDSP1SSA_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_IPUIDSP1SSA_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_ARRAY_IPUIDSP2SSA">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>211025</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_IPUIDSP2SSA_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_IPUIDSP2SSA_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>212025</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_IPUIDSP2SSA_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_IPUIDSP2SSA_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_ARRAY_IPUIDSP3SSA">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>211026</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_IPUIDSP3SSA_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_IPUIDSP3SSA_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>212026</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_IPUIDSP3SSA_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_IPUIDSP3SSA_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_ARRAY_IPUINPUTSLICESSA">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>211027</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_IPUINPUTSLICESSA_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_IPUINPUTSLICESSA_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>212027</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_IPUINPUTSLICESSA_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_IPUINPUTSLICESSA_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_ARRAY_IPUINPUTSLICELIGHTSSA">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>211028</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_IPUINPUTSLICELIGHTSSA_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_IPUINPUTSLICELIGHTSSA_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>212028</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_IPUINPUTSLICELIGHTSSA_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_IPUINPUTSLICELIGHTSSA_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_ARRAY_IPUPSASSA">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>211029</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_IPUPSASSA_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_IPUPSASSA_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>212029</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_IPUPSASSA_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_IPUPSASSA_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_ARRAY_IPUSPCLUSTERSSA">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>211030</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_IPUSPCLUSTERSSA_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_IPUSPCLUSTERSSA_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>212030</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_IPUSPCLUSTERSSA_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_IPUSPCLUSTERSSA_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_ARRAY_IPUUNISSSA">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>211031</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_IPUUNISSSA_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_IPUUNISSSA_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>212031</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_IPUUNISSSA_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_IPUUNISSSA_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_ARRAY_IPUUNPSSSA">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>211032</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_IPUUNPSSSA_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_IPUUNPSSSA_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>212032</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_IPUUNPSSSA_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_IPUUNPSSSA_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_ARRAY_IPUBUTTRESSLSA">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>211033</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_IPUBUTTRESSLSA_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_IPUBUTTRESSLSA_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>212033</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_IPUBUTTRESSLSA_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_IPUBUTTRESSLSA_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_ARRAY_IPUIDSP0LSA">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>211034</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_IPUIDSP0LSA_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_IPUIDSP0LSA_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>212034</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_IPUIDSP0LSA_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_IPUIDSP0LSA_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_ARRAY_IPUIDSP1LSA">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>211035</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_IPUIDSP1LSA_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_IPUIDSP1LSA_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>212035</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_IPUIDSP1LSA_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_IPUIDSP1LSA_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_ARRAY_IPUIDSP2LSA">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>211036</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_IPUIDSP2LSA_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_IPUIDSP2LSA_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>212036</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_IPUIDSP2LSA_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_IPUIDSP2LSA_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_ARRAY_IPUIDSP3LSA">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>211037</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_IPUIDSP3LSA_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_IPUIDSP3LSA_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>212037</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_IPUIDSP3LSA_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_IPUIDSP3LSA_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_ARRAY_IPUINPUTSLICELSA">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>211038</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_IPUINPUTSLICELSA_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_IPUINPUTSLICELSA_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>212038</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_IPUINPUTSLICELSA_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_IPUINPUTSLICELSA_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_ARRAY_IPUINPUTSLICELIGHTLSA">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>211039</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_IPUINPUTSLICELIGHTLSA_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_IPUINPUTSLICELIGHTLSA_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>212039</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_IPUINPUTSLICELIGHTLSA_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_IPUINPUTSLICELIGHTLSA_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_ARRAY_IPUOFSGDCLSA">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>211040</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_IPUOFSGDCLSA_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_IPUOFSGDCLSA_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>212040</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_IPUOFSGDCLSA_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_IPUOFSGDCLSA_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_ARRAY_IPUPSALSA">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>211041</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_IPUPSALSA_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_IPUPSALSA_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>212041</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_CACHE_IPUPSALSA_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_CACHE_IPUPSALSA_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="GT_ARRAY_GTLSA">
+		<pin>VCCGT_HC</pin>
+		<lvl_select_param>vccgt_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>311042</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_GT_CACHE_GTLSA_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_GT_CACHE_GTLSA_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>312042</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_GT_CACHE_GTLSA_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_GT_CACHE_GTLSA_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="GT_ARRAY_GTSSA">
+		<pin>VCCGT_HC</pin>
+		<lvl_select_param>vccgt_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>311043</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_GT_CACHE_GTSSA_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_GT_CACHE_GTSSA_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>312043</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_GT_CACHE_GTSSA_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_GT_CACHE_GTSSA_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_ARRAY_DELSA">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>211044</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_DE_CACHE_DELSA_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_DE_CACHE_DELSA_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>212044</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_DE_CACHE_DELSA_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_DE_CACHE_DELSA_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_ARRAY_DESSA">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>211045</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_DE_CACHE_DESSA_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_DE_CACHE_DESSA_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>212045</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_DE_CACHE_DESSA_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_DE_CACHE_DESSA_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="IA_SCAN_CORE0EXE">
+		<pin>VCCC_HC</pin>
+		<lvl_select_param>vccc_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>121046</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CORE_SCAN_CORE0EXE_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_CORE_SCAN_CORE0EXE_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>122046</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CORE_SCAN_CORE0EXE_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_CORE_SCAN_CORE0EXE_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="IA_SCAN_CORE0FIT">
+		<pin>VCCC_HC</pin>
+		<lvl_select_param>vccc_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>121047</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CORE_SCAN_CORE0FIT_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_CORE_SCAN_CORE0FIT_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>122047</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CORE_SCAN_CORE0FIT_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_CORE_SCAN_CORE0FIT_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="IA_SCAN_CORE0MEU">
+		<pin>VCCC_HC</pin>
+		<lvl_select_param>vccc_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>121048</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CORE_SCAN_CORE0MEU_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_CORE_SCAN_CORE0MEU_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>122048</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CORE_SCAN_CORE0MEU_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_CORE_SCAN_CORE0MEU_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="IA_SCAN_CORE0MLC">
+		<pin>VCCC_HC</pin>
+		<lvl_select_param>vccc_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>121049</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CORE_SCAN_CORE0MLC_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_CORE_SCAN_CORE0MLC_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>122049</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CORE_SCAN_CORE0MLC_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_CORE_SCAN_CORE0MLC_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="IA_SCAN_CORE0OOO">
+		<pin>VCCC_HC</pin>
+		<lvl_select_param>vccc_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>121051</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CORE_SCAN_CORE0OOO_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_CORE_SCAN_CORE0OOO_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>122051</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CORE_SCAN_CORE0OOO_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_CORE_SCAN_CORE0OOO_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="IA_SCAN_CORE1EXE">
+		<pin>VCCC_HC</pin>
+		<lvl_select_param>vccc_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>121052</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CORE_SCAN_CORE1EXE_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_CORE_SCAN_CORE1EXE_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>122052</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CORE_SCAN_CORE1EXE_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_CORE_SCAN_CORE1EXE_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="IA_SCAN_CORE1FIT">
+		<pin>VCCC_HC</pin>
+		<lvl_select_param>vccc_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>121053</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CORE_SCAN_CORE1FIT_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_CORE_SCAN_CORE1FIT_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>122053</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CORE_SCAN_CORE1FIT_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_CORE_SCAN_CORE1FIT_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="IA_SCAN_CORE1MEU">
+		<pin>VCCC_HC</pin>
+		<lvl_select_param>vccc_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>121054</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CORE_SCAN_CORE1MEU_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_CORE_SCAN_CORE1MEU_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>122054</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CORE_SCAN_CORE1MEU_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_CORE_SCAN_CORE1MEU_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="IA_SCAN_CORE1MLC">
+		<pin>VCCC_HC</pin>
+		<lvl_select_param>vccc_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>121055</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CORE_SCAN_CORE1MLC_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_CORE_SCAN_CORE1MLC_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>122055</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CORE_SCAN_CORE1MLC_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_CORE_SCAN_CORE1MLC_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="IA_SCAN_CORE1OOO">
+		<pin>VCCC_HC</pin>
+		<lvl_select_param>vccc_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>121057</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CORE_SCAN_CORE1OOO_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_CORE_SCAN_CORE1OOO_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>122057</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CORE_SCAN_CORE1OOO_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_CORE_SCAN_CORE1OOO_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="IA_SCAN_CORE2EXE">
+		<pin>VCCC_HC</pin>
+		<lvl_select_param>vccc_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>121101</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CORE_SCAN_CORE2EXE_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_CORE_SCAN_CORE2EXE_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>122101</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CORE_SCAN_CORE2EXE_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_CORE_SCAN_CORE2EXE_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="IA_SCAN_CORE2FIT">
+		<pin>VCCC_HC</pin>
+		<lvl_select_param>vccc_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>121102</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CORE_SCAN_CORE2FIT_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_CORE_SCAN_CORE2FIT_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>122102</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CORE_SCAN_CORE2FIT_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_CORE_SCAN_CORE2FIT_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="IA_SCAN_CORE2MEU">
+		<pin>VCCC_HC</pin>
+		<lvl_select_param>vccc_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>121103</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CORE_SCAN_CORE2MEU_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_CORE_SCAN_CORE2MEU_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>122103</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CORE_SCAN_CORE2MEU_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_CORE_SCAN_CORE2MEU_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="IA_SCAN_CORE2MLC">
+		<pin>VCCC_HC</pin>
+		<lvl_select_param>vccc_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>121104</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CORE_SCAN_CORE2MLC_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_CORE_SCAN_CORE2MLC_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>122104</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CORE_SCAN_CORE2MLC_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_CORE_SCAN_CORE2MLC_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="IA_SCAN_CORE2OOO">
+		<pin>VCCC_HC</pin>
+		<lvl_select_param>vccc_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>121105</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CORE_SCAN_CORE2OOO_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_CORE_SCAN_CORE2OOO_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>122105</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CORE_SCAN_CORE2OOO_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_CORE_SCAN_CORE2OOO_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="IA_SCAN_CORE3EXE">
+		<pin>VCCC_HC</pin>
+		<lvl_select_param>vccc_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>121106</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CORE_SCAN_CORE3EXE_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_CORE_SCAN_CORE3EXE_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>122106</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CORE_SCAN_CORE3EXE_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_CORE_SCAN_CORE3EXE_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="IA_SCAN_CORE3FIT">
+		<pin>VCCC_HC</pin>
+		<lvl_select_param>vccc_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>121107</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CORE_SCAN_CORE3FIT_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_CORE_SCAN_CORE3FIT_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>122107</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CORE_SCAN_CORE3FIT_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_CORE_SCAN_CORE3FIT_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="IA_SCAN_CORE3MEU">
+		<pin>VCCC_HC</pin>
+		<lvl_select_param>vccc_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>121108</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CORE_SCAN_CORE3MEU_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_CORE_SCAN_CORE3MEU_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>122108</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CORE_SCAN_CORE3MEU_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_CORE_SCAN_CORE3MEU_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="IA_SCAN_CORE3MLC">
+		<pin>VCCC_HC</pin>
+		<lvl_select_param>vccc_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>121109</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CORE_SCAN_CORE3MLC_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_CORE_SCAN_CORE3MLC_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>122109</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CORE_SCAN_CORE3MLC_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_CORE_SCAN_CORE3MLC_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="IA_SCAN_CORE3OOO">
+		<pin>VCCC_HC</pin>
+		<lvl_select_param>vccc_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>121110</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CORE_SCAN_CORE3OOO_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_CORE_SCAN_CORE3OOO_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>122110</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CORE_SCAN_CORE3OOO_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_CORE_SCAN_CORE3OOO_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>	
+	
+	<power_domain name="IA_SCAN_CCFIDP">
+		<pin>VCCC_HC</pin>
+		<lvl_select_param>vccc_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>121058</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CCF_SCAN_CCFIDP_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_CCF_SCAN_CCFIDP_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>122058</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CCF_SCAN_CCFIDP_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_CCF_SCAN_CCFIDP_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="IA_SCAN_CCFCBO0">
+		<pin>VCCC_HC</pin>
+		<lvl_select_param>vccc_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>121059</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CCF_SCAN_CCFCBO0_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_CCF_SCAN_CCFCBO0_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>122059</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CCF_SCAN_CCFCBO0_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_CCF_SCAN_CCFCBO0_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="IA_SCAN_CCFGBO">
+		<pin>VCCC_HC</pin>
+		<lvl_select_param>vccc_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>121060</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CCF_SCAN_CCFGBO_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_CCF_SCAN_CCFGBO_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>122060</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CCF_SCAN_CCFGBO_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_CCF_SCAN_CCFGBO_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="IA_SCAN_CCFCBO1">
+		<pin>VCCC_HC</pin>
+		<lvl_select_param>vccc_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>121061</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CCF_SCAN_CCFCBO1_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_CCF_SCAN_CCFCBO1_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>122061</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CCF_SCAN_CCFCBO1_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_CCF_SCAN_CCFCBO1_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="IA_SCAN_CCFCBO2">
+		<pin>VCCC_HC</pin>
+		<lvl_select_param>vccc_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>121111</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CCF_SCAN_CCFCBO2_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_CCF_SCAN_CCFCBO2_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>122111</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CCF_SCAN_CCFCBO2_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_CCF_SCAN_CCFCBO2_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="IA_SCAN_CCFCBO3">
+		<pin>VCCC_HC</pin>
+		<lvl_select_param>vccc_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>121112</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CCF_SCAN_CCFCBO3_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_CCF_SCAN_CCFCBO3_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>122112</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CCF_SCAN_CCFCBO3_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_CCF_SCAN_CCFCBO3_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+	
+	<power_domain name="SA_SCAN_CMIHUBCMI">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>221062</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_SCAN_CMIHUBCMI_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_SCAN_CMIHUBCMI_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>222062</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_SCAN_CMIHUBCMI_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_SCAN_CMIHUBCMI_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_SCAN_CMIHUBMC">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>221063</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_SCAN_CMIHUBMC_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_SCAN_CMIHUBMC_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>222063</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_SCAN_CMIHUBMC_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_SCAN_CMIHUBMC_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_SCAN_CMIHUBMEE">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>221064</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_SCAN_CMIHUBMEE_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_SCAN_CMIHUBMEE_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>222064</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_SCAN_CMIHUBMEE_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_SCAN_CMIHUBMEE_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_SCAN_CMIHUBSSA">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>221065</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_SCAN_CMIHUBSSA_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_SCAN_CMIHUBSSA_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>222065</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_SCAN_CMIHUBSSA_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_SCAN_CMIHUBSSA_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_SCAN_CPIOHUBCCF">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>221066</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_SCAN_CPIOHUBCCF_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_SCAN_CPIOHUBCCF_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>222066</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_SCAN_CPIOHUBCCF_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_SCAN_CPIOHUBCCF_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_SCAN_CPIOHUBIOP">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>221067</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_SCAN_CPIOHUBIOP_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_SCAN_CPIOHUBIOP_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>222067</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_SCAN_CPIOHUBIOP_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_SCAN_CPIOHUBIOP_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_SCAN_CPIOHUBPUNIT">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>221068</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_SCAN_CPIOHUBPUNIT_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_SCAN_CPIOHUBPUNIT_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>222068</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_SCAN_CPIOHUBPUNIT_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_SCAN_CPIOHUBPUNIT_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_SCAN_OPIOHUBDISP">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>221069</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_SCAN_OPIOHUBDISP_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_SCAN_OPIOHUBDISP_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>222069</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_SCAN_OPIOHUBDISP_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_SCAN_OPIOHUBDISP_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_SCAN_OPIOHUBGMM">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>221070</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_SCAN_OPIOHUBGMM_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_SCAN_OPIOHUBGMM_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>222070</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_SCAN_OPIOHUBGMM_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_SCAN_OPIOHUBGMM_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_SCAN_OPIOHUBFUSE">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>221071</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_SCAN_OPIOHUBFUSE_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_SCAN_OPIOHUBFUSE_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>222071</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_SCAN_OPIOHUBFUSE_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_SCAN_OPIOHUBFUSE_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_SCAN_OPIOHUBNPK">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>221072</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_SCAN_OPIOHUBNPK_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_SCAN_OPIOHUBNPK_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>222072</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_SCAN_OPIOHUBNPK_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_SCAN_OPIOHUBNPK_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_SCAN_OPIOHUBPSF0">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>221073</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_SCAN_OPIOHUBPSF0_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_SCAN_OPIOHUBPSF0_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>222073</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_SCAN_OPIOHUBPSF0_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_SCAN_OPIOHUBPSF0_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_SCAN_OPIOHUBPSF1">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>221074</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_SCAN_OPIOHUBPSF1_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_SCAN_OPIOHUBPSF1_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>222074</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_SCAN_OPIOHUBPSF1_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_SCAN_OPIOHUBPSF1_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_SCAN_OPIOHUBOPIO">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>221075</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_SCAN_OPIOHUBOPIO_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_SCAN_OPIOHUBOPIO_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>222075</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_SOC_SCAN_OPIOHUBOPIO_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_SOC_SCAN_OPIOHUBOPIO_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_SCAN_BUTTRESSHUBBUTTRESS">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>221076</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_IPU_SCAN_BUTTRESSHUBBUTTRESS_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_IPU_SCAN_BUTTRESSHUBBUTTRESS_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>222076</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_IPU_SCAN_BUTTRESSHUBBUTTRESS_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_IPU_SCAN_BUTTRESSHUBBUTTRESS_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_SCAN_BUTTRESSHUBINPUTSLICEIS">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>221077</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_IPU_SCAN_BUTTRESSHUBINPUTSLICEIS_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_IPU_SCAN_BUTTRESSHUBINPUTSLICEIS_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>222077</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_IPU_SCAN_BUTTRESSHUBINPUTSLICEIS_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_IPU_SCAN_BUTTRESSHUBINPUTSLICEIS_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_SCAN_BUTTRESSHUBIO">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>221078</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_IPU_SCAN_BUTTRESSHUBIO_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_IPU_SCAN_BUTTRESSHUBIO_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>222078</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_IPU_SCAN_BUTTRESSHUBIO_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_IPU_SCAN_BUTTRESSHUBIO_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_SCAN_BUTTRESSHUBUNIS">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>221079</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_IPU_SCAN_BUTTRESSHUBUNIS_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_IPU_SCAN_BUTTRESSHUBUNIS_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>222079</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_IPU_SCAN_BUTTRESSHUBUNIS_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_IPU_SCAN_BUTTRESSHUBUNIS_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_SCAN_BUTTRESSHUBSP">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>221080</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_IPU_SCAN_BUTTRESSHUBSP_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_IPU_SCAN_BUTTRESSHUBSP_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>222080</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_IPU_SCAN_BUTTRESSHUBSP_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_IPU_SCAN_BUTTRESSHUBSP_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_SCAN_BUTTRESSHUBIOCHANNEL">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>221081</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_IPU_SCAN_BUTTRESSHUBIOCHANNEL_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_IPU_SCAN_BUTTRESSHUBIOCHANNEL_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>222081</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_IPU_SCAN_BUTTRESSHUBIOCHANNEL_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_IPU_SCAN_BUTTRESSHUBIOCHANNEL_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_SCAN_UNPSHUBDMA">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>221082</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_IPU_SCAN_UNPSHUBDMA_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_IPU_SCAN_UNPSHUBDMA_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>222082</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_IPU_SCAN_UNPSHUBDMA_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_IPU_SCAN_UNPSHUBDMA_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_SCAN_UNPSHUBIDSP0">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>221083</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_IPU_SCAN_UNPSHUBIDSP0_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_IPU_SCAN_UNPSHUBIDSP0_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>222083</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_IPU_SCAN_UNPSHUBIDSP0_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_IPU_SCAN_UNPSHUBIDSP0_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_SCAN_UNPSHUBIDSP1">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>221084</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_IPU_SCAN_UNPSHUBIDSP1_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_IPU_SCAN_UNPSHUBIDSP1_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>222084</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_IPU_SCAN_UNPSHUBIDSP1_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_IPU_SCAN_UNPSHUBIDSP1_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_SCAN_UNPSHUBIDSP2">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>221085</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_IPU_SCAN_UNPSHUBIDSP2_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_IPU_SCAN_UNPSHUBIDSP2_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>222085</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_IPU_SCAN_UNPSHUBIDSP2_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_IPU_SCAN_UNPSHUBIDSP2_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_SCAN_UNPSHUBIDSP3">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>221086</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_IPU_SCAN_UNPSHUBIDSP3_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_IPU_SCAN_UNPSHUBIDSP3_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>222086</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_IPU_SCAN_UNPSHUBIDSP3_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_IPU_SCAN_UNPSHUBIDSP3_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_SCAN_UNPSHUBINPUTSLICEPS">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>221087</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_IPU_SCAN_UNPSHUBINPUTSLICEPS_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_IPU_SCAN_UNPSHUBINPUTSLICEPS_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>222087</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_IPU_SCAN_UNPSHUBINPUTSLICEPS_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_IPU_SCAN_UNPSHUBINPUTSLICEPS_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_SCAN_UNPSHUBOFSGDC">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>221088</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_IPU_SCAN_UNPSHUBOFSGDC_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_IPU_SCAN_UNPSHUBOFSGDC_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>222088</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_IPU_SCAN_UNPSHUBOFSGDC_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_IPU_SCAN_UNPSHUBOFSGDC_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_SCAN_UNPSHUBPSA">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>221089</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_IPU_SCAN_UNPSHUBPSA_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_IPU_SCAN_UNPSHUBPSA_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>222089</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_IPU_SCAN_UNPSHUBPSA_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_IPU_SCAN_UNPSHUBPSA_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_SCAN_UNPSHUBUNPS">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>221090</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_IPU_SCAN_UNPSHUBUNPS_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_IPU_SCAN_UNPSHUBUNPS_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>222090</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_IPU_SCAN_UNPSHUBUNPS_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_IPU_SCAN_UNPSHUBUNPS_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="GT_SCAN_GTTATPG">
+		<pin>VCCGT_HC</pin>
+		<lvl_select_param>vccgt_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>321091</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_GT_SCAN_GTTATPG_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_GT_SCAN_GTTATPG_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>322091</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_GT_SCAN_GTTATPG_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_GT_SCAN_GTTATPG_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="GT_SCAN_GTATPG">
+		<pin>VCCGT_HC</pin>
+		<lvl_select_param>vccgt_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>321092</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_GT_SCAN_GTATPG_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_GT_SCAN_GTATPG_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>322092</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_GT_SCAN_GTATPG_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_GT_SCAN_GTATPG_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_SCAN_DETATPG">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>221093</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_DE_SCAN_DETATPG_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_DE_SCAN_DETATPG_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>222093</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_DE_SCAN_DETATPG_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_DE_SCAN_DETATPG_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="SA_SCAN_DEATPG">
+		<pin>VCCSA_HC</pin>
+		<lvl_select_param>vccsa_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>221094</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_DE_SCAN_DEATPG_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_DE_SCAN_DEATPG_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>222094</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_DE_SCAN_DEATPG_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_DE_SCAN_DEATPG_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="IA_FUNC_SBFTMLC">
+		<pin>VCCC_HC</pin>
+		<lvl_select_param>vccc_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>131095</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CORE_FUNC_SBFTMLC_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_CORE_FUNC_SBFTMLC_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>132095</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_CORE_FUNC_SBFTMLC_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_CORE_FUNC_SBFTMLC_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+
+	<power_domain name="GT_FUNC_L3SBFT">
+		<pin>VCCGT_HC</pin>
+		<lvl_select_param>vccgt_spec</lvl_select_param>
+		<corner name="PRE">
+			<timings_freq_attr>Core_F1_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>331096</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_GT_FUNC_L3SBFT_PRE</voltage>
+				<frequency>G.U.D.VMINFREQ_GT_FUNC_L3SBFT_PRE</frequency>
+			</store_results_in_gsds>
+		</corner>
+
+		<corner name="POST">
+			<timings_freq_attr>Core_LFM_Freq</timings_freq_attr>
+			<lvl_selects>
+				<value>332096</value>
+			</lvl_selects>
+			<store_results_in_gsds>
+				<voltage>G.U.D.VMIN_GT_FUNC_L3SBFT_POST</voltage>
+				<frequency>G.U.D.VMINFREQ_GT_FUNC_L3SBFT_POST</frequency>
+			</store_results_in_gsds>
+		</corner>
+	</power_domain>
+</infra_setup>

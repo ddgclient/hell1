@@ -1,0 +1,820 @@
+Version 1.0;
+
+ProgramStyle = Modular;
+
+TestPlan PVAL_COMMON;
+
+Import RunCallback.xml;
+Import FunctionalShopsTC.xml;
+Import IVCurve.xml;
+Import PowerSequenceHandler.xml;
+Import SimpleCtvTC.xml;
+Import UserCodeTC.xml;
+Import VminForwardingSaveFakeDataTC.xml;
+Import VminTC.xml;
+Import SocRecovery.xml;
+Import AuxiliaryTC.xml;
+Import DDGCapturePacketsTC.xml;
+Import DDGTriggeredDC.xml;
+Import OASIS_CapturePackets_tt.xml;
+
+Test AuxiliaryTC AuxiliaryTC_Simple_P2
+{
+    Expression = "[_UserVars.TpGTPowerCommon]+[G.U.I.TokenY]+1";
+    DataType = "Integer";
+    Storage = "SharedStorage";
+    ResultToken = "G.U.I.ResultToken";
+    ResultPort = "[R]>2?2:0";
+    Datalog = "Enabled";
+    PreInstance = "WriteSharedStorage(--token G.U.I.TokenY --value 1)";
+}
+
+Test SimpleCtvTC CaptureAndDecodeTDO_Simple_P1
+{
+    LevelsTc = "__main__::bf_lvl_nom_lvl";
+    Patlist = "drv_cdie_maintap_bbs_list";
+    TimingsTc = "__main__::cpu_stf_timing_tclk100_sclk100_cclk100";
+    CtvCapturePins = "YY_TAP_TDO_C2S";
+    Registers = "--registers reg1:11-0 reg2:12,13,14";
+    Print = "--registers reg1 reg2";
+    Limits = "--high reg1:9 --low reg2:5";
+}
+
+Test UserCodeTC LogToItuffFromCsCode_P1
+{
+    InputFile = "./Modules/PVAL_COMMON/InputFiles/UserCode_Sample.cs";
+    Method = "LogTest";
+    NamespaceClass = "PVAL_COMMON.DummySample";
+}
+
+Test VminForwardingSaveFakeDataTC VminSaveFakeCLRF2Data_P1
+{
+    LogLevel = "PRIME_DEBUG";
+    Domains = "CLR0";
+    FrequencyCorner = "F2";
+    FlowId = 1;
+    VminResults = "1.02";
+}
+
+Test VminTC CheckFakeSavedVminData_P1
+{
+    LevelsTc = "__main__::bf_lvl_nom_lvl";
+    Patlist = "drv_cdie_maintap_bbs_list";
+    TimingsTc = "__main__::cpu_stf_timing_tclk100_sclk100_cclk100";
+    TestMode = "SingleVmin";
+    VoltageTargets = "HC1_VCCCORE0";
+    StartVoltages = "0.4";
+    EndVoltageLimits = "1.2";
+    StepSize = 0.01;
+    ForwardingMode = "Input";
+    FlowIndex = "1";
+    CornerIdentifiers = "CLR0@F2";
+    InitialMaskBits = "";
+    PinMap = "";
+    RecoveryOptions = "";
+    LogLevel = "PRIME_DEBUG";
+}
+
+Test PowerSequenceHandler TestPowerSequenceHandler_P1
+{
+    ApplyPowerDown = "Always";
+    ApplyPowerOn = "Always";
+    PowerOnTc = "__main__::bf_lvl_nom_lvl";
+    PowerDownTc = "__main__::pwrdn_lvl_cat0";
+    LogLevel = "PRIME_DEBUG";
+}
+
+Test FunctionalShopsTC TestFunctionalShops_P1
+{
+    BypassPort = -1;
+    LevelsTc = "__main__::bf_lvl_nom_lvl";
+    Patlist = "drv_cdie_maintap_bbs_list";
+    TimingsTc = "__main__::cpu_stf_timing_tclk100_sclk100_cclk100";
+    FailuresToCaptureTotal = 1;
+    PinConfigFile = "./Modules/PVAL_COMMON/InputFiles/FuncShops_PinConfig.json";
+    SchemaFile = "./Modules/PVAL_COMMON/InputFiles/FuncShops_PinConfigSchema.json";
+    TestMode = "Production";
+    VOXOption = "VOL";
+    LogLevel = "PRIME_DEBUG";
+}
+
+Test IVCurve IVCurve_ProductionModeCurrent_P1
+{
+    Mode = "Production";
+    LevelsTc = "__main__::bf_lvl_nom_lvl";
+    Pins = "HC1_VCCCORE0";
+    Type = "Current";
+    DatalogLevel = "All";
+    LowLimits = "0.1A";
+    HighLimits = "0.8A";
+    ForceSetPoint = "1";
+    SamplingCount = "1";
+    SamplingRatio = "1";
+    PreMeasurementDelay = "0.001";
+    IRange = "IR19A";
+    IClampHi = "19";
+    IClampLo = "-11";
+    FreeDriveTime = "0.001";
+    VSlewStepRatio = "1";
+}
+
+Test SocRecovery InitSocRecovery_Dummy_P1
+{
+    RecoveryMode = "SerialMode_Init";
+    SerialModeLength = 5;
+    ValueList = "";
+    TokenNames = "DummySocToken";
+}
+
+Test SocRecovery SetSocRecovery_Dummy_P1
+{
+    RecoveryMode = "SerialMode_SetToken";
+    TokenNames = "DummySocToken";
+    ValueList = "0|0|0|2|0";
+}
+
+Test SocRecovery LogSocRecovery_Dummy_P1
+{
+    RecoveryMode = "Token_Print";
+    TokenNames = "DummySocToken";
+    ValueList = "0";
+}
+
+Test SocRecovery ForkSocRecovery_Dummy_P2
+{
+    RecoveryMode = "SerialMode_FlowControl";
+    TokenNames = "DummySocToken";
+    ValueList = "0|0|0|0|0";
+}
+
+Test DDGTriggeredDC AnalogMeasure_3Pins2Measures_P1
+{
+    LevelsTc = "__main__::simple_hddps_measure_lvl_defaultExact";
+    Patlist = "drv_cdie_maintap_bbs_list";
+    TimingsTc = "__main__::cpu_stf_timing_tclk100_sclk100_cclk100";
+
+    Pins = "HV1_VNNAON,HC1_VCCCORE0,HC2_VCCCORE1";
+    MeasurementTypes = "Current,Voltage,Voltage";
+    LowLimits = "-4A,-0.1V,-0.1V";
+    HighLimits = "20A,1.3V,1.3V";
+    TriggerMapName = "SICC_1p0_TriggerMap";
+    LogLevel = "PRIME_DEBUG";
+    DatalogLevel = "All";
+    SaveResults = "G.U.D.Icc,G.U.D.VAVPP,G.U.D.VAVPN";
+	PostInstance = "PrintToItuff(--body_type strgval --body_data G.U.D.Icc,_,G.U.D.VAVPP,_,G.U.D.VAVPN --tname_suf _Result)";
+}
+
+
+# -----------------------------------------------------------------------------
+# CAPTUREPACKETS
+
+Test DDGCapturePacketsTC DDGCapturePackets_MultiPin_P1
+{
+    LevelsTc = "__main__::bf_lvl_nom_lvl";
+    Patlist = "drv_cdie_maintap_bbs_list";
+    TimingsTc = "__main__::cpu_stf_timing_tclk100_sclk100_cclk100";
+    ExecutionMode = "PER_PIN";
+    DataPins = "YY_TEST_PORT_OUT_C2S_00,YY_TEST_PORT_OUT_C2S_01";
+    OutputGsds = "G.U.S.CP1";
+    TotalSize = 4;
+}
+
+Test DDGCapturePacketsTC DDGCapturePackets_NonAmbleFail_P1
+{
+    LevelsTc = "__main__::bf_lvl_nom_lvl";
+    Patlist = "drv_cdie_maintap_bbs_list";
+    TimingsTc = "__main__::cpu_stf_timing_tclk100_sclk100_cclk100";
+    ExecutionMode = "PER_PIN";
+    DataPins = "YY_TAP_TDO_C2S";
+    OutputGsds = "G.U.S.CP2";
+    TotalSize = 2;
+}
+
+Test DDGCapturePacketsTC DDGCapturePackets_AmbleFail_P2
+{
+    LevelsTc = "__main__::bf_lvl_nom_lvl";
+    Patlist = "drv_cdie_maintap_bbs_list";
+    TimingsTc = "__main__::cpu_stf_timing_tclk100_sclk100_cclk100";
+    ExecutionMode = "PER_PIN";
+    DataPins = "YY_TAP_TDO_C2S";
+    OutputGsds = "G.U.S.CP3";
+    TotalSize = 2;
+}
+
+Test DDGCapturePacketsTC DDGCapturePackets_AllZero_P2
+{
+    LevelsTc = "__main__::bf_lvl_nom_lvl";
+    Patlist = "drv_cdie_maintap_bbs_list";
+    TimingsTc = "__main__::cpu_stf_timing_tclk100_sclk100_cclk100";
+    ExecutionMode = "PER_PIN";
+    DataPins = "YY_TAP_TDO_C2S";
+    OutputGsds = "G.U.S.CP4";
+    TotalSize = 2;
+}
+
+Test DDGCapturePacketsTC DDGCapturePackets_LengthMismatch_P0
+{
+    LevelsTc = "__main__::bf_lvl_nom_lvl";
+    Patlist = "drv_cdie_maintap_bbs_list";
+    TimingsTc = "__main__::cpu_stf_timing_tclk100_sclk100_cclk100";
+    ExecutionMode = "PER_PIN";
+    DataPins = "YY_TAP_TDO_C2S";
+    OutputGsds = "G.U.S.CP5";
+    TotalSize = 2;
+}
+
+Test iCAuxiliaryTest Validate_CapturePacketsGsds_P1
+{
+    data_type = "STRING";
+    expression = "G.U.S.CP1 + 'x' + G.U.S.CP2 + 'x' + G.U.S.CP3 + 'x' + G.U.S.CP4";
+    result_port = "[R]='1101x10x01x00'|1^2";
+    debug_mode = "VERBOSE";
+}
+
+# -----------------------------------------------------------------------------
+DUTFlow PVAL_COMMON_MAIN
+{
+    DUTFlowItem IVCurve_ProductionModeCurrent_P1 IVCurve_ProductionModeCurrent_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo TestPowerSequenceHandler_P1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo TestPowerSequenceHandler_P1;
+        }
+    }
+    DUTFlowItem TestPowerSequenceHandler_P1 TestPowerSequenceHandler_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo CaptureAndDecodeTDO_Simple_P1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo CaptureAndDecodeTDO_Simple_P1;
+        }
+    }
+    DUTFlowItem CaptureAndDecodeTDO_Simple_P1 CaptureAndDecodeTDO_Simple_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo AuxiliaryTC_Simple_P2;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo AuxiliaryTC_Simple_P2;
+        }
+    }
+    DUTFlowItem AuxiliaryTC_Simple_P2 AuxiliaryTC_Simple_P2
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo LogToItuffFromCsCode_P1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo LogToItuffFromCsCode_P1;
+        }
+        Result 2
+        {
+            Property PassFail = "Pass";
+            GoTo LogToItuffFromCsCode_P1;
+        }
+    }
+    DUTFlowItem LogToItuffFromCsCode_P1 LogToItuffFromCsCode_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo VminSaveFakeCLRF2Data_P1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo VminSaveFakeCLRF2Data_P1;
+        }
+    }
+    DUTFlowItem VminSaveFakeCLRF2Data_P1 VminSaveFakeCLRF2Data_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo CheckFakeSavedVminData_P1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo CheckFakeSavedVminData_P1;
+        }
+    }
+    DUTFlowItem CheckFakeSavedVminData_P1 CheckFakeSavedVminData_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo PVAL_COMMON_SOCRECOVERY_SUBFLOW;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo PVAL_COMMON_SOCRECOVERY_SUBFLOW;
+        }
+    }
+    DUTFlowItem PVAL_COMMON_SOCRECOVERY_SUBFLOW PVAL_COMMON_SOCRECOVERY_SUBFLOW
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo PVAL_COMMON_CAPTURE_PACKETS_SUBFLOW;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo PVAL_COMMON_CAPTURE_PACKETS_SUBFLOW;
+        }
+    }
+    DUTFlowItem PVAL_COMMON_CAPTURE_PACKETS_SUBFLOW PVAL_COMMON_CAPTURE_PACKETS_SUBFLOW
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo TestFunctionalShops_P1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo TestFunctionalShops_P1;
+        }
+    }
+    DUTFlowItem TestFunctionalShops_P1 TestFunctionalShops_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo AnalogMeasure_3Pins2Measures_P1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo AnalogMeasure_3Pins2Measures_P1;
+        }
+    }
+    DUTFlowItem AnalogMeasure_3Pins2Measures_P1 AnalogMeasure_3Pins2Measures_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            Return 1;
+        }
+    }
+}
+
+DUTFlow PVAL_COMMON_CAPTURE_PACKETS_SUBFLOW
+{
+    DUTFlowItem DDGCapturePackets_MultiPin_P1 DDGCapturePackets_MultiPin_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo DDGCapturePackets_NonAmbleFail_P1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo DDGCapturePackets_NonAmbleFail_P1;
+        }
+        Result 2
+        {
+            Property PassFail = "Fail";
+            GoTo DDGCapturePackets_NonAmbleFail_P1;
+        }
+    }
+    DUTFlowItem DDGCapturePackets_NonAmbleFail_P1 DDGCapturePackets_NonAmbleFail_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo DDGCapturePackets_AmbleFail_P2;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo DDGCapturePackets_AmbleFail_P2;
+        }
+        Result 2
+        {
+            Property PassFail = "Fail";
+            GoTo DDGCapturePackets_AmbleFail_P2;
+        }
+    }
+    DUTFlowItem DDGCapturePackets_AmbleFail_P2 DDGCapturePackets_AmbleFail_P2
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo DDGCapturePackets_AllZero_P2;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo DDGCapturePackets_AllZero_P2;
+        }
+        Result 2
+        {
+            Property PassFail = "Fail";
+            GoTo DDGCapturePackets_AllZero_P2;
+        }
+    }
+    DUTFlowItem DDGCapturePackets_AllZero_P2 DDGCapturePackets_AllZero_P2
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo DDGCapturePackets_LengthMismatch_P0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo DDGCapturePackets_LengthMismatch_P0;
+        }
+        Result 2
+        {
+            Property PassFail = "Fail";
+            GoTo DDGCapturePackets_LengthMismatch_P0;
+        }
+    }
+    DUTFlowItem DDGCapturePackets_LengthMismatch_P0 DDGCapturePackets_LengthMismatch_P0
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo Validate_CapturePacketsGsds_P1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo Validate_CapturePacketsGsds_P1;
+        }
+        Result 2
+        {
+            Property PassFail = "Fail";
+            GoTo Validate_CapturePacketsGsds_P1;
+        }
+    }
+    DUTFlowItem Validate_CapturePacketsGsds_P1 Validate_CapturePacketsGsds_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            Return 1;
+        }
+        Result 2
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+    }
+}
+
+DUTFlow PVAL_COMMON_SOCRECOVERY_SUBFLOW
+{
+    DUTFlowItem InitSocRecovery_Dummy_P1 InitSocRecovery_Dummy_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo SetSocRecovery_Dummy_P1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo SetSocRecovery_Dummy_P1;
+        }
+    }
+    DUTFlowItem SetSocRecovery_Dummy_P1 SetSocRecovery_Dummy_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo LogSocRecovery_Dummy_P1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo LogSocRecovery_Dummy_P1;
+        }
+    }
+    DUTFlowItem LogSocRecovery_Dummy_P1 LogSocRecovery_Dummy_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo ForkSocRecovery_Dummy_P2;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo ForkSocRecovery_Dummy_P2;
+        }
+    }
+    DUTFlowItem ForkSocRecovery_Dummy_P2 ForkSocRecovery_Dummy_P2
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            Return 1;
+        }
+        Result 2
+        {
+            Property PassFail = "Pass";
+            Return 1;
+        }
+        Result 3
+        {
+            Property PassFail = "Pass";
+            Return 1;
+        }
+        Result 4
+        {
+            Property PassFail = "Pass";
+            Return 1;
+        }
+    }
+}

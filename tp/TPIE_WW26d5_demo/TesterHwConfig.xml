@@ -1,0 +1,230 @@
+<HWConfiguration xmlns="http://tempuri.org/TesterHWConfig.xsd"  version="3">
+  <TesterRecord TimeStamp="2021-01-12T16:48:36-08:00"  Name="RBRAR-ILOR10"  IPAddress="10.88.193.138"  SystemId="HDMT_0-50-56-B5-C-35"  MESId="HDS000"  TOSVersion="3.7.0.0.30435"  BIOSVersion="6.00"  SiteCImageVersion=""  Chassis="HDMT4KW"  ModuleCellIndex="138"  GeneratedBy="HAL"  HdmtOSMode="OfflineLSM">
+    <SupplementalData Name="AdapterMacId vmxnet3 Ethernet Adapter"  Value="00-50-56-B5-0C-35"/>
+  </TesterRecord>
+  
+  <TesterCoreEntity type="Backplane"  instance="0">
+    <InstrumentBLT VendorID="1"  VendorName="NA"  InstrumentID="29"  InstrumentName="NA"  PartNumberAsBuilt="NA"  PartNumberCurrent="NA"  SerialNumber="NA"  ManufactureDate="NA"  CalStatus="NOTSUPPORTED">
+      <SupplementalData Name="BackplaneSlot0ConnectorCycleCount"  Value="0"/>
+      <SupplementalData Name="BackplaneSlot0ConnectorGlobalCount"  Value="0"/>
+      <SupplementalData Name="BackplaneSlot1ConnectorCycleCount"  Value="0"/>
+      <SupplementalData Name="BackplaneSlot1ConnectorGlobalCount"  Value="0"/>
+      <SupplementalData Name="BackplaneSlot2ConnectorCycleCount"  Value="0"/>
+      <SupplementalData Name="BackplaneSlot2ConnectorGlobalCount"  Value="0"/>
+      <SupplementalData Name="BackplaneSlot3ConnectorCycleCount"  Value="0"/>
+      <SupplementalData Name="BackplaneSlot3ConnectorGlobalCount"  Value="0"/>
+      <SupplementalData Name="BackplaneSlot4ConnectorCycleCount"  Value="0"/>
+      <SupplementalData Name="BackplaneSlot4ConnectorGlobalCount"  Value="0"/>
+      <SupplementalData Name="BackplaneSlot5ConnectorCycleCount"  Value="0"/>
+      <SupplementalData Name="BackplaneSlot5ConnectorGlobalCount"  Value="0"/>
+      <SupplementalData Name="BackplaneSlot6ConnectorCycleCount"  Value="0"/>
+      <SupplementalData Name="BackplaneSlot6ConnectorGlobalCount"  Value="0"/>
+      <SupplementalData Name="BackplaneSlot7ConnectorCycleCount"  Value="0"/>
+      <SupplementalData Name="BackplaneSlot7ConnectorGlobalCount"  Value="0"/>
+      <SupplementalData Name="BackplaneSlot8ConnectorCycleCount"  Value="0"/>
+      <SupplementalData Name="BackplaneSlot8ConnectorGlobalCount"  Value="0"/>
+      <SupplementalData Name="BackplaneSlot9ConnectorCycleCount"  Value="0"/>
+      <SupplementalData Name="BackplaneSlot9ConnectorGlobalCount"  Value="0"/>
+      <SupplementalData Name="BackplaneSlot10ConnectorCycleCount"  Value="0"/>
+      <SupplementalData Name="BackplaneSlot10ConnectorGlobalCount"  Value="0"/>
+      <SupplementalData Name="BackplaneSlot11ConnectorCycleCount"  Value="0"/>
+      <SupplementalData Name="BackplaneSlot11ConnectorGlobalCount"  Value="0"/>
+      <SupplementalData Name="BackplaneTiuConnectorCycleCount"  Value="0"/>
+      <SupplementalData Name="BackplaneTiuConnectorGlobalCount"  Value="0"/>
+    </InstrumentBLT>
+    <BoardBLT VendorID="1"  VendorName="NA"  BoardID="29"  BoardName="NA"  PartNumberAsBuilt="NA"  PartNumberCurrent="NA"  SerialNumber="NA"  ManufactureDate="NA"/>
+  </TesterCoreEntity>
+  
+  <TesterCoreEntity type="SiteController"  instance="0">
+    <InstrumentBLT VendorID="1"  VendorName="INTEL"  InstrumentID="30"  InstrumentName="SiteController2"  PartNumberAsBuilt="AAG80209-202"  PartNumberCurrent="AAG80209-202"  SerialNumber="NA"  ManufactureDate="NA"  CalStatus="NOTSUPPORTED"/>
+    <BoardBLT VendorID="1"  VendorName="INTEL"  BoardID="30"  BoardName="SiteController2"  PartNumberAsBuilt="AAG80209-202"  PartNumberCurrent="AAG80209-202"  SerialNumber="NA"  ManufactureDate="NA"/>
+  </TesterCoreEntity>
+  
+  <TesterExternalEntity type="TIU">
+    <InstrumentBLT VendorID="1"  VendorName="INTEL"  InstrumentID="32"  InstrumentName="TIU2"  PartNumberAsBuilt="TAE98322-100"  PartNumberCurrent="TAE98322-101"  SerialNumber="SPHT04100010"  ManufactureDate="101102"  CalStatus="NOTSUPPORTED">
+      <SupplementalData Name="TiuBackplaneConnectorCycleCount"  Value="0"/>
+      <SupplementalData Name="TiuBackplaneConnectorGlobalCount"  Value="0"/>
+      <SupplementalData Name="GPIO Channel"  Value="0-39"/>
+      <SupplementalData Name="GPIO Channel"  Value="40-79"/>
+      <SupplementalData Name="GPIO Channel"  Value="80-119"/>
+      <SupplementalData Name="GPIO Channel"  Value="120-159"/>
+      <SupplementalData Name="GPIO Channel"  Value="160-199"/>
+      <SupplementalData Name="GPIO Channel"  Value="200-239"/>
+      <SupplementalData Name="GPIO Channel"  Value="240-279"/>
+      <SupplementalData Name="GPIO Channel"  Value="280-319"/>
+    </InstrumentBLT>
+    <BoardBLT VendorID="1"  VendorName="INTEL"  BoardID="32"  BoardName="TIU2"  PartNumberAsBuilt="TAE98322-100"  PartNumberCurrent="TAE98322-101"  SerialNumber="SPHT04100010"  ManufactureDate="101102"/>
+    <InstrumentFirmware EntityName="TIU2_CAL_BASE_CPLD"  FileName="C:\Intel\hdmt\hdmtOS_3.7.0.0_Release\Runtime\Release\Instruments\BaseFirmwareImages\hpcc_cal_cpld_E020.xsvf.enc"  Version="E020"/>
+  </TesterExternalEntity>
+  
+  <Slot ID="0">
+    <Instrument type="DPS">
+      <InstrumentBLT VendorID="0"  VendorName="NA"  InstrumentID="0"  InstrumentName="HDDPS"  PartNumberAsBuilt="NA"  PartNumberCurrent="NA"  SerialNumber="NA"  ManufactureDate="NA"  CalStatus="UNCALIBRATED"/>
+      <BoardBLT VendorID="0"  VendorName="NA"  BoardID="0"  BoardName="NA"  PartNumberAsBuilt="NA"  PartNumberCurrent="NA"  SerialNumber="NA"  ManufactureDate="NA"/>
+      <BoardBLT VendorID="0"  VendorName="NA"  BoardID="0"  BoardName="NA"  PartNumberAsBuilt="NA"  PartNumberCurrent="NA"  SerialNumber="NA"  ManufactureDate="NA"/>
+      <InstrumentFirmware EntityName="HDDPS_FPGA_MB"  FileName="C:\Intel\hdmt\hdmtOS_3.7.0.0_Release\Runtime\Release\Instruments\DynamicFirmwareImages\hddps_mb_fpga_rev07_05_0000.bin.enc"  Version="7.5.0"/>
+      <InstrumentFirmware EntityName="HDDPS_FPGA_DB"  FileName="C:\Intel\hdmt\hdmtOS_3.7.0.0_Release\Runtime\Release\Instruments\DynamicFirmwareImages\hddps_db_fpga_rev07_05_0000.bin.enc"  Version="7.5.0"/>
+      <InstrumentFirmware EntityName="HDDPS_CPLD_MB"  FileName=""  Version=""/>
+      <InstrumentFirmware EntityName="HDDPS_CPLD_DB"  FileName=""  Version=""/>
+    </Instrument>
+    <CalInstrument type="NA">
+      <BoardBLT VendorID="0"  VendorName="NA"  BoardID="0"  BoardName="NA"  PartNumberAsBuilt="NA"  PartNumberCurrent="NA"  SerialNumber="NA"  ManufactureDate="NA"/>
+    </CalInstrument>
+  </Slot>
+  
+  <Slot ID="1">
+    <Instrument type="ChannelCard">
+      <InstrumentBLT VendorID="1"  VendorName="NA"  InstrumentID="100"  InstrumentName="HPCC2"  PartNumberAsBuilt="NA"  PartNumberCurrent="NA"  SerialNumber="NA"  ManufactureDate="NA"  CalStatus="UNCALIBRATED"/>
+      <BoardBLT VendorID="1"  VendorName="NA"  BoardID="101"  BoardName="NA"  PartNumberAsBuilt="NA"  PartNumberCurrent="NA"  SerialNumber="NA"  ManufactureDate="NA"/>
+      <BoardBLT VendorID="1"  VendorName="NA"  BoardID="102"  BoardName="NA"  PartNumberAsBuilt="NA"  PartNumberCurrent="NA"  SerialNumber="NA"  ManufactureDate="NA"/>
+      <InstrumentFirmware EntityName="DC_FPGA_0"  FileName=""  Version="0.0.0"/>
+      <InstrumentFirmware EntityName="DC_FPGA_1"  FileName=""  Version="0.0.0"/>
+      <InstrumentFirmware EntityName="AC_FPGA_0"  FileName=""  Version="0.0.0"/>
+      <InstrumentFirmware EntityName="AC_FPGA_1"  FileName=""  Version="0.0.0"/>
+    </Instrument>
+  </Slot>
+  
+  <Slot ID="2">
+    <Instrument type="ChannelCard">
+      <InstrumentBLT VendorID="1"  VendorName="NA"  InstrumentID="100"  InstrumentName="HPCC2"  PartNumberAsBuilt="NA"  PartNumberCurrent="NA"  SerialNumber="NA"  ManufactureDate="NA"  CalStatus="UNCALIBRATED"/>
+      <BoardBLT VendorID="1"  VendorName="NA"  BoardID="101"  BoardName="NA"  PartNumberAsBuilt="NA"  PartNumberCurrent="NA"  SerialNumber="NA"  ManufactureDate="NA"/>
+      <BoardBLT VendorID="1"  VendorName="NA"  BoardID="102"  BoardName="NA"  PartNumberAsBuilt="NA"  PartNumberCurrent="NA"  SerialNumber="NA"  ManufactureDate="NA"/>
+      <InstrumentFirmware EntityName="DC_FPGA_0"  FileName=""  Version="0.0.0"/>
+      <InstrumentFirmware EntityName="DC_FPGA_1"  FileName=""  Version="0.0.0"/>
+      <InstrumentFirmware EntityName="AC_FPGA_0"  FileName=""  Version="0.0.0"/>
+      <InstrumentFirmware EntityName="AC_FPGA_1"  FileName=""  Version="0.0.0"/>
+    </Instrument>
+  </Slot>
+  
+  <Slot ID="3">
+    <Instrument type="ChannelCard">
+      <InstrumentBLT VendorID="1"  VendorName="NA"  InstrumentID="100"  InstrumentName="HPCC2"  PartNumberAsBuilt="NA"  PartNumberCurrent="NA"  SerialNumber="NA"  ManufactureDate="NA"  CalStatus="UNCALIBRATED"/>
+      <BoardBLT VendorID="1"  VendorName="NA"  BoardID="101"  BoardName="NA"  PartNumberAsBuilt="NA"  PartNumberCurrent="NA"  SerialNumber="NA"  ManufactureDate="NA"/>
+      <BoardBLT VendorID="1"  VendorName="NA"  BoardID="102"  BoardName="NA"  PartNumberAsBuilt="NA"  PartNumberCurrent="NA"  SerialNumber="NA"  ManufactureDate="NA"/>
+      <InstrumentFirmware EntityName="DC_FPGA_0"  FileName=""  Version="0.0.0"/>
+      <InstrumentFirmware EntityName="DC_FPGA_1"  FileName=""  Version="0.0.0"/>
+      <InstrumentFirmware EntityName="AC_FPGA_0"  FileName=""  Version="0.0.0"/>
+      <InstrumentFirmware EntityName="AC_FPGA_1"  FileName=""  Version="0.0.0"/>
+    </Instrument>
+  </Slot>
+  
+  <Slot ID="4">
+    <Instrument type="ChannelCard">
+      <InstrumentBLT VendorID="1"  VendorName="NA"  InstrumentID="100"  InstrumentName="HPCC2"  PartNumberAsBuilt="NA"  PartNumberCurrent="NA"  SerialNumber="NA"  ManufactureDate="NA"  CalStatus="UNCALIBRATED"/>
+      <BoardBLT VendorID="1"  VendorName="NA"  BoardID="101"  BoardName="NA"  PartNumberAsBuilt="NA"  PartNumberCurrent="NA"  SerialNumber="NA"  ManufactureDate="NA"/>
+      <BoardBLT VendorID="1"  VendorName="NA"  BoardID="102"  BoardName="NA"  PartNumberAsBuilt="NA"  PartNumberCurrent="NA"  SerialNumber="NA"  ManufactureDate="NA"/>
+      <InstrumentFirmware EntityName="DC_FPGA_0"  FileName=""  Version="0.0.0"/>
+      <InstrumentFirmware EntityName="DC_FPGA_1"  FileName=""  Version="0.0.0"/>
+      <InstrumentFirmware EntityName="AC_FPGA_0"  FileName=""  Version="0.0.0"/>
+      <InstrumentFirmware EntityName="AC_FPGA_1"  FileName=""  Version="0.0.0"/>
+    </Instrument>
+  </Slot>
+  
+  <Slot ID="5">
+    <Instrument type="DPS">
+      <InstrumentBLT VendorID="0"  VendorName="NA"  InstrumentID="0"  InstrumentName="HVDPS"  PartNumberAsBuilt="NA"  PartNumberCurrent="NA"  SerialNumber="NA"  ManufactureDate="NA"  CalStatus="UNCALIBRATED"/>
+      <BoardBLT VendorID="0"  VendorName="NA"  BoardID="0"  BoardName="NA"  PartNumberAsBuilt="NA"  PartNumberCurrent="NA"  SerialNumber="NA"  ManufactureDate="NA"/>
+      <InstrumentFirmware EntityName="HVDPS_FPGA_MB"  FileName="C:\Intel\hdmt\hdmtOS_3.7.0.0_Release\Runtime\Release\Instruments\DynamicFirmwareImages\hvdps_fpga_rev07_05_0000.bin.enc"  Version="7.5.0"/>
+      <InstrumentFirmware EntityName="HVDPS_CPLD_MB"  FileName=""  Version=""/>
+    </Instrument>
+    <CalInstrument type="NA">
+      <BoardBLT VendorID="0"  VendorName="NA"  BoardID="0"  BoardName="NA"  PartNumberAsBuilt="NA"  PartNumberCurrent="NA"  SerialNumber="NA"  ManufactureDate="NA"/>
+    </CalInstrument>
+  </Slot>
+  
+  <Slot ID="6">
+    <Instrument type="DPS">
+      <InstrumentBLT VendorID="0"  VendorName="NA"  InstrumentID="0"  InstrumentName="HVDPS"  PartNumberAsBuilt="NA"  PartNumberCurrent="NA"  SerialNumber="NA"  ManufactureDate="NA"  CalStatus="UNCALIBRATED"/>
+      <BoardBLT VendorID="0"  VendorName="NA"  BoardID="0"  BoardName="NA"  PartNumberAsBuilt="NA"  PartNumberCurrent="NA"  SerialNumber="NA"  ManufactureDate="NA"/>
+      <InstrumentFirmware EntityName="HVDPS_FPGA_MB"  FileName="C:\Intel\hdmt\hdmtOS_3.7.0.0_Release\Runtime\Release\Instruments\DynamicFirmwareImages\hvdps_fpga_rev07_05_0000.bin.enc"  Version="7.5.0"/>
+      <InstrumentFirmware EntityName="HVDPS_CPLD_MB"  FileName=""  Version=""/>
+    </Instrument>
+    <CalInstrument type="NA">
+      <BoardBLT VendorID="0"  VendorName="NA"  BoardID="0"  BoardName="NA"  PartNumberAsBuilt="NA"  PartNumberCurrent="NA"  SerialNumber="NA"  ManufactureDate="NA"/>
+    </CalInstrument>
+  </Slot>
+  
+  <Slot ID="7">
+    <Instrument type="ChannelCard">
+      <InstrumentBLT VendorID="1"  VendorName="NA"  InstrumentID="100"  InstrumentName="HPCC2"  PartNumberAsBuilt="NA"  PartNumberCurrent="NA"  SerialNumber="NA"  ManufactureDate="NA"  CalStatus="UNCALIBRATED"/>
+      <BoardBLT VendorID="1"  VendorName="NA"  BoardID="101"  BoardName="NA"  PartNumberAsBuilt="NA"  PartNumberCurrent="NA"  SerialNumber="NA"  ManufactureDate="NA"/>
+      <BoardBLT VendorID="1"  VendorName="NA"  BoardID="102"  BoardName="NA"  PartNumberAsBuilt="NA"  PartNumberCurrent="NA"  SerialNumber="NA"  ManufactureDate="NA"/>
+      <InstrumentFirmware EntityName="DC_FPGA_0"  FileName=""  Version="0.0.0"/>
+      <InstrumentFirmware EntityName="DC_FPGA_1"  FileName=""  Version="0.0.0"/>
+      <InstrumentFirmware EntityName="AC_FPGA_0"  FileName=""  Version="0.0.0"/>
+      <InstrumentFirmware EntityName="AC_FPGA_1"  FileName=""  Version="0.0.0"/>
+    </Instrument>
+  </Slot>
+  
+  <Slot ID="8">
+    <Instrument type="ChannelCard">
+      <InstrumentBLT VendorID="1"  VendorName="NA"  InstrumentID="100"  InstrumentName="HPCC2"  PartNumberAsBuilt="NA"  PartNumberCurrent="NA"  SerialNumber="NA"  ManufactureDate="NA"  CalStatus="UNCALIBRATED"/>
+      <BoardBLT VendorID="1"  VendorName="NA"  BoardID="101"  BoardName="NA"  PartNumberAsBuilt="NA"  PartNumberCurrent="NA"  SerialNumber="NA"  ManufactureDate="NA"/>
+      <BoardBLT VendorID="1"  VendorName="NA"  BoardID="102"  BoardName="NA"  PartNumberAsBuilt="NA"  PartNumberCurrent="NA"  SerialNumber="NA"  ManufactureDate="NA"/>
+      <InstrumentFirmware EntityName="DC_FPGA_0"  FileName=""  Version="0.0.0"/>
+      <InstrumentFirmware EntityName="DC_FPGA_1"  FileName=""  Version="0.0.0"/>
+      <InstrumentFirmware EntityName="AC_FPGA_0"  FileName=""  Version="0.0.0"/>
+      <InstrumentFirmware EntityName="AC_FPGA_1"  FileName=""  Version="0.0.0"/>
+    </Instrument>
+  </Slot>
+  
+  <Slot ID="9">
+    <Instrument type="ChannelCard">
+      <InstrumentBLT VendorID="1"  VendorName="NA"  InstrumentID="100"  InstrumentName="HPCC2"  PartNumberAsBuilt="NA"  PartNumberCurrent="NA"  SerialNumber="NA"  ManufactureDate="NA"  CalStatus="UNCALIBRATED"/>
+      <BoardBLT VendorID="1"  VendorName="NA"  BoardID="101"  BoardName="NA"  PartNumberAsBuilt="NA"  PartNumberCurrent="NA"  SerialNumber="NA"  ManufactureDate="NA"/>
+      <BoardBLT VendorID="1"  VendorName="NA"  BoardID="102"  BoardName="NA"  PartNumberAsBuilt="NA"  PartNumberCurrent="NA"  SerialNumber="NA"  ManufactureDate="NA"/>
+      <InstrumentFirmware EntityName="DC_FPGA_0"  FileName=""  Version="0.0.0"/>
+      <InstrumentFirmware EntityName="DC_FPGA_1"  FileName=""  Version="0.0.0"/>
+      <InstrumentFirmware EntityName="AC_FPGA_0"  FileName=""  Version="0.0.0"/>
+      <InstrumentFirmware EntityName="AC_FPGA_1"  FileName=""  Version="0.0.0"/>
+    </Instrument>
+  </Slot>
+  
+  <Slot ID="10">
+    <Instrument type="ChannelCard">
+      <InstrumentBLT VendorID="1"  VendorName="NA"  InstrumentID="100"  InstrumentName="HPCC2"  PartNumberAsBuilt="NA"  PartNumberCurrent="NA"  SerialNumber="NA"  ManufactureDate="NA"  CalStatus="UNCALIBRATED"/>
+      <BoardBLT VendorID="1"  VendorName="NA"  BoardID="101"  BoardName="NA"  PartNumberAsBuilt="NA"  PartNumberCurrent="NA"  SerialNumber="NA"  ManufactureDate="NA"/>
+      <BoardBLT VendorID="1"  VendorName="NA"  BoardID="102"  BoardName="NA"  PartNumberAsBuilt="NA"  PartNumberCurrent="NA"  SerialNumber="NA"  ManufactureDate="NA"/>
+      <InstrumentFirmware EntityName="DC_FPGA_0"  FileName=""  Version="0.0.0"/>
+      <InstrumentFirmware EntityName="DC_FPGA_1"  FileName=""  Version="0.0.0"/>
+      <InstrumentFirmware EntityName="AC_FPGA_0"  FileName=""  Version="0.0.0"/>
+      <InstrumentFirmware EntityName="AC_FPGA_1"  FileName=""  Version="0.0.0"/>
+    </Instrument>
+  </Slot>
+  
+  <Slot ID="11">
+    <Instrument type="DPS">
+      <InstrumentBLT VendorID="0"  VendorName="NA"  InstrumentID="0"  InstrumentName="HDDPS"  PartNumberAsBuilt="NA"  PartNumberCurrent="NA"  SerialNumber="NA"  ManufactureDate="NA"  CalStatus="UNCALIBRATED"/>
+      <BoardBLT VendorID="0"  VendorName="NA"  BoardID="0"  BoardName="NA"  PartNumberAsBuilt="NA"  PartNumberCurrent="NA"  SerialNumber="NA"  ManufactureDate="NA"/>
+      <BoardBLT VendorID="0"  VendorName="NA"  BoardID="0"  BoardName="NA"  PartNumberAsBuilt="NA"  PartNumberCurrent="NA"  SerialNumber="NA"  ManufactureDate="NA"/>
+      <InstrumentFirmware EntityName="HDDPS_FPGA_MB"  FileName="C:\Intel\hdmt\hdmtOS_3.7.0.0_Release\Runtime\Release\Instruments\DynamicFirmwareImages\hddps_mb_fpga_rev07_05_0000.bin.enc"  Version="7.5.0"/>
+      <InstrumentFirmware EntityName="HDDPS_FPGA_DB"  FileName="C:\Intel\hdmt\hdmtOS_3.7.0.0_Release\Runtime\Release\Instruments\DynamicFirmwareImages\hddps_db_fpga_rev07_05_0000.bin.enc"  Version="7.5.0"/>
+      <InstrumentFirmware EntityName="HDDPS_CPLD_MB"  FileName=""  Version=""/>
+      <InstrumentFirmware EntityName="HDDPS_CPLD_DB"  FileName=""  Version=""/>
+    </Instrument>
+    <CalInstrument type="NA">
+      <BoardBLT VendorID="0"  VendorName="NA"  BoardID="0"  BoardName="NA"  PartNumberAsBuilt="NA"  PartNumberCurrent="NA"  SerialNumber="NA"  ManufactureDate="NA"/>
+    </CalInstrument>
+  </Slot>
+  
+  <Slot ID="1000">
+    <Instrument type="ResourceCard">
+      <InstrumentBLT VendorID="0"  VendorName="NA"  InstrumentID="0"  InstrumentName="RC2"  PartNumberAsBuilt="NA"  PartNumberCurrent="NA"  SerialNumber="NA"  ManufactureDate="NA"  CalStatus="NOTSUPPORTED"/>
+      <BoardBLT VendorID="0"  VendorName="NA"  BoardID="0"  BoardName="NA"  PartNumberAsBuilt="NA"  PartNumberCurrent="NA"  SerialNumber="NA"  ManufactureDate="NA"/>
+      <InstrumentFirmware EntityName="RC_FPGA"  FileName="Instruments/DynamicFirmwareImages/rctc2_rc_fpga_rev6_6_0.bin.enc"  Version="6.6.0"/>
+    </Instrument>
+  </Slot>
+  
+  <Slot ID="1001">
+    <Instrument type="TC">
+      <InstrumentBLT VendorID="0"  VendorName="NA"  InstrumentID="0"  InstrumentName="TC"  PartNumberAsBuilt="NA"  PartNumberCurrent="NA"  SerialNumber="NA"  ManufactureDate="NA"  CalStatus="NOTSUPPORTED">
+        <SupplementalData Name="UeiSlave0Connected"  Value="False"/>
+        <SupplementalData Name="UeiSlave1Connected"  Value="False"/>
+      </InstrumentBLT>
+      <BoardBLT VendorID="0"  VendorName="NA"  BoardID="0"  BoardName="NA"  PartNumberAsBuilt="NA"  PartNumberCurrent="NA"  SerialNumber="NA"  ManufactureDate="NA"/>
+      <InstrumentFirmware EntityName="TC_FPGA"  FileName="Instruments/BaseFirmwareImages/rctc2_tc_fpga_rev3_4.bin.enc"  Version="3.4.0"/>
+      <InstrumentFirmware EntityName="TC_FW"  FileName="Instruments/BaseFirmwareImages/rctc2_tc_fw_rev4_7.bin.enc"  Version="4.7.0"/>
+      <InstrumentFirmware EntityName="TC_TDAU_FW"  FileName="Instruments/BaseFirmwareImages/tdau_fw_rev1_16.hex"  Version="1.16.0"/>
+    </Instrument>
+  </Slot>
+</HWConfiguration>

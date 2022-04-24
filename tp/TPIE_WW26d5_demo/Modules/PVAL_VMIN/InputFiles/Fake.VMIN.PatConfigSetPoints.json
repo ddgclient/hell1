@@ -1,0 +1,15 @@
+{
+    "Module": "PVAL_VMIN",
+    "Groups": [
+        {
+            "Default": "0.8GHz", 
+            "Name": "ring_freq", 
+            "SetPoints": [
+                {
+                    "Name": "0.8GHz",
+                    "Configurations": [ { "Data": "1110", "Name": "PVAL_VMIN_FREQ" } ] 
+                }
+            ]
+        }
+    ]
+}

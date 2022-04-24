@@ -1,0 +1,31 @@
+{
+  "TestInstance": "PVAL_FUNC::BasicFunc_CaptFirstFail_P1",
+  "ExecutionModes": [
+    {
+      "Type": "AllPin",
+      "FailureMode": 0,
+      "PList": "drv_cdie_maintap_bbs_list",
+      "Level": "bf_lvl_nom_lvl",
+      "Timings": "cpu_stf_timing_tclk100_sclk100_cclk100"
+    }
+  ],
+  "Dimensions": [
+    {
+      "Type": "Timings",
+      "SpecSetVariable": "p_mtd_per",
+      "TestCondition": "cpu_stf_timing_tclk100_sclk100_cclk100",
+      "ParameterName": "p_mtd_per",
+      "Values": "8ns:12ns:1ns",
+      "Group": ""
+    },
+    {
+      "Type": "GuiCallback",
+      "ValueTemplate": "VoltageConverter(--overrides FIVRRAIL1:{v} --fivrcondition NOM)",
+      "TestName": "PVAL_FUNC::BasicFunc_CaptFirstFail_P1",
+      "ParameterName": "v",
+      "Values": "0.8:1.2:0.1",
+      "Group": ""
+    }
+  ],
+  "Options": []
+}

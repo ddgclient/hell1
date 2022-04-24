@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TestLibraryInterfaces xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:schemaLocation="http://vtsm.intel.com/2009/TestLibraryInterfaces file:///C:/Intel/hdmt/hdmtOS_3.4.4.5_Release/TOSRelease/bin/release/TestLibraryInterfaces.xsd" xmlns="http://vtsm.intel.com/2009/TestLibraryInterfaces">
+  <TestLibrary name="PrimeTestInstance">
+    <TestClass name="DieRecoveryBase" MetaData="dll=DieRecoveryBase"  />
+    <Imports>
+      <FileName>TestMethodBase.xml</FileName>
+      <FileName>DieRecoveryBaseCommonParams.xml</FileName>
+    </Imports>
+    <PublicBases>
+      <BaseName>TestMethodBase</BaseName>
+    </PublicBases>
+    <Parameters>
+      <Parameter name="RulesFile" descriptions="The DieRecovery Rules file (xml format).">
+        <Type>
+          <Tester>String</Tester>
+          <TestProgram>String</TestProgram>
+        </Type>
+        <Default>./Modules/YBS_UPSS/InputFiles/Recovery.xml</Default>
+        <Optional />
+      </Parameter>
+      <Parameter name="TrackerFile" descriptions="The DieRecovery Tracker configuration file (json format).">
+        <Type>
+          <Tester>String</Tester>
+          <TestProgram>String</TestProgram>
+        </Type>
+        <Default>./PrimeConfigs/DieRecoveryTrackers.json</Default>
+        <Optional />
+      </Parameter>
+      <Parameter name="Mode" descriptions="Instance Mode. Configure is run once in init to setup the global DieRecovery structures. ClearDutData should be run once per dut (after dff download) to initialize/clear per-dut data. DumpTables can be run at any time to write out all internal DieRecovery information.">
+        <Type>
+          <Tester>String</Tester>
+          <TestProgram>String</TestProgram>
+        </Type>
+        <Choices>
+          <Choice>Configure</Choice>
+          <Choice>DumpTables</Choice>
+		</Choices>
+        <Default>Configure</Default>
+        <Optional />
+      </Parameter>
+      <Parameter name="AllowDownBins" descriptions="If False, the Trackers can only be written once and will fail if their value is every changed.">
+        <Type>
+          <Tester>String</Tester>
+          <TestProgram>String</TestProgram>
+        </Type>
+        <Choices>
+          <Choice>True</Choice>
+          <Choice>False</Choice>
+		</Choices>
+        <Default>True</Default>
+        <Optional />
+      </Parameter>
+    </Parameters>
+    <ExitPorts>
+      <ExitPort>
+        <PortNumber>1</PortNumber>
+        <PortType>Pass</PortType>
+        <PortDescriptions>Pass!</PortDescriptions>
+      </ExitPort>
+      <ExitPort>
+        <PortNumber>0</PortNumber>
+        <PortType>Fail</PortType>
+        <PortDescriptions>Fail!</PortDescriptions>
+      </ExitPort>
+      <ExitPort>
+        <PortNumber>-2</PortNumber>
+        <PortType>Fail</PortType>
+        <PortDescriptions>PORT FAIL FOR HW ALARM CONDITION</PortDescriptions>
+      </ExitPort>
+      <ExitPort>
+        <PortNumber>-1</PortNumber>
+        <PortType>Error</PortType>
+        <PortDescriptions>PORT FAIL FOR SW ERROR CONDITION</PortDescriptions>
+      </ExitPort>
+    </ExitPorts>
+  </TestLibrary>
+</TestLibraryInterfaces>

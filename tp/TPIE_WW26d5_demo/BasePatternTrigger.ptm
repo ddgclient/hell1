@@ -1,0 +1,888 @@
+Version 1.00;
+
+PatternTriggerMap PVC_COMPUTE_TriggerMap
+{
+   TriggerType LevelsTC
+   {
+      TRIGGER0 = pwrdn_lvl_cat0;
+      TRIGGER1 = pwrdn_lvl_cat0;
+      TRIGGER2 = pwrdn_lvl_cat0;
+      TRIGGER3 = pwrdn_lvl_cat0;
+      TRIGGER22 = pwrdn_lvl_cat0;
+      TRIG_DICC1 = pwrdn_lvl_cat0;
+      TRIG_EXTBG_VBUMP = pwrdn_lvl_cat0;
+      TRIG_FIVR_ANAPRB_MEAS = pwrdn_lvl_cat0;
+      TRIG_FIVR_IMON_MEAS = pwrdn_lvl_cat0;
+      TRIG_FIVR_VLOAD_MEAS = pwrdn_lvl_cat0;
+      TRIG_SICC1 = pwrdn_lvl_cat0; 
+      TRIG_SICC2 = pwrdn_lvl_cat0;
+      TRIG_SICC_VBUMP1 = pwrdn_lvl_cat0;
+      TRIG_SICC_VBUMP2 = pwrdn_lvl_cat0;
+      TRIG_VTGT_VBUMP1 = pwrdn_lvl_cat0;
+      TRIG_VTGT_VBUMP2 = pwrdn_lvl_cat0;
+      TRIG_VTGT_VBUMP3 = pwrdn_lvl_cat0;
+      TRIG_VTGT_VBUMP4 = pwrdn_lvl_cat0;
+      TRIG_VTGT_VBUMP5 = pwrdn_lvl_cat0;
+      TRIG_VTGT_VBUMP6 = pwrdn_lvl_cat0;
+      TRIG_VTGT_VBUMP7 = pwrdn_lvl_cat0;
+      TRIG_VTGT_VBUMP8 = pwrdn_lvl_cat0;
+	  TRIG_ANAVIEW0 = pwrdn_lvl_cat0;
+	  TRIG_ANAVIEW1 = pwrdn_lvl_cat0;
+   }
+}
+
+PatternTriggerMap SICC_0p6_TriggerMap
+{
+	TriggerType LevelsTC
+	{ 
+		Trigger0 = pwrdn_lvl_cat0;
+		Trigger1 = bf_lvl_SICC_600mV;
+		Trigger2 = cpu_pth_500mA_x_x_ipcpu_lvl_nom_lvl;
+		Trigger3 = cpu_pth_24A_x_x_ipcpu_lvl_nom_lvl;
+		Trigger4 = pwrdn_lvl_cat0;
+		Trigger5 = pwrdn_lvl_cat0;
+		Trigger6 = pwrdn_lvl_cat0;
+		Trigger7 = pwrdn_lvl_cat0;
+		Trigger8 = pwrdn_lvl_cat0;
+		Trigger9 = pwrdn_lvl_cat0;
+		Trigger10 = pwrdn_lvl_cat0;
+		Trigger11 = pwrdn_lvl_cat0;
+		Trigger12 = pwrdn_lvl_cat0;
+		Trigger13 = pwrdn_lvl_cat0;
+		Trigger14 = pwrdn_lvl_cat0;
+		Trigger15 = pwrdn_lvl_cat0;
+	}
+}
+
+PatternTriggerMap SICC_0p65_TriggerMap
+{
+	TriggerType LevelsTC
+	{ 
+		Trigger0 = pwrdn_lvl_cat0;
+		Trigger1 = bf_lvl_SICC_650mV;
+		Trigger2 = cpu_pth_500mA_x_x_ipcpu_lvl_nom_lvl;
+		Trigger3 = cpu_pth_24A_x_x_ipcpu_lvl_nom_lvl;
+		Trigger4 = pwrdn_lvl_cat0;
+		Trigger5 = pwrdn_lvl_cat0;
+		Trigger6 = pwrdn_lvl_cat0;
+		Trigger7 = pwrdn_lvl_cat0;
+		Trigger8 = pwrdn_lvl_cat0;
+		Trigger9 = pwrdn_lvl_cat0;
+		Trigger10 = pwrdn_lvl_cat0;
+		Trigger11 = pwrdn_lvl_cat0;
+		Trigger12 = pwrdn_lvl_cat0;
+		Trigger13 = pwrdn_lvl_cat0;
+		Trigger14 = pwrdn_lvl_cat0;
+		Trigger15 = pwrdn_lvl_cat0;
+	}
+}
+
+PatternTriggerMap SICC_0p7_TriggerMap
+{
+	TriggerType LevelsTC
+	{ 
+		Trigger0 = pwrdn_lvl_cat0;
+		Trigger1 = bf_lvl_SICC_700mV;
+		Trigger2 = cpu_pth_500mA_x_x_ipcpu_lvl_nom_lvl;
+		Trigger3 = cpu_pth_24A_x_x_ipcpu_lvl_nom_lvl;
+		Trigger4 = pwrdn_lvl_cat0;
+		Trigger5 = pwrdn_lvl_cat0;
+		Trigger6 = pwrdn_lvl_cat0;
+		Trigger7 = pwrdn_lvl_cat0;
+		Trigger8 = pwrdn_lvl_cat0;
+		Trigger9 = pwrdn_lvl_cat0;
+		Trigger10 = pwrdn_lvl_cat0;
+		Trigger11 = pwrdn_lvl_cat0;
+		Trigger12 = pwrdn_lvl_cat0;
+		Trigger13 = pwrdn_lvl_cat0;
+		Trigger14 = pwrdn_lvl_cat0;
+		Trigger15 = pwrdn_lvl_cat0;
+	}
+}
+
+PatternTriggerMap SICC_0p75_TriggerMap
+{
+	TriggerType LevelsTC
+	{ 
+		Trigger0 = pwrdn_lvl_cat0;
+		Trigger1 = bf_lvl_SICC_750mV;
+		Trigger2 = cpu_pth_500mA_x_x_ipcpu_lvl_nom_lvl;
+		Trigger3 = cpu_pth_24A_x_x_ipcpu_lvl_nom_lvl;
+		Trigger4 = pwrdn_lvl_cat0;
+		Trigger5 = pwrdn_lvl_cat0;
+		Trigger6 = pwrdn_lvl_cat0;
+		Trigger7 = pwrdn_lvl_cat0;
+		Trigger8 = pwrdn_lvl_cat0;
+		Trigger9 = pwrdn_lvl_cat0;
+		Trigger10 = pwrdn_lvl_cat0;
+		Trigger11 = pwrdn_lvl_cat0;
+		Trigger12 = pwrdn_lvl_cat0;
+		Trigger13 = pwrdn_lvl_cat0;
+		Trigger14 = pwrdn_lvl_cat0;
+		Trigger15 = pwrdn_lvl_cat0;
+	}
+}
+
+PatternTriggerMap SICC_0p8_TriggerMap
+{
+	TriggerType LevelsTC
+	{ 
+		Trigger0 = pwrdn_lvl_cat0;
+		Trigger1 = bf_lvl_SICC_800mV;
+		Trigger2 = cpu_pth_500mA_x_x_ipcpu_lvl_nom_lvl;
+		Trigger3 = cpu_pth_24A_x_x_ipcpu_lvl_nom_lvl;
+		Trigger4 = pwrdn_lvl_cat0;
+		Trigger5 = pwrdn_lvl_cat0;
+		Trigger6 = pwrdn_lvl_cat0;
+		Trigger7 = pwrdn_lvl_cat0;
+		Trigger8 = pwrdn_lvl_cat0;
+		Trigger9 = pwrdn_lvl_cat0;
+		Trigger10 = pwrdn_lvl_cat0;
+		Trigger11 = pwrdn_lvl_cat0;
+		Trigger12 = pwrdn_lvl_cat0;
+		Trigger13 = pwrdn_lvl_cat0;
+		Trigger14 = pwrdn_lvl_cat0;
+		Trigger15 = pwrdn_lvl_cat0;
+	}
+}
+
+
+PatternTriggerMap SICC_0p85_TriggerMap
+{
+	TriggerType LevelsTC
+	{ 
+		Trigger0 = pwrdn_lvl_cat0;
+		Trigger1 = bf_lvl_SICC_850mV;
+		Trigger2 = cpu_pth_500mA_x_x_ipcpu_lvl_nom_lvl;
+		Trigger3 = cpu_pth_24A_x_x_ipcpu_lvl_nom_lvl;
+		Trigger4 = pwrdn_lvl_cat0;
+		Trigger5 = pwrdn_lvl_cat0;
+		Trigger6 = pwrdn_lvl_cat0;
+		Trigger7 = pwrdn_lvl_cat0;
+		Trigger8 = pwrdn_lvl_cat0;
+		Trigger9 = pwrdn_lvl_cat0;
+		Trigger10 = pwrdn_lvl_cat0;
+		Trigger11 = pwrdn_lvl_cat0;
+		Trigger12 = pwrdn_lvl_cat0;
+		Trigger13 = pwrdn_lvl_cat0;
+		Trigger14 = pwrdn_lvl_cat0;
+		Trigger15 = pwrdn_lvl_cat0;
+	}
+}
+
+
+PatternTriggerMap SICC_0p9_TriggerMap
+{
+	TriggerType LevelsTC
+	{ 
+		Trigger0 = pwrdn_lvl_cat0;
+		Trigger1 = bf_lvl_SICC_900mV;
+		Trigger2 = cpu_pth_500mA_x_x_ipcpu_lvl_nom_lvl;
+		Trigger3 = cpu_pth_24A_x_x_ipcpu_lvl_nom_lvl;
+		Trigger4 = pwrdn_lvl_cat0;
+		Trigger5 = pwrdn_lvl_cat0;
+		Trigger6 = pwrdn_lvl_cat0;
+		Trigger7 = pwrdn_lvl_cat0;
+		Trigger8 = pwrdn_lvl_cat0;
+		Trigger9 = pwrdn_lvl_cat0;
+		Trigger10 = pwrdn_lvl_cat0;
+		Trigger11 = pwrdn_lvl_cat0;
+		Trigger12 = pwrdn_lvl_cat0;
+		Trigger13 = pwrdn_lvl_cat0;
+		Trigger14 = pwrdn_lvl_cat0;
+		Trigger15 = pwrdn_lvl_cat0;
+	}
+}
+
+PatternTriggerMap SICC_0p95_TriggerMap
+{
+	TriggerType LevelsTC
+	{ 
+		Trigger0 = pwrdn_lvl_cat0;
+		Trigger1 = bf_lvl_SICC_950mV;
+		Trigger2 = cpu_pth_500mA_x_x_ipcpu_lvl_nom_lvl;
+		Trigger3 = cpu_pth_24A_x_x_ipcpu_lvl_nom_lvl;
+		Trigger4 = pwrdn_lvl_cat0;
+		Trigger5 = pwrdn_lvl_cat0;
+		Trigger6 = pwrdn_lvl_cat0;
+		Trigger7 = pwrdn_lvl_cat0;
+		Trigger8 = pwrdn_lvl_cat0;
+		Trigger9 = pwrdn_lvl_cat0;
+		Trigger10 = pwrdn_lvl_cat0;
+		Trigger11 = pwrdn_lvl_cat0;
+		Trigger12 = pwrdn_lvl_cat0;
+		Trigger13 = pwrdn_lvl_cat0;
+		Trigger14 = pwrdn_lvl_cat0;
+		Trigger15 = pwrdn_lvl_cat0;
+	}
+}
+
+PatternTriggerMap SICC_1p0_TriggerMap
+{
+	TriggerType LevelsTC
+	{ 
+		Trigger0 = pwrdn_lvl_cat0;
+		Trigger1 = bf_lvl_SICC_1000mV;
+		Trigger2 = cpu_pth_500mA_x_x_ipcpu_lvl_nom_lvl;
+		Trigger3 = cpu_pth_24A_x_x_ipcpu_lvl_nom_lvl;
+		Trigger4 = pwrdn_lvl_cat0;
+		Trigger5 = pwrdn_lvl_cat0;
+		Trigger6 = pwrdn_lvl_cat0;
+		Trigger7 = pwrdn_lvl_cat0;
+		Trigger8 = pwrdn_lvl_cat0;
+		Trigger9 = pwrdn_lvl_cat0;
+		Trigger10 = pwrdn_lvl_cat0;
+		Trigger11 = pwrdn_lvl_cat0;
+		Trigger12 = pwrdn_lvl_cat0;
+		Trigger13 = pwrdn_lvl_cat0;
+		Trigger14 = pwrdn_lvl_cat0;
+		Trigger15 = pwrdn_lvl_cat0;
+	}
+}
+
+
+PatternTriggerMap SICC_1p05_TriggerMap
+{
+	TriggerType LevelsTC
+	{ 
+		Trigger0 = pwrdn_lvl_cat0;
+		Trigger1 = bf_lvl_SICC_1050mV;
+		Trigger2 = cpu_pth_500mA_x_x_ipcpu_lvl_nom_lvl;
+		Trigger3 = cpu_pth_24A_x_x_ipcpu_lvl_nom_lvl;
+		Trigger4 = pwrdn_lvl_cat0;
+		Trigger5 = pwrdn_lvl_cat0;
+		Trigger6 = pwrdn_lvl_cat0;
+		Trigger7 = pwrdn_lvl_cat0;
+		Trigger8 = pwrdn_lvl_cat0;
+		Trigger9 = pwrdn_lvl_cat0;
+		Trigger10 = pwrdn_lvl_cat0;
+		Trigger11 = pwrdn_lvl_cat0;
+		Trigger12 = pwrdn_lvl_cat0;
+		Trigger13 = pwrdn_lvl_cat0;
+		Trigger14 = pwrdn_lvl_cat0;
+		Trigger15 = pwrdn_lvl_cat0;
+	}
+}
+
+
+PatternTriggerMap SICC_1p1_TriggerMap
+{
+	TriggerType LevelsTC
+	{ 
+		Trigger0 = pwrdn_lvl_cat0;
+		Trigger1 = bf_lvl_SICC_1100mV;
+		Trigger2 = cpu_pth_500mA_x_x_ipcpu_lvl_nom_lvl;
+		Trigger3 = cpu_pth_24A_x_x_ipcpu_lvl_nom_lvl;
+		Trigger4 = pwrdn_lvl_cat0;
+		Trigger5 = pwrdn_lvl_cat0;
+		Trigger6 = pwrdn_lvl_cat0;
+		Trigger7 = pwrdn_lvl_cat0;
+		Trigger8 = pwrdn_lvl_cat0;
+		Trigger9 = pwrdn_lvl_cat0;
+		Trigger10 = pwrdn_lvl_cat0;
+		Trigger11 = pwrdn_lvl_cat0;
+		Trigger12 = pwrdn_lvl_cat0;
+		Trigger13 = pwrdn_lvl_cat0;
+		Trigger14 = pwrdn_lvl_cat0;
+		Trigger15 = pwrdn_lvl_cat0;
+	}
+}
+
+
+PatternTriggerMap SICC_1p15_TriggerMap
+{
+	TriggerType LevelsTC
+	{ 
+		Trigger0 = pwrdn_lvl_cat0;
+		Trigger1 = bf_lvl_SICC_1150mV;
+		Trigger2 = cpu_pth_500mA_x_x_ipcpu_lvl_nom_lvl;
+		Trigger3 = cpu_pth_24A_x_x_ipcpu_lvl_nom_lvl;
+		Trigger4 = pwrdn_lvl_cat0;
+		Trigger5 = pwrdn_lvl_cat0;
+		Trigger6 = pwrdn_lvl_cat0;
+		Trigger7 = pwrdn_lvl_cat0;
+		Trigger8 = pwrdn_lvl_cat0;
+		Trigger9 = pwrdn_lvl_cat0;
+		Trigger10 = pwrdn_lvl_cat0;
+		Trigger11 = pwrdn_lvl_cat0;
+		Trigger12 = pwrdn_lvl_cat0;
+		Trigger13 = pwrdn_lvl_cat0;
+		Trigger14 = pwrdn_lvl_cat0;
+		Trigger15 = pwrdn_lvl_cat0;
+	}
+}
+
+PatternTriggerMap SICC_1p2_TriggerMap
+{
+	TriggerType LevelsTC
+	{ 
+		Trigger0 = pwrdn_lvl_cat0;
+		Trigger1 = bf_lvl_SICC_1200mV;
+		Trigger2 = cpu_pth_500mA_x_x_ipcpu_lvl_nom_lvl;
+		Trigger3 = cpu_pth_24A_x_x_ipcpu_lvl_nom_lvl;
+		Trigger4 = pwrdn_lvl_cat0;
+		Trigger5 = pwrdn_lvl_cat0;
+		Trigger6 = pwrdn_lvl_cat0;
+		Trigger7 = pwrdn_lvl_cat0;
+		Trigger8 = pwrdn_lvl_cat0;
+		Trigger9 = pwrdn_lvl_cat0;
+		Trigger10 = pwrdn_lvl_cat0;
+		Trigger11 = pwrdn_lvl_cat0;
+		Trigger12 = pwrdn_lvl_cat0;
+		Trigger13 = pwrdn_lvl_cat0;
+		Trigger14 = pwrdn_lvl_cat0;
+		Trigger15 = pwrdn_lvl_cat0;
+	}
+}
+
+PatternTriggerMap VBUMP_CORE_1600mV_TriggerMap
+{
+    TriggerType LevelsTC
+    {        
+        Trigger0 = VBUMP_CORE_lvl_force_nom;
+        Trigger1 = VBUMP_CORE_lvl_force_1600mV;
+        Trigger2 = pwrdn_lvl_cat0;
+        Trigger3 = pwrdn_lvl_cat0;
+        Trigger4 = pwrdn_lvl_cat0;
+        Trigger5 = pwrdn_lvl_cat0;
+        Trigger6 = pwrdn_lvl_cat0;
+        Trigger7 = pwrdn_lvl_cat0;
+        Trigger8 = pwrdn_lvl_cat0;
+        Trigger9 = pwrdn_lvl_cat0;
+        Trigger10 = pwrdn_lvl_cat0;
+        Trigger11 = pwrdn_lvl_cat0;
+        Trigger12 = pwrdn_lvl_cat0;
+        Trigger13 = pwrdn_lvl_cat0;
+        Trigger14 = pwrdn_lvl_cat0;
+        Trigger15 = pwrdn_lvl_cat0;
+    }
+}
+
+PatternTriggerMap VBUMP_CORE_1500mV_TriggerMap
+{
+    TriggerType LevelsTC
+    {        
+        Trigger0 = VBUMP_CORE_lvl_force_nom;
+        Trigger1 = VBUMP_CORE_lvl_force_1500mV;
+        Trigger2 = pwrdn_lvl_cat0;
+        Trigger3 = pwrdn_lvl_cat0;
+        Trigger4 = pwrdn_lvl_cat0;
+        Trigger5 = pwrdn_lvl_cat0;
+        Trigger6 = pwrdn_lvl_cat0;
+        Trigger7 = pwrdn_lvl_cat0;
+        Trigger8 = pwrdn_lvl_cat0;
+        Trigger9 = pwrdn_lvl_cat0;
+        Trigger10 = pwrdn_lvl_cat0;
+        Trigger11 = pwrdn_lvl_cat0;
+        Trigger12 = pwrdn_lvl_cat0;
+        Trigger13 = pwrdn_lvl_cat0;
+        Trigger14 = pwrdn_lvl_cat0;
+        Trigger15 = pwrdn_lvl_cat0;
+    }
+}
+
+PatternTriggerMap VBUMP_CORE_1400mV_TriggerMap
+{
+    TriggerType LevelsTC
+    {        
+        Trigger0 = VBUMP_CORE_lvl_force_nom;
+        Trigger1 = VBUMP_CORE_lvl_force_1400mV;
+        Trigger2 = pwrdn_lvl_cat0;
+        Trigger3 = pwrdn_lvl_cat0;
+        Trigger4 = pwrdn_lvl_cat0;
+        Trigger5 = pwrdn_lvl_cat0;
+        Trigger6 = pwrdn_lvl_cat0;
+        Trigger7 = pwrdn_lvl_cat0;
+        Trigger8 = pwrdn_lvl_cat0;
+        Trigger9 = pwrdn_lvl_cat0;
+        Trigger10 = pwrdn_lvl_cat0;
+        Trigger11 = pwrdn_lvl_cat0;
+        Trigger12 = pwrdn_lvl_cat0;
+        Trigger13 = pwrdn_lvl_cat0;
+        Trigger14 = pwrdn_lvl_cat0;
+        Trigger15 = pwrdn_lvl_cat0;
+    }
+}
+
+PatternTriggerMap VBUMP_CORE_1300mV_TriggerMap
+{
+    TriggerType LevelsTC
+    {        
+        Trigger0 = VBUMP_CORE_lvl_force_nom;
+        Trigger1 = VBUMP_CORE_lvl_force_1300mV;
+        Trigger2 = pwrdn_lvl_cat0;
+        Trigger3 = pwrdn_lvl_cat0;
+        Trigger4 = pwrdn_lvl_cat0;
+        Trigger5 = pwrdn_lvl_cat0;
+        Trigger6 = pwrdn_lvl_cat0;
+        Trigger7 = pwrdn_lvl_cat0;
+        Trigger8 = pwrdn_lvl_cat0;
+        Trigger9 = pwrdn_lvl_cat0;
+        Trigger10 = pwrdn_lvl_cat0;
+        Trigger11 = pwrdn_lvl_cat0;
+        Trigger12 = pwrdn_lvl_cat0;
+        Trigger13 = pwrdn_lvl_cat0;
+        Trigger14 = pwrdn_lvl_cat0;
+        Trigger15 = pwrdn_lvl_cat0;
+    }
+}
+
+PatternTriggerMap VBUMP_CORE_1200mV_TriggerMap
+{
+    TriggerType LevelsTC
+    {        
+        Trigger0 = VBUMP_CORE_lvl_force_nom;
+        Trigger1 = VBUMP_CORE_lvl_force_1200mV;
+        Trigger2 = pwrdn_lvl_cat0;
+        Trigger3 = pwrdn_lvl_cat0;
+        Trigger4 = pwrdn_lvl_cat0;
+        Trigger5 = pwrdn_lvl_cat0;
+        Trigger6 = pwrdn_lvl_cat0;
+        Trigger7 = pwrdn_lvl_cat0;
+        Trigger8 = pwrdn_lvl_cat0;
+        Trigger9 = pwrdn_lvl_cat0;
+        Trigger10 = pwrdn_lvl_cat0;
+        Trigger11 = pwrdn_lvl_cat0;
+        Trigger12 = pwrdn_lvl_cat0;
+        Trigger13 = pwrdn_lvl_cat0;
+        Trigger14 = pwrdn_lvl_cat0;
+        Trigger15 = pwrdn_lvl_cat0;
+    }
+}
+
+PatternTriggerMap VBUMP_CORE_1100mV_TriggerMap
+{
+    TriggerType LevelsTC
+    {        
+        Trigger0 = VBUMP_CORE_lvl_force_nom;
+        Trigger1 = VBUMP_CORE_lvl_force_1100mV;
+        Trigger2 = pwrdn_lvl_cat0;
+        Trigger3 = pwrdn_lvl_cat0;
+        Trigger4 = pwrdn_lvl_cat0;
+        Trigger5 = pwrdn_lvl_cat0;
+        Trigger6 = pwrdn_lvl_cat0;
+        Trigger7 = pwrdn_lvl_cat0;
+        Trigger8 = pwrdn_lvl_cat0;
+        Trigger9 = pwrdn_lvl_cat0;
+        Trigger10 = pwrdn_lvl_cat0;
+        Trigger11 = pwrdn_lvl_cat0;
+        Trigger12 = pwrdn_lvl_cat0;
+        Trigger13 = pwrdn_lvl_cat0;
+        Trigger14 = pwrdn_lvl_cat0;
+        Trigger15 = pwrdn_lvl_cat0;
+    }
+}
+
+PatternTriggerMap VBUMP_ATOM_1600mV_TriggerMap
+{
+    TriggerType LevelsTC
+    {        
+        Trigger0 = VBUMP_ATOM_lvl_force_nom;
+        Trigger1 = VBUMP_ATOM_lvl_force_1600mV;
+        Trigger2 = pwrdn_lvl_cat0;
+        Trigger3 = pwrdn_lvl_cat0;
+        Trigger4 = pwrdn_lvl_cat0;
+        Trigger5 = pwrdn_lvl_cat0;
+        Trigger6 = pwrdn_lvl_cat0;
+        Trigger7 = pwrdn_lvl_cat0;
+        Trigger8 = pwrdn_lvl_cat0;
+        Trigger9 = pwrdn_lvl_cat0;
+        Trigger10 = pwrdn_lvl_cat0;
+        Trigger11 = pwrdn_lvl_cat0;
+        Trigger12 = pwrdn_lvl_cat0;
+        Trigger13 = pwrdn_lvl_cat0;
+        Trigger14 = pwrdn_lvl_cat0;
+        Trigger15 = pwrdn_lvl_cat0;
+    }
+}
+
+PatternTriggerMap VBUMP_ATOM_1500mV_TriggerMap
+{
+    TriggerType LevelsTC
+    {        
+        Trigger0 = VBUMP_ATOM_lvl_force_nom;
+        Trigger1 = VBUMP_ATOM_lvl_force_1500mV;
+        Trigger2 = pwrdn_lvl_cat0;
+        Trigger3 = pwrdn_lvl_cat0;
+        Trigger4 = pwrdn_lvl_cat0;
+        Trigger5 = pwrdn_lvl_cat0;
+        Trigger6 = pwrdn_lvl_cat0;
+        Trigger7 = pwrdn_lvl_cat0;
+        Trigger8 = pwrdn_lvl_cat0;
+        Trigger9 = pwrdn_lvl_cat0;
+        Trigger10 = pwrdn_lvl_cat0;
+        Trigger11 = pwrdn_lvl_cat0;
+        Trigger12 = pwrdn_lvl_cat0;
+        Trigger13 = pwrdn_lvl_cat0;
+        Trigger14 = pwrdn_lvl_cat0;
+        Trigger15 = pwrdn_lvl_cat0;
+    }
+}
+
+PatternTriggerMap VBUMP_ATOM_1400mV_TriggerMap
+{
+    TriggerType LevelsTC
+    {        
+        Trigger0 = VBUMP_ATOM_lvl_force_nom;
+        Trigger1 = VBUMP_ATOM_lvl_force_1400mV;
+        Trigger2 = pwrdn_lvl_cat0;
+        Trigger3 = pwrdn_lvl_cat0;
+        Trigger4 = pwrdn_lvl_cat0;
+        Trigger5 = pwrdn_lvl_cat0;
+        Trigger6 = pwrdn_lvl_cat0;
+        Trigger7 = pwrdn_lvl_cat0;
+        Trigger8 = pwrdn_lvl_cat0;
+        Trigger9 = pwrdn_lvl_cat0;
+        Trigger10 = pwrdn_lvl_cat0;
+        Trigger11 = pwrdn_lvl_cat0;
+        Trigger12 = pwrdn_lvl_cat0;
+        Trigger13 = pwrdn_lvl_cat0;
+        Trigger14 = pwrdn_lvl_cat0;
+        Trigger15 = pwrdn_lvl_cat0;
+    }
+}
+
+PatternTriggerMap VBUMP_ATOM_1300mV_TriggerMap
+{
+    TriggerType LevelsTC
+    {        
+        Trigger0 = VBUMP_ATOM_lvl_force_nom;
+        Trigger1 = VBUMP_ATOM_lvl_force_1300mV;
+        Trigger2 = pwrdn_lvl_cat0;
+        Trigger3 = pwrdn_lvl_cat0;
+        Trigger4 = pwrdn_lvl_cat0;
+        Trigger5 = pwrdn_lvl_cat0;
+        Trigger6 = pwrdn_lvl_cat0;
+        Trigger7 = pwrdn_lvl_cat0;
+        Trigger8 = pwrdn_lvl_cat0;
+        Trigger9 = pwrdn_lvl_cat0;
+        Trigger10 = pwrdn_lvl_cat0;
+        Trigger11 = pwrdn_lvl_cat0;
+        Trigger12 = pwrdn_lvl_cat0;
+        Trigger13 = pwrdn_lvl_cat0;
+        Trigger14 = pwrdn_lvl_cat0;
+        Trigger15 = pwrdn_lvl_cat0;
+    }
+}
+
+PatternTriggerMap VBUMP_ATOM_1200mV_TriggerMap
+{
+    TriggerType LevelsTC
+    {        
+        Trigger0 = VBUMP_ATOM_lvl_force_nom;
+        Trigger1 = VBUMP_ATOM_lvl_force_1200mV;
+        Trigger2 = pwrdn_lvl_cat0;
+        Trigger3 = pwrdn_lvl_cat0;
+        Trigger4 = pwrdn_lvl_cat0;
+        Trigger5 = pwrdn_lvl_cat0;
+        Trigger6 = pwrdn_lvl_cat0;
+        Trigger7 = pwrdn_lvl_cat0;
+        Trigger8 = pwrdn_lvl_cat0;
+        Trigger9 = pwrdn_lvl_cat0;
+        Trigger10 = pwrdn_lvl_cat0;
+        Trigger11 = pwrdn_lvl_cat0;
+        Trigger12 = pwrdn_lvl_cat0;
+        Trigger13 = pwrdn_lvl_cat0;
+        Trigger14 = pwrdn_lvl_cat0;
+        Trigger15 = pwrdn_lvl_cat0;
+    }
+}
+
+PatternTriggerMap VBUMP_ATOM_1100mV_TriggerMap
+{
+    TriggerType LevelsTC
+    {        
+        Trigger0 = VBUMP_ATOM_lvl_force_nom;
+        Trigger1 = VBUMP_ATOM_lvl_force_1100mV;
+        Trigger2 = pwrdn_lvl_cat0;
+        Trigger3 = pwrdn_lvl_cat0;
+        Trigger4 = pwrdn_lvl_cat0;
+        Trigger5 = pwrdn_lvl_cat0;
+        Trigger6 = pwrdn_lvl_cat0;
+        Trigger7 = pwrdn_lvl_cat0;
+        Trigger8 = pwrdn_lvl_cat0;
+        Trigger9 = pwrdn_lvl_cat0;
+        Trigger10 = pwrdn_lvl_cat0;
+        Trigger11 = pwrdn_lvl_cat0;
+        Trigger12 = pwrdn_lvl_cat0;
+        Trigger13 = pwrdn_lvl_cat0;
+        Trigger14 = pwrdn_lvl_cat0;
+        Trigger15 = pwrdn_lvl_cat0;
+    }
+}
+
+PatternTriggerMap VBUMP_RING_1600mV_TriggerMap
+{
+    TriggerType LevelsTC
+    {        
+        Trigger0 = VBUMP_RING_lvl_force_nom;
+        Trigger1 = VBUMP_RING_lvl_force_1600mV;
+        Trigger2 = pwrdn_lvl_cat0;
+        Trigger3 = pwrdn_lvl_cat0;
+        Trigger4 = pwrdn_lvl_cat0;
+        Trigger5 = pwrdn_lvl_cat0;
+        Trigger6 = pwrdn_lvl_cat0;
+        Trigger7 = pwrdn_lvl_cat0;
+        Trigger8 = pwrdn_lvl_cat0;
+        Trigger9 = pwrdn_lvl_cat0;
+        Trigger10 = pwrdn_lvl_cat0;
+        Trigger11 = pwrdn_lvl_cat0;
+        Trigger12 = pwrdn_lvl_cat0;
+        Trigger13 = pwrdn_lvl_cat0;
+        Trigger14 = pwrdn_lvl_cat0;
+        Trigger15 = pwrdn_lvl_cat0;
+    }
+}
+
+PatternTriggerMap VBUMP_RING_1500mV_TriggerMap
+{
+    TriggerType LevelsTC
+    {        
+        Trigger0 = VBUMP_RING_lvl_force_nom;
+        Trigger1 = VBUMP_RING_lvl_force_1500mV;
+        Trigger2 = pwrdn_lvl_cat0;
+        Trigger3 = pwrdn_lvl_cat0;
+        Trigger4 = pwrdn_lvl_cat0;
+        Trigger5 = pwrdn_lvl_cat0;
+        Trigger6 = pwrdn_lvl_cat0;
+        Trigger7 = pwrdn_lvl_cat0;
+        Trigger8 = pwrdn_lvl_cat0;
+        Trigger9 = pwrdn_lvl_cat0;
+        Trigger10 = pwrdn_lvl_cat0;
+        Trigger11 = pwrdn_lvl_cat0;
+        Trigger12 = pwrdn_lvl_cat0;
+        Trigger13 = pwrdn_lvl_cat0;
+        Trigger14 = pwrdn_lvl_cat0;
+        Trigger15 = pwrdn_lvl_cat0;
+    }
+}
+
+PatternTriggerMap VBUMP_RING_1400mV_TriggerMap
+{
+    TriggerType LevelsTC
+    {        
+        Trigger0 = VBUMP_RING_lvl_force_nom;
+        Trigger1 = VBUMP_RING_lvl_force_1400mV;
+        Trigger2 = pwrdn_lvl_cat0;
+        Trigger3 = pwrdn_lvl_cat0;
+        Trigger4 = pwrdn_lvl_cat0;
+        Trigger5 = pwrdn_lvl_cat0;
+        Trigger6 = pwrdn_lvl_cat0;
+        Trigger7 = pwrdn_lvl_cat0;
+        Trigger8 = pwrdn_lvl_cat0;
+        Trigger9 = pwrdn_lvl_cat0;
+        Trigger10 = pwrdn_lvl_cat0;
+        Trigger11 = pwrdn_lvl_cat0;
+        Trigger12 = pwrdn_lvl_cat0;
+        Trigger13 = pwrdn_lvl_cat0;
+        Trigger14 = pwrdn_lvl_cat0;
+        Trigger15 = pwrdn_lvl_cat0;
+    }
+}
+
+PatternTriggerMap VBUMP_RING_1300mV_TriggerMap
+{
+    TriggerType LevelsTC
+    {        
+        Trigger0 = VBUMP_RING_lvl_force_nom;
+        Trigger1 = VBUMP_RING_lvl_force_1300mV;
+        Trigger2 = pwrdn_lvl_cat0;
+        Trigger3 = pwrdn_lvl_cat0;
+        Trigger4 = pwrdn_lvl_cat0;
+        Trigger5 = pwrdn_lvl_cat0;
+        Trigger6 = pwrdn_lvl_cat0;
+        Trigger7 = pwrdn_lvl_cat0;
+        Trigger8 = pwrdn_lvl_cat0;
+        Trigger9 = pwrdn_lvl_cat0;
+        Trigger10 = pwrdn_lvl_cat0;
+        Trigger11 = pwrdn_lvl_cat0;
+        Trigger12 = pwrdn_lvl_cat0;
+        Trigger13 = pwrdn_lvl_cat0;
+        Trigger14 = pwrdn_lvl_cat0;
+        Trigger15 = pwrdn_lvl_cat0;
+    }
+}
+
+PatternTriggerMap VBUMP_RING_1200mV_TriggerMap
+{
+    TriggerType LevelsTC
+    {        
+        Trigger0 = VBUMP_RING_lvl_force_nom;
+        Trigger1 = VBUMP_RING_lvl_force_1200mV;
+        Trigger2 = pwrdn_lvl_cat0;
+        Trigger3 = pwrdn_lvl_cat0;
+        Trigger4 = pwrdn_lvl_cat0;
+        Trigger5 = pwrdn_lvl_cat0;
+        Trigger6 = pwrdn_lvl_cat0;
+        Trigger7 = pwrdn_lvl_cat0;
+        Trigger8 = pwrdn_lvl_cat0;
+        Trigger9 = pwrdn_lvl_cat0;
+        Trigger10 = pwrdn_lvl_cat0;
+        Trigger11 = pwrdn_lvl_cat0;
+        Trigger12 = pwrdn_lvl_cat0;
+        Trigger13 = pwrdn_lvl_cat0;
+        Trigger14 = pwrdn_lvl_cat0;
+        Trigger15 = pwrdn_lvl_cat0;
+    }
+}
+
+PatternTriggerMap VBUMP_RING_1100mV_TriggerMap
+{
+    TriggerType LevelsTC
+    {        
+        Trigger0 = VBUMP_RING_lvl_force_nom;
+        Trigger1 = VBUMP_RING_lvl_force_1100mV;
+        Trigger2 = pwrdn_lvl_cat0;
+        Trigger3 = pwrdn_lvl_cat0;
+        Trigger4 = pwrdn_lvl_cat0;
+        Trigger5 = pwrdn_lvl_cat0;
+        Trigger6 = pwrdn_lvl_cat0;
+        Trigger7 = pwrdn_lvl_cat0;
+        Trigger8 = pwrdn_lvl_cat0;
+        Trigger9 = pwrdn_lvl_cat0;
+        Trigger10 = pwrdn_lvl_cat0;
+        Trigger11 = pwrdn_lvl_cat0;
+        Trigger12 = pwrdn_lvl_cat0;
+        Trigger13 = pwrdn_lvl_cat0;
+        Trigger14 = pwrdn_lvl_cat0;
+        Trigger15 = pwrdn_lvl_cat0;
+    }
+}
+
+PatternTriggerMap VBUMP_VNNAON_1600mV_TriggerMap
+{
+    TriggerType LevelsTC
+    {        
+        Trigger0 = VBUMP_VNNAON_lvl_force_nom;
+        Trigger1 = VBUMP_VNNAON_lvl_force_1600mV;
+        Trigger2 = pwrdn_lvl_cat0;
+        Trigger3 = pwrdn_lvl_cat0;
+        Trigger4 = pwrdn_lvl_cat0;
+        Trigger5 = pwrdn_lvl_cat0;
+        Trigger6 = pwrdn_lvl_cat0;
+        Trigger7 = pwrdn_lvl_cat0;
+        Trigger8 = pwrdn_lvl_cat0;
+        Trigger9 = pwrdn_lvl_cat0;
+        Trigger10 = pwrdn_lvl_cat0;
+        Trigger11 = pwrdn_lvl_cat0;
+        Trigger12 = pwrdn_lvl_cat0;
+        Trigger13 = pwrdn_lvl_cat0;
+        Trigger14 = pwrdn_lvl_cat0;
+        Trigger15 = pwrdn_lvl_cat0;
+    }
+}
+
+PatternTriggerMap VBUMP_VNNAON_1500mV_TriggerMap
+{
+    TriggerType LevelsTC
+    {        
+        Trigger0 = VBUMP_VNNAON_lvl_force_nom;
+        Trigger1 = VBUMP_VNNAON_lvl_force_1500mV;
+        Trigger2 = pwrdn_lvl_cat0;
+        Trigger3 = pwrdn_lvl_cat0;
+        Trigger4 = pwrdn_lvl_cat0;
+        Trigger5 = pwrdn_lvl_cat0;
+        Trigger6 = pwrdn_lvl_cat0;
+        Trigger7 = pwrdn_lvl_cat0;
+        Trigger8 = pwrdn_lvl_cat0;
+        Trigger9 = pwrdn_lvl_cat0;
+        Trigger10 = pwrdn_lvl_cat0;
+        Trigger11 = pwrdn_lvl_cat0;
+        Trigger12 = pwrdn_lvl_cat0;
+        Trigger13 = pwrdn_lvl_cat0;
+        Trigger14 = pwrdn_lvl_cat0;
+        Trigger15 = pwrdn_lvl_cat0;
+    }
+}
+
+PatternTriggerMap VBUMP_VNNAON_1400mV_TriggerMap
+{
+    TriggerType LevelsTC
+    {        
+        Trigger0 = VBUMP_VNNAON_lvl_force_nom;
+        Trigger1 = VBUMP_VNNAON_lvl_force_1400mV;
+        Trigger2 = pwrdn_lvl_cat0;
+        Trigger3 = pwrdn_lvl_cat0;
+        Trigger4 = pwrdn_lvl_cat0;
+        Trigger5 = pwrdn_lvl_cat0;
+        Trigger6 = pwrdn_lvl_cat0;
+        Trigger7 = pwrdn_lvl_cat0;
+        Trigger8 = pwrdn_lvl_cat0;
+        Trigger9 = pwrdn_lvl_cat0;
+        Trigger10 = pwrdn_lvl_cat0;
+        Trigger11 = pwrdn_lvl_cat0;
+        Trigger12 = pwrdn_lvl_cat0;
+        Trigger13 = pwrdn_lvl_cat0;
+        Trigger14 = pwrdn_lvl_cat0;
+        Trigger15 = pwrdn_lvl_cat0;
+    }
+}
+
+PatternTriggerMap VBUMP_VNNAON_1300mV_TriggerMap
+{
+    TriggerType LevelsTC
+    {        
+        Trigger0 = VBUMP_VNNAON_lvl_force_nom;
+        Trigger1 = VBUMP_VNNAON_lvl_force_1300mV;
+        Trigger2 = pwrdn_lvl_cat0;
+        Trigger3 = pwrdn_lvl_cat0;
+        Trigger4 = pwrdn_lvl_cat0;
+        Trigger5 = pwrdn_lvl_cat0;
+        Trigger6 = pwrdn_lvl_cat0;
+        Trigger7 = pwrdn_lvl_cat0;
+        Trigger8 = pwrdn_lvl_cat0;
+        Trigger9 = pwrdn_lvl_cat0;
+        Trigger10 = pwrdn_lvl_cat0;
+        Trigger11 = pwrdn_lvl_cat0;
+        Trigger12 = pwrdn_lvl_cat0;
+        Trigger13 = pwrdn_lvl_cat0;
+        Trigger14 = pwrdn_lvl_cat0;
+        Trigger15 = pwrdn_lvl_cat0;
+    }
+}
+
+PatternTriggerMap VBUMP_VNNAON_1200mV_TriggerMap
+{
+    TriggerType LevelsTC
+    {        
+        Trigger0 = VBUMP_VNNAON_lvl_force_nom;
+        Trigger1 = VBUMP_VNNAON_lvl_force_1200mV;
+        Trigger2 = pwrdn_lvl_cat0;
+        Trigger3 = pwrdn_lvl_cat0;
+        Trigger4 = pwrdn_lvl_cat0;
+        Trigger5 = pwrdn_lvl_cat0;
+        Trigger6 = pwrdn_lvl_cat0;
+        Trigger7 = pwrdn_lvl_cat0;
+        Trigger8 = pwrdn_lvl_cat0;
+        Trigger9 = pwrdn_lvl_cat0;
+        Trigger10 = pwrdn_lvl_cat0;
+        Trigger11 = pwrdn_lvl_cat0;
+        Trigger12 = pwrdn_lvl_cat0;
+        Trigger13 = pwrdn_lvl_cat0;
+        Trigger14 = pwrdn_lvl_cat0;
+        Trigger15 = pwrdn_lvl_cat0;
+    }
+}
+
+PatternTriggerMap VBUMP_VNNAON_1100mV_TriggerMap
+{
+    TriggerType LevelsTC
+    {        
+        Trigger0 = VBUMP_VNNAON_lvl_force_nom;
+        Trigger1 = VBUMP_VNNAON_lvl_force_1100mV;
+        Trigger2 = pwrdn_lvl_cat0;
+        Trigger3 = pwrdn_lvl_cat0;
+        Trigger4 = pwrdn_lvl_cat0;
+        Trigger5 = pwrdn_lvl_cat0;
+        Trigger6 = pwrdn_lvl_cat0;
+        Trigger7 = pwrdn_lvl_cat0;
+        Trigger8 = pwrdn_lvl_cat0;
+        Trigger9 = pwrdn_lvl_cat0;
+        Trigger10 = pwrdn_lvl_cat0;
+        Trigger11 = pwrdn_lvl_cat0;
+        Trigger12 = pwrdn_lvl_cat0;
+        Trigger13 = pwrdn_lvl_cat0;
+        Trigger14 = pwrdn_lvl_cat0;
+        Trigger15 = pwrdn_lvl_cat0;
+    }
+}

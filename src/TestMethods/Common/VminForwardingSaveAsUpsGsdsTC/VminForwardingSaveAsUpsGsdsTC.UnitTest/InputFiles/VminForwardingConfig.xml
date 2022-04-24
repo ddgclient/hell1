@@ -1,0 +1,1365 @@
+<?xml version="1.0" encoding="utf-8"?>
+<infra_setup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="GEN_FASTINFRA_tt.xsd">
+	<dfdv_evaluation_order>CR:F6,CR:F5,CR:F4,CR:F3,CR:F2,CR:F1,CRF:F6,CRF:F5,CRF:F4,CRF:F3,CRF:F2,CRF:F1,CRX3:F6,CRX3:F5,CRX3:F4,CRX3:F3,CRX3:F2,CRX3:F1,CRX2:F6,CRX2:F5,CRX2:F4,CRX2:F3,CRX2:F2,CRX2:F1,CLR:F6,CLR:F5,CLR:F4,CLR:F3,CLR:F2,CLR:F1,SAQ:F6,SAQ:F4,SAQ:F1,GTS:F5,GTS:F4,GTS:F3,GTS:F2,GTS:F1,SAPS:F5,SAPS:F3,SAPS:F1,SAIS:F5,SAIS:F1,SAF:F5,SAF:F1,SACD:F4,SACD:F2,SACD:F1,GTSM:F5,GTSM:F3,GTSM:F2,GTSM:F1</dfdv_evaluation_order>
+	<corner_identifier_mapping>
+		<!-- Core Domain's Core, Ring and AVX -->
+		<map_item shortcut="CR_F6">206</map_item>
+		<map_item shortcut="CR_F5">205</map_item>
+		<map_item shortcut="CR_F4">204</map_item>
+		<map_item shortcut="CR_F3">203</map_item>
+		<map_item shortcut="CR_F2">202</map_item>
+		<map_item shortcut="CR_F1">201</map_item>
+		<map_item shortcut="CRF_F6">226</map_item>
+		<map_item shortcut="CRF_F5">225</map_item>
+		<map_item shortcut="CRF_F4">224</map_item>
+		<map_item shortcut="CRF_F3">223</map_item>
+		<map_item shortcut="CRF_F2">222</map_item>
+		<map_item shortcut="CRF_F1">221</map_item>
+		<map_item shortcut="CLR_F6">216</map_item>
+		<map_item shortcut="CLR_F5">215</map_item>
+		<map_item shortcut="CLR_F4">214</map_item>
+		<map_item shortcut="CLR_F3">213</map_item>
+		<map_item shortcut="CLR_F2">212</map_item>
+		<map_item shortcut="CLR_F1">211</map_item>
+		<map_item shortcut="CRX2_F6">256</map_item>
+		<map_item shortcut="CRX2_F5">255</map_item>
+		<map_item shortcut="CRX2_F4">254</map_item>
+		<map_item shortcut="CRX2_F3">253</map_item>
+		<map_item shortcut="CRX2_F2">252</map_item>
+		<map_item shortcut="CRX2_F1">251</map_item>
+		<map_item shortcut="CRX3_F6">266</map_item>
+		<map_item shortcut="CRX3_F5">265</map_item>
+		<map_item shortcut="CRX3_F4">264</map_item>
+		<map_item shortcut="CRX3_F3">263</map_item>
+		<map_item shortcut="CRX3_F2">262</map_item>
+		<map_item shortcut="CRX3_F1">261</map_item>
+		<!-- GFx Domain GTS -->
+		<map_item shortcut="GTS_F5">305</map_item>
+		<map_item shortcut="GTS_F4">304</map_item>
+		<map_item shortcut="GTS_F3">303</map_item>
+		<map_item shortcut="GTS_F2">302</map_item>
+		<map_item shortcut="GTS_F1">301</map_item>
+		<map_item shortcut="GTSM_F5">325</map_item>
+		<map_item shortcut="GTSM_F3">323</map_item>
+		<map_item shortcut="GTSM_F2">322</map_item>
+		<map_item shortcut="GTSM_F1">321</map_item>
+		<!-- UCore Domain's SAQ -->
+		<map_item shortcut="SAQ_F6">406</map_item>
+		<map_item shortcut="SAQ_F4">404</map_item>
+		<map_item shortcut="SAQ_F1">401</map_item>
+		<!-- UCore Domain's SAI -->
+		<map_item shortcut="SAPS_F5">515</map_item>
+		<map_item shortcut="SAPS_F3">513</map_item>
+		<map_item shortcut="SAPS_F1">511</map_item>
+		<map_item shortcut="SAIS_F5">525</map_item>
+		<map_item shortcut="SAIS_F1">521</map_item>
+		<!-- UCore Domain's SAF -->
+		<map_item shortcut="SAF_F5">535</map_item>
+		<map_item shortcut="SAF_F1">531</map_item>
+		<!-- UCore Display Domain SACD -->
+		<map_item shortcut="SACD_F4">504</map_item>
+		<map_item shortcut="SACD_F2">502</map_item>
+		<map_item shortcut="SACD_F1">501</map_item>
+		<!-- Core multi Domain's Core and Ring -->
+		<map_item shortcut="IAVmin_F6">206,216</map_item>
+		<map_item shortcut="IAVmin_F5">205,215</map_item>
+		<map_item shortcut="IAVmin_F4">204,214</map_item>
+		<map_item shortcut="IAVmin_F3">203,213</map_item>
+		<map_item shortcut="IAVmin_F2">202,212</map_item>
+		<map_item shortcut="IAVmin_F1">201,211</map_item>
+		<map_item shortcut="SAFSAQ_F1">531,401</map_item>
+		<map_item shortcut="SAFSAQ_F4">535,404</map_item>
+		<map_item shortcut="SAFIVR_F1">401,501,511,521,531</map_item>
+		<!-- concurrent plist execution -->
+		<map_item shortcut="CCR_P2T1">203,211</map_item>
+		<map_item shortcut="CCR_P2T2">202,212</map_item>
+		<map_item shortcut="CCR_P3T1">303,201</map_item>
+		<map_item shortcut="CCR_P3T2">303,203</map_item>
+		<map_item shortcut="CCR_P3T3">301,201</map_item>
+		<map_item shortcut="CCR_P3T4">301,203</map_item>
+		<map_item shortcut="CCR_P4T1">303,531</map_item>
+		<map_item shortcut="CCR_P4T2">301,531</map_item>
+		<map_item shortcut="CCR_P4T3">323,401</map_item>
+	</corner_identifier_mapping>
+	<power_domain name="CR%core%" instances="core:0,1,2,3,4,5,6,7" group="CR">
+		<pin>FIVR_C%core%_VT_VLC</pin>
+		<apply_voltage_expression>V[]</apply_voltage_expression>
+		<corners>
+			<corner name="F6">
+				<timings_freq_attr>CR_F6_FREQ</timings_freq_attr>
+				<tokens_for_downstream_sockets>
+					<vmin_dff_token>HF6CR</vmin_dff_token>
+					<itd_vmin_dff_token>CF6CR</itd_vmin_dff_token>
+				</tokens_for_downstream_sockets>
+				<lvl_selects>
+					<value>206</value>
+				</lvl_selects>
+				<gsds_vmin_source>
+					<voltage volt_unit="V" datatype="piped">G.U.S.DFFCHECK_CRF6</voltage>
+				</gsds_vmin_source>
+				<interdomaincorner_vmin_source>
+					<domaincorner>
+						<domain_name>CR%core%</domain_name>
+						<corner_name>F5</corner_name>
+					</domaincorner>
+				</interdomaincorner_vmin_source>
+				<store_results_in_gsds>
+					<voltage>G.U.D.CURRENT_FAST_VMIN_VCCC_CR%core%_F6</voltage>
+					<frequency>G.U.D.CURRENT_FAST_VMINFREQUENCY_CR%core%_F6</frequency>
+				</store_results_in_gsds>
+			</corner>
+			<corner name="F5" stc_interpolation="true">
+				<timings_freq_attr>CR_F5_FREQ</timings_freq_attr>
+				<tokens_for_downstream_sockets>
+					<vmin_dff_token>HF5CR</vmin_dff_token>
+					<itd_vmin_dff_token>CF5CR</itd_vmin_dff_token>
+				</tokens_for_downstream_sockets>
+				<lvl_selects>
+					<value>205</value>
+				</lvl_selects>
+				<gsds_vmin_source>
+					<voltage volt_unit="V" datatype="piped">G.U.S.DFFCHECK_CRF5</voltage>
+				</gsds_vmin_source>
+				<interdomaincorner_vmin_source>
+					<domaincorner>
+						<domain_name>CR%core%</domain_name>
+						<corner_name>F4</corner_name>
+					</domaincorner>
+					<domaincorner>
+						<domain_name>CR%core%F</domain_name>
+						<corner_name>F5</corner_name>
+					</domaincorner>
+				</interdomaincorner_vmin_source>
+				<store_results_in_gsds>
+					<voltage>G.U.D.CURRENT_FAST_VMIN_VCCC_CR%core%_F5</voltage>
+					<frequency>G.U.D.CURRENT_FAST_VMINFREQUENCY_CR%core%_F5</frequency>
+				</store_results_in_gsds>
+			</corner>
+			<corner name="F4" stc_interpolation="true">
+				<timings_freq_attr>CR_F4_FREQ</timings_freq_attr>
+				<tokens_for_downstream_sockets>
+					<vmin_dff_token>HF4CR</vmin_dff_token>
+					<itd_vmin_dff_token>CF4CR</itd_vmin_dff_token>
+				</tokens_for_downstream_sockets>
+				<lvl_selects>
+					<value>204</value>
+				</lvl_selects>
+				<gsds_vmin_source>
+					<voltage volt_unit="V" datatype="piped">G.U.S.DFFCHECK_CRF4</voltage>
+				</gsds_vmin_source>
+				<interdomaincorner_vmin_source>
+					<domaincorner>
+						<domain_name>CR%core%</domain_name>
+						<corner_name>F3</corner_name>
+					</domaincorner>
+					<domaincorner>
+						<domain_name>CR%core%F</domain_name>
+						<corner_name>F4</corner_name>
+					</domaincorner>
+				</interdomaincorner_vmin_source>
+				<store_results_in_gsds>
+					<voltage>G.U.D.CURRENT_FAST_VMIN_VCCC_CR%core%_F4</voltage>
+					<frequency>G.U.D.CURRENT_FAST_VMINFREQUENCY_CR%core%_F4</frequency>
+				</store_results_in_gsds>
+			</corner>
+			<corner name="F3">
+				<timings_freq_attr>CR_F3_FREQ</timings_freq_attr>
+				<tokens_for_downstream_sockets>
+					<vmin_dff_token>HF3CR</vmin_dff_token>
+					<itd_vmin_dff_token>CF3CR</itd_vmin_dff_token>
+				</tokens_for_downstream_sockets>
+				<lvl_selects>
+					<value>203</value>
+				</lvl_selects>
+				<gsds_vmin_source>
+					<voltage volt_unit="V" datatype="piped">G.U.S.DFFCHECK_CRF3</voltage>
+				</gsds_vmin_source>
+				<interdomaincorner_vmin_source>
+					<domaincorner>
+						<domain_name>CR%core%</domain_name>
+						<corner_name>F2</corner_name>
+					</domaincorner>
+					<domaincorner>
+						<domain_name>CR%core%F</domain_name>
+						<corner_name>F3</corner_name>
+					</domaincorner>
+				</interdomaincorner_vmin_source>
+				<store_results_in_gsds>
+					<voltage>G.U.D.CURRENT_FAST_VMIN_VCCC_CR%core%_F3</voltage>
+					<frequency>G.U.D.CURRENT_FAST_VMINFREQUENCY_CR%core%_F3</frequency>
+				</store_results_in_gsds>
+			</corner>
+			<corner name="F2" stc_interpolation="true">
+				<timings_freq_attr>CR_F2_FREQ</timings_freq_attr>
+				<tokens_for_downstream_sockets>
+					<vmin_dff_token>HF2CR</vmin_dff_token>
+					<itd_vmin_dff_token>CF2CR</itd_vmin_dff_token>
+				</tokens_for_downstream_sockets>
+				<lvl_selects>
+					<value>202</value>
+				</lvl_selects>
+				<gsds_vmin_source>
+					<voltage volt_unit="V" datatype="piped">G.U.S.DFFCHECK_CRF2</voltage>
+				</gsds_vmin_source>
+				<interdomaincorner_vmin_source>
+					<domaincorner>
+						<domain_name>CR%core%</domain_name>
+						<corner_name>F1</corner_name>
+					</domaincorner>
+					<domaincorner>
+						<domain_name>CR%core%F</domain_name>
+						<corner_name>F2</corner_name>
+					</domaincorner>
+				</interdomaincorner_vmin_source>
+				<store_results_in_gsds>
+					<voltage>G.U.D.CURRENT_FAST_VMIN_VCCC_CR%core%_F2</voltage>
+					<frequency>G.U.D.CURRENT_FAST_VMINFREQUENCY_CR%core%_F2</frequency>
+				</store_results_in_gsds>
+			</corner>
+			<corner name="F1">
+				<timings_freq_attr>CR_F1_FREQ</timings_freq_attr>
+				<tokens_for_downstream_sockets>
+					<vmin_dff_token>HF1CR</vmin_dff_token>
+					<itd_vmin_dff_token>CF1CR</itd_vmin_dff_token>
+				</tokens_for_downstream_sockets>
+				<lvl_selects>
+					<value>201</value>
+				</lvl_selects>
+				<gsds_vmin_source>
+					<voltage volt_unit="V" datatype="piped">G.U.S.DFFCHECK_CRF1</voltage>
+				</gsds_vmin_source>
+				<interdomaincorner_vmin_source>
+					<domaincorner>
+						<domain_name>CR%core%F</domain_name>
+						<corner_name>F1</corner_name>
+					</domaincorner>
+				</interdomaincorner_vmin_source>
+				<store_results_in_gsds>
+					<voltage>G.U.D.CURRENT_FAST_VMIN_VCCC_CR%core%_F1</voltage>
+					<frequency>G.U.D.CURRENT_FAST_VMINFREQUENCY_CR%core%_F1</frequency>
+				</store_results_in_gsds>
+			</corner>
+		</corners>
+	</power_domain>
+	<power_domain name="CR%core%F" instances="core:0,1,2,3,4,5,6,7" group="CRF">
+		<pin>FIVR_C%core%_VT_VLC</pin>
+		<apply_voltage_expression>V[]</apply_voltage_expression>
+		<corners>
+			<corner name="F6">
+				<timings_freq_attr>CRF_F6_FREQ</timings_freq_attr>
+				<tokens_for_downstream_sockets>
+					<vmin_dff_token>HF6CRF</vmin_dff_token>
+					<itd_vmin_dff_token>CF6CRF</itd_vmin_dff_token>
+				</tokens_for_downstream_sockets>
+				<lvl_selects>
+					<value>226</value>
+				</lvl_selects>
+				<gsds_vmin_source>
+					<voltage volt_unit="V" datatype="piped">G.U.S.DFFCHECK_CRFF6</voltage>
+				</gsds_vmin_source>
+				<interdomaincorner_vmin_source>
+					<domaincorner>
+						<domain_name>CR%core%F</domain_name>
+						<corner_name>F5</corner_name>
+					</domaincorner>
+					<domaincorner>
+						<domain_name>CR%core%</domain_name>
+						<corner_name>F6</corner_name>
+					</domaincorner>
+				</interdomaincorner_vmin_source>
+				<store_results_in_gsds>
+					<voltage>G.U.D.CURRENT_FAST_VMIN_VCCC_CR%core%F_F6</voltage>
+					<frequency>G.U.D.CURRENT_FAST_VMINFREQUENCY_CR%core%F_F6</frequency>
+				</store_results_in_gsds>
+			</corner>
+			<corner name="F5" stc_interpolation="true">
+				<timings_freq_attr>CRF_F5_FREQ</timings_freq_attr>
+				<tokens_for_downstream_sockets>
+					<vmin_dff_token>HF5CRF</vmin_dff_token>
+					<itd_vmin_dff_token>CF5CRF</itd_vmin_dff_token>
+				</tokens_for_downstream_sockets>
+				<lvl_selects>
+					<value>225</value>
+				</lvl_selects>
+				<gsds_vmin_source>
+					<voltage volt_unit="V" datatype="piped">G.U.S.DFFCHECK_CRFF5</voltage>
+				</gsds_vmin_source>
+				<interdomaincorner_vmin_source>
+					<domaincorner>
+						<domain_name>CR%core%F</domain_name>
+						<corner_name>F4</corner_name>
+					</domaincorner>
+					<domaincorner>
+						<domain_name>CR%core%</domain_name>
+						<corner_name>F5</corner_name>
+					</domaincorner>
+				</interdomaincorner_vmin_source>
+				<store_results_in_gsds>
+					<voltage>G.U.D.CURRENT_FAST_VMIN_VCCC_CR%core%F_F5</voltage>
+					<frequency>G.U.D.CURRENT_FAST_VMINFREQUENCY_CR%core%F_F5</frequency>
+				</store_results_in_gsds>
+			</corner>
+			<corner name="F4" stc_interpolation="true">
+				<timings_freq_attr>CRF_F4_FREQ</timings_freq_attr>
+				<tokens_for_downstream_sockets>
+					<vmin_dff_token>HF4CRF</vmin_dff_token>
+					<itd_vmin_dff_token>CF4CRF</itd_vmin_dff_token>
+				</tokens_for_downstream_sockets>
+				<lvl_selects>
+					<value>224</value>
+				</lvl_selects>
+				<gsds_vmin_source>
+					<voltage volt_unit="V" datatype="piped">G.U.S.DFFCHECK_CRFF4</voltage>
+				</gsds_vmin_source>
+				<interdomaincorner_vmin_source>
+					<domaincorner>
+						<domain_name>CR%core%F</domain_name>
+						<corner_name>F3</corner_name>
+					</domaincorner>
+					<domaincorner>
+						<domain_name>CR%core%</domain_name>
+						<corner_name>F4</corner_name>
+					</domaincorner>
+				</interdomaincorner_vmin_source>
+				<store_results_in_gsds>
+					<voltage>G.U.D.CURRENT_FAST_VMIN_VCCC_CR%core%F_F4</voltage>
+					<frequency>G.U.D.CURRENT_FAST_VMINFREQUENCY_CR%core%F_F4</frequency>
+				</store_results_in_gsds>
+			</corner>
+			<corner name="F3">
+				<timings_freq_attr>CRF_F3_FREQ</timings_freq_attr>
+				<tokens_for_downstream_sockets>
+					<vmin_dff_token>HF3CRF</vmin_dff_token>
+					<itd_vmin_dff_token>CF3CRF</itd_vmin_dff_token>
+				</tokens_for_downstream_sockets>
+				<lvl_selects>
+					<value>223</value>
+				</lvl_selects>
+				<gsds_vmin_source>
+					<voltage volt_unit="V" datatype="piped">G.U.S.DFFCHECK_CRFF3</voltage>
+				</gsds_vmin_source>
+				<interdomaincorner_vmin_source>
+					<domaincorner>
+						<domain_name>CR%core%F</domain_name>
+						<corner_name>F2</corner_name>
+					</domaincorner>
+					<domaincorner>
+						<domain_name>CR%core%</domain_name>
+						<corner_name>F3</corner_name>
+					</domaincorner>
+				</interdomaincorner_vmin_source>
+				<store_results_in_gsds>
+					<voltage>G.U.D.CURRENT_FAST_VMIN_VCCC_CR%core%F_F3</voltage>
+					<frequency>G.U.D.CURRENT_FAST_VMINFREQUENCY_CR%core%F_F3</frequency>
+				</store_results_in_gsds>
+			</corner>
+			<corner name="F2" stc_interpolation="true">
+				<timings_freq_attr>CRF_F2_FREQ</timings_freq_attr>
+				<tokens_for_downstream_sockets>
+					<vmin_dff_token>HF2CRF</vmin_dff_token>
+					<itd_vmin_dff_token>CF2CRF</itd_vmin_dff_token>
+				</tokens_for_downstream_sockets>
+				<lvl_selects>
+					<value>222</value>
+				</lvl_selects>
+				<gsds_vmin_source>
+					<voltage volt_unit="V" datatype="piped">G.U.S.DFFCHECK_CRFF2</voltage>
+				</gsds_vmin_source>
+				<interdomaincorner_vmin_source>
+					<domaincorner>
+						<domain_name>CR%core%F</domain_name>
+						<corner_name>F1</corner_name>
+					</domaincorner>
+					<domaincorner>
+						<domain_name>CR%core%</domain_name>
+						<corner_name>F2</corner_name>
+					</domaincorner>
+				</interdomaincorner_vmin_source>
+				<store_results_in_gsds>
+					<voltage>G.U.D.CURRENT_FAST_VMIN_VCCC_CR%core%F_F2</voltage>
+					<frequency>G.U.D.CURRENT_FAST_VMINFREQUENCY_CR%core%F_F2</frequency>
+				</store_results_in_gsds>
+			</corner>
+			<corner name="F1">
+				<timings_freq_attr>CRF_F1_FREQ</timings_freq_attr>
+				<tokens_for_downstream_sockets>
+					<vmin_dff_token>HF1CRF</vmin_dff_token>
+					<itd_vmin_dff_token>CF1CRF</itd_vmin_dff_token>
+				</tokens_for_downstream_sockets>
+				<lvl_selects>
+					<value>221</value>
+				</lvl_selects>
+				<gsds_vmin_source>
+					<voltage volt_unit="V" datatype="piped">G.U.S.DFFCHECK_CRFF1</voltage>
+				</gsds_vmin_source>
+				<interdomaincorner_vmin_source>
+					<domaincorner>
+						<domain_name>CR%core%</domain_name>
+						<corner_name>F1</corner_name>
+					</domaincorner>
+				</interdomaincorner_vmin_source>
+				<store_results_in_gsds>
+					<voltage>G.U.D.CURRENT_FAST_VMIN_VCCC_CR%core%F_F1</voltage>
+					<frequency>G.U.D.CURRENT_FAST_VMINFREQUENCY_CR%core%F_F1</frequency>
+				</store_results_in_gsds>
+			</corner>
+		</corners>
+	</power_domain>
+	<power_domain name="CLR">
+		<pin>FIVR_CCF_VT_VLC</pin>
+		<apply_voltage_expression>V[]</apply_voltage_expression>
+		<corners>
+			<corner name="F6">
+				<timings_freq_attr>CLR_F6_FREQ</timings_freq_attr>
+				<tokens_for_downstream_sockets>
+					<vmin_dff_token>HF6CLR</vmin_dff_token>
+					<itd_vmin_dff_token>CF6CLR</itd_vmin_dff_token>
+				</tokens_for_downstream_sockets>
+				<lvl_selects>
+					<value>216</value>
+				</lvl_selects>
+				<gsds_vmin_source>
+					<voltage volt_unit="V" datatype="piped">G.U.S.DFFCHECK_CLRF6</voltage>
+				</gsds_vmin_source>
+				<interdomaincorner_vmin_source>
+					<domaincorner>
+						<domain_name>CLR</domain_name>
+						<corner_name>F5</corner_name>
+					</domaincorner>
+				</interdomaincorner_vmin_source>
+				<store_results_in_gsds>
+					<voltage>G.U.D.CURRENT_FAST_VMIN_VCCC_CLR_F6</voltage>
+					<frequency>G.U.D.CURRENT_FAST_VMINFREQUENCY_CLR_F6</frequency>
+				</store_results_in_gsds>
+			</corner>
+			<corner name="F5" stc_interpolation="true">
+				<timings_freq_attr>CLR_F5_FREQ</timings_freq_attr>
+				<tokens_for_downstream_sockets>
+					<vmin_dff_token>HF5CLR</vmin_dff_token>
+					<itd_vmin_dff_token>CF5CLR</itd_vmin_dff_token>
+				</tokens_for_downstream_sockets>
+				<lvl_selects>
+					<value>215</value>
+				</lvl_selects>
+				<gsds_vmin_source>
+					<voltage volt_unit="V" datatype="piped">G.U.S.DFFCHECK_CLRF5</voltage>
+				</gsds_vmin_source>
+				<interdomaincorner_vmin_source>
+					<domaincorner>
+						<domain_name>CLR</domain_name>
+						<corner_name>F4</corner_name>
+					</domaincorner>
+				</interdomaincorner_vmin_source>
+				<store_results_in_gsds>
+					<voltage>G.U.D.CURRENT_FAST_VMIN_VCCC_CLR_F5</voltage>
+					<frequency>G.U.D.CURRENT_FAST_VMINFREQUENCY_CLR_F5</frequency>
+				</store_results_in_gsds>
+			</corner>
+			<corner name="F4" stc_interpolation="true">
+				<timings_freq_attr>CLR_F4_FREQ</timings_freq_attr>
+				<tokens_for_downstream_sockets>
+					<vmin_dff_token>HF4CLR</vmin_dff_token>
+					<itd_vmin_dff_token>CF4CLR</itd_vmin_dff_token>
+				</tokens_for_downstream_sockets>
+				<lvl_selects>
+					<value>214</value>
+				</lvl_selects>
+				<gsds_vmin_source>
+					<voltage volt_unit="V" datatype="piped">G.U.S.DFFCHECK_CLRF4</voltage>
+				</gsds_vmin_source>
+				<interdomaincorner_vmin_source>
+					<domaincorner>
+						<domain_name>CLR</domain_name>
+						<corner_name>F3</corner_name>
+					</domaincorner>
+				</interdomaincorner_vmin_source>
+				<store_results_in_gsds>
+					<voltage>G.U.D.CURRENT_FAST_VMIN_VCCC_CLR_F4</voltage>
+					<frequency>G.U.D.CURRENT_FAST_VMINFREQUENCY_CLR_F4</frequency>
+				</store_results_in_gsds>
+			</corner>
+			<corner name="F3">
+				<timings_freq_attr>CLR_F3_FREQ</timings_freq_attr>
+				<tokens_for_downstream_sockets>
+					<vmin_dff_token>HF3CLR</vmin_dff_token>
+					<itd_vmin_dff_token>CF3CLR</itd_vmin_dff_token>
+				</tokens_for_downstream_sockets>
+				<lvl_selects>
+					<value>213</value>
+				</lvl_selects>
+				<gsds_vmin_source>
+					<voltage volt_unit="V" datatype="piped">G.U.S.DFFCHECK_CLRF3</voltage>
+				</gsds_vmin_source>
+				<interdomaincorner_vmin_source>
+					<domaincorner>
+						<domain_name>CLR</domain_name>
+						<corner_name>F2</corner_name>
+					</domaincorner>
+				</interdomaincorner_vmin_source>
+				<store_results_in_gsds>
+					<voltage>G.U.D.CURRENT_FAST_VMIN_VCCC_CLR_F3</voltage>
+					<frequency>G.U.D.CURRENT_FAST_VMINFREQUENCY_CLR_F3</frequency>
+				</store_results_in_gsds>
+			</corner>
+			<corner name="F2" stc_interpolation="true">
+				<timings_freq_attr>CLR_F2_FREQ</timings_freq_attr>
+				<tokens_for_downstream_sockets>
+					<vmin_dff_token>HF2CLR</vmin_dff_token>
+					<itd_vmin_dff_token>CF2CLR</itd_vmin_dff_token>
+				</tokens_for_downstream_sockets>
+				<lvl_selects>
+					<value>212</value>
+				</lvl_selects>
+				<gsds_vmin_source>
+					<voltage volt_unit="V" datatype="piped">G.U.S.DFFCHECK_CLRF2</voltage>
+				</gsds_vmin_source>
+				<interdomaincorner_vmin_source>
+					<domaincorner>
+						<domain_name>CLR</domain_name>
+						<corner_name>F1</corner_name>
+					</domaincorner>
+				</interdomaincorner_vmin_source>
+				<store_results_in_gsds>
+					<voltage>G.U.D.CURRENT_FAST_VMIN_VCCC_CLR_F2</voltage>
+					<frequency>G.U.D.CURRENT_FAST_VMINFREQUENCY_CLR_F2</frequency>
+				</store_results_in_gsds>
+			</corner>
+			<corner name="F1">
+				<timings_freq_attr>CLR_F1_FREQ</timings_freq_attr>
+				<tokens_for_downstream_sockets>
+					<vmin_dff_token>HF1CLR</vmin_dff_token>
+					<itd_vmin_dff_token>CF1CLR</itd_vmin_dff_token>
+				</tokens_for_downstream_sockets>
+				<lvl_selects>
+					<value>211</value>
+				</lvl_selects>
+				<gsds_vmin_source>
+					<voltage volt_unit="V" datatype="piped">G.U.S.DFFCHECK_CLRF1</voltage>
+				</gsds_vmin_source>
+				<store_results_in_gsds>
+					<voltage>G.U.D.CURRENT_FAST_VMIN_VCCC_CLR_F1</voltage>
+					<frequency>G.U.D.CURRENT_FAST_VMINFREQUENCY_CLR_F1</frequency>
+				</store_results_in_gsds>
+			</corner>
+		</corners>
+	</power_domain>
+	<power_domain name="CR%core%X2" instances="core:0,1,2,3,4,5,6,7" group="CRX2">
+		<pin>FIVR_C%core%_VT_VLC</pin>
+		<apply_voltage_expression>V[]</apply_voltage_expression>
+		<corners>
+			<corner name="F6">
+				<timings_freq_attr>CRX2_F6_FREQ</timings_freq_attr>
+				<tokens_for_downstream_sockets>
+					<vmin_dff_token>HF6CRX2</vmin_dff_token>
+					<itd_vmin_dff_token>CF6CRX2</itd_vmin_dff_token>
+				</tokens_for_downstream_sockets>
+				<lvl_selects>
+					<value>256</value>
+				</lvl_selects>
+				<gsds_vmin_source>
+					<voltage volt_unit="V" datatype="piped">G.U.S.DFFCHECK_CRX2F6</voltage>
+				</gsds_vmin_source>
+				<interdomaincorner_vmin_source>
+					<domaincorner>
+						<domain_name>CR%core%X2</domain_name>
+						<corner_name>F5</corner_name>
+					</domaincorner>
+				</interdomaincorner_vmin_source>
+				<store_results_in_gsds>
+					<voltage>G.U.D.CURRENT_FAST_VMIN_VCCC_CR%core%X2_F6</voltage>
+					<frequency>G.U.D.CURRENT_FAST_VMINFREQUENCY_CR%core%X2_F6</frequency>
+				</store_results_in_gsds>
+			</corner>
+			<corner name="F5" stc_interpolation="true">
+				<timings_freq_attr>CRX2_F5_FREQ</timings_freq_attr>
+				<tokens_for_downstream_sockets>
+					<vmin_dff_token>HF5CRX2</vmin_dff_token>
+					<itd_vmin_dff_token>CF5CRX2</itd_vmin_dff_token>
+				</tokens_for_downstream_sockets>
+				<lvl_selects>
+					<value>255</value>
+				</lvl_selects>
+				<gsds_vmin_source>
+					<voltage volt_unit="V" datatype="piped">G.U.S.DFFCHECK_CRX2F5</voltage>
+				</gsds_vmin_source>
+				<interdomaincorner_vmin_source>
+					<domaincorner>
+						<domain_name>CR%core%X2</domain_name>
+						<corner_name>F4</corner_name>
+					</domaincorner>
+					<domaincorner>
+						<domain_name>CR</domain_name>
+						<corner_name>F5</corner_name>
+					</domaincorner>
+				</interdomaincorner_vmin_source>
+				<store_results_in_gsds>
+					<voltage>G.U.D.CURRENT_FAST_VMIN_VCCC_CR%core%X2_F5</voltage>
+					<frequency>G.U.D.CURRENT_FAST_VMINFREQUENCY_CR%core%X2_F5</frequency>
+				</store_results_in_gsds>
+			</corner>
+			<corner name="F4" stc_interpolation="true">
+				<timings_freq_attr>CRX2_F4_FREQ</timings_freq_attr>
+				<tokens_for_downstream_sockets>
+					<vmin_dff_token>HF4CRX2</vmin_dff_token>
+					<itd_vmin_dff_token>CF4CRX2</itd_vmin_dff_token>
+				</tokens_for_downstream_sockets>
+				<lvl_selects>
+					<value>254</value>
+				</lvl_selects>
+				<gsds_vmin_source>
+					<voltage volt_unit="V" datatype="piped">G.U.S.DFFCHECK_CRX2F4</voltage>
+				</gsds_vmin_source>
+				<interdomaincorner_vmin_source>
+					<domaincorner>
+						<domain_name>CR%core%X2</domain_name>
+						<corner_name>F3</corner_name>
+					</domaincorner>
+					<domaincorner>
+						<domain_name>CR</domain_name>
+						<corner_name>F4</corner_name>
+					</domaincorner>
+				</interdomaincorner_vmin_source>
+				<store_results_in_gsds>
+					<voltage>G.U.D.CURRENT_FAST_VMIN_VCCC_CR%core%X2_F4</voltage>
+					<frequency>G.U.D.CURRENT_FAST_VMINFREQUENCY_CR%core%X2_F4</frequency>
+				</store_results_in_gsds>
+			</corner>
+			<corner name="F3">
+				<timings_freq_attr>CRX2_F3_FREQ</timings_freq_attr>
+				<tokens_for_downstream_sockets>
+					<vmin_dff_token>HF3CRX2</vmin_dff_token>
+					<itd_vmin_dff_token>CF3CRX2</itd_vmin_dff_token>
+				</tokens_for_downstream_sockets>
+				<lvl_selects>
+					<value>253</value>
+				</lvl_selects>
+				<gsds_vmin_source>
+					<voltage volt_unit="V" datatype="piped">G.U.S.DFFCHECK_CRX2F3</voltage>
+				</gsds_vmin_source>
+				<interdomaincorner_vmin_source>
+					<domaincorner>
+						<domain_name>CR%core%X2</domain_name>
+						<corner_name>F2</corner_name>
+					</domaincorner>
+					<domaincorner>
+						<domain_name>CR</domain_name>
+						<corner_name>F3</corner_name>
+					</domaincorner>
+				</interdomaincorner_vmin_source>
+				<store_results_in_gsds>
+					<voltage>G.U.D.CURRENT_FAST_VMIN_VCCC_CR%core%X2_F3</voltage>
+					<frequency>G.U.D.CURRENT_FAST_VMINFREQUENCY_CR%core%X2_F3</frequency>
+				</store_results_in_gsds>
+			</corner>
+			<corner name="F2" stc_interpolation="true">
+				<timings_freq_attr>CRX2_F2_FREQ</timings_freq_attr>
+				<tokens_for_downstream_sockets>
+					<vmin_dff_token>HF2CRX2</vmin_dff_token>
+					<itd_vmin_dff_token>CF2CRX2</itd_vmin_dff_token>
+				</tokens_for_downstream_sockets>
+				<lvl_selects>
+					<value>252</value>
+				</lvl_selects>
+				<gsds_vmin_source>
+					<voltage volt_unit="V" datatype="piped">G.U.S.DFFCHECK_CRX2F2</voltage>
+				</gsds_vmin_source>
+				<interdomaincorner_vmin_source>
+					<domaincorner>
+						<domain_name>CR%core%X2</domain_name>
+						<corner_name>F1</corner_name>
+					</domaincorner>
+				</interdomaincorner_vmin_source>
+				<store_results_in_gsds>
+					<voltage>G.U.D.CURRENT_FAST_VMIN_VCCC_CR%core%X2_F2</voltage>
+					<frequency>G.U.D.CURRENT_FAST_VMINFREQUENCY_CR%core%X2_F2</frequency>
+				</store_results_in_gsds>
+			</corner>
+			<corner name="F1">
+				<timings_freq_attr>CRX2_F1_FREQ</timings_freq_attr>
+				<tokens_for_downstream_sockets>
+					<vmin_dff_token>HF1CRX2</vmin_dff_token>
+					<itd_vmin_dff_token>CF1CRX2</itd_vmin_dff_token>
+				</tokens_for_downstream_sockets>
+				<lvl_selects>
+					<value>251</value>
+				</lvl_selects>
+				<gsds_vmin_source>
+					<voltage volt_unit="V" datatype="piped">G.U.S.DFFCHECK_CRX2F1</voltage>
+				</gsds_vmin_source>
+				<store_results_in_gsds>
+					<voltage>G.U.D.CURRENT_FAST_VMIN_VCCC_CR%core%X2_F1</voltage>
+					<frequency>G.U.D.CURRENT_FAST_VMINFREQUENCY_CR%core%X2_F1</frequency>
+				</store_results_in_gsds>
+			</corner>
+		</corners>
+	</power_domain>
+	<power_domain name="CR%core%X3" instances="core:0,1,2,3,4,5,6,7" group="CRX3">
+		<pin>FIVR_C%core%_VT_VLC</pin>
+		<apply_voltage_expression>V[]</apply_voltage_expression>
+		<corners>
+			<corner name="F6">
+				<timings_freq_attr>CRX3_F6_FREQ</timings_freq_attr>
+				<tokens_for_downstream_sockets>
+					<vmin_dff_token>HF6CRX3</vmin_dff_token>
+					<itd_vmin_dff_token>CF6CRX3</itd_vmin_dff_token>
+				</tokens_for_downstream_sockets>
+				<lvl_selects>
+					<value>266</value>
+				</lvl_selects>
+				<gsds_vmin_source>
+					<voltage volt_unit="V" datatype="piped">G.U.S.DFFCHECK_CRX3F6</voltage>
+				</gsds_vmin_source>
+				<interdomaincorner_vmin_source>
+					<domaincorner>
+						<domain_name>CR%core%X3</domain_name>
+						<corner_name>F5</corner_name>
+					</domaincorner>
+				</interdomaincorner_vmin_source>
+				<store_results_in_gsds>
+					<voltage>G.U.D.CURRENT_FAST_VMIN_VCCC_CR%core%X3_F6</voltage>
+					<frequency>G.U.D.CURRENT_FAST_VMINFREQUENCY_CR%core%X3_F6</frequency>
+				</store_results_in_gsds>
+			</corner>
+			<corner name="F5" stc_interpolation="true">
+				<timings_freq_attr>CRX3_F5_FREQ</timings_freq_attr>
+				<tokens_for_downstream_sockets>
+					<vmin_dff_token>HF5CRX3</vmin_dff_token>
+					<itd_vmin_dff_token>CF5CRX3</itd_vmin_dff_token>
+				</tokens_for_downstream_sockets>
+				<lvl_selects>
+					<value>265</value>
+				</lvl_selects>
+				<gsds_vmin_source>
+					<voltage volt_unit="V" datatype="piped">G.U.S.DFFCHECK_CRX3F5</voltage>
+				</gsds_vmin_source>
+				<interdomaincorner_vmin_source>
+					<domaincorner>
+						<domain_name>CR%core%X3</domain_name>
+						<corner_name>F4</corner_name>
+					</domaincorner>
+					<domaincorner>
+						<domain_name>CR%core%</domain_name>
+						<corner_name>F5</corner_name>
+					</domaincorner>
+				</interdomaincorner_vmin_source>
+				<store_results_in_gsds>
+					<voltage>G.U.D.CURRENT_FAST_VMIN_VCCC_CR%core%X3_F5</voltage>
+					<frequency>G.U.D.CURRENT_FAST_VMINFREQUENCY_CR%core%X3_F5</frequency>
+				</store_results_in_gsds>
+			</corner>
+			<corner name="F4" stc_interpolation="true">
+				<timings_freq_attr>CRX3_F4_FREQ</timings_freq_attr>
+				<tokens_for_downstream_sockets>
+					<vmin_dff_token>HF4CRX3</vmin_dff_token>
+					<itd_vmin_dff_token>CF4CRX3</itd_vmin_dff_token>
+				</tokens_for_downstream_sockets>
+				<lvl_selects>
+					<value>264</value>
+				</lvl_selects>
+				<gsds_vmin_source>
+					<voltage volt_unit="V" datatype="piped">G.U.S.DFFCHECK_CRX3F4</voltage>
+				</gsds_vmin_source>
+				<interdomaincorner_vmin_source>
+					<domaincorner>
+						<domain_name>CR%core%X3</domain_name>
+						<corner_name>F3</corner_name>
+					</domaincorner>
+					<domaincorner>
+						<domain_name>CR%core%</domain_name>
+						<corner_name>F4</corner_name>
+					</domaincorner>
+				</interdomaincorner_vmin_source>
+				<store_results_in_gsds>
+					<voltage>G.U.D.CURRENT_FAST_VMIN_VCCC_CR%core%X3_F4</voltage>
+					<frequency>G.U.D.CURRENT_FAST_VMINFREQUENCY_CR%core%X3_F4</frequency>
+				</store_results_in_gsds>
+			</corner>
+			<corner name="F3">
+				<timings_freq_attr>CRX3_F3_FREQ</timings_freq_attr>
+				<tokens_for_downstream_sockets>
+					<vmin_dff_token>HF3CRX3</vmin_dff_token>
+					<itd_vmin_dff_token>CF3CRX3</itd_vmin_dff_token>
+				</tokens_for_downstream_sockets>
+				<lvl_selects>
+					<value>263</value>
+				</lvl_selects>
+				<gsds_vmin_source>
+					<voltage volt_unit="V" datatype="piped">G.U.S.DFFCHECK_CRX3F3</voltage>
+				</gsds_vmin_source>
+				<interdomaincorner_vmin_source>
+					<domaincorner>
+						<domain_name>CR%core%X3</domain_name>
+						<corner_name>F2</corner_name>
+					</domaincorner>
+					<domaincorner>
+						<domain_name>CR%core%</domain_name>
+						<corner_name>F3</corner_name>
+					</domaincorner>
+				</interdomaincorner_vmin_source>
+				<store_results_in_gsds>
+					<voltage>G.U.D.CURRENT_FAST_VMIN_VCCC_CR%core%X3_F3</voltage>
+					<frequency>G.U.D.CURRENT_FAST_VMINFREQUENCY_CR%core%X3_F3</frequency>
+				</store_results_in_gsds>
+			</corner>
+			<corner name="F2" stc_interpolation="true">
+				<timings_freq_attr>CRX3_F2_FREQ</timings_freq_attr>
+				<tokens_for_downstream_sockets>
+					<vmin_dff_token>HF2CRX3</vmin_dff_token>
+					<itd_vmin_dff_token>CF2CRX3</itd_vmin_dff_token>
+				</tokens_for_downstream_sockets>
+				<lvl_selects>
+					<value>262</value>
+				</lvl_selects>
+				<gsds_vmin_source>
+					<voltage volt_unit="V" datatype="piped">G.U.S.DFFCHECK_CRX3F2</voltage>
+				</gsds_vmin_source>
+				<interdomaincorner_vmin_source>
+					<domaincorner>
+						<domain_name>CR%core%X3</domain_name>
+						<corner_name>F1</corner_name>
+					</domaincorner>
+				</interdomaincorner_vmin_source>
+				<store_results_in_gsds>
+					<voltage>G.U.D.CURRENT_FAST_VMIN_VCCC_CR%core%X3_F2</voltage>
+					<frequency>G.U.D.CURRENT_FAST_VMINFREQUENCY_CR%core%X3_F2</frequency>
+				</store_results_in_gsds>
+			</corner>
+			<corner name="F1">
+				<timings_freq_attr>CRX3_F1_FREQ</timings_freq_attr>
+				<tokens_for_downstream_sockets>
+					<vmin_dff_token>HF1CRX3</vmin_dff_token>
+					<itd_vmin_dff_token>CF1CRX3</itd_vmin_dff_token>
+				</tokens_for_downstream_sockets>
+				<lvl_selects>
+					<value>261</value>
+				</lvl_selects>
+				<gsds_vmin_source>
+					<voltage volt_unit="V" datatype="piped">G.U.S.DFFCHECK_CRX3F1</voltage>
+				</gsds_vmin_source>
+				<store_results_in_gsds>
+					<voltage>G.U.D.CURRENT_FAST_VMIN_VCCC_CR%core%X3_F1</voltage>
+					<frequency>G.U.D.CURRENT_FAST_VMINFREQUENCY_CR%core%X3_F1</frequency>
+				</store_results_in_gsds>
+			</corner>
+		</corners>
+	</power_domain>
+	<power_domain name="GTS">
+		<pin>FIVR_GT_VT_VLC</pin>
+		<apply_voltage_expression>V[]</apply_voltage_expression>
+		<corners>
+			<corner name="F5">
+				<timings_freq_attr>GTS_F5_FREQ</timings_freq_attr>
+				<tokens_for_downstream_sockets>
+					<vmin_dff_token>HF5GTS</vmin_dff_token>
+					<itd_vmin_dff_token>CF5GTS</itd_vmin_dff_token>
+				</tokens_for_downstream_sockets>
+				<lvl_selects>
+					<value>305</value>
+				</lvl_selects>
+				<gsds_vmin_source>
+					<voltage volt_unit="V" datatype="piped">G.U.S.DFFCHECK_GTSF5</voltage>
+				</gsds_vmin_source>
+				<interdomaincorner_vmin_source>
+					<domaincorner>
+						<domain_name>GTS</domain_name>
+						<corner_name>F4</corner_name>
+					</domaincorner>
+				</interdomaincorner_vmin_source>
+				<store_results_in_gsds>
+					<voltage>G.U.D.CURRENT_FAST_VMIN_VCCGT_GTS_F5</voltage>
+					<frequency>G.U.D.CURRENT_FAST_VMINFREQUENCY_GTS_F5</frequency>
+				</store_results_in_gsds>
+			</corner>
+			<corner name="F4" stc_interpolation="true">
+				<timings_freq_attr>GTS_F4_FREQ</timings_freq_attr>
+				<tokens_for_downstream_sockets>
+					<vmin_dff_token>HF4GTS</vmin_dff_token>
+					<itd_vmin_dff_token>CF4GTS</itd_vmin_dff_token>
+				</tokens_for_downstream_sockets>
+				<lvl_selects>
+					<value>304</value>
+				</lvl_selects>
+				<gsds_vmin_source>
+					<voltage volt_unit="V" datatype="piped">G.U.S.DFFCHECK_GTSF4</voltage>
+				</gsds_vmin_source>
+				<interdomaincorner_vmin_source>
+					<domaincorner>
+						<domain_name>GTS</domain_name>
+						<corner_name>F3</corner_name>
+					</domaincorner>
+				</interdomaincorner_vmin_source>
+				<store_results_in_gsds>
+					<voltage>G.U.D.CURRENT_FAST_VMIN_VCCGT_GTS_F4</voltage>
+					<frequency>G.U.D.CURRENT_FAST_VMINFREQUENCY_GTS_F4</frequency>
+				</store_results_in_gsds>
+			</corner>
+			<corner name="F3">
+				<timings_freq_attr>GTS_F3_FREQ</timings_freq_attr>
+				<tokens_for_downstream_sockets>
+					<vmin_dff_token>HF3GTS</vmin_dff_token>
+					<itd_vmin_dff_token>CF3GTS</itd_vmin_dff_token>
+				</tokens_for_downstream_sockets>
+				<lvl_selects>
+					<value>303</value>
+				</lvl_selects>
+				<gsds_vmin_source>
+					<voltage volt_unit="V" datatype="piped">G.U.S.DFFCHECK_GTSF3</voltage>
+				</gsds_vmin_source>
+				<interdomaincorner_vmin_source>
+					<domaincorner>
+						<domain_name>GTS</domain_name>
+						<corner_name>F2</corner_name>
+					</domaincorner>
+				</interdomaincorner_vmin_source>
+				<store_results_in_gsds>
+					<voltage>G.U.D.CURRENT_FAST_VMIN_VCCGT_GTS_F3</voltage>
+					<frequency>G.U.D.CURRENT_FAST_VMINFREQUENCY_GTS_F3</frequency>
+				</store_results_in_gsds>
+			</corner>
+			<corner name="F2" stc_interpolation="true">
+				<timings_freq_attr>GTS_F2_FREQ</timings_freq_attr>
+				<tokens_for_downstream_sockets>
+					<vmin_dff_token>HF2GTS</vmin_dff_token>
+					<itd_vmin_dff_token>CF2GTS</itd_vmin_dff_token>
+				</tokens_for_downstream_sockets>
+				<lvl_selects>
+					<value>302</value>
+				</lvl_selects>
+				<gsds_vmin_source>
+					<voltage volt_unit="V" datatype="piped">G.U.S.DFFCHECK_GTSF2</voltage>
+				</gsds_vmin_source>
+				<interdomaincorner_vmin_source>
+					<domaincorner>
+						<domain_name>GTS</domain_name>
+						<corner_name>F1</corner_name>
+					</domaincorner>
+				</interdomaincorner_vmin_source>
+				<store_results_in_gsds>
+					<voltage>G.U.D.CURRENT_FAST_VMIN_VCCGT_GTS_F2</voltage>
+					<frequency>G.U.D.CURRENT_FAST_VMINFREQUENCY_GTS_F2</frequency>
+				</store_results_in_gsds>
+			</corner>
+			<corner name="F1">
+				<timings_freq_attr>GTS_F1_FREQ</timings_freq_attr>
+				<tokens_for_downstream_sockets>
+					<vmin_dff_token>HF1GTS</vmin_dff_token>
+					<itd_vmin_dff_token>CF1GTS</itd_vmin_dff_token>
+				</tokens_for_downstream_sockets>
+				<lvl_selects>
+					<value>301</value>
+				</lvl_selects>
+				<gsds_vmin_source>
+					<voltage volt_unit="V" datatype="piped">G.U.S.DFFCHECK_GTSF1</voltage>
+				</gsds_vmin_source>
+				<store_results_in_gsds>
+					<voltage>G.U.D.CURRENT_FAST_VMIN_VCCGT_GTS_F1</voltage>
+					<frequency>G.U.D.CURRENT_FAST_VMINFREQUENCY_GTS_F1</frequency>
+				</store_results_in_gsds>
+			</corner>
+		</corners>
+	</power_domain>
+	<power_domain name="SAQ">
+		<pin>FIVR_SA_VT_VLC</pin>
+		<apply_voltage_expression>V[]</apply_voltage_expression>
+		<corners>
+			<corner name="F6" source_extrapolate="false">
+				<timings_freq_attr>SAQ_F6_FREQ</timings_freq_attr>
+				<tokens_for_downstream_sockets>
+					<vmin_dff_token>HF6SAQ</vmin_dff_token>
+					<itd_vmin_dff_token>CF6SAQ</itd_vmin_dff_token>
+				</tokens_for_downstream_sockets>
+				<lvl_selects>
+					<value>406</value>
+				</lvl_selects>
+				<gsds_vmin_source>
+					<voltage volt_unit="V" datatype="piped">G.U.S.DFFCHECK_SAQF6</voltage>
+					<voltage volt_unit="V">G.U.D.CURRENT_FAST_VMIN_VCCSA_SAQ_F1</voltage>
+				</gsds_vmin_source>
+				<interdomaincorner_vmin_source>
+					<domaincorner>
+						<domain_name>SAQ</domain_name>
+						<corner_name>F4</corner_name>
+					</domaincorner>
+				</interdomaincorner_vmin_source>
+				<store_results_in_gsds>
+					<voltage>G.U.D.CURRENT_FAST_VMIN_VCCSA_SAQ_F6</voltage>
+					<frequency>G.U.D.CURRENT_FAST_VMINFREQUENCY_SAQ_F6</frequency>
+				</store_results_in_gsds>
+			</corner>
+			<corner name="F4">
+				<timings_freq_attr>SAQ_F4_FREQ</timings_freq_attr>
+				<tokens_for_downstream_sockets>
+					<vmin_dff_token>HF4SAQ</vmin_dff_token>
+					<itd_vmin_dff_token>CF4SAQ</itd_vmin_dff_token>
+				</tokens_for_downstream_sockets>
+				<lvl_selects>
+					<value>404</value>
+				</lvl_selects>
+				<gsds_vmin_source>
+					<voltage volt_unit="V" datatype="piped">G.U.S.DFFCHECK_SAQF4</voltage>
+					<voltage volt_unit="V">G.U.D.CURRENT_FAST_VMIN_VCCSA_SAQ_F1</voltage>
+				</gsds_vmin_source>
+				<interdomaincorner_vmin_source>
+					<domaincorner>
+						<domain_name>SAQ</domain_name>
+						<corner_name>F1</corner_name>
+					</domaincorner>
+				</interdomaincorner_vmin_source>
+				<store_results_in_gsds>
+					<voltage>G.U.D.CURRENT_FAST_VMIN_VCCSA_SAQ_F4</voltage>
+					<frequency>G.U.D.CURRENT_FAST_VMINFREQUENCY_SAQ_F4</frequency>
+				</store_results_in_gsds>
+			</corner>
+			<corner name="F1">
+				<timings_freq_attr>SAQ_F1_FREQ</timings_freq_attr>
+				<tokens_for_downstream_sockets>
+					<vmin_dff_token>HF1SAQ</vmin_dff_token>
+					<itd_vmin_dff_token>CF1SAQ</itd_vmin_dff_token>
+				</tokens_for_downstream_sockets>
+				<lvl_selects>
+					<value>401</value>
+				</lvl_selects>
+				<gsds_vmin_source>
+					<voltage volt_unit="V" datatype="piped">G.U.S.DFFCHECK_SAQF1</voltage>
+					<voltage volt_unit="V">G.U.D.CURRENT_FAST_VMIN_VCCSA_SAQ_F1</voltage>
+				</gsds_vmin_source>
+				<store_results_in_gsds>
+					<voltage>G.U.D.CURRENT_FAST_VMIN_VCCSA_SAQ_F1</voltage>
+					<frequency>G.U.D.CURRENT_FAST_VMINFREQUENCY_SAQ_F1</frequency>
+				</store_results_in_gsds>
+			</corner>
+		</corners>
+	</power_domain>
+	<power_domain name="SAPS">
+		<pin>FIVR_SA_VT_VLC</pin>
+		<apply_voltage_expression>V[]</apply_voltage_expression>
+		<corners>
+			<corner name="F5">
+				<timings_freq_attr>SAPS_F5_FREQ</timings_freq_attr>
+				<tokens_for_downstream_sockets>
+					<vmin_dff_token>HF5SAPS</vmin_dff_token>
+					<itd_vmin_dff_token>CF5SAPS</itd_vmin_dff_token>
+				</tokens_for_downstream_sockets>
+				<lvl_selects>
+					<value>515</value>
+				</lvl_selects>
+				<gsds_vmin_source>
+					<voltage volt_unit="V" datatype="piped">G.U.S.DFFCHECK_SAPSF5</voltage>
+					<voltage volt_unit="V">G.U.D.CURRENT_FAST_VMIN_VCCSA_SAPS_F1</voltage>
+				</gsds_vmin_source>
+				<interdomaincorner_vmin_source>
+					<domaincorner>
+						<domain_name>SAPS</domain_name>
+						<corner_name>F3</corner_name>
+					</domaincorner>
+				</interdomaincorner_vmin_source>
+				<store_results_in_gsds>
+					<voltage>G.U.D.CURRENT_FAST_VMIN_VCCSA_SAPS_F5</voltage>
+					<frequency>G.U.D.CURRENT_FAST_VMINFREQUENCY_SAPS_F5</frequency>
+				</store_results_in_gsds>
+			</corner>
+			<corner name="F3">
+				<timings_freq_attr>SAPS_F3_FREQ</timings_freq_attr>
+				<tokens_for_downstream_sockets>
+					<vmin_dff_token>HF3SAPS</vmin_dff_token>
+					<itd_vmin_dff_token>CF3SAPS</itd_vmin_dff_token>
+				</tokens_for_downstream_sockets>
+				<lvl_selects>
+					<value>513</value>
+				</lvl_selects>
+				<gsds_vmin_source>
+					<voltage volt_unit="V" datatype="piped">G.U.S.DFFCHECK_SAPSF3</voltage>
+					<voltage volt_unit="V">G.U.D.CURRENT_FAST_VMIN_VCCSA_SAPS_F1</voltage>
+				</gsds_vmin_source>
+				<interdomaincorner_vmin_source>
+					<domaincorner>
+						<domain_name>SAPS</domain_name>
+						<corner_name>F1</corner_name>
+					</domaincorner>
+				</interdomaincorner_vmin_source>
+				<store_results_in_gsds>
+					<voltage>G.U.D.CURRENT_FAST_VMIN_VCCSA_SAPS_F3</voltage>
+					<frequency>G.U.D.CURRENT_FAST_VMINFREQUENCY_SAPS_F3</frequency>
+				</store_results_in_gsds>
+			</corner>
+			<corner name="F1">
+				<timings_freq_attr>SAPS_F1_FREQ</timings_freq_attr>
+				<tokens_for_downstream_sockets>
+					<vmin_dff_token>HF1SAPS</vmin_dff_token>
+					<itd_vmin_dff_token>CF1SAPS</itd_vmin_dff_token>
+				</tokens_for_downstream_sockets>
+				<lvl_selects>
+					<value>511</value>
+				</lvl_selects>
+				<gsds_vmin_source>
+					<voltage volt_unit="V" datatype="piped">G.U.S.DFFCHECK_SAPSF1</voltage>
+					<voltage volt_unit="V">G.U.D.CURRENT_FAST_VMIN_VCCSA_SAPS_F1</voltage>
+				</gsds_vmin_source>
+				<store_results_in_gsds>
+					<voltage>G.U.D.CURRENT_FAST_VMIN_VCCSA_SAPS_F1</voltage>
+					<frequency>G.U.D.CURRENT_FAST_VMINFREQUENCY_SAPS_F1</frequency>
+				</store_results_in_gsds>
+			</corner>
+		</corners>
+	</power_domain>
+	<power_domain name="SAIS">
+		<pin>FIVR_SA_VT_VLC</pin>
+		<apply_voltage_expression>V[]</apply_voltage_expression>
+		<corners>
+			<corner name="F5">
+				<timings_freq_attr>SAIS_F5_FREQ</timings_freq_attr>
+				<tokens_for_downstream_sockets>
+					<vmin_dff_token>HF5SAIS</vmin_dff_token>
+					<itd_vmin_dff_token>CF5SAIS</itd_vmin_dff_token>
+				</tokens_for_downstream_sockets>
+				<lvl_selects>
+					<value>525</value>
+				</lvl_selects>
+				<gsds_vmin_source>
+					<voltage volt_unit="V" datatype="piped">G.U.S.DFFCHECK_SAISF5</voltage>
+					<voltage volt_unit="V">G.U.D.CURRENT_FAST_VMIN_VCCSA_SAIS_F1</voltage>
+				</gsds_vmin_source>
+				<interdomaincorner_vmin_source>
+					<domaincorner>
+						<domain_name>SAIS</domain_name>
+						<corner_name>F1</corner_name>
+					</domaincorner>
+				</interdomaincorner_vmin_source>
+				<store_results_in_gsds>
+					<voltage>G.U.D.CURRENT_FAST_VMIN_VCCSA_SAIS_F5</voltage>
+					<frequency>G.U.D.CURRENT_FAST_VMINFREQUENCY_SAIS_F5</frequency>
+				</store_results_in_gsds>
+			</corner>
+			<corner name="F1">
+				<timings_freq_attr>SAIS_F1_FREQ</timings_freq_attr>
+				<tokens_for_downstream_sockets>
+					<vmin_dff_token>HF1SAIS</vmin_dff_token>
+					<itd_vmin_dff_token>CF1SAIS</itd_vmin_dff_token>
+				</tokens_for_downstream_sockets>
+				<lvl_selects>
+					<value>521</value>
+				</lvl_selects>
+				<gsds_vmin_source>
+					<voltage volt_unit="V" datatype="piped">G.U.S.DFFCHECK_SAISF1</voltage>
+					<voltage volt_unit="V">G.U.D.CURRENT_FAST_VMIN_VCCSA_SAIS_F1</voltage>
+				</gsds_vmin_source>
+				<store_results_in_gsds>
+					<voltage>G.U.D.CURRENT_FAST_VMIN_VCCSA_SAIS_F1</voltage>
+					<frequency>G.U.D.CURRENT_FAST_VMINFREQUENCY_SAIS_F1</frequency>
+				</store_results_in_gsds>
+			</corner>
+		</corners>
+	</power_domain>
+	<power_domain name="SAF">
+		<pin>FIVR_SA_VT_VLC</pin>
+		<apply_voltage_expression>V[]</apply_voltage_expression>
+		<corners>
+			<corner name="F5">
+				<timings_freq_attr>SAF_F5_FREQ</timings_freq_attr>
+				<tokens_for_downstream_sockets>
+					<vmin_dff_token>HF5SAF</vmin_dff_token>
+					<itd_vmin_dff_token>CF5SAF</itd_vmin_dff_token>
+				</tokens_for_downstream_sockets>
+				<lvl_selects>
+					<value>535</value>
+				</lvl_selects>
+				<gsds_vmin_source>
+					<voltage volt_unit="V" datatype="piped">G.U.S.DFFCHECK_SAFF5</voltage>
+					<voltage volt_unit="V">G.U.D.CURRENT_FAST_VMIN_VCCSA_SAF_F1</voltage>
+				</gsds_vmin_source>
+				<interdomaincorner_vmin_source>
+					<domaincorner>
+						<domain_name>SAF</domain_name>
+						<corner_name>F1</corner_name>
+					</domaincorner>
+				</interdomaincorner_vmin_source>
+				<store_results_in_gsds>
+					<voltage>G.U.D.CURRENT_FAST_VMIN_VCCSA_SAF_F5</voltage>
+					<frequency>G.U.D.CURRENT_FAST_VMINFREQUENCY_SAF_F5</frequency>
+				</store_results_in_gsds>
+			</corner>
+			<corner name="F1">
+				<timings_freq_attr>SAF_F1_FREQ</timings_freq_attr>
+				<tokens_for_downstream_sockets>
+					<vmin_dff_token>HF1SAF</vmin_dff_token>
+					<itd_vmin_dff_token>CF1SAF</itd_vmin_dff_token>
+				</tokens_for_downstream_sockets>
+				<lvl_selects>
+					<value>531</value>
+				</lvl_selects>
+				<gsds_vmin_source>
+					<voltage volt_unit="V" datatype="piped">G.U.S.DFFCHECK_SAFF1</voltage>
+					<voltage volt_unit="V">G.U.D.CURRENT_FAST_VMIN_VCCSA_SAF_F1</voltage>
+				</gsds_vmin_source>
+				<store_results_in_gsds>
+					<voltage>G.U.D.CURRENT_FAST_VMIN_VCCSA_SAF_F1</voltage>
+					<frequency>G.U.D.CURRENT_FAST_VMINFREQUENCY_SAF_F1</frequency>
+				</store_results_in_gsds>
+			</corner>
+		</corners>
+	</power_domain>
+	<power_domain name="SACD">
+		<pin>FIVR_SA_VT_VLC</pin>
+		<apply_voltage_expression>V[]</apply_voltage_expression>
+		<corners>
+			<corner name="F4">
+				<timings_freq_attr>SACD_F4_FREQ</timings_freq_attr>
+				<tokens_for_downstream_sockets>
+					<vmin_dff_token>HF4SACD</vmin_dff_token>
+					<itd_vmin_dff_token>CF4SACD</itd_vmin_dff_token>
+				</tokens_for_downstream_sockets>
+				<lvl_selects>
+					<value>504</value>
+				</lvl_selects>
+				<gsds_vmin_source>
+					<voltage volt_unit="V" datatype="piped">G.U.S.DFFCHECK_SACDF4</voltage>
+					<voltage volt_unit="V">G.U.D.CURRENT_FAST_VMIN_VCCSA_SACD_F1</voltage>
+				</gsds_vmin_source>
+				<interdomaincorner_vmin_source>
+					<domaincorner>
+						<domain_name>SACD</domain_name>
+						<corner_name>F2</corner_name>
+					</domaincorner>
+				</interdomaincorner_vmin_source>
+				<store_results_in_gsds>
+					<voltage>G.U.D.CURRENT_FAST_VMIN_VCCSA_SACD_F4</voltage>
+					<frequency>G.U.D.CURRENT_FAST_VMINFREQUENCY_SACD_F4</frequency>
+				</store_results_in_gsds>
+			</corner>
+			<corner name="F2">
+				<timings_freq_attr>SACD_F2_FREQ</timings_freq_attr>
+				<tokens_for_downstream_sockets>
+					<vmin_dff_token>HF2SACD</vmin_dff_token>
+					<itd_vmin_dff_token>CF2SACD</itd_vmin_dff_token>
+				</tokens_for_downstream_sockets>
+				<lvl_selects>
+					<value>502</value>
+				</lvl_selects>
+				<gsds_vmin_source>
+					<voltage volt_unit="V" datatype="piped">G.U.S.DFFCHECK_SACDF2</voltage>
+					<voltage volt_unit="V">G.U.D.CURRENT_FAST_VMIN_VCCSA_SACD_F1</voltage>
+				</gsds_vmin_source>
+				<interdomaincorner_vmin_source>
+					<domaincorner>
+						<domain_name>SACD</domain_name>
+						<corner_name>F1</corner_name>
+					</domaincorner>
+				</interdomaincorner_vmin_source>
+				<store_results_in_gsds>
+					<voltage>G.U.D.CURRENT_FAST_VMIN_VCCSA_SACD_F2</voltage>
+					<frequency>G.U.D.CURRENT_FAST_VMINFREQUENCY_SACD_F2</frequency>
+				</store_results_in_gsds>
+			</corner>
+			<corner name="F1">
+				<timings_freq_attr>SACD_F1_FREQ</timings_freq_attr>
+				<tokens_for_downstream_sockets>
+					<vmin_dff_token>HF1SACD</vmin_dff_token>
+					<itd_vmin_dff_token>CF1SACD</itd_vmin_dff_token>
+				</tokens_for_downstream_sockets>
+				<lvl_selects>
+					<value>501</value>
+				</lvl_selects>
+				<gsds_vmin_source>
+					<voltage volt_unit="V" datatype="piped">G.U.S.DFFCHECK_SACDF1</voltage>
+					<voltage volt_unit="V">G.U.D.CURRENT_FAST_VMIN_VCCSA_SACD_F1</voltage>
+				</gsds_vmin_source>
+				<store_results_in_gsds>
+					<voltage>G.U.D.CURRENT_FAST_VMIN_VCCSA_SACD_F1</voltage>
+					<frequency>G.U.D.CURRENT_FAST_VMINFREQUENCY_SACD_F1</frequency>
+				</store_results_in_gsds>
+			</corner>
+		</corners>
+	</power_domain>
+	<power_domain name="GTSM">
+		<pin>FIVR_GT_VT_VLC</pin>
+		<apply_voltage_expression>V[]</apply_voltage_expression>
+		<corners>
+			<corner name="F5">
+				<timings_freq_attr>GTSM_F5_FREQ</timings_freq_attr>
+				<tokens_for_downstream_sockets>
+					<vmin_dff_token>HF5GTSM</vmin_dff_token>
+					<itd_vmin_dff_token>CF5GTSM</itd_vmin_dff_token>
+				</tokens_for_downstream_sockets>
+				<lvl_selects>
+					<value>325</value>
+				</lvl_selects>
+				<gsds_vmin_source>
+					<voltage volt_unit="V" datatype="piped">G.U.S.DFFCHECK_GTSMF5</voltage>
+				</gsds_vmin_source>
+				<interdomaincorner_vmin_source>
+					<domaincorner>
+						<domain_name>GTSM</domain_name>
+						<corner_name>F3</corner_name>
+					</domaincorner>
+				</interdomaincorner_vmin_source>
+				<store_results_in_gsds>
+					<voltage>G.U.D.CURRENT_FAST_VMIN_VCCGT_GTSM_F5</voltage>
+					<frequency>G.U.D.CURRENT_FAST_VMINFREQUENCY_GTSM_F5</frequency>
+				</store_results_in_gsds>
+			</corner>
+			<corner name="F3">
+				<timings_freq_attr>GTS_F3_FREQ</timings_freq_attr>
+				<tokens_for_downstream_sockets>
+					<vmin_dff_token>HF3GTSM</vmin_dff_token>
+					<itd_vmin_dff_token>CF3GTSM</itd_vmin_dff_token>
+				</tokens_for_downstream_sockets>
+				<lvl_selects>
+					<value>323</value>
+				</lvl_selects>
+				<gsds_vmin_source>
+					<voltage volt_unit="V" datatype="piped">G.U.S.DFFCHECK_GTSMF3</voltage>
+				</gsds_vmin_source>
+				<interdomaincorner_vmin_source>
+					<domaincorner>
+						<domain_name>GTSM</domain_name>
+						<corner_name>F2</corner_name>
+					</domaincorner>
+				</interdomaincorner_vmin_source>
+				<store_results_in_gsds>
+					<voltage>G.U.D.CURRENT_FAST_VMIN_VCCGT_GTSM_F3</voltage>
+					<frequency>G.U.D.CURRENT_FAST_VMINFREQUENCY_GTSM_F3</frequency>
+				</store_results_in_gsds>
+			</corner>
+			<corner name="F2" stc_interpolation="true">
+				<timings_freq_attr>GTS_F2_FREQ</timings_freq_attr>
+				<tokens_for_downstream_sockets>
+					<vmin_dff_token>HF2GTSM</vmin_dff_token>
+					<itd_vmin_dff_token>CF2GTSM</itd_vmin_dff_token>
+				</tokens_for_downstream_sockets>
+				<lvl_selects>
+					<value>322</value>
+				</lvl_selects>
+				<gsds_vmin_source>
+					<voltage volt_unit="V" datatype="piped">G.U.S.DFFCHECK_GTSMF2</voltage>
+				</gsds_vmin_source>
+				<interdomaincorner_vmin_source>
+					<domaincorner>
+						<domain_name>GTSM</domain_name>
+						<corner_name>F1</corner_name>
+					</domaincorner>
+				</interdomaincorner_vmin_source>
+				<store_results_in_gsds>
+					<voltage>G.U.D.CURRENT_FAST_VMIN_VCCGT_GTSM_F2</voltage>
+					<frequency>G.U.D.CURRENT_FAST_VMINFREQUENCY_GTSM_F2</frequency>
+				</store_results_in_gsds>
+			</corner>
+			<corner name="F1">
+				<timings_freq_attr>GTS_F1_FREQ</timings_freq_attr>
+				<tokens_for_downstream_sockets>
+					<vmin_dff_token>HF1GTSM</vmin_dff_token>
+					<itd_vmin_dff_token>CF1GTSM</itd_vmin_dff_token>
+				</tokens_for_downstream_sockets>
+				<lvl_selects>
+					<value>321</value>
+				</lvl_selects>
+				<gsds_vmin_source>
+					<voltage volt_unit="V" datatype="piped">G.U.S.DFFCHECK_GTSMF1</voltage>
+				</gsds_vmin_source>
+				<store_results_in_gsds>
+					<voltage>G.U.D.CURRENT_FAST_VMIN_VCCGT_GTSM_F1</voltage>
+					<frequency>G.U.D.CURRENT_FAST_VMINFREQUENCY_GTSM_F1</frequency>
+				</store_results_in_gsds>
+			</corner>
+		</corners>
+	</power_domain>
+</infra_setup>

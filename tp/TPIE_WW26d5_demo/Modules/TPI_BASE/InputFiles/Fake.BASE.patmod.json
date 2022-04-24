@@ -1,0 +1,39 @@
+ {
+    "Configurations": [
+       {
+            "Name": "PWR_MUX_SEL0",
+            "ConfigurationElement": [
+                {
+                    "Pin": "YY_TAP_TDI_S2C", 
+                    "Type": "PINDATA",
+                    "StartAddress": "300", 
+                    "StartAddressOffset": 0, 
+                    "EndAddress": "300", 
+                    "EndAddressOffset": 0, 
+                    "IsChannelLink": false, 
+                    "PatternsRegEx": [
+                        ".*_longreset_cpu_lr_none"
+                    ]
+                }
+            ]
+        },
+       {
+            "Name": "PWR_MUX_SEL1",
+            "ConfigurationElement": [
+                {
+                    "Pin": "YY_TAP_TDI_S2C", 
+                    "Type": "PINDATA",
+                    "StartAddress": "300", 
+                    "StartAddressOffset": 1, 
+                    "EndAddress": "300", 
+                    "EndAddressOffset": 1, 
+                    "IsChannelLink": false, 
+                    "PatternsRegEx": [
+                        ".*_longreset_cpu_lr_none"
+                    ]
+                }
+            ]
+        }
+
+    ]
+}

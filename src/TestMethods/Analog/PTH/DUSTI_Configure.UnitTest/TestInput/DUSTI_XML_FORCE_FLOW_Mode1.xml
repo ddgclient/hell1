@@ -1,0 +1,94 @@
+<!-- Notes and Assumptions: -->
+<!-- - Assumes NULL is 0x0, there is a risk an IR or DR is 0x0.  How to handle (do we pass in additional context bytes)? -->
+<!-- - Agreed on DTS offsets.  -->
+<!-- - Outline below is flat. -->
+<!-- # Mode1 = SNOOP_TAP_SINGLE_IR -->
+<!-- # Mode2 = SNOOP_TAPLINK -->
+<!-- # Mode3 = ALTPIN_LISTEN -->
+<DustiConfiguration ConfigurationVersion="1.0.0">
+	<Product></Product>
+	<!-- SNOOP_TAP_SINGLE_IR[0x00], TAPLINK_SNOOP[0x01], or ALTPIN_LISTEN[0x02] -->
+	<PatternMatchMode Type="hex">1</PatternMatchMode>			
+	<Networking>
+		<IpConfig Subnet="0.0.0.0" IpAddress="192.168.200.x" />
+		<TidiConnection Server="192.168.200.206" Port="5858" />
+	</Networking>
+	<SnoopyDigitalPotentiometers>
+		<!-- Value is two bytes per dpot  -->
+		<Dpot Id="1" Name="TDI" DpotValue="0x0030"/>		
+		<Dpot Id="2" Name="TMS" DpotValue="0x0050"/>		
+		<Dpot Id="3" Name="TCK" DpotValue="0x0030"/>		
+		<Dpot Id="4" Name="TDO" DpotValue="0x0050"/>		
+		<Dpot Id="5" Name="UNUSED" DpotValue="0x0"/>		
+		<Dpot Id="6" Name="UNUSED" DpotValue="0x0"/>
+		<!-- Choices are "Static"=00h or "Dynamic"=01h, one byte  -->
+		<TrainingStateDpots Value="Static" />		
+	</SnoopyDigitalPotentiometers>
+	<Mode Id="1" Name="SNOOP_TAP_SINGLE_IR">
+		<!-- variable 8 to 16 bits -->
+		<TapIRInstructionLength Type="int">22</TapIRInstructionLength>
+		<!-- variable 8 to 16 bits -->
+		<DtsDataSize Type="int">33</DtsDataSize>
+		<Dts Id="1">
+			<TapIRInstruction>44</TapIRInstruction>
+			<Diode Id="1" Name="" TapClksToDtsCurrent="123" X="" Y=""/>
+			<Diode Id="2" Name="" TapClksToDtsCurrent="" X="" Y=""/>
+			<Diode Id="3" Name="" TapClksToDtsCurrent="" X="" Y=""/>
+			<Diode Id="4" Name="" TapClksToDtsCurrent="" X="" Y=""/>
+			<Diode Id="5" Name="" TapClksToDtsCurrent="" X="" Y=""/>
+			<Diode Id="6" Name="" TapClksToDtsCurrent="" X="" Y=""/>
+			<Diode Id="7" Name="" TapClksToDtsCurrent="" X="" Y=""/>
+			<Diode Id="8" Name="" TapClksToDtsCurrent="" X="" Y=""/>
+		</Dts>
+		<!-- Up to 32 -->
+	</Mode>
+	<Mode Id="2" Name="SNOOP_TAPLINK">
+		<!-- variable 8 to 16 bits -->
+		<FirstTapIRInstructionLength Type="int" >13</FirstTapIRInstructionLength>
+		<!-- variable 8 to 16 bits -->
+		<FirstTapDRLength Type="int">11</FirstTapDRLength>
+		<!-- variable 8 to 16 bits -->
+		<SecondTapIRInstructionLength Type="int">13</SecondTapIRInstructionLength>
+		<!-- variable 8 to 16 bits -->
+		<DtsDataSize Type="int">8</DtsDataSize>
+		<Dts Id="1">
+			<FirstTapIRInstruction Type="hex">2CEC</FirstTapIRInstruction> 
+			<FirstTapDRInstruction Type="hex">0C0</FirstTapDRInstruction>
+			<SecondTapIRInstruction Type="hex">2CED</SecondTapIRInstruction>
+			<!--  Unique IR for data file -->
+			<!-- DTS offsets in second DR.  0 means no DTS value.  1 means first bit in DR shift. -->
+			<Diode Id="1" Name="RD5_5" TapDrOffsetToDtsRead="48" X="" Y=""/>
+			<Diode Id="2" Name="RD4_4" TapDrOffsetToDtsRead="39" X="" Y=""/>
+			<Diode Id="3" Name="RD3_3" TapDrOffsetToDtsRead="25" X="" Y=""/>
+			<Diode Id="4" Name="RD2_2" TapDrOffsetToDtsRead="16" X="" Y=""/>
+			<Diode Id="5" Name="RD1_1" TapDrOffsetToDtsRead="7" X="" Y=""/>
+			<Diode Id="6" Name="" TapDrOffsetToDtsRead="" X="" Y=""/>
+			<Diode Id="7" Name="" TapDrOffsetToDtsRead="" X="" Y=""/>
+			<Diode Id="8" Name="" TapDrOffsetToDtsRead="" X="" Y=""/>
+		</Dts>
+	<!-- Up to 32 -->
+	</Mode>
+	<Mode Id="3" Name="ALTPIN_LISTEN">
+		<!-- variable 8 to 16 bits -->
+		<TapHeaderLength Type="int" />
+		<!-- variable 8 to 16 bits -->
+		<DtsIdLength Type="int" />
+		<!-- variable 8 to 16 bits -->
+		<DtsDataSize/>
+		<Packet Id="1">
+			<HeaderId Type="hex" />
+			<DtsIdName Type="hex" />
+			<!-- # TCKs relative to last DtsId bit falling edge? -->
+			<Diode Id="1" Name="" TapClksToDtsCurrent="" X="" Y=""/> 
+			<Diode Id="2" Name="" TapClksToDtsCurrent="" X="" Y=""/> 
+			<Diode Id="3" Name="" TapClksToDtsCurrent="" X="" Y=""/> 
+			<Diode Id="4" Name="" TapClksToDtsCurrent="" X="" Y=""/> 
+			<Diode Id="5" Name="" TapClksToDtsCurrent="" X="" Y=""/> 
+			<Diode Id="6" Name="" TapClksToDtsCurrent="" X="" Y=""/> 
+			<Diode Id="6" Name="" TapClksToDtsCurrent="" X="" Y=""/> 
+			<Diode Id="7" Name="" TapClksToDtsCurrent="" X="" Y=""/> 
+		</Packet>
+		<!-- Up to 32 -->
+	</Mode>
+</DustiConfiguration>
+

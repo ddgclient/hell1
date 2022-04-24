@@ -1,0 +1,17 @@
+START_SCREEN:CoreFinalResult
+#RunOn	: TestName  	: DataType  : ParamType 	: Param1                    		: Operation 	 : ParamType    : Param2 		: TmpStore : OnTrue  		: OnFalse
+#EXEC  	: MirrorDFF  	: -	    : FUNCTION 		: EXECUSERFUNC(DIE_RECOVERY!ExecSequence,MirrorDFF) : -  : - 		: -			:    -	: 	Test1a   	:  2			
+
+# 4 Core
+EXEC  	: Test1a 	: STRING    : EXPRESSION	: G.U.S.SLICE like '11110000' 		:	-	 : -		: -			:    -	: 	Test1c   	:  Test2a
+#EXEC  	: Test1b 	: STRING    : DFF	 	: WFR.SORT.SLICE			:	SET	 : GSDS		: U.S.SLICE		:    -	: 	Test1c   	:  2
+EXEC  	: Test1c 	: STRING    : GSDS	 	: U.S.CoreSelect	 		:	SET	 : LITERAL	: "4"			:    -	: 	ItuffPrint	:  2
+
+# 2 Core Recovery
+EXEC  	: Test2a 	: STRING    : EXPRESSION	: G.U.S.SLICE like '11111100' 		:	-	 : -		: -			:    -	: 	Test2h   	:  Test2b
+EXEC  	: Test2b 	: STRING    : EXPRESSION	: G.U.S.SLICE like '11110011' 		:	-	 : -		: -			:    -	: 	Test2h   	:  2
+#EXEC  	: Test2g 	: STRING    : DFF	 	: WFR.SORT.SLICE			:	SET	 : GSDS		: U.S.SLICE		:    - 	: 	Test2h   	:  2
+EXEC  	: Test2h 	: STRING    : GSDS	 	: U.S.CoreSelect	 		:	SET	 : LITERAL	: "2"			:    -	: 	ItuffPrint	:  2
+# Print to ituff
+EXEC 	: ItuffPrint	: -    	    : FUNCTION   	: EXECUSERFUNC(CPD_DEBUG!PrintToItuff, -body_type strgval -body_data G.U.S.CoreSelect)  	: - : - : - : - : 1 		:  2
+END_SCREEN   

@@ -1,0 +1,20 @@
+[
+	{
+		'Name': 'TestPinMapA', 
+		'Size':4, 
+		'PatternModify':'dummyA', 
+		'PinToSliceIndexMap':{ 'Pin1':[0], 'Pin2':[1], 'Pin3':[2], 'Pin4':[3]}
+	},
+	{
+		'Name': 'TestPinMapC', 
+		'Size':4, 
+		'PatternModify':'dummyC', 
+		'PinToSliceIndexMap':{ 'Pin1':[0], 'Pin2':[0], 'Pin3':[2], 'Pin4':[2]}
+	},
+	{
+		'Name': 'TestPinMapB', 
+		'Size':4, 
+		'PatternModify':'dummyB', 
+		'PinToSliceIndexMap':{ 'Pin5':[0, 1, 2, 3] }
+	}
+]

@@ -1,0 +1,133 @@
+{
+  "pinNumbers": 32,
+  "pinsMapping": [
+    {
+      "ssn_datapth": 1,
+      "pinName": "DDR1_MA11\\b"
+    },
+    {
+      "ssn_datapth": 2,
+      "pinName": "DDR1_DQ26\\b"
+    },
+    {
+      "ssn_datapth": 3,
+      "pinName": "DDR1_DQ31\\b"
+    },
+    {
+      "ssn_datapth": 4,
+      "pinName": "DDR1_DQ30\\b"
+    },
+    {
+      "ssn_datapth": 5,
+      "pinName": "a_xxxx\\b"
+    },
+    {
+      "ssn_datapth": 6,
+      "pinName": "DDR1_DQ29\\b"
+    },
+    {
+      "ssn_datapth": 7,
+      "pinName": "a_xxxx\\b"
+    },
+    {
+      "ssn_datapth": 8,
+      "pinName": "a_xxxx\\b"
+    },
+	{
+      "ssn_datapth": 9,
+      "pinName": "a_xxxx\\b"
+    },
+    {
+      "ssn_datapth": 10,
+      "pinName": "DDR1_DQ28\\b"
+    },
+    {
+      "ssn_datapth": 11,
+      "pinName": "DDR1_DQ27\\b"
+    },
+    {
+      "ssn_datapth": 12,
+      "pinName": "DDR1_DQ43\\b"
+    },
+    {
+      "ssn_datapth": 13,
+      "pinName": "DDR1_DQ42\\b"
+    },
+    {
+      "ssn_datapth": 14,
+      "pinName": "a_xxxx\\b"
+    },
+    {
+      "ssn_datapth": 15,
+      "pinName": "a_xxxx\\b"
+    },
+    {
+      "ssn_datapth": 16,
+      "pinName": "a_xxxx\\b"
+    },
+	{
+      "ssn_datapth": 17,
+      "pinName": "a_xxxx\\b"
+    },
+    {
+      "ssn_datapth": 18,
+      "pinName": "DDR1_DQ47\\b"
+    },
+    {
+      "ssn_datapth": 19,
+      "pinName": "DDR1_DQ46\\b"
+    },
+    {
+      "ssn_datapth": 20,
+      "pinName": "DDR1_DQ53\\b"
+    },
+    {
+      "ssn_datapth": 21,
+      "pinName": "a_a_xxxx\\b"
+    },
+    {
+      "ssn_datapth": 22,
+      "pinName": "a_a_xxxx\\b"
+    },
+    {
+      "ssn_datapth": 23,
+      "pinName": "a_a_xxxx\\b"
+    },
+    {
+      "ssn_datapth": 24,
+      "pinName": "DDR1_DQ52\\b"
+    },
+	{
+      "ssn_datapth": 25,
+      "pinName": "DDR1_DQ49\\b"
+    },
+    {
+      "ssn_datapth": 26,
+      "pinName": "DDR1_DQ48\\b"
+    },
+    {
+      "ssn_datapth": 27,
+      "pinName": "a_xxxx\\b"
+    },
+    {
+      "ssn_datapth": 28,
+      "pinName": "A_x\\b"
+    },
+    {
+      "ssn_datapth": 29,
+      "pinName": "a_xxxx\\b"
+    },
+    {
+      "ssn_datapth": 30,
+      "pinName": "a_xxxx\\b"
+    },
+    {
+      "ssn_datapth": 31,
+      "pinName": "DDR1_DQ51\\b"
+    },
+    {
+      "ssn_datapth": 32,
+      "pinName": "DDR1_DQ50\\b"
+    },
+  ]
+}

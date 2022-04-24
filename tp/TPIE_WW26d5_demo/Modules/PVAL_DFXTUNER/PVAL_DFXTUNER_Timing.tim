@@ -1,0 +1,106 @@
+Version 1.0;
+
+Timing cpu_stf_timing_PerPin
+{
+	Domain CPU_FAB_ALL
+	{
+		PeriodTable
+		{
+			Divisor = p_fab_domain_div;
+			Multiplier = p_fab_domain_mul;
+			Period = c_sclk_ec_per;
+		}		
+		YY_TEST_CLK_IN_S2C_ec
+		{
+			TRise = c_sclk_ec_trise;
+			TFall = c_sclk_ec_tfall;
+			Ratio = p_sclk_ec_ratio;
+		}		
+		stf_in
+		{
+			drive = c_stf_in_drv;
+			compare = c_stf_in_stb;
+		}		
+		stf_out
+		{
+			drive = c_stf_out_drv;
+			compare = c_stf_out_stb;
+		}		
+		YY_TEST_PORT_IN_S2C_03
+		{
+			drive = c_STF003_in_drv;
+			compare = c_stf_in_stb;
+		}		
+		YY_TEST_PORT_IN_S2C_02
+		{
+			drive = c_STF002_in_drv;
+			compare = c_stf_in_stb;
+		}		
+		YY_TEST_PORT_IN_S2C_01
+		{
+			drive = c_STF001_in_drv;
+			compare = c_stf_in_stb;
+		}		
+		YY_TEST_PORT_IN_S2C_00
+		{
+			drive = c_STF000_in_drv;
+			compare = c_stf_in_stb;
+		}		
+		YY_TEST_PORT_OUT_C2S_03
+		{
+			drive = c_stf_out_drv;
+			compare = c_STF000_out_stb;
+		}		
+		YY_TEST_PORT_OUT_C2S_02
+		{
+			drive = c_stf_out_drv;
+			compare = c_STF000_out_stb;
+		}		
+		YY_TEST_PORT_OUT_C2S_01
+		{
+			drive = c_stf_out_drv;
+			compare = c_STF000_out_stb;
+		}		
+		YY_TEST_PORT_OUT_C2S_00
+		{
+			drive = c_stf_out_drv;
+			compare = c_STF000_out_stb;
+		}		
+		YY_CROCLK_S2C_hpc
+		{
+			Period = p_cclk_per;
+			ClockEnable = p_cclk_hpc_enable;
+		}		
+	}	
+	Domain CPU_TAP_ALL
+	{
+		PeriodTable
+		{
+			Divisor = p_tap_domain_div;
+			Multiplier = p_tap_domain_mul;
+			Period = c_tclk_ec_per;
+		}		
+		YY_TAP_TCK_S2C_ec
+		{
+			TRise = c_tclk_ec_trise;
+			TFall = c_tclk_ec_tfall;
+			Ratio = p_tclk_ec_ratio;
+		}		
+		tap_in
+		{
+			drive = c_tap_in_drv;
+			compare = c_tap_in_stb;
+		}		
+		tap_out
+		{
+			drive = c_tap_out_drv;
+			compare = c_tap_out_stb;
+		}		
+		misc_tap
+		{
+			drive = c_misc_tap_drv;
+			compare = c_misc_tap_stb;
+		}		
+	}	
+} #End of Timing Block cpu_stf_timing
+

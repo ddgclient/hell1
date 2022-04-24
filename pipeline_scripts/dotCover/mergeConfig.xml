@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MergeParams>
+  <!-- At least one source required. -->
+  <Source>C:\Users\caiofern\source\repos\poc_tp_validation\logs\dotCover\coverLog*.dcvr</Source>
+  <TempDir><!-- Directory for auxiliary files. Set to the system temp by default. --></TempDir>
+  <Output>C:\Users\caiofern\source\repos\poc_tp_validation\logs\dotCover\coverLogComplete.dcvr</Output>
+</MergeParams>

@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>DDGTriggeredDC Template</title>
+</head>
+<body>
+
+    <h1 id="ddgtriggereddc-template">DDGTriggeredDC Template</h1>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1. <a href="#introduction">Introduction</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">2. <a href="#test-instance-parameters">Test Instance Parameters</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">3. <a href="#tpl-samples">TPL Samples</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">4. <a href="#exit-ports">Exit Ports</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="section"></h3>
+<hr />
+<h2 id="introduction">1. Introduction</h2>
+<p>This is a simple extension to the PrimeTriggeredDcTestMethod which provides the ability to save the measured results to GSDS/SharedStorage.</p>
+<hr />
+<h2 id="test-instance-parameters">2. Test Instance Parameters</h2>
+<h4 id="primetriggereddctestmethod-test-instance-parameters">2.1 PrimeTriggeredDCTestMethod Test Instance Parameters</h4>
+<p>See the <a href="https://dev.azure.com/mit-us/PrimeWiki/_wiki/wikis/PrimeWiki.wiki/33623/Readme">Prime Wiki</a> for details on the base parameters.</p>
+<h4 id="additional-ddgtriggereddc-test-instance-parameters">2.1 Additional DDGTriggeredDC Test Instance Parameters</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Parameter Name</th>
+<th style="text-align: left;">Required?</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">SaveResults</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: left;">CommaSeparatedString</td>
+<td style="text-align: left;">List of GSDS tokens to save the results to. Needs to be one GSDS per measurement. Use the Evergreen 'G.U.[DS].Token' format. Can be saved to Double or String types. For multiple measurements it will be Pin first, eg Pin1Result1,Pin1Result2,...,Pin1ResultN,Pin2Result1,...,Pin2ResultN</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="tpl-samples">3. TPL Samples</h2>
+<h3 id="section-1"></h3>
+<p>Example of taking 2 measurements on 3 pins.</p>
+<pre><code class="language-csharp">Test PrimeTriggeredDcTestMethod ANALOGMEASURE_ExamplePrime_onemeasurement
+{
+    LevelsTc = &quot;IP_CPU::IP_CPU_BASE::DDR_FIVR_IMON_lvl_nom_lvl&quot;;
+    Patlist = &quot;IP_CPU::avppn_chk_gt0_nmosoff_plist&quot;;
+    TimingsTc = &quot;IP_CPU::IP_CPU_BASE::cpu_func_sdr_univ_sta_univ_univ_b100_t100_d100&quot;;
+    Pins = &quot;VCC_IN_HC,FIVR_PROBE_ANA_0,FIVR_PROBE_ANA_1&quot;;
+    MeasurementTypes = &quot;Current,Voltage,Voltage&quot;;
+    LowLimits = &quot;-4A,-0.1V,-0.1V&quot;;
+    HighLimits = &quot;20A,1.3V,1.3V&quot;;
+    TriggerMapName = &quot;FIVR_IMON_TriggerMap&quot;;
+    LogLevel = &quot;PRIME_DEBUG&quot;;
+    DatalogLevel = &quot;All&quot;;
+    SaveResults = &quot;G.U.D.Icc0,G.U.D.Icc1,G.U.D.VAVPP0,G.U.D.VAVPP1,G.U.D.VAVPN0,G.U.D.VAVPN1&quot;
+}
+</code></pre>
+<hr />
+<h2 id="exit-ports">4. Exit Ports</h2>
+<table>
+<thead>
+<tr>
+<th>Exit Port</th>
+<th>Condition</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-2</td>
+<td>Alarm</td>
+<td>Any HW alarm condition</td>
+</tr>
+<tr>
+<td>-1</td>
+<td>Error</td>
+<td>Any software error</td>
+</tr>
+<tr>
+<td>0</td>
+<td>Fail</td>
+<td>No change from base PrimeTriggeredDCTestMethod.</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Pass</td>
+<td>No change from base PrimeTriggeredDCTestMethod.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="section-2"></h3>
+<hr />
+
+
+</body>
+</html>

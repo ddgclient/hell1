@@ -1,0 +1,55 @@
+{
+	"Configurations": [
+	{
+	  "Name": "main_cursor",
+	  "ConfigurationElement": [
+		{
+					"Type": "PINDATA",
+					"IsChannelLink": false,
+					"Pin": "YY_TAP_TDI_S2C",
+					"StartAddress": "104",
+					"StartAddressOffset": 0,
+					"EndAddress": "107",
+					"EndAddressOffset": 0,
+					"PatternsRegEx": [
+						"g0019809W4480630A_.*"
+					]
+				}
+			]
+		},
+		{
+			"Name": "pre_cursor",
+			"ConfigurationElement": [
+				{
+					"Type": "PINDATA",
+					"IsChannelLink": false,
+					"Pin": "YY_TAP_TDI_S2C",
+					"StartAddress": "108",
+					"StartAddressOffset": 0,
+					"EndAddress": "111",
+					"EndAddressOffset": 0,
+					"PatternsRegEx": [
+						"g0019809W4480630A_.*"
+					]
+				}
+			]
+		},
+		{
+			"Name": "post_cursor",
+			"ConfigurationElement": [
+				{
+					"Type": "PINDATA",
+					"IsChannelLink": false,
+					"Pin": "YY_TAP_TDI_S2C",
+					"StartAddress": "112",
+					"StartAddressOffset": 0,
+					"EndAddress": "115",
+					"EndAddressOffset": 0,
+					"PatternsRegEx": [
+						"g0019809W4480630A_.*"
+					]
+				}
+			]
+		}
+	]
+}

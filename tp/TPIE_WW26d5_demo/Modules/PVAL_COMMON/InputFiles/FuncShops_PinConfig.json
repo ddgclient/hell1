@@ -1,0 +1,15 @@
+{
+	"VOX_LL": 0.1,
+	"VOX_UL": 0.5,
+	"Resolution":  0.1,
+	"PinConfigs": [
+		{
+		  "PinName": "YY_TAP_TDI_S2C",
+		  "VOX": 0.6
+		},
+		{
+			"PinName": "YY_TAP_TDO_C2S",
+			"VOX": 0.1
+		}
+	],
+}

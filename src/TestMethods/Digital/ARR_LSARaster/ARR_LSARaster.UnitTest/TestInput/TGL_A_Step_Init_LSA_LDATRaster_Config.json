@@ -1,0 +1,490 @@
+{
+  "Setup": {
+    "PatModConfigSets": {
+      "PatModConfigSet": [
+        {
+          "Name": "LSA_RASTER_PAT_MODIFY_SET_CORE",
+          "PatternModifiers": {
+            "PatternModify": [
+              {
+                "PatTarget": "MaxDefectsCount",
+                "Pin": "TDI",
+                "Label": "Defect_count*",
+                "Domain": "LEG",
+                "Offset": "2",
+                "Length": "1"
+              },
+              {
+                "PatTarget": "Multiport",
+                "Pin": "TDI",
+                "Label": "MPMAP_*",
+                "Domain": "LEG",
+                "Offset": "0",
+                "Length": "4"
+              },
+              {
+                "PatTarget": "Bank",
+                "Pin": "TDI",
+                "Label": "BANKSEL.+|T_B_M.+",
+                "Domain": "LEG",
+                "Offset": "0",
+                "Length": "4"
+              },
+              {
+                "PatTarget": "Dword",
+                "Pin": "TDI",
+                "Label": "DWORD.+|S_B_M.+",
+                "Domain": "LEG",
+                "Offset": "0",
+                "Length": "4"
+              },
+              {
+                "PatTarget": "IOMask",
+                "Pin": "TDI",
+                "Label": "XCare_*",
+                "Domain": "LEG",
+                "Offset": "0",
+                "Length": "32"
+              }
+            ]
+          }
+        },
+        {
+          "Name": "LSA_RASTER_PAT_MODIFY_SET_CBO",
+          "PatternModifiers": {
+            "PatternModify": [
+              {
+                "PatTarget": "MaxDefectsCount",
+                "Pin": "TDI",
+                "Label": "Defect_count*",
+                "Domain": "LEG",
+                "Offset": "2",
+                "Length": "1"
+              },
+              {
+                "PatTarget": "Multiport",
+                "Pin": "TDI",
+                "Label": "mpmap_*",
+                "Domain": "LEG",
+                "Offset": "0",
+                "Length": "4"
+              },
+              {
+                "PatTarget": "Bank",
+                "Pin": "TDI",
+                "Label": "banksel.+|T_B_M.+",
+                "Domain": "LEG",
+                "Offset": "0",
+                "Length": "4"
+              },
+              {
+                "PatTarget": "Dword",
+                "Pin": "TDI",
+                "Label": "dword.+|S_B_M.+",
+                "Domain": "LEG",
+                "Offset": "0",
+                "Length": "4"
+              },
+              {
+                "PatTarget": "IOMask",
+                "Pin": "TDI",
+                "Label": "xcare*",
+                "Domain": "LEG",
+                "Offset": "0",
+                "Length": "32"
+              }
+            ]
+          }
+        },
+        {
+          "Name": "LSA_RASTER_PAT_MODIFY_SET_SA",
+          "PatternModifiers": {
+            "PatternModify": [
+              {
+                "PatTarget": "MaxDefectsCount",
+                "Pin": "TDI",
+                "Label": "Defect_count*",
+                "Domain": "LEG",
+                "Offset": "0",
+                "Length": "1"
+              },
+              {
+                "PatTarget": "Multiport",
+                "Pin": "TDI",
+                "Label": "MPMAP_*",
+                "Domain": "LEG",
+                "Offset": "0",
+                "Length": "4"
+              },
+              {
+                "PatTarget": "Bank",
+                "Pin": "TDI",
+                "Label": "*BANKSEL_*",
+                "Domain": "LEG",
+                "Offset": "0",
+                "Length": "4"
+              },
+              {
+                "PatTarget": "Dword",
+                "Pin": "TDI",
+                "Label": "DWORD_*",
+                "Domain": "LEG",
+                "Offset": "0",
+                "Length": "4"
+              },
+              {
+                "PatTarget": "IOMask",
+                "Pin": "TDI",
+                "Label": "XCare_*",
+                "Domain": "LEG",
+                "Offset": "0",
+                "Length": "32"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "CaptureConfigSets": {
+      "CaptureSet": [
+        {
+          "Name": "LSA_RASTER_CAPTURE_DECODING_SET_CORE",
+          "Length": "82",
+          "DecodingElements": {
+            "DecodingElement": [
+              {
+                "Name": "FailAddress",
+                "Start": "30",
+                "End": "41"
+              },
+              {
+                "Name": "Dword",
+                "Start": "42",
+                "End": "45"
+              },
+              {
+                "Name": "Bank",
+                "Start": "46",
+                "End": "49"
+              },
+              {
+                "Name": "FailIO",
+                "Start": "50",
+                "End": "81"
+              }
+            ]
+          }
+        },
+        {
+          "Name": "LSA_RASTER_CAPTURE_DECODING_SET_CBO",
+          "Length": "52",
+          "DecodingElements": {
+            "DecodingElement": [
+              {
+                "Name": "FailAddress",
+                "Start": "0",
+                "End": "11"
+              },
+              {
+                "Name": "Dword",
+                "Start": "12",
+                "End": "15"
+              },
+              {
+                "Name": "Bank",
+                "Start": "16",
+                "End": "19"
+              },
+              {
+                "Name": "FailIO",
+                "Start": "20",
+                "End": "51"
+              }
+            ]
+          }
+        },
+        {
+          "Name": "LSA_RASTER_CAPTURE_DECODING_SET_SA",
+          "Length": "52",
+          "DecodingElements": {
+            "DecodingElement": [
+              {
+                "Name": "FailAddress",
+                "Start": "0",
+                "End": "11"
+              },
+              {
+                "Name": "Dword",
+                "Start": "12",
+                "End": "15"
+              },
+              {
+                "Name": "Bank",
+                "Start": "16",
+                "End": "19"
+              },
+              {
+                "Name": "FailIO",
+                "Start": "20",
+                "End": "51"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "SlicePinMapping": {
+      "PinMappingsSet": [
+        {
+          "Name": "4_CORES",
+          "Configurations": {
+            "ArrayNameRegex": "[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_([a-zA-Z0-9]+_[a-zA-Z0-9]+_?[a-zA-Z0-9]*)_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+",
+            "IsRasterModeSupported": "TRUE",
+            "IsGetDwordFromFailIoIndex": "FALSE",
+            "PreScreenLabelRegex": "_MBD_([0-9]+)_([0-9]+)_([0-9]+)",
+            "LabelRegExTokens": {
+              "RegExToken": [
+                {
+                  "_id": "0",
+                  "__text": "MULTIPORT"
+                },
+                {
+                  "_id": "1",
+                  "__text": "BANK"
+                },
+                {
+                  "_id": "2",
+                  "__text": "DWORD"
+                }
+              ]
+            }
+          },
+          "PinMappings": {
+            "PinMapping": [
+              {
+                "SliceId": "0",
+                "PinName": "NOAB_00",
+                "HryName": "C0"
+              },
+              {
+                "SliceId": "1",
+                "PinName": "NOAB_01",
+                "HryName": "C1"
+              },
+              {
+                "SliceId": "2",
+                "PinName": "NOAB_02",
+                "HryName": "C2"
+              },
+              {
+                "SliceId": "3",
+                "PinName": "NOAB_03",
+                "HryName": "C3"
+              }
+            ]
+          }
+        },
+        {
+          "Name": "CCF_SLICE_0",
+          "Configurations": {
+            "ArrayNameRegex": "[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_([a-zA-Z0-9]+_[a-zA-Z0-9]+_?[a-zA-Z0-9]*)_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+",
+            "IsRasterModeSupported": "TRUE",
+            "IsGetDwordFromFailIoIndex": "FALSE",
+            "PreScreenLabelRegex": "_S?MBD_?X?_([0-7]+)_([0-9]+)_([0-9]+)_([0-9]+)",
+            "LabelRegExTokens": {
+              "RegExToken": [
+                {
+                  "_id": "0",
+                  "__text": "SLICE"
+                },
+                {
+                  "_id": "1",
+                  "__text": "MULTIPORT"
+                },
+                {
+                  "_id": "2",
+                  "__text": "BANK"
+                },
+                {
+                  "_id": "3",
+                  "__text": "DWORD"
+                }
+              ]
+            }
+          },
+          "PinMappings": {
+            "PinMapping": {
+              "SliceId": "0",
+              "PinName": "TDO",
+              "HryName": "C0"
+            }
+          }
+        },
+        {
+          "Name": "CCF_SLICE_1",
+          "Configurations": {
+            "ArrayNameRegex": "[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_([a-zA-Z0-9]+_[a-zA-Z0-9]+_?[a-zA-Z0-9]*)_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+",
+            "IsRasterModeSupported": "TRUE",
+            "IsGetDwordFromFailIoIndex": "FALSE",
+            "PreScreenLabelRegex": "_S?MBD_?X?_([0-7]+)_([0-9]+)_([0-9]+)_([0-9]+)",
+            "LabelRegExTokens": {
+              "RegExToken": [
+                {
+                  "_id": "0",
+                  "__text": "SLICE"
+                },
+                {
+                  "_id": "1",
+                  "__text": "MULTIPORT"
+                },
+                {
+                  "_id": "2",
+                  "__text": "BANK"
+                },
+                {
+                  "_id": "3",
+                  "__text": "DWORD"
+                }
+              ]
+            }
+          },
+          "PinMappings": {
+            "PinMapping": {
+              "SliceId": "1",
+              "PinName": "TDO",
+              "HryName": "C1"
+            }
+          }
+        },
+        {
+          "Name": "CCF_SLICE_2",
+          "Configurations": {
+            "ArrayNameRegex": "[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_([a-zA-Z0-9]+_[a-zA-Z0-9]+_?[a-zA-Z0-9]*)_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+",
+            "IsRasterModeSupported": "TRUE",
+            "IsGetDwordFromFailIoIndex": "FALSE",
+            "PreScreenLabelRegex": "_S?MBD_?X?_([0-7]+)_([0-9]+)_([0-9]+)_([0-9]+)",
+            "LabelRegExTokens": {
+              "RegExToken": [
+                {
+                  "_id": "0",
+                  "__text": "SLICE"
+                },
+                {
+                  "_id": "1",
+                  "__text": "MULTIPORT"
+                },
+                {
+                  "_id": "2",
+                  "__text": "BANK"
+                },
+                {
+                  "_id": "3",
+                  "__text": "DWORD"
+                }
+              ]
+            }
+          },
+          "PinMappings": {
+            "PinMapping": {
+              "SliceId": "2",
+              "PinName": "TDO",
+              "HryName": "C2"
+            }
+          }
+        },
+        {
+          "Name": "CCF_SLICE_3",
+          "Configurations": {
+            "ArrayNameRegex": "[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_([a-zA-Z0-9]+_[a-zA-Z0-9]+_?[a-zA-Z0-9]*)_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+",
+            "IsRasterModeSupported": "TRUE",
+            "IsGetDwordFromFailIoIndex": "FALSE",
+            "PreScreenLabelRegex": "_S?MBD_?X?_([0-7]+)_([0-9]+)_([0-9]+)_([0-9]+)",
+            "LabelRegExTokens": {
+              "RegExToken": [
+                {
+                  "_id": "0",
+                  "__text": "SLICE"
+                },
+                {
+                  "_id": "1",
+                  "__text": "MULTIPORT"
+                },
+                {
+                  "_id": "2",
+                  "__text": "BANK"
+                },
+                {
+                  "_id": "3",
+                  "__text": "DWORD"
+                }
+              ]
+            }
+          },
+          "PinMappings": {
+            "PinMapping": {
+              "SliceId": "3",
+              "PinName": "TDO",
+              "HryName": "C3"
+            }
+          }
+        },
+        {
+          "Name": "4_SLICES_CBO",
+          "Configurations": {
+            "ArrayNameRegex": "[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_([a-zA-Z0-9]+_[a-zA-Z0-9]+)_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+_[a-zA-Z0-9]+",
+            "IsRasterModeSupported": "TRUE",
+            "IsGetDwordFromFailIoIndex": "FALSE",
+            "PreScreenLabelRegex": "_S?MBD_?X?_([0-7]+)_([0-9]+)_([0-9]+)_([0-9]+)",
+            "LabelRegExTokens": {
+              "RegExToken": [
+                {
+                  "_id": "0",
+                  "__text": "SLICE"
+                },
+                {
+                  "_id": "1",
+                  "__text": "MULTIPORT"
+                },
+                {
+                  "_id": "2",
+                  "__text": "BANK"
+                },
+                {
+                  "_id": "3",
+                  "__text": "DWORD"
+                }
+              ]
+            }
+          },
+          "PinMappings": {
+            "PinMapping": [
+              {
+                "SliceId": "0",
+                "PinName": "NOAB_00",
+                "HryName": "C0"
+              },
+              {
+                "SliceId": "1",
+                "PinName": "NOAB_01",
+                "HryName": "C1"
+              },
+              {
+                "SliceId": "2",
+                "PinName": "NOAB_02",
+                "HryName": "C2"
+              },
+              {
+                "SliceId": "3",
+                "PinName": "NOAB_03",
+                "HryName": "C3"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "_xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+    "_xsi:noNamespaceSchemaLocation": "GEN_LSARASTER_TT_INIT.XSD"
+    // Converted with https://www.convertjson.com/xml-to-json.htm
+  }
+}

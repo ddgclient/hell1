@@ -1,0 +1,79 @@
+<?xml version= "1.0" encoding= "utf-8"?>
+<recovery>
+
+    <defeaturing_rules>
+		<!-- Used for  Die Recovery to look for a matching combination for an specific SliceTracking  -->
+		<!-- 8 ATOM Core Bits - set up for 7-0  -->
+		<!-- Module 1	Module 0  -->
+		<!-- C3-C0		C3-C0  -->
+		
+		<rules name = "AtomCoreDefeaturingVector"    index= "0-7" >
+			<!-- POR combinations - either both modules pass or one of the modules passes  -->
+			<rule mode = "ValidCombinations"  name = "8C" size = "8"  type= "FullyFeatured">
+				<bitvector  value = "00000000"/>
+			</rule>
+			<rule mode = "ValidCombinations"  name = "4C" size = "4"  type= "Recovery">
+				<bitvector  value = "00001111"/>
+				<bitvector  value = "11110000"/>
+			</rule>
+			<!-- For First silicon, partial module recovery is enabled, but C0 and C1 need to be enabled in the module  -->
+			<!--rule mode = "ValidCombinations"  name = "1C" size = "1"  type= "FirstSiliconRecovery">
+				<bitvector  value = "11111100"/>
+				<bitvector  value = "11001111"/>
+				<bitvector  value = "11001100"/>
+				<bitvector  value = "00001100"/>
+				<bitvector  value = "11000000"/>
+			</rule-->
+			<rule mode = "ValidCombinations"  name = "0C" size = "0"  type= "FirstSiliconRecovery">
+				<bitvector  value = "11111111"/>
+			</rule>
+		</rules>
+		<!-- 2 ATOM Slice Bits - set up for 0-1  -->
+		<rules name = "AtomSliceDefeaturingVector"    index= "0-1" >
+			<rule mode = "ValidCombinations"  name = "2C" size = "2"  type= "FullyFeatured">
+				<bitvector  value = "00"/>
+			</rule>
+			<rule mode = "ValidCombinations"  name = "0C" size = "0"  type= "FirstSiliconRecovery">
+				<bitvector  value = "11"/>
+			</rule>
+		</rules>
+		<!-- 6 RWC Core Bits - set up for 5-0  -->
+		<!-- 0-3 bits are disabled since MTL-M has 2 RWC cores  -->
+		<rules name = "RWCDefeaturingVector_M"    index= "0-5" >
+			<rule mode = "ValidCombinations"  name = "2C" size = "2"  type= "FullyFeatured">
+				<bitvector  value = "111100"/>
+			</rule>
+			<rule mode = "ValidCombinations"  name = "1C" size = "1"  type= "Recovery">
+				<bitvector  value = "111110"/>
+				<bitvector  value = "111101"/>
+			</rule>
+		</rules>
+		<!-- 6 RWC Core Bits for MTL-P - set up for 5-0  -->
+		<rules name = "RWCDefeaturingVector_P"    index= "0-5" >
+			<rule mode = "ValidCombinations"  name = "6C" size = "6"  type= "FullyFeatured">
+				<bitvector  value = "000000"/>
+			</rule>
+			<rule mode = "ValidCombinations"  name = "4C" size = "4"  type= "Recovery">
+				<bitvector  value = "000011"/>
+				<bitvector  value = "001100"/>
+				<bitvector  value = "110000"/>
+			</rule>
+			<rule mode = "ValidCombinations"  name = "2C" size = "2"  type= "Recovery">
+				<bitvector  value = "001111"/>
+				<bitvector  value = "110011"/>
+				<bitvector  value = "111100"/>
+			</rule>
+			<!-- First Silicon ONLY  -->
+			<rule mode = "ValidCombinations"  name = "1C" size = "1"  type= "Recovery">
+				<bitvector  value = "011111"/>
+				<bitvector  value = "101111"/>
+				<bitvector  value = "110111"/>
+				<bitvector  value = "111011"/>
+				<bitvector  value = "111101"/>
+				<bitvector  value = "111110"/>
+			</rule>
+		</rules>
+	</defeaturing_rules>
+</recovery>
+
+

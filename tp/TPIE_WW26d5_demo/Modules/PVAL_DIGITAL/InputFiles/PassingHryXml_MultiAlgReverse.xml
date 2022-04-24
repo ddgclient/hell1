@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HSR_HRY_config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="GEN_HSR_HRY.xsd">
+
+	<ReverseCtvCaptureData>Y</ReverseCtvCaptureData>
+
+	<CtvToHryMapping>
+		<Map ctv_data="0" hry_data="0" />
+		<Map ctv_data="1" hry_data="1" />
+	</CtvToHryMapping>
+
+	<BypassGlobalPrefix>PVAL_DIGITAL.HRY_Global_</BypassGlobalPrefix>
+	
+	<Criterias>
+		<Criteria hry_index="0"  pin="YY_TEST_PORT_OUT_C2S_00" ctv_index_range="2"     condition="YY_TAP_TDO_C2S,0-1,00"    hry_output_on_condition_fail="8" bypass_global="1" />
+		<Criteria hry_index="1"  pin="YY_TEST_PORT_OUT_C2S_00" ctv_index_range="5"     condition="YY_TAP_TDO_C2S,3-4,00"    hry_output_on_condition_fail="8" bypass_global="2" />
+	</Criterias>
+
+	<Algorithms>
+		<Algorithm index="0" name="AlgA"   pat_modify_label="" ctv_size="6" />
+		<Algorithm index="1" name="AlgB"   pat_modify_label="" ctv_size="6" />
+		<Algorithm index="2" name="AlgC"   pat_modify_label="" ctv_size="6" />
+	</Algorithms>
+
+</HSR_HRY_config>

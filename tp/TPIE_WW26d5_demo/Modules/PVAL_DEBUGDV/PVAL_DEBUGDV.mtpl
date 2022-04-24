@@ -1,0 +1,189 @@
+Version 1.0;
+
+ProgramStyle = Modular;
+
+TestPlan PVAL_DEBUGDV;
+
+
+Import RunCallback.xml;
+Import PatternDelayOptimizer.xml;
+Import ImpactStudiesVmin.xml;
+Import PValTC.xml;
+Import BackgroundPatConfig.xml;
+
+Test ImpactStudiesVmin TestImpactStudiesVmin_P1
+{
+	VminForwardOffset = 0.02;
+	ConfigurationFile = "./Modules/PVAL_DEBUGDV/InputFiles/impactstudies.vminconfig.json";
+    LogLevel = "PRIME_DEBUG";
+}
+
+Test PatternDelayOptimizer TestWaitTimeFinder_LinearHighToLow_P1
+{
+    LevelsTc = "__main__::bf_lvl_nom_lvl";
+    TimingsTc = "__main__::cpu_stf_timing_tclk100_sclk100_cclk100";
+    Patlist = "fun_core_cdie_preposthvqk_sbft_lfm_vadtl_stf100_mlc_AVX_sublist";
+
+	PerRunPatternLimit = 0;
+	SearchValueMin = 10;
+	SearchValueResolution = 10;
+	MaxTestpoints = 100;
+	GuardbandMultiplier = 0.1;
+	SearchMethod = "LinearHighToLow";
+
+	RestorePatterns = "True";
+	ReloadPatConfig = "False";
+
+	PatmodConfig = "ImpactStudiesBaseWaits";
+	PatmodInputFile = "./Modules/PVAL_DEBUGDV/InputFiles/impactstudies.patmod.json";
+	PatmodOutputFile = "./Modules/PVAL_DEBUGDV/InputFiles/is_final.patmod.json";
+	SummaryOutputFile = "./Modules/PVAL_DEBUGDV/InputFiles/is_final.summary.json";
+    LogLevel = "PRIME_DEBUG";
+}
+
+Test PValTC PvalTC_AllPass_P1
+{
+    LevelsTc = "__main__::bf_lvl_nom_lvl";
+    TimingsTc = "__main__::cpu_stf_timing_tclk100_sclk100_cclk100";
+    Patlist = "fun_core_cdie_preposthvqk_sbft_lfm_vadtl_stf100_mlc_AVX_sublist";
+}
+
+Test BackgroundPatConfig ThreadPatConfig_Launch_P1
+{
+	Mode = "Start";
+	PatConfigSetpointList = "PVAL_BASE:pwrmux_sel_atom0:PM_DEFAULT";
+}
+Test BackgroundPatConfig ThreadPatConfig_Wait_P1
+{
+	Mode = "Wait";
+	WaitTimeout = 30000;
+}
+
+DUTFlow PVAL_DEBUGDV_MAIN
+{
+    DUTFlowItem TestWaitTimeFinder_LinearHighToLow_P1 TestWaitTimeFinder_LinearHighToLow_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo TestImpactStudiesVmin_P1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo TestImpactStudiesVmin_P1;
+        }
+    }
+    DUTFlowItem TestImpactStudiesVmin_P1 TestImpactStudiesVmin_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo PvalTC_AllPass_P1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo PvalTC_AllPass_P1;
+        }
+    }
+    DUTFlowItem PvalTC_AllPass_P1 PvalTC_AllPass_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo ThreadPatConfig_Launch_P1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo ThreadPatConfig_Launch_P1;
+        }
+    }
+    DUTFlowItem ThreadPatConfig_Launch_P1 ThreadPatConfig_Launch_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            GoTo ThreadPatConfig_Wait_P1;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            GoTo ThreadPatConfig_Wait_P1;
+        }
+    }
+    DUTFlowItem ThreadPatConfig_Wait_P1 ThreadPatConfig_Wait_P1
+    {
+        Result -2
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b99010001_fail_FAIL_DPS_ALARM;
+            Return -1;
+        }
+        Result -1
+        {
+            Property PassFail = "Fail";
+            SetBin SoftBins.b98010001_fail_FAIL_SYSTEM_SOFTWARE;
+            Return -1;
+        }
+        Result 0
+        {
+            Property PassFail = "Fail";
+            Return 0;
+        }
+        Result 1
+        {
+            Property PassFail = "Pass";
+            Return 1;
+        }
+    }
+}
