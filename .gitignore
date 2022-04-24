@@ -1,0 +1,44 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+.vs
+bin
+lib
+temp
+unit_test
+obj
+x64
+*.user
+preheaders/*.xml
+
+# ignore the pval log files
+/pVal
+
+# ignore any coverage generated files.
+/pipeline_scripts/CoverageGater/coverage_tools/__pycache__/
+*.coverage
+/logs/dotCover
+
+/src/TestMethods/Common/Vmin/SingleVmin/Properties/launchSettings.json
+/src/Base/DieRecovery/DieRecovery/Properties/launchSettings.json
+/src/TestMethods/Common/Vmin/VminTC/Properties/launchSettings.json
+/src/Base/debug.log
+/src/TestMethods/Common/DieRecoveryCallbacks/DieRecoveryCallbacks/debug.log
+/src/TestMethods/Common/Vmin/VminTC/debug.log
+/src/Base/VoltageConverter/VoltageConverter/debug.log
+/src/Base/VminForwarding/VminForwarding/debug.log
+/src/Base/PatternModifications/PatternModifications/debug.log
+/src/TestMethods/Common/VoltageConverterCallbacks/VoltageConverterCallbacks/debug.log
+/src/TestMethods/Common/VminForwardingCallbacks/VminForwardingCallbacks/debug.log
+/src/TestMethods/Common/SimpleCtv/SimpleCtvTC/Properties/launchSettings.json
+/src/TestMethods/Analog/TPT/DcPrint/preheaders
+/src/TestMethods/Digital/ARR_MBIST/MbistHRYTC/Properties/launchSettings.json
+/src/TestMethods/Analog/DCMX/AnalogFuncCaptureCtv/Properties/launchSettings.json
+/documentation
+/src/TestMethods/Analog/PTH/DUSTI_Configure.UnitTest/DUSTI_Configure_UnitTest.cs
+/src/TestMethods/Analog/PTH/DUSTI_Config
+/src/TestMethods/Digital/ARR_LSARaster/TestResults
+/pipeline_scripts/pVal/pVal/TOS3920
+/pipeline_scripts/pVal/pVal/pVal-2022-02-28_10-49-09.log
+/pipeline_scripts/pVal/pVal/Tosoutput.log
+/pipeline_scripts/pVal/pVal

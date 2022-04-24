@@ -1,0 +1,98 @@
+variables:
+  pValPath: .\pipeline_scripts\pVal\PrimeValTool.exe
+  tosPath: C:\intel\hdmt\hdmtOS_3.10.0.0_Release
+  GIT_DEPTH: 1
+  postBuffer: 26,214,400
+  GET_SOURCES_ATTEMPTS: 5
+
+stages:
+  - compile
+  - unittest
+  - coverage
+  - pVal
+  - release
+
+Compile:
+  stage: compile
+  script:
+    - .\pipeline_scripts\CompileAll.cmd Base -ci $CI_PROJECT_DIR
+    - .\pipeline_scripts\CompileAll.cmd $TARGET -ci $CI_PROJECT_DIR
+    - cd $CI_PROJECT_DIR
+  artifacts:
+    untracked: true
+
+UnitTesting:
+  stage: unittest
+  script:
+    - .\pipeline_scripts\RunUnitTests.cmd -ci $CI_PROJECT_DIR
+    - cd $CI_PROJECT_DIR
+  dependencies:
+    - Compile
+  artifacts:
+    untracked: true
+
+CheckCoverage:
+  stage: coverage
+  script:
+    - PowerShell -Command "New-Item -ItemType Directory -Path .\logs"
+    - echo R | PowerShell -Command "& {Set-ExecutionPolicy -Scope Process -ExecutionPolicy Unrestricted -Force; .\pipeline_scripts\RunCoverageTests.ps1 -IgnoreFilter 'TOSUserSDK;*.UnitTest*;PstateTest;FIVRDACFitTC;MEMDECODE_CLK_FLL_ALL;PTHCalcTC;PllVidWalkTC;MbistHRYTC;FIVRTrimTC;MbistRasterRepairTC;MbistShared'}"
+    - .\pipeline_scripts\CoverageGater\coverageGater.py --Config .\pipeline_scripts\CoverageGater\config.json
+    - cd $CI_PROJECT_DIR
+  allow_failure: false
+  dependencies:
+    - UnitTesting
+    - Compile
+  artifacts:
+    #untracked: true
+    paths:
+      - .\logs
+    when: always
+  timeout: 45m
+  retry:
+    max: 2
+    when:
+      - stuck_or_timeout_failure
+      - job_execution_timeout
+
+PrimeValidation:
+  stage: pVal
+  script:
+    - net use
+    - 'net use I: \\amr.corp.intel.com\ec\proj\mdl\jf\intel /y ; $LASTEXITCODE= 0'
+    - '& $pValPath $tosPath full -sk'
+    - cd $CI_PROJECT_DIR
+  resource_group: tos-validation
+  dependencies:
+    - CheckCoverage
+    - UnitTesting
+    - Compile
+  allow_failure: false
+  artifacts:
+    paths:
+      - .\logs
+      - .\pVal
+    expire_in: 3 days
+    when: always
+
+Release:
+  stage: release
+  script:
+    - .\pipeline_scripts\DocParser.py
+    - .\pipeline_scripts\wiki_builder.py -commit_ref %CI_COMMIT_REF_NAME%
+    - sleep(20)
+    - .\pipeline_scripts\CopyFolder.cmd "%CI_COMMIT_REF_NAME%"
+    - .\pipeline_scripts\emailRelease.exe
+  resource_group: release-to-production
+  dependencies:
+    - PrimeValidation
+    - CheckCoverage
+    - UnitTesting
+    - Compile
+  artifacts:
+    paths:
+      - .\logs
+      - .\lib
+      - .\preheaders
+    expire_in: 6 months
+  rules:
+    - if: '$RELEASE == "true"'

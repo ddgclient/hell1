@@ -1,0 +1,33 @@
+stages:
+  - restore
+  - build
+
+ToolRestore:
+  stage: restore
+  script:
+    - dotnet tool restore
+
+### All build stage pipelines  ###
+All:
+  stage: build
+  variables:
+    TARGET: "All"
+    RELEASE: "false"
+    PRIMEVAL: "true"
+  trigger:
+    include: ci-generic.yml
+    strategy: depend
+
+Release:
+  stage: build
+  variables:
+    TARGET: "All"
+    RELEASE: "true"
+    PRIMEVAL: "true"
+  trigger:
+    include: ci-generic.yml
+    strategy: depend
+  only:
+    - /-ddg/ # trigger this during release runs
+
+### End of all build stage pipelines ###

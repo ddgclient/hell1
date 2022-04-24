@@ -1,0 +1,51 @@
+{
+    "pValRunList" : [
+	{
+        "TOSVersion": "TOS31000",
+        "TestPlan": 
+        [
+          {
+            "TestPlanName": "BaseTestPlan",
+            "TplFile": ".\\tp\\TPIE_WW26d5_demo\\BaseTestPlan.tpl",
+            "StplFile": ".\\tp\\TPIE_WW26d5_demo\\SubTestPlan_MTL_CPU28_SDS.stpl",
+            "PlistFile": ".\\tp\\TPIE_WW26d5_demo\\PLIST_LOCAL.xml",
+            "SocFile": ".\\tp\\TPIE_WW26d5_demo\\SDX_C28_X1_1.soc",
+            "QuickSimFile": ".\\tp\\TPIE_WW26d5_demo\\Quicksim_PrimeValidation_x1.xml",
+            "EnvFiles": {
+              "Release": ".\\tp\\TPIE_WW26d5_demo\\EnvironmentFile_Local.env"
+            },
+			"GoldenItuffs": "./tp/TPIE_WW26d5_demo/GoldenItuff_x1.txt",
+			"TnamesContentToIgnore": [
+			  "2_tname_TraceId1",
+			  "2_tname_testtime_",
+			  "TPI_BASE::CTRL_BKGND_X_K_TESTPLANENDFLOW_X_X_X_X_STOPTIME"
+			],
+            "ItuffTokensToIgnore": [
+"|CoreTag|TDAU_CH_CORE|Thermal|",
+"|Time:",
+"2_mrslt_",
+"2_strgval_NWI",
+"2_strgval_pre_",
+"3_dvtsteddt_",
+"3_dvtststdt_",
+"3_lbeg",
+"3_siteid_",
+"3_ttime_",
+"4_begindt_",
+"4_enddate_",
+"4_tsattrs_BRITA",
+"4_tsattrs_envpath",
+"4_tsattrs_FlowInitExecTimeSiteC",
+"4_tsattrs_socpath",
+"4_tsattrs_stplpath",
+"4_tsattrs_tplpath",
+"4_tsattrs_tracesig",
+"4_tsattrs_TSS_",
+"7_dsrcprg_HDMTG2",
+"7_filcret_"
+            ]
+          }
+        ]
+	}
+	]
+}
