@@ -14,7 +14,7 @@ jobs:
       - name: restore
         run: "dotnet tool restore"
       - name: compile
-        run: ./pipeline_scripts/CompileAll.cmd
+        run: .\pipeline_scripts\CompileAll.cmd Base -ci $GITHUB_WORKSPACE
       - name: script
         run: python print.py
           
