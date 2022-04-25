@@ -7,18 +7,30 @@ on:
   push:
 
 jobs:
-  testenv:
+  Compile:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v3
-      - name: testrun
-        run: powershell "dir env:"
+      #- name: testrun
+      #  run:  powershell "dir env:"
       - name: restore
-        run: "dotnet tool restore"
+        run:  "dotnet tool restore"
       - name: compile base
-        run: .\pipeline_scripts\CompileAll.cmd Base -ci $GITHUB_WORKSPACE
+        run:  .\pipeline_scripts\CompileAll.cmd Base -ci $GITHUB_WORKSPACE
       - name: compile target
-        run: .\pipeline_scripts\CompileAll.cmd $TARGET -ci $TARGET
-      - name: script
-        run: python print.py
-          
+        run:  .\pipeline_scripts\CompileAll.cmd $TARGET -ci $TARGET
+      - name: CD into $GITHUB_WORKSPACE
+        run:  cd $GITHUB_WORKSPACE
+      #- name: script
+      #  run:  python print.py
+
+  UnitTesting:
+    needs: Compile
+    runs-on: self-hosted
+    steps:
+     - name: Run Unit Tests
+       run: .\pipeline_scripts\RunUnitTests.cmd -ci $GITHUB_WORKSPACE
+     - name: CD into $GITHUB_WORKSPACE
+       run:  cd $GITHUB_WORKSPACE
+
+         
