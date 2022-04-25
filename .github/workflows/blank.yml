@@ -16,12 +16,12 @@ jobs:
       - name: restore
         run:  "dotnet tool restore"
       - name: compile base
-        run:  .\pipeline_scripts\CompileAll.cmd Base -ci $GITHUB_WORKSPACE
+        run:  .\pipeline_scripts\CompileAll.cmd Base -ci $GITHUB_ACTION_PATH
       - name: compile target
         run:  .\pipeline_scripts\CompileAll.cmd $TARGET -ci $TARGET
       - name: print 
-        run: echo "$GITHUB_WORKSPACE"
-      - name: CD into $GITHUB_WORKSPACE
+        run: echo $GITHUB_ACTION_PATH
+      - name: CD into $GITHUB_ACTION_PATH
         run:  cd $GITHUB_WORKSPACE
       #- name: script
       #  run:  python print.py
