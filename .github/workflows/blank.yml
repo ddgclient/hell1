@@ -22,9 +22,9 @@ jobs:
       - name: testrun
         run:  powershell "dir env:"
       - name: print 
-        run:  powershell "echo ${{env.GITHUB_ACTION_PATH}}"
+        run:  powershell "echo $env:GITHUB_WORKSPACE"
       - name: CD into ${{env.GITHUB_ACTION_PATH}}
-        run:  powershell "cd ${{env.GITHUB_ACTION_PATH}}"
+        run:  powershell "cd $env:GITHUB_WORKSPACE"
       #- name: script
       #  run:  python print.py
 
