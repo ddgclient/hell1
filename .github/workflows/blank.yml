@@ -16,15 +16,15 @@ jobs:
       - name: restore
         run:  "dotnet tool restore"
       - name: compile base
-        run:  .\pipeline_scripts\CompileAll.cmd Base -ci ${{env.GITHUB_ACTION_PATH}}
+        run:  .\pipeline_scripts\CompileAll.cmd Base -ci $env:GITHUB_WORKSPACE
       - name: compile target
-        run:  .\pipeline_scripts\CompileAll.cmd $TARGET -ci ${{env.GITHUB_ACTION_PATH}}
-      - name: testrun
-        run:  powershell "dir env:"
-      - name: print 
+        run:  .\pipeline_scripts\CompileAll.cmd $TARGET -ci $env:GITHUB_WORKSPACE
+      - name: print GITHUB_WORKSPACE
         run:  powershell "echo $env:GITHUB_WORKSPACE"
-      - name: CD into ${{env.GITHUB_ACTION_PATH}}
-        run:  powershell "cd $env:GITHUB_WORKSPACE"
+      #- name: CD into GITHUB_WORKSPACE
+      #  run:  powershell "cd $env:GITHUB_WORKSPACE"
+      - name: print GITHUB_ACTION_PATH
+        run:  powershell "echo $env:GITHUB_ACTION_PATH"        
       #- name: script
       #  run:  python print.py
 
@@ -33,8 +33,8 @@ jobs:
     runs-on: self-hosted
     steps:
      - name: Run Unit Tests
-       run: .\pipeline_scripts\RunUnitTests.cmd -ci $GITHUB_WORKSPACE
-     - name: CD into $GITHUB_WORKSPACE
-       run:  cd $GITHUB_WORKSPACE
+       run: .\pipeline_scripts\RunUnitTests.cmd -ci $env:GITHUB_WORKSPACE
+     - name: CD intoGITHUB_WORKSPACE
+       run:  cd $env:GITHUB_WORKSPACE
 
          
