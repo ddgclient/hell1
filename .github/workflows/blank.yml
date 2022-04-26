@@ -44,7 +44,7 @@ jobs:
       - name: Set-ExecutionPolicy
         run: PowerShell -Command "Set-ExecutionPolicy -Scope Process Unrestricted"
       - name: RunCoverageTests 
-        run: .\pipeline_scripts\RunCoverageTests.ps1 All $CI_PROJECT_DIR
+        run: .\pipeline_scripts\RunCoverageTests.ps1 All $env:GITHUB_WORKSPACE
       - name: CoverageGater
         run: .\pipeline_scripts\CoverageGater\coverageGater.py --Config .\pipeline_scripts\CoverageGater\config.json
       - name: CD into GITHUB_WORKSPACE
@@ -57,6 +57,24 @@ jobs:
           name: my-artifact
           path: .\logs
           retention-days: 7
+          
+  Release:
+    needs: CheckCoverage
+    runs-on: self-hosted
+    steps:
+      - name: Hello
+        run: powershell "echo $env:authkey"
+      - name: Run DocParser
+        run: .\pipeline_scripts\DocParser.py
+      - name: Run wiki_builder_new.py
+        run: .\pipeline_scripts\wiki_builder_new.py -commit_ref $env:GITHUB_REF_NAME
+      - name: Sleep for 30 seconds
+        run: Start-Sleep -s 30
+      - name: Run CopyFolder.cmd
+        run: .\pipeline_scripts\CopyFolder.cmd $env:GITHUB_REF_NAME
+      - name: Run emailRelease.exe
+        run: .\pipeline_scripts\emailRelease.exe
+
 
 
 
