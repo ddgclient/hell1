@@ -42,9 +42,10 @@ jobs:
       - name: New-Item
         run: PowerShell -Command "New-Item -ItemType Directory -Path .\logs"
       - name: Set-ExecutionPolicy
-        run: PowerShell -Command "Set-ExecutionPolicy -Scope Process Unrestricted"
+      #  run: PowerShell -Command "Set-ExecutionPolicy -Scope Process Unrestricted"
       - name: RunCoverageTests 
-        run: .\pipeline_scripts\RunCoverageTests.ps1 All $env:GITHUB_WORKSPACE
+        run: echo R | PowerShell -Command "& {Set-ExecutionPolicy -Scope Process -ExecutionPolicy Unrestricted -Force; .\pipeline_scripts\RunCoverageTests.ps1 -IgnoreFilter 'TOSUserSDK;*.UnitTest*;PstateTest;FIVRDACFitTC;MEMDECODE_CLK_FLL_ALL;PTHCalcTC;PllVidWalkTC;MbistHRYTC;FIVRTrimTC;MbistRasterRepairTC;MbistShared'}"
+      #  run: .\pipeline_scripts\RunCoverageTests.ps1 All $env:GITHUB_WORKSPACE
       - name: CoverageGater
         run: .\pipeline_scripts\CoverageGater\coverageGater.py --Config .\pipeline_scripts\CoverageGater\config.json
       - name: CD into GITHUB_WORKSPACE
@@ -64,16 +65,18 @@ jobs:
     steps:
       - name: Hello
         run: echo "The key is:${{secrets.WIKI_AUTHKEY}}"  
+      - name: Hello
+        run: echo $env:GITHUB_REF_NAME         
       - name: Run DocParser
         run: .\pipeline_scripts\DocParser.py
       - name: Run wiki_builder.py
         run: .\pipeline_scripts\wiki_builder.py -commit_ref $env:GITHUB_REF_NAME
       - name: Sleep for 30 seconds
         run: Start-Sleep -s 30
-      - name: Run CopyFolder.cmd
-        run: .\pipeline_scripts\CopyFolder.cmd $env:GITHUB_REF_NAME
-      - name: Run emailRelease.exe
-        run: .\pipeline_scripts\emailRelease.exe
+      #- name: Run CopyFolder.cmd
+      #  run: .\pipeline_scripts\CopyFolder.cmd $env:GITHUB_REF_NAME
+      #- name: Run emailRelease.exe
+      #  run: .\pipeline_scripts\emailRelease.exe
 
 
 
