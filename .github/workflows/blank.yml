@@ -27,8 +27,10 @@ jobs:
       #  run:  powershell "echo $env:GITHUB_ACTION_PATH"        
       #- name: script
       #  run:  python print.py
+      - name: Run Unit Tests
+        run: .\pipeline_scripts\RunUnitTests.cmd -ci $env:GITHUB_WORKSPACE
 
-  UnitTesting:
+  UnitTest:
     needs: Compile
     runs-on: self-hosted
     steps:
