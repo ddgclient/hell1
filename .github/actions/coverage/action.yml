@@ -17,3 +17,4 @@ runs:
       - name: CoverageGater
         run: .\pipeline_scripts\CoverageGater\coverageGater.py --Config .\pipeline_scripts\CoverageGater\config.json
         shell: powershell
+ 
