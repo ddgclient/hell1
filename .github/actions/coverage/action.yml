@@ -3,10 +3,6 @@ description: unittest coverage
 runs:
       using: "composite"
       steps:
-         with: 
-           timeout-minutes: 10
-           max-attempts: 3
-           continue-on-error: true
       - name: New-Item
         run: PowerShell -Command "New-Item -ItemType Directory -Path .\logs"
         shell: powershell
