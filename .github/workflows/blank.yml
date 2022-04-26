@@ -28,7 +28,7 @@ jobs:
       #- name: script
       #  run:  python print.py
       - name: Run Unit Tests
-        run: .\pipeline_scripts\RunUnitTests.cmd -ci $env:GITHUB_WORKSPACE
+        run: .\pipeline_scripts\RunUnitTests.cmd -ci
 
   UnitTest:
     needs: Compile
