@@ -43,7 +43,7 @@ jobs:
         uses: ./.github/actions/coverage
         timeout-minutes: 10
         #max-attempts: 3
-        continue-on-error: true
+        continue-on-error: false
 
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v3
