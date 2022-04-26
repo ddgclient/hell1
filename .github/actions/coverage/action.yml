@@ -1,0 +1,12 @@
+name: coverage
+description: unittest coverage
+runs:
+      using: "composite"
+      steps:
+      - name: New-Item
+        run: PowerShell -Command "New-Item -ItemType Directory -Path .\logs"
+      - name: RunCoverageTests
+        run: echo R | PowerShell -Command "& {Set-ExecutionPolicy -Scope Process -ExecutionPolicy Unrestricted -Force; .\pipeline_scripts\RunCoverageTests.ps1 -IgnoreFilter 'TOSUserSDK;*.UnitTest*;PstateTest;FIVRDACFitTC;MEMDECODE_CLK_FLL_ALL;PTHCalcTC;PllVidWalkTC;MbistHRYTC;FIVRTrimTC;MbistRasterRepairTC;MbistShared'}"
+          #  run: .\pipeline_scripts\RunCoverageTests.ps1 All $env:GITHUB_WORKSPACE
+      - name: CoverageGater
+        run: .\pipeline_scripts\CoverageGater\coverageGater.py --Config .\pipeline_scripts\CoverageGater\config.json
