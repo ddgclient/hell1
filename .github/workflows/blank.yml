@@ -42,9 +42,9 @@ jobs:
       - name: Run coverage analysis
         uses: ./.github/actions/coverage
         with: 
-          timeout_minutes: 10
-          max_attempts: 3
-          continue_on_error: true
+          timeout-minutes: 10
+          max-attempts: 3
+          continue-on-error: true
 
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v3
