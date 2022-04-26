@@ -62,8 +62,8 @@ jobs:
     needs: CheckCoverage
     runs-on: self-hosted
     steps:
-      #- name: Hello
-      #  run: powershell "echo $env:authkey"
+      - name: Hello
+        run: echo "The key is:${{secrets.WIKI_AUTHKEY}}"  
       - name: Run DocParser
         run: .\pipeline_scripts\DocParser.py
       - name: Run wiki_builder_new.py
