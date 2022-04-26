@@ -1,4 +1,4 @@
-name: unittest
+name: coverage
 description: unittest coverage
 runs:
       using: "composite"
