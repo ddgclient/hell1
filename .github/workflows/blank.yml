@@ -45,7 +45,7 @@ jobs:
         run: PowerShell -Command "Set-ExecutionPolicy -Scope Process Unrestricted"
       - name: RunCoverageTests 
         run: .\pipeline_scripts\RunCoverageTests.ps1 All $CI_PROJECT_DIR
-      - name: coverageGater
+      - name: CoverageGater
         run: .\pipeline_scripts\CoverageGater\coverageGater.py --Config .\pipeline_scripts\CoverageGater\config.json
       - name: CD into GITHUB_WORKSPACE
         run:  powershell "cd $env:GITHUB_WORKSPACE"
