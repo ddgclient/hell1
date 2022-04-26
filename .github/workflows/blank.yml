@@ -39,15 +39,12 @@ jobs:
     needs: UnitTest
     runs-on: self-hosted
     steps:
-      - uses: ./.github/actions/coverage
+      - name: Run coverage analysis
+        uses: ./.github/actions/coverage
         with: 
           timeout_minutes: 10
           max_attempts: 3
           continue_on_error: true
-
-      - name: CD into GITHUB_WORKSPACE
-        run:  powershell "cd $env:GITHUB_WORKSPACE"
-      # allow_failure: true
 
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v3
@@ -60,9 +57,9 @@ jobs:
     needs: CheckCoverage
     runs-on: self-hosted
     steps:
-      - name: Hello
+      - name: Print Key
         run: echo "The key is:${{secrets.WIKI_AUTHKEY}}"  
-      - name: Hello
+      - name: Print current repo ref
         run: echo $env:GITHUB_REF_NAME         
       - name: Run DocParser
         run: .\pipeline_scripts\DocParser.py
