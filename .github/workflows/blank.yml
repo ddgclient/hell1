@@ -5,6 +5,8 @@ env:
 
 on: 
   push:
+    branches: 
+     - main
 
 jobs:
 #  Compile:
@@ -42,8 +44,8 @@ jobs:
       - name: Run coverage analysis
         uses: ./.github/actions/coverage
         timeout-minutes: 10
-        #max-attempts: 3
-        continue-on-error: false
+        #max_attempts: 3, not supported, look into workflow: https://hsalem.com/posts/ability-to-rerun-single-jobs-in-github-actions.html
+        continue-on-error: true
 
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v3
