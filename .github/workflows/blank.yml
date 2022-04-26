@@ -27,8 +27,6 @@ jobs:
       #  run:  powershell "echo $env:GITHUB_ACTION_PATH"        
       #- name: script
       #  run:  python print.py
-      - name: Run Unit Tests
-        run: .\pipeline_scripts\RunUnitTests.cmd -ci
 
   UnitTest:
     needs: Compile
@@ -36,7 +34,45 @@ jobs:
     steps:
      - name: Run Unit Tests
        run: .\pipeline_scripts\RunUnitTests.cmd -ci $env:GITHUB_WORKSPACE
-     - name: CD into GITHUB_WORKSPACE
-       run:  powershell "cd $env:GITHUB_WORKSPACE"
+
+  CheckCoverage:
+    needs: UnitTest
+    runs-on: self-hosted
+    steps:
+      - name: New-Item
+        run: PowerShell -Command "New-Item -ItemType Directory -Path .\logs"
+      - name: Set-ExecutionPolicy
+        run: PowerShell -Command "Set-ExecutionPolicy -Scope Process Unrestricted"
+      - name: RunCoverageTests 
+        run: .\pipeline_scripts\RunCoverageTests.ps1 All $CI_PROJECT_DIR
+      - name: coverageGater
+        run: .\pipeline_scripts\CoverageGater\coverageGater.py --Config .\pipeline_scripts\CoverageGater\config.json
+      - name: CD into GITHUB_WORKSPACE
+        run:  powershell "cd $env:GITHUB_WORKSPACE"
+    # allow_failure: true
+    
+      - name: 'Upload Artifact'
+        uses: actions/upload-artifact@v3
+        with:
+          name: my-artifact
+          path: .\logs
+          retention-days: 7
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
          
