@@ -1,3 +1,8 @@
+name: unittest
+description: unittest coverage
+runs:
+      using: "composite"
+      steps:
       - name: New-Item
         run: PowerShell -Command "New-Item -ItemType Directory -Path .\logs"
       - name: RunCoverageTests
