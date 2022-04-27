@@ -64,9 +64,9 @@ jobs:
       - name: net use
         run: net use
       - name: I:drive 
-        run: 'net use I: \\amr.corp.intel.com\ec\proj\mdl\jf\intel /y ; $LASTEXITCODE= 0'
-      - name: pValPath
-        run: '& $pValPath $tosPath full -sk'
+        run: 'net use I: \\amr.corp.intel.com\ec\proj\mdl\jf\intel /y ; $LASTEXITCODE= 0 & $pValPath $tosPath full -sk'
+      #- name: pValPath
+      #  run: 
  #   with:
  #     name: my-artifact
  #     path: 
