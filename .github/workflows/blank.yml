@@ -10,8 +10,8 @@ on:
     branches: 
      - main
 
-#concurrency: 
-#  group: tos-validation
+concurrency: 
+  group: tos-validation
 
 jobs:
   Compile:
@@ -43,7 +43,7 @@ jobs:
        run: .\pipeline_scripts\RunUnitTests.cmd -ci $env:GITHUB_WORKSPACE
 
   CheckCoverage:
-    #needs: UnitTest
+    needs: UnitTest
     runs-on: self-hosted
     steps:
       - name: Run coverage analysis
