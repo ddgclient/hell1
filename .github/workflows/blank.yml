@@ -2,6 +2,8 @@
 name: CI
 env:
   TARGET: "All"
+  pValPath: .\pipeline_scripts\pVal\PrimeValTool.exe
+  tosPath: C:\intel\hdmt\hdmtOS_3.10.0.0_Release
 
 on: 
   push:
@@ -64,9 +66,9 @@ jobs:
       - name: net use
         run: net use
       - name: I:drive 
-        run: 'net use I: \\amr.corp.intel.com\ec\proj\mdl\jf\intel /y ; $LASTEXITCODE= 0 & $pValPath $tosPath full -sk'
+        run: 'net use I: \\amr.corp.intel.com\ec\proj\mdl\jf\intel /y ; $LASTEXITCODE= 0 $env:$pValPath $env:$tosPath full -sk'
       #- name: pValPath
-      #  run: 
+      #  run: '& '
  #   with:
  #     name: my-artifact
  #     path: 
