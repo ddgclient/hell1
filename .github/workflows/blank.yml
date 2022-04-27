@@ -2,8 +2,8 @@
 name: CI
 env:
   TARGET: "All"
-  pValPath: .\pipeline_scripts\pVal\PrimeValTool.exe
-  tosPath: C:\intel\hdmt\hdmtOS_3.10.0.0_Release
+  pValPath: ".\\pipeline_scripts\\pVal\\PrimeValTool.exe"
+  tosPath: "C:\\intel\\hdmt\\hdmtOS_3.10.0.0_Release"
 
 on: 
   push:
@@ -78,7 +78,7 @@ jobs:
  #    #allow_failure: false    
          
   Release:
-    needs: CheckCoverage
+    needs: PrimeValidation
     runs-on: self-hosted
     steps:
       - name: Print Key
