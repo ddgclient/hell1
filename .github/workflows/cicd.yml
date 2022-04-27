@@ -11,7 +11,7 @@ on:
      - main
 
 concurrency: 
-  group: tos-validation
+  group: to-validation
 
 jobs:
   Compile:
