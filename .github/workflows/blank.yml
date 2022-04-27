@@ -2,8 +2,8 @@
 name: CI
 env:
   TARGET: "All"
-  pValPath: ".\\pipeline_scripts\\pVal\\PrimeValTool.exe"
-  tosPath: "C:\\intel\\hdmt\\hdmtOS_3.10.0.0_Release"
+  pValPath: .\pipeline_scripts\pVal\PrimeValTool.exe
+  tosPath: C:\intel\hdmt\hdmtOS_3.10.0.0_Release
 
 on: 
   push:
@@ -63,12 +63,12 @@ jobs:
     needs: CheckCoverage
     runs-on: self-hosted
     steps:
-      - name: net use
-        run: net use
-      - name: I:drive 
-        run: 'net use I: \\amr.corp.intel.com\ec\proj\mdl\jf\intel /y ; $LASTEXITCODE= 0'
-      #- name: pValPath
-      #  run:  $env:pValPath $env:tosPath full -sk
+      - name: List mapped drives
+        run:  net use
+      - name: Map I:drive 
+        run:  'net use I: \\amr.corp.intel.com\ec\proj\mdl\jf\intel /y ; $LASTEXITCODE= 0'
+      - name: Run pVal
+        run:  $env:pValPath $env:tosPath full -sk
  #   with:
  #     name: my-artifact
  #     path: 
