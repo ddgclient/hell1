@@ -8,6 +8,9 @@ on:
     branches: 
      - main
 
+concurrency: 
+  group: tos-validation
+
 jobs:
 #  Compile:
 #    runs-on: self-hosted
@@ -53,7 +56,25 @@ jobs:
           name: my-artifact
           path: .\logs
           retention-days: 7
-          
+         
+  PrimeValidation:
+    needs: CheckCoverage
+    runs-on: self-hosted
+    steps:
+      - name: net use
+        run: net use
+      - name: I:drive 
+      - run: 'net use I: \\amr.corp.intel.com\ec\proj\mdl\jf\intel /y ; $LASTEXITCODE= 0'
+      - name: pValPath
+        run: '& $pValPath $tosPath full -sk'
+ #   with:
+ #     name: my-artifact
+ #     path: 
+ #       .\logs
+ #       .\pVal
+ #     retention-days: 3         
+ #    #allow_failure: false    
+         
   Release:
     needs: CheckCoverage
     runs-on: self-hosted
