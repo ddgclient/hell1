@@ -68,7 +68,7 @@ jobs:
       - name: Map I:drive 
         run:  'net use I: \\amr.corp.intel.com\ec\proj\mdl\jf\intel /y ; $LASTEXITCODE= 0'
       - name: Run pVal
-        run:  $env:pValPath $env:tosPath full -sk
+        run:  powershell $env:pValPath $env:tosPath full -sk
  #   with:
  #     name: my-artifact
  #     path: 
