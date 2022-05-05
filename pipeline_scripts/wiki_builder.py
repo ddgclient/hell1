@@ -36,6 +36,7 @@ class GitlabRunner():
         #self.url = url
         self.wikiUrl = wikiUrl
         self.authkey = authkey
+        print(self.authkey)
         #self.authkey = os.environ.get("authkey")
         repo = repoPath.split("/")
         self.repoOwner = repo[0]
