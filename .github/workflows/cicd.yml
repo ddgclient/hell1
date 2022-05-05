@@ -7,8 +7,8 @@ env:
 
 on: 
   push:
-    #branches: 
-     #- main
+    branches: 
+     - '**'
 
 concurrency: 
   group: tos-validation
