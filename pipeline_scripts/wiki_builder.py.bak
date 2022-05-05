@@ -328,7 +328,7 @@ if __name__ == '__main__':
     with open('log.txt', 'w') as f:
         sys.stdout = f # Change the standard output   to the file we created.
         myParser, myargs = getArgs()
-        print("hello after get arguments", flush=True)
+        print("hello after get argumentsment", flush=True)
         try:
             GitlabRunner(wikiUrl=myargs.wiki_url, authkey=myargs.authkey, repoPath=myargs.repoPath, commit_ref=myargs.commit_ref).run()
         except Exception as ex:
