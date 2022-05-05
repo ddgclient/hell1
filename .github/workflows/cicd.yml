@@ -4,6 +4,7 @@ env:
   TARGET: "All"
   pValPath: .\pipeline_scripts\pVal\PrimeValTool.exe
   tosPath: C:\intel\hdmt\hdmtOS_3.10.0.0_Release
+  wiki_authkey: ${{secrets.WIKI_AUTHKEY}}
 
 on: 
   push:
@@ -88,7 +89,7 @@ jobs:
       - name: Run DocParser
         run: .\pipeline_scripts\DocParser.py
       - name: Run wiki_builder.py
-        run: .\pipeline_scripts\wiki_builder.py -commit_ref $env:GITHUB_REF_NAME
+        run: .\pipeline_scripts\wiki_builder.py -commit_ref $env:GITHUB_REF_NAME -authkey ${{secrets.WIKI_AUTHKEY}}
       - name: Sleep for 30 seconds
         run: Start-Sleep -s 30
       #- name: Run CopyFolder.cmd
