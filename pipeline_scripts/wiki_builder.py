@@ -23,7 +23,7 @@ def remove_readonly(func, path, excinfo):
 def getArgs():
     parser = argparse.ArgumentParser(description='This script is used during release process to create wiki pages.',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser.add_argument( "-authkey", type=str, default='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', help="Personal access token for authentication with GitLab.")
+    parser.add_argument( "-authkey", type=str, default='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', help="Personal access token for authentication with GitLab.")
     parser.add_argument( "-repoPath", type=str, default="ddgclient/hell1", help="Path to GitHub repo in the form <ddgclient>/<repo>")
     #parser.add_argument( "-url", default='https://gitlab.devtools.intel.com', help="Gitlab URL.")
     parser.add_argument( "-commit_ref", type=str, default = "FirstRelease",help="Path to GitLab repo in the form <namespace>/<repo>")
@@ -323,7 +323,7 @@ class GitlabRunner():
 
 if __name__ == '__main__':
     original_stdout = sys.stdout
-    #GitlabRunner(authkey="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", repoPath="ddgclient/hell1", commit_ref="FirstRelease", wikiUrl="https://github.com/ddgclient/hell1.wiki.git").run()
+    #GitlabRunner(authkey="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", repoPath="ddgclient/hell1", commit_ref="FirstRelease", wikiUrl="https://github.com/ddgclient/hell1.wiki.git").run()
     
     with open('log.txt', 'w') as f:
         sys.stdout = f # Change the standard output   to the file we created.
