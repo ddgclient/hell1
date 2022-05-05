@@ -23,21 +23,21 @@ def remove_readonly(func, path, excinfo):
 def getArgs():
     parser = argparse.ArgumentParser(description='This script is used during release process to create wiki pages.',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser.add_argument( "-authkey", type=str, default='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', help="Personal access token for authentication with GitLab.")
-    parser.add_argument( "-repo", type=str, default="ddgclient/hell1", help="Path to GitHub repo in the form <ddgclient>/<repo>")
+    parser.add_argument( "-authkey", type=str, default='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', help="Personal access token for authentication with GitLab.")
+    parser.add_argument( "-repoPath", type=str, default="ddgclient/hell1", help="Path to GitHub repo in the form <ddgclient>/<repo>")
     #parser.add_argument( "-url", default='https://gitlab.devtools.intel.com', help="Gitlab URL.")
-    parser.add_argument( "-commit_ref", type=str, help="Path to GitLab repo in the form <namespace>/<repo>")
+    parser.add_argument( "-commit_ref", type=str, default = "FirstRelease",help="Path to GitLab repo in the form <namespace>/<repo>")
     parser.add_argument( "-wiki_url", type=str, default="https://github.com/ddgclient/hell1.wiki.git", help="WIKI repo path")
     return parser, parser.parse_args()
 
 class GitlabRunner():
-    def __init__(self, url, wikiUrl, authkey, repo, commit_ref):
+    def __init__(self, wikiUrl, authkey, repoPath, commit_ref):
         # Parse command line arguments
         #self.url = url
         self.wikiUrl = wikiUrl
         self.authkey = authkey
         #self.authkey = os.environ.get("authkey")
-        repo = repo.split("/")
+        repo = repoPath.split("/")
         self.repoOwner = repo[0]
         self.repoName = repo[1]
         self.commit_ref = commit_ref #release name
@@ -323,16 +323,16 @@ class GitlabRunner():
 
 if __name__ == '__main__':
     original_stdout = sys.stdout
-    GitlabRunner(authkey="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", repo="ddgclient/hell1", commit_ref="FirstRelease", url="", wikiUrl="https://github.com/ddgclient/hell1.wiki.git").run()
+    #GitlabRunner(authkey="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", repoPath="ddgclient/hell1", commit_ref="FirstRelease", wikiUrl="https://github.com/ddgclient/hell1.wiki.git").run()
     
-    # with open('log.txt', 'w') as f:
-        # sys.stdout = f # Change the standard output to the file we created.
-        # myParser, myargs = getArgs()
-        # print("hello after pararugement", flush=True)
-        # try:
-            # GitlabRunner(wikiUrl=myargs.wiki_url, authkey=myargs.authkey, repo=myargs.repo, commit_ref=myargs.commit_ref).run()
-        # except Exception as ex:
-            # print("ERROR running the code", flush=True)
-            # raise ex
-        # finally:
-            # sys.stdout = original_stdout # Reset the standard output to its original value
+    with open('log.txt', 'w') as f:
+        sys.stdout = f # Change the standard output to the file we created.
+        myParser, myargs = getArgs()
+        print("hello after pararugement", flush=True)
+        try:
+            GitlabRunner(wikiUrl=myargs.wiki_url, authkey=myargs.authkey, repoPath=myargs.repoPath, commit_ref=myargs.commit_ref).run()
+        except Exception as ex:
+            print("ERROR running the code", flush=True)
+            raise ex
+        finally:
+            sys.stdout = original_stdout # Reset the standard output to its original value
