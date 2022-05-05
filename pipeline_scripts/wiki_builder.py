@@ -326,7 +326,7 @@ if __name__ == '__main__':
     #GitlabRunner(authkey="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", repoPath="ddgclient/hell1", commit_ref="FirstRelease", wikiUrl="https://github.com/ddgclient/hell1.wiki.git").run()
     
     with open('log.txt', 'w') as f:
-        sys.stdout = f # Change the standard output to the file we created.
+        sys.stdout = f # Change the standard output   to the file we created.
         myParser, myargs = getArgs()
         print("hello after pararugement", flush=True)
         try:
