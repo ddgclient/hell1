@@ -28,7 +28,7 @@ jobs:
         run:  .\pipeline_scripts\CompileAll.cmd $env:TARGET -ci $env:GITHUB_WORKSPACE
       - name: print GITHUB_WORKSPACE
         run:  powershell "echo $env:GITHUB_WORKSPACE"
-      #- name: CD into GITHUB_WORKSPACE
+      #- Name: CD into GITHUB_WORKSPACE
       #  run:  powershell "cd $env:GITHUB_WORKSPACE"
       #- name: print GITHUB_ACTION_PATH
       #  run:  powershell "echo $env:GITHUB_ACTION_PATH"        
