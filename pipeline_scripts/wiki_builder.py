@@ -276,6 +276,7 @@ class GitlabRunner():
             return match.group(1)
         else:
             return ""
+        print("Done with parseReleaseForMilestone()\n", flush=True)
         
     def addReleaseToHome(self):
         print("Starting addReleaseToHome()", flush=True)
