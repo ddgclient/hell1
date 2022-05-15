@@ -4,7 +4,7 @@ env:
   TARGET: "All"
   pValPath: .\pipeline_scripts\pVal\PrimeValTool.exe
   tosPath: C:\intel\hdmt\hdmtOS_3.10.0.0_Release
-  #wiki_authkey: ${{secrets.WIKI_AUTHKEY}}
+  wiki_authkey: ${{secrets.WIKI_AUTHKEY}}
 
 on: 
   push:
