@@ -4,7 +4,7 @@ env:
   TARGET: "All"
   pValPath: .\pipeline_scripts\pVal\PrimeValTool.exe
   tosPath: C:\intel\hdmt\hdmtOS_3.10.0.0_Release
-  wiki_authkey: ${{secrets.WIKI_AUTHKEY}}
+  #wiki_authkey: ${{secrets.WIKI_AUTHKEY}}
 
 on: 
   push:
@@ -82,8 +82,8 @@ jobs:
     needs: PrimeValidation
     runs-on: self-hosted
     steps:
-      - name: Print Key
-        run: echo "The key is:${{secrets.WIKI_AUTHKEY}}"  
+      #- name: Print Key
+      #  run: echo "The key is:${{secrets.WIKI_AUTHKEY}}"  
       - name: Print current repo ref
         run: echo $env:GITHUB_REF_NAME         
       - name: Run DocParser
