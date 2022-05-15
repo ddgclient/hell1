@@ -36,8 +36,6 @@ class GitlabRunner():
         #self.url = url
         self.wikiUrl = wikiUrl
         self.authkey = authkey
-        print(self.authkey)
-        #self.authkey = os.environ.get("authkey")
         repo = repoPath.split("/")
         self.repoOwner = repo[0]
         self.repoName = repo[1]
@@ -96,6 +94,8 @@ class GitlabRunner():
         except Exception as e:
             print("ERROR: %s"%e, flush=True)
             raise("Couldn't complete downloadWiki() call")
+            
+        print("After downloadWiki", flush=True)
         
     def uploadWiki(self, content):
         print("Running uploadWiki()", flush=True)
@@ -117,6 +117,8 @@ class GitlabRunner():
         self.repoGit.index.commit("Adding release wiki %s to WIKI"%self.commit_ref)
         self.repoGit.remotes.origin.push()
         os.chdir("../")    
+        
+        print("Done with uploadWiki()", flush=True)
         
     def addIssues(self, content, issues):
         print("Running addIssues()", flush=True)
@@ -282,7 +284,7 @@ class GitlabRunner():
         
         print(os.getcwd())
         #open home in read mode
-        wikihome = open(wikiDir+"\Home.md", "r")
+        wikihome = open(wikiDir+"\Home", "r")
         #read whole file to a string
         page = wikihome.read()
         #close file
@@ -297,17 +299,19 @@ class GitlabRunner():
             page = pre + mid + newLine + post
     
         #open home in write mode
-        wikihome = open(wikiDir+"\Home.md", "w")
+        wikihome = open(wikiDir+"\Home", "w")
         #read whole file to a string
         wikihome.write(page)
         #close file
         wikihome.close()
       
-        self.repoGit.index.add(wikiDir+"\Home.md")            
+        self.repoGit.index.add(wikiDir+"\Home")            
         self.repoGit.index.commit("Adding release %s to WIKI"%self.commit_ref)
         self.repoGit.remotes.origin.push()
         os.chdir("../")     
 
+        print("Done with addReleaseToHome()", flush=True)
+        
     def run(self):
         self.downloadWiki()
         self.addReleaseToHome()
