@@ -286,7 +286,7 @@ class GitlabRunner():
         
         #print(os.getcwd())
         #open home in read mode
-        wikihome = open(wikiDir+"\Home.md", "r")
+        wikihome = open(wikiDir+"\codewiki.md", "r")
         #read whole file to a string
         page = wikihome.read()
         #close file
@@ -301,13 +301,13 @@ class GitlabRunner():
             page = pre + mid + newLine + post
     
         #open home in write mode
-        wikihome = open(wikiDir+"\Home.md", "w")
+        wikihome = open(wikiDir+"\codewiki.md", "w")
         #read whole file to a string
         wikihome.write(page)
         #close file
         wikihome.close()
       
-        self.repoGit.index.add(wikiDir+"\Home.md")            
+        self.repoGit.index.add(wikiDir+"\codewiki.md")            
         self.repoGit.index.commit("Adding release %s to WIKI"%self.commit_ref)
         self.repoGit.remotes.origin.push()
         os.chdir("../")     
