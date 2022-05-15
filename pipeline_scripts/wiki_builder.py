@@ -44,7 +44,7 @@ class GitlabRunner():
         self.commit_ref = os.environ.get("GITHUB_REF_NAME")
         self.mrs = None  # list of all merge requests
         # Create python-gitlab server instance
-        print("Inside runner initialization", flush=True)
+        print("Starting runner initialization", flush=True)
         try:
             server = github3.login(token=self.authkey)
             print("Initialized github object.")
@@ -54,7 +54,7 @@ class GitlabRunner():
         except Exception as e:
             print("%s"%e, flush=True)
             
-        print("Done with runner initialization", flush=True)
+        print("Done with runner initialization\n", flush=True)
      
     def getIDSID(self):
         print("Running getIDSID()", flush=True)
@@ -67,7 +67,7 @@ class GitlabRunner():
             print("%s"%e, flush=True)
 
     def downloadWiki(self):
-        print("Staring downloadWiki", flush=True)
+        print("Staring downloadWiki()", flush=True)
         try:
             wikiDir = os.path.join(os.getcwd(), os.path.basename(self.wikiUrl))
             print("WikiDir is %s"%wikiDir, flush=True)
@@ -97,7 +97,7 @@ class GitlabRunner():
             print("ERROR: %s"%e, flush=True)
             raise("Couldn't complete downloadWiki() call")
             
-        print("Done with downloadWiki", flush=True)
+        print("Done with downloadWiki\n", flush=True)
         
     def uploadWiki(self, content):
         print("Running uploadWiki()", flush=True)
@@ -194,8 +194,6 @@ class GitlabRunner():
     def getReleaseNote(self):
         print("Running getReleaseNote()", flush=True)     
         try:
-            #login = github3.login(token='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')
-            #self.repo = login.repository(owner='ddgclient', repository='hell1')
             print(self.repo.release_from_tag("V1").name)
             print(self.repo.release_from_tag("V1").body)
        
@@ -205,7 +203,9 @@ class GitlabRunner():
             print("ERROR: %s"%e, flush=True)
             print("Couldn't complete getReleaseNote() call, releaseNote is empty", flush=True)
             return ""
-
+        
+        print("Done with getReleaseNote()", flush=True) 
+        
     def createReleaseConfig(self, note):
         print("Running createReleaseConfig()", flush=True)
         tos = self.parseReleaseForTOS(note)
@@ -278,7 +278,7 @@ class GitlabRunner():
             return ""
         
     def addReleaseToHome(self):
-        print("Running addReleaseToHome()", flush=True)
+        print("Starting addReleaseToHome()", flush=True)
         
         wikiDir = os.path.join(os.getcwd(), os.path.basename(self.wikiUrl))
         print("WikiDir is %s"%wikiDir, flush=True)
@@ -312,7 +312,7 @@ class GitlabRunner():
         self.repoGit.remotes.origin.push()
         os.chdir("../")     
 
-        print("Done with addReleaseToHome()", flush=True)
+        print("Done with addReleaseToHome()\n", flush=True)
         
     def run(self):
         self.downloadWiki()
