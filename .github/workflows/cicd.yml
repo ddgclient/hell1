@@ -15,69 +15,7 @@ concurrency:
   group: tos-validation
 
 jobs:
-  Compile:
-    runs-on: self-hosted
-    steps:
-      - uses: actions/checkout@v3
-      #- name: testrun
-      #  run:  powershell "dir env:"
-      - name: restore
-        run:  "dotnet tool restore"
-      - name: compile base
-        run:  .\pipeline_scripts\CompileAll.cmd Base -ci $env:GITHUB_WORKSPACE
-      - name: compile target
-        run:  .\pipeline_scripts\CompileAll.cmd $env:TARGET -ci $env:GITHUB_WORKSPACE
-      - name: print GITHUB_WORKSPACE
-        run:  powershell "echo $env:GITHUB_WORKSPACE"
-      #- Name: CD into GITHUB_WORKSPACE
-      #  run:  powershell "cd $env:GITHUB_WORKSPACE"
-      #- name: print GITHUB_ACTION_PATH
-      #  run:  powershell "echo $env:GITHUB_ACTION_PATH"        
-      #- name: script
-      #  run:  python print.py
-
-  UnitTest:
-    needs: Compile
-    runs-on: self-hosted
-    steps:
-     - name: Run Unit Tests
-       run: .\pipeline_scripts\RunUnitTests.cmd -ci $env:GITHUB_WORKSPACE
-
-  CheckCoverage:
-    needs: UnitTest
-    runs-on: self-hosted
-    steps:
-      - name: Run coverage analysis
-        uses: ./.github/actions/coverage
-        timeout-minutes: 10
-        #max_attempts: 3, not supported, look into workflow: https://hsalem.com/posts/ability-to-rerun-single-jobs-in-github-actions.html
-        continue-on-error: true
-
-      - name: 'Upload Artifact'
-        uses: actions/upload-artifact@v3
-        with:
-          name: my-artifact
-          path: .\logs
-          retention-days: 7
-         
-  PrimeValidation:
-    needs: CheckCoverage
-    runs-on: self-hosted
-    steps:
-      - name: List mapped drives
-        run:  net use
-      - name: Map I:drive 
-        run:  'net use I: \\amr.corp.intel.com\ec\proj\mdl\jf\intel /y ; $LASTEXITCODE= 0'
-      - name: Run pVal
-        run:  powershell $env:pValPath $env:tosPath full -sk
- #   with:
- #     name: my-artifact
- #     path: 
- #       .\logs
- #       .\pVal
- #     retention-days: 3         
- #    #allow_failure: false    
-         
+            
   Release:
     needs: PrimeValidation
     runs-on: self-hosted
