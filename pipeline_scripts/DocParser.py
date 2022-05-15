@@ -1,7 +1,9 @@
 import os
 import re
 import shutil
+import sys
 from distutils.dir_util import copy_tree
+import traceback
 
 def createCentralHtml():
     header = """
@@ -74,22 +76,56 @@ if not os.path.exists(r'.\documentation'):
     os.makedirs(r'.\documentation')
     os.makedirs(r'.\documentation\images')
 
+
+def renameFile(filepath):
+    print(filepath)
+    fileName = os.path.basename(filepath)    
+    fileNameNoExtension = os.path.splitext(os.path.basename(filepath))[0]
+    fileExtension = os.path.splitext(os.path.basename(filepath))[1]
+    dirName = os.path.dirname(os.path.realpath(filepath))
+    print(fileName)
+    print(fileNameNoExtension)
+    print(fileExtension)
+    print(dirName)
+    newFileName = os.path.join(dirName, fileNameNoExtension + "_" + os.environ.get("PROCESSOR_LEVEL") + fileExtension)
+    print(newFileName)
+    oldFileName = os.path.join(dirName, fileName)
+    print(oldFileName)
+    try:
+        os.rename(oldFileName, newFileName)
+    except Exception as e:
+        print(traceback.format_exc())
+
 for subdir, dirs, files in os.walk(r'.'):
+
     for filename in files:
         filepath = subdir + os.sep + filename
-
+        
         #if filepath.endswith(".html"): #this line covers copies over too many unnecessary .html files
         if re.match("([A-Z])\w+([.])(html)", filename): #this only copies over .html files that begin with a capital letter, so templates must begin with a capital letter
             if not os.path.exists(os.path.join(r".\documentation", filename)): 
+                #print (filepath)                
                 shutil.copy(filepath, r".\documentation")
-                print (filepath)
+                
+                # rename after copying
+                newFilePath = os.path.join(r".\documentation", os.path.basename(filepath))
+                renameFile(newFilePath)
 
         if filepath.endswith(".md"):
             if not os.path.exists(os.path.join(r".\documentation", filename)): 
                 shutil.copy(filepath, r".\documentation")
-                print (filepath)
-            
+                
+                # rename after copying
+                newFilePath = os.path.join(r".\documentation", os.path.basename(filepath))
+                renameFile(newFilePath)
+
     if os.path.isdir(subdir + os.sep + "images"):
         copy_tree(subdir + os.sep + "images", r".\documentation\images")
+        for filename in os.listdir(os.path.join(r".\documentation", "images")):
+           
+            # rename after copying
+            newFilePath = os.path.join(r".\documentation\images", filename)
+            #print(os.path.join(r".\documentation\images", filename))
+            renameFile(os.path.join(r".\documentation\images", filename))
 
 createCentralHtml()
