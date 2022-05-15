@@ -282,9 +282,9 @@ class GitlabRunner():
         print("WikiDir is %s"%wikiDir, flush=True)
         os.chdir(wikiDir)
         
-        print(os.getcwd())
+        #print(os.getcwd())
         #open home in read mode
-        wikihome = open(wikiDir+"\Home", "r")
+        wikihome = open(wikiDir+"\Home.md", "r")
         #read whole file to a string
         page = wikihome.read()
         #close file
@@ -299,13 +299,13 @@ class GitlabRunner():
             page = pre + mid + newLine + post
     
         #open home in write mode
-        wikihome = open(wikiDir+"\Home", "w")
+        wikihome = open(wikiDir+"\Home.md", "w")
         #read whole file to a string
         wikihome.write(page)
         #close file
         wikihome.close()
       
-        self.repoGit.index.add(wikiDir+"\Home")            
+        self.repoGit.index.add(wikiDir+"\Home.md")            
         self.repoGit.index.commit("Adding release %s to WIKI"%self.commit_ref)
         self.repoGit.remotes.origin.push()
         os.chdir("../")     
