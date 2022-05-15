@@ -23,7 +23,7 @@ def remove_readonly(func, path, excinfo):
 def getArgs():
     parser = argparse.ArgumentParser(description='This script is used during release process to create wiki pages.',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser.add_argument( "-authkey", type=str, default='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', help="Personal access token for authentication with GitLab.")
+    parser.add_argument( "-authkey", type=str, default='', help="Personal access token for authentication with GitLab.")
     parser.add_argument( "-repoPath", type=str, default="ddgclient/hell1", help="Path to GitHub repo in the form <ddgclient>/<repo>")
     #parser.add_argument( "-url", default='https://gitlab.devtools.intel.com', help="Gitlab URL.")
     parser.add_argument( "-commit_ref", type=str, default = "FirstRelease",help="Path to GitLab repo in the form <namespace>/<repo>")
@@ -41,8 +41,8 @@ class GitlabRunner():
         repo = repoPath.split("/")
         self.repoOwner = repo[0]
         self.repoName = repo[1]
-        self.commit_ref = commit_ref #release name
-        #self.commit_ref = os.environ.get("GITHUB_BASE_REF")
+        #self.commit_ref = commit_ref #release name
+        self.commit_ref = os.environ.get("GITHUB_REF_NAME")
         self.mrs = None  # list of all merge requests
         # Create python-gitlab server instance
         print("Inside Runner", flush=True)
