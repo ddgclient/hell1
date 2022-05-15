@@ -35,7 +35,7 @@ class GitlabRunner():
         # Parse command line arguments
         #self.url = url
         self.wikiUrl = wikiUrl
-        self.authkey = authkey
+        self.authkey = $wiki_authkey
         repo = repoPath.split("/")
         self.repoOwner = repo[0]
         self.repoName = repo[1]
