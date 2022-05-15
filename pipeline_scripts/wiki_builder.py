@@ -44,17 +44,17 @@ class GitlabRunner():
         self.commit_ref = os.environ.get("GITHUB_REF_NAME")
         self.mrs = None  # list of all merge requests
         # Create python-gitlab server instance
-        print("Inside Runner", flush=True)
+        print("Inside runner initialization", flush=True)
         try:
             server = github3.login(token=self.authkey)
             print("Initialized github object.")
             # Get an instance of the repo and store it off
             self.repo = server.repository(owner=self.repoOwner, repository=self.repoName)
-            print(self.repo, flush=True)
+            print("repo is {0}".format(self.repo), flush=True)
         except Exception as e:
             print("%s"%e, flush=True)
             
-        print("After Runner initialization", flush=True)
+        print("Done with runner initialization", flush=True)
      
     def getIDSID(self):
         print("Running getIDSID()", flush=True)
@@ -67,6 +67,7 @@ class GitlabRunner():
             print("%s"%e, flush=True)
 
     def downloadWiki(self):
+        print("Staring downloadWiki", flush=True)
         try:
             wikiDir = os.path.join(os.getcwd(), os.path.basename(self.wikiUrl))
             print("WikiDir is %s"%wikiDir, flush=True)
@@ -96,7 +97,7 @@ class GitlabRunner():
             print("ERROR: %s"%e, flush=True)
             raise("Couldn't complete downloadWiki() call")
             
-        print("After downloadWiki", flush=True)
+        print("Done with downloadWiki", flush=True)
         
     def uploadWiki(self, content):
         print("Running uploadWiki()", flush=True)
