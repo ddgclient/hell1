@@ -69,14 +69,6 @@ def copyOverCoverage():
         print("Unexpected error raised during copy of coverlogs")
         print(type(ex))
 
-###############################
-###### START OF MAIN ##########
-###############################
-if not os.path.exists(r'.\documentation'):
-    os.makedirs(r'.\documentation')
-    os.makedirs(r'.\documentation\images')
-
-
 def renameFile(filepath):
     print(filepath)
     fileName = os.path.basename(filepath)    
@@ -107,41 +99,61 @@ def removeImageFolder(filepath):
     
     os.rename(tempFile, filepath)
             
+def copyTheFiles():
+    for subdir, dirs, files in os.walk(r'.'):
 
-for subdir, dirs, files in os.walk(r'.'):
+        for filename in files:
+            filepath = subdir + os.sep + filename
+            
+            #if filepath.endswith(".html"): #this line covers copies over too many unnecessary .html files
+            if re.match("([A-Z])\w+([.])(html)", filename): #this only copies over .html files that begin with a capital letter, so templates must begin with a capital letter
+                if not os.path.exists(os.path.join(r".\documentation", filename)): 
+                    #print (filepath)                
+                    shutil.copy(filepath, r".\documentation")
+                    
+                    # rename after copying
+                    newFilePath = os.path.join(r".\documentation", os.path.basename(filepath))
+                    renameFile(newFilePath)
+                    # remove the reference /image in the file as GitHub wiki has no folder structure, all files store at the same wiki level
+                    removeImageFolder(newFilePath)
 
-    for filename in files:
-        filepath = subdir + os.sep + filename
-        
-        #if filepath.endswith(".html"): #this line covers copies over too many unnecessary .html files
-        if re.match("([A-Z])\w+([.])(html)", filename): #this only copies over .html files that begin with a capital letter, so templates must begin with a capital letter
-            if not os.path.exists(os.path.join(r".\documentation", filename)): 
-                #print (filepath)                
-                shutil.copy(filepath, r".\documentation")
-                
+            if filepath.endswith(".md"):
+                if not os.path.exists(os.path.join(r".\documentation", filename)): 
+                    shutil.copy(filepath, r".\documentation")
+                    
+                    # rename after copying
+                    newFilePath = os.path.join(r".\documentation", os.path.basename(filepath))
+                    renameFile(newFilePath)
+                    # remove the reference /image in the file as GitHub wiki has no folder structure, all files store at the same wiki level
+                    removeImageFolder(newFilePath)
+
+        if os.path.isdir(subdir + os.sep + "images"):
+            copy_tree(subdir + os.sep + "images", r".\documentation\images")
+            for filename in os.listdir(os.path.join(r".\documentation", "images")):
+               
                 # rename after copying
-                newFilePath = os.path.join(r".\documentation", os.path.basename(filepath))
-                renameFile(newFilePath)
-                # remove the reference /image in the file as GitHub wiki has no folder structure, all files store at the same wiki level
-                removeImageFolder(newFilePath)
+                newFilePath = os.path.join(r".\documentation\images", filename)
+                #print(os.path.join(r".\documentation\images", filename))
+                renameFile(os.path.join(r".\documentation\images", filename))
 
-        if filepath.endswith(".md"):
-            if not os.path.exists(os.path.join(r".\documentation", filename)): 
-                shutil.copy(filepath, r".\documentation")
-                
-                # rename after copying
-                newFilePath = os.path.join(r".\documentation", os.path.basename(filepath))
-                renameFile(newFilePath)
-                # remove the reference /image in the file as GitHub wiki has no folder structure, all files store at the same wiki level
-                removeImageFolder(newFilePath)
-
-    if os.path.isdir(subdir + os.sep + "images"):
-        copy_tree(subdir + os.sep + "images", r".\documentation\images")
-        for filename in os.listdir(os.path.join(r".\documentation", "images")):
-           
-            # rename after copying
-            newFilePath = os.path.join(r".\documentation\images", filename)
-            #print(os.path.join(r".\documentation\images", filename))
-            renameFile(os.path.join(r".\documentation\images", filename))
-
-createCentralHtml()
+if __name__ == '__main__':
+    original_stdout = sys.stdout
+    
+    with open('logDocarser.txt', 'w') as f:
+        sys.stdout = f # Change the standard output   to the file we created.
+        try:
+            ###############################
+            ###### START OF MAIN ##########
+            ###############################
+            if not os.path.exists(r'.\documentation'):
+                os.makedirs(r'.\documentation')
+                os.makedirs(r'.\documentation\images')
+            
+            copyTheFiles()
+            createCentralHtml()
+            
+        except Exception as ex:
+            print("ERROR running DocParser.py", flush=True)
+            raise ex
+        finally:
+            sys.stdout = original_stdout # Reset the standard output to its original value
