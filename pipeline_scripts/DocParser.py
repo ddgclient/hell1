@@ -106,8 +106,10 @@ def removeImageFolder(filepath):
     with open(tempFile, 'w') as fileOut:
         with open(filepath, "r") as fileIn:
             for line in fileIn:
-                line = re.sub(r'(.*?<img\s*src=\")images\/(.*)', r'\1\2', line)
-                print(line, flush=True)
+                rslt = re.search(r'(.*?<img\s*src=\")images\/(.*)', line)
+                if rslt:
+                    line = re.sub(r'(.*?<img\s*src=\")images\/(.*)', r'\1\2', line)
+                    print(line, flush=True)
                 fileOut.write(line)   
     
     os.remove(filepath)
@@ -117,8 +119,7 @@ def removeImageFolder(filepath):
 def copyTheFiles():
     print("Starting copyTheFiles()", flush=True)
     
-    for subdir, dirs, files in os.walk(r'.'):
-
+    for subdir, dirs, files in os.walk(r'.\src'):
         for filename in files:
             filepath = subdir + os.sep + filename
             
