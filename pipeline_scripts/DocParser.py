@@ -88,7 +88,7 @@ def renameFile(filepath):
     print(fileExtension)
     print(dirName)
     newFileName = os.path.join(dirName, fileNameNoExtension + "_" + os.environ.get("CI_COMMIT_REF_NAME") + fileExtension)
-    print(newFileName)
+    print(newFileName, flush=True)
     oldFileName = os.path.join(dirName, fileName)
     print(oldFileName)
     try:
@@ -101,7 +101,9 @@ def removeImageFolder(filepath):
     with open(tempFile, 'w') as fileOut:
         with open(filepath, "r") as fileIn:
             for line in fileIn:
-                fileOut.write(re.sub(r'(.*?<img\s*src=\")images\/(.*)', r'\1\2', line))   
+                line = re.sub(r'(.*?<img\s*src=\")images\/(.*)', r'\1\2', line)
+                print(line, flush=True)
+                fileOut.write(line)   
     
     os.rename(tempFile, filepath)
             
