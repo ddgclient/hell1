@@ -333,7 +333,7 @@ if __name__ == '__main__':
     original_stdout = sys.stdout
     #GitlabRunner(authkey="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", repoPath="ddgclient/hell1", commit_ref="FirstRelease", wikiUrl="https://github.com/ddgclient/hell1.wiki.git").run()
     
-    with open('log.txt', 'w') as f:
+    with open('logWikiBuilder.txt', 'w') as f:
         sys.stdout = f # Change the standard output   to the file we created.
         myParser, myargs = getArgs()
         print("hello after get arguments", flush=True)
