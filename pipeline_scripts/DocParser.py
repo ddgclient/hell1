@@ -159,9 +159,6 @@ if __name__ == '__main__':
     
     original_stdout = sys.stdout
     
-    os.makedirs(r'.\documentation')
-    os.makedirs(r'.\documentation\images')  
-    
     with open('logDocarser.txt', 'w') as f:
         sys.stdout = f # Change the standard output   to the file we created.
         try:
