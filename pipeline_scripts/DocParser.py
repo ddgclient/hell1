@@ -118,8 +118,8 @@ def removeImageFolder(filepath):
             
 def copyTheFiles():
     print("Starting copyTheFiles()", flush=True)
-    
-    for subdir, dirs, files in os.walk(r'.\src'):
+    path = os.path.join(os.getcwd(), 'src')
+    for subdir, dirs, files in os.walk(r'.'):
         for filename in files:
             filepath = subdir + os.sep + filename
             
