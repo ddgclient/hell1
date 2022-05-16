@@ -103,8 +103,8 @@ def renameFile(filepath):
 def removeImageFolder(filepath):
     print("Starting removeImageFolder()", flush=True)
     tempFile = os.path.join(os.getcwd(),"temp.txt")
-    with open(tempFile, 'w', , encoding="cp437", errors='ignore') as fileOut:
-        with open(filepath, "r", encoding="cp437", errors='ignore') as fileIn:
+    with open(tempFile, 'w') as fileOut:
+        with open(filepath, 'r') as fileIn:
             for line in fileIn:
                 rslt = re.search(r'(.*?<img\s*src=\")images\/(.*)', line)
                 if rslt:
@@ -156,7 +156,11 @@ def copyTheFiles():
     print("Done with copyTheFiles()\n", flush=True)
 
 if __name__ == '__main__':
+    
     original_stdout = sys.stdout
+    
+    os.makedirs(r'.\documentation')
+    os.makedirs(r'.\documentation\images')  
     
     with open('logDocarser.txt', 'w') as f:
         sys.stdout = f # Change the standard output   to the file we created.
