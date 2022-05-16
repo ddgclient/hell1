@@ -103,7 +103,7 @@ def renameFile(filepath):
 def removeImageFolder(filepath):
     print("Starting removeImageFolder()", flush=True)
     tempFile = os.path.join(os.getcwd(),"temp.txt")
-    with open(tempFile, 'w') as fileOut:
+    with open(tempFile, 'w', , encoding="cp437", errors='ignore') as fileOut:
         with open(filepath, "r", encoding="cp437", errors='ignore') as fileIn:
             for line in fileIn:
                 rslt = re.search(r'(.*?<img\s*src=\")images\/(.*)', line)
