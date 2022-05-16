@@ -98,6 +98,7 @@ def renameFile(filepath):
         print(traceback.format_exc())
         
     print("Done with renameFile()\n", flush=True)
+    return newFileName
 
 def removeImageFolder(filepath):
     print("Starting removeImageFolder()", flush=True)
@@ -128,7 +129,7 @@ def copyTheFiles():
                     
                     # rename after copying
                     newFilePath = os.path.join(r".\documentation", os.path.basename(filepath))
-                    renameFile(newFilePath)
+                    newFilePath = renameFile(newFilePath)
                     # remove the reference /image in the file as GitHub wiki has no folder structure, all files store at the same wiki level
                     removeImageFolder(newFilePath)
 
@@ -138,7 +139,7 @@ def copyTheFiles():
                     
                     # rename after copying
                     newFilePath = os.path.join(r".\documentation", os.path.basename(filepath))
-                    renameFile(newFilePath)
+                    newFilePath = renameFile(newFilePath)
                     # remove the reference /image in the file as GitHub wiki has no folder structure, all files store at the same wiki level
                     removeImageFolder(newFilePath)
 
