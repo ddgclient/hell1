@@ -38,9 +38,10 @@ tr:nth-child(even) {
 <table class =\"center\">
 <body>"""
 
-    commitRefName = os.environ.get("CI_COMMIT_REF_NAME")
+    commitRefName = os.environ.get("GITHUB_REF_NAME")
     #commitRefName = "fakeRef"
-    ciProjectUrl = os.environ.get("CI_PROJECT_URL")
+    #ciProjectUrl = os.environ.get("CI_PROJECT_URL")
+    ciProjectUrl = os.environ.get("GITHUB_REPOSITORY")
     #ciProjectUrl = "fakeUrl"
 
     wikiPrefix = ciProjectUrl + "/-/wikis/" + commitRefName + "/"
@@ -83,14 +84,14 @@ def renameFile(filepath):
     fileNameNoExtension = os.path.splitext(os.path.basename(filepath))[0]
     fileExtension = os.path.splitext(os.path.basename(filepath))[1]
     dirName = os.path.dirname(os.path.realpath(filepath))
-    print(fileName)
-    print(fileNameNoExtension)
-    print(fileExtension)
-    print(dirName)
-    newFileName = os.path.join(dirName, fileNameNoExtension + "_" + os.environ.get("PROCESSOR_LEVEL") + fileExtension)
-    print(newFileName, flush=True)
+    print("fileName is {0}".format(fileName))
+    print("fileNameNoExtension is {0}".format(fileNameNoExtension))
+    print("fileExtension is {0}".format(fileExtension))
+    print("dirName is {0}".format(dirName))
+    newFileName = os.path.join(dirName, fileNameNoExtension + "_" + os.environ.get("GITHUB_REF_NAME") + fileExtension)
+    print("newFileName is {0}".format(newFileName))
     oldFileName = os.path.join(dirName, fileName)
-    print(oldFileName)
+    print("oldFileName is {0}".format(oldFileName))
     try:
         os.rename(oldFileName, newFileName)
     except Exception as e:
@@ -100,7 +101,7 @@ def renameFile(filepath):
 
 def removeImageFolder(filepath):
     print("Starting removeImageFolder()", flush=True)
-    tempFile = os.path.join(os.getcwd(),"temp")
+    tempFile = os.path.join(os.getcwd(),"temp.txt")
     with open(tempFile, 'w') as fileOut:
         with open(filepath, "r") as fileIn:
             for line in fileIn:
@@ -157,9 +158,6 @@ if __name__ == '__main__':
     with open('logDocarser.txt', 'w') as f:
         sys.stdout = f # Change the standard output   to the file we created.
         try:
-            ###############################
-            ###### START OF MAIN ##########
-            ###############################
             if not os.path.exists(r'.\documentation'):
                 os.makedirs(r'.\documentation')
                 os.makedirs(r'.\documentation\images')
