@@ -87,7 +87,7 @@ def renameFile(filepath):
     print(fileNameNoExtension)
     print(fileExtension)
     print(dirName)
-    newFileName = os.path.join(dirName, fileNameNoExtension + "_" + os.environ.get("PROCESSOR_LEVEL") + fileExtension)
+    newFileName = os.path.join(dirName, fileNameNoExtension + "_" + os.environ.get("CI_COMMIT_REF_NAME") + fileExtension)
     print(newFileName)
     oldFileName = os.path.join(dirName, fileName)
     print(oldFileName)
@@ -95,6 +95,16 @@ def renameFile(filepath):
         os.rename(oldFileName, newFileName)
     except Exception as e:
         print(traceback.format_exc())
+
+def removeImageFolder(filepath):
+    tempFile = os.path.join(os.getcwd(),"temp")
+    with open(tempFile, 'w') as fileOut:
+        with open(filepath, "r") as fileIn:
+            for line in fileIn:
+                fileOut.write(re.sub(r'(.*?<img\s*src=\")images\/(.*)', r'\1\2', line))   
+    
+    os.rename(tempFile, filepath)
+            
 
 for subdir, dirs, files in os.walk(r'.'):
 
@@ -110,6 +120,8 @@ for subdir, dirs, files in os.walk(r'.'):
                 # rename after copying
                 newFilePath = os.path.join(r".\documentation", os.path.basename(filepath))
                 renameFile(newFilePath)
+                # remove the reference /image in the file as GitHub wiki has no folder structure, all files store at the same wiki level
+                removeImageFolder(newFilePath)
 
         if filepath.endswith(".md"):
             if not os.path.exists(os.path.join(r".\documentation", filename)): 
@@ -118,6 +130,8 @@ for subdir, dirs, files in os.walk(r'.'):
                 # rename after copying
                 newFilePath = os.path.join(r".\documentation", os.path.basename(filepath))
                 renameFile(newFilePath)
+                # remove the reference /image in the file as GitHub wiki has no folder structure, all files store at the same wiki level
+                removeImageFolder(newFilePath)
 
     if os.path.isdir(subdir + os.sep + "images"):
         copy_tree(subdir + os.sep + "images", r".\documentation\images")
