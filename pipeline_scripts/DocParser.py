@@ -110,6 +110,7 @@ def removeImageFolder(filepath):
                 print(line, flush=True)
                 fileOut.write(line)   
     
+    os.remove(filepath)
     os.rename(tempFile, filepath)
     print("Done with removeImageFolder()\n", flush=True)
             
