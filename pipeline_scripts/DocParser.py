@@ -87,7 +87,7 @@ def renameFile(filepath):
     print(fileNameNoExtension)
     print(fileExtension)
     print(dirName)
-    newFileName = os.path.join(dirName, fileNameNoExtension + "_" + os.environ.get("CI_COMMIT_REF_NAME") + fileExtension)
+    newFileName = os.path.join(dirName, fileNameNoExtension + "_" + os.environ.get("PROCESSOR_LEVEL") + fileExtension)
     print(newFileName, flush=True)
     oldFileName = os.path.join(dirName, fileName)
     print(oldFileName)
