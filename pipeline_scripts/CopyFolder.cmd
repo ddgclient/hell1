@@ -8,5 +8,5 @@ robocopy %~dp0\..\preheaders %~dp0\..\%1\preheaders /e
 robocopy %~dp0\..\logs\dotCover  %~dp0\..\%1\unittestCoverage /e
 REM Xcopy /E /I "%~dp0\doc" "%~dp0\%1\doc"
 robocopy %~dp0\..\documentation %~dp0\..\%1\documentation /e
-robocopy %~dp0\..\%1 \\amr.corp.intel.com\ec\proj\mdl\jf\intel\tpapps\userlibs\mtl\staging\%1 /e
+robocopy %~dp0\..\%1 \\amr.corp.intel.com\ec\proj\mdl\jf\intel\tpapps\jflibs\prime\staging\%1 /e
 if exist "%~dp0\..\%1" RMDIR /Q /S "%~dp0\..\%1"
