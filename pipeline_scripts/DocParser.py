@@ -6,6 +6,7 @@ from distutils.dir_util import copy_tree
 import traceback
 
 def createCentralHtml():
+    print("Starting createCentralHtml()", flush=True)
     header = """
 <!DOCTYPE html>
 <html>
@@ -60,7 +61,10 @@ tr:nth-child(even) {
         f.writelines(links)
         f.writelines("\n</table></body>\n</html>")
 
+    print("Done with createCentralHtml()\n", flush=True)
+
 def copyOverCoverage():
+    print("Starting with copyOverCoverage()\n", flush=True)
     try:
         if os.path.exists(r'.\logs\dotCover\coverLogComplete.html'):
             shutil.copy(r'.\logs\dotCover\coverLogComplete.html', r".\documentation")
@@ -68,8 +72,12 @@ def copyOverCoverage():
     except Exception as ex:
         print("Unexpected error raised during copy of coverlogs")
         print(type(ex))
+        
+    print("Done with copyOverCoverage()\n", flush=True)
 
 def renameFile(filepath):
+    print("Starting renameFile()", flush=True)
+
     print(filepath)
     fileName = os.path.basename(filepath)    
     fileNameNoExtension = os.path.splitext(os.path.basename(filepath))[0]
@@ -87,8 +95,11 @@ def renameFile(filepath):
         os.rename(oldFileName, newFileName)
     except Exception as e:
         print(traceback.format_exc())
+        
+    print("Done with renameFile()\n", flush=True)
 
 def removeImageFolder(filepath):
+    print("Starting removeImageFolder()", flush=True)
     tempFile = os.path.join(os.getcwd(),"temp")
     with open(tempFile, 'w') as fileOut:
         with open(filepath, "r") as fileIn:
@@ -98,8 +109,11 @@ def removeImageFolder(filepath):
                 fileOut.write(line)   
     
     os.rename(tempFile, filepath)
+    print("Done with removeImageFolder()\n", flush=True)
             
 def copyTheFiles():
+    print("Starting copyTheFiles()", flush=True)
+    
     for subdir, dirs, files in os.walk(r'.'):
 
         for filename in files:
@@ -135,6 +149,7 @@ def copyTheFiles():
                 newFilePath = os.path.join(r".\documentation\images", filename)
                 #print(os.path.join(r".\documentation\images", filename))
                 renameFile(os.path.join(r".\documentation\images", filename))
+    print("Done with copyTheFiles()\n", flush=True)
 
 if __name__ == '__main__':
     original_stdout = sys.stdout
@@ -152,8 +167,8 @@ if __name__ == '__main__':
             copyTheFiles()
             createCentralHtml()
             
-        except Exception as ex:
+        except Exception:
             print("ERROR running DocParser.py", flush=True)
-            raise ex
+            print(traceback.format_exc())
         finally:
             sys.stdout = original_stdout # Reset the standard output to its original value
