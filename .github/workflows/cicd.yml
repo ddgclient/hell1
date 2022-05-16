@@ -92,8 +92,8 @@ jobs:
         run: .\pipeline_scripts\wiki_builder.py -authkey ${{secrets.WIKI_AUTHKEY}}
       - name: Sleep for 30 seconds
         run: Start-Sleep -s 30
-      #- name: Run CopyFolder.cmd
-      #  run: .\pipeline_scripts\CopyFolder.cmd $env:GITHUB_REF_NAME
+      - name: Run CopyFolder.cmd
+        run: .\pipeline_scripts\CopyFolder.cmd $env:GITHUB_REF_NAME
       #- name: Run emailRelease.exe
       #  run: .\pipeline_scripts\emailRelease.exe
 
