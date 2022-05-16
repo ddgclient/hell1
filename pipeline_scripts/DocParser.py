@@ -106,10 +106,19 @@ def removeImageFolder(filepath):
     with open(tempFile, 'w', encoding='utf-8', errors='replace') as fileOut:
         with open(filepath, 'r', encoding='utf-8', errors='replace') as fileIn:
             for line in fileIn:
-                rslt = re.search(r'(.*?<img\s*src=\")images\/(.*)', line)
+                ## this was meant for hmtl files only
+                #rslt = re.search(r'(.*?<img\s*src=\")images\/(.*)', line)
+                #if rslt:
+                #    line = re.sub(r'(.*?<img\s*src=\")images\/(.*)', r'\1\2', line)
+                #    print(line, flush=True)
+  
+                # for md files
+                #![TestProgram Flow](images/vminforwarding_tpflow1.png)
+                rslt = re.search(r'(.*?)\((images\/.*)\).*', line)
                 if rslt:
-                    line = re.sub(r'(.*?<img\s*src=\")images\/(.*)', r'\1\2', line)
-                    print(line, flush=True)
+                    line = re.sub(r'(.*?)\((images\/.*)\).*', r'\1[[\2]]', line)
+                    print(line, flush=True)  
+
                 fileOut.write(line)   
     
     os.remove(filepath)
@@ -133,7 +142,7 @@ def copyTheFiles():
                     newFilePath = os.path.join(r".\documentation", os.path.basename(filepath))
                     newFilePath = renameFile(newFilePath)
                     # remove the reference /image in the file as GitHub wiki has no folder structure, all files store at the same wiki level
-                    removeImageFolder(newFilePath)
+                    # removeImageFolder(newFilePath)
 
             if filepath.endswith(".md"):
                 if not os.path.exists(os.path.join(r".\documentation", filename)): 
