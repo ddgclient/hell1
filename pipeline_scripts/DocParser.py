@@ -110,7 +110,7 @@ def removeImageFolder(filepath):
                 if rslt:
                     line = re.sub(r'(.*?<img\s*src=\")images\/(.*)', r'\1\2', line)
                     print(line, flush=True)
-                fileOut.write(line.encode(sys.stdout.encoding, errors='replace'))   
+                fileOut.write(line)   
     
     os.remove(filepath)
     os.rename(tempFile, filepath)
