@@ -214,7 +214,8 @@ class GitlabRunner():
         #IDSIDs = "jhanbaba"
         #self.getIDSID()
         #IDSIDs = self.getIDSID() + ",dtduong,jacksonl,srdugre,schoi,mmcruz,cceisenm,jthwing,lguo6,jurtecho,akshigoe,lrpaloma,mruanto,nyiin,tsinha,dmarmstr,hmmanuel,apereir,hdnguye7,jqdelosr,lsurabat,mmaroon,jsgarcia,tvongnal,gfhay,pamfulto,brownmat,shirleyt,yingjin,vrchandr,mtignaci,tbgriffi,sruiwale,swjohnso,cdjones,sravindr,mwarren,srameshc,abalian"
-        IDSIDs = self.getIDSID()
+        IDSIDs = self.getIDSID() + ",fmurillo"
+        #IDSIDs = self.getIDSID()
         print(IDSIDs)
         
         #with open("mail.txt", 'r') as file:
