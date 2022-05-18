@@ -60,7 +60,7 @@ class GitlabRunner():
         print("Running getIDSID()", flush=True)
         try:
             users = self.repo.collaborators()
-            userNames = [str(x.refresh().email) for x in list(users)]
+            userNames = [x if x != None for str(x.refresh().email) for x in list(users)]
             print(",".join(userNames))
             return ",".join(userNames)
         except Exception as e:
