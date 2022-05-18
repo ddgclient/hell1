@@ -228,7 +228,7 @@ class GitlabRunner():
             "LibPath" : "\\\\amr.corp.intel.com\\ec\\proj\\mdl\\jf\\intel\\tpapps\\jflibs\\prime\\{0}".format(self.commit_ref),
             "ReleaseDoc": "\\\\amr.corp.intel.com\\ec\\proj\\mdl\\jf\\intel\\tpapps\\jflibs\\prime\\{0}\\documentation\\Documentation.html".format(self.commit_ref),
             "ReleaseWIKI" : "{0}/wiki/{1}".format(self.repo.html_url, self.commit_ref),
-            "ProjectWIKI" : "{0}/wiki/home".format(self.repo.html_url),
+            "ProjectWIKI" : "{0}/wiki/codewiki".format(self.repo.html_url),
             "CodeCoverage" : "\\\\amr.corp.intel.com\\ec\\proj\\mdl\\jf\\intel\\tpapps\\jflibs\\prime\\{0}\\unittestCoverage\\coverLogComplete.html".format(self.commit_ref),
             "Subject" : self.commit_ref + " Release Notification",
             "IDSIDs" : IDSIDs,
