@@ -214,8 +214,8 @@ class GitlabRunner():
         #IDSIDs = "jhanbaba"
         #self.getIDSID()
         #IDSIDs = self.getIDSID() + ",dtduong,jacksonl,srdugre,schoi,mmcruz,cceisenm,jthwing,lguo6,jurtecho,akshigoe,lrpaloma,mruanto,nyiin,tsinha,dmarmstr,hmmanuel,apereir,hdnguye7,jqdelosr,lsurabat,mmaroon,jsgarcia,tvongnal,gfhay,pamfulto,brownmat,shirleyt,yingjin,vrchandr,mtignaci,tbgriffi,sruiwale,swjohnso,cdjones,sravindr,mwarren,srameshc,abalian"
-        IDSIDs = self.getIDSID() + ",fmurillo"
-        #IDSIDs = self.getIDSID()
+        #IDSIDs = self.getIDSID() + ",fmurillo"
+        IDSIDs = self.getIDSID()
         print(IDSIDs)
         
         #with open("mail.txt", 'r') as file:
@@ -225,11 +225,11 @@ class GitlabRunner():
             "TOS" : tos,
             "EVG" : evg,
             "Prime" : prime,
-            "LibPath" : "\\\\amr.corp.intel.com\\ec\\proj\\mdl\\jf\\intel\\tpapps\\userlibs\\mtl\\{0}".format(self.commit_ref),
-            "ReleaseDoc": "\\\\amr.corp.intel.com\\ec\\proj\\mdl\\jf\\intel\\tpapps\\userlibs\\mtl\\{0}\\documentation\\Documentation.html".format(self.commit_ref),
+            "LibPath" : "\\\\amr.corp.intel.com\\ec\\proj\\mdl\\jf\\intel\\tpapps\\jflibs\\prime\\{0}".format(self.commit_ref),
+            "ReleaseDoc": "\\\\amr.corp.intel.com\\ec\\proj\\mdl\\jf\\intel\\tpapps\\jflibs\\prime\\{0}\\documentation\\Documentation.html".format(self.commit_ref),
             "ReleaseWIKI" : "{0}/wiki/{1}".format(self.repo.html_url, self.commit_ref),
             "ProjectWIKI" : "{0}/wiki/home".format(self.repo.html_url),
-            "CodeCoverage" : "\\\\amr.corp.intel.com\\ec\\proj\\mdl\\jf\\intel\\tpapps\\userlibs\\mtl\\{0}\\unittestCoverage\\coverLogComplete.html".format(self.commit_ref),
+            "CodeCoverage" : "\\\\amr.corp.intel.com\\ec\\proj\\mdl\\jf\\intel\\tpapps\\jflibs\\prime\\{0}\\unittestCoverage\\coverLogComplete.html".format(self.commit_ref),
             "Subject" : self.commit_ref + " Release Notification",
             "IDSIDs" : IDSIDs,
             "Message" : "<h5> Greetings! <br> DDG Client MTL Prime WG is proud to announce the release of Prime user code runtime library: <span style=\"color:red\">%s</span></h5>"%self.commit_ref,
