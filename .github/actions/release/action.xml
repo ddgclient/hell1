@@ -1,5 +1,5 @@
-name: compile
-description: compile code
+name: release
+description: run release scripts
 runs:
       using: "composite"
 
