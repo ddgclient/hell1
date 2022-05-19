@@ -8,7 +8,10 @@ runs:
         run:  "dotnet tool restore"
       - name: compile base
         run:  .\pipeline_scripts\CompileAll.cmd Base -ci $env:GITHUB_WORKSPACE
+        shell: powershell
       - name: compile target
         run:  .\pipeline_scripts\CompileAll.cmd $env:TARGET -ci $env:GITHUB_WORKSPACE
+        shell: powershell
       - name: print GITHUB_WORKSPACE
         run:  powershell "echo $env:GITHUB_WORKSPACE"
+        shell: powershell
