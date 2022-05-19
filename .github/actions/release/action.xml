@@ -5,14 +5,19 @@ runs:
 
       steps:
         - name: Print current repo ref
-          run: echo $env:GITHUB_REF_NAME         
+          run: echo $env:GITHUB_REF_NAME     
+          shell: powershell
         - name: Run DocParser
           run: .\pipeline_scripts\DocParser.py
+          shell: powershell
         - name: Run wiki_builder.py
           run: .\pipeline_scripts\wiki_builder.py -authkey ${{secrets.WIKI_AUTHKEY}}
+          shell: powershell
         - name: Sleep for 30 seconds
           run: Start-Sleep -s 30
         - name: Run CopyFolder.cmd
           run: .\pipeline_scripts\CopyFolder.cmd $env:GITHUB_REF_NAME
+          shell: powershell
         - name: Run emailRelease.exe
           run: .\pipeline_scripts\emailRelease.exe
+          shell: powershell
