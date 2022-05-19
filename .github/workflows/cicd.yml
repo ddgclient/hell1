@@ -27,7 +27,7 @@ jobs:
         continue-on-error: false
 
   UnitTest:
-    needs: Compile
+    #needs: Compile
     runs-on: self-hosted
     steps:
      - name: Run Unit Tests
