@@ -51,7 +51,7 @@ jobs:
       - name: Run PVAL
         uses: ./.github/actions/pval
         timeout-minutes: 10
-        continue-on-error: true
+        continue-on-error: false
          
   Release:
     needs: PrimeValidation
@@ -63,7 +63,7 @@ jobs:
       - name: Run Release
         uses: ./.github/actions/release
         timeout-minutes: 10
-        continue-on-error: true
+        continue-on-error: false
         with:
           authkey: ${{secrets.WIKI_AUTHKEY}}
           
