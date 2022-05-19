@@ -17,7 +17,7 @@ runs:
           run: .\pipeline_scripts\DocParser.py
           shell: powershell
         - name: Run wiki_builder.py
-          run: .\pipeline_scripts\wiki_builder.py -authkey ${{secrets.WIKI_AUTHKEY}}
+          run: .\pipeline_scripts\wiki_builder.py -authkey ${{inputs.authkey}}
           shell: powershell
         - name: Sleep for 30 seconds
           run: Start-Sleep -s 30
