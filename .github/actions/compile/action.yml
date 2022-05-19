@@ -6,6 +6,7 @@ runs:
       steps:
       - name: restore
         run:  "dotnet tool restore"
+        shell: powershell
       - name: compile base
         run:  .\pipeline_scripts\CompileAll.cmd Base -ci $env:GITHUB_WORKSPACE
         shell: powershell
