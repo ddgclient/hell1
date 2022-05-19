@@ -1,5 +1,11 @@
 name: release
 description: run release scripts
+
+inputs:
+      authkey: 
+      description: repo authentication key 
+      reqyured: true
+
 runs:
       using: "composite"
 
