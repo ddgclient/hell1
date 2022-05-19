@@ -52,19 +52,10 @@ jobs:
     needs: CheckCoverage
     runs-on: self-hosted
     steps:
-      - name: List mapped drives
-        run:  net use
-      - name: Map I:drive 
-        run:  'net use I: \\amr.corp.intel.com\ec\proj\mdl\jf\intel /y ; $LASTEXITCODE= 0'
-      - name: Run pVal
-        run:  powershell $env:pValPath $env:tosPath full -sk
- #   with:
- #     name: my-artifact
- #     path: 
- #       .\logs
- #       .\pVal
- #     retention-days: 3         
- #    #allow_failure: false    
+      - name: Run Release
+        uses: ./.github/actions/pval
+        timeout-minutes: 10
+        continue-on-error: true
          
   Release:
     needs: PrimeValidation
