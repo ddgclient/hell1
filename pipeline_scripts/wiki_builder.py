@@ -194,11 +194,11 @@ class GitlabRunner():
     def getReleaseNote(self):
         print("Running getReleaseNote()", flush=True)     
         try:
-            print(self.repo.release_from_tag("V1").name)
-            print(self.repo.release_from_tag("V1").body)
+            print(self.repo.release_from_tag(self.commit_ref).name)
+            print(self.repo.release_from_tag(self.commit_ref).body)
        
             #releaseNote = self.repo.release_from_tag("V1").body
-            return self.repo.release_from_tag("V1").body
+            return self.repo.release_from_tag(self.commit_ref).body
         except Exception as e:
             print("ERROR: %s"%e, flush=True)
             print("Couldn't complete getReleaseNote() call, releaseNote is empty", flush=True)
