@@ -1,0 +1,15 @@
+name: compile
+description: compile code
+runs:
+      using: "composite"
+   
+      steps:
+      - uses: actions/checkout@v3
+      - name: restore
+        run:  "dotnet tool restore"
+      - name: compile base
+        run:  .\pipeline_scripts\CompileAll.cmd Base -ci $env:GITHUB_WORKSPACE
+      - name: compile target
+        run:  .\pipeline_scripts\CompileAll.cmd $env:TARGET -ci $env:GITHUB_WORKSPACE
+      - name: print GITHUB_WORKSPACE
+        run:  powershell "echo $env:GITHUB_WORKSPACE"
