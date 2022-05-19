@@ -3,8 +3,8 @@ description: run release scripts
 
 inputs:
       authkey: 
-      description: repo authentication key 
-      reqyured: true
+          description: "repo authentication key"
+          required: true
 
 runs:
       using: "composite"
