@@ -56,7 +56,7 @@ jobs:
   Release:
     needs: PrimeValidation
     #if: contains(github.ref, '/tags/v*')
-    if: contains(github.ref, 'main')
+    if: contains(github.ref, '-ddg')
     runs-on: self-hosted
     steps:
       - name: Run Release
