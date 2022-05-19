@@ -37,7 +37,7 @@ jobs:
 
   CheckCoverage:
     needs: UnitTest
-    if: contains(github.ref, '-ddg')
+    if: contains(github.ref, '-ddg') || contains(github.ref, 'main')
     runs-on: self-hosted
     steps:
       - name: Run coverage analysis
