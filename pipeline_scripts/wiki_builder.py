@@ -234,7 +234,7 @@ class GitlabRunner():
             "IDSIDs" : IDSIDs,
             "Message" : "<h5> Greetings! <br> DDG Client MTL Prime WG is proud to announce the release of Prime user code runtime library: <span style=\"color:red\">%s</span></h5>"%self.commit_ref,
             "DDDGPrimePortal": "http://ddgclient.intel.com/",
-            "TMMPrimePortal": "https://dev.azure.com/mit-us/PRIME/_wiki/wikis/PRIME.wiki/150/Release-Notes"
+            "TMMPrimePortal": "https://dev.azure.com/mit-us/PrimeWiki/_wiki/wikis/PrimeWiki.wiki/12813/Prime-Customer-Wiki"
             #"Data" : data
         }
         json_object = json.dumps(dictionary, indent = 4) 
