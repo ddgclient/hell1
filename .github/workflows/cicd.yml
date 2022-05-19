@@ -10,7 +10,7 @@ on:
     branches: 
      - '**'
     tags:
-     - '*'
+     - '**-ddg**'
 
 concurrency: 
   group: tos-validation
@@ -55,7 +55,6 @@ jobs:
          
   Release:
     needs: PrimeValidation
-    #if: contains(github.base_ref, 'main')
     #if: contains(github.ref, '/tags/v*')
     if: contains(github.ref, 'main')
     runs-on: self-hosted
