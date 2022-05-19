@@ -78,6 +78,7 @@ jobs:
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v3
         with:
+          authkey: ${{secrets.WIKI_AUTHKEY}}
           name: my-artifact
           path: .\
           retention-days: 7
