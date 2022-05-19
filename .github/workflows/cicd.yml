@@ -33,7 +33,7 @@ jobs:
      - name: Run Unit Tests
        run: .\pipeline_scripts\RunUnitTests.cmd -ci $env:GITHUB_WORKSPACE
        timeout-minutes: 15
-       continue-on-error: true
+       continue-on-error: false
 
   CheckCoverage:
     needs: UnitTest
