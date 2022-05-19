@@ -18,6 +18,7 @@ jobs:
   Compile:
     runs-on: self-hosted
     steps:
+      - uses: actions/checkout@v3
       - name: Compile code
         uses: ./.github/actions/compile
         timeout-minutes: 10
