@@ -25,24 +25,6 @@ jobs:
         #max_attempts: 3, not supported, look into workflow: https://hsalem.com/posts/ability-to-rerun-single-jobs-in-github-actions.html
         continue-on-error: false
 
-      - name: 'Upload Artifact'
-        uses: actions/upload-artifact@v3
-        with:
-          name: compile-artifact
-          path: .\logs
-          retention-days: 7
-          
-    #  - uses: actions/checkout@v3
-    #  - name: restore
-    #    run:  "dotnet tool restore"
-    #  - name: compile base
-    #    run:  .\pipeline_scripts\CompileAll.cmd Base -ci $env:GITHUB_WORKSPACE
-    #  - name: compile target
-    #    run:  .\pipeline_scripts\CompileAll.cmd $env:TARGET -ci $env:GITHUB_WORKSPACE
-    #  - name: print GITHUB_WORKSPACE
-    #    run:  powershell "echo $env:GITHUB_WORKSPACE"
-
-
   UnitTest:
     needs: Compile
     runs-on: self-hosted
