@@ -21,6 +21,7 @@ runs:
           shell: powershell
         - name: Sleep for 30 seconds
           run: Start-Sleep -s 30
+          shell: powershell
         - name: Run CopyFolder.cmd
           run: .\pipeline_scripts\CopyFolder.cmd $env:GITHUB_REF_NAME
           shell: powershell
