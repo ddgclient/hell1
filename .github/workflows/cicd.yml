@@ -46,7 +46,7 @@ jobs:
     needs: CheckCoverage
     runs-on: self-hosted
     steps:
-      - name: Run Release
+      - name: Run PVAL
         uses: ./.github/actions/pval
         timeout-minutes: 10
         continue-on-error: true
