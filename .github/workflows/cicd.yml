@@ -9,6 +9,8 @@ on:
   push:
     branches: 
      - '**'
+    tags:
+     - '*'
 
 concurrency: 
   group: tos-validation
