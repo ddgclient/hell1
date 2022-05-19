@@ -27,7 +27,7 @@ jobs:
         continue-on-error: false
 
   UnitTest:
-    #needs: Compile
+    needs: Compile
     runs-on: self-hosted
     steps:
      - name: Run Unit Tests
@@ -37,7 +37,6 @@ jobs:
 
   CheckCoverage:
     needs: UnitTest
-    if: contains(github.ref, '-ddg') || contains(github.ref, 'main')
     runs-on: self-hosted
     steps:
       - name: Run coverage analysis
