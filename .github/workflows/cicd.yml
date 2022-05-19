@@ -55,7 +55,7 @@ jobs:
          
   Release:
     needs: PrimeValidation
-    if: contains(github.base_ref, 'main')
+    #if: contains(github.base_ref, 'main')
     runs-on: self-hosted
     steps:
       - name: Run Release
