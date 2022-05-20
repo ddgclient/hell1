@@ -175,6 +175,7 @@ class GitlabRunner():
         print("Running getIssues()", flush=True)
         print("msTitle is {0}".format(msTitle))
         title = ""
+        issues = []
         for milestone in self.repo.milestones():
             if milestone.title == msTitle:
                 title = milestone.title
