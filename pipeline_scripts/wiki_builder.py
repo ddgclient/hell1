@@ -173,19 +173,23 @@ class GitlabRunner():
     # get issues from a milestone
     def getIssues(self, msTitle):    
         print("Running getIssues()", flush=True)
+        print("msTitle is {0}".format(msTitle))
         title = ""
         for milestone in self.repo.milestones():
             if milestone.title == msTitle:
                 title = milestone.title
+                print("title is {0}".format(title))
                 break
         try:
             #for issue in self.repo.issues(milestone=title):
             #    print(issue.assignee)
+            print("title is {0}".format(title))
             issues = self.repo.issues(milestone=title)
         except:
             print("ERROR: milestone title: %s isn't valid"%title, flush=True)
             issues = []
  
+        print("Done with getIssues()", flush=True)
         return issues
 
     def createRelease(self):
