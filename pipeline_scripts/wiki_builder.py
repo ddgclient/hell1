@@ -178,13 +178,16 @@ class GitlabRunner():
         for milestone in self.repo.milestones():
             if milestone.title == msTitle:
                 title = milestone.title
-                print("title is {0}".format(title))
+                print("Milestone title is {0}".format(title))
                 break
         try:
             #for issue in self.repo.issues(milestone=title):
             #    print(issue.assignee)
-            print("title is {0}".format(title))
-            issues = self.repo.issues(milestone=title)
+            if title != "":
+                issues = self.repo.issues(milestone=title)
+            else:
+                issues = []
+                
         except:
             print("ERROR: milestone title: %s isn't valid"%title, flush=True)
             issues = []
