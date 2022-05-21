@@ -15,7 +15,7 @@ import json
 import github3
 
 # shutil.rmtree can take an error-handling function that will be called when it has problem removing a file. 
-# can use this function to force the removal of the problematic file(s).
+# can use this function to force the removal  of the problematic file(s).
 def remove_readonly(func, path, excinfo):
     os.chmod(path, stat.S_IWRITE)
     func(path)
