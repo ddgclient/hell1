@@ -13,7 +13,7 @@ All:
   variables:
     TARGET: "All"
     RELEASE: "false"
-    PRIMEVAL: "true"
+    PRIMEVAL: "tru e"
   trigger:
     include: ci-generic.yml
     strategy: depend
