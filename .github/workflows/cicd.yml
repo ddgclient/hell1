@@ -23,7 +23,7 @@ jobs:
       - name: Compile code
         uses: ./.github/actions/compile
         timeout-minutes: 15
-        #max_attempts: 3, not supported, look into workflow: https://hsalem.com/posts/ability-to-rerun-single-jobs-in-github-actions.html
+        #max_attempts: 3,  not supported, look into workflow: https://hsalem.com/posts/ability-to-rerun-single-jobs-in-github-actions.html
         continue-on-error: false
 
   UnitTest:
