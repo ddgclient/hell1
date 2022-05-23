@@ -22,7 +22,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Link working directory
-        run:  New-Item -Path c:\runDir -ItemType SymbolicLink -Value C:\actions-runner\_work\hell1\hell1
+        run:  New-Item -Path "C:\runDir" -ItemType SymbolicLink -Value "C:\actions-runner\_work\hell1\hell1"
       - name: Compile code
         uses: ./.github/actions/compile
         timeout-minutes: 15
