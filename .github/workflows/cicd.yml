@@ -63,6 +63,8 @@ jobs:
         uses: ./.github/actions/pval
         timeout-minutes: 10
         continue-on-error: false
+        with:
+          runDir: ${{env.runDir}}          
          
   Release:
     needs: PrimeValidation
