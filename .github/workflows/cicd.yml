@@ -26,7 +26,7 @@ jobs:
       #- name: Delete existing runDir
       #  run:  (Get-Item C:\runDir).Delete()
       - name: Link working directory
-        run:  New-Item -ItemType SymbolicLink -Path "C:\runDir" -Target "C:\actions-runner\_work\hell1\hell1" -force
+        run:  New-Item -ItemType SymbolicLink -Path "C:\runDir" -Target $env:GITHUB_WORKSPACE -force
       - name: Compile code
         uses: ./.github/actions/compile
         timeout-minutes: 15
