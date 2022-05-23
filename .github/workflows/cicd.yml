@@ -4,6 +4,7 @@ env:
   TARGET: "All"
   pValPath: .\pipeline_scripts\pVal\PrimeValTool.exe
   tosPath: C:\intel\hdmt\hdmtOS_3.10.0.0_Release
+  runDir: C:\runDir
   
 on: 
   push:
@@ -20,6 +21,8 @@ jobs:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v3
+      - name: Link working directory
+        run:  New-Item -Path c:\runDir -ItemType SymbolicLink -Value C:\actions-runner\_work\hell1\hell1
       - name: Compile code
         uses: ./.github/actions/compile
         timeout-minutes: 15
