@@ -18,6 +18,17 @@ concurrency:
   group: tos-validation
 
 jobs:
+  Checkout:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v3
+      - name: create folder
+        run:  New-Item -Force -Type Directory $env:pValPath
+      - name: Copy repo
+        run:  Copy-Item -Force -Recurse ./* $env:pValPath
+        timeout-minutes: 15
+        continue-on-error: false
+
   Compile:
     runs-on: self-hosted
     steps:
