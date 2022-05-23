@@ -9,6 +9,8 @@ inputs:
 runs:
       using: "composite"
       steps:
+      - name: change folder
+        run:  Set-Location -Path ${{inputs.runDir}}
       - name: New-Item
         run: PowerShell -Command "New-Item -ItemType Directory -Path .\logs"
         shell: powershell
