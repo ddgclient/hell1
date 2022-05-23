@@ -321,7 +321,8 @@ namespace PrimeValTool
             if (PValMain.TosVerMajorRev >= 3 && PValMain.TosVerMinorRev >= 10)
             {
                 // TOS 3.10+ added the directory as the 2nd argument.
-                tpLoadList += $"{Directory.GetCurrentDirectory()} ";
+                //tpLoadList += $"{Directory.GetCurrentDirectory()} ";
+                tpLoadList += $"{"C:\\runDir"} ";
             }
 
             tpLoadList += $"{plans.TplFile} {plans.StplFile} {plans.PlistFile} {plans.SocFile} {plans.EnvFile}";
