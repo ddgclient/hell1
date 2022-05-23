@@ -28,6 +28,10 @@ jobs:
       #  run:  (Get-Item C:\runDir).Delete()
       - name: Link working directory
         run:  New-Item -ItemType SymbolicLink -Path "C:\runDir" -Target $env:GITHUB_WORKSPACE -force
+      - name: create folder
+        run:  New-Item -Force -Type Directory ./bar
+      - name: Copy repo
+        run:  Copy-Item -Force -Recurse ./* bar
       - name: Compile code
         uses: ./.github/actions/compile
         timeout-minutes: 15
