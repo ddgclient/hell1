@@ -29,9 +29,9 @@ jobs:
       - name: Link working directory
         run:  New-Item -ItemType SymbolicLink -Path "C:\runDir" -Target $env:GITHUB_WORKSPACE -force
       - name: create folder
-        run:  New-Item -Force -Type Directory ./bar
+        run:  New-Item -Force -Type Directory C:\bar
       - name: Copy repo
-        run:  Copy-Item -Force -Recurse ./* bar
+        run:  Copy-Item -Force -Recurse ./* C:\bar
       - name: Compile code
         uses: ./.github/actions/compile
         timeout-minutes: 15
