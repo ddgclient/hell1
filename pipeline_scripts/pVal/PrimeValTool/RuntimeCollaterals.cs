@@ -140,7 +140,9 @@ namespace PrimeValTool
             SettingsFile pValRunList;
             string jsonText;
 
-            string jsonFilePath = Path.Combine(AutomationDirectory, JsonFileName);
+            //string jsonFilePath = Path.Combine(AutomationDirectory, JsonFileName);
+            string jsonFilePath = Path.Combine("C:\runDir", JsonFileName);
+
             jsonText = Handlers.DirectoryHandler.ReadTextFromPath(jsonFilePath);
 
             Handlers.LoggerHandler.PrintLine($"pValRunList file path = {Convert.ToString(jsonFilePath)}\n", PrintType.DEFAULT);
