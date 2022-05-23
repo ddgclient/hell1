@@ -10,6 +10,8 @@ runs:
       using: "composite"
       
       steps:
+        - name: print PVal path
+          run:  echo  $env:pValPath     
         - name: List mapped drives
           run:  net use
           shell: powershell
