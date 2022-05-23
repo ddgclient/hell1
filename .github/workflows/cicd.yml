@@ -31,7 +31,7 @@ jobs:
         #max_attempts: 3,  not supported, look into workflow: https://hsalem.com/posts/ability-to-rerun-single-jobs-in-github-actions.html
         continue-on-error: false
         with:
-          runDir: ${{$env.runDir}}
+          runDir: ${{env.runDir}}
 
   UnitTest:
     needs: Compile
