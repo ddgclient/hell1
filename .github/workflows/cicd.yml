@@ -3,7 +3,7 @@ name: CI
 env:
   TARGET: "All"
   runDir: C:\runDir
-  pValPath: $env:runDir\pipeline_scripts\pVal\PrimeValTool.exe
+  pValPath: .\pipeline_scripts\pVal\PrimeValTool.exe
   tosPath: C:\intel\hdmt\hdmtOS_3.10.0.0_Release
 
   
