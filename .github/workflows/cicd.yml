@@ -79,11 +79,11 @@ jobs:
         continue-on-error: false
         with:
           authkey: ${{secrets.WIKI_AUTHKEY}}
+          runDir: ${{env.runDir}}  
           
       - name: 'Upload Source Code Artifact'
         uses: actions/upload-artifact@v3
         with:
-          runDir: ${{env.runDir}}  
           name: source code
           path: .\src
           retention-days: 90
