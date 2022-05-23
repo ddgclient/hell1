@@ -40,7 +40,7 @@ jobs:
     runs-on: self-hosted
     steps:
      - name: Run Unit Tests
-       run: .\pipeline_scripts\RunUnitTests.cmd -ci $env:GITHUB_WORKSPACE
+       run: .\pipeline_scripts\RunUnitTests.cmd -ci ${{env.runDir}}
        timeout-minutes: 15
        continue-on-error: false
 
