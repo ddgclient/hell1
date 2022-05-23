@@ -52,6 +52,8 @@ jobs:
         uses: ./.github/actions/coverage
         timeout-minutes: 10
         continue-on-error: true
+        with:
+          runDir: ${{env.runDir}}        
          
   PrimeValidation:
     needs: CheckCoverage
