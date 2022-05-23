@@ -26,6 +26,8 @@ jobs:
         run:  New-Item -Force -Type Directory $env:runDir
       - name: Copy repo
         run:  Copy-Item -Force -Recurse ./* $env:runDir
+      - name: change folder
+        run:  Set-Location -Path $env:runDir
         timeout-minutes: 15
         continue-on-error: false
 
