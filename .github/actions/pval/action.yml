@@ -1,5 +1,5 @@
-name: coverage
-description: unittest coverage
+name: pval
+description: run Pval TP
 
 inputs:
       runDir: 
@@ -10,6 +10,8 @@ runs:
       using: "composite"
       
       steps:
+        - name: change folder
+          run:  Set-Location -Path ${{inputs.runDir}}      
         - name: print PVal path
           run:  echo  $env:pValPath   
           shell: powershell
