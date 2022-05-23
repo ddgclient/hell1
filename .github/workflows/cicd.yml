@@ -23,9 +23,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: create folder
-        run:  New-Item -Force -Type Directory $env:pValPath
+        run:  New-Item -Force -Type Directory $env:runDir
       - name: Copy repo
-        run:  Copy-Item -Force -Recurse ./* $env:pValPath
+        run:  Copy-Item -Force -Recurse ./* $env:runDir
         timeout-minutes: 15
         continue-on-error: false
 
@@ -33,7 +33,6 @@ jobs:
     needs: Checkout
     runs-on: self-hosted
     steps:
-      - uses: actions/checkout@v3
       - name: print name
         run: echo $env:runDir
       #- name: Delete existing runDir
