@@ -5,6 +5,9 @@ inputs:
       authkey: 
           description: "repo authentication key"
           required: true
+      runDir: 
+          description: "runDir path"
+          required: true
 
 runs:
       using: "composite"
@@ -14,17 +17,17 @@ runs:
           run: echo $env:GITHUB_REF_NAME     
           shell: powershell
         - name: Run DocParser
-          run: .\pipeline_scripts\DocParser.py
+          run: ${{inputs.runDir}}\pipeline_scripts\DocParser.py
           shell: powershell
         - name: Run wiki_builder.py
-          run: .\pipeline_scripts\wiki_builder.py -authkey ${{inputs.authkey}}
+          run: ${{inputs.runDir}}\pipeline_scripts\wiki_builder.py -authkey ${{inputs.authkey}}
           shell: powershell
         - name: Sleep for 30 seconds
           run: Start-Sleep -s 30
           shell: powershell
         - name: Run CopyFolder.cmd
-          run: .\pipeline_scripts\CopyFolder.cmd $env:GITHUB_REF_NAME
+          run: ${{inputs.runDir}}\pipeline_scripts\CopyFolder.cmd $env:GITHUB_REF_NAME
           shell: powershell
         - name: Run emailRelease.exe
-          run: .\pipeline_scripts\emailRelease.exe
+          run: ${{inputs.runDir}}\pipeline_scripts\emailRelease.exe
           shell: powershell
