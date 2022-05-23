@@ -11,7 +11,8 @@ runs:
       
       steps:
         - name: print PVal path
-          run:  echo  $env:pValPath     
+          run:  echo  $env:pValPath   
+          shell: powershell
         - name: List mapped drives
           run:  net use
           shell: powershell
