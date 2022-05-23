@@ -141,7 +141,7 @@ namespace PrimeValTool
             string jsonText;
 
             //string jsonFilePath = Path.Combine(AutomationDirectory, JsonFileName);
-            string jsonFilePath = Path.Combine("C:\runDir", JsonFileName);
+            string jsonFilePath = Path.Combine("C:\\runDir", JsonFileName);
 
             jsonText = Handlers.DirectoryHandler.ReadTextFromPath(jsonFilePath);
 
