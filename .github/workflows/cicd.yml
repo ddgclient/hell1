@@ -30,6 +30,8 @@ jobs:
         timeout-minutes: 15
         #max_attempts: 3,  not supported, look into workflow: https://hsalem.com/posts/ability-to-rerun-single-jobs-in-github-actions.html
         continue-on-error: false
+        with:
+          authkey: ${{runDir}}
 
   UnitTest:
     needs: Compile
