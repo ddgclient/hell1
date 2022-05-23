@@ -20,5 +20,6 @@ runs:
           run:  'net use I: \\amr.corp.intel.com\ec\proj\mdl\jf\intel /y ; $LASTEXITCODE= 0'
           shell: powershell
         - name: Run pVal
-          run:  powershell ${{inputs.runDir}}\$env:pValPath $env:tosPath full -sk
+          run:  powershell C:\runDir\pipeline_scripts\pVal\PrimeValTool.exe $env:tosPath full -sk
           shell: powershell
+       
