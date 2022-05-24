@@ -22,16 +22,17 @@ jobs:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v3
-      #- name: create folder
-      #  run:  New-Item -Force -Type Directory "C:\runDirTemp"
-      #- name: Link working directory
-      #  run:  New-Item -ItemType SymbolicLink -Path "C:\runDirTemp" -Target $env:GITHUB_WORKSPACE -force      
-      #- name: Copy repo
-      #  run:  Copy-Item -Force -Recurse C:\runDirTemp\* $env:runDir
       - name: create folder
-        run:  New-Item -Force -Type Directory $env:runDir
-      - name: Copy repo
-        run:  Copy-Item -Force -Recurse ./* $env:runDir    
+        run:  New-Item -Force -Type Directory "C:\runDir"
+      - name: Link working directory
+        run:  New-Item -ItemType SymbolicLink -Path "C:\runDirTemp" -Target $env:GITHUB_WORKSPACE -force      
+      - name: Copy repo form symbolic link to acutal folder
+        run:  Copy-Item -Force -Recurse C:\runDirTemp\* $env:runDir
+      
+      #- name: create folder
+      #  run:  New-Item -Force -Type Directory $env:runDir
+      #- name: Copy repo
+      #  run:  Copy-Item -Force -Recurse ./* $env:runDir    
       - name: change folder
         run:  Set-Location -Path $env:runDir
         timeout-minutes: 15
