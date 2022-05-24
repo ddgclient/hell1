@@ -20,7 +20,8 @@ runs:
           run:  'net use I: \\amr.corp.intel.com\ec\proj\mdl\jf\intel /y ; $LASTEXITCODE= 0'
           shell: powershell
         - name: change folder
-          run:  Set-Location -Path ${{inputs.runDir}}  
+          #run:  Set-Location -Path ${{inputs.runDir}}  
+          run:  Set-Location -Path C:\runDir
           shell: powershell          
         - name: Run pVal
           run:  powershell C:\runDir\pipeline_scripts\pVal\PrimeValTool.exe $env:tosPath full -sk
