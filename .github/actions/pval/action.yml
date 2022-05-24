@@ -24,6 +24,6 @@ runs:
           run:  Set-Location -Path C:\runDir
           shell: powershell          
         - name: Run pVal
-          run:  powershell C:\runDir\pipeline_scripts\pVal\PrimeValTool.exe $env:tosPath full -sk
+          run:  powershell .\pipeline_scripts\pVal\PrimeValTool.exe $env:tosPath full -sk
           shell: powershell
        
