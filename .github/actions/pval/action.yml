@@ -21,9 +21,9 @@ runs:
           shell: powershell
         - name: change folder
           #run:  Set-Location -Path ${{inputs.runDir}}  
-          run:  Set-Location -Path C:\runDir -PassThru
+          run:  Set-Location -Path C:\runDir -PassThru; .\pipeline_scripts\pVal\PrimeValTool.exe $env:tosPath full -sk
           shell: powershell          
-        - name: Run pVal
-          run:  .\pipeline_scripts\pVal\PrimeValTool.exe $env:tosPath full -sk
-          shell: powershell
+       # - name: Run pVal
+       #   run:  .\pipeline_scripts\pVal\PrimeValTool.exe $env:tosPath full -sk
+       #   shell: powershell
        
