@@ -23,9 +23,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: create folder
-        run:  New-Item -Force -Type Directory $env:runDir
+        run:  New-Item -Force -Type Directory "C:\runDirTemp"
+      - name: Link working directory
+        run:  New-Item -ItemType SymbolicLink -Path "C:\runDirTemp" -Target $env:GITHUB_WORKSPACE -force      
       - name: Copy repo
-        run:  Copy-Item -Force -Recurse ./* $env:runDir
+        run:  Copy-Item -Force -Recurse C:\runDirTemp\* $env:runDir
       - name: change folder
         run:  Set-Location -Path $env:runDir
         timeout-minutes: 15
