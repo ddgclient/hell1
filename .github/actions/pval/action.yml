@@ -11,7 +11,8 @@ runs:
       
       steps:
         - name: change folder
-          run:  Set-Location -Path ${{inputs.runDir}}      
+          run:  Set-Location -Path ${{inputs.runDir}}  
+          shell: powershell
         - name: print PVal path
           run:  echo  $env:pValPath   
           shell: powershell
