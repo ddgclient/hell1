@@ -11,6 +11,7 @@ runs:
       steps:
       - name: change folder
         run:  Set-Location -Path ${{inputs.runDir}}
+        shell: powershell
       - name: New-Item
         run: PowerShell -Command "New-Item -ItemType Directory -Path .\logs"
         shell: powershell
