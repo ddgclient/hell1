@@ -10,9 +10,6 @@ runs:
       using: "composite"
       
       steps:
-        - name: change folder
-          run:  Set-Location -Path ${{inputs.runDir}}  
-          shell: powershell
         - name: print PVal path
           run:  echo  $env:pValPath   
           shell: powershell
@@ -22,6 +19,9 @@ runs:
         - name: Map I:drive 
           run:  'net use I: \\amr.corp.intel.com\ec\proj\mdl\jf\intel /y ; $LASTEXITCODE= 0'
           shell: powershell
+        - name: change folder
+          run:  Set-Location -Path ${{inputs.runDir}}  
+          shell: powershell          
         - name: Run pVal
           run:  powershell C:\runDir\pipeline_scripts\pVal\PrimeValTool.exe $env:tosPath full -sk
           shell: powershell
